@@ -1,0 +1,129 @@
+# =============================================================================
+# Example Terraform Variables for Single VM Deployment
+# =============================================================================
+# Copy this file to terraform.tfvars and customize for your environment
+
+# =============================================================================
+# Proxmox Configuration
+# =============================================================================
+
+proxmox_endpoint = "https://proxmox.local:8006"
+proxmox_insecure = true
+proxmox_node     = "pve"
+
+# =============================================================================
+# Template Configuration
+# =============================================================================
+
+template_id = 2000
+datastore   = "local-lvm"
+
+# =============================================================================
+# VM Configuration
+# =============================================================================
+
+vm_name        = "my-app-server"
+vm_id          = null # Auto-assign VM ID
+vm_description = "Application server deployed via Terraform"
+vm_tags        = ["terraform", "app-server", "production"]
+
+# =============================================================================
+# Hardware Configuration
+# =============================================================================
+
+cpu_cores = 4
+cpu_type  = "host"
+memory    = 8192    # 8GB RAM
+disk_size = 50      # 50GB disk
+
+# =============================================================================
+# Network Configuration
+# =============================================================================
+
+network_bridge  = "vmbr0"
+vlan_id         = null # Set to a number for VLAN (e.g., 30)
+ip_address      = "192.168.1.100"
+network_cidr    = "24"
+network_gateway = "192.168.1.1"
+
+# =============================================================================
+# Secondary Network Configuration (Dual NIC)
+# =============================================================================
+
+enable_secondary_nic      = true
+network_bridge_secondary  = "vmbr1"
+vlan_id_secondary         = null # Set to a number for VLAN on secondary NIC
+ip_address_secondary      = "192.168.2.100"
+network_cidr_secondary    = "24"
+
+# =============================================================================
+# DNS Configuration
+# =============================================================================
+
+dns_domain  = "example.local"
+dns_servers = ["1.1.1.1", "8.8.8.8"]
+
+# =============================================================================
+# Cloud-init Configuration
+# =============================================================================
+
+vm_username = "ubuntu"
+ssh_public_keys = [
+  "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC... user@hostname",
+]
+
+# =============================================================================
+# Start Configuration
+# =============================================================================
+
+start_on_deploy = true
+start_on_boot   = true
+boot_order      = 0
+boot_up_delay   = 0
+boot_down_delay = 0
+
+# =============================================================================
+# Common Use Case Examples
+# =============================================================================
+
+# Development Server
+# ------------------
+# vm_name   = "dev-server"
+# cpu_cores = 2
+# memory    = 4096
+# disk_size = 32
+# vm_tags   = ["terraform", "development"]
+
+# Database Server
+# ---------------
+# vm_name   = "postgres-db"
+# cpu_cores = 8
+# memory    = 16384
+# disk_size = 100
+# vm_tags   = ["terraform", "database", "postgres"]
+# prevent_destroy = true
+
+# Web Server
+# ----------
+# vm_name   = "web-server"
+# cpu_cores = 4
+# memory    = 8192
+# disk_size = 50
+# vm_tags   = ["terraform", "webserver", "nginx"]
+
+# Jumpbox / Bastion
+# ------------------
+# vm_name   = "jumpbox"
+# cpu_cores = 2
+# memory    = 2048
+# disk_size = 20
+# vm_tags   = ["terraform", "jumpbox", "bastion"]
+# boot_order = 1 # Start early
+
+# Docker Host
+# -----------
+# vm_name   = "docker-host"
+# cpu_cores = 8
+# memory    = 32768
+# disk_size = 200
+# vm_tags   = ["terraform", "docker", "containers"]

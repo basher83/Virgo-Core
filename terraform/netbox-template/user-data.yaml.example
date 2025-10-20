@@ -1,0 +1,164 @@
+#cloud-config
+# =============================================================================
+# = Custom Cloud-Init User-Data Configuration =================================
+# =============================================================================
+# This is an example cloud-init user-data file that will be applied to the
+# template. When VMs are cloned from this template, this configuration will
+# be executed on first boot.
+#
+# Copy this file to 'user-data.yaml' and customize it for your needs.
+#
+# Cloud-Init Documentation: https://cloudinit.readthedocs.io/
+
+# =============================================================================
+# = User Configuration ========================================================
+# =============================================================================
+
+# Create default user with sudo privileges
+users:
+  - name: ubuntu
+    groups: [adm, cdrom, dip, plugdev, sudo]
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: false
+    # Password hash for 'changeme' - CHANGE THIS!
+    # Generate with: mkpasswd --method=SHA-512 --rounds=4096
+    passwd: $6$rounds=4096$saltysalt$IqLQXkqLQvnX8e4LPU8U9E8L9b9p7Q8q9X0Y1Z2A3B4C5D6E7F8G9H0I1J2K3L4M5N6O7P8Q9R0S1T2U3V4W5X6
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQD... your-ssh-public-key-here
+      # Add more SSH keys as needed
+      # - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA... another-key-here
+
+# =============================================================================
+# = Hostname Configuration ====================================================
+# =============================================================================
+
+# Hostname will be set during clone, but you can provide a default
+hostname: ubuntu-template
+# Preserve hostname across reboots
+preserve_hostname: false
+
+# =============================================================================
+# = Package Management ========================================================
+# =============================================================================
+
+# Update package cache on first boot
+package_update: true
+
+# Upgrade installed packages on first boot
+package_upgrade: true
+
+# Install additional packages
+packages:
+  - qemu-guest-agent
+  - curl
+  - wget
+  - vim
+  - git
+  - htop
+  - net-tools
+  - ca-certificates
+  - gnupg
+  - lsb-release
+  # Add your required packages here
+
+# =============================================================================
+# = System Configuration ======================================================
+# =============================================================================
+
+# Set timezone
+timezone: America/New_York
+
+# Configure NTP
+ntp:
+  enabled: true
+  ntp_client: chrony
+  servers:
+    - 0.pool.ntp.org
+    - 1.pool.ntp.org
+    - 2.pool.ntp.org
+    - 3.pool.ntp.org
+
+# =============================================================================
+# = SSH Configuration =========================================================
+# =============================================================================
+
+# SSH server configuration
+ssh_pwauth: true  # Allow password authentication (set to false for key-only)
+disable_root: true  # Disable root SSH login
+ssh_authorized_keys: []  # Additional keys (or use users section above)
+
+# SSH server config options
+ssh:
+  emit_keys_to_console: false
+
+# =============================================================================
+# = File System Configuration =================================================
+# =============================================================================
+
+# Resize root filesystem to use all available space
+growpart:
+  mode: auto
+  devices: ['/']
+  ignore_growroot_disabled: false
+
+# =============================================================================
+# = Custom Scripts ============================================================
+# =============================================================================
+
+# Run commands early in boot process (before network)
+bootcmd:
+  - echo 'Cloud-init boot starting...'
+
+# Run commands after cloud-init completes
+runcmd:
+  - echo 'Starting custom configuration...'
+  # qemu-guest-agent is statically enabled, just ensure it's started
+  - systemctl start qemu-guest-agent
+  # Add your custom commands here
+  # Example: Install Docker
+  # - curl -fsSL https://get.docker.com -o get-docker.sh
+  # - sh get-docker.sh
+  # - usermod -aG docker ubuntu
+
+# =============================================================================
+# = Write Files ===============================================================
+# =============================================================================
+
+write_files:
+  # Example: Create a custom motd
+  - path: /etc/motd
+    content: |
+      ======================================
+      Ubuntu 24.04 LTS - Custom Template
+      Deployed via Terraform + Cloud-Init
+      ======================================
+    permissions: '0644'
+
+  # Example: Custom script
+  - path: /usr/local/bin/custom-script.sh
+    content: |
+      #!/bin/bash
+      echo "Custom script executed at $(date)"
+    permissions: '0755'
+
+# =============================================================================
+# = Power Management ==========================================================
+# =============================================================================
+
+# Reboot after cloud-init completes (optional)
+# power_state:
+#   mode: reboot
+#   message: Rebooting after cloud-init configuration
+#   timeout: 30
+#   condition: true
+
+# =============================================================================
+# = Final Message =============================================================
+# =============================================================================
+
+final_message: |
+  Cloud-init configuration completed!
+  System is ready for use.
+  Uptime: $UPTIME
+  Timestamp: $TIMESTAMP
