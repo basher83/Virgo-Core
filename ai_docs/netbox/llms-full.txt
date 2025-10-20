@@ -1,0 +1,263 @@
+# NetBox Documentation - Full Version
+
+> NetBox is an open source web application for managing and documenting network infrastructure.
+These are comprehensive docs for LLMs for NetBox 4.3.0.
+
+## What is NetBox?
+
+NetBox is an open source web application designed to help manage and document computer networks. Initially conceived by the network engineering team at DigitalOcean, NetBox was developed specifically to address the needs of network and infrastructure engineers.
+
+NetBox encompasses the following aspects of network management:
+
+- **IP address management (IPAM)** - IP networks and addresses, VRFs, and VLANs
+- **Equipment racks** - Organized by group and site
+- **Devices** - Types of devices and where they're installed
+- **Connections** - Network, console, and power connections among devices
+- **Virtualization** - Virtual machines and clusters
+- **Data circuits** - Long-haul communications circuits and providers
+- **Secrets** - Encrypted storage of sensitive credentials
+
+## Key Features
+
+### Facilities Management
+- Sites, regions, and locations
+- Racks and rack reservations
+- Equipment planning and tracking
+
+### Device & Cable Management
+- Device types and roles
+- Physical and virtual interfaces
+- Cable connections and paths
+- Console and power connections
+
+### IP Address Management (IPAM)
+- IP networks and addresses
+- VRFs (Virtual Routing and Forwarding)
+- VLANs and VLAN groups
+- Aggregates and prefixes
+
+### Circuits
+- Provider circuits
+- Circuit types and providers
+- Circuit terminations
+
+### Virtualization
+- Virtual machines
+- Clusters and cluster types
+- VM interfaces
+
+### Tenancy
+- Multi-tenant support
+- Tenant groups and contacts
+
+### Customization
+- Custom fields
+- Custom links and scripts
+- Export templates
+- Reports and validation
+
+### API & Integration
+- Full REST API
+- GraphQL API
+- Webhooks
+- Prometheus metrics
+
+## Installation
+
+NetBox requires:
+- Python 3.8+
+- PostgreSQL 12+
+- Redis 4.0+
+
+Basic installation steps:
+1. Install PostgreSQL and Redis
+2. Create NetBox database and user
+3. Install NetBox from source or package
+4. Configure settings
+5. Run database migrations
+6. Create superuser account
+7. Configure web server (nginx/Apache)
+
+## Configuration
+
+Key configuration parameters:
+- `ALLOWED_HOSTS` - Permitted HTTP Host headers
+- `DATABASE` - PostgreSQL database settings
+- `REDIS` - Redis cache and queue settings
+- `SECRET_KEY` - Django secret key for cryptographic signing
+- `MEDIA_ROOT` - File upload storage location
+
+## Data Models
+
+### Core Models
+- **Site** - Physical location containing equipment
+- **Rack** - Equipment rack within a site
+- **Device** - Physical piece of equipment
+- **Interface** - Network interface on a device
+- **Cable** - Physical connection between interfaces
+- **IP Address** - IPv4 or IPv6 address
+- **Prefix** - IP network or subnet
+- **VLAN** - Virtual LAN
+
+### Relationships
+- Sites contain racks
+- Racks contain devices
+- Devices have interfaces
+- Interfaces can be connected by cables
+- IP addresses are assigned to interfaces
+- Prefixes contain IP addresses
+- VLANs can be assigned to interfaces
+
+## REST API
+
+NetBox provides a comprehensive REST API for programmatic access:
+
+### Authentication
+- Session authentication (web UI)
+- Token authentication (API clients)
+- API tokens can be scoped to specific actions
+
+### Endpoints
+- All data models accessible via REST endpoints
+- Standard HTTP methods (GET, POST, PUT, PATCH, DELETE)
+- Filtering and search capabilities
+- Pagination support
+
+### Examples
+```bash
+# Get all sites
+curl -H "Authorization: Token YOUR_TOKEN" \
+  http://netbox.example.com/api/dcim/sites/
+
+# Create a new device
+curl -X POST -H "Authorization: Token YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "switch01", "device_type": 1, "site": 1}' \
+  http://netbox.example.com/api/dcim/devices/
+```
+
+## GraphQL API
+
+NetBox also provides a GraphQL API for more flexible queries:
+
+```graphql
+query {
+  site_list {
+    id
+    name
+    devices {
+      name
+      device_type {
+        model
+      }
+    }
+  }
+}
+```
+
+## Webhooks
+
+NetBox can send HTTP requests to external systems when objects are created, updated, or deleted:
+
+- Configure webhook endpoints
+- Select which object types trigger webhooks
+- Customize webhook payloads
+- SSL verification and custom headers supported
+
+## Plugins
+
+NetBox supports plugins to extend functionality:
+
+- Add custom models and views
+- Integrate with external systems
+- Provide additional APIs
+- Custom dashboard widgets
+
+Popular plugins include:
+- netbox-topology-views
+- netbox-scanner
+- netbox-secrets
+- netbox-dns
+
+## Best Practices
+
+### Data Organization
+- Use consistent naming conventions
+- Organize sites by region/location
+- Group devices by role and type
+- Use tags for flexible categorization
+
+### IP Management
+- Plan IP addressing hierarchy
+- Use appropriate prefix roles
+- Reserve addresses for infrastructure
+- Document VRF purposes
+
+### Device Management
+- Create device types before devices
+- Use device roles consistently
+- Document cable connections
+- Track device lifecycle
+
+### Security
+- Use strong passwords
+- Enable HTTPS in production
+- Restrict API access with tokens
+- Regular security updates
+
+## Troubleshooting
+
+### Common Issues
+- Database connection errors
+- Permission denied errors
+- Static file serving issues
+- Plugin compatibility problems
+
+### Debugging
+- Check Django logs
+- Verify database connectivity
+- Test Redis connection
+- Validate configuration syntax
+
+### Performance
+- Use database indexes
+- Optimize queries
+- Configure caching
+- Monitor resource usage
+
+## Version History
+
+### Version 4.3 (Latest)
+- Enhanced custom fields
+- Improved GraphQL API
+- New dashboard widgets
+- Performance optimizations
+
+### Version 4.2
+- L2VPN support
+- Wireless modeling
+- Config contexts improvements
+- API enhancements
+
+### Version 4.1
+- VPN tunnel modeling
+- Enhanced search
+- Improved permissions
+- Bug fixes
+
+### Version 4.0
+- Major UI redesign
+- Plugin system overhaul
+- New data models
+- Breaking changes
+
+## Community
+
+- GitHub: https://github.com/netbox-community/netbox
+- Documentation: https://netboxlabs.com/docs/netbox/
+- Community: https://github.com/netbox-community/netbox/discussions
+- Slack: https://netdev.chat (netbox channel)
+
+## License
+
+NetBox is licensed under the Apache 2.0 License.

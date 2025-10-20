@@ -1,0 +1,13 @@
+# Infrastructure as Code for MicroK8s deployment
+[project]
+name = "Virgo-Core"
+version = "0.1.0"
+description = "Infrastructure as Code for Virgo Core"
+requires-python = ">=3.13"
+dependencies = ["ansible-dev-tools", "infisicalsdk", "proxmoxer", "requests"]
+
+[dependency-groups]
+dev = []
+
+[tool.uv]
+package = false

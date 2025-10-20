@@ -1,0 +1,222 @@
+# NetBox REST API Documentation
+
+> Full documentation of the NetBox REST API for NetBox 4.3
+
+## Overview
+
+The NetBox REST API provides programmatic access to all NetBox data models. The API is built using Django REST Framework and follows REST conventions.
+
+## Authentication
+
+### Token Authentication
+```bash
+curl -H "Authorization: Token YOUR_API_TOKEN" \
+  http://netbox.example.com/api/dcim/sites/
+```
+
+### Session Authentication
+Available when using the web interface.
+
+## Base URL Structure
+
+All API endpoints are prefixed with `/api/` followed by the app name:
+- `/api/circuits/` - Circuit management
+- `/api/dcim/` - Data center infrastructure
+- `/api/ipam/` - IP address management
+- `/api/tenancy/` - Multi-tenancy
+- `/api/virtualization/` - Virtual machines
+- `/api/extras/` - Additional features
+
+## Common Endpoints
+
+### Sites
+- `GET /api/dcim/sites/` - List all sites
+- `POST /api/dcim/sites/` - Create new site
+- `GET /api/dcim/sites/{id}/` - Get specific site
+- `PUT /api/dcim/sites/{id}/` - Update site
+- `DELETE /api/dcim/sites/{id}/` - Delete site
+
+### Devices
+- `GET /api/dcim/devices/` - List devices
+- `POST /api/dcim/devices/` - Create device
+- `GET /api/dcim/devices/{id}/` - Get device details
+- `PUT /api/dcim/devices/{id}/` - Update device
+- `DELETE /api/dcim/devices/{id}/` - Delete device
+
+### IP Addresses
+- `GET /api/ipam/ip-addresses/` - List IP addresses
+- `POST /api/ipam/ip-addresses/` - Create IP address
+- `GET /api/ipam/ip-addresses/{id}/` - Get IP details
+- `PUT /api/ipam/ip-addresses/{id}/` - Update IP
+- `DELETE /api/ipam/ip-addresses/{id}/` - Delete IP
+
+### Prefixes
+- `GET /api/ipam/prefixes/` - List prefixes
+- `POST /api/ipam/prefixes/` - Create prefix
+- `GET /api/ipam/prefixes/{id}/` - Get prefix details
+- `GET /api/ipam/prefixes/{id}/available-ips/` - Get available IPs
+
+## Filtering
+
+Most endpoints support filtering via query parameters:
+
+```bash
+# Filter devices by site
+GET /api/dcim/devices/?site=site-name
+
+# Filter by multiple values
+GET /api/dcim/devices/?site=site1&site=site2
+
+# Exclude values
+GET /api/dcim/devices/?site__n=site-name
+
+# Partial matching
+GET /api/dcim/devices/?name__ic=switch
+```
+
+## Pagination
+
+API responses are paginated by default:
+
+```json
+{
+  "count": 1000,
+  "next": "http://netbox.example.com/api/dcim/devices/?limit=50&offset=50",
+  "previous": null,
+  "results": [...]
+}
+```
+
+## Bulk Operations
+
+Many endpoints support bulk operations:
+
+```bash
+# Create multiple devices
+POST /api/dcim/devices/
+[
+  {"name": "device1", "device_type": 1, "site": 1},
+  {"name": "device2", "device_type": 1, "site": 1}
+]
+
+# Update multiple devices
+PUT /api/dcim/devices/
+[
+  {"id": 1, "name": "new-name1"},
+  {"id": 2, "name": "new-name2"}
+]
+```
+
+## Error Handling
+
+API errors return appropriate HTTP status codes:
+- 400 Bad Request - Invalid data
+- 401 Unauthorized - Authentication required
+- 403 Forbidden - Insufficient permissions
+- 404 Not Found - Resource not found
+- 500 Internal Server Error - Server error
+
+## Rate Limiting
+
+API requests may be rate limited. Check response headers:
+- `X-RateLimit-Limit` - Request limit
+- `X-RateLimit-Remaining` - Remaining requests
+- `X-RateLimit-Reset` - Reset time
+
+## Examples
+
+### Create a Site
+```bash
+curl -X POST \
+  -H "Authorization: Token YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "New York DC",
+    "slug": "ny-dc",
+    "status": "active",
+    "region": 1,
+    "description": "Primary data center"
+  }' \
+  http://netbox.example.com/api/dcim/sites/
+```
+
+### Get Device with Interfaces
+```bash
+curl -H "Authorization: Token YOUR_TOKEN" \
+  "http://netbox.example.com/api/dcim/devices/1/?include=interfaces"
+```
+
+### Search Devices
+```bash
+curl -H "Authorization: Token YOUR_TOKEN" \
+  "http://netbox.example.com/api/dcim/devices/?q=switch"
+```
+
+### Create IP Address
+```bash
+curl -X POST \
+  -H "Authorization: Token YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "address": "192.168.1.1/24",
+    "status": "active",
+    "description": "Gateway IP"
+  }' \
+  http://netbox.example.com/api/ipam/ip-addresses/
+```
+
+## API Versioning
+
+NetBox API uses semantic versioning. Current version can be found at:
+```bash
+GET /api/
+```
+
+## OpenAPI Schema
+
+Full API schema available at:
+```bash
+GET /api/schema/
+```
+
+## Python Client
+
+Official Python client available:
+```python
+import pynetbox
+
+nb = pynetbox.api('http://netbox.example.com', token='your-token')
+sites = nb.dcim.sites.all()
+```
+
+## Best Practices
+
+1. Use pagination for large datasets
+2. Implement proper error handling
+3. Use bulk operations when possible
+4. Cache responses when appropriate
+5. Follow rate limits
+6. Use specific fields with `?fields=` parameter
+7. Validate data before sending requests
+
+## Security
+
+- Always use HTTPS in production
+- Keep API tokens secure
+- Use minimal required permissions
+- Rotate tokens regularly
+- Monitor API usage
+
+## Troubleshooting
+
+### Common Issues
+- Invalid JSON syntax
+- Missing required fields
+- Permission errors
+- Rate limit exceeded
+
+### Debug Tips
+- Check response status codes
+- Validate JSON payload
+- Verify authentication
+- Review API documentation

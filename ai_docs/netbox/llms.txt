@@ -1,0 +1,40 @@
+# NetBox Documentation
+
+> NetBox is an open source web application for managing and documenting network infrastructure.
+These are docs for LLMs for NetBox 4.3.0.
+
+## Documentation Index
+
+- [index.md](https://netboxlabs.com/docs/netbox/en/stable/index/)
+- [Introduction](https://netboxlabs.com/docs/netbox/en/stable/introduction/)
+- Features
+  - [Facilities](https://netboxlabs.com/docs/netbox/en/stable/features/facilities/)
+  - [Devices & Cabling](https://netboxlabs.com/docs/netbox/en/stable/features/devices-cabling/)
+  - [Power Tracking](https://netboxlabs.com/docs/netbox/en/stable/features/power-tracking/)
+  - [IPAM](https://netboxlabs.com/docs/netbox/en/stable/features/ipam/)
+  - [VLAN Management](https://netboxlabs.com/docs/netbox/en/stable/features/vlan-management/)
+  - [L2VPN & Overlay](https://netboxlabs.com/docs/netbox/en/stable/features/l2vpn-overlay/)
+  - [Circuits](https://netboxlabs.com/docs/netbox/en/stable/features/circuits/)
+  - [Wireless](https://netboxlabs.com/docs/netbox/en/stable/features/wireless/)
+  - [Virtualization](https://netboxlabs.com/docs/netbox/en/stable/features/virtualization/)
+  - [VPN Tunnels](https://netboxlabs.com/docs/netbox/en/stable/features/vpn-tunnels/)
+  - [Tenancy](https://netboxlabs.com/docs/netbox/en/stable/features/tenancy/)
+  - [Contacts](https://netboxlabs.com/docs/netbox/en/stable/features/contacts/)
+  - [Search](https://netboxlabs.com/docs/netbox/en/stable/features/search/)
+  - [Context Data](https://netboxlabs.com/docs/netbox/en/stable/features/context-data/)
+  - [Configuration Rendering](https://netboxlabs.com/docs/netbox/en/stable/features/configuration-rendering/)
+  - [Synchronized Data](https://netboxlabs.com/docs/netbox/en/stable/features/synchronized-data/)
+  - [Change Logging](https://netboxlabs.com/docs/netbox/en/stable/features/change-logging/)
+  - [Journaling](https://netboxlabs.com/docs/netbox/en/stable/features/journaling/)
+  - [Event Rules](https://netboxlabs.com/docs/netbox/en/stable/features/event-rules/)
+  - [Notifications](https://netboxlabs.com/docs/netbox/en/stable/features/notifications/)
+  - [Background Jobs](https://netboxlabs.com/docs/netbox/en/stable/features/background-jobs/)
+  - [Auth & Permissions](https://netboxlabs.com/docs/netbox/en/stable/features/authentication-permissions/)
+  - [API & Integration](https://netboxlabs.com/docs/netbox/en/stable/features/api-integration/)
+  - [Customization](https://netboxlabs.com/docs/netbox/en/stable/features/customization/)
+- Release Notes
+  - [Summary](https://netboxlabs.com/docs/netbox/en/stable/release-notes/index/)
+  - [Version 4.3](https://netboxlabs.com/docs/netbox/en/stable/release-notes/version-4.3/)
+  - [Version 4.2](https://netboxlabs.com/docs/netbox/en/stable/release-notes/version-4.2/)
+  - [Version 4.1](https://netboxlabs.com/docs/netbox/en/stable/release-notes/version-4.1/)
+  - [Version 4.0](https://netboxlabs.com/docs/netbox/en/stable/release-notes/version-4.0/)

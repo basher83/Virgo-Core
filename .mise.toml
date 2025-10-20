@@ -1,0 +1,177 @@
+# Mise configuration for terraform-homelab
+min_version = "2024.9.5"
+[settings]
+auto_install = true
+not_found_auto_install = true
+task_run_auto_install = true
+
+[settings.status]
+show_tools = true
+show_env = false
+truncate = true
+
+[tools]
+cosign = "2.6.1"
+eza = "0.23.0"
+fd = "10.2.0"
+pre-commit = "4.3.0"
+rg = "14.1.1"
+terraform-docs = "0.20.0"
+tflint = "0.59.1"
+python = "3.13.7"
+git-cliff = "2.10.1"
+yamllint = "1.37.1"
+yamlfmt = "0.17.2"
+shellcheck = "0.11.0"
+markdownlint-cli2 = "0.18.1"
+uv = "0.9.2"
+opentofu = "1.10.6"
+
+
+[env]
+_.python.venv = { path = ".venv", create = true } # create the venv if it doesn't exist
+
+[tasks.setup]
+description = "Set up complete development environment"
+depends = ["python-install", "ansible-setup", "hooks-install"]
+
+[tasks.clean]
+description = "Clean development environment"
+depends = ["python-clean"]
+
+# === Python tasks ===
+[tasks.python-clean]
+description = "Clean development environment"
+run = """
+rm -rf .venv
+rm -rf requirements.lock
+"""
+
+[tasks.python-upgrade]
+description = "Upgrade Python dependencies"
+run = "uv lock --upgrade"
+
+[tasks.python-install]
+description = "Install Python dependencies"
+run = "uv sync"
+# === Python tasks ===
+
+# === Changelog tasks ===
+[tasks.changelog]
+description = "Update changelog using git-cliff"
+run = "git-cliff -o CHANGELOG.md"
+# === Changelog tasks ===
+
+# === Ansible tasks ===
+[tasks.ansible-setup]
+description = "Set up Ansible environment and install dependencies"
+dir = "ansible"
+run = "uv run ansible-galaxy collection install -r requirements.yml"
+
+[tasks.ansible-install]
+description = "Install Ansible requirements"
+dir = "ansible"
+run = "uv run ansible-galaxy collection install -r requirements.yml --force"
+
+[tasks.ansible-ping]
+description = "Test Ansible connectivity to all hosts"
+dir = "ansible"
+run = "uv run ansible all -m ansible.builtin.ping"
+# === Ansible tasks ===
+
+[tasks.fmt]
+description = "Format all Terraform files recursively"
+dir = "terraform"
+run = "terraform fmt -recursive"
+
+[tasks.yaml-fmt]
+description = "Format YAML files"
+run = "yamlfmt ."
+
+[tasks.fmt-check]
+description = "Check formatting recursively (non-mutating, CI-friendly)"
+dir = "terraform"
+run = "tofu fmt -recursive -check -diff"
+
+[tasks.fmt-all]
+description = "Format all files (Terraform and YAML)"
+depends = ["fmt", "yaml-fmt"]
+
+
+[tasks.prod-validate]
+description = "Validate Terraform configuration"
+dir = "terraform"
+run = "tofu init -backend=false -input=false >/dev/null && tofu validate"
+
+[tasks.docs-check]
+description = "Check if Terraform documentation is up-to-date"
+dir = "terraform"
+run = "terraform-docs --config ../.terraform-docs.yml --output-check ."
+
+[tasks.lint-prod]
+description = "Run TFLint on Terraform configuration"
+dir = "terraform"
+run = "tflint --init && tflint"
+
+[tasks.check]
+description = "Format, lint, and validate Terraform configuration"
+depends = ["fmt", "lint-prod", "prod-validate"]
+env = { TF_IN_AUTOMATION = "true", TF_INPUT = "false" }
+
+# === Hooks tasks ===
+[tasks.hooks-install]
+description = "Install pre-commit and infisical hooks"
+run = "pre-commit install && infisical scan install --pre-commit-hook"
+
+[tasks.hooks-run]
+description = "Run pre-commit hooks"
+run = "pre-commit run --all-files"
+# === Hooks tasks ===
+
+
+# === Infisical tasks ===
+[tasks.infisical-scan]
+description = "Scan repository for secrets and sensitive data"
+run = "infisical scan"
+# === Infisical tasks ===
+
+[tasks.shellcheck]
+description = "Lint shell scripts"
+run = "find scripts -name '*.sh' -exec shellcheck {} +"
+
+[tasks.yaml-lint]
+description = "Lint YAML files"
+run = "yamllint ."
+
+[tasks.markdown-lint]
+description = "Lint Markdown files"
+run = "markdownlint-cli2 '**/*.md'"
+
+[tasks.ansible-lint]
+description = "Lint Ansible files"
+run = "ansible-lint ansible/"
+
+[tasks.lint-all]
+description = "Run all linting tasks"
+depends = [
+    "shellcheck",
+    "yaml-lint",
+    "markdown-lint",
+    "lint-prod",
+    "ansible-lint",
+]
+
+[tasks.validate-all]
+description = "Validate Terraform configuration"
+depends = ["prod-validate"]
+
+[tasks.full-check]
+description = "Complete validation including formatting, linting, docs, and security"
+depends = [
+    "fmt-all",
+    "validate-all",
+    "lint-all",
+    "docs-check",
+    "infisical-scan",
+]
+env = { TF_IN_AUTOMATION = "true", TF_INPUT = "false" }
