@@ -1,4 +1,4 @@
-## [unreleased]
+## [0.5.0] - 2025-10-20
 
 ### 🚀 Features
 
@@ -9,6 +9,11 @@
 - *(skills)* Add NetBox PowerDNS Integration skill
 - *(skills)* Add Ansible Best Practices skill
 - *(skills)* Add MCP Builder and Skill Creator meta-skills
+
+### 📚 Documentation
+
+- Add CHANGELOG.md with skills release notes
+- *(skills)* Finalize skills with validation and documentation
 
 ### ⚙️ Miscellaneous Tasks
 
