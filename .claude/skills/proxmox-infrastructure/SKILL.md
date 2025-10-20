@@ -1,5 +1,5 @@
 ---
-name: Proxmox Infrastructure Management
+name: proxmox-infrastructure
 description: Proxmox VE cluster management including VM provisioning, template creation with cloud-init, QEMU guest agent integration, storage pool management, VLAN-aware bridge configuration, and Proxmox API interactions. Use when working with Proxmox VE, creating VM templates, configuring Proxmox networking, managing CEPH storage, troubleshooting VM deployment issues, or interacting with Proxmox API.
 ---
 

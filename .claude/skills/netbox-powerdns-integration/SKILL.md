@@ -1,5 +1,5 @@
 ---
-name: NetBox PowerDNS Integration
+name: netbox-powerdns-integration
 description: NetBox IPAM and PowerDNS integration for automated DNS record management, infrastructure documentation, and dynamic inventory. Includes DNS naming conventions (e.g., docker-01-nexus.spaceships.work), netbox-powerdns-sync plugin configuration, Terraform NetBox provider usage, Ansible dynamic inventory, and NetBox/PowerDNS API interactions. Use when working with NetBox IPAM, PowerDNS DNS server, automating DNS records, managing IP addresses, infrastructure documentation, implementing DNS naming conventions, or using NetBox as a source of truth.
 ---
 
