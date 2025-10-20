@@ -1,0 +1,17 @@
+---
+# Playbook to copy a file to a host
+# This playbook copies a file to a host and backs up the original if it differs from the copied version
+- name: Copy a new file into place, backing up the original if it differs from the copied version
+  hosts: doggos_cluster
+  gather_facts: true
+  become: true
+
+  tasks:
+    - name: Copy a new file into place, backing up the original if it differs from the copied version
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../files/user-data-custom.yaml"
+        dest: /var/lib/vz/snippets/user-data-custom.yaml
+        owner: root
+        group: root
+        mode: '0644'
+        backup: yes

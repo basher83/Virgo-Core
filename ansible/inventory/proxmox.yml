@@ -1,0 +1,16 @@
+all:
+  children:
+    nexus_cluster:
+      hosts:
+        alpha:
+        bravo:
+    doggos_cluster:
+      hosts:
+        holly:
+        lloyd:
+        mable:
+    matrix_cluster:
+      hosts:
+        foxtrot:
+        golf:
+        hotel:

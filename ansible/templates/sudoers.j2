@@ -1,0 +1,9 @@
+# Sudoers configuration for {{ system_username }}
+# This file is managed by Ansible - DO NOT EDIT MANUALLY
+# Created: {{ ansible_date_time.iso8601 }}
+# Host: {{ inventory_hostname }}
+
+# Allow {{ system_username }} to run specific commands without password
+{% for command in sudoers_commands %}
+{{ system_username }} ALL=(root) NOPASSWD: {{ command }}
+{% endfor %}

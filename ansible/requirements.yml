@@ -1,0 +1,26 @@
+---
+# Ansible Galaxy requirements file
+# Install with: ansible-galaxy install -r requirements.yml
+roles:
+  # Docker installation and management
+  - name: geerlingguy.docker
+    version: "7.6.0"
+
+collections:
+  # General community modules
+  - name: community.general
+    version: ">=11.4.0"
+  # Proxmox modules
+  - name: community.proxmox
+    version: ">=1.3.0"
+  # Infisical modules
+  - name: infisical.vault
+    version: ">=1.1.0"
+  # Additional useful collections
+  - name: ansible.posix
+    version: ">=1.5.0"
+  - name: ansible.utils
+    version: ">=2.10.0"
+  # Docker management modules
+  - name: community.docker
+    version: ">=3.4.0"

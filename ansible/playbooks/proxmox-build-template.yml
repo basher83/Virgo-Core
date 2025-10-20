@@ -1,0 +1,142 @@
+---
+# Playbook to build a Proxmox VM template from cloud image
+# This playbook uses the build-template script to create templates with cloud-init vendor data
+- name: Build Proxmox VM template from cloud image
+  hosts: lloyd
+  gather_facts: true
+  become: true
+
+  vars:
+    # Required variables
+    template_id: 7024
+    template_name: "microk8s-cluster"
+    cloud_image_path: "/var/lib/vz/template/iso/ubuntu-24.04-server-cloudimg-amd64.img"
+
+    # Hardware configuration
+    bios_type: "ovmf"           # seabios or ovmf (UEFI)
+    cpu_cores: 2
+    cpu_sockets: 1
+    cpu_type: "x86-64-v2-AES"
+    machine_type: "q35"
+    memory_mb: 2048
+    disk_resize: ""          # Increase boot disk size
+    storage_name: "local-lvm"
+    scsi_controller: "virtio-scsi-pci"
+    os_type: "l26"              # Linux 2.6+ kernel
+
+    # Primary network configuration
+    net_bridge: "vmbr0"
+    net_type: "virtio"
+    net_vlan: ""                # Leave empty for no VLAN
+    net_ip: "dhcp"              # Use 'dhcp' or static like '192.168.1.100/24'
+    net_gateway: ""             # Only needed for static IP
+
+    net2_bridge: "vmbr1"             # e.g., "vmbr1"
+    net2_type: "virtio"
+    net2_vlan: "2"
+    net2_ip: "dhcp"
+    net2_gateway: ""
+
+    # Cloud-init configuration
+    vendor_data_file: ""
+    ssh_keys_file: ""           # Path to SSH public keys file (optional)
+    cloud_init_user: ""         # Default user (optional, uses distro default if empty)
+
+    # Script options
+    dry_run: false              # Set to true to test without creating
+
+  tasks:
+    - name: Verify cloud image exists
+      ansible.builtin.stat:
+        path: "{{ cloud_image_path }}"
+      register: cloud_image_stat
+      failed_when: not cloud_image_stat.stat.exists
+
+    - name: Check if VM ID already exists
+      ansible.builtin.shell: |
+        set -o pipefail
+        qm list | awk '{print $1}' | grep -q "^{{ template_id }}$"
+      args:
+        executable: /bin/bash
+      register: vm_exists
+      failed_when: false
+      changed_when: false
+
+    - name: Fail if VM ID already exists
+      ansible.builtin.fail:
+        msg: "VM ID {{ template_id }} already exists. Please choose a different ID or remove the existing VM."
+      when: vm_exists.rc == 0
+
+    - name: Verify vendor data file exists in snippets
+      ansible.builtin.stat:
+        path: "/var/lib/vz/snippets/{{ vendor_data_file }}"
+      register: vendor_data_stat
+      failed_when: not vendor_data_stat.stat.exists
+
+    - name: Build template command
+      ansible.builtin.set_fact:
+        build_cmd: >-
+          build-template
+          --id {{ template_id }}
+          --name {{ template_name }}
+          --img {{ cloud_image_path }}
+          --bios {{ bios_type }}
+          --cpu-cores {{ cpu_cores }}
+          --cpu-sockets {{ cpu_sockets }}
+          --cpu-type {{ cpu_type }}
+          --machine {{ machine_type }}
+          --memory {{ memory_mb }}
+          {% if disk_resize | length > 0 %}--resize {{ disk_resize }}{% endif %}
+          --storage {{ storage_name }}
+          --scsihw {{ scsi_controller }}
+          --os {{ os_type }}
+          --net-bridge {{ net_bridge }}
+          --net-type {{ net_type }}
+          --net-ip {{ net_ip }}
+          {% if net_vlan | length > 0 %}--net-vlan {{ net_vlan }}{% endif %}
+          {% if net_gateway | length > 0 %}--net-gw {{ net_gateway }}{% endif %}
+          {% if net2_bridge | length > 0 %}--net2-bridge {{ net2_bridge }}{% endif %}
+          {% if net2_bridge | length > 0 %}--net2-type {{ net2_type }}{% endif %}
+          {% if net2_bridge | length > 0 %}--net2-ip {{ net2_ip }}{% endif %}
+          {% if net2_vlan | length > 0 %}--net2-vlan {{ net2_vlan }}{% endif %}
+          {% if net2_gateway | length > 0 %}--net2-gw {{ net2_gateway }}{% endif %}
+          {% if vendor_data_file | length > 0 %}--vendor-file {{ vendor_data_file }}{% endif %}
+          {% if ssh_keys_file | length > 0 %}--ssh-keys {{ ssh_keys_file }}{% endif %}
+          {% if cloud_init_user | length > 0 %}--ci-user {{ cloud_init_user }}{% endif %}
+          {% if dry_run %}--dry-run{% endif %}
+
+    - name: Display template build command
+      ansible.builtin.debug:
+        msg: "{{ build_cmd }}"
+
+    - name: Execute template build script
+      ansible.builtin.command: "{{ build_cmd }}"
+      register: build_output
+      changed_when: build_output.rc == 0
+      failed_when: build_output.rc != 0
+
+    - name: Display build output
+      ansible.builtin.debug:
+        var: build_output.stdout_lines
+
+    - name: Verify template was created
+      ansible.builtin.shell: |
+        set -o pipefail
+        qm list | grep "{{ template_id }}"
+      args:
+        executable: /bin/bash
+      register: template_verify
+      changed_when: false
+      when: not dry_run
+
+    - name: Template creation summary
+      ansible.builtin.debug:
+        msg:
+          - "Template successfully created!"
+          - "VM ID: {{ template_id }}"
+          - "Name: {{ template_name }}"
+          - "Image: {{ cloud_image_path }}"
+          - "Storage: {{ storage_name }}"
+          - "Network: {{ net_bridge }}"
+          - "Cloud-init vendor data: {{ vendor_data_file }}"
+      when: not dry_run
