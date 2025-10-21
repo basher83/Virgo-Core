@@ -405,6 +405,8 @@ def main():
     if args.json:
         # Output as JSON
         print(json.dumps(asdict(health), indent=2))
+        # Exit with appropriate code based on health status
+        sys.exit(0 if health.is_healthy else 1)
     else:
         # Human-readable output
         print("CEPH Cluster Health Check")
