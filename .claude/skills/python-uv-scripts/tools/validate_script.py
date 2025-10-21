@@ -47,15 +47,25 @@ class ValidationResult:
 
 def extract_metadata_block(content: str) -> str | None:
     """Extract PEP 723 metadata block"""
-    pattern = r'# /// script\n((?:# .*\n)+)# ///'
-    match = re.search(pattern, content)
+    # Match metadata block with CRLF tolerance and flexible whitespace
+    pattern = r'# /// script\r?\n((?:#.*\r?\n)+)# ///'
+    match = re.search(pattern, content, re.MULTILINE | re.DOTALL)
 
     if not match:
         return None
 
-    # Extract TOML content (remove leading # from each line)
-    toml_lines = match.group(1).split('\n')
-    return '\n'.join(line[2:] if line.startswith('# ') else '' for line in toml_lines)
+    # Extract TOML content (remove leading # and optional whitespace from each line)
+    lines = match.group(1).splitlines()
+    toml_lines = []
+    for line in lines:
+        if line.startswith('#'):
+            # Strip '#' followed by optional space or tab
+            stripped = re.sub(r'^#[ \t]?', '', line)
+            toml_lines.append(stripped)
+        else:
+            # Preserve non-comment lines (shouldn't occur with our regex but be safe)
+            toml_lines.append(line)
+    return '\n'.join(toml_lines)
 
 
 def validate_toml_syntax(toml_content: str) -> list[str]:
