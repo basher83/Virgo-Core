@@ -457,10 +457,12 @@ ceph_pools:
   ansible.builtin.set_fact:
     expected_osd_count: >-
       {{
-        ceph_osds.values()
-        | map('map', attribute='partitions')
-        | map('default', 1)
-        | flatten
+        ceph_osds
+        | dict2items
+        | map(attribute='value')
+        | map('default', {'partitions': 1})
+        | map(attribute='partitions')
+        | map('int')
         | sum
       }}
   delegate_to: "{{ groups[cluster_group][0] }}"
@@ -469,8 +471,10 @@ ceph_pools:
 - name: Check OSD count matches expected
   ansible.builtin.assert:
     that:
-      - "expected_osd_count | string in ceph_status.stdout"
-    fail_msg: "Expected {{ expected_osd_count }} OSDs but found different count"
+      - "(ceph_status.stdout | from_json).osdmap.num_osds == (expected_osd_count | int)"
+    fail_msg: >-
+      Expected {{ expected_osd_count }} OSDs but found
+      {{ (ceph_status.stdout | from_json).osdmap.num_osds }}
   delegate_to: "{{ groups[cluster_group][0] }}"
   run_once: true
 
