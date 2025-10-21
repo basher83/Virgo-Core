@@ -70,6 +70,9 @@ class ClusterHealthChecker:
     """Check Proxmox cluster health via SSH"""
 
     def __init__(self, node: str):
+        # Validate node is a valid hostname or IP address
+        if not self._validate_node(node):
+            raise ValueError(f"Invalid node name or IP address: {node}")
         self.node = node
         self.health = ClusterHealth(
             cluster_name="",
@@ -84,11 +87,25 @@ class ClusterHealthChecker:
             errors=[]
         )
 
+    def _validate_node(self, node: str) -> bool:
+        """Validate node is a valid hostname or IP address"""
+        import re
+        # Allow valid hostnames and IPv4/IPv6 addresses
+        hostname_pattern = r'^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*$'
+        ipv4_pattern = r'^(\d{1,3}\.){3}\d{1,3}$'
+        ipv6_pattern = r'^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}$'
+        return bool(
+            re.match(hostname_pattern, node) or
+            re.match(ipv4_pattern, node) or
+            re.match(ipv6_pattern, node)
+        )
+
     def run_command(self, command: str) -> str:
         """Execute command on remote node via SSH"""
         try:
+            # Use -- to prevent SSH option injection
             result = subprocess.run(
-                ["ssh", f"root@{self.node}", command],
+                ["ssh", "-o", "BatchMode=yes", f"root@{self.node}", "--", command],
                 capture_output=True,
                 text=True,
                 check=True

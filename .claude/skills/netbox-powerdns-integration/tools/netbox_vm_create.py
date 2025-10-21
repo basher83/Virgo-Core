@@ -87,9 +87,13 @@ def validate_vm_name(name: str) -> bool:
     Validate VM name (without domain).
 
     Pattern: <service>-<number> or <service>-<number>-<purpose>
+    - service: one or more lowercase letters
+    - number: exactly two digits (00-99)
+    - purpose (optional): one or more lowercase letters/numbers
+
     Example: docker-01 or k8s-01-master
     """
-    pattern = r'^[a-z0-9-]+$'
+    pattern = r'^[a-z]+\-\d{2}(-[a-z0-9]+)?$'
     return bool(re.match(pattern, name.lower()))
 
 
