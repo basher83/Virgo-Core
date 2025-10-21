@@ -103,7 +103,7 @@ uv run script.py  # Uses pyproject.toml
 
 ### Example 1: Cluster Health Checker
 
-See [examples/03-production-ready/cluster_health.py](examples/03-production-ready/cluster_health.py)
+See [examples/03-production-ready/check_cluster_health_enhanced.py](examples/03-production-ready/check_cluster_health_enhanced.py)
 
 **Current version** (basic):
 ```python
