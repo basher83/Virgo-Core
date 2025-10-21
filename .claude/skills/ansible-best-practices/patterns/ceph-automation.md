@@ -272,6 +272,13 @@ ceph_pools:
   changed_when: false
   failed_when: false
 
+- name: Probe existing CEPH volumes
+  ansible.builtin.command:
+    cmd: ceph-volume lvm list --format json
+  register: ceph_volume_probe
+  changed_when: false
+  failed_when: false
+
 - name: Check OSD devices availability
   ansible.builtin.command:
     cmd: "lsblk -ndo NAME,TYPE {{ item.device }}"
@@ -286,7 +293,7 @@ ceph_pools:
   ansible.builtin.command:
     cmd: "wipefs -a {{ item.device }}"
   when:
-    - item.device not in existing_osds.stdout
+    - ceph_volume_probe.stdout | from_json | dict2items | selectattr('value.0.devices', 'defined') | map(attribute='value.0.devices') | flatten | select('match', '^' + item.device) | list | length == 0
     - ceph_wipe_disks | default(false)
   loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
   loop_control:
@@ -294,21 +301,36 @@ ceph_pools:
   register: wipe_result
   changed_when: wipe_result.rc == 0
 
+- name: Build list of partitions to create
+  ansible.builtin.set_fact:
+    osd_partitions: >-
+      {% set result = [] -%}
+      {% for osd in ceph_osds[inventory_hostname_short] | default([]) -%}
+        {% if (osd.partitions | default(1) | int) > 1 -%}
+          {% for part_num in range(1, (osd.partitions | int) + 1) -%}
+            {% set _ = result.append({
+              'device': osd.device,
+              'partition_num': part_num,
+              'total_partitions': osd.partitions,
+              'db_device': osd.get('db_device'),
+              'wal_device': osd.get('wal_device')
+            }) -%}
+          {% endfor -%}
+        {% endif -%}
+      {% endfor -%}
+      {{ result }}
+
 - name: Create partitions for multiple OSDs per device
   community.general.parted:
-    device: "{{ item.0.device }}"
-    number: "{{ item.1 + 1 }}"
+    device: "{{ item.device }}"
+    number: "{{ item.partition_num }}"
     state: present
-    part_start: "{{ (item.1 * (100 / item.0.partitions)) }}%"
-    part_end: "{{ ((item.1 + 1) * (100 / item.0.partitions)) }}%"
+    part_start: "{{ ((item.partition_num - 1) * (100 / item.total_partitions)) }}%"
+    part_end: "{{ (item.partition_num * (100 / item.total_partitions)) }}%"
     label: gpt
-  when: item.0.partitions > 1
-  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) | subelements('partitions', skip_missing=True) }}"
+  loop: "{{ osd_partitions }}"
   loop_control:
-    index_var: partition_idx
-    label: "{{ item.0.device }}p{{ item.1 + 1 }}"
-  vars:
-    partition_id: "{{ item.1 }}"
+    label: "{{ item.device }}{{ 'p' if item.device.startswith('/dev/nvme') else '' }}{{ item.partition_num }}"
 
 - name: Create OSDs from whole devices
   ansible.builtin.command:
@@ -318,7 +340,7 @@ ceph_pools:
       {% if item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %}
   when:
     - item.partitions | default(1) == 1
-    - item.device not in existing_osds.stdout
+    - ceph_volume_probe.stdout | from_json | dict2items | selectattr('value.0.devices', 'defined') | map(attribute='value.0.devices') | flatten | select('match', '^' + item.device + '$') | list | length == 0
   loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
   loop_control:
     label: "{{ item.device }}"
@@ -331,15 +353,14 @@ ceph_pools:
 - name: Create OSDs from partitions
   ansible.builtin.command:
     cmd: >
-      pveceph osd create {{ item.0.device }}{{ item.1 + 1 }}
-      {% if item.0.db_device %}--db_dev {{ item.0.db_device }}{% endif %}
-      {% if item.0.wal_device %}--wal_dev {{ item.0.wal_device }}{% endif %}
+      pveceph osd create {{ item.device }}{{ 'p' if item.device.startswith('/dev/nvme') else '' }}{{ item.partition_num }}
+      {% if item.db_device %}--db_dev {{ item.db_device }}{% endif %}
+      {% if item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %}
   when:
-    - item.0.partitions > 1
-    - item.0.device + (item.1 + 1 | string) not in existing_osds.stdout
-  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) | subelements('partitions', skip_missing=True) }}"
+    - ceph_volume_probe.stdout | from_json | dict2items | selectattr('value.0.devices', 'defined') | map(attribute='value.0.devices') | flatten | select('match', '^' + item.device + ('p' if item.device.startswith('/dev/nvme') else '') + (item.partition_num | string) + '$') | list | length == 0
+  loop: "{{ osd_partitions }}"
   loop_control:
-    label: "{{ item.0.device }}{{ item.1 + 1 }}"
+    label: "{{ item.device }}{{ 'p' if item.device.startswith('/dev/nvme') else '' }}{{ item.partition_num }}"
   register: osd_create_partition
   changed_when: "'successfully created' in osd_create_partition.stdout"
   failed_when:
