@@ -188,13 +188,13 @@ def main(
             vcpus=vcpus,
             memory=memory,
             disk=disk,
-            description=description or f"VM created via netbox_vm_create.py",
+            description=description or "VM created via netbox_vm_create.py",
             tags=[{"name": tag} for tag in tag_list]
         )
         console.print(f"[green]✓ Created VM (ID: {vm.id})[/green]")
 
         # 4. Create VM interface
-        console.print(f"\n[cyan]4. Creating network interface 'eth0'...[/cyan]")
+        console.print("\n[cyan]4. Creating network interface 'eth0'...[/cyan]")
         vm_iface = nb.virtualization.interfaces.create(
             virtual_machine=vm.id,
             name='eth0',
@@ -205,36 +205,47 @@ def main(
         console.print(f"[green]✓ Created interface (ID: {vm_iface.id})[/green]")
 
         # 5. Assign IP
-        if ip:
-            # Use specific IP
-            console.print(f"\n[cyan]5. Creating IP address {ip}...[/cyan]")
-            vm_ip = nb.ipam.ip_addresses.create(
-                address=ip,
-                dns_name=dns_name,
-                status='active',
-                assigned_object_type='virtualization.vminterface',
-                assigned_object_id=vm_iface.id,
-                tags=[{"name": tag} for tag in tag_list]
-            )
-        else:
-            # Auto-assign from prefix
-            console.print(f"\n[cyan]5. Getting next available IP from {prefix}...[/cyan]")
-            prefix_obj = nb.ipam.prefixes.get(prefix=prefix)
-            if not prefix_obj:
-                console.print(f"[red]Prefix '{prefix}' not found[/red]")
-                # Rollback
+        try:
+            if ip:
+                # Use specific IP
+                console.print(f"\n[cyan]5. Creating IP address {ip}...[/cyan]")
+                vm_ip = nb.ipam.ip_addresses.create(
+                    address=ip,
+                    dns_name=dns_name,
+                    status='active',
+                    assigned_object_type='virtualization.vminterface',
+                    assigned_object_id=vm_iface.id,
+                    tags=[{"name": tag} for tag in tag_list]
+                )
+            else:
+                # Auto-assign from prefix
+                console.print(f"\n[cyan]5. Getting next available IP from {prefix}...[/cyan]")
+                prefix_obj = nb.ipam.prefixes.get(prefix=prefix)
+                if not prefix_obj:
+                    console.print(f"[red]Prefix '{prefix}' not found[/red]")
+                    # Rollback
+                    vm_iface.delete()
+                    vm.delete()
+                    sys.exit(1)
+
+                vm_ip = prefix_obj.available_ips.create(
+                    dns_name=dns_name,
+                    status='active',
+                    assigned_object_type='virtualization.vminterface',
+                    assigned_object_id=vm_iface.id,
+                    tags=[{"name": tag} for tag in tag_list]
+                )
+
+            console.print(f"[green]✓ Assigned IP: {vm_ip.address}[/green]")
+        except Exception as e:
+            console.print(f"[red]Failed to assign IP: {e}[/red]")
+            console.print("[yellow]Rolling back: deleting interface and VM...[/yellow]")
+            try:
+                vm_iface.delete()
                 vm.delete()
-                sys.exit(1)
-
-            vm_ip = prefix_obj.available_ips.create(
-                dns_name=dns_name,
-                status='active',
-                assigned_object_type='virtualization.vminterface',
-                assigned_object_id=vm_iface.id,
-                tags=[{"name": tag} for tag in tag_list]
-            )
-
-        console.print(f"[green]✓ Assigned IP: {vm_ip.address}[/green]")
+            except Exception as rollback_error:
+                console.print(f"[red]Rollback failed: {rollback_error}[/red]")
+            sys.exit(1)
 
         # 6. Set as primary IP
         console.print(f"\n[cyan]6. Setting {vm_ip.address} as primary IP...[/cyan]")
