@@ -135,7 +135,7 @@ ceph_pools:
   ansible.builtin.command:
     cmd: "pveceph init --network {{ ceph_network }} --cluster-network {{ ceph_cluster_network }}"
   when:
-    - is_ceph_first_node
+    - is_ceph_first_node | default(false)
     - not ceph_initialized
   register: ceph_init
   changed_when: ceph_init.rc == 0
@@ -171,11 +171,15 @@ ceph_pools:
     has_monitor: "{{ inventory_hostname in mon_dump.stdout }}"
   when: mon_dump.rc == 0
 
+- name: Set local is_ceph_first_node fact
+  ansible.builtin.set_fact:
+    is_ceph_first_node: "{{ inventory_hostname == groups[cluster_group][0] }}"
+
 - name: Create CEPH monitor on first node
   ansible.builtin.command:
     cmd: pveceph mon create
   when:
-    - is_ceph_first_node
+    - is_ceph_first_node | default(false)
     - not has_monitor | default(false)
   register: mon_create_first
   changed_when: mon_create_first.rc == 0
@@ -189,7 +193,7 @@ ceph_pools:
   ansible.builtin.command:
     cmd: pveceph mon create
   when:
-    - not is_ceph_first_node
+    - not (is_ceph_first_node | default(false))
     - not has_monitor | default(false)
   register: mon_create_others
   changed_when: mon_create_others.rc == 0
