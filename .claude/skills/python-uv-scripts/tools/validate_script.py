@@ -161,6 +161,7 @@ def validate_script(script_path: Path, strict: bool = False) -> ValidationResult
 
     if strict and not has_shebang:
         result.errors.append("Missing shebang (required in strict mode)")
+        result.valid = False
 
     # Check for metadata block
     metadata = extract_metadata_block(content)
