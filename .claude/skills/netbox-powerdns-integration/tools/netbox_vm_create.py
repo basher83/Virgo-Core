@@ -54,7 +54,17 @@ console = Console()
 
 
 def get_netbox_client() -> pynetbox.api:
-    """Get authenticated NetBox client."""
+    """
+    Get authenticated NetBox client.
+
+    Uses Infisical to securely retrieve API token.
+
+    Returns:
+        pynetbox.api: Authenticated NetBox client
+
+    Raises:
+        typer.Exit: If token cannot be retrieved or client creation fails
+    """
     try:
         client = InfisicalClient()
         token = client.get_secret(
@@ -64,11 +74,22 @@ def get_netbox_client() -> pynetbox.api:
             path="/matrix"
         ).secret_value
 
-        return pynetbox.api('https://netbox.spaceships.work', token=token)
+        if not token:
+            console.print("[red]NETBOX_API_TOKEN is empty in Infisical[/red]")
+            raise typer.Exit(1)
 
+        return pynetbox.api("https://netbox.spaceships.work", token=token)
+
+    except ValueError as e:
+        console.print(f"[red]Failed to retrieve NetBox token: {e}[/red]")
+        raise typer.Exit(1)
+    except AttributeError as e:
+        console.print(f"[red]Failed to access Infisical secret: {e}[/red]")
+        raise typer.Exit(1)
     except Exception as e:
+        # Catch any pynetbox or network errors
         console.print(f"[red]Failed to connect to NetBox: {e}[/red]")
-        sys.exit(1)
+        raise typer.Exit(1)
 
 
 def validate_dns_name(name: str) -> bool:
