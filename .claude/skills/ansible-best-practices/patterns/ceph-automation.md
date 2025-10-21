@@ -411,46 +411,85 @@ ceph_pools:
   register: pool_create
   changed_when: pool_create.rc == 0
 
-- name: Set pool replication size
+- name: Get current pool replication size
   ansible.builtin.command:
-    cmd: "ceph osd pool set {{ item.name }} size {{ item.size }}"
+    cmd: "ceph osd pool get {{ item.name }} size -f json"
   loop: "{{ ceph_pools }}"
   loop_control:
     label: "{{ item.name }}"
-  register: pool_size
-  changed_when: pool_size.rc == 0
+  register: pool_size_current
+  changed_when: false
+
+- name: Set pool replication size
+  ansible.builtin.command:
+    cmd: "ceph osd pool set {{ item.name }} size {{ item.size }}"
+  when: (pool_size_current.results[loop_index].stdout | from_json).size != item.size
+  loop: "{{ ceph_pools }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: loop_index
+
+- name: Get current pool minimum replication size
+  ansible.builtin.command:
+    cmd: "ceph osd pool get {{ item.name }} min_size -f json"
+  loop: "{{ ceph_pools }}"
+  loop_control:
+    label: "{{ item.name }}"
+  register: pool_min_size_current
+  changed_when: false
 
 - name: Set pool minimum replication size
   ansible.builtin.command:
     cmd: "ceph osd pool set {{ item.name }} min_size {{ item.min_size }}"
+  when: (pool_min_size_current.results[loop_index].stdout | from_json).min_size != item.min_size
   loop: "{{ ceph_pools }}"
   loop_control:
     label: "{{ item.name }}"
-  register: pool_min_size
-  changed_when: pool_min_size.rc == 0
+    index_var: loop_index
 
-- name: Set pool application
+- name: Get current pool applications
   ansible.builtin.command:
-    cmd: "ceph osd pool application enable {{ item.name }} {{ item.application }}"
+    cmd: "ceph osd pool application get {{ item.name }} -f json"
   when: item.application is defined
   loop: "{{ ceph_pools }}"
   loop_control:
     label: "{{ item.name }}"
-  register: pool_app
-  changed_when: "'enabled application' in pool_app.stdout"
-  failed_when:
-    - pool_app.rc != 0
-    - "'already enabled' not in pool_app.stderr"
+  register: pool_app_current
+  changed_when: false
+  failed_when: false
 
-- name: Enable compression on pools
+- name: Set pool application
   ansible.builtin.command:
-    cmd: "ceph osd pool set {{ item.name }} compression_mode aggressive"
+    cmd: "ceph osd pool application enable {{ item.name }} {{ item.application }}"
+  when:
+    - item.application is defined
+    - pool_app_current.results[loop_index].rc == 0
+    - item.application not in (pool_app_current.results[loop_index].stdout | from_json | default({}))
+  loop: "{{ ceph_pools }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: loop_index
+
+- name: Get current pool compression mode
+  ansible.builtin.command:
+    cmd: "ceph osd pool get {{ item.name }} compression_mode -f json"
   when: item.compression | default(false)
   loop: "{{ ceph_pools }}"
   loop_control:
     label: "{{ item.name }}"
-  register: pool_compression
-  changed_when: pool_compression.rc == 0
+  register: pool_compression_current
+  changed_when: false
+
+- name: Enable compression on pools
+  ansible.builtin.command:
+    cmd: "ceph osd pool set {{ item.name }} compression_mode aggressive"
+  when:
+    - item.compression | default(false)
+    - (pool_compression_current.results[loop_index].stdout | from_json).compression_mode != 'aggressive'
+  loop: "{{ ceph_pools }}"
+  loop_control:
+    label: "{{ item.name }}"
+    index_var: loop_index
 ```
 
 ## Pattern: CEPH Health Verification
