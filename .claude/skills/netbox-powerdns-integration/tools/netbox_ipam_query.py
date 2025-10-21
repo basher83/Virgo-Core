@@ -39,7 +39,6 @@ Example:
 
 import sys
 from typing import Optional
-from decimal import Decimal
 
 import typer
 from rich.console import Console

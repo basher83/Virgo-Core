@@ -149,7 +149,7 @@ def validate_script(script_path: Path, strict: bool = False) -> ValidationResult
     # Read file
     try:
         content = script_path.read_text()
-    except Exception as e:
+    except (FileNotFoundError, PermissionError, OSError) as e:
         result.valid = False
         result.errors.append(f"Failed to read file: {e}")
         return result

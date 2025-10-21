@@ -148,7 +148,6 @@ Before forming a cluster:
   ansible.builtin.user:
     name: root
     generate_ssh_key: true
-    ssh_key_bits: 4096
     ssh_key_type: ed25519
     ssh_key_comment: "root@{{ inventory_hostname }}"
   register: root_ssh_key
@@ -167,9 +166,18 @@ Before forming a cluster:
   loop: "{{ groups[cluster_group] }}"
   when: item != inventory_hostname
 
+- name: Populate known_hosts with node SSH keys
+  ansible.builtin.shell:
+    cmd: "ssh-keyscan -H {{ item }} >> /root/.ssh/known_hosts"
+  when: item != inventory_hostname
+  loop: "{{ groups[cluster_group] }}"
+  loop_control:
+    label: "{{ item }}"
+  changed_when: true
+
 - name: Test SSH connectivity to all nodes
   ansible.builtin.command:
-    cmd: "ssh -o StrictHostKeyChecking=no -o ConnectTimeout=5 {{ item }} hostname"
+    cmd: "ssh -o ConnectTimeout=5 {{ item }} hostname"
   register: ssh_test
   changed_when: false
   when: item != inventory_hostname

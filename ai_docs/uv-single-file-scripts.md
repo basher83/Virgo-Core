@@ -230,7 +230,7 @@ def get_weather(city="London"):
     response = requests.get(url, params=params)
     data = response.json()
 
-    print(f"Weather in {city}: {data['weather'][^0]['description']}")
+    print(f"Weather in {city}: {data['weather'][0]['description']}")
 
 if __name__ == "__main__":
     get_weather()
@@ -347,7 +347,7 @@ Specify and use different Python versions:
 type Point = tuple[float, float]  # Type alias (3.12+)
 
 def distance(p1: Point, p2: Point) -> float:
-    return ((p1[^0] - p2[^0])**2 + (p1[^1] - p2[^1])**2)**0.5
+    return ((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)**0.5
 
 print(distance((0, 0), (3, 4)))  # Output: 5.0
 ```
@@ -533,7 +533,7 @@ if __name__ == "__main__":
         print("Usage: ./analyze_data.py <csv_file>")
         sys.exit(1)
 
-    analyze_data(sys.argv[^1])
+    analyze_data(sys.argv[1])
 ```
 
 ### 2. API Testing Tools

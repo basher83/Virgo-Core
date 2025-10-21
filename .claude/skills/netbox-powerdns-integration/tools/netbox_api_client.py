@@ -92,6 +92,7 @@ def get_netbox_client() -> pynetbox.api:
         ).secret_value
 
         if not token:
+            console.print("[red]NETBOX_API_TOKEN is empty in Infisical[/red]")
             raise ValueError("NETBOX_API_TOKEN is empty")
 
         config = NetBoxConfig(
@@ -102,6 +103,9 @@ def get_netbox_client() -> pynetbox.api:
 
         return pynetbox.api(config.url, token=config.token)
 
+    except ValueError:
+        # ValueError already logged above, re-raise to propagate
+        raise
     except Exception as e:
         console.print(f"[red]Failed to connect to NetBox: {e}[/red]")
         sys.exit(1)

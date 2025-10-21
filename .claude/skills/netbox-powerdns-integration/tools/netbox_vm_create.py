@@ -75,11 +75,11 @@ def validate_dns_name(name: str) -> bool:
     """
     Validate DNS naming convention.
 
-    Pattern: <service>-<number>-<purpose>.<domain>
-    Example: docker-01-nexus.spaceships.work
+    Pattern: <service>-<number>[-<purpose>].<domain>
+    Examples: docker-01.spaceships.work, docker-01-nexus.spaceships.work
     """
-    pattern = r'^[a-z0-9-]+-\d{2}-[a-z0-9-]+\.[a-z0-9.-]+$'
-    return bool(re.match(pattern, name))
+    pattern = r'^[a-z0-9-]+-\d{2}(-[a-z0-9-]+)?\.[a-z0-9.-]+$'
+    return bool(re.match(pattern, name.lower()))
 
 
 def validate_vm_name(name: str) -> bool:
@@ -125,8 +125,8 @@ def main(
     # Validate DNS name
     if not validate_dns_name(dns_name):
         console.print(f"[red]Invalid DNS name: {dns_name}[/red]")
-        console.print("[yellow]DNS name must follow pattern: service-NN-purpose.domain[/yellow]")
-        console.print("[yellow]Example: docker-01-nexus.spaceships.work[/yellow]")
+        console.print("[yellow]DNS name must follow pattern: service-NN[-purpose].domain[/yellow]")
+        console.print("[yellow]Examples: docker-01.spaceships.work or docker-01-nexus.spaceships.work[/yellow]")
         sys.exit(1)
 
     # Parse tags
