@@ -188,7 +188,7 @@ Before deploying CEPH:
 - name: Check monitor quorum size
   ansible.builtin.assert:
     that:
-      - (quorum_status.stdout | from_json).quorum | length >= (groups[cluster_group | default('matrix_cluster')] | length * 0.5)
+      - (quorum_status.stdout | from_json).quorum | length >= ((groups[cluster_group | default('matrix_cluster')] | length // 2) + 1)
     fail_msg: "Monitor quorum not established"
   delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
