@@ -636,4 +636,4 @@ ansible -i ansible/inventory/proxmox.yml foxtrot -m shell -a "pvecm status"
 - ProxSpray analysis: `docs/proxspray-analysis.md` (lines 1318-1428)
 - Proxmox VE Cluster Manager documentation
 - Corosync configuration guide
-- [Ansible cluster automation pattern](../../.claude/skills/ansible-best-practices/patterns/cluster-automation.md)
+- [Ansible cluster automation pattern](../../ansible-best-practices/patterns/cluster-automation.md)
