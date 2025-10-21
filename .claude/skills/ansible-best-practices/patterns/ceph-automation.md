@@ -205,7 +205,9 @@ ceph_pools:
   changed_when: false
   delegate_to: "{{ groups[cluster_group][0] }}"
   run_once: true
-  failed_when: groups[cluster_group] | length != (quorum_status.stdout | from_json).quorum | length
+  vars:
+    expected_mons: "{{ ceph_mon_count | default(3) }}"
+  failed_when: ((quorum_status.stdout | from_json).quorum | length) < expected_mons
 ```
 
 ## Pattern: CEPH Manager Creation
