@@ -412,12 +412,21 @@ Use `shell` ONLY when you need shell features (pipes, redirects, etc.).
 ## Progressive Disclosure
 
 For deeper knowledge:
+
+### Advanced Automation Patterns (from ProxSpray Analysis)
+- [Cluster Automation](patterns/cluster-automation.md) - Proxmox cluster formation with idempotency
+- [Network Automation](patterns/network-automation.md) - Declarative network configuration
+- [CEPH Automation](patterns/ceph-automation.md) - Complete CEPH storage deployment
+
+### Core Reference
 - [Roles vs playbooks](reference/roles-vs-playbooks.md) - Organization patterns
 - [Variable precedence](reference/variable-precedence.md) - Complete precedence rules
 - [Idempotency patterns](reference/idempotency-patterns.md) - Advanced patterns
 - [Module selection](reference/module-selection.md) - Builtin vs community
 - [Testing guide](reference/testing-guide.md) - Molecule and ansible-lint
 - [Collections guide](reference/collections-guide.md) - Using collections
+
+### Patterns & Anti-Patterns
 - [Secrets management](patterns/secrets-management.md) - Infisical integration
 - [Error handling](patterns/error-handling.md) - Proper error handling
 - [Task organization](patterns/task-organization.md) - Reusable tasks

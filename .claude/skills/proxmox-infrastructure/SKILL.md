@@ -226,6 +226,12 @@ For more issues, see [troubleshooting/](troubleshooting/) directory.
 ## Progressive Disclosure
 
 For deeper knowledge:
+
+### Advanced Automation Workflows (from ProxSpray Analysis)
+- [Cluster Formation](workflows/cluster-formation.md) - Complete cluster automation with idempotency
+- [CEPH Deployment](workflows/ceph-deployment.md) - Automated CEPH storage deployment
+
+### Core Reference
 - [Cloud-Init patterns](reference/cloud-init-patterns.md) - Complete template creation guide
 - [Network configuration](reference/networking.md) - VLANs, bonds, routing, NAT
 - [API reference](reference/api-reference.md) - Proxmox API interactions

@@ -11,19 +11,45 @@ Expert guidance for implementing NetBox as your source of truth for infrastructu
 
 ### Common Tasks
 
+**Query NetBox API:**
+```bash
+# List all sites
+./tools/netbox_api_client.py sites list
+
+# Get device details
+./tools/netbox_api_client.py devices get --name foxtrot
+
+# List VMs in cluster
+./tools/netbox_api_client.py vms list --cluster matrix
+
+# Query IPs
+./tools/netbox_api_client.py ips query --dns-name docker-01
+```
+
+**Create VM in NetBox:**
+```bash
+# Create VM with auto-assigned IP
+./tools/netbox_vm_create.py --name docker-02 --cluster matrix --vcpus 4 --memory 8192
+
+# Create VM with specific IP
+./tools/netbox_vm_create.py --name k8s-01-master --cluster matrix --ip 192.168.3.50/24
+```
+
+**IPAM Queries:**
+```bash
+# Get available IPs
+./tools/netbox_ipam_query.py available --prefix 192.168.3.0/24
+
+# Check prefix utilization
+./tools/netbox_ipam_query.py utilization --site matrix
+
+# View IP assignments
+./tools/netbox_ipam_query.py assignments --prefix 192.168.3.0/24
+```
+
 **Validate DNS Naming:**
 ```bash
 ./tools/validate_dns_naming.py --name "docker-01-nexus.spaceships.work"
-```
-
-**Query NetBox for VM Info:**
-```bash
-./tools/netbox_query.py --vm-name docker-01
-```
-
-**Check PowerDNS Sync Status:**
-```bash
-./tools/powerdns_sync_check.py --zone spaceships.work
 ```
 
 **Deploy from NetBox Inventory:**
@@ -34,18 +60,56 @@ cd ansible && uv run ansible-playbook -i tools/netbox-dynamic-inventory.yml depl
 ## When to Use This Skill
 
 Activate this skill when:
-- Setting up or configuring NetBox IPAM
-- Implementing automated DNS record management
-- Creating DNS naming conventions (e.g., `service-number-purpose.domain`)
-- Using Terraform with NetBox provider
-- Setting up Ansible dynamic inventory from NetBox
-- Troubleshooting NetBox-PowerDNS sync issues
-- Migrating from manual DNS to automated workflows
-- Integrating infrastructure documentation with DNS
+- **Querying NetBox API** - Sites, devices, VMs, IPs, prefixes, VLANs
+- **Setting up NetBox IPAM** - Prefixes, IP management, VRFs
+- **Implementing automated DNS** - PowerDNS sync plugin configuration
+- **Creating DNS naming conventions** - `service-NN-purpose.domain` pattern
+- **Managing VMs in NetBox** - Creating, updating, IP assignment
+- **Using Terraform with NetBox** - Provider configuration and resources
+- **Setting up Ansible dynamic inventory** - NetBox as inventory source
+- **Troubleshooting NetBox-PowerDNS sync** - Tag matching, zone configuration
+- **Migrating to NetBox** - From manual DNS or spreadsheet tracking
+- **Infrastructure documentation** - Using NetBox as source of truth
 
 ## Core Workflows
 
-### 1. DNS Naming Convention
+### 1. NetBox API Usage
+
+**Query infrastructure data:**
+
+```python
+#!/usr/bin/env -S uv run --script --quiet
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["pynetbox>=7.0.0", "infisical-python>=2.3.3"]
+# ///
+
+import pynetbox
+from infisical import InfisicalClient
+
+# Get token from Infisical
+client = InfisicalClient()
+token = client.get_secret(
+    secret_name="NETBOX_API_TOKEN",
+    project_id="7b832220-24c0-45bc-a5f1-ce9794a31259",
+    environment="prod",
+    path="/matrix"
+).secret_value
+
+# Connect to NetBox
+nb = pynetbox.api('https://netbox.spaceships.work', token=token)
+
+# Query devices in Matrix cluster
+site = nb.dcim.sites.get(slug='matrix')
+devices = nb.dcim.devices.filter(site='matrix')
+
+for device in devices:
+    print(f"{device.name}: {device.primary_ip4.address if device.primary_ip4 else 'No IP'}")
+```
+
+See [reference/netbox-api-guide.md](reference/netbox-api-guide.md) for complete API reference.
+
+### 2. DNS Naming Convention
 
 This infrastructure uses the pattern: `<service>-<number>-<purpose>.<domain>`
 
@@ -62,7 +126,7 @@ pattern = r'^[a-z0-9-]+-\d{2}-[a-z0-9-]+\.[a-z0-9.-]+$'
 
 See [workflows/naming-conventions.md](workflows/naming-conventions.md) for complete rules.
 
-### 2. NetBox + PowerDNS Sync Setup
+### 3. NetBox + PowerDNS Sync Setup
 
 **Step 1: Install Plugin**
 
@@ -95,7 +159,7 @@ Configure zones with:
 
 See [reference/sync-plugin-reference.md](reference/sync-plugin-reference.md) for details.
 
-### 3. Terraform Integration
+### 4. Terraform Integration
 
 **Provider Setup:**
 ```hcl
@@ -132,7 +196,7 @@ DNS records created automatically by plugin!
 
 See [reference/terraform-provider-guide.md](reference/terraform-provider-guide.md) and [examples/netbox-terraform-provider.tf](examples/netbox-terraform-provider.tf).
 
-### 4. Ansible Dynamic Inventory
+### 5. Ansible Dynamic Inventory
 
 **Use NetBox as Inventory Source:**
 
@@ -197,27 +261,45 @@ Automated configuration management
 
 ## Tools Available
 
-### Python Scripts (uv)
+### NetBox API Tools (Python + uv)
 
-**validate_dns_naming.py** - Validate naming conventions
+**netbox_api_client.py** - Comprehensive NetBox API client
 ```bash
-./tools/validate_dns_naming.py --name "service-01-purpose.domain"
+# List sites, devices, VMs, IPs
+./tools/netbox_api_client.py sites list
+./tools/netbox_api_client.py devices get --name foxtrot
+./tools/netbox_api_client.py vms list --cluster matrix
+./tools/netbox_api_client.py ips query --dns-name docker-01
+./tools/netbox_api_client.py prefixes available --prefix 192.168.3.0/24
 ```
 
-**netbox_query.py** - Query NetBox API
+**netbox_vm_create.py** - Create VMs in NetBox with IP assignment
 ```bash
-./tools/netbox_query.py --vm-name docker-01
-./tools/netbox_query.py --ip-address 192.168.1.100
+# Create VM with auto IP
+./tools/netbox_vm_create.py --name docker-02 --cluster matrix --vcpus 4 --memory 8192
+
+# Create VM with specific IP
+./tools/netbox_vm_create.py --name k8s-01-master --cluster matrix --ip 192.168.3.50/24
 ```
 
-**powerdns_sync_check.py** - Verify sync status
+**netbox_ipam_query.py** - Advanced IPAM queries
 ```bash
-./tools/powerdns_sync_check.py --zone spaceships.work
+# Available IPs
+./tools/netbox_ipam_query.py available --prefix 192.168.3.0/24
+
+# Prefix utilization
+./tools/netbox_ipam_query.py utilization --site matrix
+
+# IP assignments
+./tools/netbox_ipam_query.py assignments --prefix 192.168.3.0/24
+
+# IPAM summary
+./tools/netbox_ipam_query.py summary --site matrix
 ```
 
-**dns_record_audit.py** - Audit DNS vs NetBox
+**validate_dns_naming.py** - Validate DNS naming conventions
 ```bash
-./tools/dns_record_audit.py --zone spaceships.work
+./tools/validate_dns_naming.py --name "docker-01-nexus.spaceships.work"
 ```
 
 ### Terraform Modules
@@ -330,13 +412,20 @@ db-01-postgres.spaceships.work        # PostgreSQL database
 ## Progressive Disclosure
 
 For deeper knowledge:
-- [NetBox IPAM setup](reference/netbox-ipam-setup.md) - Complete NetBox configuration
-- [PowerDNS configuration](reference/powerdns-configuration.md) - PowerDNS server setup
-- [Sync plugin reference](reference/sync-plugin-reference.md) - Plugin installation and config
-- [API patterns](reference/api-patterns.md) - NetBox/PowerDNS API usage
-- [Terraform provider guide](reference/terraform-provider-guide.md) - Complete provider documentation
-- [Naming conventions](workflows/naming-conventions.md) - Detailed naming rules
-- [DNS automation](workflows/dns-automation.md) - End-to-end automation workflows
+
+### NetBox API & Integration
+- [NetBox API Guide](reference/netbox-api-guide.md) - Complete REST API reference with pynetbox examples
+- [NetBox Data Models](reference/netbox-data-models.md) - Data model relationships and hierarchy
+- [NetBox Best Practices](reference/netbox-best-practices.md) - Security, performance, automation patterns
+
+### DNS & PowerDNS Integration
+- [Sync Plugin Reference](reference/sync-plugin-reference.md) - PowerDNS sync plugin installation and config
+- [Terraform Provider Guide](reference/terraform-provider-guide.md) - Complete provider documentation
+- [Naming Conventions](workflows/naming-conventions.md) - Detailed DNS naming rules
+- [DNS Automation](workflows/dns-automation.md) - End-to-end automation workflows
+
+### Ansible Integration
+- [Ansible Dynamic Inventory](workflows/ansible-dynamic-inventory.md) - Using NetBox as inventory source
 
 ## Related Skills
 
