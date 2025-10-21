@@ -210,12 +210,17 @@ Before deploying CEPH:
 
 - name: Parse manager list
   ansible.builtin.set_fact:
-    existing_managers: "{{ (mgr_dump.stdout | from_json).active_name }},{{ (mgr_dump.stdout | from_json).standbys | map(attribute='name') | join(',') }}"
+    existing_managers: "{{ [(mgr_dump.stdout | from_json).active_name] + ((mgr_dump.stdout | from_json).standbys | map(attribute='name') | list) }}"
   when: mgr_dump.rc == 0
+
+- name: Initialize empty manager list if check failed
+  ansible.builtin.set_fact:
+    existing_managers: []
+  when: mgr_dump.rc != 0
 
 - name: Set manager facts
   ansible.builtin.set_fact:
-    has_manager: "{{ inventory_hostname_short in existing_managers | default('') }}"
+    has_manager: "{{ inventory_hostname_short in (existing_managers | default([])) }}"
 
 - name: Create CEPH manager
   ansible.builtin.command:
