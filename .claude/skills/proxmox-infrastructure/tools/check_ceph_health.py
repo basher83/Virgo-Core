@@ -131,7 +131,6 @@ class CEPHHealthChecker:
 
     def _validate_node(self, node: str) -> bool:
         """Validate node is a valid hostname or IP address"""
-        import re
         # Allow valid hostnames and IPv4/IPv6 addresses
         hostname_pattern = r'^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*$'
         ipv4_pattern = r'^(\d{1,3}\.){3}\d{1,3}$'
@@ -150,12 +149,18 @@ class CEPHHealthChecker:
                 ["ssh", "-o", "BatchMode=yes", f"root@{self.node}", "--", command],
                 capture_output=True,
                 text=True,
-                check=True
+                check=True,
+                timeout=30
             )
             return result.stdout
+        except subprocess.TimeoutExpired as e:
+            error_msg = f"Command timed out after 30s: {command}"
+            self.health.errors.append(error_msg)
+            raise RuntimeError(error_msg) from e
         except subprocess.CalledProcessError as e:
-            self.health.errors.append(f"Command failed: {command}: {e.stderr}")
-            return ""
+            error_msg = f"Command failed: {command}: {e.stderr}"
+            self.health.errors.append(error_msg)
+            raise RuntimeError(error_msg) from e
 
     def check_ceph_status(self):
         """Check ceph status output"""
