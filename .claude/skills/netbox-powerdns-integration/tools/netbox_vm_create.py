@@ -39,6 +39,7 @@ Example:
         --description "Docker host for GitLab"
 """
 
+import ipaddress
 import sys
 import re
 from typing import Optional
@@ -108,13 +109,13 @@ def validate_vm_name(name: str) -> bool:
     Validate VM name (without domain).
 
     Pattern: <service>-<number> or <service>-<number>-<purpose>
-    - service: one or more lowercase letters
+    - service: one or more lowercase letters, digits, or hyphens
     - number: exactly two digits (00-99)
-    - purpose (optional): one or more lowercase letters/numbers
+    - purpose (optional): one or more lowercase letters/numbers/hyphens
 
-    Example: docker-01 or k8s-01-master
+    Example: docker-01, k8s-01-master, or docker-proxy-01
     """
-    pattern = r'^[a-z]+\-\d{2}(-[a-z0-9]+)?$'
+    pattern = r'^[a-z0-9-]+\-\d{2}(-[a-z0-9-]+)?$'
     return bool(re.match(pattern, name.lower()))
 
 
@@ -226,6 +227,18 @@ def main(
         console.print(f"[green]✓ Created interface (ID: {vm_iface.id})[/green]")
 
         # 5. Assign IP
+        # Validate IP format if provided
+        if ip:
+            try:
+                ipaddress.ip_interface(ip)
+            except ValueError:
+                console.print(f"[red]Invalid IP address format: {ip}[/red]")
+                console.print("[yellow]Expected format: 192.168.3.50/24[/yellow]")
+                # Rollback
+                vm_iface.delete()
+                vm.delete()
+                sys.exit(1)
+
         try:
             if ip:
                 # Use specific IP

@@ -41,6 +41,7 @@ Example output:
     └────┴───────────┴──────┴─────────┴──────────────┴──────────────────────────────────┘
 """
 
+import re
 import sys
 from typing import Optional
 from dataclasses import dataclass
@@ -129,7 +130,6 @@ def validate_vm_name(name: str) -> bool:
     Returns:
         True if valid, False otherwise
     """
-    import re
     pattern = r'^[a-z0-9-]+$'
     return bool(re.match(pattern, name))
 

@@ -108,9 +108,13 @@ class ClusterHealthChecker:
                 ["ssh", "-o", "BatchMode=yes", f"root@{self.node}", "--", command],
                 capture_output=True,
                 text=True,
-                check=True
+                check=True,
+                timeout=30
             )
             return result.stdout
+        except subprocess.TimeoutExpired:
+            self.health.errors.append(f"Command timed out: {command}")
+            return ""
         except subprocess.CalledProcessError as e:
             self.health.errors.append(f"Command failed: {command}: {e.stderr}")
             return ""

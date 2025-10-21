@@ -258,9 +258,7 @@ For Windows GUI applications, use `.pyw` extension:
 ```python
 # gui_hello.pyw
 # /// script
-# dependencies = [
-#   "tkinter",  # Usually included with Python
-# ]
+# Note: tkinter is included with most Python distributions
 # ///
 
 import tkinter as tk
@@ -594,7 +592,8 @@ def test_endpoint(
     try:
         console.print("\n[bold]Response Body:[/bold]")
         console.print_json(response.text)
-    except:
+    except (ValueError, Exception) as e:
+        # Fallback to plain text if JSON parsing fails
         console.print(response.text)
 
 if __name__ == "__main__":
