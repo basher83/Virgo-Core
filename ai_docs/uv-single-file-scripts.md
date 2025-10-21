@@ -533,7 +533,7 @@ if __name__ == "__main__":
         print("Usage: ./analyze_data.py <csv_file>")
         sys.exit(1)
 
-    analyze_data(sys.argv[1])
+    analyze_data(sys.argv[-1])
 ```
 
 ### 2. API Testing Tools
