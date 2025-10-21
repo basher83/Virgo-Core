@@ -218,8 +218,8 @@ def ip_assignments(
                 sys.exit(1)
 
             progress.update(task, description="Getting IP assignments...")
-            # Get IPs by parent prefix
-            ips = nb.ipam.ip_addresses.filter(parent=prefix)
+            # Get IPs by parent prefix (materialize once to avoid re-fetching)
+            ips = list(nb.ipam.ip_addresses.filter(parent=prefix))
 
         if output == "json":
             import json
@@ -260,7 +260,7 @@ def ip_assignments(
                 )
 
             console.print(table)
-            console.print(f"\n[green]Total IPs: {len(list(ips))}[/green]")
+            console.print(f"\n[green]Total IPs: {len(ips)}[/green]")
 
     except Exception as e:
         console.print(f"[red]Error: {e}[/red]")
@@ -280,7 +280,8 @@ def list_vlans(
         if site:
             filters['site'] = site
 
-        vlans = nb.ipam.vlans.filter(**filters) if filters else nb.ipam.vlans.all()
+        # Materialize once to avoid re-fetching on len() call
+        vlans = list(nb.ipam.vlans.filter(**filters) if filters else nb.ipam.vlans.all())
 
         if output == "json":
             import json
@@ -316,7 +317,7 @@ def list_vlans(
                 )
 
             console.print(table)
-            console.print(f"\n[green]Total VLANs: {len(list(vlans))}[/green]")
+            console.print(f"\n[green]Total VLANs: {len(vlans)}[/green]")
 
     except Exception as e:
         console.print(f"[red]Error: {e}[/red]")
