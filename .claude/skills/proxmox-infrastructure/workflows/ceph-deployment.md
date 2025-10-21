@@ -92,7 +92,7 @@ Before deploying CEPH:
 - name: Set CEPH initialization facts
   ansible.builtin.set_fact:
     ceph_initialized: "{{ ceph_status_check.rc == 0 }}"
-    is_ceph_first_node: "{{ inventory_hostname == groups[cluster_group][0] }}"
+    is_ceph_first_node: "{{ inventory_hostname == groups[cluster_group | default('matrix_cluster')][0] }}"
 
 - name: Initialize CEPH cluster on first node
   ansible.builtin.command:
@@ -140,7 +140,7 @@ Before deploying CEPH:
   ansible.builtin.command:
     cmd: ceph mon dump --format json
   register: mon_dump
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
   failed_when: false
   changed_when: false
@@ -182,15 +182,15 @@ Before deploying CEPH:
     cmd: ceph quorum_status --format json
   register: quorum_status
   changed_when: false
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Check monitor quorum size
   ansible.builtin.assert:
     that:
-      - (quorum_status.stdout | from_json).quorum | length >= (groups[cluster_group] | length * 0.5)
+      - (quorum_status.stdout | from_json).quorum | length >= (groups[cluster_group | default('matrix_cluster')] | length * 0.5)
     fail_msg: "Monitor quorum not established"
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 ```
 
@@ -203,7 +203,7 @@ Before deploying CEPH:
   ansible.builtin.command:
     cmd: ceph mgr dump --format json
   register: mgr_dump
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
   failed_when: false
   changed_when: false
@@ -232,7 +232,7 @@ Before deploying CEPH:
 - name: Enable CEPH dashboard module
   ansible.builtin.command:
     cmd: ceph mgr module enable dashboard
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
   register: dashboard_enable
   changed_when: "'already enabled' not in dashboard_enable.stderr"
@@ -243,7 +243,7 @@ Before deploying CEPH:
 - name: Enable Prometheus module
   ansible.builtin.command:
     cmd: ceph mgr module enable prometheus
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
   register: prometheus_enable
   changed_when: "'already enabled' not in prometheus_enable.stderr"
@@ -265,7 +265,7 @@ Before deploying CEPH:
   register: existing_osds
   changed_when: false
   failed_when: false
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Check OSD devices availability
@@ -341,7 +341,7 @@ Before deploying CEPH:
     cmd: ceph osd tree --format json
   register: osd_tree
   changed_when: false
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
   until: >
     (osd_tree.stdout | from_json).nodes
@@ -454,7 +454,7 @@ Before deploying CEPH:
     cmd: ceph health
   register: ceph_health
   changed_when: false
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Get CEPH status
@@ -462,7 +462,7 @@ Before deploying CEPH:
     cmd: ceph status --format json
   register: ceph_status
   changed_when: false
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Parse CEPH status
@@ -478,7 +478,7 @@ Before deploying CEPH:
         | map('default', 1)
         | sum
       }}
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Verify OSD count
@@ -486,7 +486,7 @@ Before deploying CEPH:
     that:
       - ceph_status_data.osdmap.num_osds | int == expected_osd_count | int
     fail_msg: "Expected {{ expected_osd_count }} OSDs but found {{ ceph_status_data.osdmap.num_osds }}"
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Verify all OSDs are up
@@ -494,7 +494,7 @@ Before deploying CEPH:
     that:
       - ceph_status_data.osdmap.num_up_osds == ceph_status_data.osdmap.num_osds
     fail_msg: "Not all OSDs are up: {{ ceph_status_data.osdmap.num_up_osds }}/{{ ceph_status_data.osdmap.num_osds }}"
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Verify all OSDs are in
@@ -502,7 +502,7 @@ Before deploying CEPH:
     that:
       - ceph_status_data.osdmap.num_in_osds == ceph_status_data.osdmap.num_osds
     fail_msg: "Not all OSDs are in cluster: {{ ceph_status_data.osdmap.num_in_osds }}/{{ ceph_status_data.osdmap.num_osds }}"
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 
 - name: Wait for PGs to become active+clean
@@ -510,7 +510,7 @@ Before deploying CEPH:
     cmd: ceph pg stat --format json
   register: pg_stat
   changed_when: false
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
   until: >
     (pg_stat.stdout | from_json).num_pg_by_state
@@ -530,7 +530,7 @@ Before deploying CEPH:
       PGs: {{ ceph_status_data.pgmap.num_pgs }}
       Data: {{ ceph_status_data.pgmap.bytes_used | default(0) | human_readable }}
       Available: {{ ceph_status_data.pgmap.bytes_avail | default(0) | human_readable }}
-  delegate_to: "{{ groups[cluster_group][0] }}"
+  delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
   run_once: true
 ```
 
@@ -656,7 +656,7 @@ ceph_wipe_disks: false  # Set to true for fresh deployment (DESTRUCTIVE!)
         cmd: ceph osd tree
       register: osd_tree_final
       changed_when: false
-      delegate_to: "{{ groups[cluster_group][0] }}"
+      delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
       run_once: true
 
     - name: Show OSD tree
@@ -669,7 +669,7 @@ ceph_wipe_disks: false  # Set to true for fresh deployment (DESTRUCTIVE!)
         cmd: ceph osd pool ls detail
       register: pool_info
       changed_when: false
-      delegate_to: "{{ groups[cluster_group][0] }}"
+      delegate_to: "{{ groups[cluster_group | default('matrix_cluster')][0] }}"
       run_once: true
 
     - name: Show pool details
