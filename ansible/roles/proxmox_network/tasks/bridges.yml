@@ -1,0 +1,96 @@
+---
+# ansible/roles/proxmox_network/tasks/bridges.yml
+# Configure network bridges with VLAN support
+
+- name: Configure bridge interface
+  community.general.interfaces_file:
+    iface: "{{ item.name }}"
+    option: bridge_ports
+    value: "{{ item.interface }}"
+    backup: "{{ proxmox_network_backup }}"
+    state: present
+  loop: "{{ proxmox_bridges }}"
+  register: proxmox_network_bridge_ports_result
+  notify: Reload network interfaces
+
+- name: Configure bridge IP address
+  community.general.interfaces_file:
+    iface: "{{ item.name }}"
+    option: address
+    value: "{{ item.address }}"
+    backup: false
+    state: present
+  loop: "{{ proxmox_bridges }}"
+  when: item.address is defined
+  register: proxmox_network_bridge_address_result
+  notify: Reload network interfaces
+
+- name: Configure bridge gateway
+  community.general.interfaces_file:
+    iface: "{{ item.name }}"
+    option: gateway
+    value: "{{ item.gateway }}"
+    backup: false
+    state: present
+  loop: "{{ proxmox_bridges }}"
+  when: item.gateway is defined
+  register: proxmox_network_bridge_gateway_result
+  notify: Reload network interfaces
+
+- name: Enable VLAN-aware bridging
+  community.general.interfaces_file:
+    iface: "{{ item.name }}"
+    option: bridge-vlan-aware
+    value: "yes"
+    backup: false
+    state: present
+  loop: "{{ proxmox_bridges }}"
+  when: item.vlan_aware | default(false)
+  register: proxmox_network_vlan_aware_result
+  notify: Reload network interfaces
+
+- name: Configure VLAN IDs on bridge
+  community.general.interfaces_file:
+    iface: "{{ item.name }}"
+    option: bridge-vids
+    value: "{{ item.vlan_ids if item.vlan_ids is string else item.vlan_ids | join(',') }}"
+    backup: false
+    state: present
+  loop: "{{ proxmox_bridges }}"
+  when:
+    - item.vlan_aware | default(false)
+    - item.vlan_ids is defined
+  register: proxmox_network_vlan_ids_result
+  notify: Reload network interfaces
+
+- name: Configure bridge MTU
+  community.general.interfaces_file:
+    iface: "{{ item.name }}"
+    option: mtu
+    value: "{{ item.mtu | default(proxmox_network_default_mtu) }}"
+    backup: false
+    state: present
+  loop: "{{ proxmox_bridges }}"
+  when: item.mtu is defined
+  register: proxmox_network_mtu_result
+  notify: Reload network interfaces
+
+- name: Set network changed flag
+  ansible.builtin.set_fact:
+    proxmox_network_changed: true
+  when: >
+    proxmox_network_bridge_ports_result is changed or
+    proxmox_network_bridge_address_result is changed or
+    proxmox_network_bridge_gateway_result is changed or
+    proxmox_network_vlan_aware_result is changed or
+    proxmox_network_vlan_ids_result is changed or
+    proxmox_network_mtu_result is changed
+
+- name: Display bridge configuration status
+  ansible.builtin.debug:
+    msg: >
+      {% if proxmox_network_changed | default(false) %}
+      Bridge configuration updated - network reload will be triggered
+      {% else %}
+      Bridge configuration already correct
+      {% endif %}

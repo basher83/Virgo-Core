@@ -1,0 +1,18 @@
+---
+# ansible/roles/proxmox_network/tasks/reload.yml
+# Reload network configuration
+
+- name: Reload network interfaces
+  ansible.builtin.command: ifreload -a
+  register: proxmox_network_reload_result
+  changed_when: true
+
+- name: Display reload result
+  ansible.builtin.debug:
+    msg: "Network interfaces reloaded successfully"
+  when: proxmox_network_reload_result.rc == 0
+
+- name: Wait for network to stabilize
+  ansible.builtin.pause:
+    seconds: 5
+  when: proxmox_network_reload_result.rc == 0

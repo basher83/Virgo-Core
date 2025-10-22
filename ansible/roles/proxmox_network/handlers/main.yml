@@ -1,0 +1,8 @@
+---
+# ansible/roles/proxmox_network/handlers/main.yml
+# Handlers for network configuration changes
+
+- name: Reload network interfaces
+  ansible.builtin.command: ifreload -a  # noqa: no-changed-when
+  listen: Reload network interfaces
+  when: not proxmox_network_dry_run

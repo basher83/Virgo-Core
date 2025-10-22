@@ -134,22 +134,36 @@ terraform/
 
 ### Ansible Structure
 
-**Migration Status**: Migrating to role-based architecture (Phase 1 complete). See [docs/ansible-migration-plan.md](docs/ansible-migration-plan.md).
+**Migration Status**: Migrating to role-based architecture (Phases 1-3 complete). See [docs/ansible-migration-plan.md](docs/ansible-migration-plan.md).
 
 ```text
 ansible/
 ├── playbooks/
-│   ├── create-admin-user.yml               # ✨ NEW: Create admin users (uses system_user role)
-│   ├── proxmox-build-template.yml          # Build Ubuntu cloud-init templates
-│   ├── proxmox-create-terraform-user.yml   # Configure Proxmox for Terraform
-│   ├── proxmox-enable-vlan-bridging.yml    # Configure VLAN-aware bridges
-│   ├── install-docker.yml                   # Docker installation
+│   ├── create-admin-user.yml                # ✨ Create admin users (uses system_user role)
+│   ├── setup-terraform-automation.yml       # ✨ Setup Terraform access (uses proxmox_access role)
+│   ├── configure-network.yml                # ✨ Configure network infrastructure (uses proxmox_network role)
+│   ├── install-docker.yml                   # Docker installation (uses geerlingguy.docker role)
+│   ├── proxmox-build-template.yml           # Build Ubuntu cloud-init templates
+│   ├── proxmox-create-terraform-user.yml    # ⚠️  DEPRECATED (use setup-terraform-automation.yml)
+│   ├── proxmox-enable-vlan-bridging.yml     # ⚠️  DEPRECATED (use configure-network.yml)
 │   ├── add-system-user.yml                  # ⚠️  DEPRECATED (use create-admin-user.yml)
 │   └── add-file-to-host.yml                 # File deployment
 ├── roles/
-│   └── system_user/                         # ✨ NEW: User management role
-│       ├── tasks/                           # User creation, SSH keys, sudo config
-│       ├── templates/                       # sudoers.j2 template
+│   ├── system_user/                         # ✨ Phase 1: User management role
+│   │   ├── tasks/                           # User creation, SSH keys, sudo config
+│   │   ├── templates/                       # sudoers.j2 template
+│   │   ├── defaults/                        # Default variables
+│   │   ├── meta/                            # Role metadata
+│   │   └── README.md                        # Role documentation
+│   ├── proxmox_access/                      # ✨ Phase 2: Proxmox access control role
+│   │   ├── tasks/                           # Roles, groups, users, tokens, ACLs
+│   │   ├── templates/                       # Terraform env export template
+│   │   ├── defaults/                        # Default variables
+│   │   ├── meta/                            # Role metadata
+│   │   └── README.md                        # Role documentation
+│   └── proxmox_network/                     # ✨ Phase 3: Network infrastructure role
+│       ├── tasks/                           # Bridges, VLANs, MTU configuration
+│       ├── handlers/                        # Network reload handler
 │       ├── defaults/                        # Default variables
 │       ├── meta/                            # Role metadata
 │       └── README.md                        # Role documentation
@@ -171,14 +185,31 @@ ansible/
 - `ansible.utils`: Network/data utilities
 - `community.docker`: Docker management
 
-**Custom Ansible Roles** (Phase 1 - ✅ Complete):
+**Custom Ansible Roles**:
 
-- **`system_user`**: Manage Linux system users with SSH keys and sudo privileges
+- **`system_user`** (Phase 1 ✅): Manage Linux system users with SSH keys and sudo privileges
   - Idempotent user creation/removal
   - SSH authorized_keys management
   - Flexible sudo configuration (full access or specific commands)
   - Validated sudoers files
   - See: [ansible/roles/system_user/README.md](ansible/roles/system_user/README.md)
+
+- **`proxmox_access`** (Phase 2 ✅): Manage Proxmox VE access control
+  - Custom role management (Terraform, API users, etc.)
+  - Group and user management (PAM/PVE realms)
+  - API token generation with security warnings
+  - ACL configuration for granular permissions
+  - Terraform environment file export
+  - See: [ansible/roles/proxmox_access/README.md](ansible/roles/proxmox_access/README.md)
+
+- **`proxmox_network`** (Phase 3 ✅): Manage Proxmox VE network infrastructure
+  - Network bridge configuration (vmbr0, vmbr1, vmbr2)
+  - VLAN-aware bridge support
+  - VLAN subinterface creation
+  - MTU configuration for jumbo frames (CEPH networks)
+  - Declarative network configuration
+  - Automatic verification
+  - See: [ansible/roles/proxmox_network/README.md](ansible/roles/proxmox_network/README.md)
 
 **External Ansible Roles**:
 

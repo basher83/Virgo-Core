@@ -1,0 +1,47 @@
+---
+# ansible/roles/proxmox_network/tasks/prerequisites.yml
+# Prerequisite checks and validation
+
+- name: Check if running on Proxmox VE
+  ansible.builtin.stat:
+    path: /etc/pve
+  register: proxmox_network_pve_check
+  changed_when: false
+
+- name: Fail if not running on Proxmox VE
+  ansible.builtin.fail:
+    msg: "This role must be run on a Proxmox VE host (missing /etc/pve directory)"
+  when: not proxmox_network_pve_check.stat.exists
+
+- name: Check if network configuration file exists
+  ansible.builtin.stat:
+    path: "{{ proxmox_network_interfaces_file }}"
+  register: proxmox_network_interfaces_check
+  changed_when: false
+
+- name: Fail if network configuration file missing
+  ansible.builtin.fail:
+    msg: "Network configuration file not found: {{ proxmox_network_interfaces_file }}"
+  when: not proxmox_network_interfaces_check.stat.exists
+
+- name: Check for ifreload command
+  ansible.builtin.command: which ifreload
+  register: proxmox_network_ifreload_check
+  changed_when: false
+  failed_when: false
+
+- name: Fail if ifreload not available
+  ansible.builtin.fail:
+    msg: "ifreload command not found. Please install ifupdown2 package."
+  when: proxmox_network_ifreload_check.rc != 0
+
+- name: Display configuration summary
+  ansible.builtin.debug:
+    msg:
+      - "Network Configuration Summary:"
+      - "  Bridges to configure: {{ proxmox_bridges | length }}"
+      - "  VLANs to configure: {{ proxmox_vlans | length }}"
+      - "  Backup enabled: {{ proxmox_network_backup }}"
+      - "  Auto-reload: {{ proxmox_network_reload }}"
+      - "  Dry run: {{ proxmox_network_dry_run }}"
+  tags: [never, debug]

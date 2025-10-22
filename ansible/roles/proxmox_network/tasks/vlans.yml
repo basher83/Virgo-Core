@@ -1,0 +1,42 @@
+---
+# ansible/roles/proxmox_network/tasks/vlans.yml
+# Configure VLAN subinterfaces
+
+- name: Configure VLAN interface
+  community.general.interfaces_file:
+    iface: "vlan{{ item.id }}"
+    option: vlan-raw-device
+    value: "{{ item.raw_device }}"
+    backup: "{{ proxmox_network_backup }}"
+    state: present
+  loop: "{{ proxmox_vlans }}"
+  register: proxmox_network_vlan_device_result
+  notify: Reload network interfaces
+
+- name: Configure VLAN IP address
+  community.general.interfaces_file:
+    iface: "vlan{{ item.id }}"
+    option: address
+    value: "{{ item.address }}"
+    backup: false
+    state: present
+  loop: "{{ proxmox_vlans }}"
+  when: item.address is defined
+  register: proxmox_network_vlan_address_result
+  notify: Reload network interfaces
+
+- name: Set network changed flag for VLANs
+  ansible.builtin.set_fact:
+    proxmox_network_changed: true
+  when: >
+    proxmox_network_vlan_device_result is changed or
+    proxmox_network_vlan_address_result is changed
+
+- name: Display VLAN configuration status
+  ansible.builtin.debug:
+    msg: >
+      {% if proxmox_network_changed | default(false) %}
+      VLAN configuration updated - network reload will be triggered
+      {% else %}
+      VLAN configuration already correct
+      {% endif %}
