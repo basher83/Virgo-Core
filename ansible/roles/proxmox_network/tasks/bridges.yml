@@ -74,7 +74,7 @@
     backup: false
     state: present
   loop: "{{ proxmox_bridges }}"
-  when: item.mtu is defined
+  when: item.mtu is defined or proxmox_network_default_mtu is defined
   register: proxmox_network_mtu_result
   notify: Reload network interfaces
 
