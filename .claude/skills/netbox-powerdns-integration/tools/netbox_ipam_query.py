@@ -53,7 +53,18 @@ console = Console()
 
 
 def get_netbox_client() -> pynetbox.api:
-    """Get authenticated NetBox client."""
+    """
+    Get authenticated NetBox API client.
+
+    Uses Infisical to securely retrieve API token.
+
+    Returns:
+        pynetbox.api: Authenticated NetBox client
+
+    Raises:
+        ValueError: If token cannot be retrieved or is empty
+        typer.Exit: On connection or authentication errors
+    """
     try:
         client = InfisicalClient()
         token = client.get_secret(
@@ -63,11 +74,21 @@ def get_netbox_client() -> pynetbox.api:
             path="/matrix"
         ).secret_value
 
+        if not token:
+            console.print("[red]NETBOX_API_TOKEN is empty in Infisical[/red]")
+            raise typer.Exit(1)
+
         return pynetbox.api('https://netbox.spaceships.work', token=token)
 
+    except ValueError as e:
+        console.print(f"[red]Configuration error: {e}[/red]")
+        raise typer.Exit(1)
+    except (ConnectionError, TimeoutError) as e:
+        console.print(f"[red]Failed to connect to NetBox or Infisical: {e}[/red]")
+        raise typer.Exit(1)
     except Exception as e:
-        console.print(f"[red]Failed to connect to NetBox: {e}[/red]")
-        sys.exit(1)
+        console.print(f"[red]Unexpected error: {e}[/red]")
+        raise typer.Exit(1)
 
 
 @app.command("available")
