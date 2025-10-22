@@ -158,6 +158,11 @@ See [../../docs/goals.md](../../docs/goals.md) for complete specs.
 
 See [examples/](examples/) directory.
 
+**Real Examples from Repository**:
+- **Multi-VM Cluster**: [../../terraform/examples/microk8s-cluster](../../terraform/examples/microk8s-cluster) - Comprehensive 3-node MicroK8s deployment using `for_each` pattern, cross-node cloning, **dual NIC with VLAN** (VLAN 30 primary, VLAN 2 secondary), Ansible integration
+- **Template with Cloud-Init**: [../../terraform/examples/template-with-custom-cloudinit](../../terraform/examples/template-with-custom-cloudinit) - Custom cloud-init snippet configuration
+- **VLAN Bridge Configuration**: [../../ansible/playbooks/proxmox-enable-vlan-bridging.yml](../../ansible/playbooks/proxmox-enable-vlan-bridging.yml) - Enable VLAN-aware bridging on Proxmox nodes (supports VLANs 2-4094)
+
 ## Troubleshooting
 
 Common issues and solutions:
@@ -237,6 +242,9 @@ For deeper knowledge:
 - [API reference](reference/api-reference.md) - Proxmox API interactions
 - [Storage management](reference/storage-management.md) - CEPH, LVM, datastores
 - [QEMU guest agent](reference/qemu-guest-agent.md) - Integration and troubleshooting
+
+### Anti-Patterns & Common Mistakes
+- [Common Mistakes](anti-patterns/common-mistakes.md) - Real-world pitfalls from OpenTofu/Ansible deployments, template creation, and remote backend configuration
 
 ## Related Skills
 

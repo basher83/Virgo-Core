@@ -427,6 +427,9 @@ For deeper knowledge:
 ### Ansible Integration
 - [Ansible Dynamic Inventory](workflows/ansible-dynamic-inventory.md) - Using NetBox as inventory source
 
+### Anti-Patterns & Common Mistakes
+- [Common Mistakes](anti-patterns/common-mistakes.md) - DNS naming violations, cluster domain errors, master node targeting, and NetBox integration pitfalls for spaceships.work infrastructure
+
 ## Related Skills
 
 - **Proxmox Infrastructure** - VMs auto-registered in NetBox with DNS

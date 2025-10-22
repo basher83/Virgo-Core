@@ -1,110 +1,107 @@
-1. Proxmox Infrastructure Management Skill
+## ✅ Implemented Skills (Tier 1 - Complete)
 
-Why: The repository is heavily focused on Proxmox VE cluster management with multiple
-playbooks for template building, user creation, VLAN configuration, and VM
-provisioning. A dedicated skill would provide:
+### 1. proxmox-infrastructure ⭐⭐⭐⭐⭐
 
--   Best practices for Proxmox API interactions
--   Template creation patterns and cloud-init configurations
--   Storage pool and datastore management guidance
--   QEMU guest agent integration patterns
--   Common pitfalls and troubleshooting for Proxmox + Terraform/Ansible
+**Status**: Production-ready (245 lines, 4 tools, 5 references, 2 workflows)
 
-2. NetBox + PowerDNS Integration Skill
+Covers: Proxmox API, template creation, cloud-init, QEMU guest agent, storage management, networking, troubleshooting. Includes working Python tools and real Matrix cluster specs.
 
-Why: This is a stated goal in docs/netbox-powerdns.md but not yet implemented. A
-skill would provide:
+### 2. netbox-powerdns-integration ⭐⭐⭐⭐⭐
 
--   NetBox IPAM best practices and data modeling
--   PowerDNS sync plugin configuration patterns
--   DNS naming convention automation (e.g., docker-01-nexus.spaceships.work)
--   Integration patterns between NetBox, PowerDNS, and Terraform
--   Common IPAM workflows for homelab environments
+**Status**: Production-ready (434 lines, 4 tools, 4 references, 3 workflows)
 
-3. Ansible Playbook Refactoring & Best Practices Skill
+Covers: NetBox IPAM, PowerDNS sync, DNS naming (`service-NN-purpose.domain`), Terraform provider, Ansible dynamic inventory, API clients with Infisical integration.
 
-Why: Looking at the playbooks, they're functional but could benefit from:
+### 3. ansible-best-practices ⭐⭐⭐⭐⭐
 
--   Role vs. playbook organization guidance
--   Variable precedence and organization patterns
--   Proper use of ansible.builtin vs. community modules
--   Idempotency patterns and changed_when/failed_when best practices
--   Testing strategies (molecule, ansible-lint)
--   Secrets management patterns with Infisical integration
+**Status**: Production-ready (440 lines, 2 tools, 5 patterns, 1 anti-pattern)
 
-4. OpenTofu/Terraform Module Development Skill
+Covers: Idempotency patterns, Infisical secrets, module selection, variable precedence, testing (ansible-lint, molecule), reusable tasks. Based on real repository patterns.
 
-Why: The repository uses an external VM module but may need to:
+### 4. python-uv-scripts ⭐⭐⭐⭐⭐
 
--   Develop custom modules for NetBox integration
--   Create reusable modules for common Proxmox patterns
--   Module composition and dependency management
--   State management and workspace strategies
--   Testing and validation patterns for infrastructure code
+**Status**: Production-ready (641 lines, 1 tool, 3 references, 3 workflows, 2 anti-patterns)
 
-5. Network Automation & VLAN Management Skill
+**Bonus skill** - Teaches PEP 723 inline metadata pattern used across all skill tools. Covers CLI apps, API clients, testing, CI/CD, security patterns, team adoption.
 
-Why: The cluster has complex networking (4 interfaces, VLANs, CEPH networks, jumbo
-frames). A skill would help with:
+### 5. skill-creator ⭐⭐⭐⭐⭐
 
--   VLAN-aware bridge configuration patterns
--   Network interface bonding/teaming
--   MTU configuration for CEPH storage networks
--   Corosync network separation best practices
--   Proxmox network troubleshooting
+**Status**: Meta-skill for creating/validating skills
 
-6. CEPH Storage Cluster Management Skill
+### 6. mcp-builder ⭐⭐⭐⭐⭐
 
-Why: The goals document mentions CEPH cluster configuration (monitors, managers,
-OSDs). A skill would provide:
+**Status**: MCP server development guide (Python FastMCP & Node/TypeScript)
 
--   CEPH deployment patterns for Proxmox
--   OSD configuration on NVMe drives (2 OSDs per drive)
--   Monitor and manager placement strategies
--   Performance tuning for homelab CEPH
--   Common CEPH issues and recovery procedures
+## ✅ Completed Improvements
 
-7. Infrastructure Testing & Validation Skill
+### Standardized Shebangs
+- All 15 skill Python tools use `#!/usr/bin/env -S uv run --script --quiet`
+- All have PEP 723 metadata
+- skill-creator now generates correct pattern
 
-Why: No clear testing strategy exists for infrastructure changes. A skill would help
-with:
+### Anti-Patterns Documentation
+- `proxmox-infrastructure/anti-patterns/common-mistakes.md` - OpenTofu provisioning, template creation, remote backend config
+- `netbox-powerdns-integration/anti-patterns/common-mistakes.md` - DNS naming violations, cluster domains, master node targeting
+- Both referenced in SKILL.md Progressive Disclosure sections
 
--   Smoke testing patterns for Proxmox deployments
--   Terraform/OpenTofu testing frameworks (terratest, kitchen-terraform)
--   Ansible playbook testing with molecule
--   Integration testing for multi-component deployments
--   Rollback strategies and disaster recovery testing
+### Linked Existing Examples
+- Multi-VM deployment: `terraform/examples/microk8s-cluster/` (386-line README, dual NIC, VLAN config!)
+- Template creation: `terraform/examples/template-with-custom-cloudinit/`
+- VLAN bridge configuration: `ansible/playbooks/proxmox-enable-vlan-bridging.yml`
+- All now referenced in `proxmox-infrastructure` and `ansible-best-practices` SKILL.md files
 
-8. Homelab Infrastructure-as-Code Patterns Skill
+## 🔧 Future Enhancements
 
-Why: General IaC skill specifically tailored to homelab constraints:
+**When needed**:
 
--   Cost-effective architecture patterns
--   Resource optimization for limited hardware
--   Documentation and knowledge management
--   Version control strategies for infrastructure
--   Migration strategies (from manual → automated)
--   Homelab-specific security considerations
+1. **Complex Ansible role example** - When creating custom roles beyond current playbooks
 
-Priority Ranking:
+## 📋 Future Skills (Tier 2 - When Needed)
 
-Tier 1 (Immediate Value):
+### CEPH Storage Cluster Management
 
-1. Proxmox Infrastructure Management
-2. NetBox + PowerDNS Integration
-3. Ansible Playbook Refactoring & Best Practices
+**Trigger**: When implementing CEPH automation (see `docs/goals.md`)
 
-Tier 2 (Strategic Value):
+Covers: CEPH deployment on Proxmox, OSD configuration (2 per NVMe), monitor/manager placement, performance tuning, recovery procedures.
 
-4. Network Automation & VLAN Management
-5. OpenTofu/Terraform Module Development
-6. CEPH Storage Cluster Management
+**Note**: Partially covered in `proxmox-infrastructure` workflows (ceph-deployment.md, cluster-formation.md from ProxSpray analysis).
 
-Tier 3 (Nice to Have):
+### Network Automation & VLAN Management
 
-7. Infrastructure Testing & Validation
-8. Homelab Infrastructure-as-Code Patterns
+**Trigger**: When extending networking beyond current VLAN-aware bridges
 
-These skills would complement the existing agents (ansible-research, commit-craft,
-git-workflow) by providing domain-specific expertise for the technologies and
-workflows central to this repository's mission.
+Covers: Advanced bonding/teaming, MTU tuning, Corosync network isolation, network troubleshooting.
+
+**Note**: Basic patterns already in `proxmox-infrastructure/reference/networking.md`.
+
+### OpenTofu/Terraform Module Development
+
+**Trigger**: When creating custom modules for NetBox or complex Proxmox patterns
+
+Covers: Module composition, testing (terratest), state management, NetBox provider patterns.
+
+**Note**: Examples exist in `terraform/netbox-vm/` and `netbox-powerdns-integration`.
+
+## 🎯 Assessment
+
+**Skills Implemented**: 6 skills (3 Tier 1 infrastructure + 3 meta-skills)
+- ✅ proxmox-infrastructure
+- ✅ netbox-powerdns-integration
+- ✅ ansible-best-practices
+- ✅ python-uv-scripts (bonus)
+- ✅ skill-creator (meta)
+- ✅ mcp-builder (meta)
+
+**Quality**: All skills are production-ready, well-structured, and validated
+
+**Tier 1 Improvements**: ✅ 100% Complete
+- ✅ Standardized shebangs (15 files)
+- ✅ Anti-patterns documentation (2 skills)
+- ✅ Linked existing examples (3 comprehensive examples)
+
+**Status**: Skills library is **mature and comprehensive** for current needs
+
+**Next Steps**:
+
+1. Add Tier 2 skills only when actively working on those technologies
+2. Consider complex Ansible role example when developing custom roles

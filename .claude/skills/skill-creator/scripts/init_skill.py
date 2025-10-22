@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script --quiet
+# /// script
+# requires-python = ">=3.11"
+# dependencies = []
+# ///
 """
 Skill Initializer - Creates a new skill from template
 
@@ -102,7 +106,11 @@ Files not intended to be loaded into context, but rather used within the output 
 **Any unneeded directories can be deleted.** Not every skill requires all three types of resources.
 """
 
-EXAMPLE_SCRIPT = '''#!/usr/bin/env python3
+EXAMPLE_SCRIPT = '''#!/usr/bin/env -S uv run --script --quiet
+# /// script
+# requires-python = ">=3.11"
+# dependencies = []
+# ///
 """
 Example helper script for {skill_name}
 

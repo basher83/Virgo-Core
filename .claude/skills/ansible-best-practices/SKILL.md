@@ -151,7 +151,38 @@ From [../../ansible/playbooks/proxmox-create-terraform-user.yml](../../ansible/p
 
 See [patterns/reusable-tasks.md](patterns/reusable-tasks.md).
 
-### 5. Idempotency Patterns
+### 5. Network Automation with Community Modules
+
+From [../../ansible/playbooks/proxmox-enable-vlan-bridging.yml](../../ansible/playbooks/proxmox-enable-vlan-bridging.yml):
+
+**Pattern:** Use community.general.interfaces_file for network configuration.
+
+```yaml
+# GOOD: Use interfaces_file module for network config
+- name: Enable VLAN-aware bridging on vmbr1
+  community.general.interfaces_file:
+    iface: vmbr1
+    option: bridge-vlan-aware
+    value: "yes"
+    backup: true
+    state: present
+  notify: Reload network interfaces
+
+# Handler for network changes
+- name: Reload network interfaces
+  ansible.builtin.command: ifreload -a
+  changed_when: true
+```
+
+**Why This Works:**
+- Declarative network configuration
+- Automatic backup before changes
+- Handler pattern for network reload
+- Verification with `bridge vlan show`
+
+See [patterns/network-automation.md](patterns/network-automation.md) for advanced patterns.
+
+### 6. Idempotency Patterns
 
 **Use `changed_when` and `failed_when`:**
 
