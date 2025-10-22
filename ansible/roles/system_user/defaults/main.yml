@@ -18,6 +18,8 @@ system_users: []
 #     ssh_keys: []                 # Optional: List of SSH public keys (default: [])
 #     sudo_nopasswd: false         # Optional: Grant NOPASSWD:ALL sudo (default: false)
 #     sudo_rules: []               # Optional: Specific sudo commands (default: [])
+#                                  # SECURITY: Commands MUST use absolute paths (e.g., /usr/bin/systemctl)
+#                                  # to prevent PATH exploitation attacks
 #
 # Note: If both sudo_nopasswd and sudo_rules are defined, sudo_nopasswd takes precedence
 
@@ -39,8 +41,8 @@ system_users: []
 #     ssh_keys:
 #       - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... terraform@controller"
 #     sudo_rules:
-#       - "/sbin/pvesm"
-#       - "/sbin/qm"
+#       - "/sbin/pvesm"              # MUST use absolute paths for security
+#       - "/sbin/qm"                 # Prevents PATH exploitation
 #       - "/usr/bin/tee /var/lib/vz/*"
 
 # Example 3: Remove a user

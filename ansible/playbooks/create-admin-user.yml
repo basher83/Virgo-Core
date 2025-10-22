@@ -90,5 +90,5 @@
 
           Verify removal:
             ssh root@{{ ansible_host | default(inventory_hostname) }} "id {{ admin_name }}"
-            (Should show: no such user)
+            (Expected: 'no such user' error - confirms removal)
       when: admin_state_value == 'absent'

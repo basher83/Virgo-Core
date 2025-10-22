@@ -199,9 +199,10 @@ uv run ansible-playbook playbook.yml
 
 1. **SSH Keys**: Always use SSH key authentication, not passwords
 2. **Sudo Access**: Grant minimal privileges needed (prefer `sudo_rules` over `sudo_nopasswd`)
-3. **Sudoers Validation**: All sudoers files are validated with `visudo -cf` before installation
-4. **File Permissions**: SSH directories (0700) and authorized_keys (0600) have secure permissions
-5. **Idempotent Operations**: Safe to run repeatedly without side effects
+3. **Absolute Paths Required**: Commands in `sudo_rules` MUST use absolute paths (e.g., `/usr/bin/systemctl` not `systemctl`) to prevent PATH exploitation attacks
+4. **Sudoers Validation**: All sudoers files are validated with `visudo -cf` before installation
+5. **File Permissions**: SSH directories (0700) and authorized_keys (0600) have secure permissions
+6. **Idempotent Operations**: Safe to run repeatedly without side effects
 
 ## Testing
 
