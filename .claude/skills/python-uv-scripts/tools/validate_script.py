@@ -16,6 +16,7 @@ Checks Python scripts for:
 Usage:
     python validate_script.py <script.py>
     python validate_script.py --strict <script.py>
+    python validate_script.py --force <script>
 
 Examples:
     # Basic validation
@@ -24,12 +25,21 @@ Examples:
     # Strict mode (all best practices)
     python validate_script.py --strict my_script.py
 
+    # Validate executable Python script without .py extension
+    python validate_script.py my_script
+
+    # Force validation, skip extension check
+    python validate_script.py --force my_script
+
     # Validate all scripts in directory
-    find . -name '*.py' -exec python validate_script.py {} \;
+    find . -name '*.py' -exec python validate_script.py {} \\;
 """
 
+import ast
+import os
 import re
 import sys
+import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -48,8 +58,9 @@ class ValidationResult:
 def extract_metadata_block(content: str) -> str | None:
     """Extract PEP 723 metadata block"""
     # Match metadata block with CRLF tolerance and flexible whitespace
-    pattern = r'# /// script\r?\n((?:#.*\r?\n)+)# ///'
-    match = re.search(pattern, content, re.MULTILINE | re.DOTALL)
+    # Uses lookahead to allow last metadata line without trailing newline
+    pattern = r'# /// script\r?\n((?:#.*(?:\r?\n|(?=\r?\n?#\s*///)))+)(?:\r?\n)?#\s*///'
+    match = re.search(pattern, content, re.MULTILINE)
 
     if not match:
         return None
@@ -69,26 +80,34 @@ def extract_metadata_block(content: str) -> str | None:
 
 
 def validate_toml_syntax(toml_content: str) -> list[str]:
-    """Validate TOML syntax (basic check)"""
+    """Validate TOML syntax using structured parsing"""
     errors = []
 
-    # Check for required sections
-    if 'requires-python' not in toml_content:
+    # Parse TOML content
+    try:
+        data = tomllib.loads(toml_content)
+    except tomllib.TOMLDecodeError as e:
+        errors.append(f"Invalid TOML syntax: {e}")
+        return errors
+
+    # Validate required fields
+    if 'requires-python' not in data:
         errors.append("Missing 'requires-python' field")
+    elif not isinstance(data['requires-python'], str):
+        errors.append("'requires-python' must be a string")
 
-    if 'dependencies' not in toml_content:
+    if 'dependencies' not in data:
         errors.append("Missing 'dependencies' field")
-
-    # Check for common TOML syntax errors
-    for line_num, line in enumerate(toml_content.split('\n'), 1):
-        line = line.strip()
-        if not line or line.startswith('#'):
-            continue
-
-        # Check for unquoted strings in dependencies
-        if 'dependencies' in toml_content and '=' not in line and '[' not in line and ']' not in line:
-            if not line.startswith('"') and not line.startswith("'"):
-                errors.append(f"Line {line_num}: Dependency should be quoted: {line}")
+    else:
+        dependencies = data['dependencies']
+        # Dependencies should be a list/array
+        if not isinstance(dependencies, list):
+            errors.append("'dependencies' must be an array/list")
+        else:
+            # Validate each dependency item
+            for idx, dep in enumerate(dependencies):
+                if not isinstance(dep, str):
+                    errors.append(f"Dependency at index {idx} must be a string, got {type(dep).__name__}")
 
     return errors
 
@@ -145,6 +164,38 @@ def check_security_issues(content: str) -> list[str]:
     return warnings
 
 
+def is_valid_python_file(script_path: Path) -> tuple[bool, str]:
+    """
+    Check if a non-.py file is a valid Python script.
+
+    Returns:
+        Tuple of (is_valid, reason) where reason describes why it's valid or invalid
+    """
+    try:
+        content = script_path.read_text(encoding='utf-8')
+    except (FileNotFoundError, PermissionError, OSError, UnicodeDecodeError) as e:
+        return False, f"Cannot read file: {e}"
+
+    # Check if file is executable with Python shebang
+    is_executable = os.access(script_path, os.X_OK)
+    lines = content.split('\n')
+    has_python_shebang = False
+
+    if lines and lines[0].startswith('#!'):
+        shebang = lines[0].lower()
+        has_python_shebang = 'python' in shebang
+
+    if is_executable and has_python_shebang:
+        return True, "executable with Python shebang"
+
+    # Try to parse as Python to confirm it's valid Python code
+    try:
+        ast.parse(content)
+        return True, "valid Python syntax"
+    except SyntaxError as e:
+        return False, f"not valid Python: {e}"
+
+
 def validate_script(script_path: Path, strict: bool = False) -> ValidationResult:
     """Validate Python script"""
     result = ValidationResult(
@@ -189,20 +240,21 @@ def validate_script(script_path: Path, strict: bool = False) -> ValidationResult
     if toml_errors:
         result.valid = False
 
-    # Check for docstring
-    docstring_pattern = r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\''
-    result.has_docstring = bool(re.search(docstring_pattern, content))
+    # Check for module docstring using AST parsing
+    try:
+        module_node = ast.parse(content)
+        module_docstring = ast.get_docstring(module_node)
+        result.has_docstring = module_docstring is not None
+    except SyntaxError as e:
+        result.has_docstring = False
+        result.warnings.append(f"Could not parse file for docstring check: {e}")
 
     if strict and not result.has_docstring:
         result.warnings.append("Missing module docstring (recommended in strict mode)")
 
-    # Security checks
+    # Security checks (always warnings, never errors - these are heuristic checks)
     security_warnings = check_security_issues(content)
     result.warnings.extend(security_warnings)
-
-    if strict and security_warnings:
-        result.valid = False
-        result.errors.extend([f"Security issue: {w}" for w in security_warnings])
 
     return result
 
@@ -218,6 +270,7 @@ def main():
     )
     parser.add_argument('script', help='Python script to validate')
     parser.add_argument('--strict', action='store_true', help='Enable strict validation')
+    parser.add_argument('--force', action='store_true', help='Skip Python file extension check')
 
     args = parser.parse_args()
 
@@ -227,9 +280,24 @@ def main():
         print(f"Error: File not found: {script_path}", file=sys.stderr)
         sys.exit(1)
 
-    if not script_path.suffix == '.py':
-        print(f"Error: Not a Python file: {script_path}", file=sys.stderr)
-        sys.exit(1)
+    # Check if file is a Python file
+    if script_path.suffix != '.py':
+        if args.force:
+            print(f"Warning: File lacks .py extension, but --force was specified", file=sys.stderr)
+        else:
+            # Check if it's a valid Python file by other means
+            is_valid, reason = is_valid_python_file(script_path)
+            if not is_valid:
+                print(f"Error: Not a Python file: {script_path}", file=sys.stderr)
+                print(f"  Reason: {reason}", file=sys.stderr)
+                print(f"  Hint: File must either:", file=sys.stderr)
+                print(f"    - Have a .py extension, OR", file=sys.stderr)
+                print(f"    - Be executable with a Python shebang, OR", file=sys.stderr)
+                print(f"    - Contain valid Python syntax", file=sys.stderr)
+                print(f"  Use --force to skip this check", file=sys.stderr)
+                sys.exit(1)
+            else:
+                print(f"Info: File accepted as Python ({reason})", file=sys.stderr)
 
     # Validate
     result = validate_script(script_path, strict=args.strict)
