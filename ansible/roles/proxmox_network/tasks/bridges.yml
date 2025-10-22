@@ -82,12 +82,12 @@
   ansible.builtin.set_fact:
     proxmox_network_changed: true
   when: >
-    proxmox_network_bridge_ports_result is changed or
-    proxmox_network_bridge_address_result is changed or
-    proxmox_network_bridge_gateway_result is changed or
-    proxmox_network_vlan_aware_result is changed or
-    proxmox_network_vlan_ids_result is changed or
-    proxmox_network_mtu_result is changed
+    (proxmox_network_bridge_ports_result is defined and proxmox_network_bridge_ports_result is changed) or
+    (proxmox_network_bridge_address_result is defined and proxmox_network_bridge_address_result is changed) or
+    (proxmox_network_bridge_gateway_result is defined and proxmox_network_bridge_gateway_result is changed) or
+    (proxmox_network_vlan_aware_result is defined and proxmox_network_vlan_aware_result is changed) or
+    (proxmox_network_vlan_ids_result is defined and proxmox_network_vlan_ids_result is changed) or
+    (proxmox_network_mtu_result is defined and proxmox_network_mtu_result is changed)
 
 - name: Display bridge configuration status
   ansible.builtin.debug:
