@@ -27,3 +27,11 @@ repos:
       - id: check-json
       - id: check-merge-conflict
       - id: check-symlinks
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.18.1
+    hooks:
+      - id: markdownlint-cli2
+        name: Lint Markdown files
+        # Exclude AI/Claude documentation (not part of codebase)
+        exclude: ^(\.claude/|ai_docs/)

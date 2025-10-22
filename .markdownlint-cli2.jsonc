@@ -1,0 +1,103 @@
+{
+  // markdownlint-cli2 configuration for Virgo-Core
+  // Documentation: https://github.com/DavidAnson/markdownlint-cli2
+
+  // Rule configuration
+  "config": {
+    // Enable all rules by default
+    "default": true,
+
+    // MD003: Heading style (consistent across the file)
+    "MD003": {
+      "style": "atx"
+    },
+
+    // MD004: Unordered list style (consistent across the file)
+    "MD004": {
+      "style": "consistent"
+    },
+
+    // MD007: Unordered list indentation (2 spaces)
+    "MD007": {
+      "indent": 2
+    },
+
+    // MD013: Line length (150 chars for documentation)
+    "MD013": {
+      "line_length": 150,
+      "code_blocks": false,
+      "tables": false
+    },
+
+    // MD024: Multiple headings with the same content (allow siblings)
+    "MD024": {
+      "siblings_only": true
+    },
+
+    // MD033: Inline HTML (allowed for tables and complex formatting)
+    "MD033": {
+      "allowed_elements": [
+        "details",
+        "summary",
+        "br",
+        "img",
+        "table",
+        "tr",
+        "td",
+        "th",
+        "thead",
+        "tbody"
+      ]
+    },
+
+    // MD041: First line in file should be a top-level heading
+    // Disabled because some files have front matter or metadata
+    "MD041": false,
+
+    // MD046: Code block style (fenced for consistency)
+    "MD046": {
+      "style": "fenced"
+    }
+  },
+
+  // File globbing patterns to include
+  "globs": [
+    "**/*.md"
+  ],
+
+  // Patterns to ignore (excludes non-codebase documentation)
+  "ignores": [
+    // Claude Code AI documentation (not part of codebase)
+    ".claude/**",
+
+    // AI-generated documentation archive (not part of codebase)
+    "ai_docs/**",
+
+    // Standard ignores
+    "node_modules/**",
+    ".git/**",
+    "vendor/**",
+
+    // Build artifacts and caches
+    "**/dist/**",
+    "**/build/**",
+    "**/.terraform/**",
+    "**/.venv/**",
+    "**/__pycache__/**"
+  ],
+
+  // Automatically respect .gitignore patterns
+  "gitignore": true,
+
+  // Don't automatically fix issues (safer for manual review)
+  "fix": false,
+
+  // Show informative banner
+  "noBanner": false,
+
+  // Show progress during linting
+  "noProgress": false,
+
+  // Show count of files found
+  "showFound": false
+}
