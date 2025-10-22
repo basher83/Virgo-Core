@@ -36,6 +36,7 @@ Example:
 import os
 import sys
 from typing import Optional
+from dataclasses import dataclass
 
 import typer
 from rich.console import Console
@@ -47,6 +48,18 @@ from infisical_sdk import InfisicalSDKClient
 
 app = typer.Typer()
 console = Console()
+
+
+# ============================================================================
+# Configuration and Authentication
+# ============================================================================
+
+@dataclass
+class NetBoxConfig:
+    """NetBox connection configuration."""
+    url: str
+    token: str
+    ssl_verify: bool = True
 
 
 def get_netbox_client() -> pynetbox.api:
@@ -61,7 +74,7 @@ def get_netbox_client() -> pynetbox.api:
 
     Raises:
         ValueError: If token cannot be retrieved or is empty
-        typer.Exit: On connection or authentication errors
+        typer.Exit: On connection or authentication errors (CLI exits)
     """
     try:
         # Initialize Infisical SDK client
@@ -72,8 +85,7 @@ def get_netbox_client() -> pynetbox.api:
         client_secret = os.getenv("INFISICAL_CLIENT_SECRET")
 
         if not client_id or not client_secret:
-            console.print(
-                "[red]INFISICAL_CLIENT_ID and INFISICAL_CLIENT_SECRET environment variables required[/red]")
+            console.print("[red]INFISICAL_CLIENT_ID and INFISICAL_CLIENT_SECRET environment variables required[/red]")
             raise typer.Exit(1)
 
         client.auth.universal_auth.login(
@@ -93,19 +105,21 @@ def get_netbox_client() -> pynetbox.api:
 
         if not token:
             console.print("[red]NETBOX_API_TOKEN is empty in Infisical[/red]")
-            raise typer.Exit(1)
+            raise ValueError("NETBOX_API_TOKEN is empty")
 
-        return pynetbox.api('https://netbox.spaceships.work', token=token)
+        config = NetBoxConfig(
+            url="https://netbox.spaceships.work",
+            token=token,
+            ssl_verify=True
+        )
 
-    except ValueError as e:
-        console.print(f"[red]Configuration error: {e}[/red]")
-        raise typer.Exit(1)
-    except (ConnectionError, TimeoutError) as e:
-        console.print(
-            f"[red]Failed to connect to NetBox or Infisical: {e}[/red]")
-        raise typer.Exit(1)
+        return pynetbox.api(config.url, token=config.token)
+
+    except ValueError:
+        # ValueError already logged above, re-raise to propagate
+        raise
     except Exception as e:
-        console.print(f"[red]Unexpected error: {e}[/red]")
+        console.print(f"[red]Failed to connect to NetBox: {e}[/red]")
         raise typer.Exit(1)
 
 
