@@ -11,6 +11,7 @@ Common mistakes when writing UV single-file scripts and how to avoid them.
 ### 1. Missing Shebang or Incorrect Format
 
 ❌ **Wrong**:
+
 ```python
 # No shebang - script won't be directly executable
 # /// script
@@ -19,6 +20,7 @@ Common mistakes when writing UV single-file scripts and how to avoid them.
 ```
 
 ✅ **Correct**:
+
 ```python
 #!/usr/bin/env -S uv run
 # /// script
@@ -29,11 +31,13 @@ Common mistakes when writing UV single-file scripts and how to avoid them.
 ### 2. Hardcoded Credentials
 
 ❌ **Wrong**:
+
 ```python
-API_KEY = "sk-1234567890abcdef"  # NEVER do this!
+API_KEY = "sk-PLACEHOLDER-NEVER-HARDCODE"  # NEVER do this!
 ```
 
 ✅ **Correct**:
+
 ```python
 from infisical import InfisicalClient
 client = InfisicalClient()
@@ -43,11 +47,13 @@ api_key = client.get_secret("API_KEY", path="/prod")
 ### 3. No Error Handling
 
 ❌ **Wrong**:
+
 ```python
 data = requests.get(url).json()  # Will crash on network error
 ```
 
 ✅ **Correct**:
+
 ```python
 try:
     response = requests.get(url, timeout=10.0)
@@ -61,6 +67,7 @@ except requests.RequestException as e:
 ### 4. Broad Exception Handling
 
 ❌ **Wrong**:
+
 ```python
 try:
     do_something()
@@ -69,6 +76,7 @@ except Exception:  # Too broad!
 ```
 
 ✅ **Correct**:
+
 ```python
 try:
     do_something()
@@ -80,6 +88,7 @@ except (FileNotFoundError, PermissionError) as e:
 ### 5. No Version Pinning
 
 ❌ **Wrong**:
+
 ```python
 # /// script
 # dependencies = ["requests"]  # Any version - breaks unpredictably
@@ -87,6 +96,7 @@ except (FileNotFoundError, PermissionError) as e:
 ```
 
 ✅ **Correct**:
+
 ```python
 # /// script
 # dependencies = ["requests>=2.31.0"]
@@ -96,12 +106,14 @@ except (FileNotFoundError, PermissionError) as e:
 ### 6. Platform-Specific Code Without Guards
 
 ❌ **Wrong**:
+
 ```python
 import pwd  # Unix-only, crashes on Windows
 user = pwd.getpwuid(os.getuid())
 ```
 
 ✅ **Correct**:
+
 ```python
 import sys
 if sys.platform != "win32":
@@ -115,7 +127,7 @@ else:
 
 This file will be expanded to include:
 
-- Complete checklist of common mistakes
-- Detailed explanations and fixes
-- Code review guidelines
-- Linting rules to catch issues
+-   Complete checklist of common mistakes
+-   Detailed explanations and fixes
+-   Code review guidelines
+-   Linting rules to catch issues
