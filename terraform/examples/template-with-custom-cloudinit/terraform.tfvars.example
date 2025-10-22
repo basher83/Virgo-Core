@@ -1,0 +1,69 @@
+# =============================================================================
+# = Proxmox Connection =========================================================
+# =============================================================================
+
+proxmox_endpoint = "https://proxmox.example.com:8006"
+proxmox_insecure = true
+proxmox_node     = "lloyd"
+
+# =============================================================================
+# = Template Configuration =====================================================
+# =============================================================================
+
+template_name = "ubuntu-24-04-custom-cloudinit-template"
+template_id   = 2008
+
+# =============================================================================
+# = Cloud-Init Configuration ===================================================
+# =============================================================================
+
+# Path to your custom cloud-init user-data file
+# Copy user-data.yaml.example to user-data.yaml and customize it
+user_data_file = "user-data.yaml"
+
+# Name for the snippet in Proxmox storage
+user_data_snippet_name = "user-data-custom.yaml"
+
+# DNS servers for network configuration
+dns_servers = ["1.1.1.1", "8.8.8.8"]
+
+# =============================================================================
+# = Cloud Image Download =======================================================
+# =============================================================================
+
+# Ubuntu 24.04 LTS (Noble Numbat)
+cloud_image_url      = "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
+cloud_image_filename = "noble-server-cloudimg-amd64.img"
+
+# Optional: Verify download integrity (recommended for production)
+# Get checksum from: https://cloud-images.ubuntu.com/noble/current/SHA256SUMS
+# cloud_image_checksum = "abc123def456..."  # Just the hash value, no "sha256:" prefix
+
+# Alternative cloud images:
+#
+# Ubuntu 22.04 LTS (Jammy Jellyfish)
+# cloud_image_url = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
+# cloud_image_filename = "ubuntu-22.04-server-cloudimg-amd64.img"
+#
+# Debian 12 (Bookworm)
+# cloud_image_url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"
+# cloud_image_filename = "debian-12-cloudimg-amd64.qcow2"
+
+# =============================================================================
+# = Storage ====================================================================
+# =============================================================================
+
+# Cloud-init snippet storage (must support snippets, typically 'local')
+cloud_init_datastore = "local"
+
+# Cloud image download storage (must be file-based, typically 'local')
+cloud_image_datastore = "local"
+
+# VM disk storage (can be block-based like 'local-lvm' or file-based like 'local')
+datastore = "local-lvm"
+
+# =============================================================================
+# = Network ====================================================================
+# =============================================================================
+
+network_bridge = "vmbr0"

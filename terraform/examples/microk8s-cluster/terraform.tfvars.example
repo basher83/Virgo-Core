@@ -1,0 +1,28 @@
+# Example Terraform variables file for MicroK8s cluster deployment
+# Copy this file to terraform.tfvars and customize for your environment
+
+# Proxmox Configuration
+proxmox_endpoint = "https://proxmox.local:8006"
+proxmox_insecure = true
+
+# Template Configuration
+# Template lives on 'lloyd', VMs will be deployed to different nodes (see main.tf)
+template_id   = 2000
+template_node = "lloyd"
+datastore     = "local-lvm"
+
+# Network Configuration
+network_bridge  = "vmbr0"
+vlan_id         = 30
+network_cidr    = "24"
+network_gateway = "192.168.30.1"
+
+# Secondary Network Configuration (Dual NIC)
+enable_secondary_nic      = true
+network_bridge_secondary  = "vmbr1"
+vlan_id_secondary         = null # Set to a number for VLAN on secondary NIC
+
+# SSH Configuration
+ssh_public_keys = [
+  "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC... user@hostname",
+]
