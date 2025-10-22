@@ -1,0 +1,34 @@
+---
+# ansible/roles/system_user/meta/main.yml
+# Role metadata
+
+galaxy_info:
+  role_name: system_user
+  author: Virgo-Core Infrastructure Team
+  description: Manage Linux system users with SSH keys and sudo privileges
+  company: Virgo-Core
+  license: MIT
+
+  min_ansible_version: "2.10"
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - noble
+    - name: Debian
+      versions:
+        - buster
+        - bullseye
+        - bookworm
+
+  galaxy_tags:
+    - system
+    - users
+    - sudo
+    - ssh
+    - administration
+
+dependencies: []
+# This role has no dependencies on other roles

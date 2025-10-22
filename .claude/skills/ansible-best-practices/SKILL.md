@@ -76,7 +76,46 @@ This repository uses **Infisical** for secrets management. See the reusable task
 
 See [patterns/secrets-management.md](patterns/secrets-management.md) for complete guide.
 
-### 2. Hybrid Module Approach
+### 2. State-Based Playbooks (Not Separate Create/Delete)
+
+**Pattern:** Single playbook handles both create and remove via `state` variable.
+
+From [../../ansible/playbooks/create-admin-user.yml](../../ansible/playbooks/create-admin-user.yml) + [../../ansible/roles/system_user/](../../ansible/roles/system_user/):
+
+```yaml
+# Create user (default behavior)
+uv run ansible-playbook playbooks/create-admin-user.yml \
+  -e "admin_name=alice" \
+  -e "admin_ssh_key='ssh-ed25519 ...'"
+
+# Remove user (just add state=absent)
+uv run ansible-playbook playbooks/create-admin-user.yml \
+  -e "admin_name=alice" \
+  -e "admin_state=absent"
+```
+
+**Why This Works:**
+- Follows community role patterns (`geerlingguy.docker`, etc.)
+- Single source of truth
+- Consistent interface
+- Less duplication
+
+**Key Implementation Details:**
+```yaml
+- name: Manage Administrative User
+  roles:
+    - role: system_user
+      vars:
+        system_users:
+          - name: "{{ admin_name }}"
+            state: "{{ admin_state | default('present') }}"  # Default to create
+            # Conditional parameters (only when creating)
+            ssh_keys: "{{ [] if admin_state == 'absent' else [admin_ssh_key] }}"
+```
+
+See [patterns/playbook-role-patterns.md](patterns/playbook-role-patterns.md) for complete guide.
+
+### 3. Hybrid Module Approach
 
 From [../../ansible/playbooks/proxmox-create-terraform-user.yml](../../ansible/playbooks/proxmox-create-terraform-user.yml):
 
@@ -108,7 +147,7 @@ From [../../ansible/playbooks/proxmox-create-terraform-user.yml](../../ansible/p
 - `failed_when` handles "already exists" gracefully
 - Idempotent despite using `command` module
 
-### 3. Proper Error Handling
+### 4. Proper Error Handling
 
 **Pattern:**
 ```yaml
@@ -132,7 +171,7 @@ From [../../ansible/playbooks/proxmox-create-terraform-user.yml](../../ansible/p
   # Missing: changed_when, failed_when, register
 ```
 
-### 4. Task Organization
+### 5. Task Organization
 
 **Reusable Tasks:**
 - Extract common patterns to `tasks/` directory
@@ -151,7 +190,7 @@ From [../../ansible/playbooks/proxmox-create-terraform-user.yml](../../ansible/p
 
 See [patterns/reusable-tasks.md](patterns/reusable-tasks.md).
 
-### 5. Network Automation with Community Modules
+### 6. Network Automation with Community Modules
 
 From [../../ansible/playbooks/proxmox-enable-vlan-bridging.yml](../../ansible/playbooks/proxmox-enable-vlan-bridging.yml):
 
@@ -182,7 +221,7 @@ From [../../ansible/playbooks/proxmox-enable-vlan-bridging.yml](../../ansible/pl
 
 See [patterns/network-automation.md](patterns/network-automation.md) for advanced patterns.
 
-### 6. Idempotency Patterns
+### 7. Idempotency Patterns
 
 **Use `changed_when` and `failed_when`:**
 
@@ -458,6 +497,7 @@ For deeper knowledge:
 - [Collections guide](reference/collections-guide.md) - Using collections
 
 ### Patterns & Anti-Patterns
+- [Playbook & Role Patterns](patterns/playbook-role-patterns.md) - State-based playbooks, public API variables, validation patterns
 - [Secrets management](patterns/secrets-management.md) - Infisical integration
 - [Error handling](patterns/error-handling.md) - Proper error handling
 - [Task organization](patterns/task-organization.md) - Reusable tasks

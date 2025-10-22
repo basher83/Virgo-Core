@@ -1,4 +1,11 @@
 ---
+# ⚠️  DEPRECATED - This playbook is deprecated in favor of the system_user role
+# Use playbooks/create-admin-user.yml instead
+# This file will be removed in a future release (after Phase 1 migration testing)
+#
+# Migration: ansible/roles/system_user provides better flexibility and maintainability
+# See: docs/ansible-migration-plan.md
+
 # Playbook to create system users with sudo privileges
 # This playbook creates a user with home directory and configures sudoers
 

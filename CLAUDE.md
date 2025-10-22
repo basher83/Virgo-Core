@@ -134,23 +134,32 @@ terraform/
 
 ### Ansible Structure
 
+**Migration Status**: Migrating to role-based architecture (Phase 1 complete). See [docs/ansible-migration-plan.md](docs/ansible-migration-plan.md).
+
 ```text
 ansible/
 ├── playbooks/
-│   ├── proxmox-build-template.yml         # Build Ubuntu cloud-init templates
-│   ├── proxmox-create-terraform-user.yml  # Configure Proxmox for Terraform
-│   ├── proxmox-enable-vlan-bridging.yml   # Configure VLAN-aware bridges
-│   ├── install-docker.yml                  # Docker installation
-│   ├── add-system-user.yml                 # User management
-│   └── add-file-to-host.yml                # File deployment
-├── inventory/            # Proxmox hosts inventory
-├── roles/                # Custom Ansible roles
-├── tasks/                # Reusable task files
-├── templates/            # Jinja2 templates
-├── group_vars/           # Group variables
-├── host_vars/            # Host-specific variables
-├── requirements.yml      # Galaxy collections/roles
-└── ansible.cfg           # Ansible configuration
+│   ├── create-admin-user.yml               # ✨ NEW: Create admin users (uses system_user role)
+│   ├── proxmox-build-template.yml          # Build Ubuntu cloud-init templates
+│   ├── proxmox-create-terraform-user.yml   # Configure Proxmox for Terraform
+│   ├── proxmox-enable-vlan-bridging.yml    # Configure VLAN-aware bridges
+│   ├── install-docker.yml                   # Docker installation
+│   ├── add-system-user.yml                  # ⚠️  DEPRECATED (use create-admin-user.yml)
+│   └── add-file-to-host.yml                 # File deployment
+├── roles/
+│   └── system_user/                         # ✨ NEW: User management role
+│       ├── tasks/                           # User creation, SSH keys, sudo config
+│       ├── templates/                       # sudoers.j2 template
+│       ├── defaults/                        # Default variables
+│       ├── meta/                            # Role metadata
+│       └── README.md                        # Role documentation
+├── inventory/                               # Proxmox hosts inventory
+├── tasks/                                   # Reusable task files
+├── templates/                               # Jinja2 templates (shared)
+├── group_vars/                              # Group variables
+├── host_vars/                               # Host-specific variables
+├── requirements.yml                         # Galaxy collections/roles
+└── ansible.cfg                              # Ansible configuration
 ```
 
 **Ansible Collections Used**:
@@ -158,11 +167,20 @@ ansible/
 - `community.proxmox`: Proxmox management modules
 - `community.general`: General utility modules
 - `infisical.vault`: Infisical secrets integration
-- `ansible.posix`: POSIX system management
+- `ansible.posix`: POSIX system management (SSH keys, authorized_key)
 - `ansible.utils`: Network/data utilities
 - `community.docker`: Docker management
 
-**Ansible Roles**:
+**Custom Ansible Roles** (Phase 1 - ✅ Complete):
+
+- **`system_user`**: Manage Linux system users with SSH keys and sudo privileges
+  - Idempotent user creation/removal
+  - SSH authorized_keys management
+  - Flexible sudo configuration (full access or specific commands)
+  - Validated sudoers files
+  - See: [ansible/roles/system_user/README.md](ansible/roles/system_user/README.md)
+
+**External Ansible Roles**:
 
 - `geerlingguy.docker`: Docker installation and management
 

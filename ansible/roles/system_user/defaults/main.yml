@@ -1,0 +1,51 @@
+---
+# ansible/roles/system_user/defaults/main.yml
+# Default variables for system_user role
+
+# List of system users to manage
+# Leave empty to manage no users
+# noqa: var-naming[no-role-prefix] - This is the role's public API variable
+system_users: []
+
+# Example user structure:
+# system_users:
+#   - name: username               # Required: Username to create
+#     state: present               # Optional: present or absent (default: present)
+#     shell: /bin/bash             # Optional: User's shell (default: /bin/bash)
+#     groups: []                   # Optional: Additional groups (default: [])
+#     comment: "User description"  # Optional: GECOS field (default: "")
+#     create_home: true            # Optional: Create home directory (default: true)
+#     ssh_keys: []                 # Optional: List of SSH public keys (default: [])
+#     sudo_nopasswd: false         # Optional: Grant NOPASSWD:ALL sudo (default: false)
+#     sudo_rules: []               # Optional: Specific sudo commands (default: [])
+#                                  # SECURITY: Commands MUST use absolute paths (e.g., /usr/bin/systemctl)
+#                                  # to prevent PATH exploitation attacks
+#
+# Note: If both sudo_nopasswd and sudo_rules are defined, sudo_nopasswd takes precedence
+
+# Example 1: Admin user with full sudo
+# system_users:
+#   - name: admin
+#     comment: "System Administrator"
+#     shell: /bin/bash
+#     groups: [sudo]
+#     ssh_keys:
+#       - "ssh-rsa AAAAB3NzaC1yc2E... user@host"
+#     sudo_nopasswd: true
+
+# Example 2: Service user with limited sudo
+# system_users:
+#   - name: terraform
+#     comment: "Terraform automation user"
+#     shell: /bin/bash
+#     ssh_keys:
+#       - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... terraform@controller"
+#     sudo_rules:
+#       - "/sbin/pvesm"              # MUST use absolute paths for security
+#       - "/sbin/qm"                 # Prevents PATH exploitation
+#       - "/usr/bin/tee /var/lib/vz/*"
+
+# Example 3: Remove a user
+# system_users:
+#   - name: olduser
+#     state: absent

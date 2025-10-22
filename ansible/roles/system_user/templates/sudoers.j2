@@ -1,0 +1,21 @@
+# Sudoers configuration for {{ user_item.name }}
+# Managed by Ansible - DO NOT EDIT MANUALLY
+# Role: system_user
+# Host: {{ inventory_hostname }}
+# Last updated: {{ ansible_date_time.iso8601 | default('unknown') }}
+
+{% if user_item.sudo_nopasswd | default(false) %}
+# Full sudo access without password prompt
+{{ user_item.name }} ALL=(ALL) NOPASSWD:ALL
+
+{% elif user_item.sudo_rules is defined and user_item.sudo_rules | length > 0 %}
+# Limited sudo access to specific commands without password prompt
+{% for command in user_item.sudo_rules %}
+{{ user_item.name }} ALL=(root) NOPASSWD: {{ command }}
+{% endfor %}
+
+{% else %}
+# No sudo configuration (this file should not exist if no sudo access)
+# This is a safeguard - if you see this, check your role configuration
+
+{% endif %}
