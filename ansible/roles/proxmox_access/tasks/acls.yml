@@ -16,6 +16,8 @@
     api_password: "{{ proxmox_api_password }}"
     validate_certs: "{{ proxmox_validate_certs }}"
   loop: "{{ proxmox_acls }}"
+  loop_control:
+    label: "{{ item.type }} {{ item.ugid }} on {{ item.path }}"
   delegate_to: localhost
   become: false
   register: proxmox_access_acl_result

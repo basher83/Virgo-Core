@@ -47,6 +47,8 @@
   when:
     - item.changed
     - item.stdout is defined
+  loop_control:
+    label: "{{ item.item.item.userid }}!{{ item.item.item.tokenid }}"
   no_log: "{{ proxmox_no_log }}"
 
 - name: Display token generation warnings  # noqa: no-handler

@@ -32,7 +32,7 @@
 
     # Auto-detect cluster name from inventory group
     # Expects groups named like: matrix_cluster, doggos_cluster, etc.
-    cluster_name: "{{ group_names | select('search', '_cluster') | first | default('default') | regex_replace('_cluster$', '') }}"
+    cluster_name: "{{ (group_names | select('search', '_cluster') | list | first) | default('default', true) | regex_replace('_cluster$', '') }}"
 
     # =============================================================================
     # Infisical Secret Management
@@ -50,10 +50,12 @@
     terraform_ssh_key_file: "{{ playbook_dir }}/../files/terraform_authorized_keys"
 
     # Sudo commands required by Terraform provider
+    # NOTE: tee command restricted to specific subdirectories for security
     terraform_sudo_commands:
       - "/sbin/pvesm"
       - "/sbin/qm"
-      - "/usr/bin/tee /var/lib/vz/*"
+      - "/usr/bin/tee /var/lib/vz/template/*"
+      - "/usr/bin/tee /var/lib/vz/images/*"
 
     # =============================================================================
     # Proxmox Configuration
@@ -145,7 +147,7 @@
             roleid: TerraformUser
 
         # Export environment file for Terraform
-        export_terraform_env: "{{ export_terraform_env | default(true) }}"
+        export_terraform_env: "{{ export_terraform_env | default(false) }}"
       tags: [proxmox_access, proxmox_api]
 
   post_tasks:
@@ -165,11 +167,11 @@
           Proxmox Role:        TerraformUser
           API Token:           {{ terraform_username }}@pam!automation
 
-          {% if export_terraform_env | default(true) %}
-          Environment File:    ~/tmp/.proxmox-terraform/proxmox-{{ inventory_hostname_short }}
+          {% if export_terraform_env | default(false) %}
+          Environment File:    {{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}
 
           To use with Terraform:
-            source ~/tmp/.proxmox-terraform/proxmox-{{ inventory_hostname_short }}
+            source {{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}
             cd terraform/netbox-vm
             tofu plan
           {% endif %}
