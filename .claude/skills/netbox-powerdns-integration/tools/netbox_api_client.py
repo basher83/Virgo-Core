@@ -83,7 +83,7 @@ def get_netbox_client() -> pynetbox.api:
 
     Raises:
         ValueError: If token cannot be retrieved or is empty
-        SystemExit: On connection or authentication errors
+        typer.Exit: On connection or authentication errors (CLI exits)
     """
     try:
         # Initialize Infisical SDK client
@@ -95,7 +95,7 @@ def get_netbox_client() -> pynetbox.api:
 
         if not client_id or not client_secret:
             console.print("[red]INFISICAL_CLIENT_ID and INFISICAL_CLIENT_SECRET environment variables required[/red]")
-            sys.exit(1)
+            raise typer.Exit(1)
 
         client.auth.universal_auth.login(
             client_id=client_id,
@@ -129,7 +129,7 @@ def get_netbox_client() -> pynetbox.api:
         raise
     except Exception as e:
         console.print(f"[red]Failed to connect to NetBox: {e}[/red]")
-        sys.exit(1)
+        raise typer.Exit(1)
 
 
 # ============================================================================

@@ -7,10 +7,6 @@
 #   "rich>=13.0.0",
 #   "typer>=0.9.0",
 # ]
-# [tool.uv.metadata]
-# purpose = "netbox-ipam-queries"
-# team = "infrastructure"
-# author = "devops@spaceships.work"
 # ///
 
 """
@@ -76,7 +72,8 @@ def get_netbox_client() -> pynetbox.api:
         client_secret = os.getenv("INFISICAL_CLIENT_SECRET")
 
         if not client_id or not client_secret:
-            console.print("[red]INFISICAL_CLIENT_ID and INFISICAL_CLIENT_SECRET environment variables required[/red]")
+            console.print(
+                "[red]INFISICAL_CLIENT_ID and INFISICAL_CLIENT_SECRET environment variables required[/red]")
             raise typer.Exit(1)
 
         client.auth.universal_auth.login(
@@ -104,7 +101,8 @@ def get_netbox_client() -> pynetbox.api:
         console.print(f"[red]Configuration error: {e}[/red]")
         raise typer.Exit(1)
     except (ConnectionError, TimeoutError) as e:
-        console.print(f"[red]Failed to connect to NetBox or Infisical: {e}[/red]")
+        console.print(
+            f"[red]Failed to connect to NetBox or Infisical: {e}[/red]")
         raise typer.Exit(1)
     except Exception as e:
         console.print(f"[red]Unexpected error: {e}[/red]")
@@ -126,7 +124,8 @@ def available_ips(
             TextColumn("[progress.description]{task.description}"),
             console=console
         ) as progress:
-            task = progress.add_task(f"Querying prefix {prefix}...", total=None)
+            task = progress.add_task(
+                f"Querying prefix {prefix}...", total=None)
 
             prefix_obj = nb.ipam.prefixes.get(prefix=prefix)
 
@@ -147,8 +146,10 @@ def available_ips(
             print(json.dumps(data, indent=2))
         else:
             console.print(f"\n[green]Prefix:[/green] {prefix}")
-            console.print(f"[green]Site:[/green] {prefix_obj.site.name if prefix_obj.site else 'N/A'}")
-            console.print(f"[green]Description:[/green] {prefix_obj.description or 'N/A'}\n")
+            console.print(
+                f"[green]Site:[/green] {prefix_obj.site.name if prefix_obj.site else 'N/A'}")
+            console.print(
+                f"[green]Description:[/green] {prefix_obj.description or 'N/A'}\n")
 
             table = Table(title="Available IP Addresses")
             table.add_column("IP Address", style="cyan")
@@ -158,7 +159,8 @@ def available_ips(
                 table.add_row(str(ip.address), "✓")
 
             console.print(table)
-            console.print(f"\n[yellow]Showing first {limit} available IPs[/yellow]")
+            console.print(
+                f"\n[yellow]Showing first {limit} available IPs[/yellow]")
 
     except Exception as e:
         console.print(f"[red]Error: {e}[/red]")
@@ -187,7 +189,8 @@ def prefix_utilization(
             console=console
         ) as progress:
             task = progress.add_task("Querying prefixes...", total=None)
-            prefixes = nb.ipam.prefixes.filter(**filters) if filters else nb.ipam.prefixes.all()
+            prefixes = nb.ipam.prefixes.filter(
+                **filters) if filters else nb.ipam.prefixes.all()
 
         if output == "json":
             import json
@@ -251,7 +254,8 @@ def ip_assignments(
             TextColumn("[progress.description]{task.description}"),
             console=console
         ) as progress:
-            task = progress.add_task(f"Querying prefix {prefix}...", total=None)
+            task = progress.add_task(
+                f"Querying prefix {prefix}...", total=None)
 
             prefix_obj = nb.ipam.prefixes.get(prefix=prefix)
             if not prefix_obj:
@@ -289,13 +293,15 @@ def ip_assignments(
             for ip in ips:
                 assigned_to = "N/A"
                 if ip.assigned_object:
-                    obj_type = ip.assigned_object_type.split('.')[-1] if ip.assigned_object_type else "unknown"
+                    obj_type = ip.assigned_object_type.split(
+                        '.')[-1] if ip.assigned_object_type else "unknown"
                     assigned_to = f"{ip.assigned_object.name} ({obj_type})"
 
                 table.add_row(
                     str(ip.address),
                     ip.dns_name or "",
-                    ip.status.value if hasattr(ip.status, 'value') else str(ip.status),
+                    ip.status.value if hasattr(
+                        ip.status, 'value') else str(ip.status),
                     assigned_to,
                     ip.description or ""
                 )
@@ -322,7 +328,8 @@ def list_vlans(
             filters['site'] = site
 
         # Materialize once to avoid re-fetching on len() call
-        vlans = list(nb.ipam.vlans.filter(**filters) if filters else nb.ipam.vlans.all())
+        vlans = list(nb.ipam.vlans.filter(**filters)
+                     if filters else nb.ipam.vlans.all())
 
         if output == "json":
             import json
@@ -353,7 +360,8 @@ def list_vlans(
                     str(vlan.vid),
                     vlan.name,
                     vlan.site.name if vlan.site else "N/A",
-                    vlan.status.value if hasattr(vlan.status, 'value') else str(vlan.status),
+                    vlan.status.value if hasattr(
+                        vlan.status, 'value') else str(vlan.status),
                     vlan.description or ""
                 )
 
@@ -389,7 +397,8 @@ def ipam_summary(
             prefixes = list(nb.ipam.prefixes.filter(site=site))
 
             # Get IPs
-            ips = list(nb.ipam.ip_addresses.filter(site=site) if hasattr(nb.ipam.ip_addresses, 'filter') else [])
+            ips = list(nb.ipam.ip_addresses.filter(site=site)
+                       if hasattr(nb.ipam.ip_addresses, 'filter') else [])
 
             # Get VLANs
             vlans = list(nb.ipam.vlans.filter(site=site))
@@ -409,13 +418,15 @@ def ipam_summary(
             console.print("\n[yellow]Prefixes:[/yellow]")
             for p in prefixes:
                 utilization = p.utilization if hasattr(p, 'utilization') else 0
-                console.print(f"  • {p.prefix} - {p.description or 'No description'} ({utilization}% used)")
+                console.print(
+                    f"  • {p.prefix} - {p.description or 'No description'} ({utilization}% used)")
 
         # VLAN details
         if vlans:
             console.print("\n[yellow]VLANs:[/yellow]")
             for v in vlans:
-                console.print(f"  • VLAN {v.vid} ({v.name}) - {v.description or 'No description'}")
+                console.print(
+                    f"  • VLAN {v.vid} ({v.name}) - {v.description or 'No description'}")
 
     except Exception as e:
         console.print(f"[red]Error: {e}[/red]")

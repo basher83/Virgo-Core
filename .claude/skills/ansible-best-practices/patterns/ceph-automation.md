@@ -293,6 +293,7 @@ ceph_pools:
   ansible.builtin.command:
     cmd: "wipefs -a {{ item.device }}"
   when:
+    - ceph_volume_probe.rc == 0
     - ceph_volume_probe.stdout | from_json | dict2items | selectattr('value.0.devices', 'defined') | map(attribute='value.0.devices') | flatten | select('match', '^' + item.device) | list | length == 0
     - ceph_wipe_disks | default(false)
   loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
@@ -340,6 +341,7 @@ ceph_pools:
       {% if item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %}
   when:
     - item.partitions | default(1) == 1
+    - ceph_volume_probe.rc == 0
     - ceph_volume_probe.stdout | from_json | dict2items | selectattr('value.0.devices', 'defined') | map(attribute='value.0.devices') | flatten | select('match', '^' + item.device + '$') | list | length == 0
   loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
   loop_control:
@@ -355,8 +357,9 @@ ceph_pools:
     cmd: >
       pveceph osd create {{ item.device }}{{ 'p' if item.device.startswith('/dev/nvme') else '' }}{{ item.partition_num }}
       {% if item.db_device %}--db_dev {{ item.db_device }}{% endif %}
-      {% if item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %}
+      {% if item.wal_device %}--wal_dev {{ item.wal_device %}{% endif %}
   when:
+    - ceph_volume_probe.rc == 0
     - ceph_volume_probe.stdout | from_json | dict2items | selectattr('value.0.devices', 'defined') | map(attribute='value.0.devices') | flatten | select('match', '^' + item.device + ('p' if item.device.startswith('/dev/nvme') else '') + (item.partition_num | string) + '$') | list | length == 0
   loop: "{{ osd_partitions }}"
   loop_control:

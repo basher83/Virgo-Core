@@ -44,6 +44,7 @@ import os
 import sys
 import re
 from typing import Optional
+from dataclasses import dataclass
 
 import typer
 from rich.console import Console
@@ -53,6 +54,18 @@ from infisical_sdk import InfisicalSDKClient
 
 app = typer.Typer()
 console = Console()
+
+
+# ============================================================================
+# Configuration and Authentication
+# ============================================================================
+
+@dataclass
+class NetBoxConfig:
+    """NetBox connection configuration."""
+    url: str
+    token: str
+    ssl_verify: bool = True
 
 
 def get_netbox_client() -> pynetbox.api:
@@ -67,7 +80,7 @@ def get_netbox_client() -> pynetbox.api:
 
     Raises:
         ValueError: If token cannot be retrieved or is empty
-        typer.Exit: On connection or authentication errors
+        typer.Exit: On connection or authentication errors (CLI exits)
     """
     try:
         # Initialize Infisical SDK client
@@ -98,21 +111,21 @@ def get_netbox_client() -> pynetbox.api:
 
         if not token:
             console.print("[red]NETBOX_API_TOKEN is empty in Infisical[/red]")
-            raise typer.Exit(1)
+            raise ValueError("NETBOX_API_TOKEN is empty")
 
-        return pynetbox.api("https://netbox.spaceships.work", token=token)
+        config = NetBoxConfig(
+            url="https://netbox.spaceships.work",
+            token=token,
+            ssl_verify=True
+        )
 
-    except ValueError as e:
-        console.print(f"[red]Configuration error: {e}[/red]")
-        raise typer.Exit(1)
-    except AttributeError as e:
-        console.print(f"[red]Failed to access Infisical secret: {e}[/red]")
-        raise typer.Exit(1)
-    except (ConnectionError, TimeoutError) as e:
-        console.print(f"[red]Failed to connect to NetBox or Infisical: {e}[/red]")
-        raise typer.Exit(1)
+        return pynetbox.api(config.url, token=config.token)
+
+    except ValueError:
+        # ValueError already logged above, re-raise to propagate
+        raise
     except Exception as e:
-        console.print(f"[red]Unexpected error: {e}[/red]")
+        console.print(f"[red]Failed to connect to NetBox: {e}[/red]")
         raise typer.Exit(1)
 
 
@@ -165,7 +178,7 @@ def main(
     if not validate_vm_name(name):
         console.print(f"[red]Invalid VM name: {name}[/red]")
         console.print("[yellow]VM name must contain only lowercase letters, numbers, and hyphens[/yellow]")
-        sys.exit(1)
+        raise typer.Exit(1)
 
     # Generate DNS name if not provided
     if not dns_name:
@@ -176,7 +189,7 @@ def main(
         console.print(f"[red]Invalid DNS name: {dns_name}[/red]")
         console.print("[yellow]DNS name must follow pattern: service-NN[-purpose].domain[/yellow]")
         console.print("[yellow]Examples: docker-01.spaceships.work or docker-01-nexus.spaceships.work[/yellow]")
-        sys.exit(1)
+        raise typer.Exit(1)
 
     # Parse tags
     tag_list = [tag.strip() for tag in tags.split(',') if tag.strip()]
@@ -198,12 +211,12 @@ def main(
 
     if dry_run:
         console.print("\n[yellow]Dry run - no changes made[/yellow]")
-        sys.exit(0)
+        raise typer.Exit(0)
 
     # Confirm
     if not typer.confirm("\nCreate this VM in NetBox?"):
         console.print("[yellow]Aborted[/yellow]")
-        sys.exit(0)
+        raise typer.Exit(0)
 
     nb = get_netbox_client()
 
@@ -213,7 +226,7 @@ def main(
         cluster_obj = nb.virtualization.clusters.get(name=cluster)
         if not cluster_obj:
             console.print(f"[red]Cluster '{cluster}' not found[/red]")
-            sys.exit(1)
+            raise typer.Exit(1)
         console.print(f"[green]✓ Found cluster: {cluster_obj.name}[/green]")
 
         # 2. Check if VM already exists
@@ -221,7 +234,7 @@ def main(
         existing_vm = nb.virtualization.virtual_machines.get(name=name)
         if existing_vm:
             console.print(f"[red]VM '{name}' already exists (ID: {existing_vm.id})[/red]")
-            sys.exit(1)
+            raise typer.Exit(1)
         console.print("[green]✓ VM name available[/green]")
 
         # 3. Create VM
@@ -260,7 +273,7 @@ def main(
                 # Rollback
                 vm_iface.delete()
                 vm.delete()
-                sys.exit(1)
+                raise typer.Exit(1)
 
         try:
             if ip:
@@ -283,7 +296,7 @@ def main(
                     # Rollback
                     vm_iface.delete()
                     vm.delete()
-                    sys.exit(1)
+                    raise typer.Exit(1)
 
                 vm_ip = prefix_obj.available_ips.create(
                     dns_name=dns_name,
@@ -302,7 +315,7 @@ def main(
                 vm.delete()
             except Exception as rollback_error:
                 console.print(f"[red]Rollback failed: {rollback_error}[/red]")
-            sys.exit(1)
+            raise typer.Exit(1)
 
         # 6. Set as primary IP
         console.print(f"\n[cyan]6. Setting {vm_ip.address} as primary IP...[/cyan]")
@@ -331,10 +344,10 @@ def main(
 
     except pynetbox.RequestError as e:
         console.print(f"\n[red]NetBox API Error: {e.error}[/red]")
-        sys.exit(1)
+        raise typer.Exit(1)
     except Exception as e:
         console.print(f"\n[red]Unexpected error: {e}[/red]")
-        sys.exit(1)
+        raise typer.Exit(1)
 
 
 if __name__ == "__main__":
