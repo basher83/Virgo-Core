@@ -1,0 +1,59 @@
+---
+# ansible/roles/system_user/tasks/main.yml
+# Main task orchestration for system_user role
+
+- name: Validate system_users variable is defined
+  ansible.builtin.assert:
+    that:
+      - system_users is defined
+      - system_users is iterable
+    fail_msg: "system_users must be defined as a list"
+    success_msg: "system_users variable is valid"
+
+- name: Display number of users to manage
+  ansible.builtin.debug:
+    msg: "Managing {{ system_users | length }} system user(s)"
+  when: system_users | length > 0
+
+- name: Create/update system users
+  ansible.builtin.include_tasks: create_users.yml
+  loop: "{{ system_users }}"
+  loop_control:
+    loop_var: user_item
+    label: "{{ user_item.name }}"
+  when:
+    - system_users | length > 0
+    - user_item.state | default('present') == 'present'
+
+- name: Remove system users
+  ansible.builtin.include_tasks: remove_users.yml
+  loop: "{{ system_users }}"
+  loop_control:
+    loop_var: user_item
+    label: "{{ user_item.name }}"
+  when:
+    - system_users | length > 0
+    - user_item.state | default('present') == 'absent'
+
+- name: Configure SSH keys for users
+  ansible.builtin.include_tasks: ssh_keys.yml
+  loop: "{{ system_users }}"
+  loop_control:
+    loop_var: user_item
+    label: "{{ user_item.name }}"
+  when:
+    - system_users | length > 0
+    - user_item.state | default('present') == 'present'
+    - user_item.ssh_keys is defined
+    - user_item.ssh_keys | length > 0
+
+- name: Configure sudo privileges for users
+  ansible.builtin.include_tasks: sudo_config.yml
+  loop: "{{ system_users }}"
+  loop_control:
+    loop_var: user_item
+    label: "{{ user_item.name }}"
+  when:
+    - system_users | length > 0
+    - user_item.state | default('present') == 'present'
+    - (user_item.sudo_nopasswd | default(false)) or (user_item.sudo_rules is defined and user_item.sudo_rules | length > 0)

@@ -1,0 +1,18 @@
+---
+# ansible/roles/system_user/tasks/ssh_keys.yml
+# Configure SSH authorized keys for users
+
+- name: Configure SSH authorized keys for {{ user_item.name }}
+  ansible.posix.authorized_key:
+    user: "{{ user_item.name }}"
+    key: "{{ item }}"
+    state: present
+  loop: "{{ user_item.ssh_keys }}"
+  loop_control:
+    label: "{{ item | regex_search('\\s+(.*)$', '\\1') | first | default('SSH key') }}"
+  no_log: false
+  register: system_user_ssh_key_result
+
+- name: Display SSH key configuration status
+  ansible.builtin.debug:
+    msg: "Configured {{ user_item.ssh_keys | length }} SSH key(s) for {{ user_item.name }}"
