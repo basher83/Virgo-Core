@@ -25,7 +25,12 @@
     msg: "Sudoers configuration for '{{ user_item.name }}' {{ 'updated' if system_user_sudoers_result.changed else 'already current' }}"
 
 - name: Verify sudo configuration with test command
-  ansible.builtin.command: sudo -l -U {{ user_item.name }}
+  ansible.builtin.command:
+    argv:
+      - sudo
+      - -l
+      - -U
+      - "{{ user_item.name }}"
   register: system_user_sudo_verify
   changed_when: false
   failed_when: false
