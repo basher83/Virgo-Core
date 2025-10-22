@@ -526,6 +526,7 @@ ceph_pools:
         ceph_osds
         | dict2items
         | map(attribute='value')
+        | sum(start=[])
         | map('default', {'partitions': 1})
         | map(attribute='partitions')
         | map('int')
