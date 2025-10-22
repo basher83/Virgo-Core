@@ -1,22 +1,27 @@
 ---
 # Playbook: Setup Terraform Automation Access
-# Purpose: Create Linux system user and Proxmox API access for Terraform/OpenTofu
+# Purpose: Create Linux system user and Proxmox API access for
+#          Terraform/OpenTofu
 # Replaces: proxmox-create-terraform-user.yml (Phase 2 migration)
 #
 # This playbook orchestrates two roles:
 # 1. system_user - Creates Linux PAM user with SSH and sudo access
-# 2. proxmox_access - Configures Proxmox roles, groups, users, tokens, and ACLs
+# 2. proxmox_access - Configures Proxmox roles, groups, users,
+#                      tokens, and ACLs
 #
 # Usage:
 #   # Setup on default cluster (use inventory group)
-#   uv run ansible-playbook playbooks/setup-terraform-automation.yml
+#   uv run ansible-playbook \
+#     playbooks/setup-terraform-automation.yml
 #
 #   # Setup on specific cluster
-#   uv run ansible-playbook playbooks/setup-terraform-automation.yml \
+#   uv run ansible-playbook \
+#     playbooks/setup-terraform-automation.yml \
 #     -e "target_cluster=matrix_cluster"
 #
 #   # Custom configuration
-#   uv run ansible-playbook playbooks/setup-terraform-automation.yml \
+#   uv run ansible-playbook \
+#     playbooks/setup-terraform-automation.yml \
 #     -e "terraform_username=terraform" \
 #     -e "export_terraform_env=true"
 
@@ -32,7 +37,12 @@
 
     # Auto-detect cluster name from inventory group
     # Expects groups named like: matrix_cluster, doggos_cluster, etc.
-    cluster_name: "{{ (group_names | select('search', '_cluster') | list | first) | default('default', true) | regex_replace('_cluster$', '') }}"
+    cluster_name: >-
+      {{
+        (group_names | select('search', '_cluster') | list | first)
+        | default('default', true)
+        | regex_replace('_cluster$', '')
+      }}
 
     # =============================================================================
     # Infisical Secret Management
@@ -47,10 +57,12 @@
     # =============================================================================
 
     terraform_username: "terraform"
-    terraform_ssh_key_file: "{{ playbook_dir }}/../files/terraform_authorized_keys"
+    terraform_ssh_key_file: >-
+      {{ playbook_dir }}/../files/terraform_authorized_keys
 
     # Sudo commands required by Terraform provider
-    # NOTE: tee command restricted to specific subdirectories for security
+    # NOTE: tee command restricted to specific subdirectories
+    #       for security
     terraform_sudo_commands:
       - "/sbin/pvesm"
       - "/sbin/qm"
@@ -168,15 +180,20 @@
           API Token:           {{ terraform_username }}@pam!automation
 
           {% if export_terraform_env | default(false) %}
-          Environment File:    {{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}
+          Environment File:
+            {{ terraform_env_dir }}/proxmox-{{-
+            inventory_hostname_short }}
 
           To use with Terraform:
-            source {{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}
+            source {{ terraform_env_dir }}/proxmox-{{-
+            inventory_hostname_short }}
             cd terraform/netbox-vm
             tofu plan
           {% endif %}
 
           Test SSH connection:
-            ssh {{ terraform_username }}@{{ ansible_host | default(inventory_hostname) }} sudo pvesm status
+            ssh {{ terraform_username }}@{{-
+            ansible_host | default(inventory_hostname) -}}
+            sudo pvesm status
           ================================================================================
       tags: [always]

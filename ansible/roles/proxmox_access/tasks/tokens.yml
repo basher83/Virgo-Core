@@ -12,11 +12,13 @@
   changed_when: false
   failed_when: false
   when: item.state | default('present') == 'present'
+  run_once: true
+  become: true
 
 - name: Generate API tokens
   ansible.builtin.command: >
     pveum user token add {{ item.item.userid }} {{ item.item.tokenid }}
-    -privsep {{ '0' if not item.item.privsep | default(true) else '1' }}
+    -privsep {{ '0' if not (item.item.privsep | default(true)) else '1' }}
     {% if item.item.comment is defined %}
     -comment "{{ item.item.comment }}"
     {% endif %}
@@ -29,8 +31,10 @@
     - item.rc == 0
     - item.item.tokenid not in item.stdout
   register: proxmox_access_token_create
+  changed_when: true  # Token creation is always a change
   no_log: "{{ proxmox_no_log }}"
-  changed_when: proxmox_access_token_create.rc == 0
+  run_once: true
+  become: true
 
 - name: Store generated token values (in memory only)
   ansible.builtin.set_fact:
@@ -67,7 +71,8 @@
     label: "{{ item.item.item.userid }}!{{ item.item.item.tokenid }}"
 
 - name: Remove API tokens
-  ansible.builtin.command: pveum user token remove {{ item.userid }} {{ item.tokenid }}
+  ansible.builtin.command: >-
+    pveum user token remove {{ item.userid }} {{ item.tokenid }}
   loop: "{{ proxmox_tokens }}"
   when:
     - item.state | default('present') == 'absent'
@@ -76,3 +81,5 @@
   failed_when:
     - proxmox_access_token_remove.rc != 0
     - "'does not exist' not in proxmox_access_token_remove.stderr"
+  run_once: true
+  become: true
