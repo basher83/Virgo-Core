@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = [
 #   "pynetbox>=7.0.0",
-#   "infisical-python>=2.3.3",
+#   "infisicalsdk>=1.0.3",
 #   "rich>=13.0.0",
 #   "typer>=0.9.0",
 # ]
@@ -42,6 +42,7 @@ Example:
     ./netbox_api_client.py devices get --name foxtrot --output json
 """
 
+import os
 import sys
 from typing import Optional
 from dataclasses import dataclass
@@ -52,7 +53,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 import pynetbox
-from infisical import InfisicalClient
+from infisical_sdk import InfisicalSDKClient
 
 app = typer.Typer(help="NetBox API Client for Matrix cluster infrastructure")
 console = Console()
@@ -74,22 +75,42 @@ def get_netbox_client() -> pynetbox.api:
     """
     Get authenticated NetBox API client.
 
-    Uses Infisical to securely retrieve API token (following Virgo-Core pattern).
+    Uses Infisical SDK with Universal Auth to securely retrieve API token.
+    Requires INFISICAL_CLIENT_ID and INFISICAL_CLIENT_SECRET environment variables.
 
     Returns:
         pynetbox.api: Authenticated NetBox client
 
     Raises:
-        ValueError: If token cannot be retrieved
+        ValueError: If token cannot be retrieved or is empty
+        SystemExit: On connection or authentication errors
     """
     try:
-        client = InfisicalClient()
-        token = client.get_secret(
+        # Initialize Infisical SDK client
+        client = InfisicalSDKClient(host="https://app.infisical.com")
+
+        # Authenticate using Universal Auth (machine identity)
+        client_id = os.getenv("INFISICAL_CLIENT_ID")
+        client_secret = os.getenv("INFISICAL_CLIENT_SECRET")
+
+        if not client_id or not client_secret:
+            console.print("[red]INFISICAL_CLIENT_ID and INFISICAL_CLIENT_SECRET environment variables required[/red]")
+            sys.exit(1)
+
+        client.auth.universal_auth.login(
+            client_id=client_id,
+            client_secret=client_secret
+        )
+
+        # Get NetBox API token from Infisical
+        secret = client.secrets.get_secret_by_name(
             secret_name="NETBOX_API_TOKEN",
             project_id="7b832220-24c0-45bc-a5f1-ce9794a31259",
-            environment="prod",
-            path="/matrix"
-        ).secret_value
+            environment_slug="prod",
+            secret_path="/matrix"
+        )
+
+        token = secret.secretValue
 
         if not token:
             console.print("[red]NETBOX_API_TOKEN is empty in Infisical[/red]")
