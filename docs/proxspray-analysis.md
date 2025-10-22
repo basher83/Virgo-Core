@@ -3,7 +3,7 @@
 **Document Version:** 1.1
 **Analysis Date:** 2025-10-20
 **Last Updated:** 2025-10-20
-**ProxSpray Repository:** https://github.com/ankraio/proxspray
+**ProxSpray Repository:** [https://github.com/ankraio/proxspray](https://github.com/ankraio/proxspray)
 **ProxSpray Version Analyzed:** Latest (Proxmox VE 8+, Ansible 2.18+)
 
 ---
@@ -1717,7 +1717,6 @@ ansible-playbook playbooks/cluster-init.yml --check
 # Run on single cluster
 ansible-playbook playbooks/cluster-init.yml --limit matrix_cluster
 ```
-```
 
 #### 5.2 Update CLAUDE.md
 
@@ -1764,7 +1763,6 @@ Configure Infisical in `group_vars/<cluster_name>.yml`:
 infisical_project_id: 'your-project-id'
 infisical_env: 'prod'
 infisical_path: '/matrix-cluster'
-```
 ```
 
 ---

@@ -97,6 +97,49 @@ A well-designed role should be:
    - Has clear inputs and expected outputs
    - Supports check mode (dry-run)
 
+### Role Evolution and Versioning
+
+As infrastructure requirements change, roles will need to evolve. Follow these guidelines:
+
+**When to Extend a Role:**
+- Adding new configuration options to the existing component
+- Supporting new versions of the managed software
+- Enhancing functionality within the role's scope
+
+Example: `system_user` role adding SSH key management is acceptable - it's still managing user accounts.
+
+**When to Split a Role:**
+- Adding functionality for a different infrastructure component
+- Introducing dependencies on external services that change the role's purpose
+- Mixing multiple concerns that could be independently managed
+
+Example: If `system_user` needs LDAP/AD integration, create a separate `ldap_integration` role:
+
+```yaml
+# DON'T: Extend system_user with LDAP logic
+roles/system_user/
+  tasks/
+    - local_users.yml
+    - ldap_users.yml      # ❌ Different auth mechanism, different component
+
+# DO: Create focused roles that can be composed
+roles/system_user/        # Manages local PAM users
+roles/ldap_integration/   # Manages LDAP/AD integration
+roles/ldap_user_sync/     # Syncs LDAP users to local system
+
+# Playbook orchestrates both:
+- hosts: all
+  roles:
+    - ldap_integration
+    - ldap_user_sync
+```
+
+**Versioning Strategy:**
+- Major changes: Document in role README's "Breaking Changes" section
+- Keep roles backward-compatible when possible
+- Use role variables with sensible defaults for new features
+- Consider tagging major role versions in git if needed
+
 ---
 
 ## What Is an Ansible Playbook?
@@ -314,6 +357,65 @@ Prefer Ansible native modules over shell commands for better idempotency and err
     - "'already exists' not in osd_create.stderr"  # ✅ Error handling
 ```
 
+**Advanced Shell Patterns** (beyond `creates:`):
+
+The `args.creates` pattern only checks file existence, not file contents or state. For more robust idempotency:
+
+**Pattern 1: Output-Based Change Detection**
+```yaml
+- name: Create resource with output detection
+  shell: |
+    create_resource.sh resource-name
+  register: result
+  changed_when: "'successfully created' in result.stdout"
+  failed_when:
+    - result.rc != 0
+    - "'already exists' not in result.stderr"
+```
+
+Advantages over `creates:`:
+- Detects actual changes, not just file presence
+- Handles cases where file exists but resource wasn't created
+- Provides accurate change reporting for Ansible
+
+**Pattern 2: State Verification Before Action**
+```yaml
+- name: Check resource state
+  command: check_resource.sh resource-name
+  register: state
+  changed_when: false
+  failed_when: false
+
+- name: Create resource only if missing
+  shell: create_resource.sh resource-name
+  when: state.rc != 0 or 'missing' in state.stdout
+  register: create_result
+  changed_when: create_result.rc == 0
+```
+
+Advantages:
+- Explicitly checks current state
+- Clearer intent (check, then act)
+- Better for complex state verification (not just file existence)
+
+**Pattern 3: Stateful Commands with JSON Output**
+```yaml
+- name: Ensure pool configuration
+  shell: |
+    ceph osd pool get {{ pool_name }} size -f json
+  register: current_config
+  changed_when: false
+
+- name: Update pool if needed
+  command: ceph osd pool set {{ pool_name }} size {{ desired_size }}
+  when: (current_config.stdout | from_json).size != desired_size
+```
+
+Advantages:
+- Handles configuration drift detection
+- Works for resources that always exist but may need updates
+- `creates:` can't handle this scenario
+
 ### 7. Idempotency
 
 Roles must be safe to run multiple times without causing errors or unwanted changes.
@@ -461,6 +563,34 @@ Question: Does this manage a single infrastructure aspect?
 └─ NO → Create a PLAYBOOK that orchestrates multiple roles
    Example: Complete cluster setup (network + cluster + storage)
 ```
+
+### Decision Tree Clarifications
+
+**What counts as "related concerns within the same component"?**
+
+✅ **Related concerns (keep together in one role)**:
+- `proxmox_access`: Users, groups, tokens, AND ACLs - all related to Proxmox API access control
+- `proxmox_network`: Bridges, VLANs, routes - all network infrastructure
+- `system_user`: User accounts, SSH keys, sudoers - all local user management
+
+❌ **Unrelated concerns (split into separate roles)**:
+- Mixing Linux PAM users + Proxmox API users - different authentication systems
+- Combining network configuration + package management - different components
+- Bundling CEPH storage + Proxmox cluster - independent services
+
+**Key principle**: If two concerns share the same infrastructure component AND are always configured together, they can live in one role. If they serve different purposes or could be used independently, split them.
+
+**Example: `proxmox_access` role judgment**
+
+Question: Why does `proxmox_access` bundle users, groups, tokens, and ACLs?
+
+Answer: They're all part of the **Proxmox API access control** component:
+- Users need groups for organization
+- Groups need roles for permissions
+- Roles need ACLs to grant access
+- Tokens provide non-interactive auth
+
+They form a cohesive access control system. Splitting them would make the role less useful.
 
 ---
 

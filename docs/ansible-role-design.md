@@ -81,6 +81,9 @@ roles/role_name/
 - Install/update Proxmox VE packages
 - Clean up old kernels
 
+**Operational Notes**:
+> For major version upgrades (e.g., PVE 8.x → 9.x), kernel updates, and reboot requirements, see the role's README.md for detailed upgrade procedures and best practices.
+
 **Configuration Model**:
 
 ```yaml
@@ -359,6 +362,8 @@ ceph_pools:
     min_size: 2
     application: rbd
 ```
+
+> **Note on CRUSH Rules**: The `replicated_rule` (default) spreads replicas across hosts, providing host-level failure domains. This is appropriate for single-site clusters like Matrix. Custom CRUSH rules (for rack or datacenter-aware placement) are beyond the scope of homelab deployments.
 
 **Task Structure**:
 
@@ -893,13 +898,13 @@ Brief description of what this role manages.
 
 ## Role Variables
 
-```yaml
-# Required variables
-variable_name: description
+    ```yaml
+    # Required variables
+    variable_name: description
 
-# Optional variables
-optional_var: default_value
-```
+    # Optional variables
+    optional_var: default_value
+    ```
 
 ## Dependencies
 
@@ -907,13 +912,13 @@ List of role dependencies.
 
 ## Example Playbook
 
-```yaml
-- hosts: proxmox
-  roles:
-    - role: role_name
-      vars:
-        variable: value
-```
+    ```yaml
+    - hosts: proxmox
+      roles:
+        - role: role_name
+          vars:
+            variable: value
+    ```
 
 ## Testing
 
@@ -926,6 +931,7 @@ MIT
 ## Author
 
 Virgo-Core Team
+
 ```
 
 ---

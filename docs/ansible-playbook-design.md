@@ -360,6 +360,27 @@ Every playbook must have a comprehensive header:
           - groups['matrix_cluster'] | length == 3
         fail_msg: "This playbook must be run on matrix_cluster with exactly 3 nodes"
 
+    # Pre-flight health checks
+    - name: Verify cluster node health
+      command: systemctl is-active pve-cluster
+      register: cluster_status
+      failed_when: cluster_status.rc != 0
+      changed_when: false
+      loop: "{{ groups['matrix_cluster'] }}"
+      delegate_to: "{{ item }}"
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Verify network connectivity to all nodes
+      wait_for:
+        host: "{{ hostvars[item].ansible_host }}"
+        port: 22
+        timeout: 5
+      loop: "{{ groups['matrix_cluster'] }}"
+      delegate_to: localhost
+      loop_control:
+        label: "{{ item }}"
+
     - name: Confirm destructive operation
       pause:
         prompt: |
@@ -679,6 +700,54 @@ vars:
 # Highest: extra vars (-e)
 # ansible-playbook -e "variable=value"
 ```
+
+#### Common Variable Precedence Pitfalls
+
+Be aware of these common gotchas that can cause unexpected behavior:
+
+**Gotcha 1: group_vars/all.yml overriding role defaults**
+
+```yaml
+# roles/my_role/defaults/main.yml
+service_port: 8080  # Role default
+
+# group_vars/all.yml
+service_port: 9000  # This OVERRIDES role default for ALL hosts!
+```
+
+**Problem**: `group_vars` has higher precedence than role `defaults`, so the role default is ignored.
+
+**Solution**: Use role defaults for sensible defaults, use `group_vars` only for environment-specific overrides.
+
+**Gotcha 2: Extra vars (-e) bypassing safety checks**
+
+```bash
+# Playbook has safety checks
+ansible-playbook deploy.yml --limit production
+
+# But extra vars can override EVERYTHING, even safety checks
+ansible-playbook deploy.yml --limit production -e "skip_safety_checks=true"
+```
+
+**Problem**: Extra vars have highest precedence and can bypass critical safety validations.
+
+**Solution**: Never use `-e` in automation/CI/CD for critical variables. Use inventory or group_vars instead.
+
+**Gotcha 3: Playbook vars unexpectedly overriding role configuration**
+
+```yaml
+# playbook.yml
+- hosts: all
+  vars:
+    http_port: 8080  # Playbook var
+  roles:
+    - role: webserver
+      # This role's http_port default is IGNORED because playbook vars have higher precedence
+```
+
+**Problem**: Playbook `vars:` have higher precedence than role `defaults/`, making role configuration inflexible.
+
+**Solution**: Use `defaults/` for role defaults, `vars/` for constants only. Let users override via `group_vars` or role parameters.
 
 ### 7. Validate Configuration
 
