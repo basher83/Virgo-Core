@@ -1,0 +1,76 @@
+---
+# tasks/tokens.yml - Generate Proxmox API tokens for users
+# Purpose: Create API tokens for programmatic access (e.g., Terraform)
+#
+# Note: Uses pveum command because community.proxmox doesn't have token module yet
+# WARNING: Token values are only shown once during creation
+
+- name: Check existing tokens for each user
+  ansible.builtin.command: pveum user token list {{ item.userid }}
+  loop: "{{ proxmox_tokens }}"
+  register: proxmox_access_existing_tokens
+  changed_when: false
+  failed_when: false
+  when: item.state | default('present') == 'present'
+
+- name: Generate API tokens
+  ansible.builtin.command: >
+    pveum user token add {{ item.item.userid }} {{ item.item.tokenid }}
+    -privsep {{ '0' if not item.item.privsep | default(true) else '1' }}
+    {% if item.item.comment is defined %}
+    -comment "{{ item.item.comment }}"
+    {% endif %}
+    {% if item.item.expire is defined %}
+    -expire {{ item.item.expire }}
+    {% endif %}
+  loop: "{{ proxmox_access_existing_tokens.results | default([]) }}"
+  when:
+    - item.item is defined
+    - item.rc == 0
+    - item.item.tokenid not in item.stdout
+  register: proxmox_access_token_create
+  no_log: "{{ proxmox_no_log }}"
+  changed_when: proxmox_access_token_create.rc == 0
+
+- name: Store generated token values (in memory only)
+  ansible.builtin.set_fact:
+    proxmox_access_generated_tokens: >-
+      {{
+        proxmox_access_generated_tokens | default({}) | combine({
+          item.item.item.userid: {
+            'tokenid': item.item.item.tokenid,
+            'value': item.stdout
+          }
+        })
+      }}
+  loop: "{{ proxmox_access_token_create.results | default([]) }}"
+  when:
+    - item.changed
+    - item.stdout is defined
+  no_log: "{{ proxmox_no_log }}"
+
+- name: Display token generation warnings  # noqa: no-handler
+  ansible.builtin.debug:
+    msg: |
+      ⚠️  API Token Generated for {{ item.item.item.userid }}!{{ item.item.item.tokenid }}
+
+      IMPORTANT: Save this token value immediately!
+      It cannot be retrieved again after this playbook run.
+
+      Token value will be exported to environment file if export_terraform_env is enabled.
+  loop: "{{ proxmox_access_token_create.results | default([]) }}"
+  when:
+    - item.changed
+  loop_control:
+    label: "{{ item.item.item.userid }}!{{ item.item.item.tokenid }}"
+
+- name: Remove API tokens
+  ansible.builtin.command: pveum user token remove {{ item.userid }} {{ item.tokenid }}
+  loop: "{{ proxmox_tokens }}"
+  when:
+    - item.state | default('present') == 'absent'
+  register: proxmox_access_token_remove
+  changed_when: proxmox_access_token_remove.rc == 0
+  failed_when:
+    - proxmox_access_token_remove.rc != 0
+    - "'does not exist' not in proxmox_access_token_remove.stderr"

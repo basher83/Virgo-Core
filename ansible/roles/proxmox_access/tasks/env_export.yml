@@ -1,0 +1,39 @@
+---
+# tasks/env_export.yml - Export Terraform environment files
+# Purpose: Create shell scripts with Proxmox credentials for Terraform/OpenTofu
+#
+# Exports TF_VAR_* environment variables that Terraform can consume
+
+- name: Create environment file directory
+  ansible.builtin.file:
+    path: "{{ terraform_env_dir }}"
+    state: directory
+    mode: '0755'
+  delegate_to: localhost
+  become: false
+  run_once: true
+
+- name: Export Terraform environment file
+  ansible.builtin.template:
+    src: terraform_env.sh.j2
+    dest: "{{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}"
+    mode: '0600'
+  delegate_to: localhost
+  become: false
+  when: proxmox_access_generated_tokens is defined
+  vars:
+    node_host: "{{ proxmox_api_host }}"
+    node_name: "{{ inventory_hostname_short }}"
+    generated_tokens: "{{ proxmox_access_generated_tokens }}"
+
+- name: Display environment file location
+  ansible.builtin.debug:
+    msg: |
+      ✅ Terraform environment file created:
+      {{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}
+
+      To use with Terraform:
+      source {{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}
+      cd terraform/netbox-vm
+      tofu plan
+  when: proxmox_access_generated_tokens is defined
