@@ -53,7 +53,10 @@
   community.general.interfaces_file:
     iface: "{{ item.name }}"
     option: bridge-vids
-    value: "{{ item.vlan_ids if item.vlan_ids is string else item.vlan_ids | join(',') }}"
+    value: >-
+      {{ item.vlan_ids
+         if item.vlan_ids is string
+         else (item.vlan_ids | map('string') | join(',')) }}
     backup: false
     state: present
   loop: "{{ proxmox_bridges }}"
