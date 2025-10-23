@@ -1,0 +1,29 @@
+---
+# ansible/roles/proxmox_network/meta/main.yml
+# Role metadata and dependencies
+
+galaxy_info:
+  author: Virgo-Core Team
+  description: Manages Proxmox VE network infrastructure (bridges, VLANs, interfaces, MTU)
+  company: Spaceships Infrastructure
+  license: MIT
+  min_ansible_version: "2.15"
+
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+
+  galaxy_tags:
+    - proxmox
+    - networking
+    - infrastructure
+    - virtualization
+    - vlan
+    - bridge
+
+dependencies: []
+# No role dependencies - this is a foundational infrastructure role
+
+collections:
+  - community.general

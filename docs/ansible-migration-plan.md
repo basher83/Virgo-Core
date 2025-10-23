@@ -861,11 +861,13 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 
 ### Phase 3: Network and Docker
 
-- [ ] Create `proxmox_network` role
-- [ ] Create `configure-network.yml` playbook
+- [x] Create `proxmox_network` role
+- [x] Create `configure-network.yml` playbook
 - [ ] Test network configuration
-- [ ] Create `docker` role
-- [ ] Update `install-docker.yml` playbook
+- [x] Docker role decision: Keep using `geerlingguy.docker` (no wrapper needed)
+  - Rationale: Well-maintained community role, already in requirements.yml
+  - Playbook already follows role-based patterns
+- [x] Verify `install-docker.yml` follows Phase 3 patterns
 - [ ] Test Docker installation
 
 ### Phase 4: New Functionality

@@ -1,0 +1,28 @@
+---
+# ansible/roles/proxmox_network/tasks/main.yml
+# Main entry point for proxmox_network role
+
+- name: Include prerequisite checks
+  ansible.builtin.include_tasks: prerequisites.yml
+  tags: [proxmox_network, prerequisites]
+
+- name: Configure network bridges
+  ansible.builtin.include_tasks: bridges.yml
+  when:
+    - proxmox_bridges | length > 0
+    - not proxmox_network_dry_run
+  tags: [proxmox_network, bridges]
+
+- name: Configure VLAN interfaces
+  ansible.builtin.include_tasks: vlans.yml
+  when:
+    - proxmox_vlans | length > 0
+    - not proxmox_network_dry_run
+  tags: [proxmox_network, vlans]
+
+- name: Verify network configuration
+  ansible.builtin.include_tasks: verify.yml
+  when:
+    - proxmox_network_verify
+    - not proxmox_network_dry_run
+  tags: [proxmox_network, verify]

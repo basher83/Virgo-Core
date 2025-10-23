@@ -1,0 +1,10 @@
+---
+# ansible/roles/proxmox_network/handlers/main.yml
+# Handlers for network configuration changes
+
+- name: Reload network interfaces
+  ansible.builtin.include_tasks: "{{ role_path }}/tasks/reload.yml"
+  listen: Reload network interfaces
+  when:
+    - proxmox_network_reload
+    - not proxmox_network_dry_run

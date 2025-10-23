@@ -1,0 +1,46 @@
+---
+# ansible/roles/proxmox_network/tasks/verify.yml
+# Verify network configuration
+
+- name: Verify bridge configuration
+  ansible.builtin.command: ip addr show {{ item.name }}
+  loop: "{{ proxmox_bridges }}"
+  register: proxmox_network_bridge_verify
+  changed_when: false
+  failed_when: false
+
+- name: Verify VLAN configuration
+  ansible.builtin.command: ip addr show vlan{{ item.id }}
+  loop: "{{ proxmox_vlans }}"
+  register: proxmox_network_vlan_verify
+  changed_when: false
+  failed_when: false
+  when: proxmox_vlans | length > 0
+
+- name: Verify VLAN filtering status
+  ansible.builtin.command:
+    argv:
+      - bridge
+      - vlan
+      - show
+      - dev
+      - "{{ item.name }}"
+  loop: "{{ proxmox_bridges }}"
+  when: item.vlan_aware | default(false)
+  register: proxmox_network_vlan_filter_verify
+  changed_when: false
+  failed_when: false
+
+- name: Display verification summary
+  ansible.builtin.debug:
+    msg:
+      - "Network Configuration Verification:"
+      - >-
+        Bridges configured:
+        {{ (proxmox_network_bridge_verify.results | default([])) | selectattr('rc', 'equalto', 0) | list | length }}/{{ proxmox_bridges | default([]) | length }}
+      - >-
+        VLANs configured:
+        {{ (proxmox_network_vlan_verify.results | default([])) | selectattr('rc', 'equalto', 0) | list | length }}/{{ proxmox_vlans | default([]) | length }}
+      - >-
+        VLAN filtering enabled:
+        {{ (proxmox_network_vlan_filter_verify.results | default([])) | selectattr('rc', 'equalto', 0) | list | length }} bridges
