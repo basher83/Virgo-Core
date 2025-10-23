@@ -562,6 +562,110 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 
 **Pattern Match:** 95% - Excellent handler usage, appropriate for network management
 
+## Validation: geerlingguy.docker
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-docker
+
+### Handler Structure
+
+**Docker role handlers/main.yml:**
+
+```yaml
+- name: restart docker
+  ansible.builtin.service:
+    name: docker
+    state: "{{ docker_restart_handler_state }}"
+  ignore_errors: "{{ ansible_check_mode }}"
+  when: docker_service_manage | bool
+
+- name: apt update
+  ansible.builtin.apt:
+    update_cache: true
+```
+
+### Handler Naming
+
+- **Pattern: Lowercase "[action] [service]"** - ✅ **Confirmed**
+  - "restart docker" - follows exact pattern
+  - "apt update" - follows exact pattern
+  - Confirms lowercase naming is universal
+
+### Handler Simplicity
+
+- **Pattern: Single module, single purpose** - ✅ **Confirmed**
+  - Each handler uses one module, does one thing
+  - Confirms simple handler pattern is universal
+
+### Handler Configurability
+
+- **Pattern: Configurable handler behavior** - ✅ **Confirmed**
+  - Uses `docker_restart_handler_state` variable (default: "restarted")
+  - Same pattern as security role's `security_ssh_restart_handler_state`
+  - Confirms making critical service handlers configurable is standard
+
+### Advanced Pattern: Conditional Handlers
+
+- **Pattern Evolution:** Docker introduces conditional handler execution:
+  ```yaml
+  when: docker_service_manage | bool
+  ignore_errors: "{{ ansible_check_mode }}"
+  ```
+  - **New insight:** Handlers can have conditionals to prevent execution in certain scenarios
+  - **Use case:** Container environments without systemd (docker_service_manage: false)
+  - **Use case:** Check mode support (ignore_errors in check mode)
+  - **Recommendation:** Add conditionals when handler might not be applicable
+
+### Handler Notification Patterns
+
+- **Pattern: notify from multiple tasks** - ✅ **Confirmed**
+  - Multiple tasks notify "restart docker" (package install, daemon config, service patch)
+  - Handler runs once at end despite multiple notifications
+  - Confirms deduplication behavior
+
+### Advanced Pattern: meta: flush_handlers
+
+- **Pattern Evolution:** Docker uses explicit handler flushing:
+  ```yaml
+  - name: Ensure handlers are notified now to avoid firewall conflicts.
+    meta: flush_handlers
+  ```
+  - **New insight:** Can force handlers to run mid-play, not just at end
+  - **Use case:** Docker service must be running before adding users to docker group
+  - **Recommendation:** Use flush_handlers when later tasks depend on handler completion
+
+### Secondary Handler Pattern
+
+- **Pattern: apt update handler** - ⚠️ **Contextual**
+  - Docker has "apt update" handler for repository changes
+  - Not present in security/users roles
+  - **Insight:** Package management roles may need cache update handlers
+  - **When to use:** When adding repositories that need immediate cache refresh
+
+### Key Validation Findings
+
+**What Docker Role Confirms:**
+
+1. ✅ Lowercase naming is universal
+2. ✅ Simple, single-purpose handlers are universal
+3. ✅ Configurable handler state is standard for critical services
+4. ✅ Handler deduplication works as expected
+
+**What Docker Role Evolves:**
+
+1. 🔄 Conditional handler execution (when: docker_service_manage | bool)
+2. 🔄 Check mode support (ignore_errors: "{{ ansible_check_mode }}")
+3. 🔄 Explicit handler flushing (meta: flush_handlers)
+4. 🔄 Repository-specific handlers (apt update)
+
+**Pattern Confidence After Docker Validation:**
+
+- **Handler naming:** UNIVERSAL (3/3 roles use lowercase "[action] [service]")
+- **Handler simplicity:** UNIVERSAL (3/3 use single module per handler)
+- **Configurable state:** UNIVERSAL (critical service handlers are configurable)
+- **Conditional handlers:** EVOLVED (docker adds when: conditionals)
+- **Handler flushing:** EVOLVED (docker introduces meta: flush_handlers)
+
 ## Summary
 
 **Universal Handler Patterns:**

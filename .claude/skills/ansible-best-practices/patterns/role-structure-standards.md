@@ -659,6 +659,101 @@ proxmox_network/
 
 1. **Critical:** Add molecule/ directory with network verification (covered in testing-comprehensive.md)
 
+## Validation: geerlingguy.docker
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-docker
+
+### Directory Organization
+
+- **Pattern: Standard Ansible role structure** - ✅ **Confirmed**
+  - Docker role has: defaults/, tasks/, handlers/, meta/, molecule/, .github/, vars/
+  - No templates/ directory (docker uses copy module with content parameter)
+  - Confirms that omitting unused directories is correct pattern
+
+### Task Organization
+
+- **Pattern: tasks/main.yml as router** - ✅ **Confirmed**
+  - main.yml loads OS-specific vars, then includes setup-{RedHat,Suse,Debian}.yml
+  - Same conditional include pattern as security role
+  - **Observation:** Uses more advanced include_vars with first_found lookup (evolution of simple include_vars pattern)
+
+- **Pattern: Feature-based task files** - ✅ **Confirmed**
+  - Tasks split by OS family: setup-RedHat.yml, setup-Suse.yml, setup-Debian.yml
+  - Additional feature files: docker-compose.yml, docker-users.yml
+  - Confirms pattern: Split by OS when logic differs, by feature when optional
+
+### Variable Naming
+
+- **Pattern: Role-prefixed variables** - ✅ **Confirmed**
+  - All variables prefixed with `docker_`: docker_edition, docker_packages, docker_service_state, etc.
+  - Confirms naming pattern is universal
+
+- **Pattern: Feature grouping** - ✅ **Confirmed**
+  - docker_service_* for service management
+  - docker_compose_* for compose options
+  - docker_apt_* for Debian-specific vars
+  - docker_yum_* for RedHat-specific vars
+
+### defaults/ vs vars/ Usage
+
+- **Pattern: defaults/ for user config, vars/ for OS-specific** - ✅ **Confirmed**
+  - defaults/main.yml: All user-configurable options (packages, service state, repo URLs)
+  - vars/{RedHat,Debian,Suse}.yml: OS-specific package names and repo details
+  - Confirms this is standard practice across all roles
+
+### Task Naming Convention
+
+- **Pattern: Descriptive action verb + object** - ✅ **Confirmed**
+  - "Load OS-specific vars."
+  - "Install Docker packages."
+  - "Configure Docker daemon options."
+  - "Ensure Docker is started and enabled at boot."
+  - Same pattern as security/users roles
+
+### Advanced Pattern: first_found Lookup
+
+- **Pattern Evolution:** Docker role uses advanced vars loading:
+  ```yaml
+  - name: Load OS-specific vars.
+    include_vars: "{{ lookup('first_found', params) }}"
+    vars:
+      params:
+        files:
+          - '{{ansible_facts.distribution}}.yml'
+          - '{{ansible_facts.os_family}}.yml'
+          - main.yml
+        paths:
+          - 'vars'
+  ```
+  - **vs security simple pattern:** `include_vars: "{{ ansible_os_family }}.yml"`
+  - **Insight:** More complex roles use fallback chain for better distribution support
+  - **Recommendation:** Simple pattern for basic roles, first_found for complex multi-OS roles
+
+### Key Validation Findings
+
+**What Docker Role Confirms:**
+
+1. ✅ Standard directory structure is universal
+2. ✅ tasks/main.yml as router is standard
+3. ✅ Role-prefixed variable naming is universal
+4. ✅ defaults/ vs vars/ separation is universal
+5. ✅ Feature grouping in variable names is universal
+6. ✅ Descriptive task naming is universal
+
+**What Docker Role Evolves:**
+
+1. 🔄 Advanced include_vars with first_found lookup (better than simple include_vars)
+2. 🔄 More OS-specific task files (RedHat, Suse, Debian vs just RedHat/Debian)
+
+**Pattern Confidence After Docker Validation:**
+
+- **Directory structure:** UNIVERSAL (3/3 roles follow)
+- **Task organization:** UNIVERSAL (3/3 use main.yml as router)
+- **Variable naming:** UNIVERSAL (3/3 use role prefix)
+- **defaults/ vs vars/:** UNIVERSAL (3/3 follow pattern)
+- **OS-specific vars loading:** EVOLVED (first_found is better than simple include)
+
 ## Summary
 
 **Universal Patterns Identified:**

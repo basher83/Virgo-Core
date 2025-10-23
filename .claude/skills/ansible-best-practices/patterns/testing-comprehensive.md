@@ -474,6 +474,66 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 2. **Critical:** Add GitHub Actions CI (2 hours)
 3. **Important:** Add verification tests for network state (2 hours)
 
+## Validation: geerlingguy.docker
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-docker
+
+### Molecule Testing Patterns
+
+- **Pattern: Molecule default scenario structure** - ✅ **Confirmed**
+  - Docker role uses identical molecule.yml structure as security/users roles
+  - Same role_name_check: 1, dependency.name: galaxy, driver.name: docker
+  - Same privileged container setup with cgroup mounting
+  - Same environment variable defaults pattern (MOLECULE_DISTRO, MOLECULE_PLAYBOOK)
+
+- **Pattern: Multi-distribution test matrix** - 🔄 **Evolved (Expanded)**
+  - Docker tests MORE distributions than security/users (7 vs 3)
+  - Matrix includes: rockylinux9, ubuntu2404, ubuntu2204, debian12, debian11, fedora40, opensuseleap15
+  - **Evolution insight:** More complex roles test broader OS support
+  - **Pattern holds:** Still tests both RedHat and Debian families, just more coverage
+
+### CI/CD Integration Patterns
+
+- **Pattern: GitHub Actions workflow structure** - ✅ **Confirmed**
+  - Identical workflow structure: separate lint and molecule jobs
+  - Same triggers: pull_request, push to master, scheduled (cron)
+  - Same colored output environment variables (PY_COLORS, ANSIBLE_FORCE_COLOR)
+  - Same working directory default pattern
+
+- **Pattern: Scheduled testing** - ⚠️ **Contextual (Different schedule)**
+  - security/users: Weekly Thursday 4:30 AM UTC (`30 4 * * 4`)
+  - docker: Weekly Sunday 7:00 AM UTC (`0 7 * * 0`)
+  - **Insight:** Schedule timing doesn't matter, having scheduled tests does
+
+### Task Organization Patterns
+
+- **Pattern: No explicit verify.yml** - ✅ **Confirmed**
+  - Docker role also relies on idempotence testing, not explicit verification
+  - Confirms that simple converge + idempotence is standard pattern
+
+### Key Validation Findings
+
+**What Docker Role Confirms:**
+
+1. ✅ Molecule/Docker testing setup is truly universal (exact same structure)
+2. ✅ Separate lint/test jobs is standard practice
+3. ✅ CI triggers (PR, push, schedule) are consistent
+4. ✅ Environment variable configuration for flexibility is standard
+5. ✅ Relying on idempotence test vs explicit verify is acceptable
+
+**What Docker Role Evolves:**
+
+1. 🔄 More distributions in test matrix (7 vs 3) - scales with role complexity/usage
+2. 🔄 Different cron schedule - flexibility in timing, not pattern itself
+
+**Pattern Confidence After Docker Validation:**
+
+- **Molecule structure:** UNIVERSAL (3/3 roles identical)
+- **CI workflow:** UNIVERSAL (3/3 roles identical structure)
+- **Distribution coverage:** CONTEXTUAL (scales with role scope)
+- **Scheduled testing:** UNIVERSAL (all roles have it, timing varies)
+
 ## Summary
 
 **Universal Patterns Identified:**
