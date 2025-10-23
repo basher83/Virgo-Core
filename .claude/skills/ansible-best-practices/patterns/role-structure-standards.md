@@ -754,6 +754,115 @@ proxmox_network/
 - **defaults/ vs vars/:** UNIVERSAL (3/3 follow pattern)
 - **OS-specific vars loading:** EVOLVED (first_found is better than simple include)
 
+## Validation: geerlingguy.postgresql
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-postgresql
+
+### Directory Organization
+
+- **Pattern: Standard Ansible role structure** - ✅ **Confirmed**
+  - PostgreSQL has: defaults/, tasks/, handlers/, meta/, molecule/, .github/, vars/, templates/
+  - Uses templates/ for pg_hba.conf and postgresql.conf (complex config files)
+  - **4/4 roles confirm standard structure**
+
+### Task Organization
+
+- **Pattern: tasks/main.yml as router** - ✅ **Confirmed**
+  - main.yml includes: variables.yml, setup-{Archlinux,Debian,RedHat}.yml, initialize.yml, configure.yml
+  - imports (not includes) users.yml, databases.yml, users_props.yml for execution order
+  - **Insight:** Uses `include_tasks` for conditional includes, `import_tasks` when order matters
+  - **4/4 roles use main.yml as router pattern**
+
+- **Pattern: Feature-based task files** - ✅ **Confirmed**
+  - Tasks split by: OS (setup-*.yml), lifecycle (initialize.yml, configure.yml), entity (users.yml, databases.yml)
+  - More task files than simpler roles (8+ files vs 2-3)
+  - **Pattern scales:** Complex roles have more task files, organized by feature and OS
+
+### Variable Naming
+
+- **Pattern: Role-prefixed variables** - ✅ **Confirmed**
+  - All variables prefixed with `postgresql_`: postgresql_databases, postgresql_users, postgresql_hba_entries
+  - **4/4 roles confirm this is universal**
+
+- **Pattern: Feature grouping** - ✅ **Confirmed**
+  - postgresql_global_config_* for server config
+  - postgresql_hba_* for authentication config
+  - postgresql_*_enabled for feature flags
+  - **Demonstrates:** Feature grouping works at scale (20+ variables)
+
+### defaults/ vs vars/ Usage
+
+- **Pattern: defaults/ for user config, vars/ for OS-specific** - ✅ **Confirmed**
+  - defaults/main.yml: Extensive user configuration (100+ lines with inline docs)
+  - vars/{Archlinux,Debian,RedHat}.yml: OS-specific package names, paths, versions
+  - **4/4 roles follow this pattern exactly**
+
+### Task Naming Convention
+
+- **Pattern: Descriptive action verb + object** - ✅ **Confirmed**
+  - "Ensure PostgreSQL Python libraries are installed."
+  - "Ensure PostgreSQL is started and enabled on boot."
+  - "Set PostgreSQL environment variables."
+  - **4/4 roles use identical naming pattern**
+
+### Advanced Pattern: include_tasks vs import_tasks
+
+- **Pattern Evolution:** PostgreSQL demonstrates when to use each:
+  ```yaml
+  # Conditional loading - use include_tasks
+  - include_tasks: setup-Archlinux.yml
+    when: ansible_os_family == 'Archlinux'
+
+  # Ordered execution - use import_tasks
+  - import_tasks: users.yml
+  - import_tasks: databases.yml
+  - import_tasks: users_props.yml
+  ```
+  - **New insight:** `include_tasks` = dynamic/conditional, `import_tasks` = static/ordered
+  - **Recommendation:** Use import when order matters, include when conditional
+
+### Complex Variable Documentation Pattern
+
+- **Pattern: Inline documentation in defaults/main.yml** - ✅ **EXCELLENT EXAMPLE**
+  - PostgreSQL defaults/ has extensive inline examples for complex structures:
+  ```yaml
+  postgresql_databases: []
+  # - name: exampledb # required; the rest are optional
+  #   lc_collate: # defaults to 'en_US.UTF-8'
+  #   lc_ctype: # defaults to 'en_US.UTF-8'
+  #   encoding: # defaults to 'UTF-8'
+  ```
+  - **Validates:** Complex dict structures benefit from commented examples in defaults
+  - **Best practice:** Show all available keys, even optional ones
+
+### Key Validation Findings
+
+**What PostgreSQL Role Confirms:**
+
+1. ✅ Standard directory structure is universal (4/4 roles)
+2. ✅ tasks/main.yml as router is universal (4/4 roles)
+3. ✅ Role-prefixed variable naming is universal (4/4 roles)
+4. ✅ defaults/ vs vars/ separation is universal (4/4 roles)
+5. ✅ Feature grouping in variable names scales well
+6. ✅ Descriptive task naming is universal (4/4 roles)
+
+**What PostgreSQL Role Demonstrates:**
+
+1. 🔄 Complex roles have more task files (8+ vs 2-3 for simple roles)
+2. 🔄 include_tasks vs import_tasks have distinct use cases
+3. 🔄 Inline documentation in defaults/ is critical for complex variables
+4. 🔄 templates/ directory becomes important for complex config files
+
+**Pattern Confidence After PostgreSQL Validation (4/4 roles):**
+
+- **Directory structure:** UNIVERSAL (4/4 roles identical)
+- **Task organization:** UNIVERSAL (4/4 use main.yml as router)
+- **Variable naming:** UNIVERSAL (4/4 use role prefix)
+- **defaults/ vs vars/:** UNIVERSAL (4/4 follow pattern)
+- **Task file count:** CONTEXTUAL (scales with complexity: 2-3 for simple, 8+ for complex)
+- **include vs import:** CLARIFIED (conditional vs ordered)
+
 ## Summary
 
 **Universal Patterns Identified:**
@@ -776,6 +885,8 @@ proxmox_network/
 - Proper defaults/ vs vars/ usage prevents confusion
 - Handlers should be simple and focused
 - Task files should be feature-based, not too granular
+- Complex roles naturally have more task files (don't fight it)
+- Inline documentation in defaults/ is critical for complex variables
 
 **Next Steps:**
 

@@ -666,6 +666,107 @@ MIT / BSD / Apache 2.0
 This role was created by [Author Name](link), [additional context].
 ```
 
+## Validation: geerlingguy.postgresql
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-postgresql
+
+### README Structure
+
+- **Pattern: Comprehensive README template** - ✅ **Confirmed**
+  - PostgreSQL follows same structure: Title + Badge → Description → Requirements → Variables → Dependencies → Example → License → Author
+  - **4/4 roles follow identical README structure**
+
+### Variable Documentation
+
+- **Pattern: Code-formatted default + detailed description** - ✅ **EXCELLENT EXAMPLE**
+  - PostgreSQL has extensive variable docs (50+ variables documented)
+  - Each variable group includes:
+    - Code block with default value
+    - Detailed description of purpose
+    - Usage context and examples
+    - Inline comments for complex structures
+  - **Example quality:**
+  ```markdown
+      postgresql_databases:
+        - name: exampledb # required; the rest are optional
+          lc_collate: # defaults to 'en_US.UTF-8'
+          lc_ctype: # defaults to 'en_US.UTF-8'
+          encoding: # defaults to 'UTF-8'
+  ```
+  - **Validates:** Complex dict variables need inline comment documentation
+  - **4/4 roles use this documentation pattern**
+
+### CI Badge
+
+- **Pattern: GitHub Actions CI badge** - ✅ **Confirmed**
+  - PostgreSQL includes CI badge with link to workflow
+  - **4/4 roles have CI badges**
+
+### Example Playbook
+
+- **Pattern: Basic + vars_files example** - ✅ **Confirmed**
+  - Shows minimal playbook + vars file pattern
+  - Includes example variable values for databases and users
+  - **4/4 roles provide working examples**
+
+### Requirements Section
+
+- **Pattern: Explicit requirements or "None"** - ✅ **Confirmed**
+  - PostgreSQL states: "No special requirements"
+  - Mentions become: yes requirement
+  - **4/4 roles include Requirements section (even if "None")**
+
+### Dependencies Section
+
+- **Pattern: Explicit "None"** - ✅ **Confirmed**
+  - PostgreSQL states: "None."
+  - **4/4 roles include Dependencies section**
+
+### Advanced Pattern: Complex Variable Tables
+
+- **Pattern Evolution:** PostgreSQL uses structured tables for complex options:
+  - **hba_entries:** Lists all available keys with descriptions
+  - **databases:** Shows optional attributes with defaults
+  - **users:** Documents every possible parameter
+  - **Insight:** When variables have 5+ optional attributes, use structured documentation
+  - **Recommendation:** For complex dict structures, show all keys even if optional
+
+### Documentation for Complex Structures
+
+- **Pattern: Show all keys, even optional** - ✅ **NEW INSIGHT**
+  - PostgreSQL documents every possible key for postgresql_databases, postgresql_users, postgresql_privs
+  - Includes comments like "# required" vs "# optional"
+  - Shows default values inline: `# defaults to 'en_US.UTF-8'`
+  - **Best practice:** Comprehensive documentation prevents user confusion
+
+### Key Validation Findings
+
+**What PostgreSQL Role Confirms:**
+
+1. ✅ README structure is universal (4/4 roles identical)
+2. ✅ Variable documentation format is universal (4/4 roles)
+3. ✅ CI badges are universal (4/4 roles)
+4. ✅ Example playbooks are universal (4/4 roles)
+5. ✅ Explicit "None" for empty sections is universal (4/4 roles)
+6. ✅ Inline code formatting is universal (4/4 roles)
+
+**What PostgreSQL Role Demonstrates:**
+
+1. 🔄 Complex variables need extensive inline documentation
+2. 🔄 Show ALL available keys for dict structures, even optional ones
+3. 🔄 Use comments to indicate required vs optional vs defaults
+4. 🔄 Large variable sets (20+) benefit from grouping in documentation
+
+**Pattern Confidence After PostgreSQL Validation (4/4 roles):**
+
+- **README structure:** UNIVERSAL (4/4 roles identical)
+- **Variable documentation:** UNIVERSAL (4/4 use same format)
+- **CI badges:** UNIVERSAL (4/4 roles have them)
+- **Example playbooks:** UNIVERSAL (4/4 provide examples)
+- **Explicit "None":** UNIVERSAL (4/4 use it)
+- **Complex variable docs:** VALIDATED (postgresql shows best practices for complexity)
+
 ## Summary
 
 **Universal Patterns Identified:**
@@ -678,6 +779,7 @@ This role was created by [Author Name](link), [additional context].
 6. Inline code formatting for variables, files, commands
 7. Bold warnings for critical information
 8. Commented examples for list variables
+9. Show ALL keys for complex dict structures, even optional ones
 
 **Key Takeaways:**
 
@@ -687,6 +789,7 @@ This role was created by [Author Name](link), [additional context].
 - Consistent formatting improves readability
 - Explicit "None" is better than omitting sections
 - Troubleshooting saves support time
+- Complex variables need inline documentation showing all available keys
 
 **Next Steps:**
 
@@ -695,3 +798,4 @@ Enhance Virgo-Core role READMEs with:
 2. Troubleshooting sections
 3. CI badges (after implementing testing)
 4. Additional example scenarios
+5. For complex variables, show all available keys with inline comments

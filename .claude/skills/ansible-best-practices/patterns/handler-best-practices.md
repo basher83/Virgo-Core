@@ -697,11 +697,94 @@ All three roles demonstrate good handler discipline:
 
 No critical handler-related gaps identified. Virgo-Core roles follow best practices.
 
+## Validation: geerlingguy.postgresql
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-postgresql
+
+### Handler Structure
+
+**PostgreSQL role handlers/main.yml:**
+
+```yaml
+- name: restart postgresql
+  ansible.builtin.service:
+    name: "{{ postgresql_daemon }}"
+    state: "{{ postgresql_restarted_state }}"
+```
+
+### Handler Naming
+
+- **Pattern: Lowercase "[action] [service]"** - ✅ **Confirmed**
+  - "restart postgresql" - follows exact pattern
+  - **4/4 roles use lowercase naming**
+
+### Handler Simplicity
+
+- **Pattern: Single module, single purpose** - ✅ **Confirmed**
+  - One handler, one service module, simple action
+  - **4/4 roles follow simple handler pattern**
+
+### Handler Configurability
+
+- **Pattern: Configurable handler behavior** - ✅ **Confirmed**
+  - Uses `postgresql_restarted_state` variable (default: "restarted")
+  - Same pattern as security_ssh_restart_handler_state and docker_restart_handler_state
+  - **Validates:** Making critical service handlers configurable is standard practice
+  - **4/4 roles with service handlers make state configurable**
+
+### Service Management Variables
+
+- **Pattern: Configurable service state** - ✅ **Confirmed**
+  - postgresql_service_state: started (whether to start service)
+  - postgresql_service_enabled: true (whether to enable at boot)
+  - postgresql_restarted_state: "restarted" (handler behavior)
+  - **Demonstrates:** Separation of initial state vs handler state
+
+### Handler Notification Patterns
+
+- **Pattern: Multiple tasks notify same handler** - ✅ **Confirmed**
+  - Configuration changes, package installations, initialization all notify "restart postgresql"
+  - Handler runs once despite multiple notifications
+  - **4/4 roles demonstrate handler deduplication**
+
+### Advanced Pattern: Conditional Handler Execution
+
+- **Pattern: Handler conditionals** - ⚠️ **Not Present**
+  - PostgreSQL handler doesn't use `when:` conditionals
+  - Unlike docker role which has `when: docker_service_manage | bool`
+  - **Insight:** PostgreSQL always manages service, docker sometimes doesn't (containers)
+  - **Contextual:** Use conditionals only when service management is optional
+
+### Key Validation Findings
+
+**What PostgreSQL Role Confirms:**
+
+1. ✅ Lowercase naming is universal (4/4 roles)
+2. ✅ Simple, single-purpose handlers are universal (4/4 roles)
+3. ✅ Configurable handler state is standard for database/service roles (4/4 roles)
+4. ✅ Handler deduplication works reliably (4/4 roles depend on it)
+5. ✅ Service + handler pattern is consistent
+
+**What PostgreSQL Role Demonstrates:**
+
+1. 🔄 Database roles follow same handler patterns as other service roles
+2. 🔄 Configurable handler state (`restarted` vs `reloaded`) is valuable for databases
+3. 🔄 Service management variables (state, enabled, restart_state) are standard trio
+
+**Pattern Confidence After PostgreSQL Validation (4/4 roles):**
+
+- **Handler naming:** UNIVERSAL (4/4 roles use lowercase "[action] [service]")
+- **Handler simplicity:** UNIVERSAL (4/4 use single module per handler)
+- **Configurable state:** UNIVERSAL (4/4 service roles make it configurable)
+- **Conditional handlers:** CONTEXTUAL (docker uses it, postgresql/security/users don't need it)
+
 **Next Steps:**
 
 Continue pattern of creating handlers only when necessary. Use the handler checklist:
 1. Does this role manage a service? → Maybe needs handlers
 2. Does configuration change require reload/restart? → Add handler
-3. Can I use reload instead of restart? → Prefer reload
-4. Is handler behavior critical? → Make it configurable
+3. Can I use reload instead of restart? → Prefer reload (PostgreSQL uses restart, can't reload config)
+4. Is handler behavior critical? → Make it configurable (database services should be configurable)
 5. Is handler name clear and lowercase? → Follow naming pattern
+6. Is service management optional? → Add conditional (when: role_service_manage | bool)

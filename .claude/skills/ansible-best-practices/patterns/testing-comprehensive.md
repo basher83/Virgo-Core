@@ -534,6 +534,78 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 - **Distribution coverage:** CONTEXTUAL (scales with role scope)
 - **Scheduled testing:** UNIVERSAL (all roles have it, timing varies)
 
+## Validation: geerlingguy.postgresql
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-postgresql
+
+### Molecule Testing Patterns
+
+- **Pattern: Molecule default scenario structure** - ✅ **Confirmed**
+  - PostgreSQL role uses identical molecule.yml structure as security/users/docker
+  - Same role_name_check: 1, dependency.name: galaxy, driver.name: docker
+  - Same privileged container setup with cgroup mounting
+  - Same environment variable defaults pattern (MOLECULE_DISTRO, MOLECULE_PLAYBOOK)
+  - **Pattern strength: 4/4 roles identical** - This is clearly universal
+
+- **Pattern: Multi-distribution test matrix** - ✅ **Confirmed (Standard Coverage)**
+  - PostgreSQL tests 6 distributions: rockylinux9, ubuntu2404, debian12, fedora39, archlinux, ubuntu2204
+  - Similar to docker role (comprehensive coverage for database role)
+  - Includes ArchLinux (unique to postgresql, tests bleeding edge)
+  - **Pattern holds:** Complex roles test more distributions, simple roles test fewer
+
+### CI/CD Integration Patterns
+
+- **Pattern: GitHub Actions workflow structure** - ✅ **Confirmed**
+  - Identical workflow structure: separate lint and molecule jobs
+  - Same triggers: pull_request, push to master, scheduled (cron)
+  - Same colored output environment variables (PY_COLORS, ANSIBLE_FORCE_COLOR)
+  - **4/4 roles confirm this is universal CI pattern**
+
+- **Pattern: Scheduled testing** - ✅ **Confirmed**
+  - PostgreSQL: Weekly Wednesday 5:00 AM UTC (`0 5 * * 3`)
+  - Confirms that timing varies but scheduled testing is universal
+
+### Task Organization Patterns
+
+- **Pattern: No explicit verify.yml** - ✅ **Confirmed**
+  - PostgreSQL also relies on idempotence testing, not explicit verification
+  - **4/4 roles confirm:** Converge + idempotence is standard, explicit verify is optional
+
+### Variable Management Patterns
+
+- **Pattern: Complex dict structures** - ✅ **NEW INSIGHT**
+  - PostgreSQL has extensive list-of-dicts patterns for databases, users, privileges
+  - Demonstrates flexible variable structures (simple values + complex dicts)
+  - Each dict item has required keys (name) + optional attributes
+  - **Validates:** Complex data structures are well-supported and documented
+
+### Key Validation Findings
+
+**What PostgreSQL Role Confirms:**
+
+1. ✅ Molecule/Docker testing setup is truly universal (4/4 roles identical)
+2. ✅ Separate lint/test jobs is standard practice (4/4 roles)
+3. ✅ CI triggers (PR, push, schedule) are consistent (4/4 roles)
+4. ✅ No explicit verify.yml is standard (4/4 roles rely on idempotence)
+5. ✅ Environment variable configuration is universal
+6. ✅ Complex variable structures (list-of-dicts) work well with inline documentation
+
+**What PostgreSQL Role Demonstrates:**
+
+1. 🔄 Complex database roles need comprehensive variable documentation
+2. 🔄 Distribution coverage scales with role complexity (6 distros for database vs 3 for simple roles)
+3. 🔄 List-of-dict patterns with inline comments are highly readable
+
+**Pattern Confidence After PostgreSQL Validation (4/4 roles):**
+
+- **Molecule structure:** UNIVERSAL (4/4 roles identical)
+- **CI workflow:** UNIVERSAL (4/4 roles identical structure)
+- **Distribution coverage:** CONTEXTUAL (simple: 3, complex: 6-7 distros)
+- **Scheduled testing:** UNIVERSAL (4/4 roles have it, timing varies)
+- **Idempotence testing:** UNIVERSAL (4/4 roles rely on it)
+- **Complex variable patterns:** VALIDATED (postgresql confirms dict structures work well)
+
 ## Summary
 
 **Universal Patterns Identified:**
@@ -553,6 +625,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 - Multi-distribution testing ensures cross-platform compatibility
 - Scheduled tests detect ecosystem changes (package updates, deprecations)
 - Separate linting gives faster feedback than combined jobs
+- Complex variable structures (list-of-dicts) don't require special testing approaches
 
 **Next Steps:**
 

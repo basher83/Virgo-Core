@@ -569,10 +569,118 @@ proxmox_network_verify_connectivity: true
 - Default to secure, safe, empty values
 - Feature grouping makes variable relationships clear
 
+## Validation: geerlingguy.postgresql
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-postgresql
+
+### Role-Prefixed Variable Names
+
+- **Pattern: Role prefix on ALL variables** - ✅ **Confirmed**
+  - PostgreSQL: All variables start with `postgresql_`
+  - Examples: postgresql_databases, postgresql_users, postgresql_hba_entries, postgresql_global_config_options
+  - **4/4 roles confirm this is universal**
+
+### Complex Data Structures
+
+- **Pattern: List of dicts with comprehensive inline documentation** - ✅ **EXCELLENT EXAMPLE**
+  - PostgreSQL has multiple complex list-of-dict variables:
+  ```yaml
+  postgresql_databases: []
+  # - name: exampledb # required; the rest are optional
+  #   lc_collate: # defaults to 'en_US.UTF-8'
+  #   lc_ctype: # defaults to 'en_US.UTF-8'
+  #   encoding: # defaults to 'UTF-8'
+  #   template: # defaults to 'template0'
+  #   login_host: # defaults to 'localhost'
+  #   login_password: # defaults to not set
+  #   login_user: # defaults to 'postgresql_user'
+  #   state: # defaults to 'present'
+
+  postgresql_users: []
+  # - name: jdoe #required; the rest are optional
+  #   password: # defaults to not set
+  #   encrypted: # defaults to not set
+  #   role_attr_flags: # defaults to not set
+  #   db: # defaults to not set
+  #   state: # defaults to 'present'
+  ```
+  - **Validates:** Complex dict structures work beautifully with inline documentation
+  - **Best practice:** Show ALL possible keys, mark required vs optional, document defaults
+
+### defaults/ vs vars/ Usage
+
+- **Pattern: defaults/ for user config, vars/ for OS-specific** - ✅ **Confirmed**
+  - defaults/main.yml: 100+ lines of user-configurable variables with extensive inline docs
+  - vars/{Archlinux,Debian,RedHat}.yml: OS-specific package names, paths, service names, versions
+  - **4/4 roles follow this pattern exactly**
+
+### Empty List Defaults
+
+- **Pattern: Default to [] for list variables** - ✅ **Confirmed**
+  - postgresql_databases: []
+  - postgresql_users: []
+  - postgresql_privs: []
+  - **4/4 roles use empty list defaults for safety**
+
+### Feature Grouping
+
+- **Pattern: Feature-based variable prefixes** - ✅ **Confirmed**
+  - postgresql_global_config_* for server configuration
+  - postgresql_hba_* for host-based authentication
+  - postgresql_unix_socket_* for socket configuration
+  - **Demonstrates:** Feature grouping scales to large variable sets (20+ variables)
+
+### Variable Documentation Pattern
+
+- **Pattern: Inline comments in defaults/main.yml** - ✅ **BEST PRACTICE EXAMPLE**
+  - Every complex variable has commented examples
+  - Shows required vs optional keys
+  - Documents default values inline
+  - Provides usage context
+  - **This is THE gold standard for complex variable documentation**
+
+### Advanced Pattern: Flexible Dict Structures
+
+- **Pattern: Optional attributes with sensible defaults** - ✅ **NEW INSIGHT**
+  - PostgreSQL variables accept dicts with only required keys
+  - Optional keys fall back to role defaults
+  - Task code: `item.login_host | default('localhost')`
+  - **Pattern:** Design dict structures so only required keys are necessary
+
+### Key Validation Findings
+
+**What PostgreSQL Role Confirms:**
+
+1. ✅ Role-prefixed variable names are universal (4/4 roles)
+2. ✅ Snake_case naming is universal (4/4 roles)
+3. ✅ Feature grouping is universal (4/4 roles)
+4. ✅ Empty list defaults are universal (4/4 roles)
+5. ✅ defaults/ vs vars/ separation is universal (4/4 roles)
+6. ✅ Inline documentation is critical for complex variables
+
+**What PostgreSQL Role Demonstrates:**
+
+1. 🔄 Complex list-of-dict variables can have 10+ optional attributes
+2. 🔄 Inline documentation prevents user confusion for complex structures
+3. 🔄 Show ALL possible keys, even optional ones
+4. 🔄 Mark required vs optional vs defaults in comments
+5. 🔄 Large variable sets (20+) benefit from logical grouping
+
+**Pattern Confidence After PostgreSQL Validation (4/4 roles):**
+
+- **Role prefixes:** UNIVERSAL (4/4 roles use them)
+- **Snake_case:** UNIVERSAL (4/4 roles use it)
+- **Feature grouping:** UNIVERSAL (4/4 roles group related variables)
+- **Empty list defaults:** UNIVERSAL (4/4 roles use [])
+- **defaults/ vs vars/:** UNIVERSAL (4/4 roles follow pattern)
+- **Complex dict structures:** VALIDATED (postgresql shows best practices at scale)
+- **Inline documentation:** CRITICAL (essential for complex variables)
+
 **Virgo-Core Assessment:**
 
-All three Virgo-Core roles demonstrate excellent variable management practices. They follow geerlingguy patterns closely and have no critical gaps. Minor enhancements could include more inline documentation in defaults/ files.
+All three Virgo-Core roles demonstrate excellent variable management practices. They follow geerlingguy patterns closely and have no critical gaps. Minor enhancements could include more inline documentation in defaults/ files, especially for any complex dict structures.
 
 **Next Steps:**
 
-Apply these patterns rigorously in new roles. The variable management discipline in existing roles should be maintained and used as a template.
+Apply these patterns rigorously in new roles. The variable management discipline in existing roles should be maintained and used as a template. For any future roles with complex variables, follow the postgresql pattern of comprehensive inline documentation.
