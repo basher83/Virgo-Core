@@ -20,14 +20,6 @@
     - not proxmox_network_dry_run
   tags: [proxmox_network, vlans]
 
-- name: Reload network configuration
-  ansible.builtin.include_tasks: reload.yml
-  when:
-    - proxmox_network_reload
-    - proxmox_network_changed | default(false)
-    - not proxmox_network_dry_run
-  tags: [proxmox_network, reload]
-
 - name: Verify network configuration
   ansible.builtin.include_tasks: verify.yml
   when:
