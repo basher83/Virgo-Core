@@ -35,14 +35,19 @@ The **netbox-powerdns-sync** plugin provides seamless automation between these s
 The plugin offers several strategies for creating your `docker-01-nexus.spaceships.work` style naming:[^1]
 
 -   **Device-based naming**: Uses NetBox device names as DNS records
+
 -   **IP-based naming**: Generates names based on IP address patterns
+
 -   **FHRP Group naming**: Uses First Hop Redundancy Protocol group names
+
 -   **Tag-based matching**: Routes records to appropriate zones based on NetBox tags
 
 ### Installation and Configuration
 
 ```python
+
 # NetBox plugin configuration
+
 PLUGINS = [
     'netbox_powerdns_sync'
 ]
@@ -51,8 +56,10 @@ PLUGINS_CONFIG = {
     "netbox_powerdns_sync": {
         "powerdns_managed_record_comment": "netbox-powerdns-sync",
         "post_save_enabled": True,  # Real-time DNS updates
+
     },
 }
+
 ```
 
 ## Alternative: NetBox DNS Plugin
@@ -104,8 +111,11 @@ Given your Proxmox and Ansible expertise, here's the optimal approach:
 ### Core Infrastructure Stack
 
 1. **NetBox**: Central IPAM and infrastructure documentation
+
 2. **PowerDNS**: Authoritative DNS server with API integration
+
 3. **NetBox PowerDNS Sync Plugin**: Automatic DNS record management
+
 4. **Diode + Orb Agent**: Automated network discovery and documentation
 
 ### Integration with Existing Systems

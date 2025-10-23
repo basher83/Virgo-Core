@@ -4,7 +4,7 @@
 
 Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
 
-**Universal Patterns (All 7 roles):**
+### Universal Patterns (All 7 roles)
 - Molecule default scenario with Docker driver (7/7 roles identical configuration)
 - Multi-distribution test matrix covering RedHat + Debian families (7/7 roles)
 - GitHub Actions CI with separate lint and molecule jobs (7/7 roles)
@@ -16,16 +16,16 @@ Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, g
 - No explicit verify.yml playbook - relies on idempotence (7/7 roles)
 - Testing infrastructure maintained even for minimal utility roles (pip: 3 tasks, git: 4 tasks)
 
-**Contextual Patterns (Varies by complexity):**
+### Contextual Patterns (Varies by complexity)
 - Distribution coverage scales with role complexity: simple roles test 3 distros, complex roles test 6-7 distros
 - Multi-scenario testing for roles with multiple installation methods (git uses MOLECULE_PLAYBOOK variable)
 - Scheduled testing timing varies (Monday-Sunday, different UTC times) but presence is universal
 
-**Evolving Patterns (Newer roles improved):**
+### Evolving Patterns (Newer roles improved)
 - Updated test distributions: rockylinux9, ubuntu2404, debian12 (replacing older versions)
 - Advanced include_vars with first_found lookup (docker role) vs simple include_vars (security role)
 
-**Sources:**
+### Sources
 - geerlingguy.security (analyzed 2025-10-23)
 - geerlingguy.github-users (analyzed 2025-10-23)
 - geerlingguy.docker (analyzed 2025-10-23)
@@ -34,20 +34,20 @@ Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, g
 - geerlingguy.pip (analyzed 2025-10-23)
 - geerlingguy.git (analyzed 2025-10-23)
 
-**Repositories:**
-- https://github.com/geerlingguy/ansible-role-security
-- https://github.com/geerlingguy/ansible-role-github-users
-- https://github.com/geerlingguy/ansible-role-docker
-- https://github.com/geerlingguy/ansible-role-postgresql
-- https://github.com/geerlingguy/ansible-role-nginx
-- https://github.com/geerlingguy/ansible-role-pip
-- https://github.com/geerlingguy/ansible-role-git
+### Repositories
+- <https://github.com/geerlingguy/ansible-role-security>
+- <https://github.com/geerlingguy/ansible-role-github-users>
+- <https://github.com/geerlingguy/ansible-role-docker>
+- <https://github.com/geerlingguy/ansible-role-postgresql>
+- <https://github.com/geerlingguy/ansible-role-nginx>
+- <https://github.com/geerlingguy/ansible-role-pip>
+- <https://github.com/geerlingguy/ansible-role-git>
 
 ## Pattern Confidence Levels (Historical)
 
 Analyzed 2 geerlingguy roles: security, github-users
 
-**Universal Patterns (Both roles use identical approach):**
+### Universal Patterns (Both roles use identical approach)
 
 1. ✅ **Molecule default scenario with Docker driver** - Both roles use identical molecule.yml structure
 2. ✅ **role_name_check: 1** - Both enable role naming validation
@@ -60,7 +60,7 @@ Analyzed 2 geerlingguy roles: security, github-users
 9. ✅ **yamllint for linting** - Consistent linting approach
 10. ✅ **Converge playbook with pre-tasks** - Both use pre-tasks for environment setup
 
-**Contextual Patterns (Varies by role complexity):**
+### Contextual Patterns (Varies by role complexity)
 
 1. ⚠️  **Pre-task complexity** - security role has more pre-tasks (SSH dependencies), github-users is simpler
 2. ⚠️  **Verification tests** - Neither role has explicit verify.yml (rely on idempotence)
@@ -80,7 +80,7 @@ This document captures testing patterns extracted from production-grade Ansible 
 
 **File Path:** `molecule/default/molecule.yml`
 
-**Example Code:**
+### Example Code
 
 ```yaml
 ---
@@ -106,7 +106,7 @@ provisioner:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
 ```
 
-**Key Elements:**
+### Key Elements
 
 1. **role_name_check: 1** - Validates role naming conventions
 2. **dependency.name: galaxy** - Automatically installs Galaxy dependencies
@@ -116,14 +116,14 @@ provisioner:
 6. **Privileged containers** - Required for systemd and service management testing
 7. **cgroup mounting** - Enables systemd to function properly in containers
 
-**When to Use:**
+### When to Use
 
 - All production roles should have a molecule/default scenario
 - Use Docker driver for most role testing (fast, reproducible)
 - Enable privileged mode when testing service management or systemd
 - Use environment variables for flexible test matrix configuration
 
-**Anti-pattern:**
+### Anti-pattern
 
 - Don't hardcode distribution names (use MOLECULE_DISTRO variable)
 - Don't skip role_name_check (helps catch galaxy naming issues)
@@ -135,7 +135,7 @@ provisioner:
 
 **File Path:** `molecule/default/converge.yml`
 
-**Example Code:**
+### Example Code
 
 ```yaml
 ---
@@ -170,7 +170,7 @@ provisioner:
     - role: geerlingguy.security
 ```
 
-**Key Elements:**
+### Key Elements
 
 1. **Distribution-specific setup** - Different package names for RedHat vs Debian
 2. **Package cache updates** - Ensures latest package metadata
@@ -178,14 +178,14 @@ provisioner:
 4. **Commented become directive** - Can be enabled if needed for testing
 5. **Simple role invocation** - Minimal role configuration for basic testing
 
-**When to Use:**
+### When to Use
 
 - Install test-specific dependencies that aren't part of the role
 - Prepare test environment (create directories, files, users)
 - Update package caches to avoid transient failures
 - Set up prerequisites that vary by OS family
 
-**Anti-pattern:**
+### Anti-pattern
 
 - Don't install role dependencies here (use meta/main.yml dependencies instead)
 - Avoid complex logic in pre-tasks (keep test setup simple)
@@ -199,7 +199,7 @@ provisioner:
 
 **File Path:** `.github/workflows/ci.yml` (matrix strategy section)
 
-**Example Code:**
+### Example Code
 
 ```yaml
 molecule:
@@ -213,27 +213,27 @@ molecule:
         - debian11
 ```
 
-**Key Elements:**
+### Key Elements
 
 1. **Strategic distribution selection** - Mix of RedHat and Debian families
 2. **Current LTS/stable versions** - Rocky Linux 9, Ubuntu 22.04, Debian 11
 3. **Representative sampling** - Not exhaustive, but covers main use cases
 4. **Environment variable passing** - MOLECULE_DISTRO passed to molecule
 
-**Test Coverage Strategy:**
+### Test Coverage Strategy
 
 - **RedHat family:** rockylinux9 (represents RHEL, CentOS, Rocky, Alma)
 - **Debian family:** ubuntu2204, debian11 (covers Ubuntu and Debian variants)
 - **Version selection:** Latest LTS or stable releases
 
-**When to Use:**
+### When to Use
 
 - Test on at least one RedHat and one Debian distribution
 - Include distributions you actually support in production
 - Use latest stable/LTS versions unless testing legacy compatibility
 - Consider adding Fedora for testing newer systemd/package versions
 
-**Anti-pattern:**
+### Anti-pattern
 
 - Don't test every possible distribution (diminishing returns)
 - Avoid outdated distributions unless explicitly supported
@@ -247,7 +247,7 @@ molecule:
 
 **File Path:** `.github/workflows/ci.yml`
 
-**Example Code:**
+### Example Code
 
 ```yaml
 ---
@@ -319,7 +319,7 @@ jobs:
           MOLECULE_DISTRO: ${{ matrix.distro }}
 ```
 
-**Key Elements:**
+### Key Elements
 
 1. **Multiple trigger events:**
    - `pull_request` - Test all PRs before merge
@@ -345,7 +345,7 @@ jobs:
    - molecule-plugins[docker] - Docker driver support
    - docker - Python Docker SDK
 
-**When to Use:**
+### When to Use
 
 - Always run tests on pull requests (prevents bad merges)
 - Test main branch to catch integration issues
@@ -353,7 +353,7 @@ jobs:
 - Separate linting from testing for faster feedback
 - Enable colored output for easier log reading
 
-**Anti-pattern:**
+### Anti-pattern
 
 - Don't run expensive tests on every commit to every branch
 - Avoid skipping scheduled tests (catches dependency rot)
@@ -365,7 +365,7 @@ jobs:
 
 **Description:** Molecule's default test sequence includes an idempotence test that runs the role twice and verifies no changes occur on the second run.
 
-**Test Sequence (molecule test command):**
+### Test Sequence (molecule test command)
 
 1. **dependency** - Install Galaxy dependencies
 2. **cleanup** - Remove previous test containers
@@ -379,7 +379,7 @@ jobs:
 10. **cleanup** - Remove test containers
 11. **destroy** - Final cleanup
 
-**Idempotence Verification:**
+### Idempotence Verification
 
 Molecule automatically fails if the second converge run reports changed tasks. This validates that the role:
 
@@ -387,13 +387,13 @@ Molecule automatically fails if the second converge run reports changed tasks. T
 - Checks state before making changes
 - Doesn't have tasks that always report changed
 
-**When to Use:**
+### When to Use
 
 - Run full `molecule test` in CI/CD
 - Use `molecule converge` for faster development iteration
 - Use `molecule verify` to test without full cleanup
 
-**Anti-pattern:**
+### Anti-pattern
 
 - Don't disable idempotence testing (critical quality check)
 - Avoid using command/shell modules without changed_when
@@ -409,7 +409,7 @@ Molecule automatically fails if the second converge run reports changed tasks. T
 2. **CI matrix testing** - Tests across distributions
 3. **Converge success** - Role executes without errors
 
-**Alternative Verification Approaches:**
+### Alternative Verification Approaches
 
 For more complex roles, consider adding `molecule/default/verify.yml`:
 
@@ -435,14 +435,14 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
       failed_when: result.changed
 ```
 
-**When to Use:**
+### When to Use
 
 - Simple roles: Rely on idempotence testing
 - Complex roles: Add explicit verification
 - Stateful services: Verify running state
 - Configuration files: Test file contents/permissions
 
-**Anti-pattern:**
+### Anti-pattern
 
 - Don't create verification tests that duplicate idempotence tests
 - Avoid complex verification logic (keep tests simple)
@@ -451,19 +451,19 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### system_user Role
 
-**Gaps:**
+### Gaps
 
 - ❌ No molecule/ directory
 - ❌ No CI/CD integration (.github/workflows/)
 - ❌ No automated testing across distributions
 - ❌ No idempotence verification
 
-**Matches:**
+### Matches
 
 - ✅ Simple, focused role scope
 - ✅ Uses idempotent modules (user, authorized_key, lineinfile)
 
-**Priority Actions:**
+### Priority Actions
 
 1. **Critical:** Add molecule/default scenario (2-4 hours)
 2. **Critical:** Add GitHub Actions CI workflow (2 hours)
@@ -471,19 +471,19 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### proxmox_access Role
 
-**Gaps:**
+### Gaps
 
 - ❌ No molecule/ directory
 - ❌ No CI/CD integration
 - ❌ No automated testing
-- ⚠️  Uses shell module (needs changed_when validation)
+- ⚠️  Uses shell module (requires changed_when validation)
 
-**Matches:**
+### Matches
 
 - ✅ Well-structured tasks
 - ✅ Uses handlers appropriately
 
-**Priority Actions:**
+### Priority Actions
 
 1. **Critical:** Add molecule testing (2-4 hours)
 2. **Critical:** Add changed_when to shell tasks (30 minutes)
@@ -491,19 +491,19 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### proxmox_network Role
 
-**Gaps:**
+### Gaps
 
 - ❌ No molecule/ directory
 - ❌ No CI/CD integration
 - ❌ No automated testing
 - ⚠️  Network changes are hard to test (consider check mode tests)
 
-**Matches:**
+### Matches
 
 - ✅ Uses handlers for network reload
 - ✅ Conditional task execution
 
-**Priority Actions:**
+### Priority Actions
 
 1. **Critical:** Add molecule testing with network verification (3-4 hours)
 2. **Critical:** Add GitHub Actions CI (2 hours)
@@ -549,7 +549,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### Key Validation Findings
 
-**What Docker Role Confirms:**
+### What Docker Role Confirms
 
 1. ✅ Molecule/Docker testing setup is truly universal (exact same structure)
 2. ✅ Separate lint/test jobs is standard practice
@@ -557,12 +557,12 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 4. ✅ Environment variable configuration for flexibility is standard
 5. ✅ Relying on idempotence test vs explicit verify is acceptable
 
-**What Docker Role Evolves:**
+### What Docker Role Evolves
 
 1. 🔄 More distributions in test matrix (7 vs 3) - scales with role complexity/usage
 2. 🔄 Different cron schedule - flexibility in timing, not pattern itself
 
-**Pattern Confidence After Docker Validation:**
+### Pattern Confidence After Docker Validation
 
 - **Molecule structure:** UNIVERSAL (3/3 roles identical)
 - **CI workflow:** UNIVERSAL (3/3 roles identical structure)
@@ -617,7 +617,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### Key Validation Findings
 
-**What PostgreSQL Role Confirms:**
+### What PostgreSQL Role Confirms
 
 1. ✅ Molecule/Docker testing setup is truly universal (4/4 roles identical)
 2. ✅ Separate lint/test jobs is standard practice (4/4 roles)
@@ -626,13 +626,13 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 5. ✅ Environment variable configuration is universal
 6. ✅ Complex variable structures (list-of-dicts) work well with inline documentation
 
-**What PostgreSQL Role Demonstrates:**
+### What PostgreSQL Role Demonstrates
 
 1. 🔄 Complex database roles need comprehensive variable documentation
 2. 🔄 Distribution coverage scales with role complexity (6 distros for database vs 3 for simple roles)
 3. 🔄 List-of-dict patterns with inline comments are highly readable
 
-**Pattern Confidence After PostgreSQL Validation (4/4 roles):**
+### Pattern Confidence After PostgreSQL Validation (4/4 roles)
 
 - **Molecule structure:** UNIVERSAL (4/4 roles identical)
 - **CI workflow:** UNIVERSAL (4/4 roles identical structure)
@@ -685,7 +685,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### Key Validation Findings
 
-**What nginx Role Confirms:**
+### What nginx Role Confirms
 
 1. ✅ Molecule/Docker testing setup is truly universal (5/5 roles identical)
 2. ✅ Separate lint/test jobs is standard practice (5/5 roles)
@@ -694,7 +694,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 5. ✅ Environment variable configuration is universal (5/5 roles)
 6. ✅ role_name_check: 1 is universal (5/5 roles enable it)
 
-**Pattern Confidence After nginx Validation (5/5 roles):**
+### Pattern Confidence After nginx Validation (5/5 roles)
 
 - **Molecule structure:** UNIVERSAL (5/5 roles identical)
 - **CI workflow:** UNIVERSAL (5/5 roles identical structure)
@@ -742,7 +742,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### Key Validation Findings
 
-**What pip Role Confirms:**
+### What pip Role Confirms
 
 1. ✅ Testing infrastructure applies to minimal utility roles (pip has only 3 tasks)
 2. ✅ Multi-distribution testing is universal regardless of role complexity
@@ -750,7 +750,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 4. ✅ Molecule/Docker setup doesn't scale down even for simple roles
 5. ✅ Separate lint/test jobs maintained even for small roles
 
-**Pattern Confidence After pip Validation (6/6 roles):**
+### Pattern Confidence After pip Validation (6/6 roles)
 
 - **Molecule structure:** UNIVERSAL (6/6 roles identical)
 - **CI workflow:** UNIVERSAL (6/6 roles identical structure)
@@ -805,7 +805,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ### Key Validation Findings
 
-**What git Role Confirms:**
+### What git Role Confirms
 
 1. ✅ All patterns hold for utility roles with multiple installation methods
 2. ✅ Multi-scenario testing achieved via MOLECULE_PLAYBOOK variable
@@ -813,7 +813,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 4. ✅ Task organization patterns (conditional imports) apply to utility roles
 5. ✅ Testing infrastructure doesn't simplify even for utility roles
 
-**Pattern Confidence After git Validation (7/7 roles):**
+### Pattern Confidence After git Validation (7/7 roles)
 
 - **Molecule structure:** UNIVERSAL (7/7 roles identical)
 - **CI workflow:** UNIVERSAL (7/7 roles identical structure)
@@ -824,7 +824,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 ## Summary
 
-**Universal Patterns Identified:**
+### Universal Patterns Identified
 
 1. Molecule default scenario with Docker driver
 2. Multi-distribution test matrix (RedHat + Debian families)
@@ -834,7 +834,7 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 6. Scheduled testing for dependency health
 7. Environment variable configuration for flexibility
 
-**Key Takeaways:**
+### Key Takeaways
 
 - Testing infrastructure is not optional for production roles (7/7 roles have it)
 - Idempotence verification catches most role quality issues (7/7 roles rely on it)
@@ -844,13 +844,13 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 - Complex variable structures (list-of-dicts) don't require special testing approaches
 - **Patterns scale down:** Even minimal utility roles (pip: 3 tasks, git: 4 tasks) maintain full testing infrastructure
 
-**Utility Role Insights (pip + git):**
+### Utility Role Insights (pip + git)
 
 - Simple roles don't get simplified testing - same molecule/CI structure
 - Multi-scenario testing via MOLECULE_PLAYBOOK for different installation methods
 - Minimal task count doesn't correlate with testing complexity
 - Testing patterns proven universal across all role sizes (minimal to complex)
 
-**Next Steps:**
+### Next Steps
 
 Apply these patterns to Virgo-Core roles, starting with system_user (simplest) to establish testing infrastructure template.

@@ -4,7 +4,8 @@
 
 **Goal:** Extract production patterns from geerlingguy roles, validate Phase 1-3 roles against them, generate prioritized action items.
 
-**Architecture:** Use ansible-research agent for deep exemplar analysis (security + users), breadth validation (5 more roles), synthesize patterns into ansible-best-practices skill, compare against our roles.
+**Architecture:** Use ansible-research agent for deep exemplar analysis (security + users), breadth validation (5 more roles),
+synthesize patterns into ansible-best-practices skill, compare against our roles.
 
 **Tech Stack:** ansible-research agent, GitHub API, Markdown documentation
 
@@ -12,52 +13,53 @@
 
 ## Task 1: Deep Analysis - geerlingguy.security Role
 
-**Files:**
+**Files:
+
 - Create: `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`
 - Create: `.claude/skills/ansible-best-practices/patterns/role-structure-standards.md`
 - Create: `.claude/skills/ansible-best-practices/patterns/documentation-templates.md`
 
-**Step 1: Launch ansible-research agent for geerlingguy.security**
+### Step 1: Launch ansible-research agent for geerlingguy.security
 
 Dispatch ansible-research agent with prompt:
 
-```
+```text
 Analyze the geerlingguy.security role from GitHub (geerlingguy/ansible-role-security).
 
 Extract comprehensive patterns in these categories:
 
-1. **Testing Patterns:**
+1. **Testing Patterns:
    - Molecule configuration structure (molecule.yml)
    - Test scenarios (default, convergence, idempotence)
    - Test matrix (OS/versions tested)
    - CI/CD integration (GitHub Actions setup)
    - Assertion patterns and verification strategies
 
-2. **Role Structure:**
+2. **Role Structure:
    - Directory organization (tasks/, defaults/, handlers/, templates/, vars/, meta/, files/)
    - Task file organization (main.yml vs split files, when to split)
    - Naming conventions (files, variables, tasks)
    - File placement decisions
 
-3. **Documentation:**
+3. **Documentation:
    - README structure and sections
    - Variable documentation format
    - Example usage patterns
    - Requirements listing
    - Troubleshooting sections
 
-4. **Variable Management:**
+4. **Variable Management:
    - defaults/ vs vars/ usage
    - Variable naming conventions
    - Boolean vs string patterns
    - Complex structures (lists, dicts)
 
-5. **Handler Patterns:**
+5. **Handler Patterns:
    - When handlers vs tasks
    - Handler naming conventions
    - Notification patterns
 
-6. **Meta/Dependencies:**
+6. **Meta/Dependencies:
    - galaxy_info structure
    - Platform specifications
    - Role dependencies
@@ -71,7 +73,7 @@ For each category, provide:
 
 Expected output: Comprehensive analysis document with code snippets and file references.
 
-**Step 2: Document testing patterns from security role**
+### Step 2: Document testing patterns from security role
 
 Create `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`:
 
@@ -106,19 +108,19 @@ Create `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`
 - **proxmox_network:** [Gap analysis]
 ```
 
-**Step 3: Document structure patterns from security role**
+### Step 3: Document structure patterns from security role
 
 Create `.claude/skills/ansible-best-practices/patterns/role-structure-standards.md`:
 
 [Similar template to testing-comprehensive.md, filled with structure patterns]
 
-**Step 4: Document documentation patterns from security role**
+### Step 4: Document documentation patterns from security role
 
 Create `.claude/skills/ansible-best-practices/patterns/documentation-templates.md`:
 
 [Similar template, filled with README and docs patterns]
 
-**Step 5: Commit security role analysis**
+### Step 5: Commit security role analysis
 
 ```bash
 git add .claude/skills/ansible-best-practices/patterns/testing-comprehensive.md
@@ -143,7 +145,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 2: Deep Analysis - geerlingguy.users Role
 
-**Files:**
+**Files:
+
 - Modify: `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`
 - Modify: `.claude/skills/ansible-best-practices/patterns/role-structure-standards.md`
 - Modify: `.claude/skills/ansible-best-practices/patterns/documentation-templates.md`
@@ -151,18 +154,19 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 - Create: `.claude/skills/ansible-best-practices/patterns/handler-best-practices.md`
 - Create: `.claude/skills/ansible-best-practices/patterns/meta-dependencies.md`
 
-**Step 1: Launch ansible-research agent for geerlingguy.users**
+### Step 1: Launch ansible-research agent for geerlingguy.users
 
 Dispatch ansible-research agent with same prompt as Task 1, but for `geerlingguy/ansible-role-users`.
 
-**Step 2: Compare users patterns with security patterns**
+### Step 2: Compare users patterns with security patterns
 
 Review ansible-research output for:
+
 - **Universal patterns:** Both roles use same approach → Mark as standard
 - **Contextual variations:** Different approaches with clear rationale → Document both
 - **Contradictions:** Investigate which is newer/better practice
 
-**Step 3: Update testing patterns with users role findings**
+### Step 3: Update testing patterns with users role findings
 
 Add to `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`:
 
@@ -176,7 +180,7 @@ Add to `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`
 - [List patterns that differ with rationale]
 ```
 
-**Step 4: Create variable management patterns document**
+### Step 4: Create variable management patterns document
 
 Create `.claude/skills/ansible-best-practices/patterns/variable-management-patterns.md`:
 
@@ -211,19 +215,19 @@ Create `.claude/skills/ansible-best-practices/patterns/variable-management-patte
 - **proxmox_network:** [Gap analysis]
 ```
 
-**Step 5: Create handler patterns document**
+### Step 5: Create handler patterns document
 
 Create `.claude/skills/ansible-best-practices/patterns/handler-best-practices.md`:
 
 [Similar structure with handler patterns]
 
-**Step 6: Create meta/dependencies document**
+### Step 6: Create meta/dependencies document
 
 Create `.claude/skills/ansible-best-practices/patterns/meta-dependencies.md`:
 
 [Similar structure with galaxy_info and dependencies patterns]
 
-**Step 7: Commit users role analysis**
+### Step 7: Commit users role analysis
 
 ```bash
 git add .claude/skills/ansible-best-practices/patterns/*.md
@@ -246,16 +250,17 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 3: Breadth Validation - docker Role
 
-**Files:**
+**Files:
+
 - Modify: `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`
 - Modify: `.claude/skills/ansible-best-practices/patterns/role-structure-standards.md`
 - Modify: `.claude/skills/ansible-best-practices/patterns/handler-best-practices.md`
 
-**Step 1: Launch ansible-research for focused validation**
+### Step 1: Launch ansible-research for focused validation
 
 Dispatch ansible-research agent with validation prompt:
 
-```
+```text
 Analyze geerlingguy.docker role from GitHub (geerlingguy/ansible-role-docker).
 
 Focus on validating these patterns we extracted from security + users roles:
@@ -272,7 +277,7 @@ For each area, report:
 - **Evolution:** Is this a newer/improved pattern?
 ```
 
-**Step 2: Update pattern documents with validation findings**
+### Step 2: Update pattern documents with validation findings
 
 For each pattern document, add validation section:
 
@@ -284,7 +289,7 @@ For each pattern document, add validation section:
 - **Pattern Z:** 🔄 Evolved (newer approach in docker vs security)
 ```
 
-**Step 3: Commit docker validation**
+### Step 3: Commit docker validation
 
 ```bash
 git add .claude/skills/ansible-best-practices/patterns/*.md
@@ -306,18 +311,19 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 4: Breadth Validation - postgresql Role
 
-**Files:**
+**Files:
+
 - Modify: `.claude/skills/ansible-best-practices/patterns/*.md`
 
-**Step 1: Launch ansible-research for postgresql validation**
+### Step 1: Launch ansible-research for postgresql validation
 
 Same validation prompt as Task 3, but for `geerlingguy/ansible-role-postgresql`.
 
-**Step 2: Update pattern documents with postgresql findings**
+### Step 2: Update pattern documents with postgresql findings
 
 Add validation section to each pattern document.
 
-**Step 3: Commit postgresql validation**
+### Step 3: Commit postgresql validation
 
 ```bash
 git add .claude/skills/ansible-best-practices/patterns/*.md
@@ -338,18 +344,19 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 5: Breadth Validation - nginx Role
 
-**Files:**
+**Files:
+
 - Modify: `.claude/skills/ansible-best-practices/patterns/*.md`
 
-**Step 1: Launch ansible-research for nginx validation**
+### Step 1: Launch ansible-research for nginx validation
 
 Same validation prompt as Task 3, but for `geerlingguy/ansible-role-nginx`.
 
-**Step 2: Update pattern documents with nginx findings**
+### Step 2: Update pattern documents with nginx findings
 
 Add validation section to each pattern document.
 
-**Step 3: Commit nginx validation**
+### Step 3: Commit nginx validation
 
 ```bash
 git add .claude/skills/ansible-best-practices/patterns/*.md
@@ -370,22 +377,23 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 6: Breadth Validation - pip and git Roles
 
-**Files:**
+**Files:
+
 - Modify: `.claude/skills/ansible-best-practices/patterns/*.md`
 
-**Step 1: Launch ansible-research for pip validation**
+### Step 1: Launch ansible-research for pip validation
 
 Same validation prompt for `geerlingguy/ansible-role-pip` (simple utility role baseline).
 
-**Step 2: Launch ansible-research for git validation**
+### Step 2: Launch ansible-research for git validation
 
 Same validation prompt for `geerlingguy/ansible-role-git`.
 
-**Step 3: Update pattern documents**
+### Step 3: Update pattern documents
 
 Add findings for simple utility roles - see if patterns hold for minimal roles too.
 
-**Step 4: Commit utility role validation**
+### Step 4: Commit utility role validation
 
 ```bash
 git add .claude/skills/ansible-best-practices/patterns/*.md
@@ -406,11 +414,12 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 7: Synthesize Pattern Confidence Levels
 
-**Files:**
+**Files:
+
 - Modify: All `.claude/skills/ansible-best-practices/patterns/*.md` files
 - Create: `.claude/skills/ansible-best-practices/reference/production-repos.md`
 
-**Step 1: Review all pattern documents**
+### Step 1: Review all pattern documents
 
 For each pattern document, add **Summary: Pattern Confidence** section at top:
 
@@ -419,17 +428,17 @@ For each pattern document, add **Summary: Pattern Confidence** section at top:
 
 Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
 
-**Universal Patterns (All 7 roles):**
+**Universal Patterns (All 7 roles):
 - [List patterns all roles follow]
 
-**Contextual Patterns (Varies by complexity):**
+**Contextual Patterns (Varies by complexity):
 - [List patterns that differ with rationale]
 
-**Evolving Patterns (Newer roles improved):**
+**Evolving Patterns (Newer roles improved):
 - [List patterns where newer roles have better approaches]
 ```
 
-**Step 2: Create production repos reference**
+### Step 2: Create production repos reference
 
 Create `.claude/skills/ansible-best-practices/reference/production-repos.md`:
 
@@ -442,13 +451,13 @@ Create `.claude/skills/ansible-best-practices/reference/production-repos.md`:
 
 ### Deep Exemplars
 
-1. **geerlingguy/ansible-role-security**
+1. **geerlingguy/ansible-role-security
    - **Purpose:** System hardening patterns
    - **Key Learnings:** [List]
    - **Downloads:** [Check Galaxy]
    - **Repository:** https://github.com/geerlingguy/ansible-role-security
 
-2. **geerlingguy/ansible-role-users**
+2. **geerlingguy/ansible-role-users
    - **Purpose:** User/SSH management (maps to system_user)
    - **Key Learnings:** [List]
    - **Downloads:** [Check Galaxy]
@@ -456,11 +465,11 @@ Create `.claude/skills/ansible-best-practices/reference/production-repos.md`:
 
 ### Breadth Validation
 
-3. **geerlingguy/ansible-role-docker**
-4. **geerlingguy/ansible-role-postgresql**
-5. **geerlingguy/ansible-role-nginx**
-6. **geerlingguy/ansible-role-pip**
-7. **geerlingguy/ansible-role-git**
+3. **geerlingguy/ansible-role-docker
+4. **geerlingguy/ansible-role-postgresql
+5. **geerlingguy/ansible-role-nginx
+6. **geerlingguy/ansible-role-pip
+7. **geerlingguy/ansible-role-git
 
 ## Pattern Extraction Summary
 
@@ -484,7 +493,7 @@ Create `.claude/skills/ansible-best-practices/reference/production-repos.md`:
 - OpenStack-Ansible - HA patterns
 ```
 
-**Step 3: Commit synthesis**
+### Step 3: Commit synthesis
 
 ```bash
 git add .claude/skills/ansible-best-practices/patterns/*.md
@@ -510,13 +519,15 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 8: Compare system_user Role to Patterns
 
-**Files:**
+**Files:
+
 - Create: `docs/action-items/2025-10-23-role-improvements.md`
 - Create: `.tmp/system_user-gap-analysis.md` (working file)
 
-**Step 1: Read system_user role files**
+### Step 1: Read system_user role files
 
 Read all files for system_user role:
+
 - `ansible/roles/system_user/tasks/main.yml`
 - `ansible/roles/system_user/defaults/main.yml`
 - `ansible/roles/system_user/handlers/main.yml`
@@ -524,7 +535,7 @@ Read all files for system_user role:
 - `ansible/roles/system_user/meta/main.yml`
 - `ansible/roles/system_user/README.md`
 
-**Step 2: Compare against each pattern document**
+### Step 2: Compare against each pattern document
 
 For each pattern document, check system_user:
 
@@ -559,7 +570,7 @@ For each pattern document, check system_user:
 - ❌ Missing: Platform specifications
 ```
 
-**Step 3: Categorize gaps as Critical/Important/Nice-to-have**
+### Step 3: Categorize gaps as Critical/Important/Nice-to-have
 
 Review gap analysis and prioritize:
 
@@ -567,7 +578,7 @@ Review gap analysis and prioritize:
 - **Important:** README enhancements, platform specs
 - **Nice-to-have:** CI/CD, advanced features
 
-**Step 4: Create action items section**
+### Step 4: Create action items section
 
 Start `.tmp/system_user-gap-analysis.md` → will consolidate later:
 
@@ -612,19 +623,20 @@ Start `.tmp/system_user-gap-analysis.md` → will consolidate later:
 
 ## Task 9: Compare proxmox_access Role to Patterns
 
-**Files:**
+**Files:
+
 - Append to: `docs/action-items/2025-10-23-role-improvements.md`
 - Create: `.tmp/proxmox_access-gap-analysis.md`
 
-**Step 1: Read proxmox_access role files**
+### Step 1: Read proxmox_access role files
 
 Read all files for proxmox_access role (same process as Task 8).
 
-**Step 2: Compare against pattern documents**
+### Step 2: Compare against pattern documents
 
 Same comparison process as Task 8.
 
-**Step 3: Create action items section**
+### Step 3: Create action items section
 
 [Similar structure to Task 8 output]
 
@@ -632,19 +644,20 @@ Same comparison process as Task 8.
 
 ## Task 10: Compare proxmox_network Role to Patterns
 
-**Files:**
+**Files:
+
 - Append to: `docs/action-items/2025-10-23-role-improvements.md`
 - Create: `.tmp/proxmox_network-gap-analysis.md`
 
-**Step 1: Read proxmox_network role files**
+### Step 1: Read proxmox_network role files
 
 Read all files for proxmox_network role (same process as Task 8).
 
-**Step 2: Compare against pattern documents**
+### Step 2: Compare against pattern documents
 
 Same comparison process as Task 8.
 
-**Step 3: Create action items section**
+### Step 3: Create action items section
 
 [Similar structure to Task 8 output]
 
@@ -652,11 +665,12 @@ Same comparison process as Task 8.
 
 ## Task 11: Consolidate Action Items Document
 
-**Files:**
+**Files:
+
 - Create: `docs/action-items/2025-10-23-role-improvements.md`
 - Delete: `.tmp/*-gap-analysis.md`
 
-**Step 1: Create consolidated action items document**
+### Step 1: Create consolidated action items document
 
 ```markdown
 # Ansible Role Improvements - Action Items
@@ -668,17 +682,17 @@ Same comparison process as Task 8.
 
 Analyzed 3 Virgo-Core roles against production patterns from 7 geerlingguy roles.
 
-**Roles Analyzed:**
+**Roles Analyzed:
 - system_user
 - proxmox_access
 - proxmox_network
 
-**Pattern Sources:**
+**Pattern Sources:
 - geerlingguy.security (deep exemplar)
 - geerlingguy.users (deep exemplar)
 - geerlingguy.docker, postgresql, nginx, pip, git (breadth validation)
 
-**Pattern Documents:**
+**Pattern Documents:
 - `.claude/skills/ansible-best-practices/patterns/testing-comprehensive.md`
 - `.claude/skills/ansible-best-practices/patterns/role-structure-standards.md`
 - `.claude/skills/ansible-best-practices/patterns/documentation-templates.md`
@@ -719,13 +733,13 @@ Analyzed 3 Virgo-Core roles against production patterns from 7 geerlingguy roles
 - [ ] Debops for variable organization at scale
 ```
 
-**Step 2: Clean up temporary files**
+### Step 2: Clean up temporary files
 
 ```bash
 rm .tmp/*-gap-analysis.md
 ```
 
-**Step 3: Commit action items document**
+### Step 3: Commit action items document
 
 ```bash
 git add docs/action-items/2025-10-23-role-improvements.md
@@ -754,14 +768,15 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 12: Update SKILL.md with New Patterns
 
-**Files:**
+**Files:
+
 - Modify: `.claude/skills/ansible-best-practices/SKILL.md`
 
-**Step 1: Read current SKILL.md**
+### Step 1: Read current SKILL.md
 
 Read `.claude/skills/ansible-best-practices/SKILL.md` to understand current structure.
 
-**Step 2: Add references to new pattern documents**
+### Step 2: Add references to new pattern documents
 
 Update Progressive Disclosure section:
 
@@ -786,7 +801,7 @@ Start here, drill down as needed:
 - `reference/production-repos.md` ✨ NEW - Studied geerlingguy roles index
 ```
 
-**Step 3: Commit SKILL.md update**
+### Step 3: Commit SKILL.md update
 
 ```bash
 git add .claude/skills/ansible-best-practices/SKILL.md
@@ -812,10 +827,11 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
 
 ## Task 13: Final Validation and Summary
 
-**Files:**
+**Files:
+
 - Create: `docs/action-items/2025-10-23-research-summary.md`
 
-**Step 1: Verify all deliverables**
+### Step 1: Verify all deliverables
 
 Check that all expected files exist:
 
@@ -832,7 +848,7 @@ ls -la docs/action-items/2025-10-23-role-improvements.md
 
 Expected: All files exist.
 
-**Step 2: Create research summary**
+### Step 2: Create research summary
 
 ```markdown
 # Ansible Role Validation Research - Summary
@@ -866,7 +882,7 @@ Expected: All files exist.
 
 ### Enhanced ansible-best-practices Skill
 
-**6 New Pattern Documents:**
+**6 New Pattern Documents:
 1. `patterns/testing-comprehensive.md` - [N lines]
 2. `patterns/role-structure-standards.md` - [N lines]
 3. `patterns/documentation-templates.md` - [N lines]
@@ -874,14 +890,14 @@ Expected: All files exist.
 5. `patterns/handler-best-practices.md` - [N lines]
 6. `patterns/meta-dependencies.md` - [N lines]
 
-**Reference Index:**
+**Reference Index:
 - `reference/production-repos.md` - 7 roles indexed
 
 ### Action Items Document
 
 **Location:** `docs/action-items/2025-10-23-role-improvements.md`
 
-**Breakdown:**
+**Breakdown:
 - system_user: [N] critical, [N] important, [N] nice-to-have
 - proxmox_access: [N] critical, [N] important, [N] nice-to-have
 - proxmox_network: [N] critical, [N] important, [N] nice-to-have
@@ -912,7 +928,7 @@ Expected: All files exist.
 - ✅ Pattern confidence levels documented
 ```
 
-**Step 3: Commit research summary**
+### Step 3: Commit research summary
 
 ```bash
 git add docs/action-items/2025-10-23-research-summary.md
@@ -933,7 +949,7 @@ comprehensive patterns for Phase 4+ development.
 Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
-**Step 4: Push feature branch**
+### Step 4: Push feature branch
 
 ```bash
 git push -u origin feature/ansible-role-validation-research

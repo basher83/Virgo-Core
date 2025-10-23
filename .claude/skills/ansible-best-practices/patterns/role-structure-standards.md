@@ -532,16 +532,16 @@ security_sshd_name: sshd
 ```yaml
 ---
 - name: reload systemd
-  systemd_service:
+  ansible.builtin.systemd_service:
     daemon_reload: true
 
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: "{{ security_sshd_name }}"
     state: "{{ security_ssh_restart_handler_state }}"
 
 - name: reload fail2ban
-  service:
+  ansible.builtin.service:
     name: fail2ban
     state: reloaded
 ```

@@ -8,7 +8,10 @@
 
 ## Executive Summary
 
-This document consolidates action items from comprehensive gap analysis of three production-ready Ansible roles (system_user, proxmox_access, proxmox_network) against established patterns from 7 geerlingguy roles. All three roles demonstrate excellent fundamentals in structure, variable management, documentation, and handler patterns. The primary gap across all roles is the absence of testing infrastructure (molecule + CI/CD), which is universal in production-grade roles.
+This document consolidates action items from comprehensive gap analysis of three production-ready Ansible roles (system_user, proxmox_access,
+proxmox_network) against established patterns from 7 geerlingguy roles. All three roles demonstrate excellent fundamentals in structure,
+variable management, documentation, and handler patterns. The primary gap across all roles is the absence of testing infrastructure
+(molecule + CI/CD), which is universal in production-grade roles.
 
 ### Overall Pattern Compliance
 
@@ -21,6 +24,7 @@ This document consolidates action items from comprehensive gap analysis of three
 ### Key Findings
 
 **Strengths Across All Roles:**
+
 - Excellent task organization (feature-based splitting, clear naming)
 - Strong variable naming conventions (role-prefixed, descriptive)
 - Comprehensive README documentation (exceeds many geerlingguy roles)
@@ -28,9 +32,11 @@ This document consolidates action items from comprehensive gap analysis of three
 - Security-conscious design (validation, permissions, warnings)
 
 **Universal Critical Gap:**
+
 - **No testing infrastructure** - Missing molecule/, no CI/CD workflows, no automated idempotence verification
 
 **Role-Specific Strengths:**
+
 - **system_user**: Outstanding troubleshooting section, security considerations, idempotency documentation
 - **proxmox_access**: Excellent task modularization (8 feature files), comprehensive security warnings
 - **proxmox_network**: Built-in verification tasks, advanced handler patterns, network stabilization handling
@@ -42,6 +48,7 @@ This document consolidates action items from comprehensive gap analysis of three
 - **Nice-to-Have Items (Optional):** 14 items - Polish, future-proofing
 
 **Estimated Total Effort:**
+
 - Critical: 18-24 hours (6-8 hours per role)
 - Important: 8-12 hours
 - Nice-to-Have: 8-10 hours
@@ -69,6 +76,7 @@ This document consolidates action items from comprehensive gap analysis of three
 - **Rationale:** Universal pattern in 7/7 geerlingguy roles. Critical for confident changes and refactoring.
 
 **Implementation Notes:**
+
 ```yaml
 # molecule/default/molecule.yml
 ---
@@ -93,6 +101,7 @@ provisioner:
 ```
 
 **Test Matrix:**
+
 - ubuntu2404 (Noble)
 - ubuntu2204 (Jammy)
 - debian12 (Bookworm)
@@ -108,6 +117,7 @@ provisioner:
 - **Rationale:** Universal in 7/7 roles. Essential for catching breakage early.
 
 **Workflow Structure:**
+
 - Separate lint and molecule jobs
 - Test matrix across 3 distributions
 - Weekly scheduled runs for dependency health checks
@@ -134,6 +144,7 @@ provisioner:
 - **Rationale:** User management is platform-agnostic
 
 **Implementation:**
+
 ```yaml
 platforms:
   - name: GenericLinux
@@ -161,6 +172,7 @@ platforms:
 - **Rationale:** Standard practice in production roles
 
 **Implementation:**
+
 ```markdown
 # Ansible Role: system_user
 
@@ -220,6 +232,7 @@ platforms:
 - **Rationale:** Cannot verify role works correctly without testing infrastructure
 
 **Test Scenarios:**
+
 - Token creation/removal workflows
 - ACL application validation
 - User and group management
@@ -227,6 +240,7 @@ platforms:
 - Idempotence (run twice, no changes on second run)
 
 **Test Matrix:**
+
 - debian12 (Proxmox VE 9.x base)
 - debian11 (Proxmox VE 8.x base)
 - ubuntu2404 (if expanding support)
@@ -242,6 +256,7 @@ platforms:
 - **Rationale:** 7/7 roles have automated CI. Essential for access control role.
 
 **Workflow Features:**
+
 - Separate lint and molecule jobs
 - Test matrix across Debian versions
 - Weekly scheduled testing
@@ -257,6 +272,7 @@ platforms:
 - **Rationale:** Incomplete metadata blocks Galaxy publication
 
 **Enhancements Needed:**
+
 ```yaml
 galaxy_info:
   role_name: proxmox_access  # Add explicit role_name
@@ -287,6 +303,7 @@ galaxy_info:
 - **Rationale:** Complex role needs comprehensive troubleshooting
 
 **Add These Scenarios:**
+
 - Token expired or lost (cannot retrieve after creation)
 - Permission denied errors (ACL troubleshooting)
 - Infisical connection failures
@@ -304,6 +321,7 @@ galaxy_info:
 - **Rationale:** Users may miss prerequisites
 
 **Add to Requirements:**
+
 ```markdown
 ## Requirements
 
@@ -335,6 +353,7 @@ galaxy_info:
 - **Rationale:** Users may not know all available attributes
 
 **Show All Optional Keys:**
+
 ```yaml
 proxmox_users: []
 # Example with all available attributes:
@@ -371,6 +390,7 @@ proxmox_users: []
 - **Rationale:** May need for Proxmox version-specific API endpoints
 
 **Use Cases:**
+
 - Proxmox VE version-specific API endpoints
 - Package name differences (proxmox-ve vs proxmox-backup-server)
 - Different default paths between versions
@@ -385,6 +405,7 @@ proxmox_users: []
 - **Rationale:** Current 8 tags could be consolidated
 
 **Recommendation:**
+
 ```yaml
 galaxy_tags:
   - proxmox           # Primary platform
@@ -406,6 +427,7 @@ galaxy_tags:
 - **Rationale:** Validate configuration was applied correctly
 
 **Verification Examples:**
+
 - Verify users were created
 - Check ACLs are applied
 - Validate tokens exist
@@ -434,11 +456,13 @@ galaxy_tags:
 - **Rationale:** Network changes are difficult to test manually. Critical for production role.
 
 **Special Considerations:**
+
 - Network testing in containers requires privileged mode
 - Consider VM-based testing for more realistic network configuration
 - Can leverage existing `tasks/verify.yml` for molecule verification
 
 **Test Scenarios:**
+
 - Bridge creation and configuration
 - VLAN subinterface creation
 - MTU configuration (jumbo frames)
@@ -456,6 +480,7 @@ galaxy_tags:
 - **Rationale:** 7/7 production roles have CI. Essential for network infrastructure role.
 
 **Workflow Features:**
+
 - Separate lint and molecule jobs
 - Scheduled testing (weekly) for dependency health
 - Test on Debian (Proxmox base)
@@ -473,6 +498,7 @@ galaxy_tags:
 - **Rationale:** 7/7 geerlingguy roles set explicit role_name
 
 **Implementation:**
+
 ```yaml
 galaxy_info:
   role_name: proxmox_network  # Add this line
@@ -490,6 +516,7 @@ galaxy_info:
 - **Rationale:** Users may not understand when to customize network variables
 
 **Add Context For:**
+
 - `proxmox_network_backup`: Why you might disable backups
 - `proxmox_network_reload`: When to disable reload (testing, manual control)
 - `proxmox_network_verify`: When verification might fail (expected scenarios)
@@ -515,6 +542,7 @@ galaxy_info:
 - **Rationale:** Support multiple Proxmox versions if tested
 
 **Implementation:**
+
 ```yaml
 platforms:
   - name: Debian
@@ -547,6 +575,7 @@ platforms:
 - **Rationale:** Lower priority - Proxmox runs on Debian primarily
 
 **Consideration:**
+
 - Focus on Debian versions (Proxmox base)
 - Ubuntu testing optional (expand if supporting Ubuntu-based Proxmox variants)
 
@@ -560,6 +589,7 @@ platforms:
 - **Rationale:** Network changes should be verified
 
 **Add Section:**
+
 ```markdown
 ## Verification
 
@@ -581,6 +611,7 @@ ip link show vmbr2 | grep mtu
 # Check interfaces file
 cat /etc/network/interfaces
 ```
+
 ```
 
 ---
@@ -738,11 +769,13 @@ collections:                       # Required: Document dependencies
 **Recommendation:** Document when handlers are appropriate vs when to use immediate tasks.
 
 **Current Patterns:**
+
 - **system_user**: No handlers (user changes immediate, no service restart needed) ✅
 - **proxmox_access**: Empty handlers/main.yml (access control immediate) ✅
 - **proxmox_network**: Has handlers (network reload needed) ✅
 
 **Document Decision Matrix:**
+
 | Scenario | Handler Needed? | Pattern |
 |----------|----------------|---------|
 | User management | No | Immediate effect, no service restart |
@@ -758,11 +791,13 @@ collections:                       # Required: Document dependencies
 **Recommendation:** Establish pattern for built-in verification tasks.
 
 **Current State:**
+
 - proxmox_network: Has `tasks/verify.yml` ✅
 - proxmox_access: Could benefit from verify.yml
 - system_user: Could benefit from verify.yml
 
 **Pattern to Establish:**
+
 - All complex roles should have optional verification tasks
 - Controlled by role variable (e.g., `<role>_verify: true`)
 - Verification should be non-destructive
@@ -770,6 +805,7 @@ collections:                       # Required: Document dependencies
 - Provide clear verification output
 
 **Benefits:**
+
 - Self-documenting (shows what success looks like)
 - Can be used in molecule testing
 - Helps users validate deployment
@@ -780,11 +816,13 @@ collections:                       # Required: Document dependencies
 **Recommendation:** Document security defaults philosophy across all roles.
 
 **Current Good Practices:**
+
 - system_user: `sudo_nopasswd: false`, `create_home: true`, validated sudoers
 - proxmox_access: Token security warnings, `proxmox_no_log: true`, ACL validation
 - proxmox_network: Backup before changes, verification, dry run mode
 
 **Security Checklist for All Roles:**
+
 - [ ] Secure defaults (fail-safe)
 - [ ] Sensitive data protected (`no_log: true`)
 - [ ] Validation before changes (backup, dry run)
@@ -799,16 +837,19 @@ collections:                       # Required: Document dependencies
 **Recommendation:** Document migration patterns from old playbooks to new roles.
 
 **Current State:**
+
 - proxmox_network README has "Migration from Old Playbook" section ✅
 - Other roles could benefit from similar guidance
 
 **Add to All Roles:**
+
 - Show before/after examples
 - Explain variable mapping
 - Highlight behavioral changes
 - Provide migration checklist
 
 **Benefits:**
+
 - Easier adoption
 - Prevents migration mistakes
 - Documents legacy patterns to avoid
@@ -822,17 +863,20 @@ collections:                       # Required: Document dependencies
 **Goal:** Establish testing foundation for all roles
 
 **Week 1-2: proxmox_network Testing**
+
 - [ ] Add molecule configuration (3-4 hours)
 - [ ] Add GitHub Actions workflow (2 hours)
 - [ ] Run tests, fix failures (2-4 hours)
 - [ ] Document testing patterns
 
 **Week 3: system_user Testing**
+
 - [ ] Add molecule configuration (2 hours)
 - [ ] Add GitHub Actions workflow (2 hours)
 - [ ] Run tests, fix failures (1-2 hours)
 
 **Week 4: proxmox_access Testing**
+
 - [ ] Add molecule configuration (3-4 hours)
 - [ ] Add GitHub Actions workflow (2 hours)
 - [ ] Run tests, fix failures (2-4 hours)
@@ -846,6 +890,7 @@ collections:                       # Required: Document dependencies
 **Goal:** Complete documentation and metadata for all roles
 
 **Week 5: Documentation Enhancements**
+
 - [ ] system_user: Add GenericLinux platform, CI badge (15 min)
 - [ ] proxmox_access: Enhance troubleshooting section (1-2 hours)
 - [ ] proxmox_access: Add explicit requirements (30 min)
@@ -855,6 +900,7 @@ collections:                       # Required: Document dependencies
 - [ ] proxmox_network: Add CI badge (5 min)
 
 **Week 6: Variable Documentation**
+
 - [ ] proxmox_access: Show all optional keys inline (1 hour)
 - [ ] Review variable naming consistency (1 hour)
 - [ ] Document variable naming policy (1 hour)
@@ -868,12 +914,14 @@ collections:                       # Required: Document dependencies
 **Goal:** Polish and future-proofing
 
 **Week 7: Optional Enhancements**
+
 - [ ] Consider system_user variable renaming (decision + implementation)
 - [ ] Add vars/ directories where beneficial
 - [ ] Optimize galaxy_tags across roles
 - [ ] Add verification tasks to proxmox_access
 
 **Week 8: Testing Expansion**
+
 - [ ] Expand test matrices
 - [ ] Add role-specific test scenarios
 - [ ] Add verification examples to READMEs
@@ -888,12 +936,14 @@ collections:                       # Required: Document dependencies
 **Goal:** Publish roles to Ansible Galaxy
 
 **Prerequisites:**
+
 - All Critical + Important items completed
 - All tests passing
 - Documentation reviewed
 - Metadata complete
 
 **Tasks:**
+
 - [ ] Choose publication strategy (collection vs individual roles)
 - [ ] Create Galaxy namespace
 - [ ] Set up automated Galaxy publishing in CI
@@ -909,6 +959,7 @@ collections:                       # Required: Document dependencies
 ### Before Implementation
 
 **Current State:**
+
 - No automated testing across any roles
 - Manual idempotence verification
 - No CI/CD pipelines
@@ -918,6 +969,7 @@ collections:                       # Required: Document dependencies
 ### After Phase 1 (Critical)
 
 **Testing Infrastructure:**
+
 - ✅ Automated testing across 3+ distributions per role
 - ✅ CI runs on every PR/commit
 - ✅ Idempotence verified automatically
@@ -927,6 +979,7 @@ collections:                       # Required: Document dependencies
 ### After Phase 2 (Important)
 
 **Documentation & Metadata:**
+
 - ✅ Complete troubleshooting guides
 - ✅ Explicit requirements documented
 - ✅ Galaxy-ready metadata
@@ -937,6 +990,7 @@ collections:                       # Required: Document dependencies
 ### After Phase 3 (Nice-to-Have)
 
 **Polish & Enhancement:**
+
 - ✅ Optimized Galaxy searchability
 - ✅ Verification tasks for self-validation
 - ✅ Future-proofed for OS variations
@@ -946,6 +1000,7 @@ collections:                       # Required: Document dependencies
 ### After Phase 4 (Publication)
 
 **Galaxy Publication:**
+
 - ✅ Roles published to Ansible Galaxy
 - ✅ Automated Galaxy updates in CI
 - ✅ Public availability for community use
@@ -1013,6 +1068,7 @@ collections:                       # Required: Document dependencies
 All three Virgo-Core roles (system_user, proxmox_access, proxmox_network) demonstrate excellent fundamentals and are production-ready for functionality. The primary gap across all roles is testing infrastructure, which is being addressed systematically through this action plan.
 
 **Key Achievements:**
+
 - Comprehensive gap analysis against 7 production geerlingguy roles
 - Identified 32 total action items across 3 roles
 - Prioritized by impact (7 critical, 11 important, 14 nice-to-have)
@@ -1020,6 +1076,7 @@ All three Virgo-Core roles (system_user, proxmox_access, proxmox_network) demons
 - Clear roadmap to 99-100% pattern compliance
 
 **Next Steps:**
+
 1. Review and approve this action plan
 2. Begin Phase 1 implementation (testing infrastructure)
 3. Track progress against success metrics
@@ -1027,6 +1084,7 @@ All three Virgo-Core roles (system_user, proxmox_access, proxmox_network) demons
 5. Publish to Ansible Galaxy after Phase 2 completion
 
 **Long-term Impact:**
+
 - Production-grade role quality matching industry standards
 - Confident refactoring and enhancement enabled by testing
 - Community contribution through Galaxy publication

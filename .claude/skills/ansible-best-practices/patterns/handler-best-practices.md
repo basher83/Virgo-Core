@@ -108,16 +108,16 @@ Handlers are event-driven tasks that run at the end of a play, only when notifie
 ```yaml
 ---
 - name: reload systemd
-  systemd_service:
+  ansible.builtin.systemd_service:
     daemon_reload: true
 
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: "{{ security_sshd_name }}"
     state: "{{ security_ssh_restart_handler_state }}"
 
 - name: reload fail2ban
-  service:
+  ansible.builtin.service:
     name: fail2ban
     state: reloaded
 ```
@@ -211,7 +211,7 @@ Keep handlers simple and focused. Each handler should perform one action using o
 
 ```yaml
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: sshd
     state: restarted
 ```
@@ -220,7 +220,7 @@ Keep handlers simple and focused. Each handler should perform one action using o
 
 ```yaml
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: "{{ security_sshd_name }}"
     state: "{{ security_ssh_restart_handler_state }}"
 ```
@@ -229,7 +229,7 @@ Keep handlers simple and focused. Each handler should perform one action using o
 
 ```yaml
 - name: reload systemd
-  systemd_service:
+  ansible.builtin.systemd_service:
     daemon_reload: true
 ```
 
@@ -238,7 +238,7 @@ Keep handlers simple and focused. Each handler should perform one action using o
 1. **Single module** - One module per handler
 2. **Clear purpose** - Does one thing well
 3. **Variable support** - Use variables for OS differences
-4. **Appropriate module** - systemd_service for systemd, service for others
+4. **Appropriate module** - ansible.builtin.systemd_service for systemd, ansible.builtin.service for others
 5. **Correct state** - restarted, reloaded, or daemon_reload
 
 ### Handler Complexity Levels
@@ -247,7 +247,7 @@ Keep handlers simple and focused. Each handler should perform one action using o
 
 ```yaml
 - name: reload fail2ban
-  service:
+  ansible.builtin.service:
     name: fail2ban
     state: reloaded
 ```
@@ -256,7 +256,7 @@ Keep handlers simple and focused. Each handler should perform one action using o
 
 ```yaml
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: "{{ security_sshd_name }}"
     state: "{{ security_ssh_restart_handler_state }}"
 ```
@@ -266,7 +266,7 @@ Keep handlers simple and focused. Each handler should perform one action using o
 ```yaml
 # ❌ DON'T DO THIS
 - name: restart ssh and fail2ban
-  service:
+  ansible.builtin.service:
     name: "{{ item }}"
     state: restarted
   loop:
@@ -306,7 +306,7 @@ Prefer `reload` over `restart` when the service supports it. Reloading is less d
 
 ```yaml
 - name: reload fail2ban
-  service:
+  ansible.builtin.service:
     name: fail2ban
     state: reloaded
 ```
@@ -330,7 +330,7 @@ Prefer `reload` over `restart` when the service supports it. Reloading is less d
 
 ```yaml
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: "{{ security_sshd_name }}"
     state: restarted
 ```
@@ -347,7 +347,7 @@ Prefer `reload` over `restart` when the service supports it. Reloading is less d
 
 ```yaml
 - name: reload systemd
-  systemd_service:
+  ansible.builtin.systemd_service:
     daemon_reload: true
 ```
 
@@ -398,7 +398,7 @@ security_ssh_restart_handler_state: restarted
 
 ```yaml
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: "{{ security_sshd_name }}"
     state: "{{ security_ssh_restart_handler_state }}"
 ```
@@ -454,7 +454,7 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 
 ```yaml
 - name: Update SSH configuration to be more secure.
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ security_ssh_config_path }}"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
@@ -470,7 +470,7 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 
 ```yaml
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: sshd
     state: restarted
 ```
@@ -481,7 +481,7 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 
 ```yaml
 - name: Update SSH configuration to be more secure.
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ security_ssh_config_path }}"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
@@ -499,11 +499,11 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 
 ```yaml
 - name: reload systemd
-  systemd_service:
+  ansible.builtin.systemd_service:
     daemon_reload: true
 
 - name: restart ssh
-  service:
+  ansible.builtin.service:
     name: sshd
     state: restarted
 ```
@@ -574,7 +574,7 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 # handlers/main.yml
 ---
 - name: reload networking
-  command: ifreload -a
+  ansible.builtin.command: ifreload -a
   changed_when: false
 ```
 
@@ -589,7 +589,7 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 
 ```yaml
 - name: reload networking
-  command: ifreload -a
+  ansible.builtin.command: ifreload -a
   changed_when: false
   register: network_reload
   failed_when: network_reload.rc != 0
@@ -663,7 +663,7 @@ Notify handlers from tasks using the `notify` directive. Tasks can notify multip
 - **Pattern Evolution:** Docker uses explicit handler flushing:
   ```yaml
   - name: Ensure handlers are notified now to avoid firewall conflicts.
-    meta: flush_handlers
+    ansible.builtin.meta: flush_handlers
   ```
   - **New insight:** Can force handlers to run mid-play, not just at end
   - **Use case:** Docker service must be running before adding users to docker group
@@ -836,14 +836,14 @@ Continue pattern of creating handlers only when necessary. Use the handler check
 ```yaml
 ---
 - name: restart nginx
-  service: name=nginx state=restarted
+  ansible.builtin.service: name=nginx state=restarted
 
 - name: validate nginx configuration
-  command: nginx -t -c /etc/nginx/nginx.conf
+  ansible.builtin.command: nginx -t -c /etc/nginx/nginx.conf
   changed_when: false
 
 - name: reload nginx
-  service: name=nginx state=reloaded
+  ansible.builtin.service: name=nginx state=reloaded
   when: nginx_service_state == "started"
 ```
 
