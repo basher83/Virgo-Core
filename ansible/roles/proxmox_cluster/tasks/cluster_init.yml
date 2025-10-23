@@ -3,8 +3,16 @@
 
 - name: Set corosync link0 address for this node
   ansible.builtin.set_fact:
-    corosync_link0_address: "{{ cluster_nodes | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='corosync_ip') | first }}"
+    corosync_link0_address: "{{ cluster_nodes | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='corosync_ip') | first | default('') }}"
   when: cluster_nodes | length > 0
+
+- name: Validate corosync address is set
+  ansible.builtin.assert:
+    that:
+      - corosync_link0_address is defined
+      - corosync_link0_address | length > 0
+    fail_msg: "Could not find corosync_ip for {{ inventory_hostname_short }} in cluster_nodes"
+    success_msg: "Corosync address validated: {{ corosync_link0_address }}"
 
 - name: Check if cluster already exists
   ansible.builtin.command: pvecm status
@@ -17,7 +25,10 @@
     - name: Create Proxmox cluster
       ansible.builtin.command:
         cmd: "pvecm create {{ cluster_name }} --link0 {{ corosync_link0_address }}"
-      when: cluster_check.rc != 0
+      when:
+        - cluster_check.rc != 0
+        - corosync_link0_address is defined
+        - corosync_link0_address | length > 0
       register: cluster_create
       changed_when: cluster_create.rc == 0
       failed_when:
@@ -48,4 +59,4 @@
   ansible.builtin.debug:
     msg: |
       Cluster {{ cluster_name }} initialized on {{ inventory_hostname }}
-      Status: {{ 'Created' if cluster_create is changed else 'Already exists' }}
+      Status: {{ 'Created' if (cluster_create is defined and cluster_create is changed) else 'Already exists' }}

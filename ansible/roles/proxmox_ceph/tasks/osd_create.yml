@@ -45,17 +45,14 @@
 
 - name: Create partition indices for multi-OSD devices
   ansible.builtin.set_fact:
-    osd_device_partitions: >-
-      {{
-        ceph_osds[inventory_hostname_short] | default([])
-        | selectattr('partitions', 'defined')
-        | selectattr('partitions', 'gt', 1)
-        | map('combine', {'partition_indices': range(item.partitions | int) | list})
-        | list
-      }}
-  vars:
-    item:
-      partitions: 2  # Default for template expansion
+    osd_device_partitions: |
+      {%- set ns = namespace(result=[]) -%}
+      {%- for device in ceph_osds[inventory_hostname_short] | default([]) -%}
+        {%- if device.get('partitions', 1) | int > 1 -%}
+          {%- set _ = ns.result.append(device | combine({'partition_indices': range(device.partitions | int) | list})) -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {{ ns.result }}
 
 - name: Create multiple OSDs per device using size parameter
   ansible.builtin.command: >
@@ -86,9 +83,10 @@
   delegate_to: "{{ groups[cluster_group][0] }}"
   until: >
     (osd_tree_final.stdout | from_json).nodes
-    | selectattr('type', 'equalto', 'osd')
-    | selectattr('status', 'equalto', 'up')
-    | selectattr('name', 'search', inventory_hostname_short)
+    | selectattr('type', 'equalto', 'host')
+    | selectattr('name', 'equalto', inventory_hostname_short)
+    | map(attribute='children')
+    | flatten
     | list | length >= expected_osd_count | int
   retries: 20
   delay: 10

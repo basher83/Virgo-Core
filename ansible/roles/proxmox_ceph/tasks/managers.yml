@@ -31,7 +31,6 @@
   retries: 10
   delay: 5
   changed_when: false
-  failed_when: false
 
 - name: Display manager status
   ansible.builtin.debug:

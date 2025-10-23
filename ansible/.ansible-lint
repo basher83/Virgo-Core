@@ -94,7 +94,7 @@ var_naming_pattern: "^[a-z_][a-z0-9_]*$"
 # Loop variable prefix pattern
 # Allow double underscore or role name prefix
 # Example: __item, proxmox_repository_item
-loop_var_prefix: "^(__|{role}_)"
+loop_var_prefix: "^(__|\\w+_)"
 
 # Kinds of file types to lint
 # Default is all Ansible files

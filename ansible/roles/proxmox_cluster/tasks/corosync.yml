@@ -55,10 +55,10 @@
 - name: Verify all nodes in corosync
   ansible.builtin.assert:
     that:
-      - "'online' in corosync_status.stdout or corosync_status.rc == 0"
+      - corosync_status.rc == 0
+      - "'online' in corosync_status.stdout or corosync_status.stdout | length == 0"
     fail_msg: "Corosync ring issues detected: {{ corosync_status.stdout }}"
     success_msg: "Corosync ring is healthy"
-  when: corosync_status.rc == 0
 
 - name: Display corosync status
   ansible.builtin.debug:
