@@ -4,7 +4,10 @@
 
 - name: Configure VLAN interface
   community.general.interfaces_file:
+    dest: "{{ proxmox_network_interfaces_file }}"
     iface: "vlan{{ item.id }}"
+    family: inet
+    method: static
     option: vlan-raw-device
     value: "{{ item.raw_device }}"
     backup: "{{ proxmox_network_backup }}"
@@ -15,7 +18,10 @@
 
 - name: Configure VLAN IP address
   community.general.interfaces_file:
+    dest: "{{ proxmox_network_interfaces_file }}"
     iface: "vlan{{ item.id }}"
+    family: inet
+    method: static
     option: address
     value: "{{ item.address }}"
     backup: false
