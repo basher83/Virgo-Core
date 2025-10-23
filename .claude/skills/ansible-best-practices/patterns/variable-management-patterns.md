@@ -1,14 +1,51 @@
 # Variable Management Patterns
 
+## Summary: Pattern Confidence
+
+Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
+
+**Universal Patterns (All 7 roles):**
+- Role-prefixed variable names preventing conflicts (7/7 roles use rolename_feature_attribute)
+- Snake_case naming convention throughout (7/7 roles)
+- Feature grouping with shared prefixes (7/7 roles: security_ssh_*, postgresql_global_config_*)
+- defaults/ for user configuration at low precedence (7/7 roles)
+- vars/ for OS-specific values at high precedence (7/7 roles when needed)
+- Empty list defaults [] for safety (7/7 roles)
+- Unquoted Ansible booleans (true/false) for role logic (7/7 roles)
+- Quoted string booleans ("yes"/"no") for config files (7/7 roles with config management)
+- Descriptive full names without abbreviations (7/7 roles)
+- Inline variable documentation in defaults/main.yml (7/7 roles)
+
+**Contextual Patterns (Varies by requirements):**
+- vars/ directory presence: only when OS-specific non-configurable data needed (4/7 roles have it)
+- Variable count scales with role complexity: minimal roles have 3-5 variables, complex roles have 20+
+- Complex list-of-dict structures: database/service roles (postgresql, nginx) vs simple list variables (pip, git)
+- Conditional variable groups: feature-toggle variables activate groups of related configuration (git_install_from_source)
+
+**Evolving Patterns (Newer roles improved):**
+- PostgreSQL demonstrates best practice for complex dict structures: show ALL possible keys with inline comments, mark required vs optional vs defaults
+- Flexible dict patterns: item.name | default(item) supports both simple strings and complex dicts (github-users role)
+- Advanced variable loading: first_found lookup (docker) vs simple include_vars (security) for better fallback support
+
 **Sources:**
 - geerlingguy.security (analyzed 2025-10-23)
 - geerlingguy.github-users (analyzed 2025-10-23)
+- geerlingguy.docker (analyzed 2025-10-23)
+- geerlingguy.postgresql (analyzed 2025-10-23)
+- geerlingguy.nginx (analyzed 2025-10-23)
+- geerlingguy.pip (analyzed 2025-10-23)
+- geerlingguy.git (analyzed 2025-10-23)
 
 **Repositories:**
 - https://github.com/geerlingguy/ansible-role-security
 - https://github.com/geerlingguy/ansible-role-github-users
+- https://github.com/geerlingguy/ansible-role-docker
+- https://github.com/geerlingguy/ansible-role-postgresql
+- https://github.com/geerlingguy/ansible-role-nginx
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
 
-## Pattern Confidence Levels
+## Pattern Confidence Levels (Historical)
 
 Analyzed 2 geerlingguy roles: security, github-users
 

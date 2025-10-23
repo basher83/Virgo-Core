@@ -1,14 +1,49 @@
 # Comprehensive Testing Patterns
 
+## Summary: Pattern Confidence
+
+Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
+
+**Universal Patterns (All 7 roles):**
+- Molecule default scenario with Docker driver (7/7 roles identical configuration)
+- Multi-distribution test matrix covering RedHat + Debian families (7/7 roles)
+- GitHub Actions CI with separate lint and molecule jobs (7/7 roles)
+- Automated idempotence testing via molecule test sequence (7/7 roles rely on it)
+- Scheduled testing for dependency health checks (7/7 roles have weekly cron)
+- Environment variable configuration for test matrix flexibility (7/7 roles use MOLECULE_DISTRO)
+- Role naming validation with role_name_check: 1 (7/7 roles enable it)
+- Colored output in CI logs (PY_COLORS, ANSIBLE_FORCE_COLOR) (7/7 roles)
+- No explicit verify.yml playbook - relies on idempotence (7/7 roles)
+- Testing infrastructure maintained even for minimal utility roles (pip: 3 tasks, git: 4 tasks)
+
+**Contextual Patterns (Varies by complexity):**
+- Distribution coverage scales with role complexity: simple roles test 3 distros, complex roles test 6-7 distros
+- Multi-scenario testing for roles with multiple installation methods (git uses MOLECULE_PLAYBOOK variable)
+- Scheduled testing timing varies (Monday-Sunday, different UTC times) but presence is universal
+
+**Evolving Patterns (Newer roles improved):**
+- Updated test distributions: rockylinux9, ubuntu2404, debian12 (replacing older versions)
+- Advanced include_vars with first_found lookup (docker role) vs simple include_vars (security role)
+
 **Sources:**
 - geerlingguy.security (analyzed 2025-10-23)
 - geerlingguy.github-users (analyzed 2025-10-23)
+- geerlingguy.docker (analyzed 2025-10-23)
+- geerlingguy.postgresql (analyzed 2025-10-23)
+- geerlingguy.nginx (analyzed 2025-10-23)
+- geerlingguy.pip (analyzed 2025-10-23)
+- geerlingguy.git (analyzed 2025-10-23)
 
 **Repositories:**
 - https://github.com/geerlingguy/ansible-role-security
 - https://github.com/geerlingguy/ansible-role-github-users
+- https://github.com/geerlingguy/ansible-role-docker
+- https://github.com/geerlingguy/ansible-role-postgresql
+- https://github.com/geerlingguy/ansible-role-nginx
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
 
-## Pattern Confidence Levels
+## Pattern Confidence Levels (Historical)
 
 Analyzed 2 geerlingguy roles: security, github-users
 

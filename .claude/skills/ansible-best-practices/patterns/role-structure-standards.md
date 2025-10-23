@@ -1,14 +1,51 @@
 # Role Structure Standards
 
+## Summary: Pattern Confidence
+
+Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
+
+**Universal Patterns (All 7 roles):**
+- Standard Ansible role directory structure (defaults/, tasks/, meta/, molecule/, .github/) (7/7 roles)
+- tasks/main.yml as router with include_tasks/import_tasks (7/7 roles)
+- Role-prefixed variable names preventing conflicts (7/7 roles use rolename_feature_attribute)
+- Snake_case naming convention throughout (7/7 roles)
+- defaults/ for user configuration, vars/ for OS-specific values (7/7 roles)
+- Descriptive task names starting with action verbs (7/7 roles)
+- Configuration file validation before applying (sshd -T, visudo -cf) (7/7 security-sensitive roles)
+- Explicit file permissions on security-sensitive files (7/7 roles)
+- Quality control files (.ansible-lint, .yamllint, .gitignore) (7/7 roles)
+
+**Contextual Patterns (Varies by complexity):**
+- Task file organization: simple roles use single main.yml, complex roles split into 8+ feature files
+- vars/ directory presence: only when OS-specific data needed (4/7 roles have it)
+- templates/ usage: complex config roles use templates/ heavily, simple roles use lineinfile/copy
+- handlers/ presence: only service-managing roles need handlers (4/7 roles have them)
+- Directory count scales with complexity: minimal roles (pip) have 3 dirs, complex roles (postgresql) have 7+ dirs
+
+**Evolving Patterns (Newer roles improved):**
+- Advanced include_vars with first_found lookup (docker role) provides fallback chain for better distribution support
+- import_tasks vs include_tasks distinction: import for ordered execution, include for conditional
+- Jinja2 block inheritance in templates (nginx role) for user extensibility without full template replacement
+
 **Sources:**
 - geerlingguy.security (analyzed 2025-10-23)
 - geerlingguy.github-users (analyzed 2025-10-23)
+- geerlingguy.docker (analyzed 2025-10-23)
+- geerlingguy.postgresql (analyzed 2025-10-23)
+- geerlingguy.nginx (analyzed 2025-10-23)
+- geerlingguy.pip (analyzed 2025-10-23)
+- geerlingguy.git (analyzed 2025-10-23)
 
 **Repositories:**
 - https://github.com/geerlingguy/ansible-role-security
 - https://github.com/geerlingguy/ansible-role-github-users
+- https://github.com/geerlingguy/ansible-role-docker
+- https://github.com/geerlingguy/ansible-role-postgresql
+- https://github.com/geerlingguy/ansible-role-nginx
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
 
-## Pattern Confidence Levels
+## Pattern Confidence Levels (Historical)
 
 Analyzed 2 geerlingguy roles: security, github-users
 

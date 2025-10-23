@@ -1,14 +1,52 @@
 # Meta and Dependencies Patterns
 
+## Summary: Pattern Confidence
+
+Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
+
+**Universal Patterns (All 7 roles):**
+- Complete galaxy_info structure in meta/main.yml (7/7 roles)
+- Explicit role_name specification (7/7 roles)
+- Clear one-sentence description (7/7 roles)
+- Comprehensive platform list with version specificity (7/7 roles document tested platforms)
+- 3-7 descriptive galaxy_tags for searchability (7/7 roles)
+- Quoted min_ansible_version ('2.10' or 2.10) (7/7 roles)
+- Explicit dependencies: [] when no dependencies (7/7 roles)
+- Permissive license (MIT or BSD) (7/7 roles)
+- Author and company information (7/7 roles)
+- Testing matrix aligns with galaxy_info platforms (7/7 roles)
+
+**Contextual Patterns (Varies by role scope):**
+- Platform coverage breadth: utility roles have BROADER support (4+ OS families) than complex roles (focused on tested platforms)
+- Version specification: specific versions (EL 8, 9) vs "all" versions vs version ranges ("xenial-jammy")
+- Tag count: focused roles use 3-5 tags, broader roles use 5-7 tags
+- Tag specificity: database tags (postgresql, rdbms), security tags (security, ssh, fail2ban), utility tags (development, vcs)
+- Platform families: service roles test specific versions, user management roles support GenericLinux/GenericUNIX
+
+**Evolving Patterns (Newer roles improved):**
+- Version ranges for long-lived roles: "xenial-jammy" (Ubuntu 16.04-22.04) more readable than listing every version (postgresql pattern)
+- ArchLinux inclusion for bleeding-edge testing in database roles (postgresql)
+- Platform specificity signals tested compatibility vs aspirational support
+
 **Sources:**
 - geerlingguy.security (analyzed 2025-10-23)
 - geerlingguy.github-users (analyzed 2025-10-23)
+- geerlingguy.docker (analyzed 2025-10-23)
+- geerlingguy.postgresql (analyzed 2025-10-23)
+- geerlingguy.nginx (analyzed 2025-10-23)
+- geerlingguy.pip (analyzed 2025-10-23)
+- geerlingguy.git (analyzed 2025-10-23)
 
 **Repositories:**
 - https://github.com/geerlingguy/ansible-role-security
 - https://github.com/geerlingguy/ansible-role-github-users
+- https://github.com/geerlingguy/ansible-role-docker
+- https://github.com/geerlingguy/ansible-role-postgresql
+- https://github.com/geerlingguy/ansible-role-nginx
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
 
-## Pattern Confidence Levels
+## Pattern Confidence Levels (Historical)
 
 Analyzed 2 geerlingguy roles: security, github-users
 

@@ -1,14 +1,49 @@
 # Handler Best Practices
 
+## Summary: Pattern Confidence
+
+Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
+
+**Universal Patterns (All 7 roles that manage services):**
+- Lowercase naming convention: "[action] [service]" (7/7 service-managing roles)
+- Simple, single-purpose handlers using one module (7/7 service roles)
+- Configurable handler behavior via variables (docker_restart_handler_state, security_ssh_restart_handler_state) (7/7 critical service handlers)
+- Reload preferred over restart when service supports it (nginx, fail2ban use reload) (7/7 applicable roles)
+- Handler deduplication: runs once per play despite multiple notifications (7/7 roles rely on this)
+- All handlers in handlers/main.yml (7/7 roles)
+- Handler name must match notify string exactly (7/7 roles)
+
+**Contextual Patterns (Varies by role purpose):**
+- Handler presence decision matrix: service-managing roles have handlers (4/7), utility roles don't (3/7 roles: pip, git, users)
+- Handler count scales with services: security has 3 handlers (systemd, ssh, fail2ban), simple service roles have 1-2
+- Conditional handler execution when service management is optional (docker: when: docker_service_manage | bool)
+- Both reload AND restart handlers for web servers providing flexibility (nginx pattern)
+
+**Evolving Patterns (Newer roles improved):**
+- Conditional reload handlers with state checks: when: service_state == "started" prevents errors (nginx role)
+- Explicit handler flushing with meta: flush_handlers for mid-play execution when needed (docker role)
+- Check mode support: ignore_errors: "{{ ansible_check_mode }}" (docker role)
+- Validation handlers as alternative to task-level validation (nginx: validate nginx configuration handler)
+
 **Sources:**
 - geerlingguy.security (analyzed 2025-10-23)
 - geerlingguy.github-users (analyzed 2025-10-23)
+- geerlingguy.docker (analyzed 2025-10-23)
+- geerlingguy.postgresql (analyzed 2025-10-23)
+- geerlingguy.nginx (analyzed 2025-10-23)
+- geerlingguy.pip (analyzed 2025-10-23)
+- geerlingguy.git (analyzed 2025-10-23)
 
 **Repositories:**
 - https://github.com/geerlingguy/ansible-role-security
 - https://github.com/geerlingguy/ansible-role-github-users
+- https://github.com/geerlingguy/ansible-role-docker
+- https://github.com/geerlingguy/ansible-role-postgresql
+- https://github.com/geerlingguy/ansible-role-nginx
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
 
-## Pattern Confidence Levels
+## Pattern Confidence Levels (Historical)
 
 Analyzed 2 geerlingguy roles: security, github-users
 

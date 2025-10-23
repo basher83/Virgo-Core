@@ -1,14 +1,51 @@
 # Documentation Templates
 
+## Summary: Pattern Confidence
+
+Analyzed 7 geerlingguy roles: security, users, docker, postgresql, nginx, pip, git
+
+**Universal Patterns (All 7 roles):**
+- Consistent README structure: Title + Badge → Description → Requirements → Variables → Dependencies → Example → License → Author (7/7 roles)
+- CI badge showing test status with link to workflow (7/7 roles)
+- Code-formatted variable defaults with detailed descriptions (7/7 roles)
+- Example playbook section with working examples (7/7 roles)
+- Inline code formatting for variables, file paths, commands (7/7 roles)
+- Explicit "None" for empty sections (Requirements, Dependencies) (7/7 roles)
+- License + Author sections with links (7/7 roles)
+- Variable grouping for related configuration (7/7 roles)
+- Commented list examples showing optional items (7/7 roles)
+
+**Contextual Patterns (Varies by complexity):**
+- Warning/caveat sections: security-critical roles have prominent warnings, simple roles don't need them
+- Variable documentation depth: complex roles (postgresql) have extensive inline docs, simple roles (pip) are more concise
+- Example complexity: simple roles show basic examples, complex roles show multiple scenarios
+- Troubleshooting sections: recommended for roles that modify critical services (SSH, networking), optional for simple roles
+- Complex variable documentation: roles with 5+ optional dict attributes show ALL keys with inline comments
+
+**Evolving Patterns (Newer roles improved):**
+- PostgreSQL shows best practices for complex variable documentation: show all keys, mark required vs optional, document defaults
+- nginx demonstrates template extensibility documentation (Jinja2 block inheritance)
+- Complex roles provide comprehensive inline examples in defaults/ files as primary documentation
+
 **Sources:**
 - geerlingguy.security (analyzed 2025-10-23)
 - geerlingguy.github-users (analyzed 2025-10-23)
+- geerlingguy.docker (analyzed 2025-10-23)
+- geerlingguy.postgresql (analyzed 2025-10-23)
+- geerlingguy.nginx (analyzed 2025-10-23)
+- geerlingguy.pip (analyzed 2025-10-23)
+- geerlingguy.git (analyzed 2025-10-23)
 
 **Repositories:**
 - https://github.com/geerlingguy/ansible-role-security
 - https://github.com/geerlingguy/ansible-role-github-users
+- https://github.com/geerlingguy/ansible-role-docker
+- https://github.com/geerlingguy/ansible-role-postgresql
+- https://github.com/geerlingguy/ansible-role-nginx
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
 
-## Pattern Confidence Levels
+## Pattern Confidence Levels (Historical)
 
 Analyzed 2 geerlingguy roles: security, github-users
 
