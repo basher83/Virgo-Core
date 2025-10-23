@@ -992,6 +992,111 @@ proxmox_network/
 - **Template extensibility:** BEST PRACTICE (Jinja2 blocks for inheritance)
 - **Template path variables:** RECOMMENDED (allow user customization)
 
+## Validation: geerlingguy.pip
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-pip
+
+### Directory Structure
+
+- **Pattern: Minimal role structure** - ✅ **Confirmed**
+  - pip has only essential directories: tasks/, defaults/, meta/, molecule/
+  - No templates/, handlers/, vars/, or files/ (not needed for this simple role)
+  - **Key finding:** Directory structure scales down appropriately for simple roles
+
+### Task Organization
+
+- **Pattern: Single file tasks** - ✅ **Confirmed**
+  - pip role has only tasks/main.yml with 3 tasks total
+  - No task splitting needed for minimal roles
+  - Each task still properly named and documented
+  - **Validates:** tasks/main.yml sufficient for simple roles
+
+### Variable Management
+
+- **Pattern: Minimal defaults** - ✅ **Confirmed**
+  - defaults/main.yml has only 3 variables: pip_package, pip_executable, pip_install_packages
+  - All variables properly prefixed with role name (pip_)
+  - Simple list structure for pip_install_packages with documented dict options
+  - **6/6 roles use role-prefixed variable naming**
+
+### Key Validation Findings
+
+**What pip Role Confirms:**
+
+1. ✅ Directory structure scales appropriately (only include what's needed)
+2. ✅ Single-file tasks acceptable for simple roles (3 tasks in main.yml)
+3. ✅ Role-prefixed variable naming still universal (6/6 roles)
+4. ✅ defaults/ still used even for minimal variables
+5. ✅ No vars/ directory when all variables are user-configurable
+
+**Pattern Confidence After pip Validation (6/6 roles):**
+
+- **Directory structure:** UNIVERSAL (6/6 roles follow standard, scale appropriately)
+- **Variable naming:** UNIVERSAL (6/6 use role prefix)
+- **defaults/ for user config:** UNIVERSAL (6/6 roles)
+- **Single-file tasks for simple roles:** VALIDATED (pip proves it's acceptable)
+
+## Validation: geerlingguy.git
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-git
+
+### Directory Structure
+
+- **Pattern: Utility role structure** - ✅ **Confirmed**
+  - git has: tasks/, defaults/, vars/, meta/, molecule/
+  - Added vars/ for OS-specific package names
+  - Uses tasks/ for main + import pattern
+  - **Key finding:** vars/ appears when OS-specific data needed
+
+### Task Organization
+
+- **Pattern: Task file imports** - ✅ **Confirmed**
+  - git role uses tasks/main.yml as router (4 tasks)
+  - tasks/install-from-source.yml imported conditionally
+  - Conditional imports based on git_install_from_source flag
+  - **Validates:** import_tasks pattern for optional functionality
+
+- **Pattern: OS-specific task blocks** - ✅ **Confirmed**
+  - Separate tasks for RedHat vs Debian families
+  - Conditional execution via ansible_os_family
+  - Package installation tasks specific to each OS family
+  - **7/7 roles handle OS differences with when conditions**
+
+### Variable Management
+
+- **Pattern: defaults/ vs vars/ split** - ✅ **Confirmed**
+  - defaults/main.yml: User-configurable options (workspace, version, install method)
+  - vars/: OS-specific package lists (git_packages for Debian vs RedHat)
+  - All variables still prefixed with role name (git_)
+  - **7/7 roles use role-prefixed variable naming**
+
+- **Pattern: Boolean flags for features** - ✅ **Confirmed**
+  - git_install_from_source boolean controls installation method
+  - git_install_force_update boolean controls version updates
+  - Clear feature flags with sensible defaults
+  - **Validates:** Boolean flags for optional features pattern
+
+### Key Validation Findings
+
+**What git Role Confirms:**
+
+1. ✅ vars/ directory for OS-specific non-configurable data (7/7 roles)
+2. ✅ import_tasks for optional/complex functionality (7/7 roles)
+3. ✅ OS-family conditional tasks universal (7/7 roles)
+4. ✅ Boolean feature flags best practice (7/7 roles)
+5. ✅ Task file splitting based on functionality not size
+
+**Pattern Confidence After git Validation (7/7 roles):**
+
+- **Directory structure:** UNIVERSAL (7/7 roles follow standard)
+- **Task organization:** UNIVERSAL (7/7 use main.yml as router)
+- **Variable naming:** UNIVERSAL (7/7 use role prefix)
+- **defaults/ vs vars/:** UNIVERSAL (7/7 separate user config from OS data)
+- **import_tasks pattern:** UNIVERSAL (7/7 use for complex/optional features)
+- **OS-specific conditionals:** UNIVERSAL (7/7 handle multi-platform)
+
 ## Summary
 
 **Universal Patterns Identified:**

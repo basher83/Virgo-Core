@@ -667,6 +667,126 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 - **Idempotence testing:** UNIVERSAL (5/5 roles rely on it)
 - **role_name_check:** UNIVERSAL (5/5 roles enable it)
 
+## Validation: geerlingguy.pip
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-pip
+
+### Molecule Testing Patterns
+
+- **Pattern: Molecule default scenario structure** - ✅ **Confirmed**
+  - pip role uses identical molecule.yml structure as all previous roles
+  - Same role_name_check: 1, dependency.name: galaxy with ignore-errors: true
+  - Same Docker driver with privileged containers and cgroup mounting
+  - Same environment variable defaults pattern (MOLECULE_DISTRO, MOLECULE_PLAYBOOK)
+  - **Pattern strength: 6/6 roles identical** - Universally confirmed
+
+- **Pattern: Multi-distribution test matrix** - ✅ **Confirmed**
+  - pip tests across 6 distributions: Rocky Linux 9, Fedora 39, Ubuntu 22.04/20.04, Debian 12/11
+  - Uses default rockylinux9 if MOLECULE_DISTRO not set
+  - **6/6 roles use identical molecule configuration approach**
+
+### CI/CD Integration Patterns
+
+- **Pattern: GitHub Actions workflow structure** - ✅ **Confirmed**
+  - Identical workflow structure: separate lint and molecule jobs
+  - Same triggers: pull_request, push to master, scheduled (weekly Friday 4am UTC)
+  - Same colored output environment variables (PY_COLORS, ANSIBLE_FORCE_COLOR)
+  - **6/6 roles confirm this is UNIVERSAL CI pattern**
+
+- **Pattern: Scheduled testing** - ✅ **Confirmed**
+  - pip has weekly scheduled testing on Fridays at 4am UTC
+  - **6/6 roles have scheduled testing**
+
+### Task Organization Patterns
+
+- **Pattern: Simple utility role tasks** - ✅ **New Insight**
+  - pip role has minimal tasks/main.yml (only 3 tasks)
+  - Even minimal roles maintain full testing infrastructure
+  - **Key finding:** Testing patterns scale down to simplest roles
+
+### Key Validation Findings
+
+**What pip Role Confirms:**
+
+1. ✅ Testing infrastructure applies to minimal utility roles (pip has only 3 tasks)
+2. ✅ Multi-distribution testing is universal regardless of role complexity
+3. ✅ Scheduled testing runs on all roles (frequency may vary by role activity)
+4. ✅ Molecule/Docker setup doesn't scale down even for simple roles
+5. ✅ Separate lint/test jobs maintained even for small roles
+
+**Pattern Confidence After pip Validation (6/6 roles):**
+
+- **Molecule structure:** UNIVERSAL (6/6 roles identical)
+- **CI workflow:** UNIVERSAL (6/6 roles identical structure)
+- **Scheduled testing:** UNIVERSAL (6/6 roles have it)
+- **Testing scales to minimal roles:** CONFIRMED (pip proves patterns work for simple utilities)
+
+## Validation: geerlingguy.git
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-git
+
+### Molecule Testing Patterns
+
+- **Pattern: Molecule default scenario structure** - ✅ **Confirmed**
+  - git role uses identical molecule.yml structure as all previous roles
+  - Same role_name_check: 1, dependency.name: galaxy with ignore-errors: true
+  - Same Docker driver with privileged containers and cgroup mounting
+  - Same environment variable defaults pattern (MOLECULE_DISTRO, MOLECULE_PLAYBOOK)
+  - **Pattern strength: 7/7 roles identical** - Universally confirmed
+
+- **Pattern: Multi-distribution test matrix** - ✅ **Confirmed**
+  - git tests across 3 distributions with 3 different playbooks:
+    - Ubuntu 22.04 with converge.yml
+    - Debian 11 with converge.yml
+    - Ubuntu 20.04 with source-install.yml (special variant)
+  - Uses default rockylinux9 if MOLECULE_DISTRO not set
+  - **7/7 roles use identical molecule configuration approach**
+
+- **Pattern: Multi-scenario testing** - ✅ **New Insight**
+  - git role tests multiple installation methods (package vs source)
+  - Uses MOLECULE_PLAYBOOK variable to test different scenarios
+  - **Key finding:** Complex roles test multiple converge scenarios
+
+### CI/CD Integration Patterns
+
+- **Pattern: GitHub Actions workflow structure** - ✅ **Confirmed**
+  - Identical workflow structure: separate lint and molecule jobs
+  - Same triggers: pull_request, push to master, scheduled (weekly Monday 6am UTC)
+  - Same colored output environment variables (PY_COLORS, ANSIBLE_FORCE_COLOR)
+  - **7/7 roles confirm this is UNIVERSAL CI pattern**
+
+- **Pattern: Scheduled testing** - ✅ **Confirmed**
+  - git has weekly scheduled testing on Mondays at 6am UTC
+  - **7/7 roles have scheduled testing**
+
+### Task Organization Patterns
+
+- **Pattern: Conditional task imports** - ✅ **Confirmed**
+  - git role uses import_tasks for source installation path
+  - Main tasks handle package installation, import handles source build
+  - Even simple utility roles maintain clean task organization
+
+### Key Validation Findings
+
+**What git Role Confirms:**
+
+1. ✅ All patterns hold for utility roles with multiple installation methods
+2. ✅ Multi-scenario testing achieved via MOLECULE_PLAYBOOK variable
+3. ✅ Scheduled testing universal across all complexity levels
+4. ✅ Task organization patterns (conditional imports) apply to utility roles
+5. ✅ Testing infrastructure doesn't simplify even for utility roles
+
+**Pattern Confidence After git Validation (7/7 roles):**
+
+- **Molecule structure:** UNIVERSAL (7/7 roles identical)
+- **CI workflow:** UNIVERSAL (7/7 roles identical structure)
+- **Scheduled testing:** UNIVERSAL (7/7 roles have it)
+- **Idempotence testing:** UNIVERSAL (7/7 roles rely on it)
+- **role_name_check:** UNIVERSAL (7/7 roles enable it)
+- **Patterns scale to utility roles:** CONFIRMED (pip + git prove patterns work for simple roles)
+
 ## Summary
 
 **Universal Patterns Identified:**
@@ -681,12 +801,20 @@ For more complex roles, consider adding `molecule/default/verify.yml`:
 
 **Key Takeaways:**
 
-- Testing infrastructure is not optional for production roles
-- Idempotence verification catches most role quality issues
-- Multi-distribution testing ensures cross-platform compatibility
-- Scheduled tests detect ecosystem changes (package updates, deprecations)
-- Separate linting gives faster feedback than combined jobs
+- Testing infrastructure is not optional for production roles (7/7 roles have it)
+- Idempotence verification catches most role quality issues (7/7 roles rely on it)
+- Multi-distribution testing ensures cross-platform compatibility (7/7 roles test multiple distros)
+- Scheduled tests detect ecosystem changes (7/7 roles have scheduled CI runs)
+- Separate linting gives faster feedback than combined jobs (7/7 roles separate lint/test)
 - Complex variable structures (list-of-dicts) don't require special testing approaches
+- **Patterns scale down:** Even minimal utility roles (pip: 3 tasks, git: 4 tasks) maintain full testing infrastructure
+
+**Utility Role Insights (pip + git):**
+
+- Simple roles don't get simplified testing - same molecule/CI structure
+- Multi-scenario testing via MOLECULE_PLAYBOOK for different installation methods
+- Minimal task count doesn't correlate with testing complexity
+- Testing patterns proven universal across all role sizes (minimal to complex)
 
 **Next Steps:**
 

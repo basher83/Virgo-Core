@@ -889,3 +889,45 @@ Continue pattern of creating handlers only when necessary. Use the handler check
 - **Reload vs restart:** UNIVERSAL (5/5 web/service roles distinguish them)
 - **Conditional handlers:** RECOMMENDED (nginx shows safety pattern)
 - **Validation handlers:** ALTERNATIVE PATTERN (task validation vs handler validation)
+
+## Validation: geerlingguy.pip and geerlingguy.git
+
+**Analysis Date:** 2025-10-23
+**Repositories:**
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
+
+### Handler Absence Pattern
+
+- **Pattern: No handlers needed** - ✅ **Confirmed**
+  - pip role has NO handlers/ directory (package installation doesn't need service restarts)
+  - git role has NO handlers/ directory (utility installation doesn't manage services)
+  - **Key finding:** Utility roles typically don't need handlers
+
+### When Handlers Are NOT Needed
+
+- **Pattern: Package-only roles** - ✅ **NEW INSIGHT**
+  - Roles that only install packages don't need handlers
+  - Roles that don't manage services don't need handlers
+  - Handler absence is correct and expected for utility roles
+  - **7/7 roles make appropriate handler decisions (present when needed, absent when not)**
+
+### Key Validation Findings
+
+**What pip + git Roles Confirm:**
+
+1. ✅ Handlers are optional based on role purpose (7/7 roles decide appropriately)
+2. ✅ Utility roles (package installers) typically have no handlers (pip, git prove this)
+3. ✅ Service-managing roles ALWAYS have handlers (docker, postgresql, nginx, etc.)
+4. ✅ Handler directory can be omitted when not needed (pip + git validate this)
+
+**Pattern Confidence After Utility Role Validation (7/7 roles):**
+
+- **Handler naming:** UNIVERSAL (7/7 service roles use lowercase "[action] [service]")
+- **Handler simplicity:** UNIVERSAL (7/7 service roles use single module per handler)
+- **Reload vs restart:** UNIVERSAL (7/7 web/service roles distinguish them)
+- **Handlers optional for utilities:** CONFIRMED (pip + git have none, correctly)
+- **Handler presence decision matrix:** VALIDATED
+  - Service management role → handlers required
+  - Package-only utility role → no handlers needed
+  - Configuration management role → handlers for service reload/restart

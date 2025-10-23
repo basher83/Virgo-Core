@@ -940,6 +940,61 @@ galaxy_info:
 - **Min Ansible version:** UNIVERSAL (4/4 specify it)
 - **Version ranges:** VALIDATED (postgresql shows it's acceptable practice)
 
+## Validation: geerlingguy.pip and geerlingguy.git
+
+**Analysis Date:** 2025-10-23
+**Repositories:**
+- https://github.com/geerlingguy/ansible-role-pip
+- https://github.com/geerlingguy/ansible-role-git
+
+### galaxy_info for Utility Roles
+
+- **Pattern: Complete metadata even for simple roles** - ✅ **Confirmed**
+  - pip role has full galaxy_info with author, company, license, min_ansible_version
+  - git role has full galaxy_info with same structure
+  - **7/7 roles have complete metadata regardless of complexity**
+
+- **Pattern: Broad platform support for utilities** - ✅ **Confirmed**
+  - pip supports: EL, Fedora, Debian, Ubuntu (4+ OS families)
+  - git supports: EL, Fedora, Debian, Ubuntu (4+ OS families)
+  - Utility roles often have BROADER platform support than complex roles
+  - **Validates:** Simple roles can be cross-platform more easily
+
+- **Pattern: Focused galaxy_tags** - ✅ **Confirmed**
+  - pip tags: "development", "pip", "python", "package"
+  - git tags: "development", "git", "vcs", "version-control"
+  - Utility roles use 3-5 focused tags
+  - **7/7 roles use descriptive, searchable tags**
+
+### Platform Lists for Utilities
+
+- **Pattern: Testing matrix matches platforms** - ✅ **Confirmed**
+  - pip tests 6 distributions, meta lists 4 OS families (consistent)
+  - git tests 3 distributions, meta covers same families
+  - Platform list reflects actual testing coverage
+  - **7/7 roles align galaxy_info platforms with CI testing**
+
+### Key Validation Findings
+
+**What pip + git Roles Confirm:**
+
+1. ✅ Complete galaxy_info universal even for minimal roles (7/7 roles)
+2. ✅ Platform lists comprehensive (7/7 roles support 3+ OS families)
+3. ✅ Galaxy tags scaled appropriately (3-7 tags, 7/7 roles)
+4. ✅ Explicit dependencies: [] universal (7/7 roles)
+5. ✅ Utility roles often have BROADER platform support than complex roles
+
+**Pattern Confidence After Utility Role Validation (7/7 roles):**
+
+- **galaxy_info structure:** UNIVERSAL (7/7 roles have complete metadata)
+- **Explicit role_name:** UNIVERSAL (7/7 roles set it)
+- **Platform specification:** UNIVERSAL (7/7 document tested platforms)
+- **Galaxy tags:** UNIVERSAL (3-7 tags, scaled to role focus, 7/7 roles)
+- **Empty dependencies:** UNIVERSAL (7/7 use explicit [])
+- **Min Ansible version:** UNIVERSAL (7/7 specify it, typically 2.4+)
+- **Utility role platform breadth:** VALIDATED (pip + git show broad support is expected)
+- **Testing/platform alignment:** UNIVERSAL (7/7 roles test what they claim)
+
 **Next Steps:**
 
 1. Consider testing roles on RHEL/Rocky if applicable (expand platform list)
