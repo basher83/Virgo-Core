@@ -17,7 +17,8 @@ This role provides complete CEPH cluster lifecycle management:
 
 ## Key Features
 
-**Automated OSD Creation**: Unlike ProxSpray which requires manual OSD setup, this role automatically creates OSDs based on declarative configuration, including support for:
+**Automated OSD Creation**: Unlike ProxSpray which requires manual OSD setup, this role
+automatically creates OSDs based on declarative configuration, including support for:
 
 - Multiple OSDs per disk (partitioning)
 - Separate DB and WAL devices
@@ -141,7 +142,7 @@ verify_ceph_health: true                # Verify health after deployment
 
 ## Important Notes
 
-**WARNING: Destructive Operations**
+### WARNING: Destructive Operations
 
 - OSD creation is **destructive** - it will wipe the specified devices
 - Always backup data before running this role
@@ -159,12 +160,12 @@ verify_ceph_health: true                # Verify health after deployment
 
 ## Matrix Cluster Configuration
 
-For the Matrix cluster (3 nodes, 2× 4TB NVMe per node):
+For the Matrix cluster (3 nodes, 2ï¿½ 4TB NVMe per node):
 
 - **Total OSDs**: 12 (4 OSDs per node)
-- **Total raw capacity**: ~24TB (2× 4TB × 3 nodes)
-- **Usable capacity**: ~8TB (with 3× replication)
-- **PG calculation**: `(12 OSDs * 100) / 3 = 400` ’ Round to nearest power of 2 = 128 or 256
+- **Total raw capacity**: ~24TB (2ï¿½ 4TB ï¿½ 3 nodes)
+- **Usable capacity**: ~8TB (with 3ï¿½ replication)
+- **PG calculation**: `(12 OSDs * 100) / 3 = 400` ï¿½ Round to nearest power of 2 = 128 or 256
 
 ## CEPH Operations
 
