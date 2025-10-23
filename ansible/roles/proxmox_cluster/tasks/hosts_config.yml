@@ -1,0 +1,30 @@
+---
+# Configure /etc/hosts with cluster nodes
+
+- name: Add cluster nodes to /etc/hosts
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    line: "{{ item.management_ip }}    {{ item.hostname }} {{ item.name }}"
+    regexp: "^{{ item.management_ip }}\\s+{{ item.hostname }}"
+    state: present
+    backup: true
+  loop: "{{ cluster_nodes }}"
+  when: cluster_nodes | length > 0
+
+- name: Add corosync IPs to /etc/hosts
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    line: "{{ item.corosync_ip }}    {{ item.name }}-corosync"
+    regexp: "^{{ item.corosync_ip }}\\s+{{ item.name }}-corosync"
+    state: present
+  loop: "{{ cluster_nodes }}"
+  when:
+    - cluster_nodes | length > 0
+    - item.corosync_ip is defined
+
+- name: Verify /etc/hosts configuration
+  ansible.builtin.command: getent hosts {{ item.hostname }}
+  loop: "{{ cluster_nodes }}"
+  changed_when: false
+  failed_when: false
+  register: hosts_check

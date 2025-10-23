@@ -1,0 +1,32 @@
+---
+# tasks file for proxmox_cluster
+
+- name: Verify prerequisites
+  ansible.builtin.include_tasks: prerequisites.yml
+
+- name: Configure /etc/hosts
+  ansible.builtin.include_tasks: hosts_config.yml
+  when: manage_hosts_file | bool
+
+- name: Configure SSH keys for passwordless access
+  ansible.builtin.include_tasks: ssh_keys.yml
+  when: configure_ssh_keys | bool
+
+- name: Initialize cluster (first node only)
+  ansible.builtin.include_tasks: cluster_init.yml
+  when:
+    - inventory_hostname == groups[cluster_group][0]
+    - cluster_nodes | length > 0
+
+- name: Join cluster (other nodes)
+  ansible.builtin.include_tasks: cluster_join.yml
+  when:
+    - inventory_hostname != groups[cluster_group][0]
+    - cluster_nodes | length > 0
+
+- name: Configure corosync
+  ansible.builtin.include_tasks: corosync.yml
+
+- name: Verify cluster health
+  ansible.builtin.include_tasks: verify.yml
+  when: verify_cluster_health | bool

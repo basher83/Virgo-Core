@@ -1,0 +1,49 @@
+---
+# tasks file for proxmox_ceph
+
+- name: Install CEPH packages
+  ansible.builtin.include_tasks: install.yml
+  when: install_ceph_packages | bool
+
+- name: Initialize CEPH cluster (first node only)
+  ansible.builtin.include_tasks: init.yml
+  when:
+    - initialize_ceph | bool
+    - inventory_hostname == groups[cluster_group][0]
+
+- name: Deploy CEPH monitors
+  ansible.builtin.include_tasks: monitors.yml
+  when: deploy_monitors | bool
+
+- name: Deploy CEPH managers
+  ansible.builtin.include_tasks: managers.yml
+  when: deploy_managers | bool
+
+- name: Enable manager modules (dashboard, prometheus)
+  ansible.builtin.include_tasks: mgr_modules.yml
+  when:
+    - deploy_managers | bool
+    - inventory_hostname == groups[cluster_group][0]
+
+- name: Prepare OSD disks
+  ansible.builtin.include_tasks: osd_prepare.yml
+  when:
+    - deploy_osds | bool
+    - ceph_osds[inventory_hostname_short] is defined
+
+- name: Create OSDs
+  ansible.builtin.include_tasks: osd_create.yml
+  when:
+    - deploy_osds | bool
+    - ceph_osds[inventory_hostname_short] is defined
+
+- name: Create CEPH pools (first node only)
+  ansible.builtin.include_tasks: pools.yml
+  when:
+    - create_pools | bool
+    - inventory_hostname == groups[cluster_group][0]
+    - ceph_pools | length > 0
+
+- name: Verify CEPH health
+  ansible.builtin.include_tasks: verify.yml
+  when: verify_ceph_health | bool

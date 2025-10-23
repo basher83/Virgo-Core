@@ -1,0 +1,26 @@
+---
+# Configure APT repository priorities
+
+- name: Configure APT repository pinning
+  ansible.builtin.copy:
+    dest: /etc/apt/preferences.d/proxmox-pinning
+    content: |
+      # Proxmox repository priorities
+      # Enterprise repository (requires subscription)
+      Package: *
+      Pin: origin enterprise.proxmox.com
+      Pin-Priority: 800
+
+      # No-subscription repository (community)
+      Package: *
+      Pin: origin download.proxmox.com
+      Pin-Priority: 600
+
+      # Default Debian repositories
+      Package: *
+      Pin: origin deb.debian.org
+      Pin-Priority: 500
+    mode: '0644'
+    owner: root
+    group: root
+  when: proxmox_enterprise_repo | bool

@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Virgo-Core Team
+  description: Manage Proxmox VE and CEPH APT repositories
+  company: Virgo-Core
+  license: MIT
+  min_ansible_version: "2.14"
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+  galaxy_tags:
+    - proxmox
+    - repository
+    - apt
+    - ceph
+
+dependencies: []

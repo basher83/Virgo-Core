@@ -1,0 +1,29 @@
+---
+# defaults file for proxmox_repository
+# noqa: var-naming[no-role-prefix] - This is the role's public API
+
+# Proxmox VE version
+proxmox_version: "9.0"
+
+# Repository configuration
+proxmox_enterprise_repo: false
+proxmox_no_subscription_repo: true
+proxmox_test_repo: false
+
+# CEPH version (squid for PVE 9.x)
+ceph_version: "squid"
+ceph_repo_enabled: true
+
+# Package management
+proxmox_packages:
+  - proxmox-ve
+  - pve-kernel
+  - postfix
+  - open-iscsi
+
+# Automatic updates
+auto_update_packages: false
+auto_remove_old_kernels: false
+
+# APT cache update
+update_apt_cache: true

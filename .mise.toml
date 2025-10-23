@@ -147,8 +147,9 @@ description = "Lint Markdown files"
 run = "markdownlint-cli2 '**/*.md'"
 
 [tasks.ansible-lint]
-description = "Lint Ansible files"
-run = "ansible-lint ansible/"
+description = "Lint Ansible files (playbooks and roles)"
+dir = "ansible"
+run = "uv run ansible-lint playbooks/ roles/"
 
 [tasks.lint-all]
 description = "Run all linting tasks"

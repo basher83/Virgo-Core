@@ -1,0 +1,51 @@
+---
+# Verify cluster health and quorum
+
+- name: Get cluster status
+  ansible.builtin.command: pvecm status
+  register: cluster_status
+  changed_when: false
+  failed_when: cluster_status.rc != 0
+
+- name: Get cluster node count
+  ansible.builtin.shell: |
+    set -o pipefail
+    pvecm nodes | grep -c "^Node" || echo "0"
+  args:
+    executable: /bin/bash
+  register: cluster_node_count
+  changed_when: false
+
+- name: Check quorum status
+  ansible.builtin.shell: |
+    set -o pipefail
+    pvecm status | grep -i "quorate"
+  args:
+    executable: /bin/bash
+  register: quorum_status
+  changed_when: false
+  failed_when: false
+
+- name: Verify cluster is quorate
+  ansible.builtin.assert:
+    that:
+      - "'Quorate: Yes' in cluster_status.stdout"
+    fail_msg: "Cluster is not quorate! Check pvecm status"
+    success_msg: "Cluster quorum is healthy"
+
+- name: Verify expected number of nodes
+  ansible.builtin.assert:
+    that:
+      - cluster_node_count.stdout | int >= expected_votes | int
+    fail_msg: "Expected {{ expected_votes }} nodes, but found {{ cluster_node_count.stdout }}"
+    success_msg: "Cluster has expected number of nodes ({{ expected_votes }})"
+
+- name: Display cluster health summary
+  ansible.builtin.debug:
+    msg: |
+      ========================================
+      Cluster: {{ cluster_name }}
+      Node: {{ inventory_hostname }}
+      Quorate: {{ 'Yes' if 'Quorate: Yes' in cluster_status.stdout else 'No' }}
+      Total Nodes: {{ cluster_node_count.stdout }}
+      ========================================

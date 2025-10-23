@@ -1,0 +1,142 @@
+---
+# Ansible-lint configuration for Virgo-Core
+# Documentation: https://ansible.readthedocs.io/projects/lint/
+
+# Profile determines the default set of rules to use
+# Options: null, min, basic, moderate, safety, shared, production
+# We use 'moderate' for infrastructure-as-code projects
+profile: moderate
+
+# Offline mode - do not install Galaxy requirements automatically
+# Set to true for CI/CD environments or air-gapped systems
+offline: false
+
+# Exclude paths from linting
+exclude_paths:
+  - .cache/
+  - .venv/
+  - .git/
+  - .github/
+  - .conductor/
+  - "*/templates/"  # Templates often have Jinja2 that confuses linter
+  - "*.j2"          # Skip Jinja2 template files
+  - test/
+  - tests/
+  - .deprecated/
+  - .tmp/
+
+# Rules to completely skip (will not be checked)
+# These are rules that are too strict or not applicable for infrastructure automation
+skip_list:
+  # Variable naming - we use descriptive names without role prefixes for readability
+  # This is intentional for cross-role variable sharing (cluster_name, etc.)
+  - var-naming[no-role-prefix]
+
+  # Run-once is safe with our strategy and commonly used for cluster operations
+  - run-once[task]
+
+  # We use command/shell modules intentionally for Proxmox CLI tools (pvecm, pveceph)
+  # Native modules don't exist for many Proxmox operations
+  - command-instead-of-module
+  - no-changed-when  # Many Proxmox commands are already idempotent
+
+  # YAML formatting - we follow our own style guide
+  - yaml[line-length]  # Infrastructure configs often have long lines
+  - yaml[truthy]      # Allow yes/no, on/off for readability
+
+  # Jinja spacing - personal preference, doesn't affect functionality
+  - jinja[spacing]
+
+# Rules to treat as warnings instead of errors
+# These will be reported but won't fail the linting process
+warn_list:
+  # FQCN - we're migrating to FQCN gradually
+  - fqcn[action-core]
+  - fqcn[action]
+
+  # These are good practices but not critical for infrastructure code
+  - no-handler
+  - name[play]
+  - name[casing]
+
+  # We handle this explicitly in our roles
+  - risky-file-permissions
+
+  # Schema validation can be overly strict for complex vars
+  - schema[meta]
+  - schema[vars]
+
+# Enable specific opt-in rules
+enable_list:
+  - yaml  # Enable YAML syntax checks
+
+# Mock modules and roles for syntax checking
+# Add Proxmox and other custom modules that may not be installed
+mock_modules:
+  - community.general.proxmox
+  - community.general.proxmox_kvm
+  - community.general.proxmox_template
+  - community.general.proxmox_user
+  - community.general.proxmox_group
+  - community.general.proxmox_access_acl
+  - community.proxmox.proxmox_group
+  - community.proxmox.proxmox_user
+  - community.proxmox.proxmox_access_acl
+  - infisical.vault.read_secrets
+
+mock_roles:
+  - geerlingguy.docker
+
+# Variable naming pattern (snake_case)
+# This is intentionally relaxed to allow descriptive infrastructure variables
+var_naming_pattern: "^[a-z_][a-z0-9_]*$"
+
+# Loop variable prefix pattern
+# Allow double underscore or role name prefix
+# Example: __item, proxmox_repository_item
+loop_var_prefix: "^(__|\\w+_)"
+
+# Kinds of file types to lint
+# Default is all Ansible files
+kinds:
+  - yaml: "**/*.{yaml,yml}"
+  - playbook: "**/playbooks/*.{yml,yaml}"
+  - tasks: "**/tasks/*.{yml,yaml}"
+  - vars: "**/vars/*.{yml,yaml}"
+  - defaults: "**/defaults/*.{yml,yaml}"
+  - handlers: "**/handlers/*.{yml,yaml}"
+  - meta: "**/meta/*.{yml,yaml}"
+  - role: "**/roles/*/"
+
+# Extra variables to make available to Ansible
+# This helps with conditional syntax checking
+extra_vars:
+  # Common infrastructure variables
+  ansible_check_mode: false
+  ansible_diff_mode: true
+
+  # Cluster defaults for syntax checking
+  cluster_name: "test-cluster"
+  cluster_group: "all"
+  inventory_hostname: "localhost"
+  inventory_hostname_short: "localhost"
+
+# Write violations to a file for CI/CD integration
+# Uncomment for CI/CD pipelines
+# write_list:
+#   - all
+
+# Parseable output format for CI/CD
+# Use command-line flag: ansible-lint -p or --parseable
+# parseable: true
+
+# Use progressive mode (less strict on old code, strict on new)
+# This helps during gradual code improvements
+# progressive: true
+
+# Color output
+# Use command-line flags: --nocolor or --force-color
+# Not available in config file
+
+# Verbosity level
+# Use command-line flag: -v, -vv, or -q

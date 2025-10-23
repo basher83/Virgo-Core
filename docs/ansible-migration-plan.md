@@ -872,12 +872,12 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 
 ### Phase 4: New Functionality
 
-- [ ] Create `proxmox_cluster` role
-- [ ] Create `proxmox_ceph` role
-- [ ] Create `proxmox_repository` role
-- [ ] Create `initialize-matrix-cluster.yml` playbook
+- [x] Create `proxmox_cluster` role
+- [x] Create `proxmox_ceph` role
+- [x] Create `proxmox_repository` role
+- [x] Create `initialize-matrix-cluster.yml` playbook
 - [ ] Test cluster initialization (non-production)
-- [ ] Document cluster formation process
+- [x] Document cluster formation process
 
 ### Phase 5: Testing
 

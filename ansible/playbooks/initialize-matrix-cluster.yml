@@ -1,0 +1,218 @@
+---
+# Playbook: Initialize Matrix Cluster
+# Purpose: Complete Matrix cluster initialization with CEPH storage
+# WARNING: This is a destructive operation - use only on fresh nodes
+
+- name: Initialize Matrix Proxmox Cluster with CEPH Storage
+  hosts: matrix_cluster
+  gather_facts: true
+  become: true
+
+  vars:
+    # Cluster configuration
+    cluster_name: "Matrix"
+    cluster_group: "matrix_cluster"
+
+    # Corosync configuration (VLAN 9)
+    corosync_network: "192.168.8.0/24"
+    corosync_bindnetaddr: "192.168.8.0"
+    corosync_mcastaddr: "239.192.8.1"
+    corosync_mcastport: 5405
+    corosync_link0_interface: "vlan9"
+
+    # Cluster nodes
+    cluster_nodes:
+      - name: foxtrot
+        hostname: foxtrot.matrix.spaceships.work
+        management_ip: 192.168.3.5
+        corosync_ip: 192.168.8.5
+        node_id: 1
+
+      - name: golf
+        hostname: golf.matrix.spaceships.work
+        management_ip: 192.168.3.6
+        corosync_ip: 192.168.8.6
+        node_id: 2
+
+      - name: hotel
+        hostname: hotel.matrix.spaceships.work
+        management_ip: 192.168.3.7
+        corosync_ip: 192.168.8.7
+        node_id: 3
+
+    # CEPH configuration
+    ceph_version: "squid"
+    ceph_network: "192.168.5.0/24"          # vmbr1 - Public
+    ceph_cluster_network: "192.168.7.0/24"  # vmbr2 - Private
+
+    # OSD configuration - Matrix cluster
+    # 2 OSDs per NVMe × 2 NVMe per node × 3 nodes = 12 total OSDs
+    ceph_osds:
+      foxtrot:
+        - device: /dev/nvme1n1
+          partitions: 2
+          db_device: null
+          wal_device: null
+          crush_device_class: nvme
+
+        - device: /dev/nvme2n1
+          partitions: 2
+          db_device: null
+          wal_device: null
+          crush_device_class: nvme
+
+      golf:
+        - device: /dev/nvme1n1
+          partitions: 2
+          db_device: null
+          wal_device: null
+          crush_device_class: nvme
+
+        - device: /dev/nvme2n1
+          partitions: 2
+          db_device: null
+          wal_device: null
+          crush_device_class: nvme
+
+      hotel:
+        - device: /dev/nvme1n1
+          partitions: 2
+          db_device: null
+          wal_device: null
+          crush_device_class: nvme
+
+        - device: /dev/nvme2n1
+          partitions: 2
+          db_device: null
+          wal_device: null
+          crush_device_class: nvme
+
+    # CEPH pools configuration
+    # PG calculation: (12 OSDs * 100) / 3 replicas = 400 → 128 (conservative)
+    ceph_pools:
+      - name: vm_ssd
+        pg_num: 128
+        pgp_num: 128
+        size: 3              # 3 replicas across nodes
+        min_size: 2          # Minimum 2 replicas required for I/O
+        application: rbd
+        crush_rule: replicated_rule
+
+      - name: vm_containers
+        pg_num: 64
+        pgp_num: 64
+        size: 3
+        min_size: 2
+        application: rbd
+        crush_rule: replicated_rule
+
+    # Proxmox repository configuration
+    proxmox_version: "9.0"
+    proxmox_enterprise_repo: false
+    proxmox_no_subscription_repo: true
+    auto_update_packages: false
+
+  pre_tasks:
+    - name: Display playbook information
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          Matrix Cluster Initialization
+          ========================================
+          Cluster Name: {{ cluster_name }}
+          Nodes: {{ groups[cluster_group] | join(', ') }}
+          CEPH Version: {{ ceph_version }}
+          Total OSDs: 12 (4 per node)
+          ========================================
+          WARNING: This will initialize the cluster
+          and create CEPH storage.
+          ========================================
+
+    - name: Confirm initialization
+      ansible.builtin.pause:
+        prompt: "Press ENTER to continue with cluster initialization, or Ctrl+C to abort"
+      run_once: true
+      when: not (ansible_check_mode | default(false))
+
+  tasks:
+    - name: Execute cluster initialization roles
+      block:
+        - name: Configure Proxmox repositories
+          ansible.builtin.include_role:
+            name: proxmox_repository
+          tags: [repository, repos]
+
+        - name: Initialize Proxmox cluster
+          ansible.builtin.include_role:
+            name: proxmox_cluster
+          tags: [cluster]
+
+        - name: Deploy CEPH storage
+          ansible.builtin.include_role:
+            name: proxmox_ceph
+          tags: [ceph, storage]
+
+      rescue:
+        - name: Cluster initialization failed
+          ansible.builtin.debug:
+            msg: |
+              ========================================
+              CLUSTER INITIALIZATION FAILED
+              ========================================
+              Check logs above for specific errors.
+              The cluster may be in a partial state.
+
+              Recovery steps:
+              1. Check Proxmox cluster status: pvecm status
+              2. Check CEPH status: ceph -s
+              3. Review /var/log/pve/tasks/
+              ========================================
+
+        - name: Fail playbook with context
+          ansible.builtin.fail:
+            msg: "Cluster initialization failed. See error details above."
+
+  post_tasks:
+    - name: Display cluster initialization summary
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          Matrix Cluster Initialization Complete
+          ========================================
+          Cluster: {{ cluster_name }}
+          Nodes: {{ groups[cluster_group] | length }}
+          CEPH Status: Run 'ceph -s' to verify
+          ========================================
+          Next Steps:
+          1. Verify cluster: pvecm status
+          2. Verify CEPH: ceph -s
+          3. Check OSD tree: ceph osd tree
+          4. Check pools: ceph osd pool ls detail
+          ========================================
+      run_once: true
+
+    - name: Get final cluster status
+      ansible.builtin.command: pvecm status
+      register: final_cluster_status
+      changed_when: false
+      failed_when: false
+      run_once: true
+      delegate_to: "{{ groups[cluster_group][0] }}"
+
+    - name: Get final CEPH status
+      ansible.builtin.command: ceph -s
+      register: final_ceph_status
+      changed_when: false
+      failed_when: false
+      run_once: true
+      delegate_to: "{{ groups[cluster_group][0] }}"
+
+    - name: Display final status
+      ansible.builtin.debug:
+        msg: |
+          Cluster Status:
+          {{ final_cluster_status.stdout }}
+
+          CEPH Status:
+          {{ final_ceph_status.stdout }}
+      run_once: true
