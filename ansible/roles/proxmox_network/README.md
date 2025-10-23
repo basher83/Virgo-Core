@@ -31,7 +31,7 @@ proxmox_bridges:
     address: "192.168.3.5/24"          # IP address with CIDR
     gateway: 192.168.3.1               # Default gateway (optional)
     vlan_aware: true                   # Enable VLAN filtering (optional)
-    vlan_ids: [9]                      # List of VLAN IDs (optional)
+    vlan_ids: [9]                      # VLAN IDs: list [9, 10] or string range "2-4094" (optional)
     mtu: 1500                          # MTU size (optional)
     comment: "Management network"      # Documentation (optional)
 ```
@@ -55,8 +55,8 @@ proxmox_network_verify: true           # Verify configuration
 proxmox_network_dry_run: false         # Check mode without applying
 
 proxmox_network_interfaces_file: "/etc/network/interfaces"
-proxmox_network_default_mtu: 1500
-proxmox_network_jumbo_mtu: 9000
+proxmox_network_default_mtu: 1500      # Standard MTU (fallback if item.mtu undefined)
+proxmox_network_jumbo_mtu: 9000        # Jumbo frames MTU (use in mtu: "{{ proxmox_network_jumbo_mtu }}")
 ```
 
 ## Dependencies
@@ -105,6 +105,14 @@ None. This is a foundational infrastructure role.
             comment: "VLAN-aware bridge"
 ```
 
+**Note:** `vlan_ids` accepts either:
+
+- String range: `"2-4094"` (full VLAN range)
+- List of integers: `[9, 10, 20]` (specific VLANs)
+- List of strings: `["9", "10"]` (also valid)
+
+The role automatically converts lists to comma-separated strings for the network configuration.
+
 ### Complete Network Configuration (Matrix Cluster)
 
 ```yaml
@@ -138,14 +146,14 @@ None. This is a foundational infrastructure role.
           - name: vmbr1
             interface: enp5s0f0np0
             address: "192.168.5.{{ node_id }}/24"
-            mtu: 9000
+            mtu: "{{ proxmox_network_jumbo_mtu }}"
             comment: "CEPH Public network"
 
           # CEPH Private network (jumbo frames)
           - name: vmbr2
             interface: enp5s0f1np1
             address: "192.168.7.{{ node_id }}/24"
-            mtu: 9000
+            mtu: "{{ proxmox_network_jumbo_mtu }}"
             comment: "CEPH Private network"
 
         proxmox_vlans:

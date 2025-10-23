@@ -25,12 +25,14 @@ This repository includes **Agent Skills** that extend Claude Code's capabilities
 **Skills Documentation:** [.claude/skills/README.md](.claude/skills/README.md)
 
 Skills include:
+
 - Reference documentation and workflows
 - Working tools (Python scripts, shell scripts)
 - Tutorial and integration examples
 - Best practices from this repository
 
 Example interactions:
+
 - "Help me create a Proxmox template" → Loads proxmox-infrastructure skill
 - "Set up DNS automation with NetBox" → Loads netbox-powerdns-integration skill
 - "Review this playbook for idempotency" → Loads ansible-best-practices skill
