@@ -1,12 +1,41 @@
 # Comprehensive Testing Patterns
 
-**Source:** geerlingguy.security (analyzed 2025-10-23)
+**Sources:**
+- geerlingguy.security (analyzed 2025-10-23)
+- geerlingguy.github-users (analyzed 2025-10-23)
 
-**Repository:** https://github.com/geerlingguy/ansible-role-security
+**Repositories:**
+- https://github.com/geerlingguy/ansible-role-security
+- https://github.com/geerlingguy/ansible-role-github-users
+
+## Pattern Confidence Levels
+
+Analyzed 2 geerlingguy roles: security, github-users
+
+**Universal Patterns (Both roles use identical approach):**
+
+1. ✅ **Molecule default scenario with Docker driver** - Both roles use identical molecule.yml structure
+2. ✅ **role_name_check: 1** - Both enable role naming validation
+3. ✅ **Environment variable defaults** - Both use ${MOLECULE_DISTRO:-rockylinux9} pattern
+4. ✅ **Privileged containers with cgroup mounting** - Identical configuration for systemd support
+5. ✅ **Multi-distribution test matrix** - Both test rockylinux9, ubuntu2404, debian12 (updated versions)
+6. ✅ **Separate lint and molecule jobs** - Identical CI workflow structure
+7. ✅ **GitHub Actions triggers** - pull_request, push to master, weekly schedule
+8. ✅ **Colored output in CI** - PY_COLORS='1', ANSIBLE_FORCE_COLOR='1'
+9. ✅ **yamllint for linting** - Consistent linting approach
+10. ✅ **Converge playbook with pre-tasks** - Both use pre-tasks for environment setup
+
+**Contextual Patterns (Varies by role complexity):**
+
+1. ⚠️  **Pre-task complexity** - security role has more pre-tasks (SSH dependencies), github-users is simpler
+2. ⚠️  **Verification tests** - Neither role has explicit verify.yml (rely on idempotence)
+3. ⚠️  **Test data setup** - github-users sets up test users in pre-tasks, security doesn't need this
+
+**Key Finding:** Testing infrastructure is highly standardized across geerlingguy roles. The molecule/CI setup is essentially a template that works for all roles.
 
 ## Overview
 
-This document captures testing patterns extracted from the geerlingguy.security role, a production-grade Ansible role with comprehensive testing infrastructure. The role demonstrates industry-standard approaches to testing, CI/CD integration, and quality assurance.
+This document captures testing patterns extracted from production-grade Ansible roles, demonstrating industry-standard approaches to testing, CI/CD integration, and quality assurance.
 
 ## Molecule Configuration Structure
 

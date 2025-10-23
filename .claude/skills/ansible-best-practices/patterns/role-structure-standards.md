@@ -1,12 +1,41 @@
 # Role Structure Standards
 
-**Source:** geerlingguy.security (analyzed 2025-10-23)
+**Sources:**
+- geerlingguy.security (analyzed 2025-10-23)
+- geerlingguy.github-users (analyzed 2025-10-23)
 
-**Repository:** https://github.com/geerlingguy/ansible-role-security
+**Repositories:**
+- https://github.com/geerlingguy/ansible-role-security
+- https://github.com/geerlingguy/ansible-role-github-users
+
+## Pattern Confidence Levels
+
+Analyzed 2 geerlingguy roles: security, github-users
+
+**Universal Patterns (Both roles use identical approach):**
+
+1. ✅ **Standard directory structure** - Both follow defaults/, tasks/, meta/, molecule/, .github/ structure
+2. ✅ **Role-prefixed variable names** - security_*, github_users_* (prevents conflicts)
+3. ✅ **Descriptive task names** - Action verb + object pattern ("Ensure...", "Add...", "Update...")
+4. ✅ **defaults/ for user configuration** - All user-overridable values in defaults/main.yml
+5. ✅ **Snake_case naming** - Consistent variable naming convention
+6. ✅ **Inline validation** - validate parameter for critical config files
+7. ✅ **File permissions** - Explicit mode settings on all files
+8. ✅ **Quality control files** - .ansible-lint, .yamllint, .gitignore present
+
+**Contextual Patterns (Varies by role complexity):**
+
+1. ⚠️  **Task file organization** - security splits tasks (ssh.yml, fail2ban.yml), github-users keeps single main.yml (role is simpler)
+2. ⚠️  **vars/ directory** - security has OS-specific vars files, github-users doesn't need them
+3. ⚠️  **templates/ usage** - security uses templates for fail2ban config, github-users has no templates
+4. ⚠️  **handlers/** - security has 3 handlers (services to restart), github-users has none (no services managed)
+5. ⚠️  **Conditional task execution** - security uses OS-family conditionals, github-users is OS-agnostic
+
+**Key Finding:** Simple roles (like github-users) can keep all tasks in main.yml. Complex roles (like security) should split into feature-based files when tasks exceed ~30-40 lines.
 
 ## Overview
 
-This document captures role structure and organization patterns from the geerlingguy.security role, demonstrating how to organize tasks, variables, handlers, and templates for maintainability and clarity.
+This document captures role structure and organization patterns from production-grade Ansible roles, demonstrating how to organize tasks, variables, handlers, and templates for maintainability and clarity.
 
 ## Directory Organization
 

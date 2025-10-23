@@ -1,12 +1,41 @@
 # Documentation Templates
 
-**Source:** geerlingguy.security (analyzed 2025-10-23)
+**Sources:**
+- geerlingguy.security (analyzed 2025-10-23)
+- geerlingguy.github-users (analyzed 2025-10-23)
 
-**Repository:** https://github.com/geerlingguy/ansible-role-security
+**Repositories:**
+- https://github.com/geerlingguy/ansible-role-security
+- https://github.com/geerlingguy/ansible-role-github-users
+
+## Pattern Confidence Levels
+
+Analyzed 2 geerlingguy roles: security, github-users
+
+**Universal Patterns (Both roles use identical approach):**
+
+1. ✅ **README structure** - Both follow: Title + Badge → Description → Requirements → Variables → Dependencies → Example → License → Author
+2. ✅ **CI badge** - Both include GitHub Actions CI badge with link to workflow
+3. ✅ **Variable documentation format** - Code-formatted default + detailed description
+4. ✅ **Example playbook section** - Both show minimal working example with vars
+5. ✅ **Inline code formatting** - Backticks for variables, file paths, commands
+6. ✅ **Commented list examples** - Show example list items as comments
+7. ✅ **"None" for empty sections** - Explicit "None" instead of omitting (Requirements, Dependencies)
+8. ✅ **License + Author sections** - Both include MIT license and author with links
+9. ✅ **Variable grouping** - Related variables documented together with shared context
+
+**Contextual Patterns (Varies by role complexity):**
+
+1. ⚠️  **Warning/caveat section** - security has prominent security warning, github-users doesn't need one
+2. ⚠️  **Variable detail level** - security has extensive variable docs with warnings, github-users is more concise (fewer variables)
+3. ⚠️  **Example complexity** - security shows vars_files pattern, github-users shows inline vars (simpler)
+4. ⚠️  **Troubleshooting section** - Neither role has explicit troubleshooting (could be added)
+
+**Key Finding:** README documentation follows a strict template across roles. Only the caveat/warning section varies based on role risk profile.
 
 ## Overview
 
-This document captures documentation patterns from the geerlingguy.security role, demonstrating how to create clear, comprehensive README files that help users understand and use the role effectively.
+This document captures documentation patterns from production-grade Ansible roles, demonstrating how to create clear, comprehensive README files that help users understand and use the role effectively.
 
 ## README Structure
 

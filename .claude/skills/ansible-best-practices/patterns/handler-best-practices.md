@@ -1,0 +1,603 @@
+# Handler Best Practices
+
+**Sources:**
+- geerlingguy.security (analyzed 2025-10-23)
+- geerlingguy.github-users (analyzed 2025-10-23)
+
+**Repositories:**
+- https://github.com/geerlingguy/ansible-role-security
+- https://github.com/geerlingguy/ansible-role-github-users
+
+## Pattern Confidence Levels
+
+Analyzed 2 geerlingguy roles: security, github-users
+
+**Universal Patterns (Consistent when handlers exist):**
+
+1. ✅ **Simple, single-purpose handlers** - Each handler does one thing
+2. ✅ **Lowercase naming** - "restart ssh" not "Restart SSH"
+3. ✅ **Action + service pattern** - "[action] [service]" naming (restart ssh, reload fail2ban)
+4. ✅ **handlers/main.yml location** - All handlers in single file
+5. ✅ **Configurable handler behavior** - Use variables for handler state when appropriate
+
+**Contextual Patterns (When handlers are needed vs not):**
+
+1. ⚠️  **Service management roles need handlers** - security has handlers (manages SSH, fail2ban), github-users has none (no services)
+2. ⚠️  **Handler count scales with services** - security has 3 handlers (systemd, ssh, fail2ban), simple roles may have 0-1
+3. ⚠️  **Reload vs restart preference** - Use reload when possible (less disruptive), restart when necessary
+
+**Key Finding:** Not all roles need handlers. Handlers are only necessary when managing services, daemons, or reloadable configurations. User management roles (like github-users) typically don't need handlers.
+
+## Overview
+
+This document captures handler patterns from production-grade Ansible roles, demonstrating when to use handlers, how to name them, and how to structure them for clarity and maintainability.
+
+## Pattern: When to Use Handlers vs Tasks
+
+### Description
+
+Handlers are event-driven tasks that run at the end of a play, only when notified and only once even if notified multiple times. Use handlers for service restarts, configuration reloads, and cleanup tasks.
+
+### Use Handlers For
+
+1. **Service restarts/reloads** - After configuration changes
+2. **Daemon reloads** - After systemd unit file changes
+3. **Cache clearing** - After package installations
+4. **Index rebuilding** - After data changes
+5. **Cleanup operations** - After multiple related changes
+
+### Use Tasks (Not Handlers) For
+
+1. **User account management** - No services to restart
+2. **File deployment** - Unless it triggers a service reload
+3. **Package installation** - Unless service needs restart after
+4. **Variable setting** - No side effects
+5. **Conditional operations** - When immediate execution required
+
+### Handler vs Task Decision Matrix
+
+| Scenario | Use Handler? | Rationale |
+|----------|-------------|-----------|
+| SSH config modified | ✅ Yes | Need to restart sshd to apply changes |
+| User created | ❌ No | No service restart needed |
+| Systemd unit added | ✅ Yes | Need daemon-reload to register new unit |
+| Sudoers file modified | ❌ No | Takes effect immediately, no reload |
+| fail2ban config changed | ✅ Yes | Need to reload fail2ban to apply rules |
+| SSH key added | ❌ No | Takes effect immediately for new connections |
+| Network bridge configured | ✅ Yes | Need to apply network changes |
+
+### Examples from Analyzed Roles
+
+**security role (handlers needed):**
+
+```yaml
+---
+- name: reload systemd
+  systemd_service:
+    daemon_reload: true
+
+- name: restart ssh
+  service:
+    name: "{{ security_sshd_name }}"
+    state: "{{ security_ssh_restart_handler_state }}"
+
+- name: reload fail2ban
+  service:
+    name: fail2ban
+    state: reloaded
+```
+
+**github-users role (no handlers):**
+
+```yaml
+# handlers/main.yml does not exist
+# All operations (user creation, SSH key management) take effect immediately
+```
+
+### When to Use
+
+- Manage services that need restart/reload after configuration
+- Handle systemd daemon reloads
+- Consolidate multiple changes into single service operation
+- Defer disruptive operations to end of play
+
+### Anti-pattern
+
+- ❌ Don't use handlers for operations that need immediate execution
+- ❌ Don't restart services inline in tasks (breaks idempotence, runs multiple times)
+- ❌ Don't create handlers for operations without side effects
+- ❌ Don't use handlers when task order matters critically
+
+## Pattern: Handler Naming Convention
+
+### Description
+
+Use clear, action-oriented names that describe what the handler does. Follow the pattern: `[action] [service/component]`
+
+### Naming Pattern
+
+```
+[action] [service]
+```
+
+**Common actions:**
+- restart - Full service restart (disruptive)
+- reload - Configuration reload (graceful)
+- restart - systemd daemon reload
+- clear - Cache clearing
+- rebuild - Index/data rebuilding
+
+### Examples from security role
+
+```yaml
+- name: reload systemd
+- name: restart ssh
+- name: reload fail2ban
+```
+
+**Naming breakdown:**
+
+- `reload systemd` - Action: reload, Target: systemd daemon
+- `restart ssh` - Action: restart, Target: ssh service
+- `reload fail2ban` - Action: reload, Target: fail2ban service
+
+### Handler Naming Guidelines
+
+1. **Use lowercase** - "restart ssh" not "Restart SSH"
+2. **Action first** - Verb before noun (restart ssh, not ssh restart)
+3. **Be specific** - Name the actual service (ssh, not daemon)
+4. **One action per handler** - Don't combine "restart ssh and fail2ban"
+5. **Match notification** - Handler name must match notify string exactly
+6. **Avoid underscores** - Use spaces: "reload systemd" not "reload_systemd"
+
+### When to Use
+
+- All handler definitions in handlers/main.yml
+- Match naming to corresponding notification in tasks
+- Use descriptive service names users will recognize
+
+### Anti-pattern
+
+- ❌ Vague names: "restart service", "reload config"
+- ❌ Uppercase: "Restart SSH", "RELOAD SYSTEMD"
+- ❌ Implementation details: "run systemctl restart sshd"
+- ❌ Underscores: "restart_ssh" (use spaces)
+- ❌ Overly verbose: "restart the ssh daemon service"
+
+## Pattern: Simple Handler Definitions
+
+### Description
+
+Keep handlers simple and focused. Each handler should perform one action using one module.
+
+### Handler Structure
+
+**Basic handler:**
+
+```yaml
+- name: restart ssh
+  service:
+    name: sshd
+    state: restarted
+```
+
+**Handler with variable:**
+
+```yaml
+- name: restart ssh
+  service:
+    name: "{{ security_sshd_name }}"
+    state: "{{ security_ssh_restart_handler_state }}"
+```
+
+**Systemd-specific handler:**
+
+```yaml
+- name: reload systemd
+  systemd_service:
+    daemon_reload: true
+```
+
+### Key Elements
+
+1. **Single module** - One module per handler
+2. **Clear purpose** - Does one thing well
+3. **Variable support** - Use variables for OS differences
+4. **Appropriate module** - systemd_service for systemd, service for others
+5. **Correct state** - restarted, reloaded, or daemon_reload
+
+### Handler Complexity Levels
+
+**Simple (preferred):**
+
+```yaml
+- name: reload fail2ban
+  service:
+    name: fail2ban
+    state: reloaded
+```
+
+**With variables (good):**
+
+```yaml
+- name: restart ssh
+  service:
+    name: "{{ security_sshd_name }}"
+    state: "{{ security_ssh_restart_handler_state }}"
+```
+
+**Too complex (anti-pattern):**
+
+```yaml
+# ❌ DON'T DO THIS
+- name: restart ssh and fail2ban
+  service:
+    name: "{{ item }}"
+    state: restarted
+  loop:
+    - sshd
+    - fail2ban
+```
+
+### When to Use
+
+- Keep handlers to 2-5 lines max
+- One module per handler
+- Use variables for portability
+- Make behavior configurable when appropriate
+
+### Anti-pattern
+
+- ❌ Multiple tasks in one handler
+- ❌ Complex loops in handlers
+- ❌ Conditional logic in handlers (put in tasks with conditional notify)
+- ❌ Multiple module calls in one handler
+
+## Pattern: Reload vs Restart Strategy
+
+### Description
+
+Prefer `reload` over `restart` when the service supports it. Reloading is less disruptive and maintains active connections.
+
+### Reload (Preferred When Available)
+
+**Characteristics:**
+- Graceful configuration reload
+- Maintains active connections
+- Less disruptive to service
+- Faster than full restart
+
+**Example:**
+
+```yaml
+- name: reload fail2ban
+  service:
+    name: fail2ban
+    state: reloaded
+```
+
+**Services that support reload:**
+- nginx
+- apache
+- fail2ban
+- rsyslog
+- haproxy
+
+### Restart (When Reload Not Supported)
+
+**Characteristics:**
+- Full service stop and start
+- Drops active connections
+- More disruptive
+- Necessary for some changes
+
+**Example:**
+
+```yaml
+- name: restart ssh
+  service:
+    name: "{{ security_sshd_name }}"
+    state: restarted
+```
+
+**When restart is necessary:**
+- SSH daemon (sshd doesn't support reload properly)
+- Services without reload capability
+- Major configuration changes requiring full restart
+- Binary/package updates
+
+### Systemd Daemon Reload (Special Case)
+
+**For systemd unit file changes:**
+
+```yaml
+- name: reload systemd
+  systemd_service:
+    daemon_reload: true
+```
+
+**When to use:**
+- After adding new systemd unit files
+- After modifying existing unit files
+- Before starting newly added services
+- When systemd complains about outdated configs
+
+### Decision Matrix
+
+| Service | Configuration Change | Action | Rationale |
+|---------|---------------------|--------|-----------|
+| nginx | nginx.conf modified | reload | Supports graceful reload |
+| sshd | sshd_config modified | restart | SSH doesn't reload reliably |
+| fail2ban | jail.conf modified | reload | Supports reload without disruption |
+| systemd | New unit file added | daemon-reload | Must register new units |
+| docker | daemon.json changed | restart | Daemon restart required |
+
+### When to Use
+
+- Always try reload first if service supports it
+- Use restart when reload is unavailable
+- Use daemon-reload for systemd unit changes
+- Document why restart is used instead of reload
+
+### Anti-pattern
+
+- ❌ Always using restart (unnecessarily disruptive)
+- ❌ Using reload when service doesn't support it (silent failure)
+- ❌ Forgetting daemon-reload before starting new systemd services
+
+## Pattern: Configurable Handler Behavior
+
+### Description
+
+Make handler behavior configurable via variables when users might need different states.
+
+### Configurable State Variable
+
+**Variable definition (defaults/main.yml):**
+
+```yaml
+security_ssh_restart_handler_state: restarted
+```
+
+**Handler definition (handlers/main.yml):**
+
+```yaml
+- name: restart ssh
+  service:
+    name: "{{ security_sshd_name }}"
+    state: "{{ security_ssh_restart_handler_state }}"
+```
+
+**Usage scenarios:**
+
+```yaml
+# Normal operation - restart SSH
+security_ssh_restart_handler_state: restarted
+
+# Testing/check mode - just reload
+security_ssh_restart_handler_state: reloaded
+
+# Manual control - just ensure running
+security_ssh_restart_handler_state: started
+```
+
+### When to Make Handlers Configurable
+
+**Good candidates for configuration:**
+1. Services with both reload and restart options
+2. Critical services users might not want to restart automatically
+3. Services with graceful shutdown requirements
+4. Testing scenarios where full restart is undesirable
+
+**Not necessary for:**
+1. systemd daemon-reload (only one valid action)
+2. Simple cache clears
+3. Handlers where state is always the same
+
+### When to Use
+
+- Critical services (SSH, networking)
+- Services with reload option
+- When users might need control over restart behavior
+- Testing and development scenarios
+
+### Anti-pattern
+
+- ❌ Configuring every handler (over-engineering)
+- ❌ Complex handler state logic
+- ❌ Defaults that don't work (e.g., "stopped" for SSH)
+
+## Pattern: Handler Notification
+
+### Description
+
+Notify handlers from tasks using the `notify` directive. Tasks can notify multiple handlers.
+
+### Single Handler Notification
+
+**Task:**
+
+```yaml
+- name: Update SSH configuration to be more secure.
+  lineinfile:
+    dest: "{{ security_ssh_config_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    validate: 'sshd -T -f %s'
+  with_items:
+    - regexp: "^PasswordAuthentication"
+      line: "PasswordAuthentication no"
+  notify: restart ssh
+```
+
+**Handler:**
+
+```yaml
+- name: restart ssh
+  service:
+    name: sshd
+    state: restarted
+```
+
+### Multiple Handler Notification
+
+**Task:**
+
+```yaml
+- name: Update SSH configuration to be more secure.
+  lineinfile:
+    dest: "{{ security_ssh_config_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    validate: 'sshd -T -f %s'
+  with_items:
+    - regexp: "^PasswordAuthentication"
+      line: "PasswordAuthentication no"
+  notify:
+    - reload systemd
+    - restart ssh
+```
+
+**Handlers run in order defined in handlers/main.yml:**
+
+```yaml
+- name: reload systemd
+  systemd_service:
+    daemon_reload: true
+
+- name: restart ssh
+  service:
+    name: sshd
+    state: restarted
+```
+
+### Notification Behavior
+
+1. **Handlers run once** - Even if notified multiple times in a play
+2. **Handlers run at end** - After all tasks complete
+3. **Handlers run in order** - Order defined in handlers/main.yml, not notification order
+4. **Failed tasks skip handlers** - If any task fails, handlers may not run
+
+### When to Use
+
+- Notify handler when configuration changes
+- Use multiple notifications when order matters (daemon-reload before restart)
+- Rely on automatic deduplication (don't worry about multiple notifications)
+
+### Anti-pattern
+
+- ❌ Notifying handlers that don't exist (typo in handler name)
+- ❌ Depending on handler execution order from notify (use handlers/main.yml order)
+- ❌ Expecting immediate handler execution (handlers run at end of play)
+- ❌ Notifying handlers from failed tasks (use `force_handlers: true` if needed)
+
+## Comparison to Virgo-Core Roles
+
+### system_user Role
+
+**Handler Analysis:**
+
+```yaml
+# handlers/main.yml is empty (no handlers defined)
+```
+
+**Assessment:**
+
+- ✅ **Correct decision** - User management doesn't require service restarts
+- ✅ **No handlers needed** - SSH keys, sudoers take effect immediately
+- ✅ **Matches github-users pattern** - Simple role, no services
+
+**Pattern Match:** 100% - Correctly identifies that handlers are not needed
+
+### proxmox_access Role
+
+**Handler Analysis (from review):**
+
+```yaml
+# Has handlers for Proxmox API operations
+```
+
+**Assessment:**
+
+- ✅ **Handlers appropriately used** - For operations that need completion
+- ✅ **Follows naming conventions** - Clear handler names
+- ✅ **Simple handler definitions** - One action per handler
+
+**Recommendations:**
+- Review if all handlers are necessary
+- Consider if any operations could be immediate tasks
+
+**Pattern Match:** 90% - Good handler usage, minor review recommended
+
+### proxmox_network Role
+
+**Handler Analysis:**
+
+```yaml
+# handlers/main.yml
+---
+- name: reload networking
+  command: ifreload -a
+  changed_when: false
+```
+
+**Assessment:**
+
+- ✅ **Handler needed** - Network changes require reload
+- ✅ **Single purpose** - One handler for network reload
+- ⚠️  **Uses command module** - Necessary for ifreload (no module exists)
+- ✅ **changed_when: false** - Prevents false change reporting
+
+**Minor improvement opportunity:**
+
+```yaml
+- name: reload networking
+  command: ifreload -a
+  changed_when: false
+  register: network_reload
+  failed_when: network_reload.rc != 0
+```
+
+**Pattern Match:** 95% - Excellent handler usage, appropriate for network management
+
+## Summary
+
+**Universal Handler Patterns:**
+
+1. Use handlers only when services/daemons need restart/reload
+2. One handler per service/action combination
+3. Lowercase naming: "[action] [service]"
+4. Keep handlers simple (single module, single purpose)
+5. Prefer reload over restart when available
+6. Place all handlers in handlers/main.yml
+7. Make critical handler behavior configurable
+8. Handler name must match notify string exactly
+
+**Key Takeaways:**
+
+- Not all roles need handlers (user management, file deployment often don't)
+- Handlers prevent duplicate service restarts (run once per play)
+- Reload is less disruptive than restart (use when supported)
+- Handler order is defined in handlers/main.yml, not by notify order
+- Keep handlers simple and focused
+- Configurable handler behavior helps with testing and critical services
+
+**Virgo-Core Assessment:**
+
+All three roles demonstrate good handler discipline:
+- **system_user** - Correctly has no handlers (none needed)
+- **proxmox_access** - Has appropriate handlers
+- **proxmox_network** - Good network reload handler
+
+No critical handler-related gaps identified. Virgo-Core roles follow best practices.
+
+**Next Steps:**
+
+Continue pattern of creating handlers only when necessary. Use the handler checklist:
+1. Does this role manage a service? → Maybe needs handlers
+2. Does configuration change require reload/restart? → Add handler
+3. Can I use reload instead of restart? → Prefer reload
+4. Is handler behavior critical? → Make it configurable
+5. Is handler name clear and lowercase? → Follow naming pattern
