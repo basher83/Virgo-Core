@@ -35,6 +35,16 @@
     msg: "ifreload command not found. Please install ifupdown2 package."
   when: proxmox_network_ifreload_check.rc != 0
 
+- name: Validate VLAN IDs are in valid range
+  ansible.builtin.assert:
+    that:
+      - item.id | int >= 1
+      - item.id | int <= 4094
+    fail_msg: "VLAN ID {{ item.id }} is out of valid range (1-4094)"
+    quiet: true
+  loop: "{{ proxmox_vlans }}"
+  when: proxmox_vlans | length > 0
+
 - name: Display configuration summary
   ansible.builtin.debug:
     msg:
