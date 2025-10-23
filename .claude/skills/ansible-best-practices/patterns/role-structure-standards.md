@@ -863,6 +863,135 @@ proxmox_network/
 - **Task file count:** CONTEXTUAL (scales with complexity: 2-3 for simple, 8+ for complex)
 - **include vs import:** CLARIFIED (conditional vs ordered)
 
+## Validation: geerlingguy.nginx
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-nginx
+
+### Directory Organization
+
+- **Pattern: Standard Ansible role structure** - ✅ **Confirmed**
+  - nginx has: defaults/, tasks/, handlers/, meta/, molecule/, .github/, vars/, templates/
+  - **Heavily uses templates/** directory with 3 template files
+  - **5/5 roles confirm standard structure**
+
+### Template Organization - ✨ NEW INSIGHT
+
+- **Pattern: templates/ directory for complex configurations** - ✅ **CONFIRMED & EXPANDED**
+  - nginx uses templates/ extensively for configuration management:
+    - `nginx.conf.j2` - Main nginx configuration (extensive Jinja2 logic)
+    - `vhost.j2` - Virtual host configuration template
+    - `nginx.repo.j2` - Repository configuration template
+  - **Key insight:** Templates heavily use Jinja2 blocks for extensibility
+
+- **Advanced Template Pattern: Jinja2 Block Inheritance**
+  - nginx.conf.j2 uses `{% block %}` for template extensibility:
+    ```jinja2
+    {% block worker %}
+    worker_processes  {{ nginx_worker_processes }};
+    {% endblock %}
+
+    {% block http_begin %}{% endblock %}
+    {% block http_basic %}...{% endblock %}
+    {% block http_gzip %}...{% endblock %}
+    {% block http_upstream %}...{% endblock %}
+    {% block http_includes %}...{% endblock %}
+    {% block http_end %}{% endblock %}
+    ```
+  - Allows users to override specific template sections without replacing entire template
+  - README documents how to extend templates using Jinja2 inheritance
+
+- **Template Customization Pattern:**
+  - Variables for template selection: `nginx_conf_template`, `nginx_vhost_template`
+  - Per-vhost template override: `item.template` in vhost definition
+  - Users can provide custom templates while falling back to role defaults
+
+- **When to Use templates/ vs Other Approaches:**
+  - **Use templates/** when:
+    - Configuration files have complex structure (nginx.conf, vhost configs)
+    - Need conditional content generation
+    - Need Jinja2 block inheritance for user extensibility
+    - Configuration requires looping over variables (upstreams, vhosts)
+  - **Use lineinfile/copy** when:
+    - Simple single-line configuration changes (SSH config)
+    - Static files that don't need variable substitution
+
+### Task Organization
+
+- **Pattern: tasks/main.yml as router** - ✅ **Confirmed**
+  - main.yml includes: OS-specific setup files, vhosts.yml, main configuration
+  - Same conditional include pattern as other roles
+  - **5/5 roles use main.yml as router pattern**
+
+- **Pattern: OS-specific task files** - ✅ **Confirmed**
+  - setup-RedHat.yml, setup-Ubuntu.yml, setup-Debian.yml, setup-FreeBSD.yml, etc.
+  - **nginx supports more OS families than previous roles** (FreeBSD, OpenBSD, Suse, Archlinux)
+  - Pattern scales to any number of supported platforms
+
+### Variable Naming
+
+- **Pattern: Role-prefixed variables** - ✅ **Confirmed**
+  - All variables prefixed with `nginx_`: nginx_worker_processes, nginx_vhosts, nginx_upstreams
+  - **5/5 roles confirm this is universal**
+
+- **Pattern: Template path variables** - ✅ **NEW SUB-PATTERN**
+  - nginx exposes template paths as variables: `nginx_conf_template`, `nginx_vhost_template`
+  - Allows users to override templates without modifying role
+  - **Recommendation:** Always make template paths configurable in roles that use templates
+
+### defaults/ vs vars/ Usage
+
+- **Pattern: defaults/ for user config, vars/ for OS-specific** - ✅ **Confirmed**
+  - defaults/main.yml: Extensive user configuration (vhosts, upstreams, worker config)
+  - vars/{Debian,RedHat,FreeBSD,etc.}.yml: OS-specific package names, paths, service names
+  - **5/5 roles follow this pattern exactly**
+
+### Complex Variable Documentation
+
+- **Pattern: Inline documentation with examples** - ✅ **EXCELLENT EXAMPLE**
+  - nginx_vhosts documented with full example showing all options:
+    ```yaml
+    nginx_vhosts: []
+    # Example vhost below, showing all available options:
+    # - listen: "80"
+    #   server_name: "example.com"
+    #   root: "/var/www/example.com"
+    #   index: "index.html index.htm"
+    #   filename: "example.com.conf"
+    #   ...
+    ```
+  - nginx_upstreams similar pattern with all load balancing options shown
+  - **Validates:** Complex list-of-dict variables need comprehensive inline examples
+
+### Key Validation Findings
+
+**What nginx Role Confirms:**
+
+1. ✅ Standard directory structure is universal (5/5 roles)
+2. ✅ tasks/main.yml as router is universal (5/5 roles)
+3. ✅ Role-prefixed variable naming is universal (5/5 roles)
+4. ✅ defaults/ vs vars/ separation is universal (5/5 roles)
+5. ✅ Inline variable documentation is universal (5/5 roles)
+6. ✅ OS-specific task organization is universal (5/5 roles)
+
+**What nginx Role Demonstrates (✨ NEW INSIGHTS):**
+
+1. ✨ **Template organization patterns:** Jinja2 blocks for extensibility
+2. ✨ **Template customization:** Variables for template paths, per-item overrides
+3. ✨ **README template documentation:** Explaining template inheritance
+4. 🔄 Platform support scales: nginx supports 6+ OS families
+5. 🔄 Complex variable documentation with full working examples
+
+**Pattern Confidence After nginx Validation (5/5 roles):**
+
+- **Directory structure:** UNIVERSAL (5/5 roles identical)
+- **Task organization:** UNIVERSAL (5/5 use main.yml as router)
+- **Variable naming:** UNIVERSAL (5/5 use role prefix)
+- **defaults/ vs vars/:** UNIVERSAL (5/5 follow pattern)
+- **Template organization:** VALIDATED (nginx shows advanced patterns)
+- **Template extensibility:** BEST PRACTICE (Jinja2 blocks for inheritance)
+- **Template path variables:** RECOMMENDED (allow user customization)
+
 ## Summary
 
 **Universal Patterns Identified:**

@@ -788,3 +788,104 @@ Continue pattern of creating handlers only when necessary. Use the handler check
 4. Is handler behavior critical? → Make it configurable (database services should be configurable)
 5. Is handler name clear and lowercase? → Follow naming pattern
 6. Is service management optional? → Add conditional (when: role_service_manage | bool)
+
+## Validation: geerlingguy.nginx
+
+**Analysis Date:** 2025-10-23
+**Repository:** https://github.com/geerlingguy/ansible-role-nginx
+
+### Handler Structure
+
+**nginx role handlers/main.yml:**
+
+```yaml
+---
+- name: restart nginx
+  service: name=nginx state=restarted
+
+- name: validate nginx configuration
+  command: nginx -t -c /etc/nginx/nginx.conf
+  changed_when: false
+
+- name: reload nginx
+  service: name=nginx state=reloaded
+  when: nginx_service_state == "started"
+```
+
+### Handler Naming
+
+- **Pattern: Lowercase "[action] [service]"** - ✅ **Confirmed**
+  - "restart nginx", "reload nginx", "validate nginx configuration"
+  - **5/5 roles use lowercase naming**
+
+### Handler Simplicity
+
+- **Pattern: Single module, single purpose** - ✅ **Confirmed**
+  - Each handler performs one clear action
+  - **5/5 roles follow simple handler pattern**
+
+### Reload vs Restart Pattern - ✅ **CONFIRMED**
+
+- **nginx has BOTH reload and restart handlers:**
+  - `restart nginx` - Full service restart (disruptive)
+  - `reload nginx` - Graceful configuration reload (preferred)
+  - **Demonstrates best practice:** Provide both, use reload by default
+  - **5/5 roles demonstrate reload preference when supported**
+
+### Handler Conditional Execution - ✅ **NEW PATTERN**
+
+- **Pattern: Conditional reload handler** - ✅ **CONFIRMED**
+  - reload nginx has: `when: nginx_service_state == "started"`
+  - Prevents reload attempt if service is stopped
+  - **Safety pattern:** Don't reload stopped services
+  - **Recommendation:** Add `when` conditionals to reload handlers
+
+### Validation Handler Pattern - ✨ **NEW INSIGHT**
+
+- **Pattern: Configuration validation handler** - ✨ **NEW INSIGHT**
+  - "validate nginx configuration" handler uses `command: nginx -t`
+  - `changed_when: false` prevents false change reports
+  - **Use case:** Run validation before restart/reload
+  - **Not seen in previous roles** (they use validate parameter in tasks instead)
+  - **Alternative pattern:** Task-level validation vs handler-level validation
+
+### Service State Variable Pattern
+
+- **Pattern: Configurable service state** - ✅ **Confirmed**
+  - nginx_service_state: started (default)
+  - nginx_service_enabled: true (default)
+  - **5/5 service management roles use this pattern**
+
+### Handler Notification Patterns
+
+- **Pattern: Multiple handlers for configuration changes** - ✅ **Confirmed**
+  - Template changes notify: reload nginx
+  - Vhost changes notify: reload nginx
+  - **Insight:** nginx prefers reload over restart (less disruptive)
+  - Validates reload vs restart decision matrix
+
+### Key Validation Findings
+
+**What nginx Role Confirms:**
+
+1. ✅ Lowercase naming is universal (5/5 roles)
+2. ✅ Simple, single-purpose handlers are universal (5/5 roles)
+3. ✅ Reload vs restart distinction is universal for web servers (5/5 roles)
+4. ✅ Service state variables are universal (5/5 roles)
+5. ✅ Handler deduplication works reliably (5/5 roles)
+
+**What nginx Role Demonstrates (✨ NEW INSIGHTS):**
+
+1. ✨ **Both reload AND restart handlers:** Provide flexibility, default to reload
+2. ✨ **Conditional reload handler:** `when: service_state == "started"` prevents errors
+3. ✨ **Validation handler pattern:** Alternative to task-level validation
+4. 🔄 Web servers should ALWAYS prefer reload over restart
+5. 🔄 Handler safety: Check service state before reload
+
+**Pattern Confidence After nginx Validation (5/5 roles):**
+
+- **Handler naming:** UNIVERSAL (5/5 roles use lowercase "[action] [service]")
+- **Handler simplicity:** UNIVERSAL (5/5 use single module per handler)
+- **Reload vs restart:** UNIVERSAL (5/5 web/service roles distinguish them)
+- **Conditional handlers:** RECOMMENDED (nginx shows safety pattern)
+- **Validation handlers:** ALTERNATIVE PATTERN (task validation vs handler validation)
