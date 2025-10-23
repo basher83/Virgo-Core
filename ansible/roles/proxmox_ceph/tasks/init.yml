@@ -1,0 +1,37 @@
+---
+# Initialize CEPH cluster
+
+- name: Check if CEPH is already initialized
+  ansible.builtin.command: ceph status
+  register: ceph_status_check
+  changed_when: false
+  failed_when: false
+
+- name: Initialize CEPH cluster
+  ansible.builtin.command: >
+    pveceph init
+    --network {{ ceph_network }}
+    --cluster-network {{ ceph_cluster_network }}
+  when: ceph_status_check.rc != 0
+  register: ceph_init
+  changed_when: ceph_init.rc == 0
+  failed_when:
+    - ceph_init.rc != 0
+    - "'already initialized' not in ceph_init.stderr"
+
+- name: Wait for CEPH initialization
+  ansible.builtin.pause:
+    seconds: 10
+  when: ceph_init is changed
+
+- name: Verify CEPH initialization
+  ansible.builtin.command: ceph -s
+  register: ceph_init_verify
+  changed_when: false
+  retries: 5
+  delay: 5
+  until: ceph_init_verify.rc == 0
+
+- name: Display CEPH initialization status
+  ansible.builtin.debug:
+    msg: "CEPH cluster initialized with public network {{ ceph_network }} and cluster network {{ ceph_cluster_network }}"

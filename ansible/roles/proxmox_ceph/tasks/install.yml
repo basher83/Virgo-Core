@@ -1,0 +1,31 @@
+---
+# Install CEPH packages
+
+- name: Check if CEPH is already installed
+  ansible.builtin.command: pveceph --version
+  register: ceph_installed
+  changed_when: false
+  failed_when: false
+
+- name: Install CEPH packages via Proxmox
+  ansible.builtin.command: pveceph install --repository {{ ceph_repository }}
+  when: ceph_installed.rc != 0
+  register: ceph_install
+  changed_when: ceph_install.rc == 0
+  failed_when:
+    - ceph_install.rc != 0
+    - "'already installed' not in ceph_install.stderr"
+
+- name: Wait for CEPH installation to complete
+  ansible.builtin.wait_for:
+    timeout: 300
+  when: ceph_install is changed
+
+- name: Verify CEPH installation
+  ansible.builtin.command: ceph --version
+  register: ceph_version_check
+  changed_when: false
+
+- name: Display CEPH version
+  ansible.builtin.debug:
+    msg: "CEPH installed: {{ ceph_version_check.stdout }}"

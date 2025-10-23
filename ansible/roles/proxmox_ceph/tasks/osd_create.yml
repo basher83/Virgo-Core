@@ -1,0 +1,116 @@
+---
+# Create OSDs from configuration with partition support
+
+- name: Get list of existing OSDs on this node
+  ansible.builtin.command: ceph osd tree --format json
+  register: existing_osds_json
+  changed_when: false
+  failed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+
+- name: Parse existing OSD count for this node
+  ansible.builtin.set_fact:
+    existing_osd_ids: "{{ (existing_osds_json.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | default([]) }}"
+  when: existing_osds_json.rc == 0
+
+- name: Calculate expected OSD count for this node
+  ansible.builtin.set_fact:
+    expected_osd_count: "{{ ceph_osds[inventory_hostname_short] | default([]) | map(attribute='partitions') | map('default', 1) | sum }}"
+
+- name: Display OSD creation plan
+  ansible.builtin.debug:
+    msg: |
+      Node: {{ inventory_hostname_short }}
+      Expected OSDs: {{ expected_osd_count }}
+      Existing OSDs: {{ existing_osd_ids | default([]) | length }}
+      Devices configured: {{ ceph_osds[inventory_hostname_short] | default([]) | length }}
+
+- name: Create OSDs from whole devices (partitions=1 or not specified)
+  ansible.builtin.command: >
+    pveceph osd create {{ item.device }}
+    {% if item.db_device is defined and item.db_device %}--db_dev {{ item.db_device }}{% endif %}
+    {% if item.wal_device is defined and item.wal_device %}--wal_dev {{ item.wal_device %}{% endif %}
+    {% if item.crush_device_class is defined %}--crush-device-class {{ item.crush_device_class }}{% endif %}
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  loop_control:
+    label: "{{ item.device }}"
+  when:
+    - item.partitions | default(1) == 1
+    - existing_osd_ids | default([]) | length < expected_osd_count | int
+  register: osd_create_whole
+  changed_when: "'successfully created' in osd_create_whole.stdout | default('')"
+  failed_when:
+    - osd_create_whole.rc != 0
+    - "'already in use' not in osd_create_whole.stderr | default('')"
+
+- name: Create partition indices for multi-OSD devices
+  ansible.builtin.set_fact:
+    osd_device_partitions: >-
+      {{
+        ceph_osds[inventory_hostname_short] | default([])
+        | selectattr('partitions', 'defined')
+        | selectattr('partitions', 'gt', 1)
+        | map('combine', {'partition_indices': range(item.partitions | int) | list})
+        | list
+      }}
+  vars:
+    item:
+      partitions: 2  # Default for template expansion
+
+- name: Create multiple OSDs per device using size parameter
+  ansible.builtin.command: >
+    pveceph osd create {{ item.0.device }}
+    {% if item.0.device_size_gb is defined %}--size {{ (item.0.device_size_gb | int / item.0.partitions | int) }}G{% endif %}
+    {% if item.0.db_device is defined and item.0.db_device %}--db_dev {{ item.0.db_device }}{% endif %}
+    {% if item.0.wal_device is defined and item.0.wal_device %}--wal_dev {{ item.0.wal_device }}{% endif %}
+    {% if item.0.crush_device_class is defined %}--crush-device-class {{ item.0.crush_device_class }}{% endif %}
+  with_subelements:
+    - "{{ osd_device_partitions | default([]) }}"
+    - partition_indices
+  loop_control:
+    label: "{{ item.0.device }} partition {{ item.1 }}"
+  when:
+    - osd_device_partitions | default([]) | length > 0
+    - existing_osd_ids | default([]) | length < expected_osd_count | int
+  register: osd_create_partition
+  changed_when: "'successfully created' in osd_create_partition.stdout | default('')"
+  failed_when:
+    - osd_create_partition.rc != 0
+    - "'already in use' not in osd_create_partition.stderr | default('')"
+    - "'No space left' not in osd_create_partition.stderr | default('')"
+
+- name: Wait for OSDs to come up
+  ansible.builtin.command: ceph osd tree --format json
+  register: osd_tree_final
+  changed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+  until: >
+    (osd_tree_final.stdout | from_json).nodes
+    | selectattr('type', 'equalto', 'osd')
+    | selectattr('status', 'equalto', 'up')
+    | selectattr('name', 'search', inventory_hostname_short)
+    | list | length >= expected_osd_count | int
+  retries: 20
+  delay: 10
+  when:
+    - osd_create_whole is changed or osd_create_partition is changed
+
+- name: Get final OSD count for this node
+  ansible.builtin.shell: |
+    set -o pipefail
+    ceph osd tree | grep "{{ inventory_hostname_short }}" | grep -c "osd\." || echo "0"
+  args:
+    executable: /bin/bash
+  register: final_osd_count
+  changed_when: false
+
+- name: Verify OSD count matches expectation
+  ansible.builtin.assert:
+    that:
+      - final_osd_count.stdout | int >= expected_osd_count | int
+    fail_msg: "Expected {{ expected_osd_count }} OSDs, but only {{ final_osd_count.stdout }} are active"
+    success_msg: "All {{ expected_osd_count }} OSDs successfully created and active"
+
+- name: Display OSD creation status
+  ansible.builtin.debug:
+    msg: "OSDs on {{ inventory_hostname }}: {{ final_osd_count.stdout }}/{{ expected_osd_count }} OSDs active"

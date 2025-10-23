@@ -1,0 +1,36 @@
+totem {
+    version: 2
+    cluster_name: {{ cluster_name }}
+    transport: knet
+    ip_version: ipv4
+    secauth: on
+    crypto_hash: sha256
+    crypto_cipher: aes256
+
+    interface {
+        linknumber: 0
+        knet_link_priority: 1
+    }
+}
+
+nodelist {
+{% for node in cluster_nodes %}
+    node {
+        ring0_addr: {{ node.corosync_ip }}
+        name: {{ node.name }}
+        nodeid: {{ node.node_id }}
+        quorum_votes: 1
+    }
+{% endfor %}
+}
+
+quorum {
+    provider: corosync_votequorum
+}
+
+logging {
+    to_logfile: yes
+    logfile: /var/log/corosync/corosync.log
+    to_syslog: yes
+    timestamp: on
+}

@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Virgo-Core Team
+  description: Manage CEPH distributed storage for Proxmox VE
+  company: Virgo-Core
+  license: MIT
+  min_ansible_version: "2.14"
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+  galaxy_tags:
+    - proxmox
+    - ceph
+    - storage
+    - distributed
+
+dependencies: []

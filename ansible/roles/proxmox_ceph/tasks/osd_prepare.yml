@@ -1,0 +1,56 @@
+---
+# Prepare OSD disks (wipe if necessary with safety checks)
+
+- name: Validate safety flag for disk operations
+  ansible.builtin.assert:
+    that:
+      - ceph_wipe_disks | default(false) | bool or ceph_allow_zap_devices | default(false) | bool
+    fail_msg: |
+      Disk wiping requires explicit confirmation.
+      Set ceph_wipe_disks: true for fresh deployment (DESTRUCTIVE!)
+      or ceph_allow_zap_devices: true to allow zapping.
+      WARNING: This DESTROYS ALL DATA on configured devices
+    quiet: true
+  when: ceph_osds[inventory_hostname_short] is defined
+
+- name: Check if devices exist
+  ansible.builtin.stat:
+    path: "{{ item.device }}"
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  register: device_check
+  loop_control:
+    label: "{{ item.device }}"
+
+- name: Display devices to be used
+  ansible.builtin.debug:
+    msg: "OSD devices on {{ inventory_hostname }}: {{ ceph_osds[inventory_hostname_short] | map(attribute='device') | list | join(', ') }}"
+  when: ceph_osds[inventory_hostname_short] is defined
+
+- name: Wipe existing partitions on OSD devices (wipefs)
+  ansible.builtin.command: wipefs -a {{ item.device }}
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  when:
+    - ceph_wipe_disks | default(false) | bool
+    - item.device is defined
+  loop_control:
+    label: "{{ item.device }}"
+  register: wipe_result
+  changed_when: wipe_result.rc == 0
+  failed_when:
+    - wipe_result.rc != 0
+    - "'No such file or directory' not in wipe_result.stderr"
+
+- name: Zap devices with ceph-volume if needed (for re-deployment)
+  ansible.builtin.command: ceph-volume lvm zap {{ item.device }} --destroy
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  when:
+    - ceph_allow_zap_devices | default(false) | bool
+    - not (ceph_wipe_disks | default(false) | bool)
+  loop_control:
+    label: "{{ item.device }}"
+  register: device_zap
+  changed_when: device_zap.rc == 0
+  failed_when:
+    - device_zap.rc != 0
+    - "'No LVM found' not in device_zap.stderr"
+    - "'not found' not in device_zap.stderr"

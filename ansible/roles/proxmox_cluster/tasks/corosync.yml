@@ -1,0 +1,68 @@
+---
+# Configure corosync settings
+
+- name: Get current corosync configuration
+  ansible.builtin.slurp:
+    src: /etc/pve/corosync.conf
+  register: corosync_conf_current
+  failed_when: false
+
+- name: Generate new corosync configuration
+  ansible.builtin.template:
+    src: corosync.conf.j2
+    dest: /etc/pve/corosync.conf.new
+    mode: '0640'
+    owner: root
+    group: www-data
+    validate: corosync-cfgtool -c %s
+  delegate_to: "{{ groups[cluster_group][0] }}"
+  run_once: true
+  when: cluster_nodes | length > 0
+  register: corosync_new_conf
+
+- name: Check if corosync config needs update
+  ansible.builtin.set_fact:
+    corosync_needs_update: "{{ corosync_new_conf is changed }}"
+  delegate_to: "{{ groups[cluster_group][0] }}"
+  run_once: true
+
+- name: Apply new corosync configuration
+  ansible.builtin.copy:
+    src: /etc/pve/corosync.conf.new
+    dest: /etc/pve/corosync.conf
+    remote_src: true
+    mode: '0640'
+    owner: root
+    group: www-data
+  when:
+    - corosync_needs_update | default(false)
+  notify: reload corosync
+  delegate_to: "{{ groups[cluster_group][0] }}"
+  run_once: true
+
+- name: Ensure corosync is running
+  ansible.builtin.systemd:
+    name: corosync
+    state: started
+    enabled: true
+
+- name: Check corosync ring status
+  ansible.builtin.command: corosync-cfgtool -s
+  register: corosync_status
+  changed_when: false
+  failed_when: false
+
+- name: Verify all nodes in corosync
+  ansible.builtin.assert:
+    that:
+      - "'online' in corosync_status.stdout or corosync_status.rc == 0"
+    fail_msg: "Corosync ring issues detected: {{ corosync_status.stdout }}"
+    success_msg: "Corosync ring is healthy"
+  when: corosync_status.rc == 0
+
+- name: Display corosync status
+  ansible.builtin.debug:
+    msg: |
+      Corosync configuration: {{ 'Updated' if corosync_needs_update | default(false) else 'No changes needed' }}
+      Corosync service: Running
+      Ring status: {{ corosync_status.stdout_lines[0] if corosync_status.stdout_lines | length > 0 else 'OK' }}

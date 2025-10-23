@@ -1,0 +1,31 @@
+---
+# Verify prerequisites for cluster formation
+
+- name: Check if Proxmox VE is installed
+  ansible.builtin.command: pvecm --version
+  register: pvecm_check
+  changed_when: false
+  failed_when: pvecm_check.rc != 0
+
+- name: Verify cluster nodes are defined
+  ansible.builtin.assert:
+    that:
+      - cluster_nodes | length > 0
+      - cluster_name is defined
+      - cluster_name | length > 0
+    fail_msg: "Cluster configuration is incomplete. Define cluster_name and cluster_nodes."
+    success_msg: "Cluster configuration validated successfully."
+
+- name: Check if node is already in a cluster
+  ansible.builtin.command: pvecm status
+  register: cluster_status
+  changed_when: false
+  failed_when: false
+
+- name: Set cluster membership fact
+  ansible.builtin.set_fact:
+    already_in_cluster: "{{ cluster_status.rc == 0 }}"
+
+- name: Display cluster membership status
+  ansible.builtin.debug:
+    msg: "Node {{ inventory_hostname }} is {{ 'already' if already_in_cluster else 'not' }} in a cluster"

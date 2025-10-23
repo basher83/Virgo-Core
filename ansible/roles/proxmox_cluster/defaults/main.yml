@@ -1,0 +1,36 @@
+---
+# defaults file for proxmox_cluster
+# noqa: var-naming[no-role-prefix] - This is the role's public API
+
+# Cluster configuration
+cluster_name: "proxmox-cluster"
+cluster_group: "all"
+
+# Corosync configuration
+corosync_network: "192.168.8.0/24"
+corosync_bindnetaddr: "192.168.8.0"
+corosync_mcastaddr: "239.192.8.1"
+corosync_mcastport: 5405
+corosync_link0_interface: "vlan9"
+
+# Cluster nodes (override in group_vars)
+cluster_nodes: []
+# Example:
+# cluster_nodes:
+#   - name: foxtrot
+#     hostname: foxtrot.matrix.spaceships.work
+#     management_ip: 192.168.3.5
+#     corosync_ip: 192.168.8.5
+#     node_id: 1
+
+# SSH configuration
+configure_ssh_keys: true
+ssh_key_type: "rsa"
+ssh_key_bits: 4096
+
+# Verification
+verify_cluster_health: true
+expected_votes: "{{ groups[cluster_group] | length }}"
+
+# /etc/hosts management
+manage_hosts_file: true

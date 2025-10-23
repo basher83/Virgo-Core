@@ -1,0 +1,85 @@
+---
+# Create CEPH pools
+
+- name: Get existing pools
+  ansible.builtin.command: ceph osd pool ls
+  register: existing_pools
+  changed_when: false
+
+- name: Create CEPH pools
+  ansible.builtin.command: >
+    ceph osd pool create {{ item.name }}
+    {{ item.pg_num | default(128) }}
+    {{ item.pgp_num | default(item.pg_num | default(128)) }}
+  loop: "{{ ceph_pools }}"
+  when: item.name not in existing_pools.stdout_lines
+  register: pool_create
+  changed_when: pool_create.rc == 0
+  failed_when:
+    - pool_create.rc != 0
+    - "'already exists' not in pool_create.stderr"
+
+- name: Set pool size (replica count)
+  ansible.builtin.command: >
+    ceph osd pool set {{ item.name }} size {{ item.size | default(3) }}
+  loop: "{{ ceph_pools }}"
+  when: item.size is defined
+  register: pool_size
+  changed_when:
+    - pool_size.rc == 0
+    - "'set pool' in pool_size.stdout"
+  failed_when:
+    - pool_size.rc != 0
+    - "'is already' not in pool_size.stderr"
+
+- name: Set pool min_size (minimum replicas)
+  ansible.builtin.command: >
+    ceph osd pool set {{ item.name }} min_size {{ item.min_size | default(2) }}
+  loop: "{{ ceph_pools }}"
+  when: item.min_size is defined
+  register: pool_min_size
+  changed_when:
+    - pool_min_size.rc == 0
+    - "'set pool' in pool_min_size.stdout"
+  failed_when:
+    - pool_min_size.rc != 0
+    - "'is already' not in pool_min_size.stderr"
+
+- name: Enable pool application
+  ansible.builtin.command: >
+    ceph osd pool application enable {{ item.name }} {{ item.application | default('rbd') }}
+  loop: "{{ ceph_pools }}"
+  when: item.application is defined
+  register: pool_app
+  changed_when: "'enabled application' in pool_app.stdout"
+  failed_when:
+    - pool_app.rc != 0
+    - "'already enabled' not in pool_app.stderr"
+
+- name: Enable compression on pools
+  ansible.builtin.command: >
+    ceph osd pool set {{ item.name }} compression_mode {{ item.compression_mode | default('aggressive') }}
+  loop: "{{ ceph_pools }}"
+  when:
+    - item.compression | default(false) | bool
+  register: pool_compression_mode
+  changed_when: pool_compression_mode.rc == 0
+  failed_when:
+    - pool_compression_mode.rc != 0
+    - "'is already set' not in pool_compression_mode.stderr"
+
+- name: Set compression algorithm
+  ansible.builtin.command: >
+    ceph osd pool set {{ item.name }} compression_algorithm {{ item.compression_algorithm | default('zstd') }}
+  loop: "{{ ceph_pools }}"
+  when:
+    - item.compression | default(false) | bool
+  register: pool_compression_algo
+  changed_when: pool_compression_algo.rc == 0
+  failed_when:
+    - pool_compression_algo.rc != 0
+    - "'is already set' not in pool_compression_algo.stderr"
+
+- name: Display created pools
+  ansible.builtin.debug:
+    msg: "CEPH pools created: {{ ceph_pools | map(attribute='name') | list | join(', ') }}"

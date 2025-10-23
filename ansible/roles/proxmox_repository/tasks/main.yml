@@ -1,0 +1,25 @@
+---
+# tasks file for proxmox_repository
+
+- name: Configure Proxmox repositories
+  ansible.builtin.include_tasks: repositories.yml
+
+- name: Configure APT repository priorities
+  ansible.builtin.include_tasks: apt_pinning.yml
+  when: proxmox_enterprise_repo | bool
+
+- name: Configure CEPH repositories
+  ansible.builtin.include_tasks: ceph_repos.yml
+  when: ceph_repo_enabled | bool
+
+- name: Update APT cache
+  ansible.builtin.include_tasks: apt_update.yml
+  when: update_apt_cache | bool
+
+- name: Install/update Proxmox packages
+  ansible.builtin.include_tasks: packages.yml
+  when: proxmox_packages | length > 0
+
+- name: Clean old kernels
+  ansible.builtin.include_tasks: kernel_cleanup.yml
+  when: auto_remove_old_kernels | bool

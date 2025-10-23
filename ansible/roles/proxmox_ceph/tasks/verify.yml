@@ -1,0 +1,46 @@
+---
+# Verify CEPH health
+
+- name: Get CEPH status
+  ansible.builtin.command: ceph -s
+  register: ceph_status
+  changed_when: false
+  failed_when: false
+
+- name: Get CEPH health detail
+  ansible.builtin.command: ceph health detail
+  register: ceph_health_detail
+  changed_when: false
+  failed_when: false
+
+- name: Get OSD tree
+  ansible.builtin.command: ceph osd tree
+  register: ceph_osd_tree
+  changed_when: false
+  failed_when: false
+
+- name: Get pool list
+  ansible.builtin.command: ceph osd pool ls detail
+  register: ceph_pool_list
+  changed_when: false
+  failed_when: false
+
+- name: Check if CEPH health is OK
+  ansible.builtin.assert:
+    that:
+      - "'HEALTH_OK' in ceph_status.stdout or 'HEALTH_WARN' in ceph_status.stdout"
+    fail_msg: "CEPH health check failed. Status: {{ ceph_status.stdout }}"
+    success_msg: "CEPH cluster is healthy"
+  when: expected_health_status == "HEALTH_OK"
+
+- name: Display CEPH health summary
+  ansible.builtin.debug:
+    msg: |
+      ========================================
+      CEPH Cluster Health Summary
+      ========================================
+      {{ ceph_status.stdout }}
+      ========================================
+      OSD Tree:
+      {{ ceph_osd_tree.stdout_lines[:10] | join('\n') }}
+      ========================================

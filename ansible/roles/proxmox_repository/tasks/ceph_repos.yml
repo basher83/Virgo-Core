@@ -1,0 +1,31 @@
+---
+# Configure CEPH APT repositories
+
+- name: Create APT keyrings directory
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Download Proxmox GPG key
+  ansible.builtin.get_url:
+    url: "https://download.proxmox.com/debian/proxmox-release-{{ ansible_distribution_release }}.gpg"
+    dest: "/etc/apt/keyrings/proxmox-{{ ansible_distribution_release }}.gpg"
+    mode: '0644'
+
+- name: Enable CEPH repository with signed-by
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/etc/apt/keyrings/proxmox-{{ ansible_distribution_release }}.gpg] http://download.proxmox.com/debian/ceph-{{ ceph_version }} {{ ansible_distribution_release }} no-subscription"
+    state: present
+    filename: "ceph-{{ ceph_version }}"
+  when: ceph_repo_enabled | bool
+
+- name: Remove old CEPH repositories
+  ansible.builtin.file:
+    path: "/etc/apt/sources.list.d/{{ item }}"
+    state: absent
+  loop:
+    - ceph-pacific.list
+    - ceph-quincy.list
+    - ceph-reef.list
+  when: item != "ceph-{{ ceph_version }}.list"

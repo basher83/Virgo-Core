@@ -1,0 +1,46 @@
+---
+# Enable CEPH manager modules (dashboard, prometheus)
+
+- name: Check if dashboard module is enabled
+  ansible.builtin.shell: |
+    set -o pipefail
+    ceph mgr module ls | grep -A 20 "enabled_modules" | grep "dashboard" || echo "not_enabled"
+  args:
+    executable: /bin/bash
+  register: dashboard_check
+  changed_when: false
+  failed_when: false
+
+- name: Enable CEPH dashboard module
+  ansible.builtin.command: ceph mgr module enable dashboard
+  when: "'not_enabled' in dashboard_check.stdout"
+  register: dashboard_enable
+  changed_when: dashboard_enable.rc == 0
+  failed_when:
+    - dashboard_enable.rc != 0
+    - "'already enabled' not in dashboard_enable.stderr"
+
+- name: Check if Prometheus module is enabled
+  ansible.builtin.shell: |
+    set -o pipefail
+    ceph mgr module ls | grep -A 20 "enabled_modules" | grep "prometheus" || echo "not_enabled"
+  args:
+    executable: /bin/bash
+  register: prometheus_check
+  changed_when: false
+  failed_when: false
+
+- name: Enable Prometheus module
+  ansible.builtin.command: ceph mgr module enable prometheus
+  when: "'not_enabled' in prometheus_check.stdout"
+  register: prometheus_enable
+  changed_when: prometheus_enable.rc == 0
+  failed_when:
+    - prometheus_enable.rc != 0
+    - "'already enabled' not in prometheus_enable.stderr"
+
+- name: Display enabled modules status
+  ansible.builtin.debug:
+    msg: |
+      CEPH Dashboard: {{ 'Enabled' if dashboard_enable is changed else 'Already enabled' }}
+      Prometheus: {{ 'Enabled' if prometheus_enable is changed else 'Already enabled' }}
