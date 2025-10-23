@@ -8,9 +8,11 @@
 
 ## Purpose
 
-This document provides a step-by-step migration plan for converting Virgo-Core's existing Ansible playbooks to the new component-based role architecture. This migration will improve code reusability, maintainability, and consistency across multiple Proxmox clusters.
+This document provides a step-by-step migration plan for converting Virgo-Core's existing Ansible playbooks to the new component-based role architecture.
+This migration will improve code reusability, maintainability, and consistency across multiple Proxmox clusters.
 
 **Related Documents**:
+
 - [Ansible Philosophy](./ansible-philosophy.md) - Core design principles
 - [Ansible Role Design](./ansible-role-design.md) - Role structure and patterns
 - [Ansible Playbook Design](./ansible-playbook-design.md) - Playbook orchestration
@@ -39,6 +41,7 @@ ansible/
 ```
 
 **Issues**:
+
 - Playbooks contain role-worthy logic
 - Code duplication across playbooks
 - Not easily reusable across clusters
@@ -73,6 +76,7 @@ ansible/
 ```
 
 **Benefits**:
+
 - Component-based, reusable roles
 - Clear separation of concerns
 - Consistent across all clusters
@@ -271,6 +275,7 @@ ssh testuser@foxtrot sudo id
 **Current**: `playbooks/proxmox-create-terraform-user.yml` (296 lines)
 
 **Responsibilities Identified**:
+
 1. Linux user creation (lines 88-127) → `system_user` role
 2. Proxmox user creation (lines 150-224) → `proxmox_access` role
 3. Proxmox role/group/ACL (lines 150-206) → `proxmox_access` role
@@ -693,6 +698,7 @@ docker_users: []
 See [Ansible Role Design](./ansible-role-design.md#3-proxmox_cluster) for complete implementation.
 
 **Key Tasks**:
+
 - Cluster initialization
 - Node joining
 - Corosync configuration
@@ -703,6 +709,7 @@ See [Ansible Role Design](./ansible-role-design.md#3-proxmox_cluster) for comple
 See [Ansible Role Design](./ansible-role-design.md#4-proxmox_ceph) for complete implementation.
 
 **Key Tasks**:
+
 - CEPH installation
 - Monitor deployment
 - Manager deployment
@@ -836,6 +843,7 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 ## Migration Checklist
 
 ### Phase 1: Foundation
+
 - [ ] Create role directory structure
 - [ ] Convert `add-system-user.yml` to `system_user` role
 - [ ] Create `create-admin-user.yml` playbook
@@ -843,14 +851,16 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 - [ ] Document `system_user` role
 
 ### Phase 2: Terraform User
-- [ ] Create `proxmox_access` role (tasks, templates, defaults)
-- [ ] Create `setup-terraform-automation.yml` playbook
+
+- [x] Create `proxmox_access` role (tasks, templates, defaults)
+- [x] Create `setup-terraform-automation.yml` playbook
 - [ ] Test on single node (foxtrot)
 - [ ] Test on full cluster (matrix_cluster)
 - [ ] Verify Terraform integration works
-- [ ] Document `proxmox_access` role
+- [x] Document `proxmox_access` role
 
 ### Phase 3: Network and Docker
+
 - [ ] Create `proxmox_network` role
 - [ ] Create `configure-network.yml` playbook
 - [ ] Test network configuration
@@ -859,6 +869,7 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 - [ ] Test Docker installation
 
 ### Phase 4: New Functionality
+
 - [ ] Create `proxmox_cluster` role
 - [ ] Create `proxmox_ceph` role
 - [ ] Create `proxmox_repository` role
@@ -867,6 +878,7 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 - [ ] Document cluster formation process
 
 ### Phase 5: Testing
+
 - [ ] Run ansible-lint on all roles
 - [ ] Create test playbooks
 - [ ] Test all roles in check mode
@@ -875,6 +887,7 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 - [ ] Performance testing
 
 ### Phase 6: Cleanup
+
 - [ ] Remove old playbooks (move to .deprecated/)
 - [ ] Update CLAUDE.md
 - [ ] Create role README files

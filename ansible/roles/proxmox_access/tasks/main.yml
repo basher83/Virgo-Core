@@ -1,0 +1,31 @@
+---
+# Main tasks file for proxmox_access role
+# Purpose: Manage Proxmox VE access control (roles, groups, users, tokens, ACLs)
+
+- name: Retrieve secrets from Infisical
+  ansible.builtin.include_tasks: secrets.yml
+  when: infisical_project_id is defined
+
+- name: Create custom Proxmox roles
+  ansible.builtin.include_tasks: roles.yml
+  when: proxmox_roles | length > 0
+
+- name: Create Proxmox groups
+  ansible.builtin.include_tasks: groups.yml
+  when: proxmox_groups | length > 0
+
+- name: Create Proxmox users
+  ansible.builtin.include_tasks: users.yml
+  when: proxmox_users | length > 0
+
+- name: Generate API tokens
+  ansible.builtin.include_tasks: tokens.yml
+  when: proxmox_tokens | length > 0
+
+- name: Configure ACL permissions
+  ansible.builtin.include_tasks: acls.yml
+  when: proxmox_acls | length > 0
+
+- name: Export environment files
+  ansible.builtin.include_tasks: env_export.yml
+  when: export_terraform_env | bool

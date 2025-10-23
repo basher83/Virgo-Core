@@ -1,0 +1,199 @@
+---
+# Playbook: Setup Terraform Automation Access
+# Purpose: Create Linux system user and Proxmox API access for
+#          Terraform/OpenTofu
+# Replaces: proxmox-create-terraform-user.yml (Phase 2 migration)
+#
+# This playbook orchestrates two roles:
+# 1. system_user - Creates Linux PAM user with SSH and sudo access
+# 2. proxmox_access - Configures Proxmox roles, groups, users,
+#                      tokens, and ACLs
+#
+# Usage:
+#   # Setup on default cluster (use inventory group)
+#   uv run ansible-playbook \
+#     playbooks/setup-terraform-automation.yml
+#
+#   # Setup on specific cluster
+#   uv run ansible-playbook \
+#     playbooks/setup-terraform-automation.yml \
+#     -e "target_cluster=matrix_cluster"
+#
+#   # Custom configuration
+#   uv run ansible-playbook \
+#     playbooks/setup-terraform-automation.yml \
+#     -e "terraform_username=terraform" \
+#     -e "export_terraform_env=true"
+
+- name: Setup Terraform Automation on Proxmox
+  hosts: "{{ target_cluster | default('all') }}"
+  gather_facts: true
+  become: true
+
+  vars:
+    # =============================================================================
+    # Cluster Configuration
+    # =============================================================================
+
+    # Auto-detect cluster name from inventory group
+    # Expects groups named like: matrix_cluster, doggos_cluster, etc.
+    cluster_name: >-
+      {{
+        (group_names | select('search', '_cluster') | list | first)
+        | default('default', true)
+        | regex_replace('_cluster$', '')
+      }}
+
+    # =============================================================================
+    # Infisical Secret Management
+    # =============================================================================
+
+    infisical_project_id: '7b832220-24c0-45bc-a5f1-ce9794a31259'
+    infisical_env: 'prod'
+    infisical_path: '/{{ cluster_name }}'
+
+    # =============================================================================
+    # Terraform User Configuration
+    # =============================================================================
+
+    terraform_username: "terraform"
+    terraform_ssh_key_file: >-
+      {{ playbook_dir }}/../files/terraform_authorized_keys
+
+    # Sudo commands required by Terraform provider
+    # NOTE: tee command restricted to specific subdirectories
+    #       for security
+    terraform_sudo_commands:
+      - "/sbin/pvesm"
+      - "/sbin/qm"
+      - "/usr/bin/tee /var/lib/vz/template/*"
+      - "/usr/bin/tee /var/lib/vz/images/*"
+
+    # =============================================================================
+    # Proxmox Configuration
+    # =============================================================================
+
+    # Terraform role privileges (comprehensive VM and storage management)
+    terraform_proxmox_privileges:
+      - Datastore.Allocate
+      - Datastore.AllocateSpace
+      - Datastore.AllocateTemplate
+      - Datastore.Audit
+      - Pool.Allocate
+      - Sys.Audit
+      - Sys.Console
+      - Sys.Modify
+      - SDN.Use
+      - VM.Allocate
+      - VM.Audit
+      - VM.Clone
+      - VM.Config.CDROM
+      - VM.Config.Cloudinit
+      - VM.Config.CPU
+      - VM.Config.Disk
+      - VM.Config.HWType
+      - VM.Config.Memory
+      - VM.Config.Network
+      - VM.Config.Options
+      - VM.Migrate
+      - VM.Monitor
+      - VM.PowerMgmt
+      - User.Modify
+
+  roles:
+    # -------------------------------------------------------------------------
+    # Role 1: system_user - Create Linux PAM user
+    # -------------------------------------------------------------------------
+    - role: system_user
+      vars:
+        system_users:
+          - name: "{{ terraform_username }}"
+            state: present
+            shell: /bin/bash
+            comment: "Terraform automation user (PAM realm)"
+            ssh_keys:
+              - "{{ lookup('file', terraform_ssh_key_file) }}"
+            sudo_rules: "{{ terraform_sudo_commands }}"
+            sudo_nopasswd: true
+      tags: [system_user, linux_user]
+
+    # -------------------------------------------------------------------------
+    # Role 2: proxmox_access - Configure Proxmox API access
+    # -------------------------------------------------------------------------
+    - role: proxmox_access
+      vars:
+        # Infisical configuration (for retrieving admin credentials)
+        infisical_project_id: "{{ infisical_project_id }}"
+        infisical_env: "{{ infisical_env }}"
+        infisical_path: "{{ infisical_path }}"
+
+        # Custom role for Terraform
+        proxmox_roles:
+          - name: TerraformUser
+            privileges: "{{ terraform_proxmox_privileges }}"
+
+        # Group for automation users
+        proxmox_groups:
+          - name: terraform-users
+            comment: "Automation users for Terraform/OpenTofu"
+
+        # Proxmox PAM user (must match Linux user from system_user role)
+        proxmox_users:
+          - userid: "{{ terraform_username }}@pam"
+            groups:
+              - terraform-users
+            comment: "Terraform automation user"
+
+        # API token for passwordless access
+        proxmox_tokens:
+          - userid: "{{ terraform_username }}@pam"
+            tokenid: automation
+            privsep: false  # Token inherits user permissions
+            comment: "Terraform/OpenTofu automation token"
+
+        # Grant permissions to group on root path
+        proxmox_acls:
+          - path: /
+            type: group
+            ugid: terraform-users
+            roleid: TerraformUser
+
+        # Export environment file for Terraform
+        export_terraform_env: "{{ export_terraform_env | default(false) }}"
+      tags: [proxmox_access, proxmox_api]
+
+  post_tasks:
+    - name: Display setup summary
+      ansible.builtin.debug:
+        msg: |
+          ================================================================================
+          Terraform Automation Setup Complete for {{ inventory_hostname }}
+          ================================================================================
+
+          Linux User:          {{ terraform_username }}
+          SSH Access:          ✓ Configured with authorized_keys
+          Sudo Access:         ✓ Passwordless for Proxmox commands
+
+          Proxmox User:        {{ terraform_username }}@pam
+          Proxmox Group:       terraform-users
+          Proxmox Role:        TerraformUser
+          API Token:           {{ terraform_username }}@pam!automation
+
+          {% if export_terraform_env | default(false) %}
+          Environment File:
+            {{ terraform_env_dir }}/proxmox-{{-
+            inventory_hostname_short }}
+
+          To use with Terraform:
+            source {{ terraform_env_dir }}/proxmox-{{-
+            inventory_hostname_short }}
+            cd terraform/netbox-vm
+            tofu plan
+          {% endif %}
+
+          Test SSH connection:
+            ssh {{ terraform_username }}@{{-
+            ansible_host | default(inventory_hostname) -}}
+            sudo pvesm status
+          ================================================================================
+      tags: [always]

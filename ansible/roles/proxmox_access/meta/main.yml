@@ -1,0 +1,39 @@
+---
+# meta/main.yml - Role metadata for proxmox_access
+galaxy_info:
+  role_name: proxmox_access
+  author: Virgo-Core Team
+  description: Manage Proxmox VE access control (roles, groups, users, tokens, ACLs)
+  company: Spaceships Homelab
+  license: MIT
+  min_ansible_version: "2.15"
+
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+    - name: Ubuntu
+      versions:
+        - jammy
+        - noble
+
+  galaxy_tags:
+    - proxmox
+    - proxmoxve
+    - virtualization
+    - accesscontrol
+    - apitokens
+    - terraform
+    - opentofu
+    - automation
+
+# Role dependencies
+dependencies: []
+# Note: This role works best with system_user role for Linux user creation
+# However, it's not a hard dependency - PAM users can be created separately
+
+# Collections required
+collections:
+  - community.proxmox
+  - infisical.vault
+  - ansible.builtin
