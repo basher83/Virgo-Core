@@ -1,6 +1,7 @@
 # Single VM Deployment Example
 
-This example demonstrates deploying a single VM using the `vm` module with the **template-clone** approach - the fastest and most reliable method for single VM deployments.
+This example demonstrates deploying a single VM using the `vm` module with the
+**template-clone** approach - the fastest and most reliable method for single VM deployments.
 
 ## Overview
 
@@ -90,7 +91,7 @@ tofu apply
 
 After deployment, Terraform outputs connection information:
 
-```
+```text
 Outputs:
 
 connection_info = <<EOT

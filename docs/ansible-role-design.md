@@ -11,8 +11,11 @@
 This document defines the structure, responsibilities, and implementation patterns for Ansible roles in Virgo-Core. It provides concrete guidance for creating component-based, reusable roles that manage Proxmox VE infrastructure across multiple clusters.
 
 **Related Documents**:
+
 - [Ansible Philosophy](./ansible-philosophy.md) - Core design principles
+
 - [Ansible Playbook Design](./ansible-playbook-design.md) - Playbook orchestration patterns
+
 - [Ansible Migration Plan](./ansible-migration-plan.md) - Migration implementation
 
 ---
@@ -24,13 +27,21 @@ Virgo-Core uses component-based roles organized by infrastructure aspect:
 ```text
 ansible/roles/
 ├── proxmox_repository/      # APT repositories, packages, updates
+
 ├── proxmox_network/          # Bridges, VLANs, interfaces, MTU
+
 ├── proxmox_cluster/          # Cluster formation, corosync, quorum
+
 ├── proxmox_ceph/             # Monitors, managers, OSDs, pools
+
 ├── proxmox_access/           # PVE users, groups, ACLs, tokens, roles
+
 ├── proxmox_vm_template/      # Cloud-init template creation
+
 ├── system_user/              # Linux PAM users, SSH, sudo
+
 └── docker/                   # Docker installation and configuration
+
 ```
 
 ### Standard Role Directory Structure
@@ -41,23 +52,35 @@ Each role follows this structure:
 roles/role_name/
 ├── tasks/
 │   ├── main.yml              # Entry point (includes other task files)
+
 │   ├── secrets.yml           # Infisical secret retrieval
+
 │   ├── prerequisites.yml     # Validation and checks
+
 │   ├── component_setup.yml   # Main component configuration
+
 │   └── verify.yml            # Post-configuration verification
+
 ├── defaults/
 │   └── main.yml              # Default variables (user can override)
+
 ├── vars/
 │   └── main.yml              # Internal variables (higher precedence)
+
 ├── templates/
 │   └── config.j2             # Jinja2 templates
+
 ├── handlers/
 │   └── main.yml              # Service restart handlers
+
 ├── files/
 │   └── static_file           # Static files to copy
+
 ├── meta/
 │   └── main.yml              # Role metadata and dependencies
+
 └── README.md                 # Role documentation
+
 ```
 
 ---
@@ -69,16 +92,25 @@ roles/role_name/
 **Manages**: Proxmox VE and CEPH APT repository configuration
 
 **Scope**:
+
 - `/etc/apt/sources.list.d/pve-*.list`
+
 - `/etc/apt/sources.list.d/ceph-*.list`
+
 - Proxmox package installation
+
 - System updates
 
 **Responsibilities**:
+
 - Disable Proxmox Enterprise repositories
+
 - Enable no-subscription repositories
+
 - Configure CEPH repositories (Squid for PVE 9.x)
+
 - Install/update Proxmox VE packages
+
 - Clean up old kernels
 
 **Operational Notes**:
@@ -87,13 +119,16 @@ roles/role_name/
 **Configuration Model**:
 
 ```yaml
+
 # group_vars/all.yml
+
 proxmox_version: "9.0"
 proxmox_enterprise_repo: false
 proxmox_no_subscription_repo: true
 ceph_version: "squid"
 
 # Optional package updates
+
 proxmox_packages:
   - proxmox-ve
   - pve-kernel
@@ -101,17 +136,20 @@ proxmox_packages:
   - open-iscsi
 
 auto_update_packages: false  # Set true for automatic updates
+
 ```
 
 **Example Usage in Playbook**:
 
 ```yaml
+
 - hosts: all
   roles:
     - role: proxmox_repository
       vars:
         proxmox_enterprise_repo: false
         auto_update_packages: true
+
 ```
 
 ---
@@ -121,25 +159,39 @@ auto_update_packages: false  # Set true for automatic updates
 **Manages**: Network infrastructure (bridges, VLANs, interfaces, MTU)
 
 **Scope**:
+
 - `/etc/network/interfaces`
+
 - Network bridge configuration (vmbr0, vmbr1, vmbr2)
+
 - VLAN interfaces
+
 - MTU settings
+
 - IP addressing
 
 **Responsibilities**:
+
 - Create and configure network bridges
+
 - Configure VLAN-aware bridges
+
 - Create VLAN subinterfaces
+
 - Set MTU for jumbo frames (CEPH networks)
+
 - Configure IP addresses and gateways
+
 - Reload network configuration
 
 **Configuration Model**:
 
 ```yaml
+
 # group_vars/matrix_cluster.yml
+
 # Declarative network configuration
+
 proxmox_bridges:
   - name: vmbr0
     interface: enp4s0
@@ -162,6 +214,7 @@ proxmox_bridges:
     comment: "CEPH Private network"
 
 # VLAN subinterfaces
+
 proxmox_vlans:
   - id: 9
     raw_device: vmbr0
@@ -169,17 +222,22 @@ proxmox_vlans:
     comment: "Corosync network"
 
 # Node-specific IDs
+
 node_ids:
   foxtrot: 5
   golf: 6
   hotel: 7
+
 ```
 
 **Task Structure**:
 
 ```yaml
+
 # roles/proxmox_network/tasks/main.yml
+
 ---
+
 - name: Include prerequisite checks
   include_tasks: prerequisites.yml
 
@@ -199,6 +257,7 @@ node_ids:
 
 - name: Verify network configuration
   include_tasks: verify.yml
+
 ```
 
 ---
@@ -208,36 +267,54 @@ node_ids:
 **Manages**: Proxmox VE cluster formation and management
 
 **Scope**:
+
 - Cluster initialization (`pvecm create`)
+
 - Node joining (`pvecm add`)
+
 - Corosync configuration (`/etc/corosync/corosync.conf`, `/etc/pve/corosync.conf`)
+
 - `/etc/hosts` management
+
 - Cluster quorum
+
 - SSH key distribution
 
 **Responsibilities**:
+
 - Initialize cluster on first node
+
 - Join additional nodes to cluster
+
 - Configure corosync network (VLAN 9 for Matrix)
+
 - Manage cluster membership
+
 - Configure SSH for passwordless cluster operations
+
 - Update SSL certificates
+
 - Verify cluster health and quorum
 
 **Configuration Model**:
 
 ```yaml
+
 # group_vars/matrix_cluster.yml
+
 cluster_name: "Matrix"
 cluster_group: "matrix_cluster"
 
 # Corosync configuration
+
 corosync_network: "192.168.8.0/24"  # VLAN 9
+
 corosync_bindnetaddr: "192.168.8.0"
 corosync_mcastaddr: "239.192.8.1"
 corosync_mcastport: 5405
 
 # Node configuration
+
 cluster_nodes:
   - name: foxtrot
     hostname: foxtrot.matrix.spaceships.work
@@ -256,13 +333,17 @@ cluster_nodes:
     management_ip: 192.168.3.7
     corosync_ip: 192.168.8.7
     node_id: 3
+
 ```
 
 **Task Structure**:
 
 ```yaml
+
 # roles/proxmox_cluster/tasks/main.yml
+
 ---
+
 - name: Verify prerequisites
   include_tasks: prerequisites.yml
 
@@ -282,6 +363,7 @@ cluster_nodes:
 
 - name: Verify cluster health
   include_tasks: verify.yml
+
 ```
 
 ---
@@ -291,39 +373,61 @@ cluster_nodes:
 **Manages**: CEPH distributed storage infrastructure
 
 **Scope**:
+
 - CEPH installation (`pveceph install`)
+
 - CEPH initialization (`pveceph init`)
+
 - Monitor deployment (`pveceph mon create`)
+
 - Manager deployment (`pveceph mgr create`)
+
 - OSD creation (`pveceph osd create`)
+
 - Pool configuration
+
 - CRUSH rules
 
 **Responsibilities**:
+
 - Install CEPH packages
+
 - Initialize CEPH cluster
+
 - Deploy monitors on all nodes
+
 - Deploy managers on all nodes
+
 - Prepare and create OSDs
+
 - Configure CEPH pools with replication
+
 - Set up CRUSH rules
+
 - Verify CEPH health
 
 **Configuration Model**:
 
 ```yaml
+
 # group_vars/matrix_cluster.yml
+
 ceph_network: "192.168.5.0/24"          # vmbr1 - Public
+
 ceph_cluster_network: "192.168.7.0/24"  # vmbr2 - Private
 
 # OSD configuration (4 OSDs per node = 12 total)
+
 # 2 OSDs per NVMe × 2 NVMe drives per node × 3 nodes = 12 OSDs
+
 ceph_osds:
   foxtrot:
     - device: /dev/nvme1n1
       partitions: 2
       db_device: null        # Use same device for DB
+
       wal_device: null       # Use same device for WAL
+
       crush_device_class: nvme
     - device: /dev/nvme2n1
       partitions: 2
@@ -346,12 +450,15 @@ ceph_osds:
       crush_device_class: nvme
 
 # Pool configuration
+
 ceph_pools:
   - name: vm_ssd
     pg_num: 128
     pgp_num: 128
     size: 3              # Replicate across 3 nodes
+
     min_size: 2          # Minimum 2 replicas required
+
     application: rbd
     crush_rule: replicated_rule
 
@@ -361,6 +468,7 @@ ceph_pools:
     size: 3
     min_size: 2
     application: rbd
+
 ```
 
 > **Note on CRUSH Rules**: The `replicated_rule` (default) spreads replicas across hosts, providing host-level failure domains. This is appropriate for single-site clusters like Matrix. Custom CRUSH rules (for rack or datacenter-aware placement) are beyond the scope of homelab deployments.
@@ -368,8 +476,11 @@ ceph_pools:
 **Task Structure**:
 
 ```yaml
+
 # roles/proxmox_ceph/tasks/main.yml
+
 ---
+
 - name: Install CEPH packages
   include_tasks: install.yml
 
@@ -395,13 +506,17 @@ ceph_pools:
 
 - name: Verify CEPH health
   include_tasks: verify.yml
+
 ```
 
 **OSD Creation Pattern** (improves on ProxSpray):
 
 ```yaml
+
 # roles/proxmox_ceph/tasks/osd_create.yml
+
 ---
+
 - name: Check existing OSDs
   command: pveceph osd ls
   register: existing_osds
@@ -419,6 +534,7 @@ ceph_pools:
   failed_when:
     - osd_create.rc != 0
     - "'already in use' not in osd_create.stderr"
+
 ```
 
 ---
@@ -428,24 +544,37 @@ ceph_pools:
 **Manages**: Proxmox API access control (users, groups, tokens, ACLs, roles)
 
 **Scope**:
+
 - Proxmox users (`pveum user`, `community.proxmox.proxmox_user`)
+
 - Proxmox groups (`pveum group`, `community.proxmox.proxmox_group`)
+
 - Proxmox roles (`pveum role`)
+
 - API tokens (`pveum user token`)
+
 - ACL permissions (`community.proxmox.proxmox_access_acl`)
 
 **Responsibilities**:
+
 - Create custom Proxmox roles with specific privileges
+
 - Create Proxmox groups
+
 - Create Proxmox users (PVE realm or PAM realm)
+
 - Generate API tokens
+
 - Configure ACL permissions
+
 - Export environment files for Terraform integration
 
 **Configuration Model**:
 
 ```yaml
+
 # playbook or group_vars
+
 proxmox_roles:
   - name: TerraformUser
     privileges:
@@ -481,6 +610,7 @@ proxmox_tokens:
   - userid: terraform@pam
     tokenid: automation
     privsep: false  # Token has full user privileges
+
     expire: 0       # Never expires
 
 proxmox_acls:
@@ -489,13 +619,17 @@ proxmox_acls:
     ugid: terraform-users
     roleid: TerraformUser
     propagate: true
+
 ```
 
 **Task Structure**:
 
 ```yaml
+
 # roles/proxmox_access/tasks/main.yml
+
 ---
+
 - name: Retrieve secrets from Infisical
   include_tasks: secrets.yml
 
@@ -517,6 +651,7 @@ proxmox_acls:
 - name: Export environment files
   include_tasks: env_export.yml
   when: export_terraform_env | default(false)
+
 ```
 
 **Separation from `system_user` Role**:
@@ -530,23 +665,35 @@ This role manages **Proxmox API access** only, not Linux system users. For creat
 **Manages**: Linux PAM user accounts, SSH keys, sudo configuration
 
 **Scope**:
+
 - `/etc/passwd` (user accounts)
+
 - `/home/*/` (home directories)
+
 - `/home/*/.ssh/` (SSH keys)
+
 - `/etc/sudoers.d/` (sudo rules)
 
 **Responsibilities**:
+
 - Create Linux user accounts
+
 - Configure shell and home directory
+
 - Deploy SSH public keys
+
 - Configure sudo rules (specific commands or NOPASSWD)
+
 - Manage user groups
+
 - Remove users when state: absent
 
 **Configuration Model**:
 
 ```yaml
+
 # Declarative user configuration
+
 system_users:
   - name: terraform
     state: present
@@ -571,13 +718,17 @@ system_users:
 
   - name: olduser
     state: absent  # Remove this user
+
 ```
 
 **Task Structure**:
 
 ```yaml
+
 # roles/system_user/tasks/main.yml
+
 ---
+
 - name: Create/update user accounts
   include_tasks: create_users.yml
 
@@ -589,13 +740,17 @@ system_users:
 
 - name: Remove absent users
   include_tasks: remove_users.yml
+
 ```
 
 **Sudo Configuration Pattern**:
 
 ```yaml
+
 # roles/system_user/tasks/sudo_config.yml
+
 ---
+
 - name: Create sudoers.d directory
   file:
     path: /etc/sudoers.d
@@ -614,11 +769,14 @@ system_users:
   when:
     - item.state | default('present') == 'present'
     - item.sudo_rules is defined or item.sudo_nopasswd is defined
+
 ```
 
 ```jinja2
 {# roles/system_user/templates/sudoers.j2 #}
+
 # Sudo configuration for {{ item.name }}
+
 # Managed by Ansible - DO NOT EDIT MANUALLY
 
 {% if item.sudo_nopasswd | default(false) %}
@@ -628,6 +786,7 @@ system_users:
 {{ item.name }} ALL=(ALL) NOPASSWD: {{ rule }}
 {% endfor %}
 {% endif %}
+
 ```
 
 ---
@@ -637,22 +796,33 @@ system_users:
 **Manages**: VM template creation with cloud-init
 
 **Scope**:
+
 - VM template creation
+
 - Cloud image downloads
+
 - Cloud-init configuration
+
 - Template customization
 
 **Responsibilities**:
+
 - Download cloud images (Ubuntu, Debian, etc.)
+
 - Create VM templates from cloud images
+
 - Configure cloud-init settings
+
 - Customize templates (packages, scripts)
+
 - Store templates in Proxmox
 
 **Configuration Model**:
 
 ```yaml
+
 # Template configuration
+
 proxmox_templates:
   - name: ubuntu-2404-template
     vmid: 9000
@@ -669,6 +839,7 @@ proxmox_templates:
       runcmd:
         - systemctl enable qemu-guest-agent
         - systemctl start qemu-guest-agent
+
 ```
 
 ---
@@ -678,16 +849,25 @@ proxmox_templates:
 **Manages**: Docker installation and configuration
 
 **Scope**:
+
 - Docker CE installation
+
 - Docker daemon configuration
+
 - Docker Compose installation
+
 - User group membership
 
 **Responsibilities**:
+
 - Add Docker APT repository
+
 - Install Docker CE packages
+
 - Configure Docker daemon
+
 - Add users to docker group
+
 - Install Docker Compose
 
 **Configuration Model**:
@@ -702,6 +882,7 @@ docker_daemon_options:
   log-opts:
     max-size: "10m"
     max-file: "3"
+
 ```
 
 ---
@@ -713,8 +894,11 @@ docker_daemon_options:
 All roles that need secrets should retrieve them from Infisical:
 
 ```yaml
+
 # roles/proxmox_access/tasks/secrets.yml
+
 ---
+
 - name: Retrieve Proxmox root password from Infisical
   include_tasks: "{{ playbook_dir }}/../tasks/infisical-secret-lookup.yml"
   vars:
@@ -729,6 +913,7 @@ All roles that need secrets should retrieve them from Infisical:
   vars:
     secret_name: 'PROXMOX_USERNAME'
     secret_var_name: 'proxmox_username'
+
 ```
 
 ### Pattern 2: Task File Organization
@@ -736,8 +921,11 @@ All roles that need secrets should retrieve them from Infisical:
 Break complex roles into focused task files:
 
 ```yaml
+
 # roles/proxmox_cluster/tasks/main.yml
+
 ---
+
 - name: Include prerequisite checks
   include_tasks: prerequisites.yml
 
@@ -751,6 +939,7 @@ Break complex roles into focused task files:
 - name: Include verification
   include_tasks: verify.yml
   when: verify_after_changes | default(true)
+
 ```
 
 ### Pattern 3: Idempotent Shell Commands
@@ -758,6 +947,7 @@ Break complex roles into focused task files:
 When shell commands are necessary, ensure idempotency:
 
 ```yaml
+
 - name: Create VLAN interface
   shell: |
     if ! ip link show {{ vlan_interface }} >/dev/null 2>&1; then
@@ -769,6 +959,7 @@ When shell commands are necessary, ensure idempotency:
     fi
   register: vlan_create
   changed_when: "'created' in vlan_create.stdout"
+
 ```
 
 ### Pattern 4: Native Module Preference
@@ -776,7 +967,9 @@ When shell commands are necessary, ensure idempotency:
 Prefer native modules when available:
 
 ```yaml
+
 # ✅ Good: Use native module
+
 - name: Create Proxmox group
   community.proxmox.proxmox_group:
     name: "{{ item.name }}"
@@ -788,9 +981,11 @@ Prefer native modules when available:
   loop: "{{ proxmox_groups }}"
 
 # ❌ Bad: Use shell when module exists
+
 - name: Create Proxmox group
   command: pveum group add {{ item.name }}
   loop: "{{ proxmox_groups }}"
+
 ```
 
 ### Pattern 5: Declarative State Management
@@ -798,7 +993,9 @@ Prefer native modules when available:
 Define desired state, let the role converge to it:
 
 ```yaml
+
 # Input: Desired state
+
 system_users:
   - name: user1
     state: present
@@ -806,6 +1003,7 @@ system_users:
     state: absent
 
 # Role logic:
+
 - name: Create present users
   user:
     name: "{{ item.name }}"
@@ -819,6 +1017,7 @@ system_users:
     state: absent
   loop: "{{ system_users }}"
   when: item.state == 'absent'
+
 ```
 
 ### Pattern 6: Error Handling
@@ -826,6 +1025,7 @@ system_users:
 Explicit error handling with clear messages:
 
 ```yaml
+
 - name: Join cluster
   command: pvecm add {{ primary_node_ip }} --use_ssh
   register: cluster_join
@@ -838,6 +1038,7 @@ Explicit error handling with clear messages:
   debug:
     msg: |
       Cluster join status: {{ 'Already member' if 'already in a cluster' in cluster_join.stderr else 'Successfully joined' }}
+
 ```
 
 ### Pattern 7: Conditional Execution
@@ -845,8 +1046,11 @@ Explicit error handling with clear messages:
 Use when conditions for role flexibility:
 
 ```yaml
+
 # roles/proxmox_ceph/tasks/main.yml
+
 ---
+
 - name: Initialize CEPH cluster
   include_tasks: init.yml
   when:
@@ -856,6 +1060,7 @@ Use when conditions for role flexibility:
 - name: Create monitors on all nodes
   include_tasks: monitors.yml
   when: ceph_monitors_enabled | default(true)
+
 ```
 
 ---
@@ -865,7 +1070,9 @@ Use when conditions for role flexibility:
 Define role dependencies in `meta/main.yml`:
 
 ```yaml
+
 # roles/proxmox_cluster/meta/main.yml
+
 ---
 dependencies:
   - role: proxmox_repository
@@ -875,6 +1082,7 @@ dependencies:
   - role: proxmox_network
     vars:
       ensure_corosync_network: true
+
 ```
 
 **Note**: Use dependencies sparingly. Prefer explicit role ordering in playbooks for clarity.
@@ -886,6 +1094,7 @@ dependencies:
 Each role must have a README.md:
 
 ```markdown
+
 # Role Name
 
 Brief description of what this role manages.
@@ -893,16 +1102,20 @@ Brief description of what this role manages.
 ## Requirements
 
 - Proxmox VE 9.x
+
 - Root access
+
 - Specific prerequisites
 
 ## Role Variables
 
     ```yaml
     # Required variables
+
     variable_name: description
 
     # Optional variables
+
     optional_var: default_value
     ```
 
@@ -943,7 +1156,9 @@ Virgo-Core Team
 Store cluster-specific configuration in `group_vars/`:
 
 ```yaml
+
 # group_vars/matrix_cluster.yml
+
 ---
 cluster_name: "Matrix"
 node_ids:
@@ -953,6 +1168,7 @@ node_ids:
 
 proxmox_bridges: [...]
 ceph_osds: {...}
+
 ```
 
 ### Global Configuration
@@ -960,13 +1176,16 @@ ceph_osds: {...}
 Store global defaults in `group_vars/all.yml`:
 
 ```yaml
+
 # group_vars/all.yml
+
 ---
 infisical_project_id: '7b832220-24c0-45bc-a5f1-ce9794a31259'
 infisical_env: 'prod'
 
 proxmox_version: "9.0"
 ceph_version: "squid"
+
 ```
 
 ### Host-Specific Overrides
@@ -974,11 +1193,14 @@ ceph_version: "squid"
 Store host-specific overrides in `host_vars/`:
 
 ```yaml
+
 # host_vars/foxtrot.yml
+
 ---
 node_id: 5
 management_ip: 192.168.3.5
 corosync_ip: 192.168.8.5
+
 ```
 
 ---
@@ -989,19 +1211,24 @@ corosync_ip: 192.168.8.5
 
 ```bash
 ansible-playbook --syntax-check playbooks/test-role.yml
+
 ```
 
 ### Check Mode (Dry Run)
 
 ```bash
 ansible-playbook playbooks/test-role.yml --check --diff
+
 ```
 
 ### Role-Specific Testing
 
 ```yaml
+
 # playbooks/test-system-user.yml
+
 ---
+
 - name: Test system_user role
   hosts: localhost
   connection: local
@@ -1013,6 +1240,7 @@ ansible-playbook playbooks/test-role.yml --check --diff
           - name: testuser
             state: present
             shell: /bin/bash
+
 ```
 
 ### Ansible-lint
@@ -1020,6 +1248,7 @@ ansible-playbook playbooks/test-role.yml --check --diff
 ```bash
 cd ansible
 uv run ansible-lint roles/role_name/
+
 ```
 
 ---
@@ -1027,8 +1256,11 @@ uv run ansible-lint roles/role_name/
 ## References
 
 - [Ansible Philosophy](./ansible-philosophy.md)
+
 - [Ansible Playbook Design](./ansible-playbook-design.md)
+
 - [Ansible Migration Plan](./ansible-migration-plan.md)
+
 - [Ansible Best Practices](https://docs.ansible.com/ansible/latest/tips_tricks/ansible_tips_tricks.html)
 
 ---

@@ -481,7 +481,19 @@ Use `shell` ONLY when you need shell features (pipes, redirects, etc.).
 
 ## Progressive Disclosure
 
-For deeper knowledge:
+Start here, drill down as needed:
+
+### Quick Reference (Read First)
+- [Playbook & Role Patterns](patterns/playbook-role-patterns.md) - State-based playbooks, public API variables, validation patterns
+- [Secrets management](patterns/secrets-management.md) - Infisical integration
+
+### Deep Patterns (Read When Needed)
+- [testing-comprehensive.md](patterns/testing-comprehensive.md) - Molecule, CI/CD, test strategies ✨ NEW
+- [role-structure-standards.md](patterns/role-structure-standards.md) - Directory org, naming conventions ✨ NEW
+- [documentation-templates.md](patterns/documentation-templates.md) - README structure, variable docs ✨ NEW
+- [variable-management-patterns.md](patterns/variable-management-patterns.md) - defaults vs vars, naming ✨ NEW
+- [handler-best-practices.md](patterns/handler-best-practices.md) - Handler usage patterns ✨ NEW
+- [meta-dependencies.md](patterns/meta-dependencies.md) - galaxy_info, dependencies ✨ NEW
 
 ### Advanced Automation Patterns (from ProxSpray Analysis)
 - [Cluster Automation](patterns/cluster-automation.md) - Proxmox cluster formation with idempotency
@@ -495,10 +507,9 @@ For deeper knowledge:
 - [Module selection](reference/module-selection.md) - Builtin vs community
 - [Testing guide](reference/testing-guide.md) - Molecule and ansible-lint
 - [Collections guide](reference/collections-guide.md) - Using collections
+- [production-repos.md](reference/production-repos.md) - Studied geerlingguy roles index ✨ NEW
 
 ### Patterns & Anti-Patterns
-- [Playbook & Role Patterns](patterns/playbook-role-patterns.md) - State-based playbooks, public API variables, validation patterns
-- [Secrets management](patterns/secrets-management.md) - Infisical integration
 - [Error handling](patterns/error-handling.md) - Proper error handling
 - [Task organization](patterns/task-organization.md) - Reusable tasks
 - [Common mistakes](anti-patterns/common-mistakes.md) - What to avoid
