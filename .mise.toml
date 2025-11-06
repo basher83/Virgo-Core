@@ -24,7 +24,7 @@ yamlfmt = "0.20.0"
 shellcheck = "0.11.0"
 markdownlint-cli2 = "0.18.1"
 uv = "latest"
-opentofu = "1.10.6"
+opentofu = "1.10.7"
 
 
 [env]
