@@ -13,7 +13,7 @@ truncate = true
 [tools]
 eza = "0.23.0"
 fd = "10.2.0"
-pre-commit = "4.3.0"
+pre-commit = "4.4.0"
 rg = "14.1.1"
 terraform-docs = "0.20.0"
 tflint = "0.59.1"
