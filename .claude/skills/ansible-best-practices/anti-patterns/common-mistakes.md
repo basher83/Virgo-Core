@@ -2,7 +2,8 @@
 
 ## Overview
 
-This guide catalogs common mistakes found in Ansible playbooks and provides corrected examples based on Virgo-Core repository best practices.
+This guide catalogs common mistakes found in Ansible playbooks and provides corrected examples based on Virgo-Core
+repository best practices.
 
 ## 1. Not Using `set -euo pipefail` in Shell Scripts
 
@@ -675,6 +676,315 @@ cd ansible
 ansible-lint playbooks/my-playbook.yml
 ```
 
+## 21. Wrong group_vars Location
+
+### ❌ Wrong
+
+```text
+ansible/
+├── group_vars/
+│   └── matrix_cluster.yml    # ← Wrong location!
+└── inventory/
+    └── hosts.yml
+```
+
+**Problem:**
+
+- Ansible looks for `group_vars/` relative to the inventory file/directory
+- Variables defined here won't be loaded
+- Role tasks silently skip due to empty variables
+- Debugging shows `proxmox_bridges length: 0` even when defined
+
+**Symptoms:**
+
+```yaml
+# Debug output shows:
+"proxmox_bridges length: 0"      # Variable is empty!
+"Condition 1 (length > 0): False"  # Tasks skip
+```
+
+### ✅ Correct
+
+```text
+ansible/
+├── inventory/
+│   ├── hosts.yml
+│   └── group_vars/
+│       └── matrix_cluster.yml  # ← Correct location!
+└── roles/
+```
+
+**Why:** Ansible searches for `group_vars/` and `host_vars/` in the same directory as the inventory file.
+
+**Alternative:** Use `-i inventory/` (directory) instead of `-i inventory/hosts.yml` (file) to keep `group_vars/` at top level.
+
+**Real-World Impact:** This caused the `proxmox_network` role to skip ALL configuration tasks because `proxmox_bridges` was empty.
+
+## 22. Using Deprecated Module Parameters
+
+### ❌ Wrong
+
+```yaml
+- name: Configure network bridge
+  community.general.interfaces_file:
+    iface: vmbr0
+    family: inet          # ← Deprecated parameter!
+    method: static        # ← Not supported!
+    option: bridge_ports
+    value: enp4s0
+```
+
+**Error:**
+
+```
+Unsupported parameters for (community.general.interfaces_file) module:
+family, method. Supported parameters include: address_family, ...
+```
+
+### ✅ Correct
+
+```yaml
+- name: Configure network bridge
+  community.general.interfaces_file:
+    iface: vmbr0
+    address_family: inet  # ← Correct parameter!
+    option: bridge_ports
+    value: enp4s0
+```
+
+**Why:**
+
+- Module APIs change between versions
+- `community.general` 12.0.1+ uses `address_family` not `family`
+- `method` is not a parameter (it's specified via options)
+
+**How to Check:**
+
+```bash
+ansible-doc community.general.interfaces_file
+```
+
+**Real-World Impact:** This blocked the entire `proxmox_network` role from configuring bridges and VLANs.
+
+## 23. Not Using `| default()` in `when` Conditions
+
+### ❌ Wrong
+
+```yaml
+# roles/my_role/tasks/main.yml
+- name: Configure something
+  ansible.builtin.include_tasks: config.yml
+  when:
+    - my_var | length > 0           # ← Missing | default([])!
+    - not my_dry_run                # ← Missing | default(false)!
+```
+
+**Problem:**
+
+- Role `defaults/main.yml` aren't loaded when `when` conditions are evaluated at the `include_tasks` level
+- If variable undefined in inventory, condition fails with "undefined variable"
+- Tasks silently skip even when defaults should apply
+- Error is cryptic: "The conditional check 'my_var | length > 0' failed"
+
+**Error Example:**
+
+```
+TASK [my_role : Configure something]
+fatal: [host]: FAILED! => {"msg": "The conditional check 'my_var | length > 0'
+failed. The error was: error while evaluating conditional (my_var | length > 0):
+'my_var' is undefined"}
+```
+
+### ✅ Correct
+
+```yaml
+# roles/my_role/tasks/main.yml
+- name: Configure something
+  ansible.builtin.include_tasks: config.yml
+  when:
+    - my_var | default([]) | length > 0      # ← Safe!
+    - not (my_dry_run | default(false))       # ← Safe!
+```
+
+### Understanding WHY This Happens
+
+**Ansible Variable Loading Order:**
+
+1. **Command-line** (`-e` extra vars) - Loaded first
+2. **Inventory** (group_vars, host_vars) - Loaded second
+3. **Play vars** - Loaded third
+4. **Role vars** - Loaded when role executes
+5. **Role defaults** - Loaded LAST (lowest precedence)
+
+**The Problem:**
+
+When Ansible evaluates a `when` condition on an `include_tasks`, it happens **before** role defaults are loaded:
+
+```yaml
+# THIS FAILS if my_var not in inventory:
+- include_tasks: config.yml
+  when: my_var | length > 0    # Evaluated BEFORE defaults/main.yml loads!
+```
+
+**Why `| default()` Fixes It:**
+
+The `default()` filter provides a fallback value **at template evaluation time**, regardless of variable loading order:
+
+```yaml
+# THIS WORKS - provides fallback immediately:
+- include_tasks: config.yml
+  when: my_var | default([]) | length > 0   # Uses [] if my_var undefined
+```
+
+### When This Pattern Matters
+
+**Critical Locations (ALWAYS use `| default()`):**
+
+```yaml
+# ✅ ALWAYS at include_tasks level:
+- include_tasks: config.yml
+  when: my_var | default([]) | length > 0
+
+# ✅ ALWAYS at include_role level:
+- include_role:
+    name: my_role
+  when: enable_feature | default(false)
+
+# ✅ ALWAYS at block level:
+- block:
+    - ...
+  when: my_condition | default(false)
+```
+
+**Less Critical (but still recommended):**
+
+```yaml
+# ✓ Good practice inside role tasks:
+- name: Do something
+  command: ...
+  when: my_var | default(false)
+  # (role defaults ARE loaded by this point, but | default() doesn't hurt)
+```
+
+### Best Practice Patterns
+
+```yaml
+# Lists - check if non-empty
+when:
+  - my_list | default([]) | length > 0
+
+# Booleans - check if true
+when:
+  - my_bool | default(false)
+
+# Strings - check if non-empty
+when:
+  - my_string | default('') != ''
+
+# Dicts - check if non-empty
+when:
+  - my_dict | default({}) | length > 0
+
+# Combined conditions
+when:
+  - my_list | default([]) | length > 0
+  - not (my_dry_run | default(false))
+  - my_string | default('') != ''
+```
+
+### Real-World Examples from This Codebase
+
+**From network-automation.md:**
+
+```yaml
+when: item.value.vlan_aware | default(false)
+when: network_jumbo_frames_enabled | default(false)
+```
+
+**From ceph-automation.md:**
+
+```yaml
+when: is_ceph_first_node | default(false)
+when: not has_monitor | default(false)
+when: ceph_wipe_disks | default(false)
+```
+
+**From proxmox_network role:**
+
+```yaml
+# roles/proxmox_network/tasks/main.yml
+- name: Configure network bridges
+  ansible.builtin.include_tasks: bridges.yml
+  when:
+    - proxmox_bridges | default([]) | length > 0
+    - not (proxmox_network_dry_run | default(false))
+```
+
+### Troubleshooting "Undefined Variable" Errors
+
+**Symptom:**
+
+```
+The conditional check 'my_var | length > 0' failed.
+The error was: 'my_var' is undefined
+```
+
+**Debug Steps:**
+
+1. **Check variable location:**
+   ```bash
+   # Is it in group_vars/host_vars?
+   ansible-inventory --host myhost | grep my_var
+
+   # Is it in role defaults?
+   cat roles/my_role/defaults/main.yml | grep my_var
+   ```
+
+2. **Check when condition location:**
+   ```yaml
+   # Is it at include_tasks level? (needs | default())
+   - include_tasks: ...
+     when: my_var    # ← Add | default() here!
+   ```
+
+3. **Add `| default()` with appropriate fallback:**
+   ```yaml
+   when: my_var | default([]) | length > 0  # For lists
+   when: my_var | default(false)             # For booleans
+   ```
+
+### Why You See This Pattern Everywhere
+
+**Defensive Programming:**
+
+- Protects against variable scoping issues
+- Works consistently regardless of variable source
+- Makes code more portable between playbooks
+- Explicit about expected default values
+- Prevents cryptic "undefined variable" errors
+
+**Makes Intent Clear:**
+
+```yaml
+# Without | default() - unclear what happens if undefined
+when: enable_feature
+
+# With | default() - explicit: defaults to false
+when: enable_feature | default(false)
+```
+
+### Summary
+
+**Rule of Thumb:**
+
+- **Task-level `when`**: Role defaults available, but use `| default()` for clarity
+- **Include-level `when`**: Role defaults NOT available, MUST use `| default()`
+- **Block-level `when`**: Same as include-level, MUST use `| default()`
+
+**Golden Rule:** When in doubt, use `| default()`. It never hurts and often saves debugging time.
+
+**Real-World Impact:** This pattern is used **47 times** across this skill's examples for a reason - it prevents the most common Ansible variable scoping bug!
+
 ## Summary: Best Practices Checklist
 
 - [ ] Use `set -euo pipefail` in all shell scripts
@@ -690,6 +1000,9 @@ ansible-lint playbooks/my-playbook.yml
 - [ ] Use blocks to group related tasks
 - [ ] Add tags for selective execution
 - [ ] Verify critical operations after execution
+- [ ] Place `group_vars/` in inventory directory
+- [ ] Check module docs for current parameters (`ansible-doc module_name`)
+- [ ] Always use `| default()` in `when` conditions
 
 ## Further Reading
 
