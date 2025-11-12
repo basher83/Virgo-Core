@@ -881,20 +881,42 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 
 ### Phase 5: Testing
 
-- [ ] Run ansible-lint on all roles
+- [x] Run ansible-lint on all roles
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Results**: 0 failures, 0 warnings, Production profile passed
+  - **Files**: 67 files processed (after cleanup)
 - [ ] Create test playbooks
-- [ ] Test all roles in check mode
+- [x] Test all roles in check mode
+  - **Status**: 🟡 Partial
+  - **Tested**: `create-admin-user.yml`, `configure-network.yml` on Matrix cluster
+  - **Results**: Playbook structures valid, prerequisites pass
+- [x] Verify idempotency (run twice, second run no changes)
+  - **Status**: 🟡 Partial
+  - **Completed**: `system_user` role - Perfect idempotency (changed=0)
+  - **Deferred**: `proxmox_network` role - Conditional logic issue prevents testing
+  - **Validated**: `install-docker.yml` - Production-proven (user uses regularly)
+  - **Tested**: Matrix cluster (Foxtrot, Golf, Hotel)
+- [x] Create inventory structure
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Created**: `inventory/hosts.yml`, `group_vars/matrix_cluster.yml`
+  - **Validated**: Variables load and template correctly
 - [ ] Test full cluster initialization
-- [ ] Verify idempotency (run twice, second run no changes)
 - [ ] Performance testing
 
 ### Phase 6: Cleanup
 
-- [ ] Remove old playbooks (move to .deprecated/)
-- [ ] Update CLAUDE.md
+- [x] Remove old playbooks (move to .deprecated/)
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Moved**: `proxmox-enable-vlan-bridging.yml`, `proxmox-create-terraform-user.yml`, `add-system-user.yml`
+- [x] Update CLAUDE.md
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Changes**: Refactored to Core 4 principles, reduced from 289 to 68 lines
 - [ ] Create role README files
 - [ ] Update mise tasks
-- [ ] Update team documentation
+- [x] Update team documentation
+  - **Status**: 🟡 Partial
+  - **Created**: `docs/infrastructure.md`, `docs/testing-validation-results.md`
+  - **Updated**: `docs/goals.md`
 - [ ] Create migration completion summary
 
 ---
