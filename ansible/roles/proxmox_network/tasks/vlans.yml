@@ -6,8 +6,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "vlan{{ item.id }}"
-    family: inet
-    method: static
+    address_family: inet
     option: vlan-raw-device
     value: "{{ item.raw_device }}"
     backup: "{{ proxmox_network_backup }}"
@@ -20,8 +19,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "vlan{{ item.id }}"
-    family: inet
-    method: static
+    address_family: inet
     option: address
     value: "{{ item.address }}"
     backup: false

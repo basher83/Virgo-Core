@@ -6,8 +6,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "{{ item.name }}"
-    family: inet
-    method: static
+    address_family: inet
     option: bridge_ports
     value: "{{ item.interface }}"
     backup: "{{ proxmox_network_backup }}"
@@ -20,8 +19,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "{{ item.name }}"
-    family: inet
-    method: static
+    address_family: inet
     option: address
     value: "{{ item.address }}"
     backup: false
@@ -35,8 +33,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "{{ item.name }}"
-    family: inet
-    method: static
+    address_family: inet
     option: gateway
     value: "{{ item.gateway }}"
     backup: false
@@ -50,8 +47,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "{{ item.name }}"
-    family: inet
-    method: static
+    address_family: inet
     option: bridge-vlan-aware
     value: "yes"
     backup: false
@@ -65,8 +61,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "{{ item.name }}"
-    family: inet
-    method: static
+    address_family: inet
     option: bridge-vids
     value: >-
       {{ item.vlan_ids
@@ -85,8 +80,7 @@
   community.general.interfaces_file:
     dest: "{{ proxmox_network_interfaces_file }}"
     iface: "{{ item.name }}"
-    family: inet
-    method: static
+    address_family: inet
     option: mtu
     value: "{{ item.mtu | default(proxmox_network_default_mtu) }}"
     backup: false
