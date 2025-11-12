@@ -1,0 +1,68 @@
+---
+# Playbook: Enable VLAN-Aware Bridging on Proxmox Nodes
+# Purpose: Configure vmbr1 bridge to support VLAN filtering across all Proxmox hosts
+# Phase: 1 - Enable VLAN-aware bridging
+#
+# Reference: docs/troubleshooting/networking-vlan.md
+# Target Hosts: lloyd, mable, holly (doggos_cluster)
+#
+# Usage:
+#   ansible-playbook -i inventory/proxmox.yml playbooks/proxmox-enable-vlan-bridging.yml
+
+- name: Enable VLAN-Aware Bridging on Proxmox Nodes
+  hosts: doggos_cluster
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Enable VLAN-aware bridging on vmbr1
+      community.general.interfaces_file:
+        iface: vmbr1
+        option: bridge-vlan-aware
+        value: "yes"
+        backup: true
+        state: present
+      register: vlan_aware
+      notify: Reload network interfaces
+
+    - name: Configure VLAN IDs on vmbr1
+      community.general.interfaces_file:
+        iface: vmbr1
+        option: bridge-vids
+        value: "2-4094"
+        backup: false
+        state: present
+      register: vlan_ids
+      notify: Reload network interfaces
+
+    - name: Display configuration change status
+      ansible.builtin.debug:
+        msg: >
+          {% if vlan_aware.changed or vlan_ids.changed %}
+          VLAN configuration updated on vmbr1 - network reload required
+          {% else %}
+          VLAN configuration already set on vmbr1
+          {% endif %}
+
+  post_tasks:
+    - name: Verify VLAN filtering is enabled (after handler execution)
+      ansible.builtin.shell: |
+        bridge vlan show dev vmbr1
+      register: vlan_status
+      changed_when: false
+      failed_when: false
+
+    - name: Display VLAN filtering status
+      ansible.builtin.debug:
+        var: vlan_status.stdout_lines
+
+  handlers:
+    - name: Reload network interfaces
+      ansible.builtin.command: ifreload -a
+      register: reload_result
+      changed_when: true
+
+    - name: Display reload result
+      ansible.builtin.debug:
+        msg: "Network interfaces reloaded successfully"
+      when: reload_result is defined

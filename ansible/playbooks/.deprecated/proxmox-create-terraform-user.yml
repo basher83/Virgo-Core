@@ -1,0 +1,295 @@
+---
+# Playbook: Create Terraform User on Proxmox Nodes
+# Purpose: Configure terraform user with Linux SSH access and Proxmox API permissions
+# Target: doggos_cluster (holly, lloyd, mable)
+#
+# Implementation: Hybrid approach using native modules where available
+# - community.proxmox modules for user/group/ACL management (better idempotency)
+# - pveum commands for role and token operations (no native modules available)
+#
+# Reference: docs/terraform/proxmox-terraform-user.md
+# Usage: ansible-playbook -i inventory/proxmox.yml playbooks/proxmox-create-terraform-user.yml
+
+- name: Create Terraform User on Proxmox Nodes
+  hosts: doggos_cluster
+  gather_facts: true
+  become: true
+
+  vars:
+    # Infisical configuration
+    infisical_project_id: '7b832220-24c0-45bc-a5f1-ce9794a31259'
+    infisical_env: 'prod'
+    infisical_path: '/doggos-cluster'
+
+    system_username: "terraform"
+    system_user_shell: "/bin/bash"
+    system_user_comment: "Terraform automation user (PAM realm)"
+
+    authorized_keys_file: "{{ playbook_dir }}/../files/terraform_authorized_keys"
+
+    sudoers_commands:
+      - "/sbin/pvesm"
+      - "/sbin/qm"
+      - "/usr/bin/tee /var/lib/vz/*"
+
+    # Proxmox configuration
+    proxmox_role_name: "TerraformUser"
+    proxmox_group_name: "terraform-users"
+    proxmox_user_realm: "pam"
+    proxmox_token_name: "token"
+
+    # Proxmox API connection details for administrative tasks
+    # Required for community.proxmox modules to authenticate
+    # Use gathered facts to get the actual IP (works with delegation to localhost)
+    proxmox_api_host: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}"
+    # Secrets retrieved from Infisical in pre_tasks
+    proxmox_api_user: "{{ proxmox_username }}"
+    proxmox_api_password: "{{ proxmox_password }}"
+    # Disable cert validation (set to true in production with valid certs)
+    proxmox_validate_certs: false
+
+  pre_tasks:
+    - name: Retrieve Proxmox username from Infisical
+      ansible.builtin.include_tasks: "{{ playbook_dir }}/../tasks/infisical-secret-lookup.yml"
+      vars:
+        secret_name: 'PROXMOX_USERNAME'
+        secret_var_name: 'proxmox_username'
+        fallback_env_var: 'PROXMOX_USERNAME'
+
+    - name: Retrieve Proxmox password from Infisical
+      ansible.builtin.include_tasks: "{{ playbook_dir }}/../tasks/infisical-secret-lookup.yml"
+      vars:
+        secret_name: 'PROXMOX_PASSWORD'
+        secret_var_name: 'proxmox_password'
+        fallback_env_var: 'PROXMOX_PASSWORD'
+
+  tasks:
+    - name: Check if terraform@pve user exists
+      ansible.builtin.command: pveum user list
+      register: pve_users
+      changed_when: false
+      failed_when: false
+
+    - name: Display terraform@pve user check
+      ansible.builtin.debug:
+        msg: "terraform@pve user {{ 'exists and will be deleted' if 'terraform@pve' in pve_users.stdout else 'does not exist' }}"
+
+    - name: Delete terraform@pve user if exists
+      ansible.builtin.command: pveum user delete terraform@pve
+      when: "'terraform@pve' in pve_users.stdout"
+      register: delete_result
+
+    - name: Display deletion result
+      ansible.builtin.debug:
+        msg: "terraform@pve user deleted successfully"
+      when: delete_result.changed | default(false)
+
+    - name: Check if Linux user already exists
+      ansible.builtin.getent:
+        database: passwd
+        key: "{{ system_username }}"
+      register: user_check
+      failed_when: false
+
+    - name: Display user existence status
+      ansible.builtin.debug:
+        msg: "Linux user '{{ system_username }}' {{ 'already exists' if (user_check.ansible_facts is defined and user_check.ansible_facts.getent_passwd is defined) else 'will be created' }}"
+
+    - name: Create Linux system user with home directory
+      ansible.builtin.user:
+        name: "{{ system_username }}"
+        comment: "{{ system_user_comment }}"
+        shell: "{{ system_user_shell }}"
+        create_home: true
+        state: present
+      when: user_check.ansible_facts is not defined or user_check.ansible_facts.getent_passwd is not defined
+
+    - name: Ensure .ssh directory exists
+      ansible.builtin.file:
+        path: "/home/{{ system_username }}/.ssh"
+        state: directory
+        owner: "{{ system_username }}"
+        group: "{{ system_username }}"
+        mode: '0700'
+
+    - name: Copy authorized_keys file
+      ansible.builtin.copy:
+        src: "{{ authorized_keys_file }}"
+        dest: "/home/{{ system_username }}/.ssh/authorized_keys"
+        owner: "{{ system_username }}"
+        group: "{{ system_username }}"
+        mode: '0600'
+      register: ssh_key_result
+
+    - name: Display SSH key status
+      ansible.builtin.debug:
+        msg: "authorized_keys file {{ 'updated' if ssh_key_result.changed else 'already current' }} for {{ system_username }}"
+
+    - name: Create sudoers.d directory if it doesn't exist
+      ansible.builtin.file:
+        path: /etc/sudoers.d
+        state: directory
+        owner: root
+        group: root
+        mode: '0750'
+
+    - name: Configure sudo privileges for user
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/sudoers.j2"
+        dest: "/etc/sudoers.d/{{ system_username }}"
+        owner: root
+        group: root
+        mode: '0440'
+        validate: '/usr/sbin/visudo -cf %s'
+      register: sudoers_result
+
+    - name: Display sudoers configuration status
+      ansible.builtin.debug:
+        msg: "Sudoers file for '{{ system_username }}' has been {{ 'updated' if sudoers_result.changed else 'verified' }}"
+
+    - name: Check if TerraformUser role exists
+      ansible.builtin.command: pveum role list
+      register: pve_roles
+      changed_when: false
+      failed_when: false
+
+    - name: Create TerraformUser role in Proxmox
+      ansible.builtin.command: >
+        pveum role add {{ proxmox_role_name }} -privs "Datastore.Allocate
+        Datastore.AllocateSpace Datastore.AllocateTemplate
+        Datastore.Audit Pool.Allocate Sys.Audit Sys.Console Sys.Modify
+        SDN.Use VM.Allocate VM.Audit VM.Clone VM.Config.CDROM
+        VM.Config.Cloudinit VM.Config.CPU VM.Config.Disk VM.Config.HWType
+        VM.Config.Memory VM.Config.Network VM.Config.Options VM.Migrate
+        VM.Monitor VM.PowerMgmt User.Modify"
+      when: "proxmox_role_name not in pve_roles.stdout"
+      register: role_create_result
+
+    - name: Display role creation status
+      ansible.builtin.debug:
+        msg: "{{ proxmox_role_name }} role {{ 'created' if role_create_result.changed | default(false) else 'already exists' }}"
+
+    - name: Create terraform-users group in Proxmox
+      community.proxmox.proxmox_group:
+        name: "{{ proxmox_group_name }}"
+        state: present
+        comment: "Group for Terraform automation users"
+        api_host: "{{ proxmox_api_host }}"
+        api_user: "{{ proxmox_api_user }}"
+        api_password: "{{ proxmox_api_password }}"
+        validate_certs: "{{ proxmox_validate_certs }}"
+      delegate_to: localhost
+      become: false
+      register: group_result
+    - name: Display group creation status
+      ansible.builtin.debug:
+        msg: "{{ proxmox_group_name }} group {{ 'created' if group_result.changed else 'already exists' }}"
+
+    - name: Configure ACL permissions for terraform-users group
+      community.proxmox.proxmox_access_acl:
+        path: /
+        type: group
+        ugid: "{{ proxmox_group_name }}"
+        roleid: "{{ proxmox_role_name }}"
+        state: present
+        api_host: "{{ proxmox_api_host }}"
+        api_user: "{{ proxmox_api_user }}"
+        api_password: "{{ proxmox_api_password }}"
+        validate_certs: "{{ proxmox_validate_certs }}"
+      delegate_to: localhost
+      become: false
+      register: acl_result
+
+    - name: Display ACL configuration status
+      ansible.builtin.debug:
+        msg: "ACL permissions {{ 'configured' if acl_result.changed else 'already set' }}"
+
+    - name: Check if terraform@pam user exists in Proxmox
+      ansible.builtin.command: pveum user list
+      register: proxmox_users
+      changed_when: false
+      failed_when: false
+
+    - name: Create terraform@pam user in Proxmox (using pveum due to API limitation)
+      ansible.builtin.command: >
+        pveum user add {{ system_username }}@{{ proxmox_user_realm }}
+        --groups {{ proxmox_group_name }}
+        --comment "{{ system_user_comment }}"
+      when: "system_username + '@' + proxmox_user_realm not in proxmox_users.stdout"
+      register: pam_user_result
+
+    - name: Display PAM user creation status
+      ansible.builtin.debug:
+        msg: "{{ system_username }}@{{ proxmox_user_realm }} user {{ 'created' if pam_user_result.changed | default(false) else 'already exists' }}"
+
+    - name: Check if API token exists
+      ansible.builtin.command: pveum user token list {{ system_username }}@{{ proxmox_user_realm }}
+      register: token_list
+      changed_when: false
+      failed_when: false
+
+    - name: Generate API token for terraform@pam
+      ansible.builtin.command: >
+        pveum user token add {{ system_username }}@{{ proxmox_user_realm }}
+        {{ proxmox_token_name }} -privsep 0
+      when: "proxmox_token_name not in token_list.stdout"
+      register: token_result
+
+    - name: Display token generation result
+      ansible.builtin.debug:
+        msg: |
+          {% if token_result.changed | default(false) %}
+          API Token Generated:
+          {{ token_result.stdout }}
+
+          IMPORTANT: Save this token - it cannot be retrieved again!
+          {% else %}
+          API token 'terraform@pam!token' already exists
+          {% endif %}
+
+    - name: Verify Linux user was created successfully
+      ansible.builtin.command: id {{ system_username }}
+      register: user_id
+      changed_when: false
+
+    - name: Display user information
+      ansible.builtin.debug:
+        msg: "{{ user_id.stdout }}"
+
+    - name: Test passwordless sudo with actual command
+      ansible.builtin.command: sudo -u {{ system_username }} sudo /sbin/pvesm apiinfo
+      register: sudo_command_test
+      changed_when: false
+      failed_when: false
+
+    - name: Display passwordless sudo test result
+      ansible.builtin.debug:
+        msg: |
+          Passwordless sudo test for {{ system_username }}:
+          Status: {{ 'SUCCESS ✓' if sudo_command_test.rc == 0 else 'FAILED ✗' }}
+          {% if sudo_command_test.rc == 0 %}
+          Output: {{ sudo_command_test.stdout_lines | join('\n          ') }}
+          {% else %}
+          Error: {{ sudo_command_test.stderr | default('Command failed') }}
+          {% endif %}
+
+    - name: Configuration summary
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          Configuration Summary for {{ inventory_hostname }}
+          ========================================
+          Linux User: {{ system_username }}
+          Shell: {{ system_user_shell }}
+          Home: /home/{{ system_username }}
+          SSH Keys: {{ 'Configured' if ssh_key_result.changed is defined else 'Not configured' }}
+          Sudoers File: /etc/sudoers.d/{{ system_username }}
+          Passwordless Sudo: {{ 'Working ✓' if sudo_command_test.rc == 0 else 'Check logs ✗' }}
+
+          Proxmox User: {{ system_username }}@{{ proxmox_user_realm }}
+          Group: {{ proxmox_group_name }}
+          Role: {{ proxmox_role_name }}
+          API Token: {{ system_username }}@{{ proxmox_user_realm }}!{{ proxmox_token_name }}
+
+          Test SSH connection:
+          ssh {{ system_username }}@{{ ansible_host | default(inventory_hostname) }} sudo pvesm apiinfo
