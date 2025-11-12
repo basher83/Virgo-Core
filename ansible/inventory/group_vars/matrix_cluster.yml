@@ -1,0 +1,75 @@
+---
+# Group variables for Matrix cluster
+# 3-node Proxmox VE 9.x cluster (Foxtrot, Golf, Hotel)
+
+# =============================================================================
+# Network Configuration
+# =============================================================================
+
+# Network role configuration
+proxmox_network_dry_run: false
+proxmox_network_backup: true
+proxmox_network_reload: true
+proxmox_network_verify: true
+
+# Network bridges
+# These match the production configuration on all Matrix nodes
+proxmox_bridges:
+  # Management bridge - Primary connectivity
+  - name: vmbr0
+    interface: enp4s0
+    address: "192.168.3.{{ node_id }}/24"
+    gateway: 192.168.3.1
+    vlan_aware: true
+    vlan_ids: [9]
+    comment: "Management network (MGMT)"
+
+  # CEPH Public network - Client-facing storage traffic
+  - name: vmbr1
+    interface: enp5s0f0np0
+    address: "192.168.5.{{ node_id }}/24"
+    mtu: 9000
+    comment: "CEPH Public network"
+
+  # CEPH Private network - OSD replication traffic
+  - name: vmbr2
+    interface: enp5s0f1np1
+    address: "192.168.7.{{ node_id }}/24"
+    mtu: 9000
+    comment: "CEPH Private network"
+
+# VLAN subinterfaces
+proxmox_vlans:
+  # Corosync cluster communication
+  - id: 9
+    raw_device: vmbr0
+    address: "192.168.8.{{ node_id }}/24"
+    comment: "Corosync network"
+
+# =============================================================================
+# Cluster Configuration
+# =============================================================================
+
+cluster_name: matrix
+cluster_nodes:
+  - foxtrot
+  - golf
+  - hotel
+
+# =============================================================================
+# Hardware Configuration
+# =============================================================================
+
+# Physical interfaces (common across all nodes)
+physical_interfaces:
+  management: enp4s0           # Realtek RTL8125 2.5GbE
+  management_unused: enp3s0    # Intel I226-V Gigabit (not used)
+  ceph_public: enp5s0f0np0     # Intel X710 10GbE SFP+ port 0
+  ceph_private: enp5s0f1np1    # Intel X710 10GbE SFP+ port 1
+  wireless: wlp6s0             # MediaTek WiFi (not used)
+
+# Storage devices (common across all nodes)
+storage_devices:
+  boot: nvme0n1                # 1TB Crucial P3
+  ceph_osd_1: nvme1n1         # 4TB Samsung 990 PRO
+  ceph_osd_2: nvme2n1         # 4TB Samsung 990 PRO
