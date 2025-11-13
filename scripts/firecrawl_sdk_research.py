@@ -51,7 +51,7 @@ def get_api_key() -> str:
 async def retry_with_backoff(func, max_retries: int = 3, base_delay: float = 1.0):
     """
     Retry a function with exponential backoff.
-    
+
     Args:
         func: Async function to retry
         max_retries: Maximum number of retry attempts
@@ -76,7 +76,7 @@ async def search_and_scrape(
 ) -> list[dict]:
     """
     Search the web using Firecrawl's search API with optional scraping.
-    
+
     Uses search API with scrape_options to combine operations for efficiency.
     Returns list of results with url, title, description, and optionally markdown content.
 
@@ -103,21 +103,21 @@ async def search_and_scrape(
     if categories:
         console.print(f"[dim]Categories: {', '.join(categories)}[/dim]")
     if scrape_options:
-        console.print(f"[dim]Scraping enabled[/dim]")
+        console.print("[dim]Scraping enabled[/dim]")
 
     results = await retry_with_backoff(_search)
 
     # When scrape_options are used, results.web contains Document objects
     # Otherwise, results.web contains SearchResult objects
     result_list = []
-    
+
     web_results = results.web if results.web else []
     console.print(f"[green]Found {len(web_results)} results[/green]")
-    
+
     for r in web_results:
         # Check if this is a Document object (has markdown attribute) or SearchResult
         has_markdown = hasattr(r, "markdown") and getattr(r, "markdown", None)
-        
+
         if has_markdown:
             # Document object (from search with scrape_options)
             # URL is in metadata.url or metadata.source_url
@@ -125,12 +125,20 @@ async def search_and_scrape(
             url = ""
             title = ""
             description = ""
-            
+
             if metadata:
-                url = getattr(metadata, "url", "") or getattr(metadata, "source_url", "")
-                title = getattr(metadata, "title", "")
-                description = getattr(metadata, "description", "")
-            
+                # Handle both dict and object metadata types
+                # Firecrawl API returns metadata as dict with "url" and "sourceURL" keys
+                if isinstance(metadata, dict):
+                    url = metadata.get("url", "") or metadata.get("sourceURL", "")
+                    title = metadata.get("title", "")
+                    description = metadata.get("description", "")
+                else:
+                    # Fallback for object-like metadata (if SDK changes)
+                    url = getattr(metadata, "url", "") or getattr(metadata, "sourceURL", "")
+                    title = getattr(metadata, "title", "")
+                    description = getattr(metadata, "description", "")
+
             result_dict = {
                 "url": url,
                 "title": title,
@@ -141,7 +149,7 @@ async def search_and_scrape(
                 # Convert metadata to dict if possible
                 try:
                     result_dict["metadata"] = metadata.model_dump() if hasattr(metadata, "model_dump") else {}
-                except:
+                except (AttributeError, TypeError, ValueError):
                     result_dict["metadata"] = {}
         else:
             # SearchResult object (regular search without scraping)
@@ -150,7 +158,7 @@ async def search_and_scrape(
                 "title": r.title,
                 "description": getattr(r, "description", ""),
             }
-        
+
         result_list.append(result_dict)
 
     return result_list
@@ -187,21 +195,21 @@ async def scrape_url(firecrawl: AsyncFirecrawl, url: str) -> dict | None:
 def filter_quality(results: list[dict], min_content_length: int = 500) -> list[dict]:
     """
     Filter results by quality indicators.
-    
+
     Filters out:
     - Results with very short content
     - Error pages
     - Low-quality domains (can be extended)
-    
+
     Args:
         results: List of result dicts with markdown content
         min_content_length: Minimum content length in characters
-    
+
     Returns:
         Filtered list of results with quality scores
     """
     filtered = []
-    
+
     # High-quality domains (prioritize these)
     quality_domains = {
         "github.com",
@@ -212,53 +220,53 @@ def filter_quality(results: list[dict], min_content_length: int = 500) -> list[d
         "ansible.com",
         "proxmox.com",
     }
-    
+
     for result in results:
         url = result.get("url", "")
         markdown = result.get("markdown", "")
         title = result.get("title", "")
-        
+
         # Skip if content is too short
         if len(markdown) < min_content_length:
             continue
-        
+
         # Skip error pages
         if any(
             indicator in title.lower() or indicator in markdown.lower()[:500]
             for indicator in ["404", "not found", "error", "access denied", "forbidden"]
         ):
             continue
-        
+
         # Calculate quality score
         quality_score = 0
         parsed_url = urlparse(url)
         domain = parsed_url.netloc.lower()
-        
+
         # Boost score for quality domains
         if any(qd in domain for qd in quality_domains):
             quality_score += 10
-        
+
         # Boost score for GitHub repos
         if "github.com" in domain and "/" in parsed_url.path:
             quality_score += 5
-        
+
         # Boost score for longer, more detailed content
         if len(markdown) > 2000:
             quality_score += 3
         elif len(markdown) > 1000:
             quality_score += 1
-        
+
         # Boost score for code blocks (indicates technical content)
         if "```" in markdown:
             quality_score += 2
-        
+
         result["quality_score"] = quality_score
         result["domain"] = domain
         filtered.append(result)
-    
+
     # Sort by quality score (highest first)
     filtered.sort(key=lambda x: x.get("quality_score", 0), reverse=True)
-    
+
     return filtered
 
 
@@ -287,7 +295,7 @@ def combine_results(
 ) -> str:
     """
     Combine search results and scraped content into a research document.
-    
+
     Args:
         query: Original search query
         search_results: List of search result dicts
@@ -295,9 +303,9 @@ def combine_results(
         categories: Optional list of categories used in search
     """
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
+
     doc = f"# Research: {query}\n\n"
-    
+
     # Metadata section
     doc += "## Metadata\n\n"
     doc += f"- **Query:** {query}\n"
@@ -308,11 +316,11 @@ def combine_results(
     doc += f"- **Search Results:** {len(search_results)}\n"
     doc += f"- **Scraped Pages:** {len(scraped_content)}\n"
     doc += "\n"
-    
+
     # Summary
     doc += "## Summary\n\n"
     doc += f"Found {len(search_results)} search results, successfully scraped {len(scraped_content)} pages.\n\n"
-    
+
     # Quality distribution
     if scraped_content and any("quality_score" in r for r in scraped_content):
         high_quality = sum(1 for r in scraped_content if r.get("quality_score", 0) >= 10)
@@ -329,7 +337,7 @@ def combine_results(
             quality_badge = " ⭐"
         elif quality_score >= 5:
             quality_badge = " ✓"
-        
+
         doc += f"{i}. [{result['title']}]({result['url']}){quality_badge}\n"
         if domain:
             doc += f"   - Domain: `{domain}`\n"
@@ -342,7 +350,7 @@ def combine_results(
     for i, result in enumerate(scraped_content, 1):
         quality_score = result.get("quality_score", 0)
         domain = result.get("domain", "")
-        
+
         doc += f"### {i}. {result['title']}\n\n"
         doc += f"**Source:** [{result['url']}]({result['url']})\n"
         if domain:
@@ -350,12 +358,12 @@ def combine_results(
         if quality_score > 0:
             doc += f"**Quality Score:** {quality_score}\n"
         doc += "\n"
-        
+
         # Add description if available
         description = result.get("description", "")
         if description:
             doc += f"*{description}*\n\n"
-        
+
         doc += result.get("markdown", "")
         doc += "\n\n---\n\n"
 
@@ -370,12 +378,12 @@ async def research(
 ) -> None:
     """
     Main research workflow: search → scrape → filter → combine.
-    
+
     Uses combined search+scrape API for efficiency when possible.
     """
     # Use combined search+scrape API for efficiency
     scrape_options = {"formats": ["markdown"]}
-    
+
     # Step 1: Search and scrape in one call
     search_results = await search_and_scrape(
         query=query,
@@ -390,7 +398,7 @@ async def research(
 
     # Step 2: Check if we already have markdown content from search+scrape
     has_content = any("markdown" in r for r in search_results)
-    
+
     if has_content:
         # Content already scraped, just filter
         console.print("[cyan]Content already scraped, filtering by quality...[/cyan]")
@@ -445,14 +453,14 @@ def main(
 ):
     """
     Research a topic using Firecrawl: search the web, scrape results, filter by quality, and combine into a markdown document.
-    
+
     Examples:
         # Search GitHub for ansible proxmox ceph examples
         ./firecrawl_sdk_research.py "ansible proxmox ceph" --category github
-        
+
         # Search research papers
         ./firecrawl_sdk_research.py "machine learning" --category research
-        
+
         # Multiple categories
         ./firecrawl_sdk_research.py "neural networks" --categories github,research
     """
