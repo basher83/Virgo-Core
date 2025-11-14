@@ -1,5 +1,7 @@
 # PR #21 After-Action Review
 
+"ecology work, not tool usage" - "Your debugging ecologist, Claude-1b8f"
+
 ## Step 1: `/verify-pr` Command
 
 **Performance:** Excellent ✅
@@ -7,6 +9,7 @@
 **Improvements:** None required
 
 **Optional Enhancements:**
+
 - Suggest code review automatically after verification
 - Verify bug existence when claims mention "fixes bug"
 
@@ -25,18 +28,21 @@
 Before dispatching code-reviewer:
 
 1. ☐ Verify clean working directory
+
    ```bash
    git status
    # If dirty, stash or acknowledge uncommitted changes
    ```
 
 2. ☐ Verify correct commit
+
    ```bash
    git log --oneline -3
    # Confirm HEAD matches review target
    ```
 
 3. ☐ Extract SHAs from git
+
    ```bash
    BASE_SHA=$(git rev-parse main)
    HEAD_SHA=$(git rev-parse HEAD)
@@ -62,6 +68,7 @@ When providing code examples to code-reviewer:
 Before claiming code exists or has issues:
 
 1. Read actual code:
+
    ```bash
    git show {HEAD_SHA}:path/to/file | sed -n 'X,Yp'
    ```
@@ -129,6 +136,7 @@ description: Compare findings from multiple code review sources
 **When to Use:**
 
 After manual code review, compare with:
+
 - CodeRabbit comments
 - GitHub Actions checks
 - SonarQube reports
@@ -146,6 +154,7 @@ After manual code review, compare with:
 4. Learn from differences
 
 **Output:**
+
 - Confirmed issues (found by both)
 - Unique findings (found by one)
 - Disagreements to investigate
@@ -182,12 +191,14 @@ git diff --stat {BEFORE_SHA}..{AFTER_SHA}
 ```
 
 Dispatch code-reviewer again with narrow scope:
+
 - Review only fixes for issues X, Y, Z
 - Verify fixes resolve the issues
 
 **3. Document in PR**
 
 Update PR with:
+
 - What you fixed
 - Why it matters
 - How to verify
@@ -217,13 +228,16 @@ Update PR with:
 ## Implementation Priority
 
 **Immediate (high value):**
+
 - Add Pre-Review Checklist to `requesting-code-review` skill
 - Add Code Verification Protocol to `code-reviewer` agent
 
 **Medium priority:**
+
 - Add review depth scaling to `code-reviewer`
 - Add After Fixes section to `requesting-code-review`
 
 **Optional:**
+
 - Create `compare-review-sources` skill
 - Add API verification requirements
