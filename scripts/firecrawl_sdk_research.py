@@ -18,9 +18,9 @@ Performs web research using Firecrawl's search and scrape APIs:
 
 Usage:
     export FIRECRAWL_API_KEY="fc-YOUR-API-KEY"
-    ./firecrawl_sdk_research.py "ansible proxmox ceph"
-    ./firecrawl_sdk_research.py "python async patterns" --limit 5 --category github
-    ./firecrawl_sdk_research.py "machine learning" --category research --output research.md
+    scripts/firecrawl_sdk_research.py "ansible proxmox ceph"
+    scripts/firecrawl_sdk_research.py "python async patterns" --limit 5 --category github
+    scripts/firecrawl_sdk_research.py "machine learning" --category research --output research.md
 """
 
 import asyncio
@@ -192,7 +192,7 @@ async def scrape_url(firecrawl: AsyncFirecrawl, url: str) -> dict | None:
             "markdown": markdown,
             "metadata": metadata if isinstance(metadata, dict) else {},
         }
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         console.print(f"[yellow]Warning: Failed to scrape {url}: {e}[/yellow]")
         return None
 
@@ -402,12 +402,12 @@ async def research(
         sys.exit(1)
 
     # Step 2: Check if we already have markdown content from search+scrape
-    has_content = any("markdown" in r for r in search_results)
+    has_content = any(r.get("markdown") for r in search_results)
 
     if has_content:
         # Content already scraped, just filter
         console.print("[cyan]Content already scraped, filtering by quality...[/cyan]")
-        scraped_content = [r for r in search_results if "markdown" in r]
+        scraped_content = [r for r in search_results if r.get("markdown")]
     else:
         # Need to scrape separately (fallback)
         console.print("[cyan]Scraping URLs separately...[/cyan]")
@@ -461,18 +461,20 @@ def main(
 
     Examples:
         # Search GitHub for ansible proxmox ceph examples
-        ./firecrawl_sdk_research.py "ansible proxmox ceph" --category github
+        scripts/firecrawl_sdk_research.py "ansible proxmox ceph" --category github
 
         # Search research papers
-        ./firecrawl_sdk_research.py "machine learning" --category research
+        scripts/firecrawl_sdk_research.py "machine learning" --category research
 
         # Multiple categories
-        ./firecrawl_sdk_research.py "neural networks" --categories github,research
+        scripts/firecrawl_sdk_research.py "neural networks" --categories github,research
     """
     output_path = Path(output)
 
     # Parse categories
     category_list = None
+    if categories and category:
+        raise typer.BadParameter("Use either --category or --categories, not both.")
     if categories:
         category_list = [c.strip() for c in categories.split(",")]
     elif category:
