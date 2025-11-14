@@ -91,7 +91,7 @@ Save results to a specific file:
 
 ## Command-Line Options
 
-```
+```text
 Usage: firecrawl_sdk_research.py [OPTIONS] QUERY
 
 Arguments:
@@ -100,8 +100,8 @@ Arguments:
 Options:
   --limit, -l INTEGER      Number of search results to scrape [default: 10]
   --output, -o TEXT        Output markdown file path [default: ai_docs/research.md]
-  --category, -c TEXT      Search category: github, research, pdf (can specify multiple times)
-  --categories TEXT        Comma-separated list of categories: github,research,pdf
+  --category, -c TEXT      Search category: GitHub, research, or pdf
+  --categories TEXT        Comma-separated list of categories: GitHub,research,pdf
   --help                   Show this message and exit
 ```
 
@@ -110,8 +110,8 @@ Options:
 - **`QUERY`** (required): Your search query string
 - **`--limit, -l`**: Maximum number of results to scrape (default: 10)
 - **`--output, -o`**: Path to output markdown file (default: `ai_docs/research.md`)
-- **`--category, -c`**: Single category filter (github, research, or pdf)
-- **`--categories`**: Comma-separated list of categories (e.g., `github,research`)
+- **`--category, -c`**: Single category filter (GitHub, research, or pdf)
+- **`--categories`**: Comma-separated list of categories (e.g., `GitHub,research`)
 
 ## Output Format
 
@@ -218,7 +218,7 @@ export FIRECRAWL_API_KEY="fc-your-api-key"
 
 ### Low-quality results
 
-- Use `--category github` for code examples
+- Use `--category GitHub` for code examples
 - Increase `--limit` to get more results
 - Quality filtering may be too strict - check the output for unfiltered results
 
@@ -297,4 +297,3 @@ For issues or questions:
 1. Check the [Firecrawl documentation](https://docs.firecrawl.dev/)
 2. Review the troubleshooting section above
 3. Open an issue in the repository
-

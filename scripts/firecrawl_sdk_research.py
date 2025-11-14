@@ -148,7 +148,12 @@ async def search_and_scrape(
             if metadata:
                 # Convert metadata to dict if possible
                 try:
-                    result_dict["metadata"] = metadata.model_dump() if hasattr(metadata, "model_dump") else {}
+                    if isinstance(metadata, dict):
+                        result_dict["metadata"] = metadata
+                    elif hasattr(metadata, "model_dump"):
+                        result_dict["metadata"] = metadata.model_dump()
+                    else:
+                        result_dict["metadata"] = {}
                 except (AttributeError, TypeError, ValueError):
                     result_dict["metadata"] = {}
         else:
@@ -443,7 +448,7 @@ def main(
         None,
         "--category",
         "-c",
-        help="Search category: github, research, pdf (can specify multiple times)",
+        help="Search category: github, research, or pdf",
     ),
     categories: Optional[str] = typer.Option(
         None,
