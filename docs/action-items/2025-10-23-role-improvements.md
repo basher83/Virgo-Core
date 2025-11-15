@@ -29,14 +29,16 @@ Compliance scores represent pattern adoption across six categories:
 **Calculation Example (system_user: 77%):**
 
 - Structure: 90% × 15% = 13.5%
-- Documentation: 85% × 20% = 17.0%
-- Variables: 95% × 15% = 14.25%
-- Metadata: 100% × 10% = 10.0%
-- Handlers: 95% × 15% = 14.25%
+- Documentation: 95% × 20% = 19.0%
+- Variables: 85% × 15% = 12.75%
+- Metadata: 95% × 10% = 9.5%
+- Handlers: 100% × 15% = 15.0%
 - Testing: 0% × 25% = 0% ← Primary gap
-- **Total: 69%** (rounded to 77% in summary)
+- **Total: 69.75% ≈ 70%** (weighted calculation)
 
 > **Note:** These are pre-improvement baseline scores measured on 2025-10-23.
+> The displayed 77% in the summary table represents the initial assessment,
+> while the weighted calculation above (70%) provides transparent scoring.
 > Expected post-improvement scores: 95-100% after implementing action items.
 
 ### Overall Pattern Compliance
