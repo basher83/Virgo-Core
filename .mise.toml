@@ -13,7 +13,7 @@ truncate = true
 [tools]
 eza = "0.23.0"
 fd = "10.2.0"
-pre-commit = "4.3.0"
+pre-commit = "4.4.0"
 rg = "14.1.1"
 terraform-docs = "0.20.0"
 tflint = "0.59.1"
@@ -22,9 +22,9 @@ git-cliff = "2.10.1"
 yamllint = "1.37.1"
 yamlfmt = "0.20.0"
 shellcheck = "0.11.0"
-markdownlint-cli2 = "0.18.1"
+markdownlint-cli2 = "0.19.0"
 uv = "latest"
-opentofu = "1.10.6"
+opentofu = "1.10.7"
 
 
 [env]

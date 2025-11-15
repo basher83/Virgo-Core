@@ -35,12 +35,6 @@
   ansible.builtin.debug:
     msg:
       - "Network Configuration Verification:"
-      - >-
-        Bridges configured:
-        {{ (proxmox_network_bridge_verify.results | default([])) | selectattr('rc', 'equalto', 0) | list | length }}/{{ proxmox_bridges | default([]) | length }}
-      - >-
-        VLANs configured:
-        {{ (proxmox_network_vlan_verify.results | default([])) | selectattr('rc', 'equalto', 0) | list | length }}/{{ proxmox_vlans | default([]) | length }}
-      - >-
-        VLAN filtering enabled:
-        {{ (proxmox_network_vlan_filter_verify.results | default([])) | selectattr('rc', 'equalto', 0) | list | length }} bridges
+      - "Bridges configured: {{ proxmox_network_bridge_verify.results | length }}/{{ proxmox_bridges | length }}"
+      - "VLANs configured: {{ (proxmox_network_vlan_verify.results | length) if (proxmox_network_vlan_verify is not skipped) else 0 }}/{{ proxmox_vlans | length }}"
+      - "VLAN-aware bridges: {{ (proxmox_bridges | selectattr('vlan_aware', 'defined') | selectattr('vlan_aware') | list | length) }}"

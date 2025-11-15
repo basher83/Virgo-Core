@@ -9,7 +9,7 @@ profile: moderate
 
 # Offline mode - do not install Galaxy requirements automatically
 # Set to true for CI/CD environments or air-gapped systems
-offline: false
+offline: true
 
 # Exclude paths from linting
 exclude_paths:

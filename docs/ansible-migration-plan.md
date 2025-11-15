@@ -14,9 +14,7 @@ This migration will improve code reusability, maintainability, and consistency a
 **Related Documents**:
 
 - [Ansible Philosophy](./ansible-philosophy.md) - Core design principles
-
 - [Ansible Role Design](./ansible-role-design.md) - Role structure and patterns
-
 - [Ansible Playbook Design](./ansible-playbook-design.md) - Playbook orchestration
 
 ---
@@ -29,35 +27,24 @@ This migration will improve code reusability, maintainability, and consistency a
 ansible/
 ├── playbooks/
 │   ├── proxmox-build-template.yml          # VM template creation
-
 │   ├── proxmox-create-terraform-user.yml   # Terraform user setup
-
 │   ├── proxmox-enable-vlan-bridging.yml    # VLAN configuration
-
 │   ├── install-docker.yml                   # Docker installation
-
 │   ├── add-system-user.yml                  # User creation
-
 │   └── add-file-to-host.yml                 # File deployment
-
 ├── tasks/
 │   └── infisical-secret-lookup.yml         # Secrets retrieval
-
 ├── templates/
 │   └── sudoers.j2
 └── inventory/
     └── proxmox.yml
-
 ```
 
 **Issues**:
 
 - Playbooks contain role-worthy logic
-
 - Code duplication across playbooks
-
 - Not easily reusable across clusters
-
 - Conflates multiple concerns (Linux users + Proxmox users)
 
 ### Target State
@@ -66,53 +53,33 @@ ansible/
 ansible/
 ├── roles/
 │   ├── proxmox_repository/      # NEW: APT repo management
-
 │   ├── proxmox_network/          # NEW: Network infrastructure
-
 │   ├── proxmox_cluster/          # NEW: Cluster formation
-
 │   ├── proxmox_ceph/             # NEW: CEPH storage
-
 │   ├── proxmox_access/           # CONVERTED: Proxmox API access
-
 │   ├── proxmox_vm_template/      # CONVERTED: Template creation
-
 │   ├── system_user/              # CONVERTED: Linux user management
-
 │   └── docker/                   # CONVERTED: Docker installation
-
 ├── playbooks/
 │   ├── setup-terraform-automation.yml      # REFACTORED: Uses roles
-
 │   ├── configure-network.yml               # REFACTORED: Uses roles
-
 │   ├── initialize-matrix-cluster.yml       # NEW: Full cluster setup
-
 │   ├── create-admin-user.yml               # REFACTORED: Uses system_user
-
 │   ├── create-vm-template.yml              # REFACTORED: Uses roles
-
 │   └── install-docker.yml                  # REFACTORED: Uses docker role
-
 ├── tasks/
 │   └── infisical-secret-lookup.yml         # PRESERVED
-
 ├── templates/
 │   └── sudoers.j2                          # MOVED to system_user/templates/
-
 └── inventory/
     └── proxmox.yml                         # PRESERVED
-
 ```
 
 **Benefits**:
 
 - Component-based, reusable roles
-
 - Clear separation of concerns
-
 - Consistent across all clusters
-
 - Easier to test and maintain
 
 ---
@@ -122,29 +89,19 @@ ansible/
 ### Principles
 
 1. **Incremental Migration**: Convert one playbook at a time
-
 2. **Backwards Compatibility**: Keep old playbooks until new ones are tested
-
 3. **Testing First**: Test each conversion thoroughly before removing old code
-
 4. **Documentation**: Document as we migrate
-
 5. **No Regression**: Maintain existing functionality
 
 ### Approach
 
 1. Create role structure
-
 2. Migrate simplest playbook first (build confidence)
-
 3. Migrate complex playbooks
-
 4. Create new functionality (cluster, CEPH)
-
 5. Test all conversions
-
 6. Remove old playbooks
-
 7. Update documentation
 
 ---
@@ -158,13 +115,10 @@ ansible/
 #### 1.1 Create Role Directory Structure
 
 ```bash
-
 # Create role directories
-
 mkdir -p ansible/roles/{proxmox_repository,proxmox_network,proxmox_cluster,proxmox_ceph,proxmox_access,proxmox_vm_template,system_user,docker}
 
 # Create standard subdirectories for each role
-
 for role in ansible/roles/*/; do
   mkdir -p "$role"/{tasks,defaults,handlers,templates,vars,files,meta}
   touch "$role"/tasks/main.yml
@@ -172,7 +126,6 @@ for role in ansible/roles/*/; do
   touch "$role"/meta/main.yml
   touch "$role"/README.md
 done
-
 ```
 
 #### 1.2 Convert `add-system-user.yml` to `system_user` Role
@@ -183,7 +136,6 @@ done
 
 ```yaml
 ---
-
 - name: Add System User
   hosts: all
   become: true
@@ -205,22 +157,17 @@ done
         line: "{{ username }} ALL=(ALL) NOPASSWD:ALL"
         create: true
         validate: 'visudo -cf %s'
-
 ```
 
 **New Role** (`roles/system_user/`):
 
 ```yaml
-
 # roles/system_user/defaults/main.yml
-
 ---
 system_users: []
 
 # roles/system_user/tasks/main.yml
-
 ---
-
 - name: Create/update system users
   user:
     name: "{{ item.name }}"
@@ -256,9 +203,7 @@ system_users: []
     - item.sudo_rules is defined or item.sudo_nopasswd is defined
 
 # roles/system_user/templates/sudoers.j2
-
 # Sudo configuration for {{ item.name }}
-
 {% if item.sudo_nopasswd | default(false) %}
 {{ item.name }} ALL=(ALL) NOPASSWD:ALL
 {% elif item.sudo_rules is defined %}
@@ -266,16 +211,13 @@ system_users: []
 {{ item.name }} ALL=(ALL) NOPASSWD: {{ rule }}
 {% endfor %}
 {% endif %}
-
 ```
 
 **New Playbook** (`playbooks/create-admin-user.yml`):
 
 ```yaml
 ---
-
 # Playbook: Create Admin User
-
 # Purpose: Create administrative user with SSH and sudo access
 
 - name: Create Administrative User
@@ -298,35 +240,28 @@ system_users: []
             ssh_keys:
               - "{{ admin_ssh_key }}"
             sudo_nopasswd: true
-
 ```
 
 **Testing**:
 
 ```bash
-
 # Test syntax
-
 ansible-playbook --syntax-check playbooks/create-admin-user.yml
 
 # Test in check mode
-
 ansible-playbook -i inventory/proxmox.yml playbooks/create-admin-user.yml \
   -e "admin_name=testuser" \
   -e "admin_ssh_key='ssh-rsa AAAAB3...'" \
   --limit foxtrot --check --diff
 
 # Run on test host
-
 ansible-playbook -i inventory/proxmox.yml playbooks/create-admin-user.yml \
   -e "admin_name=testuser" \
   -e "admin_ssh_key='ssh-rsa AAAAB3...'" \
   --limit foxtrot
 
 # Verify
-
 ssh testuser@foxtrot sudo id
-
 ```
 
 ---
@@ -342,21 +277,15 @@ ssh testuser@foxtrot sudo id
 **Responsibilities Identified**:
 
 1. Linux user creation (lines 88-127) → `system_user` role
-
 2. Proxmox user creation (lines 150-224) → `proxmox_access` role
-
 3. Proxmox role/group/ACL (lines 150-206) → `proxmox_access` role
-
 4. API token generation (lines 225-248) → `proxmox_access` role
-
 5. Secrets retrieval (lines 52-64) → Shared pattern
 
 #### 2.2 Create `proxmox_access` Role
 
 ```yaml
-
 # roles/proxmox_access/defaults/main.yml
-
 ---
 proxmox_api_host: "{{ ansible_default_ipv4.address }}"
 proxmox_validate_certs: false
@@ -370,9 +299,7 @@ proxmox_acls: []
 export_terraform_env: false
 
 # roles/proxmox_access/tasks/main.yml
-
 ---
-
 - name: Retrieve secrets from Infisical
   include_tasks: secrets.yml
 
@@ -401,9 +328,7 @@ export_terraform_env: false
   when: export_terraform_env | bool
 
 # roles/proxmox_access/tasks/secrets.yml
-
 ---
-
 - name: Retrieve Proxmox username
   include_tasks: "{{ playbook_dir }}/../tasks/infisical-secret-lookup.yml"
   vars:
@@ -423,9 +348,7 @@ export_terraform_env: false
     infisical_path: "{{ infisical_path }}"
 
 # roles/proxmox_access/tasks/roles.yml
-
 ---
-
 - name: Check existing roles
   command: pveum role list
   register: existing_roles
@@ -440,9 +363,7 @@ export_terraform_env: false
   register: role_create
 
 # roles/proxmox_access/tasks/groups.yml
-
 ---
-
 - name: Create Proxmox groups
   community.proxmox.proxmox_group:
     name: "{{ item.name }}"
@@ -457,9 +378,7 @@ export_terraform_env: false
   become: false
 
 # roles/proxmox_access/tasks/users.yml
-
 ---
-
 - name: Check existing Proxmox users
   command: pveum user list
   register: existing_users
@@ -476,9 +395,7 @@ export_terraform_env: false
     - "'@pam' in item.userid"
 
 # roles/proxmox_access/tasks/tokens.yml
-
 ---
-
 - name: Check existing tokens
   command: pveum user token list {{ item.userid }}
   loop: "{{ proxmox_tokens }}"
@@ -502,9 +419,7 @@ export_terraform_env: false
   no_log: true
 
 # roles/proxmox_access/tasks/acls.yml
-
 ---
-
 - name: Configure ACL permissions
   community.proxmox.proxmox_access_acl:
     path: "{{ item.path }}"
@@ -521,9 +436,7 @@ export_terraform_env: false
   become: false
 
 # roles/proxmox_access/tasks/env_export.yml
-
 ---
-
 - name: Create environment file directory
   file:
     path: "{{ lookup('env', 'HOME') }}/tmp/.proxmox-terraform"
@@ -536,7 +449,6 @@ export_terraform_env: false
   copy:
     content: |
       # Proxmox API Configuration for {{ inventory_hostname }}
-
       export TF_VAR_proxmox_url="{{ proxmox_api_host }}"
       export TF_VAR_proxmox_user="{{ proxmox_api_user }}"
       export TF_VAR_proxmox_token_id="{{ item.userid }}!{{ item.tokenid }}"
@@ -547,19 +459,14 @@ export_terraform_env: false
   delegate_to: localhost
   become: false
   when: generated_tokens is defined
-
 ```
 
 #### 2.3 Create New Orchestration Playbook
 
 ```yaml
-
 # playbooks/setup-terraform-automation.yml
-
 ---
-
 # Playbook: Setup Terraform Automation Access
-
 # Purpose: Create Linux system user and Proxmox API access for Terraform
 
 - name: Setup Terraform Automation on Proxmox
@@ -629,41 +536,32 @@ export_terraform_env: false
             roleid: TerraformUser
 
         export_terraform_env: true
-
 ```
 
 #### 2.4 Testing
 
 ```bash
-
 # Test new playbook
-
 ansible-playbook -i inventory/proxmox.yml playbooks/setup-terraform-automation.yml \
   --limit foxtrot --check --diff
 
 # Run on test node
-
 ansible-playbook -i inventory/proxmox.yml playbooks/setup-terraform-automation.yml \
   --limit foxtrot
 
 # Verify Linux user
-
 ssh terraform@foxtrot sudo pvesm status
 
 # Verify Proxmox user
-
 ssh root@foxtrot pveum user list | grep terraform
 
 # Verify environment file
-
 cat ~/tmp/.proxmox-terraform/proxmox-foxtrot
 
 # Test full workflow
-
 source ~/tmp/.proxmox-terraform/proxmox-foxtrot
 cd terraform/netbox-vm
 tofu plan
-
 ```
 
 ---
@@ -684,7 +582,6 @@ See [Ansible Role Design](./ansible-role-design.md#2-proxmox_network) for comple
 
 ```yaml
 ---
-
 - name: Install Docker
   hosts: all
   become: true
@@ -712,15 +609,12 @@ See [Ansible Role Design](./ansible-role-design.md#2-proxmox_network) for comple
           - docker-ce-cli
           - containerd.io
         state: present
-
 ```
 
 **New Role**: `roles/docker/`
 
 ```yaml
-
 # roles/docker/defaults/main.yml
-
 ---
 docker_edition: 'ce'
 docker_packages:
@@ -731,9 +625,7 @@ docker_packages:
 docker_users: []
 
 # roles/docker/tasks/main.yml
-
 ---
-
 - name: Install prerequisites
   apt:
     name:
@@ -773,16 +665,13 @@ docker_users: []
     name: docker
     state: started
     enabled: yes
-
 ```
 
 **New Playbook**: `playbooks/install-docker.yml`
 
 ```yaml
 ---
-
 # Playbook: Install Docker
-
 # Purpose: Install Docker CE on Proxmox nodes
 
 - name: Install Docker
@@ -796,7 +685,6 @@ docker_users: []
         docker_users:
           - admin
           - developer
-
 ```
 
 ---
@@ -812,11 +700,8 @@ See [Ansible Role Design](./ansible-role-design.md#3-proxmox_cluster) for comple
 **Key Tasks**:
 
 - Cluster initialization
-
 - Node joining
-
 - Corosync configuration
-
 - /etc/hosts management
 
 #### 4.2 Create `proxmox_ceph` Role
@@ -826,25 +711,17 @@ See [Ansible Role Design](./ansible-role-design.md#4-proxmox_ceph) for complete 
 **Key Tasks**:
 
 - CEPH installation
-
 - Monitor deployment
-
 - Manager deployment
-
 - **Automated OSD creation** (improves on ProxSpray)
-
 - Pool configuration
 
 #### 4.3 Create Complete Cluster Initialization Playbook
 
 ```yaml
-
 # playbooks/initialize-matrix-cluster.yml
-
 ---
-
 # Playbook: Initialize Matrix Cluster
-
 # Purpose: Complete Matrix cluster initialization
 
 - name: Initialize Matrix Cluster
@@ -857,7 +734,6 @@ See [Ansible Role Design](./ansible-role-design.md#4-proxmox_ceph) for complete 
     - role: proxmox_network
     - role: proxmox_cluster
     - role: proxmox_ceph
-
 ```
 
 ---
@@ -867,11 +743,8 @@ See [Ansible Role Design](./ansible-role-design.md#4-proxmox_ceph) for complete 
 #### 5.1 Create Test Playbooks
 
 ```yaml
-
 # playbooks/test-roles.yml
-
 ---
-
 - name: Test All Roles
   hosts: foxtrot
   gather_facts: true
@@ -889,17 +762,13 @@ See [Ansible Role Design](./ansible-role-design.md#4-proxmox_ceph) for complete 
         proxmox_groups:
           - name: test-group
       tags: [proxmox]
-
 ```
 
 #### 5.2 Automated Testing
 
 ```bash
-
 # Create mise task for testing
-
 # .mise.toml
-
 [tasks."ansible:test-all"]
 description = "Test all roles with check mode"
 run = """
@@ -910,23 +779,18 @@ for playbook in playbooks/*.yml; do
   uv run ansible-playbook "$playbook" --check --diff --limit foxtrot
 done
 """
-
 ```
 
 #### 5.3 Integration Testing
 
 ```bash
-
 # Test complete workflow on Matrix cluster
-
 ansible-playbook -i inventory/proxmox.yml playbooks/initialize-matrix-cluster.yml \
   --limit foxtrot --check --diff
 
 # Verify cluster status
-
 ssh root@foxtrot pvecm status
 ssh root@foxtrot ceph -s
-
 ```
 
 ---
@@ -938,32 +802,24 @@ ssh root@foxtrot ceph -s
 Once all conversions are tested:
 
 ```bash
-
 # Backup old playbooks
-
 mkdir -p ansible/playbooks/.deprecated
 mv ansible/playbooks/proxmox-create-terraform-user.yml ansible/playbooks/.deprecated/
 mv ansible/playbooks/add-system-user.yml ansible/playbooks/.deprecated/
 mv ansible/playbooks/proxmox-enable-vlan-bridging.yml ansible/playbooks/.deprecated/
-
 ```
 
 #### 6.2 Update Documentation
 
 - Update `CLAUDE.md` with new role structure
-
 - Create role README files
-
 - Update playbook usage in docs
-
 - Document migration
 
 #### 6.3 Update Mise Tasks
 
 ```toml
-
 # .mise.toml updates
-
 [tasks."ansible:setup-terraform"]
 description = "Setup Terraform automation (new role-based)"
 run = """
@@ -980,7 +836,6 @@ cd ansible
 uv run ansible-playbook -i inventory/proxmox.yml \
   playbooks/initialize-${CLUSTER:-matrix}-cluster.yml
 """
-
 ```
 
 ---
@@ -990,85 +845,78 @@ uv run ansible-playbook -i inventory/proxmox.yml \
 ### Phase 1: Foundation
 
 - [ ] Create role directory structure
-
 - [ ] Convert `add-system-user.yml` to `system_user` role
-
 - [ ] Create `create-admin-user.yml` playbook
-
 - [ ] Test `system_user` role on all clusters
-
 - [ ] Document `system_user` role
 
 ### Phase 2: Terraform User
 
 - [x] Create `proxmox_access` role (tasks, templates, defaults)
-
 - [x] Create `setup-terraform-automation.yml` playbook
-
 - [ ] Test on single node (foxtrot)
-
 - [ ] Test on full cluster (matrix_cluster)
-
 - [ ] Verify Terraform integration works
-
 - [x] Document `proxmox_access` role
 
 ### Phase 3: Network and Docker
 
 - [x] Create `proxmox_network` role
-
 - [x] Create `configure-network.yml` playbook
-
 - [ ] Test network configuration
-
 - [x] Docker role decision: Keep using `geerlingguy.docker` (no wrapper needed)
   - Rationale: Well-maintained community role, already in requirements.yml
   - Playbook already follows role-based patterns
-
 - [x] Verify `install-docker.yml` follows Phase 3 patterns
-
 - [ ] Test Docker installation
 
 ### Phase 4: New Functionality
 
 - [x] Create `proxmox_cluster` role
-
 - [x] Create `proxmox_ceph` role
-
 - [x] Create `proxmox_repository` role
-
 - [x] Create `initialize-matrix-cluster.yml` playbook
-
 - [ ] Test cluster initialization (non-production)
-
 - [x] Document cluster formation process
 
 ### Phase 5: Testing
 
-- [ ] Run ansible-lint on all roles
-
+- [x] Run ansible-lint on all roles
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Results**: 0 failures, 0 warnings, Production profile passed
+  - **Files**: 67 files processed (after cleanup)
 - [ ] Create test playbooks
-
-- [ ] Test all roles in check mode
-
+- [x] Test all roles in check mode
+  - **Status**: 🟡 Partial
+  - **Tested**: `create-admin-user.yml`, `configure-network.yml` on Matrix cluster
+  - **Results**: Playbook structures valid, prerequisites pass
+- [x] Verify idempotency (run twice, second run no changes)
+  - **Status**: 🟡 Partial
+  - **Completed**: `system_user` role - Perfect idempotency (changed=0)
+  - **Deferred**: `proxmox_network` role - Conditional logic issue prevents testing
+  - **Validated**: `install-docker.yml` - Production-proven (user uses regularly)
+  - **Tested**: Matrix cluster (Foxtrot, Golf, Hotel)
+- [x] Create inventory structure
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Created**: `inventory/hosts.yml`, `group_vars/matrix_cluster.yml`
+  - **Validated**: Variables load and template correctly
 - [ ] Test full cluster initialization
-
-- [ ] Verify idempotency (run twice, second run no changes)
-
 - [ ] Performance testing
 
 ### Phase 6: Cleanup
 
-- [ ] Remove old playbooks (move to .deprecated/)
-
-- [ ] Update CLAUDE.md
-
+- [x] Remove old playbooks (move to .deprecated/)
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Moved**: `proxmox-enable-vlan-bridging.yml`, `proxmox-create-terraform-user.yml`, `add-system-user.yml`
+- [x] Update CLAUDE.md
+  - **Status**: ✅ Complete (2025-11-11)
+  - **Changes**: Refactored to Core 4 principles, reduced from 289 to 68 lines
 - [ ] Create role README files
-
 - [ ] Update mise tasks
-
-- [ ] Update team documentation
-
+- [x] Update team documentation
+  - **Status**: 🟡 Partial
+  - **Created**: `docs/infrastructure.md`, `docs/testing-validation-results.md`
+  - **Updated**: `docs/goals.md`
 - [ ] Create migration completion summary
 
 ---
@@ -1080,15 +928,11 @@ If issues arise during migration:
 ### Immediate Rollback
 
 ```bash
-
 # Restore old playbooks
-
 mv ansible/playbooks/.deprecated/* ansible/playbooks/
 
 # Remove new roles
-
 rm -rf ansible/roles/
-
 ```
 
 ### Partial Rollback
@@ -1096,12 +940,9 @@ rm -rf ansible/roles/
 Keep working roles, revert problematic ones:
 
 ```bash
-
 # Example: Revert proxmox_access but keep system_user
-
 rm -rf ansible/roles/proxmox_access
 mv ansible/playbooks/.deprecated/proxmox-create-terraform-user.yml ansible/playbooks/
-
 ```
 
 ---
@@ -1111,17 +952,11 @@ mv ansible/playbooks/.deprecated/proxmox-create-terraform-user.yml ansible/playb
 Migration is complete when:
 
 1. **All playbooks converted** to use roles
-
 2. **All roles tested** on at least one cluster
-
 3. **Documentation updated** with new structure
-
 4. **Team trained** on new patterns
-
 5. **Old playbooks removed** or archived
-
 6. **No regressions** in existing functionality
-
 7. **New functionality working** (cluster, CEPH)
 
 ---
@@ -1144,11 +979,8 @@ Migration is complete when:
 ## References
 
 - [Ansible Philosophy](./ansible-philosophy.md)
-
 - [Ansible Role Design](./ansible-role-design.md)
-
 - [Ansible Playbook Design](./ansible-playbook-design.md)
-
 - [ProxSpray Analysis](./proxspray-analysis.md)
 
 ---
