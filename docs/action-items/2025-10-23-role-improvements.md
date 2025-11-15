@@ -59,8 +59,10 @@ variable management, documentation, and handler patterns. The primary gap across
 ## system_user Role - Action Items
 
 **Role Path:** `ansible/roles/system_user/`
-**Gap Analysis Source:** `.tmp/system_user-gap-analysis.md`
 **Overall Score:** 77% (Good foundation, critical testing gap)
+
+> **Note:** Gap analysis was performed during research but source files were
+> temporary working artifacts not committed to the repository.
 
 ### Critical Priority
 
@@ -214,8 +216,10 @@ platforms:
 ## proxmox_access Role - Action Items
 
 **Role Path:** `ansible/roles/proxmox_access/`
-**Gap Analysis Source:** `.tmp/proxmox_access-gap-analysis.md`
 **Overall Score:** 72% (Good foundation, missing testing)
+
+> **Note:** Gap analysis was performed during research but source files were
+> temporary working artifacts not committed to the repository.
 
 ### Critical Priority
 
@@ -438,8 +442,10 @@ galaxy_tags:
 ## proxmox_network Role - Action Items
 
 **Role Path:** `ansible/roles/proxmox_network/`
-**Gap Analysis Source:** `.tmp/proxmox_network-gap-analysis.md`
 **Overall Score:** 82% (Excellent, missing only testing)
+
+> **Note:** Gap analysis was performed during research but source files were
+> temporary working artifacts not committed to the repository.
 
 ### Critical Priority
 
