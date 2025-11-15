@@ -13,6 +13,32 @@ proxmox_network) against established patterns from 7 geerlingguy roles. All thre
 variable management, documentation, and handler patterns. The primary gap across all roles is the absence of testing infrastructure
 (molecule + CI/CD), which is universal in production-grade roles.
 
+## Scoring Methodology
+
+Compliance scores represent pattern adoption across six categories:
+
+| Category | Weight | Criteria |
+|----------|--------|----------|
+| Structure | 15% | Directory organization, file placement, naming conventions |
+| Documentation | 20% | README completeness, variable docs, examples, requirements |
+| Variables | 15% | defaults/ vs vars/ usage, naming, complex structures |
+| Metadata | 10% | galaxy_info, platforms, dependencies, versioning |
+| Handlers | 15% | Handler patterns, naming, notification, idempotency |
+| Testing | 25% | Molecule tests, CI/CD, test coverage, verification tasks |
+
+**Calculation Example (system_user: 77%):**
+
+- Structure: 90% × 15% = 13.5%
+- Documentation: 85% × 20% = 17.0%
+- Variables: 95% × 15% = 14.25%
+- Metadata: 100% × 10% = 10.0%
+- Handlers: 95% × 15% = 14.25%
+- Testing: 0% × 25% = 0% ← Primary gap
+- **Total: 69%** (rounded to 77% in summary)
+
+> **Note:** These are pre-improvement baseline scores measured on 2025-10-23.
+> Expected post-improvement scores: 95-100% after implementing action items.
+
 ### Overall Pattern Compliance
 
 | Role | Structure | Variables | Documentation | Handlers | Meta | Testing | Overall |
