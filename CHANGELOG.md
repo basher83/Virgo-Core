@@ -33,6 +33,7 @@
 - Add testing scripts directory
 - *(claude)* Remove deprecated skills and commands
 - *(ansible)* Move deprecated playbooks to .deprecated directory
+
 ## [0.6.0] - 2025-10-22
 
 ### 🚀 Features
@@ -94,6 +95,7 @@
 - *(git)* Add ignore for *.pyc
 - *(changelog)* Update CHANGELOG.md for unreleased changes
 - *(release)* Prepare v0.6.0 release
+
 ## [0.5.0] - 2025-10-20
 
 ### 🚀 Features

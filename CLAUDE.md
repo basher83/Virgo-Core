@@ -4,7 +4,9 @@ This file provides guidance to Claude Code when working with code in this reposi
 
 ## Repository Overview
 
-Virgo-Core is Infrastructure as Code for managing a Proxmox VE homelab with NetBox and PowerDNS integration. The repository uses OpenTofu/Terraform for VM provisioning and Ansible for configuration management, targeting a 3-node Proxmox cluster named "Matrix" (nodes: Foxtrot, Golf, Hotel).
+Virgo-Core is Infrastructure as Code for managing a Proxmox VE homelab with NetBox and PowerDNS integration.
+The repository uses OpenTofu/Terraform for VM provisioning and Ansible for configuration management, targeting
+a 3-node Proxmox cluster named "Matrix" (nodes: Foxtrot, Golf, Hotel).
 
 ## Core Technologies
 
