@@ -214,6 +214,7 @@ ansible-galaxy collection install -r requirements.yml
 #### 2. Migrate Existing Playbook
 
 **Current Approach** (pveum commands only):
+
 ```yaml
 # Your current playbook: ansible/playbooks/proxmox-create-terraform-user.yml
 - name: Create terraform user
@@ -221,6 +222,7 @@ ansible-galaxy collection install -r requirements.yml
 ```
 
 **Recommended Approach** (native modules):
+
 ```yaml
 ---
 - name: Create Proxmox Terraform User with API Token
@@ -410,6 +412,7 @@ ansible-galaxy collection install -r requirements.yml
 ### Immediate Actions
 
 1. **Install community.proxmox collection**:
+
    ```bash
    ansible-galaxy collection install community.proxmox
    ```
@@ -428,6 +431,7 @@ ansible-galaxy collection install -r requirements.yml
 ### Testing Recommendations
 
 1. **Create test playbook** with check mode:
+
    ```bash
    ansible-playbook proxmox-create-terraform-user.yml --check
    ```

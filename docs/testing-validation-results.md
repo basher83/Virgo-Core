@@ -366,7 +366,7 @@ uv run ansible-playbook playbooks/configure-network.yml --limit matrix_cluster
 - ✅ All nodes verified network connectivity
 
 **Verification Results**:
-```
+```text
 Bridges configured: 3/3
 VLANs configured: 1/1
 VLAN-aware bridges: 1

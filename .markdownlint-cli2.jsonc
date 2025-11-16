@@ -99,5 +99,5 @@
   "noProgress": false,
 
   // Show count of files found
-  "showFound": false
+  "showFound": true
 }

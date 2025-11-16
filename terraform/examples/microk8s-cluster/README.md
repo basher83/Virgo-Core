@@ -1,10 +1,14 @@
 # MicroK8s Cluster Deployment Example
 
-This example demonstrates deploying a multi-node MicroK8s Kubernetes cluster using the `vm` module with Terraform's `for_each` pattern. This approach eliminates the need for a separate cluster-specific module by leveraging composition over abstraction.
+This example demonstrates deploying a multi-node MicroK8s Kubernetes cluster using the `vm`
+module with Terraform's `for_each` pattern. This approach eliminates the need for a separate
+cluster-specific module by leveraging composition over abstraction.
 
-## 🎯 Key Concept: Composition Over Abstraction
+## Key Concept: Composition Over Abstraction
 
-**Why no cluster module?** This example shows that multi-VM deployments are better achieved through **composition** (using `for_each` with the base `vm` module) rather than creating an abstraction layer (a separate cluster module).
+**Why no cluster module?** This example shows that multi-VM deployments are better achieved
+through **composition** (using `for_each` with the base `vm` module) rather than creating an
+abstraction layer (a separate cluster module).
 
 ### Benefits of the for_each Pattern
 
@@ -14,9 +18,10 @@ This example demonstrates deploying a multi-node MicroK8s Kubernetes cluster usi
 ✅ **DRY Principle** - Reuses the vm module without duplication
 ✅ **Terraform Best Practices** - Native for_each is more idiomatic than wrapper modules
 
-## 📋 Overview
+## Overview
 
 This deployment creates:
+
 - 3 Ubuntu VMs (microk8s-1, microk8s-2, microk8s-3)
 - 4 CPU cores and 8GB RAM per node (customizable per-node)
 - 50GB disk per node (customizable per-node)
@@ -67,6 +72,7 @@ module "cluster_vms" {
 3. **Terraform** - Version >= 1.0
 
 4. **Provider Authentication** - Set Proxmox credentials via environment variables:
+
    ```bash
    export PROXMOX_VE_USERNAME="root@pam"
    export PROXMOX_VE_PASSWORD="your-password"
@@ -329,31 +335,37 @@ To destroy the cluster:
 terraform destroy
 ```
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Template Not Found
+
 Ensure the template exists and the ID is correct:
+
 ```bash
 qm list | grep template
 ```
 
 ### Network Connectivity Issues
+
 - Verify VLAN configuration in Proxmox
 - Check bridge and gateway settings
 - Ensure firewall rules allow traffic
 
 ### Cloud-init Not Running
+
 - Verify qemu-guest-agent is installed in template
 - Check cloud-init logs: `cloud-init status --long`
 
 ### Cross-Node Cloning Fails
+
 - Ensure template exists on source node
 - Verify network connectivity between Proxmox nodes
 - Check storage permissions on target nodes
 
 ## 📖 Pattern Comparison
 
-### ❌ Anti-pattern: Wrapper Module
+### Anti-pattern: Wrapper Module
+
 ```hcl
 # Constraining abstraction - NOT RECOMMENDED
 module "cluster" {
@@ -362,7 +374,8 @@ module "cluster" {
 }
 ```
 
-### ✅ Best Practice: Composition with for_each
+### Best Practice: Composition with for_each
+
 ```hcl
 # Flexible composition - RECOMMENDED
 module "cluster_vms" {
