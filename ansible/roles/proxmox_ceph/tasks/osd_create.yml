@@ -45,38 +45,59 @@
     - osd_create_whole.rc != 0
     - "'already in use' not in osd_create_whole.stderr | default('')"
 
-- name: Create partition indices for multi-OSD devices
-  ansible.builtin.set_fact:
-    osd_device_partitions: |
-      {%- set ns = namespace(result=[]) -%}
-      {%- for device in ceph_osds[inventory_hostname_short] | default([]) -%}
-        {%- if device.get('partitions', 1) | int > 1 -%}
-          {%- set _ = ns.result.append(device | combine({'partition_indices': range(device.partitions | int) | list})) -%}
-        {%- endif -%}
-      {%- endfor -%}
-      {{ ns.result }}
+# Fix Bug #12: Implement ceph-volume lvm batch for multiple OSDs per device
+# Reference: https://docs.ceph.com/en/latest/cephadm/services/osd/
+# Reference: https://ceph.io/en/news/blog/2023/reef-osds-per-nvme/
+# pveceph does not support multiple OSDs per device. Use ceph-volume lvm batch instead.
+#
+# IMPORTANT: ceph-volume lvm batch requires clean devices. If transitioning from pveceph
+# to ceph-volume, existing OSDs must be destroyed first using ceph-volume lvm zap --destroy
 
-- name: Create multiple OSDs per device using size parameter
-  ansible.builtin.command: >
-    pveceph osd create {{ item.0.device }}
-    {% if item.0.device_size_gb is defined %}--size {{ (item.0.device_size_gb | int / item.0.partitions | int) }}G{% endif %}
-    {% if item.0.db_device is defined and item.0.db_device %}--db_dev {{ item.0.db_device }}{% endif %}
-    {% if item.0.wal_device is defined and item.0.wal_device %}--wal_dev {{ item.0.wal_device }}{% endif %}
-    {% if item.0.crush_device_class is defined %}--crush-device-class {{ item.0.crush_device_class }}{% endif %}
-  with_subelements:
-    - "{{ osd_device_partitions | default([]) }}"
-    - partition_indices
-  loop_control:
-    label: "{{ item.0.device }} partition {{ item.1 }}"
+- name: Identify devices requiring multiple OSDs (partitions > 1)
+  ansible.builtin.set_fact:
+    multi_osd_devices: "{{ ceph_osds[inventory_hostname_short] | default([]) | selectattr('partitions', 'defined') | selectattr('partitions', 'gt', 1) | list }}"
+
+- name: Check for conflicting OSD configuration
+  ansible.builtin.debug:
+    msg: |
+      WARNING: This node has {{ existing_osd_ids | default([]) | length }} existing OSDs but expects {{ expected_osd_count }}.
+      If switching from single OSDs (pveceph) to multiple OSDs per device (ceph-volume),
+      you must first destroy existing OSDs and re-zap the devices.
   when:
-    - osd_device_partitions | default([]) | length > 0
+    - multi_osd_devices | length > 0
+    - existing_osd_ids | default([]) | length > 0
+    - existing_osd_ids | default([]) | length != expected_osd_count | int
+
+- name: Display multi-OSD device plan
+  ansible.builtin.debug:
+    msg: |
+      Devices requiring multiple OSDs: {{ multi_osd_devices | length }}
+      {% for device in multi_osd_devices %}
+      - {{ device.device }}: {{ device.partitions }} OSDs
+      {% endfor %}
+  when: multi_osd_devices | length > 0
+
+- name: Create multiple OSDs per device using ceph-volume lvm batch
+  ansible.builtin.command: >
+    ceph-volume lvm batch
+    --osds-per-device {{ item.partitions }}
+    {% if item.crush_device_class is defined %}--crush-device-class {{ item.crush_device_class }}{% endif %}
+    {% if item.db_device is defined and item.db_device %}--db-devices {{ item.db_device }}{% endif %}
+    {% if item.wal_device is defined and item.wal_device %}--wal-devices {{ item.wal_device }}{% endif %}
+    --yes
+    {{ item.device }}
+  loop: "{{ multi_osd_devices }}"
+  loop_control:
+    label: "{{ item.device }} ({{ item.partitions }} OSDs)"
+  when:
+    - multi_osd_devices | length > 0
     - existing_osd_ids | default([]) | length < expected_osd_count | int
-  register: osd_create_partition
-  changed_when: "'successfully created' in osd_create_partition.stdout | default('')"
+  register: osd_create_batch
+  changed_when: "'Created' in osd_create_batch.stdout | default('') or 'created' in osd_create_batch.stdout | default('')"
   failed_when:
-    - osd_create_partition.rc != 0
-    - "'already in use' not in osd_create_partition.stderr | default('')"
-    - "'No space left' not in osd_create_partition.stderr | default('')"
+    - osd_create_batch.rc != 0
+    - "'already created' not in osd_create_batch.stderr | default('')"
+    - "'already exists' not in osd_create_batch.stderr | default('')"
 
 - name: Wait for OSDs to come up
   ansible.builtin.command: ceph osd tree --format json
@@ -93,7 +114,7 @@
   retries: 20
   delay: 10
   when:
-    - osd_create_whole is changed or osd_create_partition is changed
+    - osd_create_whole is changed or osd_create_batch is changed
 
 - name: Get final OSD count for this node
   ansible.builtin.shell: |

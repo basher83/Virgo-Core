@@ -35,3 +35,42 @@
 - name: Display CEPH initialization status
   ansible.builtin.debug:
     msg: "CEPH cluster initialized with public network {{ ceph_network }} and cluster network {{ ceph_cluster_network }}"
+
+# Fix Bug #11: Ensure bootstrap-osd keyring exists for OSD creation
+# Reference: https://forum.proxmox.com/threads/recfreating-ceph-cannot-create-osd.73259/
+# The bootstrap-osd keyring is required by pveceph osd create but may not be
+# created automatically by pveceph init in all scenarios
+
+- name: Ensure bootstrap-osd directory exists
+  ansible.builtin.file:
+    path: /var/lib/ceph/bootstrap-osd
+    state: directory
+    mode: '0755'
+    owner: ceph
+    group: ceph
+
+- name: Check if bootstrap-osd keyring exists
+  ansible.builtin.stat:
+    path: /var/lib/ceph/bootstrap-osd/ceph.keyring
+  register: bootstrap_keyring_check
+
+- name: Create bootstrap-osd keyring if missing
+  ansible.builtin.shell: |
+    set -o pipefail
+    ceph auth get client.bootstrap-osd > /var/lib/ceph/bootstrap-osd/ceph.keyring
+  args:
+    executable: /bin/bash
+  when: not bootstrap_keyring_check.stat.exists
+  register: bootstrap_keyring_create
+  changed_when: bootstrap_keyring_create.rc == 0
+  failed_when:
+    - bootstrap_keyring_create.rc != 0
+    - "'does not exist' not in bootstrap_keyring_create.stderr"
+
+- name: Set correct permissions on bootstrap-osd keyring
+  ansible.builtin.file:
+    path: /var/lib/ceph/bootstrap-osd/ceph.keyring
+    mode: '0600'
+    owner: ceph
+    group: ceph
+  when: not bootstrap_keyring_check.stat.exists or bootstrap_keyring_create is changed
