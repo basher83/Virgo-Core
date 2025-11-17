@@ -244,7 +244,7 @@ ceph_pools:
 
 - name: Enable CEPH dashboard module
   ansible.builtin.command:
-    cmd: ceph mgr module enable dashboard
+    cmd: ceph mgr module enable dashboard --force
   delegate_to: "{{ groups[cluster_group][0] }}"
   run_once: true
   register: dashboard_enable
@@ -253,6 +253,20 @@ ceph_pools:
     - dashboard_enable.rc != 0
     - "'already enabled' not in dashboard_enable.stderr"
 ```
+
+**CRITICAL:** Always use `--force` flag for module enablement! Without it, you'll encounter:
+
+```
+Error ENOENT: all mgr daemons do not support module 'dashboard', pass --force to force enablement
+```
+
+**Why:** Known CEPH race condition during manager initialization (especially Octopus/Pacific+). The manager daemon may not have fully loaded all module capabilities when Ansible tries to enable modules. The `--force` flag bypasses this check.
+
+**References:**
+- kolla-ansible fix: [commit 361f61d4](https://opendev.org/openstack/kolla-ansible/commit/361f61d4a9fe91a138c21e0a51f54c5e52d83aaa)
+- ceph-ansible issue: [#3100](https://github.com/ceph/ceph-ansible/issues/3100)
+
+**Testing Insight:** This error only appears during actual execution, not in check mode! Always test with real runs.
 
 ## Pattern: Automated OSD Creation with Partitioning
 

@@ -2,7 +2,7 @@
 # Verify prerequisites for cluster formation
 
 - name: Check if Proxmox VE is installed
-  ansible.builtin.command: pvecm --version
+  ansible.builtin.command: dpkg -l proxmox-ve
   register: pvecm_check
   changed_when: false
   failed_when: pvecm_check.rc != 0

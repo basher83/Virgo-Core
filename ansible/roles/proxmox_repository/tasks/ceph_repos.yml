@@ -14,6 +14,14 @@
     mode: '0644'
     validate_certs: "{{ validate_certs | default(true) }}"
 
+- name: Remove pre-existing CEPH repository files (DEB822 format)
+  ansible.builtin.file:
+    path: "/etc/apt/sources.list.d/{{ item }}"
+    state: absent
+  loop:
+    - ceph.sources
+    - pve-enterprise.sources
+
 - name: Enable CEPH repository with signed-by
   ansible.builtin.apt_repository:
     repo: "deb [signed-by=/etc/apt/keyrings/proxmox-{{ ansible_distribution_release }}.gpg] http://download.proxmox.com/debian/ceph-{{ ceph_version }} {{ ansible_distribution_release }} no-subscription"

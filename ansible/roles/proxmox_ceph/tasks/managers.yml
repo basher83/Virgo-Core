@@ -23,7 +23,7 @@
 - name: Wait for manager to be active
   ansible.builtin.shell: |
     set -o pipefail
-    ceph mgr services | grep "{{ inventory_hostname_short }}"
+    ceph mgr dump -f json | grep -q "\"active_name\": \"{{ inventory_hostname_short }}\""
   args:
     executable: /bin/bash
   register: mgr_status
@@ -31,6 +31,7 @@
   retries: 10
   delay: 5
   changed_when: false
+  when: mgr_create is changed
 
 - name: Display manager status
   ansible.builtin.debug:

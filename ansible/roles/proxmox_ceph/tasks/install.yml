@@ -16,11 +16,6 @@
     - ceph_install.rc != 0
     - "'already installed' not in ceph_install.stderr"
 
-- name: Wait for CEPH installation to complete
-  ansible.builtin.wait_for:
-    timeout: 300
-  when: ceph_install is changed
-
 - name: Verify CEPH installation
   ansible.builtin.command: ceph --version
   register: ceph_version_check

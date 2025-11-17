@@ -12,7 +12,7 @@
   failed_when: false
 
 - name: Enable CEPH dashboard module
-  ansible.builtin.command: ceph mgr module enable dashboard
+  ansible.builtin.command: ceph mgr module enable dashboard --force
   when: "'not_enabled' in dashboard_check.stdout"
   register: dashboard_enable
   changed_when: dashboard_enable.rc == 0
@@ -31,7 +31,7 @@
   failed_when: false
 
 - name: Enable Prometheus module
-  ansible.builtin.command: ceph mgr module enable prometheus
+  ansible.builtin.command: ceph mgr module enable prometheus --force
   when: "'not_enabled' in prometheus_check.stdout"
   register: prometheus_enable
   changed_when: prometheus_enable.rc == 0

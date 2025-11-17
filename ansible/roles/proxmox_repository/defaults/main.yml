@@ -12,7 +12,7 @@ proxmox_test_repo: false
 
 # CEPH version (squid for PVE 9.x)
 ceph_version: "squid"
-ceph_repo_enabled: true
+ceph_repo_enabled: false  # Let pveceph install manage CEPH repos
 
 # Package management
 proxmox_packages:

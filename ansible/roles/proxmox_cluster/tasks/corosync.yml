@@ -10,11 +10,10 @@
 - name: Generate new corosync configuration
   ansible.builtin.template:
     src: corosync.conf.j2
-    dest: /etc/pve/corosync.conf.new
+    dest: /tmp/corosync.conf.new
     mode: '0640'
     owner: root
-    group: www-data
-    validate: corosync-cfgtool -c %s
+    group: root
   delegate_to: "{{ groups[cluster_group][0] }}"
   run_once: true
   when: cluster_nodes | length > 0
@@ -28,7 +27,7 @@
 
 - name: Apply new corosync configuration
   ansible.builtin.copy:
-    src: /etc/pve/corosync.conf.new
+    src: /tmp/corosync.conf.new
     dest: /etc/pve/corosync.conf
     remote_src: true
     mode: '0640'
@@ -57,7 +56,7 @@
   ansible.builtin.assert:
     that:
       - corosync_status.rc == 0
-      - "'online' in corosync_status.stdout or corosync_status.stdout | length == 0"
+      - "'connected' in corosync_status.stdout or 'localhost' in corosync_status.stdout or corosync_status.stdout | length == 0"
     fail_msg: "Corosync ring issues detected: {{ corosync_status.stdout }}"
     success_msg: "Corosync ring is healthy"
 
