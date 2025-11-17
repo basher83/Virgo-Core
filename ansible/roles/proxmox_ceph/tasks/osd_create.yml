@@ -117,22 +117,23 @@
     - osd_create_whole is changed or osd_create_batch is changed
 
 - name: Get final OSD count for this node
-  ansible.builtin.shell: |
-    set -o pipefail
-    ceph osd tree | grep "{{ inventory_hostname_short }}" | grep -c "osd\." || echo "0"
-  args:
-    executable: /bin/bash
-  register: final_osd_count
+  ansible.builtin.command: ceph osd tree --format json
+  register: final_osd_tree_json
   changed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+
+- name: Parse final OSD count for this node
+  ansible.builtin.set_fact:
+    final_osd_count: "{{ (final_osd_tree_json.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | list | length }}"
 
 - name: Verify OSD count matches expectation
   ansible.builtin.assert:
     that:
-      - final_osd_count.stdout | int >= expected_osd_count | int
-    fail_msg: "Expected {{ expected_osd_count }} OSDs, but only {{ final_osd_count.stdout }} are active"
+      - final_osd_count | int >= expected_osd_count | int
+    fail_msg: "Expected {{ expected_osd_count }} OSDs, but only {{ final_osd_count }} are active"
     success_msg: "All {{ expected_osd_count }} OSDs successfully created and active"
   when: not ansible_check_mode
 
 - name: Display OSD creation status
   ansible.builtin.debug:
-    msg: "OSDs on {{ inventory_hostname }}: {{ final_osd_count.stdout }}/{{ expected_osd_count }} OSDs active"
+    msg: "OSDs on {{ inventory_hostname }}: {{ final_osd_count }}/{{ expected_osd_count }} OSDs active"

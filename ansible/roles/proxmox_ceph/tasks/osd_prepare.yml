@@ -26,6 +26,22 @@
     msg: "OSD devices on {{ inventory_hostname }}: {{ ceph_osds[inventory_hostname_short] | map(attribute='device') | list | join(', ') }}"
   when: ceph_osds[inventory_hostname_short] is defined
 
+- name: Check for existing OSDs on this node before zapping
+  ansible.builtin.command: ceph osd tree --format json
+  register: existing_osds_check
+  changed_when: false
+  failed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+  when: ceph_allow_zap_devices | default(false) | bool
+
+- name: Parse existing OSD count before zapping
+  ansible.builtin.set_fact:
+    existing_osds_before_zap: "{{ (existing_osds_check.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | list | length }}"
+  when:
+    - ceph_allow_zap_devices | default(false) | bool
+    - existing_osds_check.rc == 0
+    - existing_osds_check.stdout | length > 0
+
 - name: Wipe existing partitions on OSD devices (wipefs)
   ansible.builtin.command: wipefs -a {{ item.device }}
   loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
@@ -46,6 +62,7 @@
   when:
     - ceph_allow_zap_devices | default(false) | bool
     - not (ceph_wipe_disks | default(false) | bool)
+    - existing_osds_before_zap | default(0) | int == 0
   loop_control:
     label: "{{ item.device }}"
   register: device_zap
