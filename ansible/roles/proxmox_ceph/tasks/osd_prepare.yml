@@ -37,10 +37,19 @@
 - name: Parse existing OSD count before zapping
   ansible.builtin.set_fact:
     existing_osds_before_zap: "{{ (existing_osds_check.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | list | length }}"
+    osd_count_check_successful: true
   when:
     - ceph_allow_zap_devices | default(false) | bool
     - existing_osds_check.rc == 0
     - existing_osds_check.stdout | length > 0
+
+- name: Set safe default if OSD count check failed
+  ansible.builtin.set_fact:
+    existing_osds_before_zap: 999  # High number prevents zapping
+    osd_count_check_successful: false
+  when:
+    - ceph_allow_zap_devices | default(false) | bool
+    - existing_osds_check.rc != 0 or existing_osds_check.stdout | length == 0
 
 - name: Wipe existing partitions on OSD devices (wipefs)
   ansible.builtin.command: wipefs -a {{ item.device }}
@@ -62,7 +71,8 @@
   when:
     - ceph_allow_zap_devices | default(false) | bool
     - not (ceph_wipe_disks | default(false) | bool)
-    - existing_osds_before_zap | default(0) | int == 0
+    - osd_count_check_successful | default(false) | bool
+    - existing_osds_before_zap | int == 0
   loop_control:
     label: "{{ item.device }}"
   register: device_zap

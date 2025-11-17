@@ -35,6 +35,7 @@
   when:
     - not ansible_check_mode
     - ansible_play_hosts | length == groups[cluster_group] | length
+    - cluster_status.rc == 0
 
 - name: Verify expected number of nodes
   ansible.builtin.assert:
@@ -45,6 +46,7 @@
   when:
     - not ansible_check_mode
     - ansible_play_hosts | length == groups[cluster_group] | length
+    - cluster_status.rc == 0
 
 - name: Display cluster health summary
   ansible.builtin.debug:
