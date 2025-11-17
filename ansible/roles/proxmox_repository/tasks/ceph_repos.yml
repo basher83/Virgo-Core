@@ -12,6 +12,7 @@
     url: "https://download.proxmox.com/debian/proxmox-release-{{ ansible_distribution_release }}.gpg"
     dest: "/etc/apt/keyrings/proxmox-{{ ansible_distribution_release }}.gpg"
     mode: '0644'
+    validate_certs: "{{ validate_certs | default(true) }}"
 
 - name: Enable CEPH repository with signed-by
   ansible.builtin.apt_repository:
@@ -28,4 +29,4 @@
     - ceph-pacific.list
     - ceph-quincy.list
     - ceph-reef.list
-  when: item != "ceph-{{ ceph_version }}.list"
+  when: item != "ceph-" ~ ceph_version ~ ".list"

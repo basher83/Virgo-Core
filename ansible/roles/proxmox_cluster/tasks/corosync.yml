@@ -36,6 +36,7 @@
     group: www-data
   when:
     - corosync_needs_update | default(false)
+    - not ansible_check_mode
   notify: reload corosync
   delegate_to: "{{ groups[cluster_group][0] }}"
   run_once: true

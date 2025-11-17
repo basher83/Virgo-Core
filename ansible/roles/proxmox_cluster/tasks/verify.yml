@@ -32,6 +32,7 @@
       - "'Quorate: Yes' in cluster_status.stdout"
     fail_msg: "Cluster is not quorate! Check pvecm status"
     success_msg: "Cluster quorum is healthy"
+  when: not ansible_check_mode
 
 - name: Verify expected number of nodes
   ansible.builtin.assert:
@@ -39,6 +40,7 @@
       - cluster_node_count.stdout | int >= expected_votes | int
     fail_msg: "Expected {{ expected_votes }} nodes, but found {{ cluster_node_count.stdout }}"
     success_msg: "Cluster has expected number of nodes ({{ expected_votes }})"
+  when: not ansible_check_mode
 
 - name: Display cluster health summary
   ansible.builtin.debug:

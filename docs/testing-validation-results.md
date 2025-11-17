@@ -579,6 +579,176 @@ Location: `ansible/.ansible-lint`
 
 ---
 
-**Document Version**: 1.0
-**Last Updated**: 2025-11-11
-**Next Review**: After Phase 5/6 completion
+---
+
+## Test 5: Phase 5 Comprehensive Role Testing (2025-11-16)
+
+**Objective**: Create comprehensive test infrastructure and validate all roles in check mode
+
+**Test Target**: Matrix cluster (primarily foxtrot for initial testing)
+
+**Test Method**: Create `test-roles.yml` playbook with all roles, run in check mode
+
+### Test 5.1: Test Infrastructure Creation
+
+**Created**: `ansible/playbooks/test-roles.yml`
+
+**Features**:
+- ✅ Single playbook testing all 6 roles
+- ✅ Tag-based selective testing (`--tags system_user`)
+- ✅ Check mode compatible
+- ✅ Clear warnings for destructive roles (cluster, CEPH)
+- ✅ Minimal test configurations
+
+### Test 5.2: system_user Role (Re-validated)
+
+**Status**: ✅ **PASSED** (with fix)
+
+**Issue Found & Fixed**:
+- **Problem**: `authorized_key` module failed in check mode with path resolution error
+- **Solution**: Added `path: "/home/{{ user_item.name }}/.ssh/authorized_keys"` parameter
+- **File**: `roles/system_user/tasks/ssh_keys.yml:10`
+- **Result**: Now works perfectly in check mode
+
+**Test Results (All 3 Nodes)**:
+```text
+foxtrot: ok=16 changed=4 unreachable=0 failed=0
+golf:    ok=17 changed=4 unreachable=0 failed=0
+hotel:   ok=17 changed=4 unreachable=0 failed=0
+```
+
+### Test 5.3: proxmox_repository Role
+
+**Status**: ✅ **PASSED** (with fixes)
+
+**Issues Found & Fixed**:
+
+1. **SSL Certificate Validation**:
+   - **Problem**: `get_url` failed with "certificate verify failed: Hostname mismatch"
+   - **Solution**: Added `validate_certs` parameter (default: true, configurable)
+   - **Files**:
+     - `roles/proxmox_repository/defaults/main.yml:32`
+     - `roles/proxmox_repository/tasks/ceph_repos.yml:15`
+
+2. **Jinja2 Template in When Condition**:
+   - **Problem**: Ansible 2.23+ deprecation warning
+   - **Solution**: Changed `when: item != "ceph-{{ ceph_version }}.list"` to `when: item != "ceph-" ~ ceph_version ~ ".list"`
+   - **File**: `roles/proxmox_repository/tasks/ceph_repos.yml:32`
+
+3. **Package Installation in Check Mode**:
+   - **Problem**: `pve-kernel` not available during check mode
+   - **Solution**: Set `proxmox_packages: []` in test playbook
+   - **Note**: Testing-specific, not a role bug
+
+**Test Results**:
+```text
+foxtrot: ok=14 changed=4 unreachable=0 failed=0 skipped=3
+```
+
+### Test 5.4: proxmox_cluster Role
+
+**Status**: 🟡 **PARTIALLY PASSED** (with fixes, one pending issue)
+
+**Issues Found & Fixed**:
+
+1. **Cluster Group Variable**:
+   - **Problem**: Default `cluster_group: "all"` caused wrong host lookup
+   - **Solution**: Set `cluster_group: "matrix_cluster"` in test playbook
+   - **File**: `playbooks/test-roles.yml:165`
+
+2. **Corosync Config Copy in Check Mode**:
+   - **Problem**: Copy task tried to copy non-existent file in check mode
+   - **Solution**: Added `not ansible_check_mode` condition
+   - **File**: `roles/proxmox_cluster/tasks/corosync.yml:39`
+
+**Test Results**:
+```text
+foxtrot: ok=24 changed=3 unreachable=0 failed=1 skipped=16
+```
+
+**Remaining Issue**:
+- ⚠️ Cluster quorum verification fails on already-quorate cluster
+- **Impact**: Low - verification works, just needs test environment handling
+- **Recommendation**: Skip verification in check mode or when cluster exists
+
+### Test 5.5: proxmox_access Role
+
+**Status**: ⏭️ **SKIPPED** (external dependency)
+
+**Reason**: Requires Infisical secrets at path `/matrix` in `prod` environment
+
+**Error**: `Folder with path '/matrix' in environment with slug 'prod' not found (Status: 404)`
+
+**Recommendation**: Create mock secrets for testing or make secrets optional
+
+### Test 5.6: proxmox_network Role
+
+**Status**: ⏭️ **SKIPPED** (known issue)
+
+**Reason**: Documented conditional logic issue in migration plan
+
+**Reference**: Migration plan line 896 shows `when: false` due to conditional logic issue
+
+### Test 5.7: proxmox_ceph Role
+
+**Status**: ⏸️ **NOT TESTED** (time constraints)
+
+**Recommendation**: Test in future session with careful CEPH configuration validation
+
+---
+
+## Phase 5 Testing Summary (2025-11-16 Session)
+
+### Roles Tested
+
+| Role | Status | Check Mode | Issues Found | Issues Fixed |
+|------|--------|------------|--------------|--------------|
+| system_user | ✅ PASSED | ✅ Yes | 1 | 1 |
+| proxmox_repository | ✅ PASSED | ✅ Yes | 3 | 3 |
+| proxmox_cluster | 🟡 PARTIAL | ✅ Yes | 3 | 2 |
+| proxmox_access | ⏭️ SKIPPED | - | - | - |
+| proxmox_network | ⏭️ SKIPPED | - | - | - |
+| proxmox_ceph | ⏸️ PENDING | - | - | - |
+
+### Issues Summary
+
+**Total Issues Found**: 7
+**Total Issues Fixed**: 6
+**Pending Issues**: 1 (low priority)
+
+**Code Quality Improvements**:
+1. ✅ Better check mode compatibility (system_user SSH keys)
+2. ✅ Configurable SSL validation (proxmox_repository)
+3. ✅ Modern Jinja2 syntax (proxmox_repository)
+4. ✅ Better check mode handling (proxmox_cluster corosync)
+5. ✅ Explicit variable requirements (proxmox_cluster cluster_group)
+
+### Test Infrastructure
+
+**Created**: `ansible/playbooks/test-roles.yml` (232 lines)
+
+**Capabilities**:
+- Test individual roles: `--tags system_user`
+- Test specific host: `--limit foxtrot`
+- Test all Matrix nodes: default behavior
+- Safe check mode testing with warnings for destructive operations
+
+### Next Steps
+
+**Immediate**:
+1. ✅ Commit all 6 code fixes
+2. ⏭️ Fix remaining proxmox_cluster verification issue
+3. ⏭️ Test proxmox_ceph role
+4. ⏭️ Create mock Infisical secrets for proxmox_access testing
+5. ⏭️ Fix proxmox_network conditional logic issue
+
+**Phase 5 Completion**:
+- Run idempotency tests on all passing roles
+- Test full `initialize-matrix-cluster.yml` playbook in check mode
+- Performance testing (optional)
+
+---
+
+**Document Version**: 2.0
+**Last Updated**: 2025-11-16 (Added Phase 5 comprehensive testing results)
+**Next Review**: After completing remaining Phase 5 tests

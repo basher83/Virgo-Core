@@ -7,6 +7,7 @@
     user: "{{ user_item.name }}"
     key: "{{ item }}"
     state: present
+    path: "/home/{{ user_item.name }}/.ssh/authorized_keys"
   loop: "{{ user_item.ssh_keys }}"
   loop_control:
     label: "{{ item | regex_search('\\s+(.*)$', '\\1') | first | default('SSH key') }}"

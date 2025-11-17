@@ -27,3 +27,6 @@ auto_remove_old_kernels: false
 
 # APT cache update
 update_apt_cache: true
+
+# SSL/TLS certificate validation
+validate_certs: true
