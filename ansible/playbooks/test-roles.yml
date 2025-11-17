@@ -116,7 +116,6 @@
         - name: Verify test completed
           ansible.builtin.debug:
             msg: "✓ proxmox_network role test completed"
-      when: false  # Disabled by default due to conditional logic issue
 
     # =========================================================================
     # Test 4: proxmox_access role
