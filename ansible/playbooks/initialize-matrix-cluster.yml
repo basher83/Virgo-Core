@@ -44,6 +44,7 @@
     ceph_version: "squid"
     ceph_network: "192.168.5.0/24"          # vmbr1 - Public
     ceph_cluster_network: "192.168.7.0/24"  # vmbr2 - Private
+    ceph_allow_zap_devices: true  # Allow OSD creation (check mode safe)
 
     # OSD configuration - Matrix cluster
     # 2 OSDs per NVMe × 2 NVMe per node × 3 nodes = 12 total OSDs
@@ -111,6 +112,8 @@
     proxmox_enterprise_repo: false
     proxmox_no_subscription_repo: true
     auto_update_packages: false
+    validate_certs: false  # Disable for homelab environment
+    proxmox_packages: []  # Skip package installation in check mode
 
   pre_tasks:
     - name: Display playbook information

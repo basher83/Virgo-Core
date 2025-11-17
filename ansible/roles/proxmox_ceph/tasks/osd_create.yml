@@ -11,7 +11,9 @@
 - name: Parse existing OSD count for this node
   ansible.builtin.set_fact:
     existing_osd_ids: "{{ (existing_osds_json.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | default([]) }}"
-  when: existing_osds_json.rc == 0
+  when:
+    - existing_osds_json.rc == 0
+    - existing_osds_json.stdout | length > 0
 
 - name: Calculate expected OSD count for this node
   ansible.builtin.set_fact:
@@ -29,7 +31,7 @@
   ansible.builtin.command: >
     pveceph osd create {{ item.device }}
     {% if item.db_device is defined and item.db_device %}--db_dev {{ item.db_device }}{% endif %}
-    {% if item.wal_device is defined and item.wal_device %}--wal_dev {{ item.wal_device %}{% endif %}
+    {% if item.wal_device is defined and item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %}
     {% if item.crush_device_class is defined %}--crush-device-class {{ item.crush_device_class }}{% endif %}
   loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
   loop_control:
@@ -108,6 +110,7 @@
       - final_osd_count.stdout | int >= expected_osd_count | int
     fail_msg: "Expected {{ expected_osd_count }} OSDs, but only {{ final_osd_count.stdout }} are active"
     success_msg: "All {{ expected_osd_count }} OSDs successfully created and active"
+  when: not ansible_check_mode
 
 - name: Display OSD creation status
   ansible.builtin.debug:

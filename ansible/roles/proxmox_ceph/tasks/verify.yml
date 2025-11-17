@@ -31,7 +31,9 @@
       - "'HEALTH_OK' in ceph_status.stdout or 'HEALTH_WARN' in ceph_status.stdout"
     fail_msg: "CEPH health check failed. Status: {{ ceph_status.stdout }}"
     success_msg: "CEPH cluster is healthy"
-  when: expected_health_status == "HEALTH_OK"
+  when:
+    - expected_health_status == "HEALTH_OK"
+    - not ansible_check_mode
 
 - name: Display CEPH health summary
   ansible.builtin.debug:
