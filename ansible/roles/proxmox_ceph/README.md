@@ -284,6 +284,33 @@ ansible-playbook playbooks/deploy-ceph.yml
 
 ```
 
+## Recent Improvements
+
+### Idempotency Fixes (Nov 2025)
+
+Two critical idempotency bugs were identified and fixed during testing:
+
+**Bug #13: Destructive OSD Zap Logic** (`tasks/osd_prepare.yml`)
+
+- **Issue**: Zap task attempted to destroy active OSDs when variable check failed
+- **Impact**: "umount: /var/lib/ceph/osd/ceph-0: target is busy" errors on re-runs
+- **Fix**: Added `osd_count_check_successful` flag and defensive fallback (defaults to 999 to prevent zapping)
+- **Result**: Safe OSD handling - zapping only occurs when explicitly safe (check succeeds AND zero OSDs exist)
+
+**Bug #14: Cluster Quorum Verification** (via `proxmox_cluster` role)
+
+- **Issue**: Quorum verification failed when running with `--limit` on subset of nodes
+- **Impact**: Playbook failed on single-node idempotency tests
+- **Fix**: Added `cluster_status.rc == 0` condition to skip quorum checks when pvecm status fails
+- **Result**: Playbook completes successfully on partial cluster runs
+
+**Idempotency Test Results:**
+
+- Before fixes: `failed=1` (75-104 tasks completed)
+- After fixes: `ok=104 changed=3 failed=0 skipped=32` (full idempotency achieved)
+
+**Commit**: `d4af18b` - fix(ansible): Critical idempotency bugs in OSD zap and cluster quorum checks
+
 ## License
 
 MIT
