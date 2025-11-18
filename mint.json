@@ -1,0 +1,59 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Virgo-Core",
+  "theme": "linden",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#00DC82",
+    "light": "#07C983",
+    "dark": "#00AE68",
+    "background": {
+      "dark": "#0F172A"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "GitHub",
+      "url": "https://github.com/basher83/Virgo-Core"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "v1.0.0",
+    "url": "https://github.com/basher83/Virgo-Core/releases/tag/v1.0.0"
+  },
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "index",
+        "documentation/goals",
+        "documentation/infrastructure"
+      ]
+    },
+    {
+      "group": "Ansible Architecture",
+      "pages": [
+        "documentation/ansible-philosophy",
+        "documentation/ansible-role-design",
+        "documentation/ansible-playbook-design",
+        "documentation/ansible-migration-plan",
+        "documentation/ansible-migration-completion"
+      ]
+    },
+    {
+      "group": "Integration & Testing",
+      "pages": [
+        "documentation/netbox-powerdns",
+        "documentation/testing-validation-results",
+        "documentation/references"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/basher83/Virgo-Core"
+  }
+}
