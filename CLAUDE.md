@@ -60,8 +60,71 @@ Both use the external module from `github.com/basher83/Triangulum-Prime//terrafo
 - **Secrets management**: Infisical integration (never commit secrets)
 - **VLAN-aware bridges**: Network bridges support VLANs
 
+## Multi-Agent Orchestration Patterns
+
+This repository has proven multi-agent patterns for high-quality, efficient work:
+
+### Pattern 1: Parallel Scout Agents
+
+For comprehensive codebase exploration, dispatch multiple general-purpose agents in parallel:
+
+```text
+Launch 5 scouts simultaneously:
+- Agent 1: Explore root-level docs
+- Agent 2: Explore docs/ directory
+- Agent 3: Explore ansible/ structure
+- Agent 4: Explore terraform/ layout
+- Agent 5: Explore scripts/ utilities
+```
+
+**Why**: Provides complete repo overview in one shot for strategic planning.
+
+### Pattern 2: Creation + Polish Pipeline
+
+For documentation tasks requiring quality writing:
+
+**Wave 1** - Create content in parallel (3+ agents)
+**Wave 2** - Polish with Elements of Style skill in parallel
+
+Each agent in Wave 2 must:
+
+1. **First** invoke `elements-of-style:writing-clearly-and-concisely` skill using Skill tool
+2. **Then** apply skill guidance to polish the document
+3. Report improvements made
+
+**Why**: Skills provide more rigorous guidance than natural language instructions.
+Caught 15+ improvements that "follow Strunk's principles" instruction missed.
+
+### Pattern 3: Research → Validate → Execute
+
+For technical configurations, use research tools before implementing:
+
+```bash
+./scripts/firecrawl_sdk_research.py "terraform-docs configuration usage" --limit 5
+```
+
+**Why**: Verify against official documentation instead of guessing. Prevents trial-and-error loops.
+
+### Pattern 4: Specialized Agents for Complex Workflows
+
+Use predefined agents for multi-step processes:
+
+- `commit-craft` - Creates atomic, conventional commits; discovers and fixes issues autonomously
+- `elements-of-style:writing-clearly-and-concisely` - Applies Strunk's principles rigorously
+
+**Why**: Specialized agents have workflows and can solve problems independently.
+
+### Key Learnings
+
+1. **Skills beat instructions**: Invoking skills > describing principles in prompts
+2. **Parallel > Sequential**: Multiple scouts exploring simultaneously >> one at a time
+3. **Verify don't guess**: Research first (firecrawl) before implementing
+4. **Let agents solve problems**: Agents discover and fix issues autonomously (e.g., pre-commit hooks)
+5. **General-purpose agents work**: Most tasks used on-demand general-purpose agents, not predefined subagents
+
 ## Documentation
 
+- **[docs/README.md](docs/README.md)** - Documentation index with "Start Here" guide
 - **[docs/infrastructure.md](docs/infrastructure.md)** - Detailed infrastructure specifications (hardware, networking, storage)
 - **[docs/goals.md](docs/goals.md)** - Project goals and roadmap
 - **[docs/ansible-migration-plan.md](docs/ansible-migration-plan.md)** - Ansible role development plan
