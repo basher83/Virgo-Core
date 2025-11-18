@@ -1,57 +1,43 @@
 # Ansible Role: proxmox_access
 
-Manage Proxmox VE access control including custom roles, groups, users, API tokens,
-and ACL permissions. This role is designed for infrastructure-as-code workflows,
-particularly Terraform/OpenTofu automation.
+Manages Proxmox VE access control including custom roles, groups, users, API tokens,
+and ACL permissions. The role supports infrastructure-as-code workflows,
+particularly Terraform and OpenTofu automation.
 
 ## Features
 
-- ✅ **Custom Role Management**: Create Proxmox roles with granular privilege sets
-
-- ✅ **Group Management**: Organize users into groups for easier permission management
-
-- ✅ **User Management**: Create/manage Proxmox users (PAM and PVE realms)
-
-- ✅ **API Token Generation**: Create API tokens for passwordless automation
-
-- ✅ **ACL Configuration**: Grant permissions to users/groups on specific resources
-
-- ✅ **Terraform Integration**: Export environment files for Terraform/OpenTofu
-
-- ✅ **Infisical Secrets**: Optional integration with Infisical for credential management
-
-- ✅ **Idempotent Operations**: Safe to run multiple times without side effects
-
-- ✅ **State-Based**: Supports both creation and removal via `state` parameter
+- **Custom Role Management**: Creates Proxmox roles with granular privilege sets
+- **Group Management**: Organizes users into groups for simplified permission management
+- **User Management**: Creates and manages Proxmox users in PAM and PVE realms
+- **API Token Generation**: Creates API tokens for passwordless automation
+- **ACL Configuration**: Grants permissions to users and groups on specific resources
+- **Terraform Integration**: Exports environment files for Terraform and OpenTofu
+- **Infisical Secrets**: Integrates with Infisical for credential management
+- **Idempotent Operations**: Runs multiple times without side effects
+- **State-Based**: Supports creation and removal via `state` parameter
 
 ## Requirements
 
 ### Ansible Version
 
 - Minimum: 2.15+
-
 - Tested: 2.17+
 
 ### Collections
 
 - `community.proxmox` - Proxmox VE modules
-
 - `infisical.vault` - Secrets management (optional)
-
 - `ansible.builtin` - Core modules
 
 ### Target Systems
 
 - Proxmox VE 8.x or 9.x
-
 - Debian 12 (Bookworm) or Ubuntu 22.04/24.04
-
-- Root/sudo access on Proxmox nodes
+- Root or sudo access on Proxmox nodes
 
 ### Prerequisites
 
 - For PAM users: Linux users must exist first (use `system_user` role)
-
 - For API operations: Admin credentials (root@pam or equivalent)
 
 ## Role Variables
@@ -209,8 +195,7 @@ None (but works best with `system_user` role for Linux user creation).
 - hosts: proxmox_nodes
   become: true
   roles:
-    # Step 1: Create Linux PAM user
-
+    # Create Linux PAM user
     - role: system_user
       vars:
         system_users:
@@ -222,8 +207,7 @@ None (but works best with `system_user` role for Linux user creation).
               - /sbin/qm
             sudo_nopasswd: true
 
-    # Step 2: Create Proxmox access
-
+    # Create Proxmox access
     - role: proxmox_access
       vars:
         proxmox_users:
@@ -310,7 +294,7 @@ uv run ansible-playbook playbooks/setup-terraform-automation.yml \
 
 ## Terraform Integration
 
-After running the role with `export_terraform_env: true`:
+After you run the role with `export_terraform_env: true`:
 
 ```bash
 
@@ -329,25 +313,23 @@ tofu apply
 The environment file exports:
 
 - `PROXMOX_VE_ENDPOINT` - API endpoint URL
-
 - `PROXMOX_VE_API_TOKEN` - Full API token value
-
 - `TF_VAR_proxmox_*` - Alternative Terraform variable format
 
 ## Task Breakdown
 
-The role is organized into modular task files:
+The role organizes tasks into modular files:
 
 | Task File | Purpose | Module Used |
 |-----------|---------|-------------|
 | `main.yml` | Orchestration | - |
-| `secrets.yml` | Retrieve Infisical credentials | `infisical.vault` |
-| `roles.yml` | Create custom Proxmox roles | `pveum` command |
-| `groups.yml` | Manage Proxmox groups | `community.proxmox.proxmox_group` |
-| `users.yml` | Manage Proxmox users | `pveum` command |
-| `tokens.yml` | Generate API tokens | `pveum` command |
-| `acls.yml` | Configure ACL permissions | `community.proxmox.proxmox_access_acl` |
-| `env_export.yml` | Export Terraform env files | `ansible.builtin.template` |
+| `secrets.yml` | Retrieves Infisical credentials | `infisical.vault` |
+| `roles.yml` | Creates custom Proxmox roles | `pveum` command |
+| `groups.yml` | Manages Proxmox groups | `community.proxmox.proxmox_group` |
+| `users.yml` | Manages Proxmox users | `pveum` command |
+| `tokens.yml` | Generates API tokens | `pveum` command |
+| `acls.yml` | Configures ACL permissions | `community.proxmox.proxmox_access_acl` |
+| `env_export.yml` | Exports Terraform env files | `ansible.builtin.template` |
 
 ## Privilege Reference
 
@@ -401,14 +383,11 @@ See [Proxmox VE documentation](https://pve.proxmox.com/wiki/User_Management) for
 
 ### Token Security
 
-⚠️ **API tokens are shown only once during creation**
+API tokens appear only once during creation.
 
 - Save token values immediately
-
-- Store securely (use Infisical, HashiCorp Vault, etc.)
-
-- Tokens are displayed in playbook output but can be suppressed with `proxmox_no_log: true`
-
+- Store securely (use Infisical, HashiCorp Vault, or similar tools)
+- Tokens appear in playbook output but can be suppressed with `proxmox_no_log: true`
 - Use `privsep: true` for tokens that need different permissions than the user
 
 ### Privilege Separation
@@ -427,40 +406,40 @@ proxmox_tokens:
 proxmox_tokens:
   - userid: terraform@pam
     tokenid: readonly
-    privsep: true  # Requires separate ACL for token
+    privsep: true  # Separate ACL required for token
 
 proxmox_acls:
   - path: /
     type: user
     ugid: terraform@pam!readonly  # Token-specific ACL
-
     roleid: PVEAuditor
 
 ```
 
 ### PAM vs PVE Realm
 
-- **PAM (@pam)**: Linux system users, requires Linux user to exist first
-  - ✅ Use for SSH + API access
-  - ✅ Integrates with system authentication
-  - ❌ Requires Linux user management
+**PAM (@pam)**: Linux system users
 
-- **PVE (@pve)**: Proxmox-only users, managed entirely in Proxmox
-  - ✅ API-only access, no SSH
-  - ✅ Easier to manage programmatically
-  - ❌ No system-level authentication
+- Provides SSH and API access
+- Integrates with system authentication
+- Requires Linux user management
+- Linux user must exist before Proxmox user creation
+
+**PVE (@pve)**: Proxmox-only users
+
+- Provides API-only access
+- Managed easily through programming
+- Managed entirely within Proxmox
+- Cannot use system-level authentication
 
 ## Idempotency
 
-This role is fully idempotent:
+This role operates idempotently:
 
-- ✅ Running twice produces no changes on second run
-
-- ✅ Checks existence before creating resources
-
-- ✅ Uses `changed_when` and `failed_when` appropriately
-
-- ✅ Gracefully handles "already exists" scenarios
+- Running twice produces no changes on the second run
+- Checks resource existence before creation
+- Uses `changed_when` and `failed_when` appropriately
+- Handles "already exists" scenarios gracefully
 
 Test idempotency:
 
@@ -526,7 +505,7 @@ curl -k -H "Authorization: PVEAPIToken=terraform@pam!automation=<token-value>" \
 
 **Error**: `pveum user token add` fails with "user does not exist"
 
-**Solution**: Ensure Proxmox user exists first. Check with:
+**Solution**: Create the Proxmox user first. Check with:
 
 ```bash
 ssh root@node pveum user list | grep terraform
@@ -537,7 +516,7 @@ ssh root@node pveum user list | grep terraform
 
 **Error**: `pveum user add terraform@pam` fails
 
-**Solution**: Linux user must exist first. Run `system_user` role before `proxmox_access`.
+**Solution**: Create the Linux user first. Run `system_user` role before `proxmox_access`.
 
 ### ACL Not Applied
 
@@ -556,24 +535,22 @@ ssh root@node pveum aclmod list
 
 **Solution**:
 
-1. Verify token was created: `pveum user token list terraform@pam`
-
-2. Check environment file has correct token value
-
+1. Verify token creation: `pveum user token list terraform@pam`
+2. Check environment file for correct token value
 3. Verify token has `privsep: false` or separate ACL if `privsep: true`
 
 ## Migration from Legacy Playbook
 
-This role replaces `proxmox-create-terraform-user.yml`:
+This role replaces `proxmox-create-terraform-user.yml`.
 
-**Old workflow**:
+Old workflow:
 
 ```bash
 ansible-playbook playbooks/proxmox-create-terraform-user.yml
 
 ```
 
-**New workflow**:
+New workflow:
 
 ```bash
 ansible-playbook playbooks/setup-terraform-automation.yml
@@ -582,24 +559,17 @@ ansible-playbook playbooks/setup-terraform-automation.yml
 
 The new playbook provides:
 
-- ✅ Better separation of concerns (Linux user vs Proxmox access)
-
-- ✅ Reusable role for other automation users
-
-- ✅ Clearer variable structure
-
-- ✅ Improved idempotency
-
-- ✅ Better error handling
+- Better separation of concerns (Linux user vs Proxmox access)
+- Reusable role for other automation users
+- Clearer variable structure
+- Improved idempotency
+- Better error handling
 
 ## Related Roles
 
-- **system_user**: Create Linux PAM users with SSH and sudo access
-
+- **system_user**: Creates Linux PAM users with SSH and sudo access
 - **proxmox_cluster**: Cluster formation and management (Phase 4)
-
 - **proxmox_network**: Network configuration (Phase 3)
-
 - **proxmox_ceph**: CEPH storage management (Phase 4)
 
 ## License

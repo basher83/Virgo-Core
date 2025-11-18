@@ -4,47 +4,32 @@ Manages CEPH distributed storage infrastructure for Proxmox VE.
 
 ## Description
 
-This role provides complete CEPH cluster lifecycle management:
+This role manages the complete CEPH cluster lifecycle:
 
-- CEPH package installation (Squid for PVE 9.x)
-
-- CEPH cluster initialization
-
-- Monitor (MON) deployment on all nodes
-
-- Manager (MGR) deployment on all nodes
-
-- **Automated OSD creation** from configuration (improves on ProxSpray)
-
-- CEPH pool creation with replication settings
-
-- CRUSH rule configuration
-
-- Health verification
+- Installs CEPH packages (Squid for PVE 9.x)
+- Initializes CEPH cluster
+- Deploys monitors (MON) on all nodes
+- Deploys managers (MGR) on all nodes
+- Creates OSDs automatically from configuration (improves on ProxSpray)
+- Creates CEPH pools with replication settings
+- Configures CRUSH rules
+- Verifies cluster health
 
 ## Key Features
 
-**Automated OSD Creation**: Unlike ProxSpray which requires manual OSD setup, this role
-automatically creates OSDs based on declarative configuration, including support for:
+**Automated OSD Creation**: ProxSpray requires manual OSD setup. This role creates OSDs automatically from declarative configuration. The role supports:
 
 - Multiple OSDs per disk (partitioning)
-
 - Separate DB and WAL devices
-
 - CRUSH device class assignment (nvme, ssd, hdd)
-
-- Idempotent OSD creation (won't recreate existing OSDs)
+- Idempotent OSD creation (skips existing OSDs)
 
 ## Requirements
 
 - Proxmox VE 9.x with cluster already formed
-
 - Root access or sudo privileges
-
 - Dedicated CEPH networks configured (public and private)
-
 - Unused block devices for OSD creation
-
 - Minimum 3 nodes for proper replication
 
 ## Role Variables
@@ -142,9 +127,7 @@ verify_ceph_health: true                # Verify health after deployment
 ## Dependencies
 
 - `proxmox_repository` - CEPH repositories must be configured
-
 - `proxmox_cluster` - Proxmox cluster must be formed first
-
 - `proxmox_network` - CEPH networks must be configured
 
 ## Example Playbook
@@ -185,39 +168,25 @@ verify_ceph_health: true                # Verify health after deployment
 
 ### WARNING: Destructive Operations
 
-- OSD creation is **destructive** - it will wipe the specified devices
-
-- Always backup data before running this role
-
-- Verify device paths carefully (typos can destroy data)
-
-- Test in a non-production environment first
+OSD creation destroys all data on the specified devices. Back up your data before running this role. Verify device paths carefully. A single typo destroys data. Test in a non-production environment first.
 
 **Best Practices**:
 
 1. Use dedicated high-speed networks for CEPH (10GbE minimum)
-
 2. Enable jumbo frames (MTU 9000) on CEPH networks
-
 3. Use odd number of nodes (3, 5, 7) for quorum
-
 4. Separate public and private CEPH networks
-
 5. Use NVMe or SSD devices for best performance
-
 6. Calculate PG numbers based on OSD count: `(OSDs * 100) / replica_size`
 
 ## Matrix Cluster Configuration
 
-For the Matrix cluster (3 nodes, 2� 4TB NVMe per node):
+For the Matrix cluster (3 nodes, 2 x 4TB NVMe per node):
 
 - **Total OSDs**: 12 (4 OSDs per node)
-
-- **Total raw capacity**: ~24TB (2� 4TB � 3 nodes)
-
-- **Usable capacity**: ~8TB (with 3� replication)
-
-- **PG calculation**: `(12 OSDs * 100) / 3 = 400` � Round to nearest power of 2 = 128 or 256
+- **Total raw capacity**: ~24TB (2 x 4TB x 3 nodes)
+- **Usable capacity**: ~8TB (with 3x replication)
+- **PG calculation**: `(12 OSDs * 100) / 3 = 400` - Round to nearest power of 2 = 128 or 256
 
 ## CEPH Operations
 
@@ -288,14 +257,14 @@ ansible-playbook playbooks/deploy-ceph.yml
 
 ### Idempotency Fixes (Nov 2025)
 
-Two critical idempotency bugs were identified and fixed during testing:
+Testing identified and fixed two critical idempotency bugs:
 
 **Bug #13: Destructive OSD Zap Logic** (`tasks/osd_prepare.yml`)
 
-- **Issue**: Zap task attempted to destroy active OSDs when variable check failed
+- **Issue**: The zap task attempted to destroy active OSDs when the variable check failed
 - **Impact**: "umount: /var/lib/ceph/osd/ceph-0: target is busy" errors on re-runs
 - **Fix**: Added `osd_count_check_successful` flag and defensive fallback (defaults to 999 to prevent zapping)
-- **Result**: Safe OSD handling - zapping only occurs when explicitly safe (check succeeds AND zero OSDs exist)
+- **Result**: Safe OSD handling - zapping occurs only when explicitly safe (check succeeds AND zero OSDs exist)
 
 **Bug #14: Cluster Quorum Verification** (via `proxmox_cluster` role)
 

@@ -4,13 +4,13 @@ Manages Proxmox VE and CEPH APT repository configuration.
 
 ## Description
 
-This role configures APT repositories for Proxmox VE and CEPH, including:
+This role configures APT repositories for Proxmox VE and CEPH:
 
-- Disabling Proxmox Enterprise repositories (requires subscription)
-- Enabling no-subscription repositories for community users
-- Configuring CEPH repositories (Squid for PVE 9.x)
-- Installing and updating Proxmox packages
-- Cleaning up old kernels
+- Disables Proxmox Enterprise repositories (subscription required)
+- Enables no-subscription repositories for community users
+- Configures CEPH repositories (Squid for PVE 9.x)
+- Installs and updates Proxmox packages
+- Cleans up old kernels
 
 ## Requirements
 
@@ -69,7 +69,7 @@ None
 
 ## Upgrade Notes
 
-For major version upgrades (e.g., PVE 8.x ’ 9.x):
+For major version upgrades (e.g., PVE 8.x to 9.x):
 
 1. Review Proxmox upgrade documentation
 2. Set `auto_update_packages: true` to upgrade packages

@@ -4,28 +4,20 @@ Manages Proxmox VE network infrastructure including bridges, VLANs, interfaces, 
 
 ## Description
 
-This role provides declarative configuration for Proxmox VE networking:
+This role configures Proxmox VE networking with these capabilities:
 
-- **Network Bridges**: Create and configure Linux bridges (vmbr0, vmbr1, etc.)
-
-- **VLAN Support**: Enable VLAN-aware bridges and create VLAN subinterfaces
-
-- **MTU Configuration**: Configure jumbo frames for storage networks
-
-- **IP Addressing**: Configure IP addresses and gateways
-
-- **Idempotent**: Safe to run multiple times without changes
-
-- **Verification**: Automatic post-configuration verification
+- Creates and configures Linux bridges (vmbr0, vmbr1, etc.)
+- Enables VLAN-aware bridges and creates VLAN subinterfaces
+- Configures jumbo frames for storage networks
+- Configures IP addresses and gateways
+- Runs multiple times without changes (idempotent)
+- Verifies configuration after changes
 
 ## Requirements
 
 - Proxmox VE 8.x or 9.x
-
 - Ansible 2.15+
-
-- Collections:
-  - `community.general` (for `interfaces_file` module)
+- `community.general` collection (provides `interfaces_file` module)
 
 ## Role Variables
 
@@ -34,21 +26,13 @@ This role provides declarative configuration for Proxmox VE networking:
 ```yaml
 proxmox_bridges:
   - name: vmbr0                        # Bridge interface name
-
     interface: enp4s0                  # Physical interface to bridge
-
     address: "192.168.3.5/24"          # IP address with CIDR
-
     gateway: 192.168.3.1               # Default gateway (optional)
-
     vlan_aware: true                   # Enable VLAN filtering (optional)
-
-    vlan_ids: [9]                      # VLAN IDs: list [9, 10] or string range "2-4094" (optional)
-
+    vlan_ids: [9]                      # VLAN IDs: list [9, 10] or range "2-4094" (optional)
     mtu: 1500                          # MTU size (optional)
-
     comment: "Management network"      # Documentation (optional)
-
 ```
 
 ### VLAN Configuration
@@ -56,36 +40,26 @@ proxmox_bridges:
 ```yaml
 proxmox_vlans:
   - id: 9                              # VLAN ID
-
     raw_device: vmbr0                  # Parent interface
-
     address: "192.168.8.5/24"          # IP address with CIDR
-
     comment: "Corosync network"        # Documentation (optional)
-
 ```
 
 ### Control Variables
 
 ```yaml
 proxmox_network_backup: true           # Backup config before changes
-
 proxmox_network_reload: true           # Auto-reload network
-
 proxmox_network_verify: true           # Verify configuration
-
 proxmox_network_dry_run: false         # Check mode without applying
-
 proxmox_network_interfaces_file: "/etc/network/interfaces"
-proxmox_network_default_mtu: 1500      # Standard MTU (fallback if item.mtu undefined)
-
-proxmox_network_jumbo_mtu: 9000        # Jumbo frames MTU (use in mtu: "{{ proxmox_network_jumbo_mtu }}")
-
+proxmox_network_default_mtu: 1500      # Standard MTU
+proxmox_network_jumbo_mtu: 9000        # Jumbo frames MTU
 ```
 
 ## Dependencies
 
-None. This is a foundational infrastructure role.
+None.
 
 ## Example Playbooks
 
@@ -133,15 +107,13 @@ None. This is a foundational infrastructure role.
 
 ```
 
-**Note:** `vlan_ids` accepts either:
+The `vlan_ids` parameter accepts three formats:
 
 - String range: `"2-4094"` (full VLAN range)
-
 - List of integers: `[9, 10, 20]` (specific VLANs)
+- List of strings: `["9", "10"]`
 
-- List of strings: `["9", "10"]` (also valid)
-
-The role automatically converts lists to comma-separated strings for the network configuration.
+The role converts lists to comma-separated strings.
 
 ### Complete Network Configuration (Matrix Cluster)
 
@@ -250,18 +222,13 @@ uv run ansible-playbook playbooks/configure-network.yml \
 
 ## Task Organization
 
-The role is organized into modular task files:
+The role organizes tasks into modular files:
 
 - `tasks/main.yml` - Entry point, orchestrates other tasks
-
 - `tasks/prerequisites.yml` - Validation and checks
-
 - `tasks/bridges.yml` - Bridge configuration
-
 - `tasks/vlans.yml` - VLAN subinterface configuration
-
 - `tasks/reload.yml` - Network reload logic
-
 - `tasks/verify.yml` - Post-configuration verification
 
 ## Handlers
@@ -271,55 +238,38 @@ The role is organized into modular task files:
 ## Tags
 
 - `proxmox_network` - All tasks
-
 - `prerequisites` - Prerequisite checks only
-
 - `bridges` - Bridge configuration only
-
 - `vlans` - VLAN configuration only
-
 - `reload` - Network reload only
-
 - `verify` - Verification only
-
 - `debug` - Debug output
 
 ## Network Configuration Behavior
 
 ### Backup
 
-When `proxmox_network_backup: true` (default), the role creates a backup of
-`/etc/network/interfaces` before making the first change. Subsequent changes
-in the same run do not create additional backups.
-
-Backups are stored as: `/etc/network/interfaces.<timestamp>`
+The role creates a backup of `/etc/network/interfaces` before the first change when `proxmox_network_backup: true` (default). The role stores backups as `/etc/network/interfaces.<timestamp>`. Subsequent changes in the same run skip backup creation.
 
 ### Reload
 
-Network configuration changes trigger the handler `Reload network interfaces`,
-which executes `ifreload -a` to apply changes without restarting networking
-entirely.
+Network configuration changes trigger the `Reload network interfaces` handler, which executes `ifreload -a` to apply changes without restarting the entire networking stack.
 
-**Warning**: Network reload may briefly interrupt connectivity. Use with
-caution on remote hosts.
+**Warning**: Network reload may briefly interrupt connectivity. Exercise caution on remote hosts.
 
 ### Idempotency
 
-The role uses the `community.general.interfaces_file` module which is
-idempotent. Running the role multiple times with the same configuration will
-not make unnecessary changes.
+The role uses the `community.general.interfaces_file` module, which operates idempotently. Running the role multiple times with identical configuration produces no changes.
 
 ## Verification
 
-Post-configuration verification includes:
+Post-configuration verification checks:
 
-1. **Bridge Status**: Verifies bridges are up and configured
+1. Bridge status: confirms bridges are up and configured
+2. VLAN status: confirms VLAN interfaces exist
+3. VLAN filtering: confirms VLAN filtering is enabled on bridges
 
-2. **VLAN Status**: Verifies VLAN interfaces are created
-
-3. **VLAN Filtering**: Checks VLAN filtering is enabled on bridges
-
-Verification failures do not cause the play to fail; they are reported for manual review.
+Verification failures appear in output but do not fail the play.
 
 ## Safety Features
 
@@ -327,11 +277,9 @@ Verification failures do not cause the play to fail; they are reported for manua
 
 The role validates:
 
-- Running on Proxmox VE (`/etc/pve` exists)
-
+- Proxmox VE installation (`/etc/pve` exists)
 - Network configuration file exists
-
-- `ifreload` command is available
+- `ifreload` command availability
 
 ### Dry Run Mode
 
@@ -347,7 +295,7 @@ Set `proxmox_network_dry_run: true` to skip actual configuration changes:
 
 ### Backup Before Changes
 
-Automatic backup is enabled by default (`proxmox_network_backup: true`).
+The role enables automatic backup by default (`proxmox_network_backup: true`).
 
 ## Advanced Configuration
 
@@ -398,11 +346,10 @@ proxmox_bridges:
 
 **Problem**: Changes made but network not updated
 
-**Solution**: Manually reload:
+**Solution**: Reload manually:
 
 ```bash
 ssh root@node ifreload -a
-
 ```
 
 ### Bridge Not Creating
@@ -412,9 +359,7 @@ ssh root@node ifreload -a
 **Check**:
 
 1. Physical interface exists: `ip link show enp4s0`
-
-2. Interface not already in use: `bridge link show`
-
+2. Interface not in use: `bridge link show`
 3. Network file syntax: `ifup -a --no-act`
 
 ### VLAN Not Working
@@ -436,11 +381,8 @@ ssh root@node ifreload -a
 **Recovery**:
 
 1. Access via Proxmox console (web UI)
-
 2. Check interface status: `ip addr show`
-
 3. Restore backup: `cp /etc/network/interfaces.<timestamp> /etc/network/interfaces`
-
 4. Reload: `ifreload -a`
 
 ### Verification Failures
@@ -450,10 +392,8 @@ ssh root@node ifreload -a
 **Check**:
 
 1. Review reload output for errors
-
 2. Check system logs: `journalctl -u networking`
-
-3. Manually verify: `ip addr show`
+3. Verify manually: `ip addr show`
 
 ## Migration from Old Playbook
 
@@ -494,35 +434,32 @@ This role replaces `proxmox-enable-vlan-bridging.yml`. Migration steps:
 **Benefits**:
 
 - Declarative configuration
-
 - Easier to extend
-
 - Better validation
-
 - Automatic verification
 
 ## Best Practices
 
-1. **Always test in dry run mode first**:
+1. Test in dry run mode first:
 
    ```bash
    uv run ansible-playbook playbooks/configure-network.yml \
      -e "proxmox_network_dry_run=true" --check
    ```
 
-2. **Start with one node**:
+2. Start with one node:
 
    ```bash
    uv run ansible-playbook playbooks/configure-network.yml --limit foxtrot
    ```
 
-3. **Keep backups enabled** unless you have a specific reason to disable them
+3. Keep backups enabled unless you have a specific reason to disable them
 
-4. **Use group_vars** for cluster-wide network configuration
+4. Use group_vars for cluster-wide network configuration
 
-5. **Document network topology** in comments for each bridge/VLAN
+5. Document network topology in comments for each bridge/VLAN
 
-6. **Test connectivity** after changes:
+6. Test connectivity after changes:
 
    ```bash
    ansible -i inventory/proxmox.yml matrix_cluster -m ping
@@ -531,9 +468,7 @@ This role replaces `proxmox-enable-vlan-bridging.yml`. Migration steps:
 ## References
 
 - [Proxmox VE Network Configuration](https://pve.proxmox.com/wiki/Network_Configuration)
-
 - [VLAN Configuration](https://pve.proxmox.com/wiki/VLAN)
-
 - [Ansible interfaces_file Module](https://docs.ansible.com/ansible/latest/collections/community/general/interfaces_file_module.html)
 
 ## License

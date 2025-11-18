@@ -1,29 +1,21 @@
 # Ansible Role: system_user
 
-Manage Linux system users with SSH keys and sudo privileges in a declarative, idempotent manner.
+Manages Linux system users with SSH keys and sudo privileges.
 
 ## Features
 
-- ✅ Create and manage multiple system users
-
-- ✅ Configure SSH authorized keys
-
-- ✅ Flexible sudo configuration (full access or specific commands)
-
-- ✅ Remove users when no longer needed
-
-- ✅ Idempotent - safe to run multiple times
-
-- ✅ Validated sudoers files (prevents lockout)
-
-- ✅ Follows Ansible best practices
+- Creates and manages multiple system users
+- Configures SSH authorized keys
+- Provides flexible sudo configuration (full access or specific commands)
+- Removes users when no longer needed
+- Runs idempotently without side effects
+- Validates sudoers files to prevent lockout
+- Follows Ansible best practices
 
 ## Requirements
 
 - Ansible >= 2.10
-
 - Target systems: Ubuntu 20.04+, Debian 10+
-
 - Root or sudo access on target hosts
 
 ## Role Variables
@@ -32,7 +24,7 @@ Manage Linux system users with SSH keys and sudo privileges in a declarative, id
 
 **`system_users`** (list, default: `[]`)
 
-List of users to manage. Each user is a dictionary with the following keys:
+List of users to manage. Each user requires these keys:
 
 | Key | Required | Type | Default | Description |
 |-----|----------|------|---------|-------------|
@@ -46,7 +38,7 @@ List of users to manage. Each user is a dictionary with the following keys:
 | `sudo_nopasswd` | No | boolean | `false` | Grant full sudo without password |
 | `sudo_rules` | No | list | `[]` | Specific sudo commands allowed |
 
-**Note:** If both `sudo_nopasswd` and `sudo_rules` are defined, `sudo_nopasswd` takes precedence.
+**Note:** When both `sudo_nopasswd` and `sudo_rules` are defined, `sudo_nopasswd` takes precedence.
 
 ## Example Playbooks
 
@@ -126,7 +118,7 @@ List of users to manage. Each user is a dictionary with the following keys:
             sudo_nopasswd: true
 
           - name: olddev
-            state: absent  # Remove this user
+            state: absent
 
 ```
 
@@ -149,7 +141,6 @@ List of users to manage. Each user is a dictionary with the following keys:
             create_home: true
             ssh_keys:
               - "ssh-ed25519 AAAAC3... deploy@ci-server"
-            # No sudo_* variables = no sudo access
 
 ```
 
@@ -185,7 +176,7 @@ uv run ansible-playbook -i inventory/proxmox.yml playbooks/create-admin-user.yml
 
 ## Verification
 
-After running the role, verify the configuration:
+Verify the configuration after running the role:
 
 ```bash
 
@@ -205,15 +196,12 @@ ssh root@hostname sudo -l -U username
 
 ## Idempotency
 
-This role is fully idempotent:
+This role runs idempotently:
 
-- Running it multiple times with the same configuration produces no changes
-
-- User accounts are created only if they don't exist
-
-- SSH keys are only added if not already present
-
-- Sudoers files are only updated if configuration changes
+- Multiple runs with identical configuration produce no changes
+- Creates user accounts only when they do not exist
+- Adds SSH keys only when not already present
+- Updates sudoers files only when configuration changes
 
 ```bash
 
@@ -233,16 +221,15 @@ uv run ansible-playbook playbook.yml
 
 ## Security Considerations
 
-1. **SSH Keys**: Always use SSH key authentication, not passwords
+1. **SSH Keys**: Use SSH key authentication exclusively, not passwords
 
-2. **Sudo Access**: Grant minimal privileges needed (prefer `sudo_rules` over `sudo_nopasswd`)
+2. **Sudo Access**: Grant minimal privileges (prefer `sudo_rules` over `sudo_nopasswd`)
 
-3. **Absolute Paths Required**: Commands in `sudo_rules` MUST use absolute paths
-   (e.g., `/usr/bin/systemctl` not `systemctl`) to prevent PATH exploitation attacks
+3. **Absolute Paths Required**: Commands in `sudo_rules` require absolute paths (e.g., `/usr/bin/systemctl` not `systemctl`) to prevent PATH exploitation attacks
 
-4. **Sudoers Validation**: All sudoers files are validated with `visudo -cf` before installation
+4. **Sudoers Validation**: The role validates all sudoers files with `visudo -cf` before installation
 
-5. **File Permissions**: SSH directories (0700) and authorized_keys (0600) have secure permissions
+5. **File Permissions**: SSH directories (0700) and authorized_keys (0600) use secure permissions
 
 6. **Idempotent Operations**: Safe to run repeatedly without side effects
 
@@ -275,21 +262,21 @@ uv run ansible-playbook -i inventory/proxmox.yml playbooks/create-admin-user.yml
 
 ### User Already Exists
 
-If the user already exists, the role will update their configuration (groups, shell, SSH keys, sudo) to match the desired state.
+The role updates existing users to match the desired state (groups, shell, SSH keys, sudo).
 
 ### SSH Key Not Working
 
-1. Check key is correctly formatted (no line breaks within key)
+1. Verify key format (no line breaks within key)
 
-2. Verify `~/.ssh` directory permissions (0700)
+2. Check `~/.ssh` directory permissions (0700)
 
-3. Verify `~/.ssh/authorized_keys` permissions (0600)
+3. Check `~/.ssh/authorized_keys` permissions (0600)
 
 4. Check SSH daemon configuration on target host
 
 ### Sudo Not Working
 
-1. Verify sudoers file was created: `ls -la /etc/sudoers.d/username`
+1. Verify sudoers file exists: `ls -la /etc/sudoers.d/username`
 
 2. Check sudoers file syntax: `sudo visudo -cf /etc/sudoers.d/username`
 
@@ -297,7 +284,7 @@ If the user already exists, the role will update their configuration (groups, sh
 
 ### Sudoers Validation Failed
 
-If visudo validation fails, the role will not install the broken sudoers file. Check:
+The role refuses to install broken sudoers files when visudo validation fails. Check:
 
 1. Command paths are absolute (e.g., `/sbin/pvesm` not `pvesm`)
 
@@ -320,7 +307,5 @@ Created as part of the Virgo-Core infrastructure automation project (Phase 1: An
 ## Related Documentation
 
 - [Ansible Migration Plan](../../../docs/ansible-migration-plan.md)
-
 - [Ansible Best Practices Skill](.claude/skills/ansible-best-practices/)
-
 - [Repository CLAUDE.md](../../../CLAUDE.md)

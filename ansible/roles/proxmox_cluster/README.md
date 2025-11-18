@@ -4,14 +4,14 @@ Manages Proxmox VE cluster formation and configuration.
 
 ## Description
 
-This role handles complete Proxmox VE cluster lifecycle management:
+This role manages the complete Proxmox VE cluster lifecycle:
 
-- Cluster initialization on the first node
-- Adding additional nodes to the cluster
-- Corosync configuration for cluster communication
-- /etc/hosts management for all cluster nodes
-- SSH key distribution for passwordless access
-- Cluster health verification and quorum checks
+- Initializes the cluster on the first node
+- Adds additional nodes to the cluster
+- Configures Corosync for cluster communication
+- Manages /etc/hosts for all cluster nodes
+- Distributes SSH keys for passwordless access
+- Verifies cluster health and quorum
 
 ## Requirements
 
@@ -58,7 +58,7 @@ manage_hosts_file: true               # Update /etc/hosts with cluster nodes
 
 ## Dependencies
 
-It's recommended to run `proxmox_repository` and `proxmox_network` roles before this role.
+Run the `proxmox_repository` and `proxmox_network` roles before this role.
 
 ## Example Playbook
 
@@ -96,18 +96,18 @@ It's recommended to run `proxmox_repository` and `proxmox_network` roles before 
 
 ## Important Notes
 
-**WARNING**: Cluster formation is a **one-time operation**. Once a cluster is created:
+WARNING: Cluster formation is a one-time operation. Once you create a cluster:
 
-- Nodes cannot be easily removed without data loss
+- You cannot remove nodes without data loss
 - Changing cluster configuration requires careful planning
-- Always backup cluster configuration before changes
+- Back up cluster configuration before changes
 
-**Best Practices**:
+Best Practices:
 
-1. Ensure all nodes have synchronized time (NTP)
+1. Synchronize time on all nodes (NTP)
 2. Verify network connectivity on corosync network before clustering
 3. Test SSH connectivity between all nodes
-4. Use dedicated VLAN for corosync (recommended)
+4. Use a dedicated VLAN for corosync
 5. Start with 3 nodes for proper quorum (odd numbers preferred)
 
 ## Cluster Operations
