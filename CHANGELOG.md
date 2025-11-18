@@ -1,3 +1,45 @@
+## [unreleased]
+
+### 🚀 Features
+
+- *(commands)* Add verify-claims slash command
+- *(ansible-best-practices)* Add production patterns from geerlingguy role analysis (#18)
+- *(ansible)* Phase 5 testing - fix check mode compatibility and create test infrastructure
+- *(ansible)* Phase 5 testing continuation - fix proxmox_ceph and cluster init playbook
+- *(ansible)* Phase 5 complete - enable proxmox_network and document all 6 roles tested
+- *(mise)* Add Ansible playbook tasks for cluster automation
+
+### 🐛 Bug Fixes
+
+- *(ansible)* 10 critical execution bugs discovered via idempotency testing
+- *(ansible)* Fix CEPH bootstrap keyring and implement ceph-volume for multiple OSDs per device
+- *(ansible)* Bug #12 - Fix broken OSD counting and non-idempotent zap
+- *(ansible)* Critical idempotency bugs in OSD zap and cluster quorum checks
+- *(ansible)* Bug #15 - Add bootstrap keyring distribution for CEPH OSD creation
+- *(pre-commit)* Configure markdownlint to only check staged files
+
+### 📚 Documentation
+
+- Add PR #21 after-action review
+- Improve markdown formatting in verify-pr command
+- Improve formatting and add quote to PR21 AAR
+- *(proxmox_ceph)* Document Bug #13 and #14 idempotency fixes
+- *(testing)* Add Test 6 idempotency validation results
+- *(ansible)* Complete Phase 6 cleanup - READMEs, migration plan, completion summary
+- Rewrite root README with comprehensive project documentation
+- *(ansible,terraform)* Add comprehensive READMEs for both directories
+- *(ansible)* Mark mise tasks complete in migration plan
+- *(references)* Fix typo and expand bibliography from 6 to 89 lines
+- *(terraform)* Add comprehensive template creation guide
+- *(scripts)* Add comprehensive utility scripts reference
+- *(terraform)* Add terraform-docs auto-generated sections to READMEs
+- *(documentation)* Add comprehensive documentation index
+- *(claude)* Add multi-agent orchestration patterns and learnings
+
+### ⚙️ Miscellaneous Tasks
+
+- *(docs)* Archive old 2025-10-23 research documents
+- *(lint)* Allow terraform-docs HTML elements and disable bare URL check
 ## [0.7.0] - 2025-11-12
 
 ### 🚀 Features
@@ -33,7 +75,6 @@
 - Add testing scripts directory
 - *(claude)* Remove deprecated skills and commands
 - *(ansible)* Move deprecated playbooks to .deprecated directory
-
 ## [0.6.0] - 2025-10-22
 
 ### 🚀 Features
@@ -95,7 +136,6 @@
 - *(git)* Add ignore for *.pyc
 - *(changelog)* Update CHANGELOG.md for unreleased changes
 - *(release)* Prepare v0.6.0 release
-
 ## [0.5.0] - 2025-10-20
 
 ### 🚀 Features
