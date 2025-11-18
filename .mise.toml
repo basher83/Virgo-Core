@@ -76,6 +76,75 @@ run = "uv run ansible-galaxy collection install -r requirements.yml --force"
 description = "Test Ansible connectivity to all hosts"
 dir = "ansible"
 run = "uv run ansible all -m ansible.builtin.ping"
+
+[tasks."ansible:test-roles"]
+description = "Test all roles with tag-based selection"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml playbooks/test-roles.yml \
+  --limit ${CLUSTER:-matrix_cluster} \
+  ${TAGS:+--tags $TAGS} \
+  ${CHECK:+--check --diff}
+"""
+
+[tasks."ansible:setup-terraform"]
+description = "Setup Terraform automation (role-based)"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/setup-terraform-automation.yml \
+  --limit ${CLUSTER:-matrix_cluster}
+"""
+
+[tasks."ansible:create-admin"]
+description = "Create administrative user with SSH and sudo access"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/create-admin-user.yml \
+  --limit ${HOSTS:-all} \
+  -e "admin_name=${ADMIN_NAME}" \
+  -e "admin_ssh_key=${ADMIN_SSH_KEY}"
+"""
+
+[tasks."ansible:configure-network"]
+description = "Configure Proxmox network bridges and VLANs"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/configure-network.yml \
+  --limit ${CLUSTER:-matrix_cluster} \
+  ${CHECK:+--check --diff}
+"""
+
+[tasks."ansible:install-docker"]
+description = "Install Docker on Proxmox nodes"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/install-docker.yml \
+  --limit ${HOSTS:-all}
+"""
+
+[tasks."ansible:init-cluster"]
+description = "Initialize Proxmox cluster (WARNING: Potentially destructive)"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/initialize-${CLUSTER:-matrix}-cluster.yml \
+  ${CHECK:+--check --diff}
+"""
+
+[tasks."ansible:build-template"]
+description = "Build VM template from cloud image"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/proxmox-build-template.yml \
+  --limit ${NODE:-foxtrot} \
+  -e "template_name=${TEMPLATE_NAME}" \
+  -e "cloud_image_url=${IMAGE_URL}"
+"""
 # === Ansible tasks ===
 
 [tasks.fmt]
