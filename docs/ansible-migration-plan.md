@@ -952,8 +952,10 @@ uv run ansible-playbook -i inventory/proxmox.yml \
   - **Status**: ✅ Complete (2025-11-17)
   - **Created**: All 6 role READMEs (system_user, proxmox_access, proxmox_network, proxmox_repository, proxmox_cluster, proxmox_ceph)
   - **Quality**: Polished with Strunk's "Elements of Style" principles (active voice, omit needless words, definite language)
-- [ ] Update mise tasks
-  - **Status**: ⏭️ Deferred per user request - Will address at project end
+- [x] Update mise tasks
+  - **Status**: ✅ Complete (2025-11-17)
+  - **Added**: 7 new Ansible playbook tasks (test-roles, setup-terraform, create-admin, configure-network, install-docker, init-cluster, build-template)
+  - **Features**: Environment variable support for cluster/node targeting, check mode support, tag-based testing
 - [x] Update team documentation
   - **Status**: ✅ Complete (2025-11-17)
   - **Created**: `docs/infrastructure.md`, `docs/testing-validation-results.md` (1000 lines, comprehensive)
