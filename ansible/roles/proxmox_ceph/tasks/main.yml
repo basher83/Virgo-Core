@@ -25,6 +25,12 @@
     - deploy_managers | bool
     - inventory_hostname == groups[cluster_group][0]
 
+- name: Distribute bootstrap keyrings
+  ansible.builtin.include_tasks: bootstrap_keyrings.yml
+  when:
+    - deploy_osds | bool
+    - ceph_osds[inventory_hostname_short] is defined
+
 - name: Prepare OSD disks
   ansible.builtin.include_tasks: osd_prepare.yml
   when:
