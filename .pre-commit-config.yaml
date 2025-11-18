@@ -35,3 +35,5 @@ repos:
         name: Lint Markdown files
         # Exclude AI/Claude documentation (not part of codebase)
         exclude: ^(\.claude/|ai_docs/)
+        # Only check files passed by pre-commit (staged files), not all globs from config
+        args: ["--no-globs"]
