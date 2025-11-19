@@ -2,6 +2,30 @@
 
 ### 🚀 Features
 
+- *(docs)* Add Mintlify documentation site configuration
+- *(docs)* Add Mintlify documentation homepage
+
+### 🐛 Bug Fixes
+
+- *(docs)* Update Mintlify theme to valid value 'prism'
+- *(docs)* Use correct Mintlify schema and restore linden theme
+- *(docs)* Rename mint.json to docs.json for Mintlify compatibility
+
+### 🚜 Refactor
+
+- *(docs)* Move docs/ to documentation/ for Mintlify integration
+- *(docs)* Restructure docs.json to match official Mintlify schema
+- *(docs)* Reorganize documentation into logical hierarchy
+- *(ansible)* Reorganize inventory with group_vars and node_id templating
+
+### 📚 Documentation
+
+- *(goals)* Mark all core infrastructure goals as complete for v1.0.0
+
+## [1.0.0] - 2025-11-18
+
+### 🚀 Features
+
 - *(commands)* Add verify-claims slash command
 - *(ansible-best-practices)* Add production patterns from geerlingguy role analysis (#18)
 - *(ansible)* Phase 5 testing - fix check mode compatibility and create test infrastructure
@@ -35,11 +59,13 @@
 - *(terraform)* Add terraform-docs auto-generated sections to READMEs
 - *(documentation)* Add comprehensive documentation index
 - *(claude)* Add multi-agent orchestration patterns and learnings
+- *(changelog)* Update changelog for v0.8.0
 
 ### ⚙️ Miscellaneous Tasks
 
 - *(docs)* Archive old 2025-10-23 research documents
 - *(lint)* Allow terraform-docs HTML elements and disable bare URL check
+
 ## [0.7.0] - 2025-11-12
 
 ### 🚀 Features
@@ -75,6 +101,7 @@
 - Add testing scripts directory
 - *(claude)* Remove deprecated skills and commands
 - *(ansible)* Move deprecated playbooks to .deprecated directory
+
 ## [0.6.0] - 2025-10-22
 
 ### 🚀 Features
@@ -136,6 +163,7 @@
 - *(git)* Add ignore for *.pyc
 - *(changelog)* Update CHANGELOG.md for unreleased changes
 - *(release)* Prepare v0.6.0 release
+
 ## [0.5.0] - 2025-10-20
 
 ### 🚀 Features
