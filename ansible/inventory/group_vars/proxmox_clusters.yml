@@ -1,0 +1,38 @@
+---
+# Shared configuration for ALL Proxmox clusters
+# Applies to: nexus_cluster, matrix_cluster, quantum_cluster
+
+# =============================================================================
+# Proxmox VE Configuration
+# =============================================================================
+
+# Proxmox API settings
+proxmox_validate_certs: false
+
+# Proxmox version targeting
+proxmox_target_version: "8.x"
+
+# =============================================================================
+# Common Proxmox Packages
+# =============================================================================
+
+proxmox_common_packages:
+  - pve-headers
+  - proxmox-backup-client
+
+# =============================================================================
+# Storage Defaults
+# =============================================================================
+
+# Default storage backend (clusters may override)
+proxmox_default_storage_type: lvm-thin
+
+# =============================================================================
+# Network Management
+# =============================================================================
+
+# Network configuration management
+proxmox_network_backup: true
+proxmox_network_reload: true
+proxmox_network_verify: true
+proxmox_network_dry_run: false

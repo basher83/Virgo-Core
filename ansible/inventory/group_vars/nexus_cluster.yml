@@ -1,0 +1,84 @@
+---
+# Nexus cluster configuration
+# Nodes: alpha (node_id: 50), bravo (node_id: 30)
+# Purpose: Original cluster - mixed LXC/VM workloads
+# Network: Single bridge, local + NFS storage
+
+# =============================================================================
+# Cluster Configuration
+# =============================================================================
+
+cluster_name: nexus
+
+# Infisical path for Nexus secrets
+infisical_path: /nexus
+
+# Corosync network
+cluster_corosync_network: 192.168.30.0/24
+
+# =============================================================================
+# Network Configuration
+# =============================================================================
+
+# Single bridge configuration
+proxmox_bridges:
+  - name: vmbr0
+    interface: "{{ 'enp1s0' if inventory_hostname == 'alpha' else 'enp130s0f1' }}"
+    address: "192.168.30.{{ node_id }}/24"
+    gateway: 192.168.30.1
+    vlan_aware: false
+    comment: "Management network"
+
+# No VLANs configured
+proxmox_vlans: []
+
+# Standard MTU
+network_mtu: 1500
+network_jumbo_frames_enabled: false
+
+# =============================================================================
+# Storage Configuration
+# =============================================================================
+
+# Local storage type
+nexus_local_storage_type: lvm-thin
+
+# NFS mounts (shared TrueNAS storage)
+nexus_nfs_mounts:
+  - server: 192.168.30.6
+    export: /mnt/DataLake/pbs
+    mount_point: /mnt/pve/pbs
+    usage:
+      - backups
+      - isos
+      - templates
+      - images
+    size: 13TB
+
+  - server: 192.168.30.6
+    export: /mnt/DataLake/NFSshare
+    mount_point: /mnt/pve/TrueNAS
+    usage:
+      - backups
+      - templates
+      - isos
+      - images
+    size: 11TB
+
+  - server: 192.168.30.6
+    export: /mnt/DataLake/swarm
+    mount_point: /mnt/pve/swarm
+    usage:
+      - images
+      - rootdir
+    size: 11TB
+
+# =============================================================================
+# Hardware Configuration
+# =============================================================================
+
+# Node-specific hardware details
+# Alpha: Protectli VP4630 (Intel i3-10110U, 64GB RAM, 6x 2.5GbE)
+# Bravo: Dell PowerEdge T430 (Dual Xeon E5-2680 v4, 256GB RAM, 10GbE capable)
+
+# Physical interfaces vary by node (managed via node-specific logic)

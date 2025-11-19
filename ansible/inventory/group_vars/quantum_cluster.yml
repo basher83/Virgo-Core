@@ -1,0 +1,124 @@
+---
+# Quantum cluster configuration (formerly "doggos")
+# Nodes: holly (node_id: 3), lloyd (node_id: 2), mable (node_id: 4)
+# Hardware: 3x Minisforum MS-01 (Intel i9-13900H, 32GB RAM, 1TB NVMe)
+# Status: Currently idle, future purpose TBD
+# Network: Dual bridges, local + NFS storage
+
+# =============================================================================
+# Cluster Configuration
+# =============================================================================
+
+cluster_name: quantum
+
+# Infisical path for Quantum secrets
+infisical_path: /quantum
+
+# Cluster formation
+cluster_is_clustered: true
+cluster_corosync_network: TBD  # Update when Proxmox cluster configured
+
+# =============================================================================
+# Network Configuration
+# =============================================================================
+
+# Dual bridge configuration
+proxmox_bridges:
+  # Primary management network
+  - name: vmbr0
+    interface: enp87s0
+    address: "192.168.10.{{ node_id }}/24"
+    gateway: 192.168.10.1
+    vlan_aware: true
+    vlan_ids: "2-4094"
+    comment: "Management network"
+
+  # Secondary network
+  - name: vmbr1
+    interface: enp2s0f0np0
+    address: "192.168.11.{{ node_id }}/24"
+    vlan_aware: true
+    vlan_ids: "2-4094"
+    comment: "Secondary network"
+
+# VLAN capability enabled, no specific VLANs configured
+proxmox_vlans: []
+
+# Standard MTU
+network_mtu: 1500
+network_jumbo_frames_enabled: false
+
+# =============================================================================
+# Storage Configuration
+# =============================================================================
+
+# Local storage type
+quantum_local_storage_type: lvm-thin
+
+# NFS storage (shared TrueNAS)
+quantum_nfs_mounts:
+  - server: 192.168.30.6
+    export: /mnt/DataLake/nomad-volumes
+    mount_point: /mnt/pve/nomad-volumes
+    usage:
+      - vms
+      - lxc
+      - isos
+      - backups
+      - snippets
+      - templates
+    size: 10.6TB
+
+# Storage layout preference
+quantum_storage_layout:
+  vms:
+    primary: local-lvm
+    available: nomad-volumes
+  lxc:
+    primary: local-lvm
+    available: nomad-volumes
+  backups:
+    - local
+    - nomad-volumes
+    - pbs  # Currently offline
+  isos_templates:
+    - local
+    - nomad-volumes
+
+# =============================================================================
+# Hardware Configuration
+# =============================================================================
+
+# All nodes identical: Minisforum MS-01
+quantum_standard_hardware:
+  cpu: Intel Core i9-13900H
+  cpu_cores: 14
+  cpu_threads: 20
+  ram: 32GB
+  boot_disk: nvme0n1
+  boot_disk_size: 1TB
+  network_nics:
+    - enp87s0    # Active on vmbr0
+    - enp88s0    # Unused
+    - enp2s0f0np0  # Active on vmbr1 (10GbE SFP+)
+    - enp2s0f1np1  # Unused (10GbE SFP+)
+    - wlp89s0    # WiFi - unused
+
+# =============================================================================
+# Former Workload Notes
+# =============================================================================
+
+# Cluster previously hosted:
+# - 4-node HashiCorp Vault cluster
+# - 3-node HashiCorp Nomad/Consul cluster
+# - 3-node MicroK8s cluster
+#
+# All workloads removed, cluster now idle.
+# Future purpose: TBD
+
+# =============================================================================
+# Future Configuration
+# =============================================================================
+
+# Placeholder for future workload-specific settings
+quantum_future_purpose: undecided
