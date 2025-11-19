@@ -6,9 +6,9 @@ This directory contains comprehensive documentation for the Virgo-Core infrastru
 
 New to Virgo-Core? Read these documents in order:
 
-1. **[goals.md](goals.md)** - Project objectives and roadmap
-2. **[infrastructure.md](infrastructure.md)** - Hardware specifications, network topology, storage layout
-3. **[ansible-philosophy.md](ansible-philosophy.md)** - Core design principles: Roles = Components, Playbooks = Workflows
+1. **[core/goals.md](core/goals.md)** - Project objectives and v1.0.0 achievements
+2. **[core/infrastructure.md](core/infrastructure.md)** - Hardware specifications, network topology, storage layout
+3. **[design/ansible-philosophy.md](design/ansible-philosophy.md)** - Core design principles: Roles = Components, Playbooks = Workflows
 
 ## Core Documentation
 
@@ -16,60 +16,29 @@ Essential references you will consult regularly:
 
 ### Infrastructure Specifications
 
-- **[infrastructure.md](infrastructure.md)** - Complete hardware, network, and storage specifications for the Matrix cluster (Foxtrot, Golf, Hotel nodes)
-- **[goals.md](goals.md)** - Project roadmap, core objectives, and infrastructure gotchas
+- **[core/infrastructure.md](core/infrastructure.md)** - Complete hardware, network, and storage specifications for the Matrix cluster (Foxtrot, Golf, Hotel nodes)
+- **[core/goals.md](core/goals.md)** - Project roadmap, v1.0.0 achievements, v2.0.0 objectives
 
 ### Ansible Architecture
 
-- **[ansible-philosophy.md](ansible-philosophy.md)** - Fundamental design principles: component-based roles, workflow playbooks, declarative configuration
-- **[ansible-role-design.md](ansible-role-design.md)** - Role structure patterns, molecule testing, documentation standards
-- **[ansible-playbook-design.md](ansible-playbook-design.md)** - Playbook orchestration, inventory management, secrets handling with Infisical
-- **[ansible-migration-plan.md](ansible-migration-plan.md)** - Step-by-step guide for migrating monolithic playbooks to role-based architecture
-- **[ansible-migration-completion.md](ansible-migration-completion.md)** - Migration results, 6 production roles, 11 bugs fixed, zero ansible-lint violations
+- **[design/ansible-philosophy.md](design/ansible-philosophy.md)** - Fundamental design principles: component-based roles, workflow playbooks, declarative configuration
+- **[design/ansible-role-design.md](design/ansible-role-design.md)** - Role structure patterns, molecule testing, documentation standards
+- **[design/ansible-playbook-design.md](design/ansible-playbook-design.md)** - Playbook orchestration, inventory management, secrets handling with Infisical
 
 ### Integration Architecture
 
-- **[netbox-powerdns.md](netbox-powerdns.md)** - NetBox as IPAM source of truth, PowerDNS automation, DNS naming conventions
+- **[core/netbox-powerdns.md](core/netbox-powerdns.md)** - NetBox as IPAM source of truth, PowerDNS automation, DNS naming conventions
 
 ### External References
 
-- **[references.md](references.md)** - Comprehensive bibliography of tools, projects, documentation for Proxmox, CEPH, Ansible,
-  OpenTofu, NetBox, PowerDNS, Infisical
-
-## Testing and Validation
-
-Results from comprehensive testing phases:
-
-- **[testing-validation-results.md](testing-validation-results.md)** - Complete test results for all 6 production roles: ansible-lint
-  (zero violations), connectivity tests, idempotency validation on Matrix cluster
-
-## Design Analysis
-
-Deep-dive analyses that informed design decisions:
-
-- **[proxspray-analysis.md](proxspray-analysis.md)** - Pattern analysis from ProxSpray project, role design corrections, integration lessons
+- **[core/references.md](core/references.md)** - Comprehensive bibliography of tools, projects, documentation for Proxmox, CEPH, Ansible, OpenTofu, NetBox, PowerDNS, Infisical
 
 ## Planning Documents
 
-Implementation plans and strategy documents:
+Active planning and brainstorming:
 
-### Active Plans
-
-- **[plans/2025-11-14-pr18-fixes.md](plans/2025-11-14-pr18-fixes.md)** - Bug fixes and improvements for PR #18
-
-## Code Review Documents
-
-Pull request reviews and after-action reports:
-
-- **[reviews/pr-18-review.md](reviews/pr-18-review.md)** - Comprehensive review of PR #18
-- **[pr21-aar.md](pr21-aar.md)** - After-action review for PR #21: debugging workflow improvements
-
-## Skills Planning
-
-Claude Code skills development and implementation:
-
-- **[skills-planning.md](skills-planning.md)** - Planning document for Claude Code skills: proxmox-infrastructure,
-  netbox-powerdns-integration, ansible-best-practices, python-uv-scripts
+- **[brainstorming/next-features-2025-11.md](brainstorming/next-features-2025-11.md)** - Roadmap for v2.0.0 development: NetBox integration, VM provisioning pipeline, documentation enhancement
+- **[brainstorming/documentation-audit-2025-11.md](brainstorming/documentation-audit-2025-11.md)** - Documentation reorganization analysis and implementation plan
 
 ## Quick Reference Guide
 
@@ -77,41 +46,61 @@ Claude Code skills development and implementation:
 
 **Starting a new Ansible role?**
 
-1. Read [ansible-philosophy.md](ansible-philosophy.md) for principles
-2. Review [ansible-role-design.md](ansible-role-design.md) for structure
-3. Check [ansible-migration-plan.md](ansible-migration-plan.md) for examples
+1. Read [design/ansible-philosophy.md](design/ansible-philosophy.md) for principles
+2. Review [design/ansible-role-design.md](design/ansible-role-design.md) for structure
+3. Check archived migration plan for examples
 
 **Configuring infrastructure?**
 
-1. Consult [infrastructure.md](infrastructure.md) for specifications
-2. Check [goals.md](goals.md) for gotchas
+1. Consult [core/infrastructure.md](core/infrastructure.md) for specifications
+2. Check [core/goals.md](core/goals.md) for gotchas
 
 **Setting up NetBox and DNS?**
 
-1. Read [netbox-powerdns.md](netbox-powerdns.md) for architecture
-2. Review [references.md](references.md) for external documentation
-
-**Debugging a role or playbook?**
-
-1. Review [testing-validation-results.md](testing-validation-results.md) for test patterns
-2. Check [ansible-migration-completion.md](ansible-migration-completion.md) for bug fixes
+1. Read [core/netbox-powerdns.md](core/netbox-powerdns.md) for architecture
+2. Review [core/references.md](core/references.md) for external documentation
 
 **Looking for tool documentation?**
 
-1. Check [references.md](references.md) for links to Proxmox, CEPH, Ansible, OpenTofu, NetBox, PowerDNS
+1. Check [core/references.md](core/references.md) for links to Proxmox, CEPH, Ansible, OpenTofu, NetBox, PowerDNS
 
 **Evaluating design decisions?**
 
-1. Read [proxspray-analysis.md](proxspray-analysis.md) for pattern analysis
-2. Review [ansible-philosophy.md](ansible-philosophy.md) for core principles
+1. Review [design/ansible-philosophy.md](design/ansible-philosophy.md) for core principles
+2. Check archived ProxSpray analysis for pattern comparisons
 
 ## Archive Directory
 
-The `archive/` directory preserves historical research and planning documents that informed current designs:
+The `archive/` directory preserves historical documents that informed current designs:
 
-- **archive/2025-10-23/** - Early research summaries, role validation studies, improvement plans
+### v1.0.0 Completion Archive (2025-11)
 
-These documents provide historical context but are superseded by current documentation. Consult them only when researching design evolution.
+- **[archive/2025-11-v1.0/](archive/2025-11-v1.0/)** - Ansible migration documents, comprehensive testing results, ProxSpray analysis, skills planning, PR reviews
+  - Migration plan and completion reports
+  - Testing validation results
+  - Code review documents
+  - See `archive/2025-11-v1.0/README.md` for detailed index
+
+### Early Research (2025-10)
+
+- **[archive/2025-10-23/](archive/2025-10-23/)** - Early research summaries, role validation studies, improvement plans
+
+These documents provide historical context but are superseded by current documentation. Consult them when researching design evolution or implementation details from v1.0.0 development.
+
+## Mintlify Documentation Site
+
+The `mintlify/` directory contains source content for the Mintlify documentation site:
+
+```text
+mintlify/
+├── getting-started/   # Installation, first deployment, common workflows
+├── architecture/      # System architecture, design decisions
+├── roles/             # Role-by-role usage guides
+├── api-reference/     # Terraform modules, Ansible variables, Python tools
+└── advanced/          # CEPH storage, multi-cluster, custom development
+```
+
+**Status**: Infrastructure configured, ready for content population.
 
 ## Documentation Standards
 
@@ -128,37 +117,61 @@ These principles ensure clarity and precision across all documents.
 
 ### By Category
 
-**Infrastructure**: infrastructure.md, goals.md
-**Ansible Design**: ansible-philosophy.md, ansible-role-design.md, ansible-playbook-design.md
-**Ansible Implementation**: ansible-migration-plan.md, ansible-migration-completion.md
-**Integration**: netbox-powerdns.md
-**Testing**: testing-validation-results.md
-**Analysis**: proxspray-analysis.md
-**Planning**: plans/
-**Reviews**: reviews/, pr21-aar.md
-**Skills**: skills-planning.md
-**References**: references.md
+**Core Specifications**: `core/goals.md`, `core/infrastructure.md`, `core/netbox-powerdns.md`, `core/references.md`
+
+**Ansible Design**: `design/ansible-philosophy.md`, `design/ansible-role-design.md`, `design/ansible-playbook-design.md`
+
+**Active Planning**: `brainstorming/next-features-2025-11.md`, `brainstorming/documentation-audit-2025-11.md`
+
+**Mintlify Content**: `mintlify/` (documentation site source)
+
+**Historical Context**: `archive/2025-10-23/`, `archive/2025-11-v1.0/`
 
 ### By Status
 
-**Foundational** (read first): goals.md, infrastructure.md, ansible-philosophy.md
-**Active Reference**: infrastructure.md, ansible-role-design.md, ansible-playbook-design.md, references.md
-**Implementation Guides**: ansible-migration-plan.md, netbox-powerdns.md
-**Results and Validation**: ansible-migration-completion.md, testing-validation-results.md
-**Historical**: archive/
+**Foundational** (read first): `core/goals.md`, `core/infrastructure.md`, `design/ansible-philosophy.md`
+
+**Active Reference**: All files in `core/` and `design/`
+
+**Active Planning**: All files in `brainstorming/`
+
+**Documentation Site**: All files in `mintlify/`
+
+**Historical**: All files in `archive/`
+
+## Current State (Post-v1.0.0)
+
+**Active Documents**: 9 files organized by purpose
+- 4 core specification documents
+- 3 Ansible design documents
+- 2 active planning documents
+
+**Mintlify Infrastructure**: Configured, ready for content
+
+**Archive**: 12 historical documents from v1.0.0 development
+
+**Structure**: Clean, focused on v2.0.0 development
 
 ## Contributing
 
 When creating new documentation:
 
-1. Place core design documents in `docs/`
-2. Place implementation plans in `docs/plans/`
-3. Place code reviews in `docs/reviews/`
-4. Follow Elements of Style principles
-5. Update this README to include the new document
+1. Place specifications in `core/`
+2. Place design documentation in `design/`
+3. Place active planning in `brainstorming/`
+4. Place Mintlify content in appropriate `mintlify/` subdirectory
+5. Follow Elements of Style principles
+6. Update this README to include the new document
+
+When work completes:
+
+1. Archive implementation plans to `archive/YYYY-MM-version/`
+2. Create archive README with context
+3. Update main README to reflect changes
 
 ## Questions?
 
-- Check [references.md](references.md) for links to external documentation
-- Review [ansible-philosophy.md](ansible-philosophy.md) for design principles
-- Consult [infrastructure.md](infrastructure.md) for specifications
+- Check [core/references.md](core/references.md) for links to external documentation
+- Review [design/ansible-philosophy.md](design/ansible-philosophy.md) for design principles
+- Consult [core/infrastructure.md](core/infrastructure.md) for specifications
+- Browse [archive/](archive/) for historical context on completed work
