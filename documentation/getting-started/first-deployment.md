@@ -86,3 +86,68 @@ uv run ansible-inventory --list
 **Expected**: JSON output showing 3 nodes with correct IPs
 
 **What Happens Next**: Ansible will use this inventory to configure all 3 nodes
+
+## Phase 2: Network Setup (15 minutes)
+
+Configure network bridges, VLANs, and MTU for CEPH networks.
+
+### What Will Happen
+
+The `configure-network` playbook will:
+
+- Create network bridges (vmbr0, vmbr1, vmbr2)
+- Configure VLAN interfaces
+- Set MTU to 9000 on CEPH networks
+- **Network restart may briefly disconnect SSH** (~10 seconds)
+
+### Step 1: Dry-run network configuration
+
+```bash
+CHECK=1 mise run ansible:configure-network
+```
+
+**Expected Output**:
+
+```text
+PLAY [Configure Proxmox Network] ******
+
+TASK [proxmox_network : Create bridges] ******
+changed: [foxtrot]
+changed: [golf]
+changed: [hotel]
+
+PLAY RECAP ******
+foxtrot: ok=12 changed=8
+golf: ok=12 changed=8
+hotel: ok=12 changed=8
+```
+
+**Review**: Check what would change before applying
+
+### Step 2: Apply network configuration
+
+```bash
+mise run ansible:configure-network
+```
+
+**Expected**: Same output as dry-run, but changes actually applied
+
+**Duration**: 5-10 minutes
+
+### Step 3: Verify network configuration
+
+```bash
+# Check bridges created
+ssh root@192.168.3.11 'ip link show | grep vmbr'
+# Expected: vmbr0, vmbr1, vmbr2
+
+# Check MTU 9000 on CEPH networks
+ssh root@192.168.3.11 'ip link show vmbr1 | grep mtu'
+# Expected: mtu 9000
+
+# Test jumbo frames
+ping -M do -s 8972 -c 3 192.168.5.11
+# Expected: 0% packet loss
+```
+
+**Checkpoint**: All nodes should have bridges configured with correct MTU
