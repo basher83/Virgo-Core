@@ -29,6 +29,17 @@
             ]
           },
           {
+            "group": "Ansible Roles",
+            "pages": [
+              "documentation/roles/system_user",
+              "documentation/roles/proxmox_access",
+              "documentation/roles/proxmox_network",
+              "documentation/roles/proxmox_repository",
+              "documentation/roles/proxmox_cluster",
+              "documentation/roles/proxmox_ceph"
+            ]
+          },
+          {
             "group": "Ansible Architecture",
             "pages": [
               "documentation/design/ansible-philosophy",
