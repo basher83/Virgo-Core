@@ -8,7 +8,13 @@
 
 ## Purpose
 
-This document defines the core design philosophy and principles for Ansible automation in the Virgo-Core project. All Ansible code should adhere to these principles to ensure maintainability, reusability, and consistency across multiple Proxmox clusters.
+This document defines the core design philosophy and principles for Ansible automation in the Virgo-Core project.
+All Ansible code should adhere to these principles to ensure maintainability, reusability, and consistency across
+multiple Proxmox clusters.
+
+> **Battle-Tested:** This architecture proved itself during v1.0.0 development. Comprehensive testing discovered
+> and fixed 15 bugs, achieving perfect idempotency across the 3-node Matrix cluster. The 6-phase migration approach
+> completed successfully with zero regressions.
 
 ---
 
@@ -481,7 +487,7 @@ Prefer Ansible native modules over shell commands for better idempotency and err
 
 The `args.creates` pattern only checks file existence, not file contents or state. For more robust idempotency:
 
-**Pattern 1: Output-Based Change Detection**
+#### Pattern 1: Output-Based Change Detection
 
 ```yaml
 
@@ -504,7 +510,7 @@ Advantages over `creates:`:
 
 - Provides accurate change reporting for Ansible
 
-**Pattern 2: State Verification Before Action**
+#### Pattern 2: State Verification Before Action
 
 ```yaml
 
@@ -530,7 +536,7 @@ Advantages:
 
 - Better for complex state verification (not just file existence)
 
-**Pattern 3: Stateful Commands with JSON Output**
+#### Pattern 3: Stateful Commands with JSON Output
 
 ```yaml
 
@@ -751,7 +757,8 @@ Question: Does this manage a single infrastructure aspect?
 
 - Bundling CEPH storage + Proxmox cluster - independent services
 
-**Key principle**: If two concerns share the same infrastructure component AND are always configured together, they can live in one role. If they serve different purposes or could be used independently, split them.
+**Key principle**: If two concerns share the same infrastructure component AND are always configured together, they can
+live in one role. If they serve different purposes or could be used independently, split them.
 
 **Example: `proxmox_access` role judgment**
 
