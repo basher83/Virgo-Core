@@ -21,26 +21,23 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "documentation/goals",
-              "documentation/infrastructure"
+              "documentation/core/goals",
+              "documentation/core/infrastructure"
             ]
           },
           {
             "group": "Ansible Architecture",
             "pages": [
-              "documentation/ansible-philosophy",
-              "documentation/ansible-role-design",
-              "documentation/ansible-playbook-design",
-              "documentation/ansible-migration-plan",
-              "documentation/ansible-migration-completion"
+              "documentation/design/ansible-philosophy",
+              "documentation/design/ansible-role-design",
+              "documentation/design/ansible-playbook-design"
             ]
           },
           {
             "group": "Integration & Testing",
             "pages": [
-              "documentation/netbox-powerdns",
-              "documentation/testing-validation-results",
-              "documentation/references"
+              "documentation/core/netbox-powerdns",
+              "documentation/core/references"
             ]
           }
         ]
