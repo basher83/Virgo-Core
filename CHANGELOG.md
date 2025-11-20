@@ -1,4 +1,5 @@
-## [unreleased]
+
+## [1.1.0] - 2025-11-20
 
 ### 🚀 Features
 
@@ -10,6 +11,8 @@
 - *(docs)* Update Mintlify theme to valid value 'prism'
 - *(docs)* Use correct Mintlify schema and restore linden theme
 - *(docs)* Rename mint.json to docs.json for Mintlify compatibility
+- *(docs)* Update navigation paths to match subdirectory structure
+- *(docs)* Fix Quick Start section paths
 
 ### 🚜 Refactor
 
@@ -21,6 +24,31 @@
 ### 📚 Documentation
 
 - *(goals)* Mark all core infrastructure goals as complete for v1.0.0
+- Update next-features doc with inventory completion status
+- Add documentation enhancement design
+- Add comprehensive implementation plan
+- Add battle-tested metrics to ansible-philosophy
+- Update homepage Quick Links section
+- Create getting-started directory structure
+- Add comprehensive prerequisites checklist
+- Add development environment installation guide
+- Add first-deployment tutorial (part 1)
+- Add first-deployment Phase 2 (network setup)
+- Complete first-deployment tutorial (phases 3-5)
+- Add getting-started pages to navigation
+- Create roles directory for Phase 3
+- Add enhanced system_user role documentation
+- Add Ansible Roles navigation group
+- Add enhanced proxmox_access role documentation
+- Add enhanced proxmox_network role documentation
+- Add enhanced proxmox_repository role documentation
+- Add enhanced proxmox_cluster role documentation
+- Add enhanced proxmox_ceph role documentation
+- Add implementation completion summary
+
+### ⚙️ Miscellaneous Tasks
+
+- *(changelog)* Fix git-cliff template for markdownlint compliance
 
 ## [1.0.0] - 2025-11-18
 
