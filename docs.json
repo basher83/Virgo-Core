@@ -21,6 +21,9 @@
             "group": "Getting Started",
             "pages": [
               "index",
+              "documentation/getting-started/prerequisites",
+              "documentation/getting-started/installation",
+              "documentation/getting-started/first-deployment",
               "documentation/core/goals",
               "documentation/core/infrastructure"
             ]
