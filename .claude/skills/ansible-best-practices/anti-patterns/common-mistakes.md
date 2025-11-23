@@ -736,7 +736,7 @@ ansible/
 
 **Error:**
 
-```
+```text
 Unsupported parameters for (community.general.interfaces_file) module:
 family, method. Supported parameters include: address_family, ...
 ```
@@ -788,7 +788,7 @@ ansible-doc community.general.interfaces_file
 
 **Error Example:**
 
-```
+```text
 TASK [my_role : Configure something]
 fatal: [host]: FAILED! => {"msg": "The conditional check 'my_var | length > 0'
 failed. The error was: error while evaluating conditional (my_var | length > 0):
@@ -924,7 +924,7 @@ when: ceph_wipe_disks | default(false)
 
 **Symptom:**
 
-```
+```text
 The conditional check 'my_var | length > 0' failed.
 The error was: 'my_var' is undefined
 ```
@@ -932,6 +932,7 @@ The error was: 'my_var' is undefined
 **Debug Steps:**
 
 1. **Check variable location:**
+
    ```bash
    # Is it in group_vars/host_vars?
    ansible-inventory --host myhost | grep my_var
@@ -941,6 +942,7 @@ The error was: 'my_var' is undefined
    ```
 
 2. **Check when condition location:**
+
    ```yaml
    # Is it at include_tasks level? (needs | default())
    - include_tasks: ...
@@ -948,6 +950,7 @@ The error was: 'my_var' is undefined
    ```
 
 3. **Add `| default()` with appropriate fallback:**
+
    ```yaml
    when: my_var | default([]) | length > 0  # For lists
    when: my_var | default(false)             # For booleans
