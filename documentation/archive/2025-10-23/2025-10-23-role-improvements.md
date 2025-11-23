@@ -630,23 +630,28 @@ platforms:
 After running the role, verify network configuration:
 
 ```bash
-# Check bridge configuration
+
+## Check bridge configuration
+
 ip link show vmbr0
 ip addr show vmbr0
 
-# Check VLAN subinterfaces
+## Check VLAN subinterfaces
+
 ip link show vlan9
 ip addr show vlan9
 
-# Verify MTU settings
+## Verify MTU settings
+
 ip link show vmbr1 | grep mtu
 ip link show vmbr2 | grep mtu
 
-# Check interfaces file
+## Check interfaces file
+
 cat /etc/network/interfaces
 ```
 
-```
+```text
 
 ---
 
@@ -659,12 +664,14 @@ These recommendations apply to all three roles and should be implemented consist
 **Recommendation:** Implement molecule testing and CI/CD across all roles simultaneously to establish consistent patterns.
 
 **Benefits:**
+
 - Shared CI workflow templates
 - Consistent test matrices
 - Unified quality standards
 - Easier maintenance
 
 **Implementation Steps:**
+
 1. Create base CI workflow template (`.github/workflows/templates/role-ci.yml`)
 2. Adapt for each role with role-specific test scenarios
 3. Use shared test configurations where possible
@@ -675,17 +682,20 @@ These recommendations apply to all three roles and should be implemented consist
 **Recommendation:** Ensure all roles follow identical README structure and formatting.
 
 **Current State:**
+
 - All three roles have good documentation
 - Minor format differences (table vs code blocks for variables)
 - Different level of detail in troubleshooting
 
 **Action Items:**
+
 - Establish project-wide README template
 - Document in `.claude/skills/ansible-best-practices/`
 - Apply template to all existing roles
 - Use for all future roles
 
 **Template Sections:**
+
 1. Title + CI Badge
 2. Description
 3. Requirements (Ansible version, collections, target systems)
@@ -705,15 +715,18 @@ These recommendations apply to all three roles and should be implemented consist
 **Recommendation:** Establish and document variable naming policy.
 
 **Current State:**
+
 - proxmox_access and proxmox_network: Perfect adherence (all variables prefixed)
 - system_user: Main variable `system_users` lacks prefix (documented as intentional)
 
 **Policy Decision Needed:**
+
 - **Option A:** Require ALL variables to be role-prefixed (breaking change for system_user)
 - **Option B:** Allow "public API" variables without prefix (document exceptions)
 - **Option C:** Hybrid - require prefix but allow documented exceptions
 
 **Recommendation:** Option B (allow documented exceptions)
+
 - Most flexible approach
 - Matches some geerlingguy patterns
 - Document exceptions clearly in role README and variable comments
@@ -723,6 +736,7 @@ These recommendations apply to all three roles and should be implemented consist
 **Recommendation:** Prepare all roles for Ansible Galaxy publication.
 
 **Checklist for All Roles:**
+
 - [ ] Complete galaxy_info with all fields
 - [ ] Explicit role_name in meta/main.yml
 - [ ] 5-7 focused galaxy_tags
@@ -733,6 +747,7 @@ These recommendations apply to all three roles and should be implemented consist
 - [ ] Comprehensive README
 
 **Galaxy Publication Strategy:**
+
 - Wait until all Critical + Important items completed
 - Publish as collection: `virgo_core.proxmox` or individual roles
 - Consider namespace: `virgo_core` vs `spaceships_homelab`
@@ -742,22 +757,26 @@ These recommendations apply to all three roles and should be implemented consist
 **Recommendation:** Phased implementation of testing infrastructure.
 
 **Phase 1: Foundation (Week 1-2)**
+
 - Set up molecule for one role (proxmox_network - most complete)
 - Create GitHub Actions workflow template
 - Test and refine approach
 
 **Phase 2: Expansion (Week 3-4)**
+
 - Apply molecule to remaining roles (system_user, proxmox_access)
 - Implement CI for all roles
 - Run initial test suites, fix failures
 
 **Phase 3: Enhancement (Week 5-6)**
+
 - Expand test matrices
 - Add role-specific test scenarios
 - Implement scheduled testing
 - Document testing patterns
 
 **Phase 4: Polish (Week 7+)**
+
 - Add verification examples
 - Optimize test performance
 - Document troubleshooting for test failures
@@ -767,6 +786,7 @@ These recommendations apply to all three roles and should be implemented consist
 **Recommendation:** Ensure consistent meta/main.yml across all roles.
 
 **Standardize:**
+
 - Author: "Virgo-Core Team" (already consistent)
 - Company: Decide on "Virgo-Core" or "Spaceships Homelab"
 - License: MIT (already consistent)

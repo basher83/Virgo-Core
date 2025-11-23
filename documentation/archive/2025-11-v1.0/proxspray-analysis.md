@@ -339,7 +339,7 @@ proxmox_interfaces:
 
 ```
 
-2. **Runtime Configuration** (idempotent):
+1. **Runtime Configuration** (idempotent):
 
 ```yaml
 
@@ -356,7 +356,7 @@ proxmox_interfaces:
 
 ```
 
-3. **DHCP Server Configuration**:
+1. **DHCP Server Configuration**:
 
 ```yaml
 
@@ -375,7 +375,7 @@ proxmox_interfaces:
 
 ```
 
-4. **Firewall and NAT**:
+1. **Firewall and NAT**:
 
 ```yaml
 
@@ -459,7 +459,7 @@ proxmox_interfaces:
 
 ```
 
-2. **Monitor Creation** (all nodes):
+1. **Monitor Creation** (all nodes):
 
 ```yaml
 
@@ -479,7 +479,7 @@ proxmox_interfaces:
 
 ```
 
-3. **Manager Creation** (all nodes):
+1. **Manager Creation** (all nodes):
 
 ```yaml
 
@@ -492,7 +492,7 @@ proxmox_interfaces:
 
 ```
 
-4. **Single-Node Configuration Support**:
+1. **Single-Node Configuration Support**:
 
 ```yaml
 
@@ -861,7 +861,7 @@ ansible/
 
 ```
 
-2. **Disable enterprise repositories**:
+1. **Disable enterprise repositories**:
 
 ```yaml
 
@@ -875,7 +875,7 @@ ansible/
 
 ```
 
-3. **Add no-subscription repositories via templates**:
+1. **Add no-subscription repositories via templates**:
 
 ```yaml
 
@@ -897,7 +897,7 @@ deb http://download.proxmox.com/debian/pve {{ ansible_distribution_release }} pv
 
 ```
 
-4. **Install latest packages**:
+1. **Install latest packages**:
 
 ```yaml
 
@@ -2020,12 +2020,13 @@ Automates Proxmox VE cluster formation with corosync configuration.
 
 ```yaml
 
-# Required
+## Required
 
 cluster_name: "MyCluster"
 cluster_group: "proxmox"
 cluster_nodes:
-  - name: node1
+
+- name: node1
     hostname: node1.example.com
     management_ip: 192.168.1.10
     corosync_ip: 192.168.10.10
@@ -2039,7 +2040,7 @@ cluster_nodes:
 
 - hosts: proxmox
   roles:
-    - role: proxmox_cluster
+  - role: proxmox_cluster
       vars:
         cluster_name: "Production"
 
@@ -2049,15 +2050,15 @@ cluster_nodes:
 
 ```bash
 
-# Syntax check
+## Syntax check
 
 ansible-playbook --syntax-check playbooks/cluster-init.yml
 
-# Check mode (dry run)
+## Check mode (dry run)
 
 ansible-playbook playbooks/cluster-init.yml --check
 
-# Run on single cluster
+## Run on single cluster
 
 ansible-playbook playbooks/cluster-init.yml --limit matrix_cluster
 
@@ -2067,7 +2068,7 @@ ansible-playbook playbooks/cluster-init.yml --limit matrix_cluster
 
 ```markdown
 
-# CLAUDE.md (additions)
+## CLAUDE.md (additions)
 
 ## Ansible Roles
 

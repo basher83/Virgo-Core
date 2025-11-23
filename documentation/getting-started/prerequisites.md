@@ -105,7 +105,7 @@ git --version
 
 ## Credentials & Secrets
 
-- [ ] **Infisical account** created at https://infisical.com
+- [ ] **Infisical account** created at <https://infisical.com>
 - [ ] **Infisical project** created for cluster secrets
 - [ ] **Infisical CLI** authenticated
 

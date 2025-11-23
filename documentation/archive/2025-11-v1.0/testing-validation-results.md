@@ -88,6 +88,7 @@ bravo | SUCCESS => {
 ```
 
 **Findings**:
+
 - All 8 hosts responded successfully
 - No connectivity issues
 - SSH access confirmed
@@ -101,6 +102,7 @@ bravo | SUCCESS => {
 **Method**: `mise run ansible-lint` (equivalent to `uv run ansible-lint playbooks/ roles/`)
 
 **Configuration**:
+
 - Profile: `moderate` (required minimum)
 - Offline mode: `true` (skip Galaxy installs, use mocked dependencies)
 - Configuration file: `ansible/.ansible-lint`
@@ -113,10 +115,12 @@ Profile 'moderate' was required, but 'production' profile passed.
 ```
 
 **Files Processed**:
+
 - **70 files** linted successfully
 - **78 files** encountered (8 excluded via `.ansible-lint` config)
 
 **Excluded Paths** (per configuration):
+
 - Templates (`*/templates/`, `*.j2`)
 - Test directories
 - `.deprecated/` directory
@@ -130,6 +134,7 @@ Profile 'moderate' was required, but 'production' profile passed.
    - **Result**: ✅ Linting now passes
 
 **Production-Ready Roles Validated**:
+
 - ✅ `system_user` (Phase 1)
 - ✅ `proxmox_access` (Phase 2)
 - ✅ `proxmox_network` (Phase 3)
@@ -138,6 +143,7 @@ Profile 'moderate' was required, but 'production' profile passed.
 - ✅ `proxmox_ceph` (Phase 4)
 
 **Production-Ready Playbooks Validated**:
+
 - ✅ `create-admin-user.yml` (uses `system_user` role)
 - ✅ `setup-terraform-automation.yml` (uses `system_user` + `proxmox_access` roles)
 - ✅ `configure-network.yml` (uses `proxmox_network` role)
@@ -156,6 +162,7 @@ Profile 'moderate' was required, but 'production' profile passed.
 **Test Target**: Matrix cluster (Foxtrot, Golf, Hotel)
 
 **Test Method**:
+
 1. **Check mode** - Verify what would change (dry-run)
 2. **First run** - Create user and configuration
 3. **Second run** - Verify no changes (idempotency test)
@@ -164,6 +171,7 @@ Profile 'moderate' was required, but 'production' profile passed.
 ### Test 3.1: Check Mode (Dry-Run)
 
 **Command**:
+
 ```bash
 uv run ansible-playbook playbooks/create-admin-user.yml \
   --limit matrix_cluster \
@@ -181,6 +189,7 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 | Hotel   | ✅     | 2       | 1      | SSH key task fails in check mode (expected) |
 
 **Findings**:
+
 - User creation validated successfully
 - `.ssh` directory creation validated
 - SSH key task fails in check mode (known Ansible limitation - `authorized_key` module can't verify paths when user doesn't exist yet)
@@ -189,6 +198,7 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 ### Test 3.2: First Run (User Creation)
 
 **Command**:
+
 ```bash
 uv run ansible-playbook playbooks/create-admin-user.yml \
   --limit matrix_cluster \
@@ -205,6 +215,7 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 | Hotel   | 20  | 5       | 0      | 2       |
 
 **Changes Made** (per node):
+
 1. ✅ User `test-claude-user` created
 2. ✅ `.ssh` directory created
 3. ✅ SSH authorized key configured
@@ -212,6 +223,7 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 5. ✅ (Golf/Hotel only) `/etc/sudoers.d/` directory mode corrected
 
 **Validation Messages**:
+
 - "User 'test-claude-user' created"
 - "Configured 1 SSH key(s) for test-claude-user"
 - "Sudoers configuration for 'test-claude-user' updated"
@@ -229,10 +241,12 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 | Hotel   | 20  | **0**   | 0      | 2       |
 
 **Validation Messages**:
+
 - "User 'test-claude-user' already exists and is up to date"
 - "Sudoers configuration for 'test-claude-user' already current"
 
 **Idempotency Analysis**:
+
 - ✅ **0 changes** on all 3 nodes
 - ✅ All tasks reported "ok" status (not "changed")
 - ✅ Role correctly detects existing configuration
@@ -242,6 +256,7 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 ### Test 3.4: Cleanup (User Removal)
 
 **Command**:
+
 ```bash
 uv run ansible-playbook playbooks/create-admin-user.yml \
   --limit matrix_cluster \
@@ -259,6 +274,7 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 | Hotel   | 10  | 2       | 0      | 5       |
 
 **Changes Made**:
+
 1. ✅ User `test-claude-user` removed
 2. ✅ Sudoers file removed (`/etc/sudoers.d/test-claude-user`)
 
@@ -275,6 +291,7 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 **Test Target**: Matrix cluster (Foxtrot initially, then all nodes)
 
 **Test Method**:
+
 1. **Create inventory structure** - Define hosts and groups
 2. **Create group_vars** - Define network configuration matching production
 3. **Test playbook execution** - Verify role loads and runs
@@ -282,10 +299,12 @@ uv run ansible-playbook playbooks/create-admin-user.yml \
 ### Test 4.1: Inventory and Group Variables Setup
 
 **Created Files**:
+
 - `ansible/inventory/hosts.yml` - Inventory with Matrix cluster (Foxtrot, Golf, Hotel) + other hosts
 - `ansible/group_vars/matrix_cluster.yml` - Network configuration variables
 
 **Network Configuration Defined**:
+
 ```yaml
 proxmox_bridges:
   - name: vmbr0 (Management, 192.168.3.x/24, VLAN-aware, VLAN 9)
@@ -297,6 +316,7 @@ proxmox_vlans:
 ```
 
 **Validation**:
+
 ```bash
 uv run ansible -m debug -a "var=proxmox_bridges" foxtrot
 ```
@@ -306,6 +326,7 @@ uv run ansible -m debug -a "var=proxmox_bridges" foxtrot
 ### Test 4.2: Playbook Execution (Check Mode)
 
 **Command**:
+
 ```bash
 uv run ansible-playbook playbooks/configure-network.yml --limit matrix_cluster --check --diff
 ```
@@ -319,6 +340,7 @@ uv run ansible-playbook playbooks/configure-network.yml --limit matrix_cluster -
 | Hotel   | 9   | 0       | 0      | 10      | Prerequisites passed |
 
 **Findings**:
+
 - ✅ Playbook syntax correct
 - ✅ Role prerequisites passed (Proxmox VE detected, network file exists)
 - ✅ Network connectivity verified on all nodes
@@ -327,6 +349,7 @@ uv run ansible-playbook playbooks/configure-network.yml --limit matrix_cluster -
 ### Test 4.3: Playbook Execution (Full Matrix Cluster)
 
 **Command**:
+
 ```bash
 uv run ansible-playbook playbooks/configure-network.yml --limit matrix_cluster
 ```
@@ -357,6 +380,7 @@ uv run ansible-playbook playbooks/configure-network.yml --limit matrix_cluster
    - **Status**: ✅ Resolved
 
 **Configuration Applied**:
+
 - ✅ 3 bridges configured per node (vmbr0, vmbr1, vmbr2)
 - ✅ VLAN subinterface created (vlan9 for Corosync)
 - ✅ MTU settings applied (9000 for CEPH networks)
@@ -366,6 +390,7 @@ uv run ansible-playbook playbooks/configure-network.yml --limit matrix_cluster
 - ✅ All nodes verified network connectivity
 
 **Verification Results**:
+
 ```text
 Bridges configured: 3/3
 VLANs configured: 1/1
@@ -374,11 +399,13 @@ Network connectivity: ✅ All nodes reachable
 ```
 
 **Idempotency Validation**:
+
 - Foxtrot: `changed=0` (already configured from earlier test)
 - Re-running on Foxtrot showed perfect idempotency
 - Handlers only triggered where changes occurred (Golf, Hotel)
 
 **What This Validates**:
+
 - ✅ Inventory structure works correctly
 - ✅ Group variables load and template properly (with correct location)
 - ✅ Playbook pre-tasks and post-tasks work
@@ -465,7 +492,7 @@ Network connectivity: ✅ All nodes reachable
 
 ### Issues Resolved (Test 4)
 
-4. **group_vars location causing empty variables**:
+1. **group_vars location causing empty variables**:
    - **Issue**: `group_vars/` at wrong location caused variables not to load
    - **Root Cause**: Ansible looks for `group_vars/` relative to inventory file/directory
    - **Impact**: Role tasks skipped silently, `proxmox_bridges length: 0`
@@ -473,7 +500,7 @@ Network connectivity: ✅ All nodes reachable
    - **Status**: ✅ Resolved
    - **Documentation**: Added to ansible-best-practices skill (Section 21)
 
-5. **interfaces_file module using deprecated parameters**:
+2. **interfaces_file module using deprecated parameters**:
    - **Issue**: Used `family` and `method` instead of `address_family`
    - **Root Cause**: Module API changed in community.general 12.0.1+
    - **Impact**: "Unsupported parameters" error blocked all configuration
@@ -481,7 +508,7 @@ Network connectivity: ✅ All nodes reachable
    - **Status**: ✅ Resolved
    - **Documentation**: Added to ansible-best-practices skill (Section 22)
 
-6. **Missing `| default()` in `when` conditions**:
+3. **Missing `| default()` in `when` conditions**:
    - **Issue**: Role tasks using `when` conditions without `| default()` filter
    - **Root Cause**: Role defaults not loaded when `when` conditions evaluated at `include_tasks` level
    - **Impact**: Conditional logic failures when variables undefined
@@ -523,10 +550,12 @@ The Ansible roles created in Phases 1-4 meet production quality standards:
 ### Confidence Level
 
 **High confidence** for deploying tested roles to production:
+
 - ✅ `system_user` - Fully tested, perfect idempotency
 - ✅ `proxmox_network` - Fully tested on 3-node cluster, perfect idempotency
 
 **Medium-high confidence** for untested roles:
+
 - ✅ Passed ansible-lint (production profile)
 - ⏸️ Pending idempotency validation
 
@@ -537,11 +566,13 @@ The Ansible roles created in Phases 1-4 meet production quality standards:
 ### A. Test Commands Reference
 
 **Connectivity Test**:
+
 ```bash
 mise run ansible-ping
 ```
 
 **ansible-lint**:
+
 ```bash
 mise run ansible-lint
 # Or manually:
@@ -549,6 +580,7 @@ cd ansible && uv run ansible-lint playbooks/ roles/
 ```
 
 **Idempotency Test Template**:
+
 ```bash
 # Check mode (dry-run)
 uv run ansible-playbook <playbook> --limit <hosts> --check --diff
@@ -565,6 +597,7 @@ uv run ansible-playbook <playbook> --limit <hosts>
 Location: `ansible/.ansible-lint`
 
 **Key Settings**:
+
 - Profile: `moderate`
 - Offline mode: `true`
 - Mock roles: `geerlingguy.docker`
@@ -594,6 +627,7 @@ Location: `ansible/.ansible-lint`
 **Created**: `ansible/playbooks/test-roles.yml`
 
 **Features**:
+
 - ✅ Single playbook testing all 6 roles
 - ✅ Tag-based selective testing (`--tags system_user`)
 - ✅ Check mode compatible
@@ -605,12 +639,14 @@ Location: `ansible/.ansible-lint`
 **Status**: ✅ **PASSED** (with fix)
 
 **Issue Found & Fixed**:
+
 - **Problem**: `authorized_key` module failed in check mode with path resolution error
 - **Solution**: Added `path: "/home/{{ user_item.name }}/.ssh/authorized_keys"` parameter
 - **File**: `roles/system_user/tasks/ssh_keys.yml:10`
 - **Result**: Now works perfectly in check mode
 
 **Test Results (All 3 Nodes)**:
+
 ```text
 foxtrot: ok=16 changed=4 unreachable=0 failed=0
 golf:    ok=17 changed=4 unreachable=0 failed=0
@@ -641,6 +677,7 @@ hotel:   ok=17 changed=4 unreachable=0 failed=0
    - **Note**: Testing-specific, not a role bug
 
 **Test Results**:
+
 ```text
 foxtrot: ok=14 changed=4 unreachable=0 failed=0 skipped=3
 ```
@@ -662,11 +699,13 @@ foxtrot: ok=14 changed=4 unreachable=0 failed=0 skipped=3
    - **File**: `roles/proxmox_cluster/tasks/corosync.yml:39`
 
 **Test Results**:
+
 ```text
 foxtrot: ok=24 changed=3 unreachable=0 failed=1 skipped=16
 ```
 
 **Remaining Issue**:
+
 - ⚠️ Cluster quorum verification fails on already-quorate cluster
 - **Impact**: Low - verification works, just needs test environment handling
 - **Recommendation**: Skip verification in check mode or when cluster exists
@@ -717,6 +756,7 @@ foxtrot: ok=24 changed=3 unreachable=0 failed=1 skipped=16
 **Pending Issues**: 1 (low priority)
 
 **Code Quality Improvements**:
+
 1. ✅ Better check mode compatibility (system_user SSH keys)
 2. ✅ Configurable SSL validation (proxmox_repository)
 3. ✅ Modern Jinja2 syntax (proxmox_repository)
@@ -728,6 +768,7 @@ foxtrot: ok=24 changed=3 unreachable=0 failed=1 skipped=16
 **Created**: `ansible/playbooks/test-roles.yml` (232 lines)
 
 **Capabilities**:
+
 - Test individual roles: `--tags system_user`
 - Test specific host: `--limit foxtrot`
 - Test all Matrix nodes: default behavior
@@ -736,6 +777,7 @@ foxtrot: ok=24 changed=3 unreachable=0 failed=1 skipped=16
 ### Next Steps
 
 **Immediate**:
+
 1. ✅ Commit all 6 code fixes
 2. ⏭️ Fix remaining proxmox_cluster verification issue
 3. ⏭️ Test proxmox_ceph role
@@ -743,6 +785,7 @@ foxtrot: ok=24 changed=3 unreachable=0 failed=1 skipped=16
 5. ⏭️ Fix proxmox_network conditional logic issue
 
 **Phase 5 Completion**:
+
 - ✅ Test full `initialize-matrix-cluster.yml` playbook in check mode
 - ✅ Test all 6 roles (completed!)
 - ⏭️ Run idempotency tests on all passing roles (future session)
@@ -775,11 +818,13 @@ foxtrot: ok=24 changed=3 unreachable=0 failed=1 skipped=16
 Role works perfectly with no modifications needed.
 
 **Test Results**:
+
 ```text
 foxtrot: ok=21 changed=0 unreachable=0 failed=0 skipped=9
 ```
 
 **Features Validated**:
+
 - ✅ Bridge configuration (vmbr0, vmbr1, vmbr2)
 - ✅ VLAN interface configuration (vlan9 for Corosync)
 - ✅ IP address assignment
@@ -789,6 +834,7 @@ foxtrot: ok=21 changed=0 unreachable=0 failed=0 skipped=9
 - ✅ Check mode compatibility
 
 **Fix Applied**:
+
 - Removed `when: false` from test-roles.yml (line 119)
 - Role already functional, just disabled in test playbook
 
@@ -799,11 +845,13 @@ foxtrot: ok=21 changed=0 unreachable=0 failed=0 skipped=9
 **Test Method**: Used Infisical secrets at path `/matrix` with real credentials
 
 **Test Results**:
+
 ```text
 foxtrot: ok=14 changed=0 unreachable=0 failed=1 (expected)
 ```
 
 **Features Validated**:
+
 - ✅ Infisical connection and authentication
 - ✅ Secret retrieval from `/matrix` path
 - ✅ Environment variable fallback (`PROXMOX_USERNAME`, `PROXMOX_PASSWORD`)
@@ -821,16 +869,19 @@ check mode. This is expected behavior for community modules. The role's **primar
 **Status**: ✅ **PASSED** in check mode
 
 **Test Results**:
+
 ```text
 foxtrot: ok=65 changed=7 unreachable=0 failed=0 skipped=66
 ```
 
 **Roles Tested Together**:
+
 1. ✅ proxmox_repository
 2. ✅ proxmox_cluster
 3. ✅ proxmox_ceph
 
 **Configurations Added for Testing**:
+
 - `validate_certs: false` (line 114)
 - `proxmox_packages: []` (line 115)
 - `ceph_allow_zap_devices: true` (line 47)
@@ -851,17 +902,20 @@ foxtrot: ok=65 changed=7 unreachable=0 failed=0 skipped=66
 ### Issues Fixed (Session 3 - Completion)
 
 **Commit 2 Fixes** (4 issues):
-9. proxmox_ceph: Health verification skip in check mode
-10. proxmox_ceph: JSON parsing for empty CEPH output
-11. proxmox_ceph: OSD count verification skip in check mode
-12. initialize-matrix-cluster.yml: Testing configuration variables
+
+1. proxmox_ceph: Health verification skip in check mode
+2. proxmox_ceph: JSON parsing for empty CEPH output
+3. proxmox_ceph: OSD count verification skip in check mode
+4. initialize-matrix-cluster.yml: Testing configuration variables
 
 **Commit 3 Fixes** (1 issue):
-13. proxmox_network: Enabled in test-roles.yml (was incorrectly disabled)
+
+1. proxmox_network: Enabled in test-roles.yml (was incorrectly disabled)
 
 ### Test Infrastructure Status
 
 **Created**:
+
 - `playbooks/test-roles.yml` (237 lines)
   - All 6 roles with tag-based testing
   - Check mode compatible
@@ -869,6 +923,7 @@ foxtrot: ok=65 changed=7 unreachable=0 failed=0 skipped=66
   - Minimal test configurations
 
 **Capabilities**:
+
 - Individual role testing: `--tags system_user`
 - Specific host testing: `--limit foxtrot`
 - All Matrix nodes: default behavior
@@ -879,6 +934,7 @@ foxtrot: ok=65 changed=7 unreachable=0 failed=0 skipped=66
 **Status**: ✅ **PRODUCTION READY**
 
 All 6 roles meet production quality standards:
+
 - ✅ **Code Quality**: 0 ansible-lint violations
 - ✅ **Check Mode**: All roles support check mode
 - ✅ **Integration**: Cluster init playbook works end-to-end
@@ -889,11 +945,13 @@ All 6 roles meet production quality standards:
 ### Remaining Tasks (Optional)
 
 **Phase 5**:
+
 - ⏭️ Idempotency testing (run twice, verify no changes on second run)
 - ⏭️ Performance testing
 - ⏭️ Test on full Matrix cluster (all 3 nodes)
 
 **Phase 6 - Cleanup**:
+
 - ⏭️ Update ansible-migration-plan.md with completion status
 - ⏭️ Create role README files
 - ⏭️ Update mise tasks
@@ -926,17 +984,20 @@ All 6 roles meet production quality standards:
 **Problem**: Zap task attempted to destroy active OSDs when variable check failed
 
 **Root Cause**:
+
 - Variable `existing_osds_before_zap` defaulted to 0 when check didn't run or failed
 - Zap condition was `existing_osds_before_zap | default(0) | int == 0`
 - This meant "zap when count equals zero", causing zapping when count check failed
 
 **Impact**:
-```
+
+```text
 stderr: umount: /var/lib/ceph/osd/ceph-0: target is busy.
 RuntimeError: command returned non-zero exit status: 32
 ```
 
 **Fix Implemented**:
+
 1. Added `osd_count_check_successful` flag to track whether OSD count check succeeded
 2. Added defensive fallback that sets `existing_osds_before_zap: 999` when check fails
 3. Updated zap condition to require `osd_count_check_successful == true`
@@ -950,16 +1011,19 @@ RuntimeError: command returned non-zero exit status: 32
 **Problem**: Quorum assertion failed when running with `--limit` on subset of nodes
 
 **Root Cause**:
+
 - Assertion lacked condition to skip when `pvecm status` command fails
 - When cluster in partial state or `--limit` used, quorum check would incorrectly fail
 
 **Impact**:
-```
+
+```text
 Cluster is not quorate! Check pvecm status
 fatal: [foxtrot]: FAILED!
 ```
 
 **Fix Implemented**:
+
 - Added `cluster_status.rc == 0` condition to quorum assertion tasks
 - Skips quorum checks when pvecm status fails
 
@@ -968,11 +1032,13 @@ fatal: [foxtrot]: FAILED!
 ### Test Results
 
 **Before Fixes**:
+
 - Bug #13: `ok=75 changed=3 failed=1`
 - Bug #14: `ok=49 changed=0 failed=1`
 
 **After Fixes**:
-```
+
+```text
 PLAY RECAP *********************************************************************
 foxtrot                    : ok=104  changed=3    unreachable=0    failed=0    skipped=32   rescued=0    ignored=0
 ```
@@ -988,6 +1054,7 @@ foxtrot                    : ok=104  changed=3    unreachable=0    failed=0    s
 ### Ansible Best Practices Applied
 
 Following `ansible-best-practices` skill patterns:
+
 - ✅ Defensive error handling with `failed_when` and `changed_when`
 - ✅ Safe defaults that prevent destructive operations
 - ✅ Proper use of conditional checks before destructive actions
@@ -1010,7 +1077,8 @@ Following `ansible-best-practices` skill patterns:
 **Status**: ❌ **FAILED** - Bug #15 discovered
 
 **Error**:
-```
+
+```text
 RuntimeError: Unable to create a new OSD id
 unable to find a keyring on /var/lib/ceph/bootstrap-osd/ceph.keyring: (2) No such file or directory
 ```
@@ -1026,16 +1094,19 @@ unable to find a keyring on /var/lib/ceph/bootstrap-osd/ceph.keyring: (2) No suc
 **Impact**: OSD creation fails on any node joining cluster after initial setup
 
 **Root Cause**:
+
 - When CEPH cluster initializes on first node (Foxtrot), bootstrap keyrings are created
 - Additional nodes (Golf, Hotel) need `/var/lib/ceph/bootstrap-osd/ceph.keyring` to create OSDs
 - Role assumed keyrings exist but didn't distribute them
 
 **Research**:
+
 - Investigated ceph-ansible (uses fetch→copy pattern, too complex)
 - Investigated Proxmox forums (recommend `ceph auth get client.bootstrap-osd`)
 - Selected Option 3: Generate keyring from cluster (cleanest, most Proxmox-native)
 
 **Fix Implemented**:
+
 - Created `ansible/roles/proxmox_ceph/tasks/bootstrap_keyrings.yml`
 - Added task to `main.yml` between monitors and OSD preparation
 - Uses `ceph auth get client.bootstrap-osd` to fetch keyring from running cluster
@@ -1043,12 +1114,14 @@ unable to find a keyring on /var/lib/ceph/bootstrap-osd/ceph.keyring: (2) No suc
 - Idempotent: checks if keyring exists before generating
 
 **Files Changed**:
+
 - `ansible/roles/proxmox_ceph/tasks/main.yml` - Added bootstrap_keyrings task
 - `ansible/roles/proxmox_ceph/tasks/bootstrap_keyrings.yml` - New task file
 
 ### Test 7.2: Manual Workaround and Re-deployment
 
 **Workaround Applied**:
+
 ```bash
 # Copied bootstrap keyring from Foxtrot to Golf and Hotel
 ssh foxtrot "cat /var/lib/ceph/bootstrap-osd/ceph.keyring" | \
@@ -1060,12 +1133,14 @@ ssh foxtrot "cat /var/lib/ceph/bootstrap-osd/ceph.keyring" | \
 **Status**: ✅ **PASSED**
 
 **Results**:
+
 - All 12 OSDs created successfully
 - CEPH cluster: HEALTH_OK
 - OSD distribution: 4 OSDs per node (Foxtrot, Golf, Hotel)
 
 **Final OSD Tree**:
-```
+
+```text
 ID  CLASS  WEIGHT    TYPE NAME         STATUS
 -1         21.83148  root default
 -3          7.27716      host foxtrot
@@ -1086,7 +1161,8 @@ ID  CLASS  WEIGHT    TYPE NAME         STATUS
 ```
 
 **CEPH Cluster Status**:
-```
+
+```text
 health: HEALTH_OK
 services:
   mon: 3 daemons (foxtrot, golf, hotel)
@@ -1107,7 +1183,8 @@ data:
 **Results**: ✅ **PASSED**
 
 **Validation Output**:
-```
+
+```text
 TASK [proxmox_ceph : Create bootstrap-osd keyring directory]
 changed: ownership set to ceph:ceph
 
@@ -1119,6 +1196,7 @@ TASK [proxmox_ceph : Display bootstrap keyring status]
 ```
 
 **Behavior Confirmed**:
+
 - ✅ Creates `/var/lib/ceph/bootstrap-osd/` directory with proper ownership
 - ✅ Checks if keyring already exists (idempotent)
 - ✅ Skips generation when keyring exists
@@ -1132,6 +1210,7 @@ TASK [proxmox_ceph : Display bootstrap keyring status]
 **Status**: ✅ **COMPLETE**
 
 **Cluster Deployment**:
+
 - ✅ All 12 OSDs operational across 3 nodes
 - ✅ CEPH health: HEALTH_OK
 - ✅ Storage capacity: 22 TiB raw, ~7.3 TiB usable (size=3 replication)
@@ -1142,6 +1221,7 @@ TASK [proxmox_ceph : Display bootstrap keyring status]
 **Bug Fixed**: 1 (Bug #15)
 
 **Production Readiness**:
+
 - ✅ Bug #15 fix validated
 - ✅ Idempotent behavior confirmed
 - ✅ Full 3-node CEPH cluster operational

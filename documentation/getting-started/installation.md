@@ -182,7 +182,7 @@ mise list
 
 - Check internet connectivity
 - Verify curl installed: `curl --version`
-- Try manual install from https://mise.jdx.dev/installing-mise.html
+- Try manual install from <https://mise.jdx.dev/installing-mise.html>
 
 ### Dependencies Installation Fails
 
@@ -200,6 +200,6 @@ mise list
 
 **Solutions**:
 
-- Check Infisical service status: https://status.infisical.com
+- Check Infisical service status: <https://status.infisical.com>
 - Clear Infisical cache: `rm -rf ~/.config/infisical`
 - Try CLI token auth: `infisical login --token`

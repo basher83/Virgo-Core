@@ -8,7 +8,9 @@
 
 ## Purpose
 
-This document defines the structure, responsibilities, and implementation patterns for Ansible roles in Virgo-Core. It provides concrete guidance for creating component-based, reusable roles that manage Proxmox VE infrastructure across multiple clusters.
+This document defines the structure, responsibilities, and implementation patterns for Ansible roles in Virgo-Core. It
+provides concrete guidance for creating component-based, reusable roles that manage Proxmox VE infrastructure across
+multiple clusters.
 
 **Related Documents**:
 
@@ -656,7 +658,8 @@ proxmox_acls:
 
 **Separation from `system_user` Role**:
 
-This role manages **Proxmox API access** only, not Linux system users. For creating the corresponding Linux PAM user, use the `system_user` role.
+This role manages **Proxmox API access** only, not Linux system users. For creating the corresponding Linux PAM user,
+use the `system_user` role.
 
 ---
 
@@ -1093,7 +1096,7 @@ dependencies:
 
 Each role must have a README.md:
 
-```markdown
+````text
 
 # Role Name
 
@@ -1110,14 +1113,26 @@ Brief description of what this role manages.
 ## Role Variables
 
     ```yaml
-    # Required variables
 
-    variable_name: description
+## Required variables
 
-    # Optional variables
+```
 
-    optional_var: default_value
-    ```
+variable_name: description
+
+```text
+
+```
+
+# Optional variables
+
+```text
+
+```
+
+optional_var: default_value
+
+    ```text
 
 ## Dependencies
 
@@ -1125,10 +1140,12 @@ List of role dependencies.
 
 ## Example Playbook
 
+```
+
     ```yaml
-    - hosts: proxmox
+- hosts: proxmox
       roles:
-        - role: role_name
+  - role: role_name
           vars:
             variable: value
     ```
@@ -1145,7 +1162,7 @@ MIT
 
 Virgo-Core Team
 
-```
+````
 
 ---
 
@@ -1157,7 +1174,7 @@ Store cluster-specific configuration in `group_vars/`:
 
 ```yaml
 
-# group_vars/matrix_cluster.yml
+## group_vars/matrix_cluster.yml
 
 ---
 cluster_name: "Matrix"
@@ -1177,7 +1194,7 @@ Store global defaults in `group_vars/all.yml`:
 
 ```yaml
 
-# group_vars/all.yml
+## group_vars/all.yml
 
 ---
 infisical_project_id: '7b832220-24c0-45bc-a5f1-ce9794a31259'
@@ -1194,7 +1211,7 @@ Store host-specific overrides in `host_vars/`:
 
 ```yaml
 
-# host_vars/foxtrot.yml
+## host_vars/foxtrot.yml
 
 ---
 node_id: 5
@@ -1225,7 +1242,7 @@ ansible-playbook playbooks/test-role.yml --check --diff
 
 ```yaml
 
-# playbooks/test-system-user.yml
+## playbooks/test-system-user.yml
 
 ---
 
@@ -1234,10 +1251,12 @@ ansible-playbook playbooks/test-role.yml --check --diff
   connection: local
 
   roles:
-    - role: system_user
+
+  - role: system_user
       vars:
         system_users:
-          - name: testuser
+
+    - name: testuser
             state: present
             shell: /bin/bash
 

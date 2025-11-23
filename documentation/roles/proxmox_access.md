@@ -307,7 +307,7 @@ tofu apply
 
 Environment file exports:
 
-- `PROXMOX_VE_ENDPOINT`: API URL (https://hostname:8006)
+- `PROXMOX_VE_ENDPOINT`: API URL (<https://hostname:8006>)
 - `PROXMOX_VE_API_TOKEN`: Full token (userid!tokenid=secret)
 - `TF_VAR_proxmox_*`: Alternative variable format
 

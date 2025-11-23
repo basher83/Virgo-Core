@@ -382,20 +382,20 @@ What notification patterns exist?"
 
 1. **Testing Patterns** - Study molecule setups across 5-10 roles
 
-    - Extract common test scenarios
-    - Document CI/CD integration
-    - Create testing guide
+   - Extract common test scenarios
+   - Document CI/CD integration
+   - Create testing guide
 
 2. **Documentation Templates** - Analyze README structure
 
-    - Extract common sections
-    - Create README template
-    - Document examples organization
+   - Extract common sections
+   - Create README template
+   - Document examples organization
 
 3. **Handler Patterns** - Study handler usage
-    - When handlers vs tasks
-    - Notification patterns
-    - Coordination strategies
+   - When handlers vs tasks
+   - Notification patterns
+   - Coordination strategies
 
 **Output**: 3 new pattern documents, enhanced testing guide
 
@@ -405,20 +405,20 @@ What notification patterns exist?"
 
 1. **Variable Organization at Scale**
 
-    - Study Debops variable structure
-    - Extract precedence patterns
-    - Document validation approaches
+   - Study Debops variable structure
+   - Extract precedence patterns
+   - Document validation approaches
 
 2. **Role Architecture Patterns**
 
-    - Analyze role composition
-    - Dependency management
-    - Role splitting strategies
+   - Analyze role composition
+   - Dependency management
+   - Role splitting strategies
 
 3. **Multi-OS Support**
-    - Extract OS detection patterns
-    - Package manager abstraction
-    - Service management differences
+   - Extract OS detection patterns
+   - Package manager abstraction
+   - Service management differences
 
 **Output**: 3 comprehensive guides, real-world examples
 
@@ -428,20 +428,20 @@ What notification patterns exist?"
 
 1. **Upgrade Procedures**
 
-    - Version migration patterns
-    - Rollback strategies
-    - State management
+   - Version migration patterns
+   - Rollback strategies
+   - State management
 
 2. **High Availability Patterns**
 
-    - Service coordination
-    - Health checking
-    - Failure recovery
+   - Service coordination
+   - Health checking
+   - Failure recovery
 
 3. **Security Hardening**
-    - Audit patterns from security-focused roles
-    - Credential management
-    - Compliance patterns
+   - Audit patterns from security-focused roles
+   - Credential management
+   - Compliance patterns
 
 **Output**: Advanced workflow documentation
 

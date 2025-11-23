@@ -40,6 +40,7 @@ Each node has three NVMe drives:
   - Device: `nvme0n1`
   - Purpose: Boot disk
   - Partitioning:
+
     ```bash
     nvme0n1            931.5G disk
     ├─nvme0n1p1         1007K part

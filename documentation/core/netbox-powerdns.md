@@ -34,13 +34,13 @@ The **netbox-powerdns-sync** plugin provides seamless automation between these s
 
 The plugin offers several strategies for creating your `docker-01-nexus.spaceships.work` style naming:[^1]
 
--   **Device-based naming**: Uses NetBox device names as DNS records
+- **Device-based naming**: Uses NetBox device names as DNS records
 
--   **IP-based naming**: Generates names based on IP address patterns
+- **IP-based naming**: Generates names based on IP address patterns
 
--   **FHRP Group naming**: Uses First Hop Redundancy Protocol group names
+- **FHRP Group naming**: Uses First Hop Redundancy Protocol group names
 
--   **Tag-based matching**: Routes records to appropriate zones based on NetBox tags
+- **Tag-based matching**: Routes records to appropriate zones based on NetBox tags
 
 ### Installation and Configuration
 

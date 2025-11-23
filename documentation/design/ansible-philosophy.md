@@ -898,4 +898,5 @@ Before creating or modifying a role, ask:
 
 ---
 
-**This document is the authoritative source for Ansible design philosophy in Virgo-Core. All Ansible code should adhere to these principles.**
+**This document is the authoritative source for Ansible design philosophy in Virgo-Core. All Ansible code should adhere
+to these principles.**
