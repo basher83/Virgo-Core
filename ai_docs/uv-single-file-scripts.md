@@ -199,10 +199,10 @@ if __name__ == "__main__":
 
 ### Important Metadata Rules
 
--   The `dependencies` field **must** be present, even if empty: `dependencies = []`
--   Metadata is enclosed in `# /// script` and `# ///` comments
--   When inline metadata is present, project dependencies are ignored (no need for `--no-project`)
--   Python version requirements are automatically resolved and downloaded if needed
+- The `dependencies` field **must** be present, even if empty: `dependencies = []`
+- Metadata is enclosed in `# /// script` and `# ///` comments
+- When inline metadata is present, project dependencies are ignored (no need for `--no-project`)
+- Python version requirements are automatically resolved and downloaded if needed
 
 ## Creating Self-Executable Scripts
 
@@ -681,7 +681,7 @@ if __name__ == "__main__":
 # ///
 ```
 
-2. **Dependencies not found**
+1. **Dependencies not found**
 
 ```bash
 # Check if you're in a project directory
@@ -691,7 +691,7 @@ uv run --no-project script.py
 uv run --with requests script.py
 ```
 
-3. **Python version conflicts**
+1. **Python version conflicts**
 
 ```bash
 # Check available Python versions
@@ -704,7 +704,7 @@ uv python install 3.12
 uv run --python 3.12 script.py
 ```
 
-4. **Shebang not working**
+1. **Shebang not working**
 
 ```bash
 # Ensure script is executable
@@ -725,12 +725,12 @@ which uv
 uv lock --script script.py
 ```
 
-2. **Cache environments for repeated execution**
-    - uv automatically caches virtual environments
-    - Identical dependency sets reuse cached environments
-3. **Minimize dependencies**
-    - Only include necessary packages
-    - Use standard library when possible
+1. **Cache environments for repeated execution**
+   - uv automatically caches virtual environments
+   - Identical dependency sets reuse cached environments
+2. **Minimize dependencies**
+   - Only include necessary packages
+   - Use standard library when possible
 
 ### Debugging
 
@@ -749,10 +749,10 @@ uv run --show-deps script.py
 
 ## Next Steps
 
--   Explore [uv project management](https://docs.astral.sh/uv/concepts/projects/) for larger applications
--   Learn about [uv tool management](https://docs.astral.sh/uv/guides/tools/) for global tool installation
--   Check the [uv command reference](https://docs.astral.sh/uv/reference/cli/) for advanced options
--   Review [PEP 723](https://peps.python.org/pep-0723/) specification for complete metadata format details
+- Explore [uv project management](https://docs.astral.sh/uv/concepts/projects/) for larger applications
+- Learn about [uv tool management](https://docs.astral.sh/uv/guides/tools/) for global tool installation
+- Check the [uv command reference](https://docs.astral.sh/uv/reference/cli/) for advanced options
+- Review [PEP 723](https://peps.python.org/pep-0723/) specification for complete metadata format details
 
 This knowledge base provides a comprehensive foundation for using uv with single file Python scripts, enabling you to create portable, self-contained, and reproducible Python utilities.
 <span style="display:none">[^10][^11][^12][^13][^14][^15][^16][^17][^18][^19][^2][^20][^3][^4][^5][^6][^7][^8][^9]</span>

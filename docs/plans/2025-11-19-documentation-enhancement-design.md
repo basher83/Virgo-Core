@@ -17,31 +17,37 @@ examples.
 ### Key Choices Made
 
 **File Organization**: Preserve subdirectory structure (core/, design/, roles/, getting-started/)
+
 - Rationale: Maintains logical organization established in recent documentation reorganization
 - Implementation: Update docs.json paths to reference subdirectories
 
 **Scope**: Solid foundation (16-24 hours) focusing on immediate value
+
 - Phase 1: Fix 404 errors (2-4 hours)
 - Phase 2: Create getting-started content (6-10 hours)
 - Phase 3: Enhance role documentation (8-10 hours)
 
 **Content Creation**: Hybrid approach
+
 - AI drafts procedural/tutorial content
 - Collaborative troubleshooting sections leveraging real-world experience
 - Enhanced role docs building on existing excellent READMEs
 
 **Archived Documentation**: Extract insights, remove references
+
 - Pull testing metrics into role docs ("15 bugs found and fixed")
 - Incorporate migration lessons into ansible-philosophy.md
 - Remove archived doc links from navigation
 
 **Role Documentation**: Enhanced versions
+
 - Start with existing 99-580 line READMEs
 - Add architecture diagrams and workflow visualizations
 - Include integration examples and cross-references
 - Show battle-tested metrics from production validation
 
 **Implementation Priority**: Fix-then-build sequence
+
 1. Fix docs.json paths (immediate value from existing content)
 2. Create getting-started tutorials (unblock new users)
 3. Enhance role documentation (comprehensive reference)
@@ -55,6 +61,7 @@ examples.
 **Changes to docs.json**:
 
 Current broken paths → Fixed paths:
+
 - `documentation/goals` → `documentation/core/goals`
 - `documentation/infrastructure` → `documentation/core/infrastructure`
 - `documentation/ansible-philosophy` → `documentation/design/ansible-philosophy`
@@ -64,6 +71,7 @@ Current broken paths → Fixed paths:
 - `documentation/references` → `documentation/core/references`
 
 Remove archived document references:
+
 - `documentation/ansible-migration-plan` (archived)
 - `documentation/ansible-migration-completion` (archived)
 - `documentation/testing-validation-results` (archived)
@@ -71,12 +79,14 @@ Remove archived document references:
 **Changes to index.mdx**:
 
 Remove links to archived docs in Quick Links section, replace with:
+
 - Links to active documentation
 - Link to roadmap (next-features-2025-11.md)
 
 **Insight Extraction**:
 
 Before removing archived doc references, extract key information:
+
 - Testing validation results → Add "Battle Tested" callouts to role docs
   - "15 bugs found and fixed during comprehensive testing"
   - "Perfect idempotency validated across 3-node Matrix cluster"
@@ -94,6 +104,7 @@ Test all navigation links on live site after deployment.
 **Objective**: Create tutorials targeting the "New Infrastructure Engineer" persona.
 
 **Content Strategy**: Hybrid approach
+
 - AI drafts: Command sequences, procedures, expected outputs, setup instructions
 - Collaborative: Troubleshooting sections, real-world gotchas, error messages
 
@@ -102,6 +113,7 @@ Test all navigation links on live site after deployment.
 #### 1. prerequisites.md (2 hours)
 
 **Content**:
+
 - Hardware requirements checklist (extract from infrastructure.md)
   - 3+ nodes with CPU/RAM/storage specs
   - Network requirements (management + CEPH networks)
@@ -114,6 +126,7 @@ Test all navigation links on live site after deployment.
 - Validation section with test commands for each requirement
 
 **Format**:
+
 - Checkbox-style requirements list
 - Validation commands with expected outputs
 - "Why this matters" explanations for key requirements
@@ -121,6 +134,7 @@ Test all navigation links on live site after deployment.
 #### 2. installation.md (2 hours)
 
 **Content**:
+
 - Clone repository
 - Install mise: `curl https://mise.run | sh`
 - Setup dependencies: `mise run setup`
@@ -128,6 +142,7 @@ Test all navigation links on live site after deployment.
 - Validate installation with test commands
 
 **Format**:
+
 - Step-by-step numbered instructions
 - Expected output for each command
 - Troubleshooting callouts for common issues
@@ -138,6 +153,7 @@ Test all navigation links on live site after deployment.
 **Content**: "Zero to Cluster in 60 Minutes" tutorial
 
 **Structure**:
+
 - Prerequisites checklist reference
 - Five deployment phases with time estimates:
   1. Inventory Configuration (10 min)
@@ -147,6 +163,7 @@ Test all navigation links on live site after deployment.
   5. Verification (10 min)
 
 **Each Phase Includes**:
+
 - Estimated completion time
 - "What will happen" explanation
 - Commands to execute
@@ -155,6 +172,7 @@ Test all navigation links on live site after deployment.
 - Links to relevant role docs for deep dives
 
 **Special Features**:
+
 - "What happens next" warnings before destructive operations
 - Progress indicators ("You should see X in the output")
 - Common gotchas specific to each phase
@@ -163,6 +181,7 @@ Test all navigation links on live site after deployment.
 #### 4. troubleshooting-basics.md (2-3 hours, collaborative)
 
 **Content**:
+
 - Symptom-based decision tree
 - Common first-deployment issues:
   - SSH connection problems
@@ -178,12 +197,14 @@ Test all navigation links on live site after deployment.
 
 **Collaborative Section**:
 This is where your real-world experience is critical. We'll work together to identify:
+
 - Actual error messages you've encountered
 - Hardware-specific issues
 - Timing and performance gotchas
 - Recovery procedures you've used
 
 **Format**:
+
 - Decision tree at top for quick navigation
 - Detailed troubleshooting procedures
 - Copy-paste ready diagnostic commands
@@ -198,22 +219,26 @@ This is where your real-world experience is critical. We'll work together to ide
 Start with existing role READMEs (99-580 lines each), then add:
 
 **Visual Elements**:
+
 - Architecture diagrams showing role dependencies
 - Workflow diagrams (sequence of tasks)
 - Component interaction diagrams
 - Network topology (for proxmox_network)
 
 **Integration Examples**:
+
 - How roles work together (e.g., system_user + proxmox_access)
 - Playbook composition patterns
 - Multi-role workflows with execution order
 
 **Cross-References**:
+
 - "See also" sections linking related roles
 - Links to troubleshooting sections
 - References to architecture docs
 
 **Battle-Tested Metrics**:
+
 - Validation data from testing-validation-results
 - Real deployment metrics from Matrix cluster
 - "15 bugs found and fixed" callouts
@@ -225,6 +250,7 @@ Start with existing role READMEs (99-580 lines each), then add:
 **Base**: Existing 300+ line README
 
 **Enhancements**:
+
 - User management workflow diagram
 - Infisical integration example for SSH keys
 - Sudo configuration patterns
@@ -235,6 +261,7 @@ Start with existing role READMEs (99-580 lines each), then add:
 **Base**: Existing 580+ line README (most comprehensive)
 
 **Enhancements**:
+
 - Privilege hierarchy diagram
 - Terraform token workflow (environment export feature)
 - Role composition examples
@@ -245,6 +272,7 @@ Start with existing role READMEs (99-580 lines each), then add:
 **Base**: Existing 480+ line README
 
 **Enhancements**:
+
 - Network topology diagram for Matrix cluster
 - VLAN configuration examples
 - MTU and jumbo frame setup
@@ -255,6 +283,7 @@ Start with existing role READMEs (99-580 lines each), then add:
 **Base**: Existing 99 line README (shortest, most opportunity)
 
 **Enhancements**:
+
 - Repository selection decision tree
 - Upgrade workflow diagram
 - Enterprise vs community repository comparison
@@ -265,6 +294,7 @@ Start with existing role READMEs (99-580 lines each), then add:
 **Base**: Existing 156 line README
 
 **Enhancements**:
+
 - Cluster formation sequence diagram
 - Corosync architecture
 - Node addition workflow
@@ -275,6 +305,7 @@ Start with existing role READMEs (99-580 lines each), then add:
 **Base**: Existing 290 line README
 
 **Enhancements**:
+
 - CEPH architecture diagram (monitors, managers, OSDs, pools)
 - OSD creation workflow (automated vs ProxSpray)
 - Pool configuration examples
@@ -282,6 +313,7 @@ Start with existing role READMEs (99-580 lines each), then add:
 - Bug #13 and #14 fixes highlighted
 
 **Mintlify Formatting**:
+
 - Callouts for warnings, tips, notes
 - Code tabs for multi-step examples
 - Cards for navigation to related topics
@@ -375,6 +407,7 @@ documentation/
 ```
 
 **Navigation Improvements**:
+
 - Clear separation: Getting Started → Roles → Architecture → Integration
 - Logical progression from tutorial to reference to design
 - Removed archived document references
@@ -383,6 +416,7 @@ documentation/
 ## Documentation Quality Standards
 
 **Every guide must include**:
+
 - Prerequisites section with validation commands
 - Estimated time to complete
 - Expected outcomes with examples
@@ -391,6 +425,7 @@ documentation/
 - Next steps to guide user journey
 
 **Code examples must include**:
+
 - Complete, copy-paste ready commands
 - Expected output (or note if output varies)
 - Explanation of what's happening
@@ -398,6 +433,7 @@ documentation/
 - Links to relevant documentation
 
 **Troubleshooting sections must include**:
+
 - Symptom description
 - Diagnosis procedure
 - Solution steps
@@ -405,6 +441,7 @@ documentation/
 - Related issues
 
 **Mintlify Formatting Standards**:
+
 - Use callouts (`<Note>`, `<Warning>`, `<Tip>`) for important information
 - Use code tabs for multi-step commands or alternatives
 - Use cards for navigation between related topics
@@ -414,12 +451,14 @@ documentation/
 ## Success Metrics
 
 **Phase 1 Complete**:
+
 - ✅ All navigation links work (0 404 errors)
 - ✅ 7 existing high-quality docs accessible
 - ✅ Index.mdx updated with active doc links
 - ✅ Insights extracted from archived docs
 
 **Phase 2 Complete**:
+
 - ✅ New user can deploy cluster following first-deployment.md tutorial
 - ✅ Prerequisites validated before starting (prerequisites.md)
 - ✅ Development environment setup documented (installation.md)
@@ -427,6 +466,7 @@ documentation/
 - ✅ Clear user journey from "never used" to "cluster deployed"
 
 **Phase 3 Complete**:
+
 - ✅ All 6 roles have enhanced documentation
 - ✅ Visual diagrams aid understanding
 - ✅ Cross-references enable discovery
@@ -434,6 +474,7 @@ documentation/
 - ✅ Battle-tested metrics demonstrate production readiness
 
 **Overall Transformation**:
+
 - **Before**: Landing page + 10 broken links
 - **After**: Complete getting-started through advanced reference
 - **Impact**: New users onboard independently, operators troubleshoot with guides, developers reference complete role documentation
@@ -441,10 +482,12 @@ documentation/
 ## Implementation Sequence
 
 **Week 1**:
+
 - Day 1: Phase 1 - Fix docs.json and index.mdx (2-4 hours)
 - Day 2-3: Phase 2 - Create getting-started content (6-10 hours)
 
 **Week 2**:
+
 - Day 1-3: Phase 3 - Enhance role documentation (8-10 hours)
 - Day 4: Final review, polish with Elements of Style, deploy
 

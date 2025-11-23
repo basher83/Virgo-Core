@@ -21,11 +21,13 @@ A powerful command-line tool for performing web research using Firecrawl's searc
 ### Installation
 
 1. Set your Firecrawl API key:
+
 ```bash
 export FIRECRAWL_API_KEY="fc-YOUR-API-KEY"
 ```
 
-2. Make the script executable (if needed):
+1. Make the script executable (if needed):
+
 ```bash
 chmod +x scripts/firecrawl_sdk_research.py
 ```
@@ -35,16 +37,19 @@ The script uses `uv` to manage dependencies automatically - no manual installati
 ### Basic Usage
 
 Search for technical examples on GitHub:
+
 ```bash
 ./scripts/firecrawl_sdk_research.py "ansible proxmox ceph" --category github
 ```
 
 Search research papers:
+
 ```bash
 ./scripts/firecrawl_sdk_research.py "machine learning transformers" --category research
 ```
 
 Search PDFs:
+
 ```bash
 ./scripts/firecrawl_sdk_research.py "kubernetes architecture" --category pdf
 ```
@@ -54,6 +59,7 @@ Search PDFs:
 ### Finding Code Examples
 
 Search GitHub for Ansible Proxmox Ceph management examples:
+
 ```bash
 ./scripts/firecrawl_sdk_research.py "ansible proxmox ceph" \
   --category github \
@@ -64,6 +70,7 @@ Search GitHub for Ansible Proxmox Ceph management examples:
 ### Research Papers
 
 Find academic papers on a topic:
+
 ```bash
 ./scripts/firecrawl_sdk_research.py "neural network optimization" \
   --category research \
@@ -74,6 +81,7 @@ Find academic papers on a topic:
 ### Multiple Categories
 
 Search across GitHub and research sources:
+
 ```bash
 ./scripts/firecrawl_sdk_research.py "distributed systems consensus" \
   --categories github,research \
@@ -83,6 +91,7 @@ Search across GitHub and research sources:
 ### Custom Output Location
 
 Save results to a specific file:
+
 ```bash
 ./scripts/firecrawl_sdk_research.py "terraform aws eks" \
   --category github \
@@ -118,17 +127,20 @@ Options:
 The script generates a comprehensive markdown document with the following sections:
 
 ### 1. Metadata Section
+
 - Query string
 - Generation timestamp
 - Categories used
 - Search and scrape statistics
 
 ### 2. Summary Section
+
 - Total results found
 - Successfully scraped pages
 - High-quality source count
 
 ### 3. Sources Section
+
 - Numbered list of all sources
 - Quality indicators:
   - ⭐ = High quality (score ≥ 10)
@@ -137,6 +149,7 @@ The script generates a comprehensive markdown document with the following sectio
 - Quality scores
 
 ### 4. Content Section
+
 - Full scraped content for each source
 - Source URLs and metadata
 - Quality scores and domain information
@@ -160,6 +173,7 @@ Results are automatically scored and ranked based on:
 - **Code Blocks** (+2 points): Presence of code blocks indicates technical content
 
 Results are filtered to exclude:
+
 - Content shorter than 500 characters
 - Error pages (404, access denied, etc.)
 - Low-quality domains
@@ -190,6 +204,7 @@ Firecrawl pricing considerations:
 - **PDF parsing**: 1 credit per PDF page (can be expensive for multi-page PDFs)
 
 To minimize costs:
+
 - Use `--limit` to control the number of results
 - Avoid PDF category unless specifically needed
 - The script uses efficient combined search+scrape operations
@@ -199,6 +214,7 @@ To minimize costs:
 ### "FIRECRAWL_API_KEY environment variable not set"
 
 Set your API key:
+
 ```bash
 export FIRECRAWL_API_KEY="fc-your-api-key"
 ```
@@ -227,12 +243,14 @@ export FIRECRAWL_API_KEY="fc-your-api-key"
 Potential improvements and features that could be added:
 
 ### Search Enhancements
+
 - [ ] **Query Expansion**: Automatically expand queries with synonyms or related terms
 - [ ] **Time-Based Filtering**: Add `--since` option to filter results by date
 - [ ] **Language Filtering**: Support `--lang` option for specific languages
 - [ ] **Site-Specific Search**: Add `--site` option to search within specific domains
 
 ### Quality Improvements
+
 - [ ] **Custom Quality Domains**: Allow users to specify custom quality domains via config file
 - [ ] **Star Count Integration**: For GitHub repos, fetch and use star counts in quality scoring
 - [ ] **Last Updated Date**: Prioritize recently updated repositories
@@ -240,6 +258,7 @@ Potential improvements and features that could be added:
 - [ ] **License Detection**: Filter by open-source licenses
 
 ### Output Enhancements
+
 - [ ] **Multiple Formats**: Support JSON, HTML, or CSV output formats
 - [ ] **Summary Generation**: Use LLM to generate executive summaries
 - [ ] **Code Extraction**: Extract and highlight code snippets separately
@@ -247,6 +266,7 @@ Potential improvements and features that could be added:
 - [ ] **Deduplication**: Detect and merge duplicate content
 
 ### Performance & Features
+
 - [ ] **Caching**: Cache search results to avoid redundant API calls
 - [ ] **Incremental Updates**: Append new results to existing research files
 - [ ] **Parallel Processing**: Increase concurrency for faster scraping
@@ -254,18 +274,21 @@ Potential improvements and features that could be added:
 - [ ] **Resume Support**: Resume interrupted searches from checkpoint
 
 ### Integration
+
 - [ ] **CI/CD Integration**: GitHub Actions workflow for automated research
 - [ ] **Notion Export**: Direct export to Notion databases
 - [ ] **Obsidian Integration**: Generate Obsidian-compatible markdown with backlinks
 - [ ] **Webhook Support**: Send results to webhooks for automation
 
 ### Advanced Filtering
+
 - [ ] **Content Type Filtering**: Filter by file types (YAML, Python, etc.)
 - [ ] **Repository Size**: Filter by repository size or activity level
 - [ ] **Author Filtering**: Filter by GitHub username or organization
 - [ ] **Topic Tags**: Filter GitHub repos by topics/tags
 
 ### Analysis Features
+
 - [ ] **Trend Analysis**: Track how search results change over time
 - [ ] **Comparison Mode**: Compare results from different queries
 - [ ] **Dependency Analysis**: Extract and analyze dependencies from code
@@ -294,6 +317,7 @@ See the repository LICENSE file for details.
 ## Support
 
 For issues or questions:
+
 1. Check the [Firecrawl documentation](https://docs.firecrawl.dev/)
 2. Review the troubleshooting section above
 3. Open an issue in the repository

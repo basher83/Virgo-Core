@@ -56,7 +56,7 @@
 
 ## Verification
 
-Site URL: https://themothership.mintlify.app/
+Site URL: <https://themothership.mintlify.app/>
 
 All acceptance criteria met:
 
