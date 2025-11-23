@@ -43,4 +43,4 @@ repos:
         # To only check (default):
         # args: []
         # To automatically fix issues:
-        # args: [--fix]
+        args: [--fix]
