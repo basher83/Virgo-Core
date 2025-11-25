@@ -1,3 +1,8 @@
+---
+title: Project Roadmap
+description: Next features and development priorities for Virgo-Core
+---
+
 # Next Features for Virgo-Core
 
 **Date**: 2025-11-18 (Updated: 2025-11-19)

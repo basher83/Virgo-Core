@@ -1216,9 +1216,9 @@ pre_tasks:
 
 - [Ansible Philosophy](./ansible-philosophy.md)
 
-- [Ansible Role Design](./ansible-role-design.md)
+- [Ansible Design Patterns](./ansible-design-patterns.md)
 
-- [Ansible Migration Plan](./ansible-migration-plan.md)
+- [Ansible Role Design](./ansible-role-design.md)
 
 - [Ansible Playbook Documentation](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html)
 

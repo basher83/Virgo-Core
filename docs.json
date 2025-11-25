@@ -43,6 +43,7 @@
             "group": "Ansible Architecture",
             "pages": [
               "documentation/design/ansible-philosophy",
+              "documentation/design/ansible-design-patterns",
               "documentation/design/ansible-role-design",
               "documentation/design/ansible-playbook-design"
             ]
@@ -52,6 +53,12 @@
             "pages": [
               "documentation/core/netbox-powerdns",
               "documentation/core/references"
+            ]
+          },
+          {
+            "group": "Roadmap",
+            "pages": [
+              "documentation/brainstorming/next-features-2025-11"
             ]
           }
         ]
@@ -67,8 +74,8 @@
     ],
     "primary": {
       "type": "button",
-      "label": "v1.0.0",
-      "href": "https://github.com/basher83/Virgo-Core/releases/tag/v1.0.0"
+      "label": "v1.1.0",
+      "href": "https://github.com/basher83/Virgo-Core/releases/tag/v1.1.0"
     }
   },
   "footer": {

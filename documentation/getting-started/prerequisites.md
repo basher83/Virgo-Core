@@ -140,7 +140,7 @@ git --version
 
 When all checkboxes are checked and validations pass, proceed to installation.
 
-**Next Step:** [Installation Guide](installation.md)
+**Next Step:** [Installation Guide](/documentation/getting-started/installation)
 
 ## Troubleshooting
 

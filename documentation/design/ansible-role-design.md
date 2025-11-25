@@ -1276,9 +1276,9 @@ uv run ansible-lint roles/role_name/
 
 - [Ansible Philosophy](./ansible-philosophy.md)
 
-- [Ansible Playbook Design](./ansible-playbook-design.md)
+- [Ansible Design Patterns](./ansible-design-patterns.md)
 
-- [Ansible Migration Plan](./ansible-migration-plan.md)
+- [Ansible Playbook Design](./ansible-playbook-design.md)
 
 - [Ansible Best Practices](https://docs.ansible.com/ansible/latest/tips_tricks/ansible_tips_tricks.html)
 
