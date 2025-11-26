@@ -1,3 +1,8 @@
+---
+title: system_user Role
+description: Manage Linux system users with SSH keys, sudo privileges, and shell configuration
+---
+
 # system_user Role
 
 Manage Linux system users with SSH keys, sudo privileges, and shell configuration.

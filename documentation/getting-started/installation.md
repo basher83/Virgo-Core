@@ -1,3 +1,8 @@
+---
+title: Installation
+description: Set up your development environment with mise, uv, Ansible, OpenTofu, and Infisical for Virgo-Core
+---
+
 # Installation
 
 Set up your development environment to deploy and manage Virgo-Core infrastructure.

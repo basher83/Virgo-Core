@@ -1,3 +1,8 @@
+---
+title: Ansible Design Philosophy
+description: Core design principles and decision-making guidance for Ansible automation in Virgo-Core
+---
+
 # Ansible Design Philosophy for Virgo-Core
 
 **Version:** 1.0

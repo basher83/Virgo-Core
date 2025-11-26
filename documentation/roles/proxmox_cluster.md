@@ -1,3 +1,8 @@
+---
+title: proxmox_cluster Role
+description: Form and configure Proxmox VE clusters with automated node joining, Corosync setup, and health verification
+---
+
 # proxmox_cluster Role
 
 Form and configure Proxmox VE clusters with automated node joining, Corosync setup, and health verification.

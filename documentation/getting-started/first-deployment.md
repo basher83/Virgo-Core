@@ -1,3 +1,8 @@
+---
+title: First Deployment
+description: Deploy a production-ready 3-node Proxmox cluster with CEPH storage in 60 minutes
+---
+
 # First Deployment: Zero to Cluster in 60 Minutes
 
 Deploy a production-ready 3-node Proxmox cluster with CEPH storage in 60 minutes.

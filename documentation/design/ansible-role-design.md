@@ -1,3 +1,8 @@
+---
+title: Ansible Role Design
+description: Structure, responsibilities, and implementation patterns for creating component-based Ansible roles in Virgo-Core
+---
+
 # Ansible Role Design for Virgo-Core
 
 **Version:** 1.0

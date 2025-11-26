@@ -1,3 +1,8 @@
+---
+title: Prerequisites
+description: Verify hardware, network, and software requirements before deploying Virgo-Core infrastructure
+---
+
 # Prerequisites
 
 Before deploying Virgo-Core, verify you have the required hardware, network, and software.

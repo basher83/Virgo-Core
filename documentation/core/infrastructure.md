@@ -1,3 +1,8 @@
+---
+title: Infrastructure Specifications
+description: Detailed hardware, network, and storage specifications for the Virgo-Core Proxmox VE homelab infrastructure
+---
+
 # Infrastructure Specifications
 
 This document provides detailed specifications for the Virgo-Core Proxmox VE homelab infrastructure.

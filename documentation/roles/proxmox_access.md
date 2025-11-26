@@ -1,3 +1,8 @@
+---
+title: proxmox_access Role
+description: Manage Proxmox VE access control including users, groups, tokens, and ACLs for automation and operators
+---
+
 # proxmox_access Role
 
 Manage Proxmox VE access control for automation and operators.

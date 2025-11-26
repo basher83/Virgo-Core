@@ -1,3 +1,8 @@
+---
+title: proxmox_ceph Role
+description: Deploy and manage CEPH distributed storage with automated OSD creation, pool configuration, and health verification
+---
+
 # proxmox_ceph Role
 
 Deploy and manage CEPH distributed storage for Proxmox VE clusters with automated OSD creation, pool configuration, and health verification.

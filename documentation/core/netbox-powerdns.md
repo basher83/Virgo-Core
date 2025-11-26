@@ -1,3 +1,8 @@
+---
+title: NetBox + PowerDNS Integration
+description: Automated DNS and IPAM synchronization using NetBox with PowerDNS for seamless homelab infrastructure management
+---
+
 # Layering NetBox with PowerDNS: The Ideal Homelab DNS Solution
 
 ![DNS Management Approaches for Homelab: NetBox+PowerDNS vs UniFi Controller](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/00062210d7893c5c3f7c67eb6ab980c4/741b7224-5bb6-4453-9459-90e991d411c7/b90f3fc9.png)

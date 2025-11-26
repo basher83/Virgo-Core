@@ -1,3 +1,8 @@
+---
+title: References
+description: Comprehensive bibliography of tools, projects, and documentation referenced in Virgo-Core
+---
+
 # References
 
 Comprehensive bibliography of tools, projects, and documentation referenced in Virgo-Core.

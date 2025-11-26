@@ -1,3 +1,8 @@
+---
+title: Ansible Playbook Design
+description: Patterns and best practices for creating task-oriented Ansible playbooks that orchestrate roles in Virgo-Core
+---
+
 # Ansible Playbook Design for Virgo-Core
 
 **Version:** 1.0

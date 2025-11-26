@@ -1,3 +1,8 @@
+---
+title: Goals
+description: Roadmap and objectives for Virgo-Core infrastructure automation and development priorities
+---
+
 # Goals
 
 This document outlines the roadmap and objectives for Virgo-Core infrastructure automation.
