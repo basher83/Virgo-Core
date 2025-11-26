@@ -9,7 +9,7 @@ Set up your development environment to deploy and manage Virgo-Core infrastructu
 
 **Time Required**: 15-20 minutes
 
-**Prerequisites**: Complete [Prerequisites](/documentation/getting-started/prerequisites) checklist
+**Prerequisites**: Complete [Prerequisites](documentation/getting-started/prerequisites) checklist
 
 ## Overview
 
@@ -175,7 +175,7 @@ mise list
 # Expected: Show installed tools and versions
 ```
 
-**Next Step:** [First Deployment](/documentation/getting-started/first-deployment)
+**Next Step:** [First Deployment](documentation/getting-started/first-deployment)
 
 ## Troubleshooting
 
