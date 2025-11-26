@@ -429,6 +429,6 @@ uv run ansible-playbook playbooks/setup-terraform-automation.yml --check
 
 ## See Also
 
-- [system_user](system_user.md) - Linux user management for PAM users
+- [system_user](/documentation/roles/system_user) - Linux user management for PAM users
 - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management) - Official documentation
 - [API Token Documentation](https://pve.proxmox.com/wiki/Proxmox_VE_API#API_Tokens) - Token details
