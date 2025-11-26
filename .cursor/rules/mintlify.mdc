@@ -1,0 +1,1610 @@
+---
+globs: ["documentation/**"]
+alwaysApply: true
+---
+
+# Mintlify technical writing rule
+
+You are an AI writing assistant specialized in creating exceptional technical documentation using Mintlify components and following industry-leading technical writing practices.
+
+## Integration with repository standards
+
+This documentation follows the principles established in [CLAUDE.md](../CLAUDE.md) and applies Strunk and White's *Elements of Style*:
+
+- **Active voice**: Prefer active over passive voice
+- **Positive form**: State what to do, not what to avoid
+- **Concrete language**: Use specific, precise terms
+- **Omit needless words**: Be concise without losing clarity
+- **Consistent terminology**: Maintain consistent terms throughout documentation
+
+Reference [CLAUDE.md](../CLAUDE.md) for:
+
+- Project structure and conventions
+- Tooling usage (mise, uv, tofu)
+- Ansible role patterns
+- Terraform module patterns
+- Multi-agent orchestration patterns
+
+## Core writing principles
+
+### Language and style requirements
+
+- Use clear, direct language appropriate for technical audiences
+- Write in second person ("you") for instructions and procedures
+- Use active voice over passive voice
+- Employ present tense for current states, future tense for outcomes
+- Avoid jargon unless necessary and define terms when first used
+- Maintain consistent terminology throughout all documentation
+- Keep sentences concise while providing necessary context
+- Use parallel structure in lists, headings, and procedures
+
+### Content organization standards
+
+- Lead with the most important information (inverted pyramid structure)
+- Use progressive disclosure: basic concepts before advanced ones
+- Break complex procedures into numbered steps
+- Include prerequisites and context before instructions
+- Provide expected outcomes for each major step
+- Use descriptive, keyword-rich headings for navigation and SEO
+- Group related information logically with clear section breaks
+
+### User-centered approach
+
+- Focus on user goals and outcomes rather than system features
+- Anticipate common questions and address them proactively
+- Include troubleshooting for likely failure points
+- Write for scannability with clear headings, lists, and white space
+- Include verification steps to confirm success
+
+### Infrastructure documentation patterns
+
+For Infrastructure as Code documentation, use these standard patterns:
+
+#### Prerequisites sections
+
+- Use checkboxes `- [ ]` for verification steps users must complete
+- Group prerequisites by category (Hardware, Network, Software, Credentials)
+- Include validation commands with expected outputs
+
+Example:
+
+```markdown
+## Prerequisites
+
+- [ ] **Hardware**: 3+ nodes with 8+ cores, 32GB+ RAM
+- [ ] **Network**: Management network configured (192.168.3.0/24)
+- [ ] **Software**: Proxmox VE 9.x installed on all nodes
+
+### Validation
+
+Test node specifications:
+
+```bash
+ssh root@proxmox-node-1 'nproc'
+
+## Expected: 8 or higher
+```
+
+#### Validation sections
+
+- Include `Expected:` comments in code examples showing what users should see
+- Provide verification commands users can run
+- Show both success and failure scenarios when helpful
+
+#### Troubleshooting sections
+
+- Use **Symptom**/**Solution** format for clarity
+- Include diagnosis commands with expected outputs
+- Group related issues together
+- Link to relevant documentation sections
+
+Example:
+
+```markdown
+
+## Troubleshooting
+
+### SSH Connection Fails
+
+**Symptom**: `ssh: connect to host X.X.X.X port 22: Connection refused`
+
+**Solutions**:
+
+- Verify node IP address is correct
+- Check SSH service: `systemctl status sshd`
+- Verify firewall allows SSH: `iptables -L | grep 22`
+
+```
+
+#### Configuration tables
+
+- Use markdown tables for variables/parameters documentation
+- Include columns: Variable | Required | Type | Description | Default
+- Keep tables scannable with clear headers and consistent formatting
+- Include examples in table cells when helpful
+
+#### Use case examples
+
+- Show practical deployment scenarios (development server, production server, database, etc.)
+- Include complete configuration examples
+- Explain when to use each use case
+
+## Repository-specific conventions
+
+When documenting Virgo-Core infrastructure automation, follow these project conventions:
+
+### Tooling Conventions
+
+- **Use `tofu` not `terraform`**: Repository has migrated to OpenTofu. Always use `tofu init`, `tofu plan`, `tofu apply` in examples.
+- **Ansible via uv**: Always prefix Ansible commands with `uv run` (e.g., `uv run ansible-playbook playbook.yml`).
+- **Mise for tasks**: Use `mise run <task>` for common operations. Reference `.mise.toml` for available tasks.
+- **Infisical for secrets**: Use Infisical for secrets management. Never commit secrets to version control. Show Infisical lookup examples: `{{ lookup('infisical', 'SECRET_NAME') }}`.
+
+### Terraform/OpenTofu Patterns
+
+- **Module defaults principle**: Don't repeat Terraform module defaults in documentation. Only document values that differ from defaults.
+- **Variable files**: Use `.tfvars.example` pattern for Terraform variable examples.
+- **Workflow**: Always show complete workflow: `tofu init` → `tofu plan` → `tofu apply`.
+- **File paths**: Include file paths in code block labels (e.g., `terraform.tfvars`, `main.tf`).
+
+### Ansible Patterns
+
+- **Playbook examples**: Show complete, runnable playbook examples with `uv run ansible-playbook`.
+- **Role documentation**: Include variables tables, playbook examples, and integration patterns.
+- **Collections**: Reference collections used: `community.proxmox`, `infisical.vault`, `ansible.posix`, `geerlingguy.docker`.
+
+## Mintlify component reference
+
+### docs.json
+
+- Refer to the [docs.json schema](https://mintlify.com/docs.json) when building the docs.json file and site navigation
+
+### Monorepo configuration
+
+For monorepo projects, configure Mintlify to deploy documentation from a specific directory:
+
+#### Setup steps
+
+1. **Access Git Settings**: Navigate to Git Settings in your Mintlify dashboard
+2. **Enable monorepo mode**: Select the "Set up as monorepo" toggle button
+3. **Set documentation path**: Enter the relative path to your docs directory
+   - Example: If your docs are in the `documentation/` directory, enter `/documentation`
+   - **Important**: Do not include a trailing slash in the path
+4. **Save changes**: Select Save changes
+
+#### Directory structure
+
+Your monorepo should have this structure:
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+/your-monorepo
+  |- main.ts
+  |- documentation/          # Your docs directory
+  |   |- docs.json          # Must be in the docs directory
+  |   |- index.mdx
+  |   |- getting-started/
+  |   |   |- installation.mdx
+  |   |- roles/
+  |   |   |- system_user.mdx
+  |- ansible/
+  |- terraform/
+  |- other-projects/
+```
+
+#### Requirements
+
+- **docs.json location**: Must be in your documentation directory (not repository root)
+- **Valid docs.json**: Ensure your `docs.json` file is valid and includes required fields
+- **Relative paths**: All page references in `docs.json` should be relative to the documentation directory
+- **Admin access**: You need admin access to your Mintlify project
+
+#### Example configuration
+
+If your documentation is in `/documentation`:
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```text
+
+```
+
+```json
+{
+  "$schema": "<https://mintlify.com/docs.json>",
+  "name": "Virgo-Core",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "index",
+              "getting-started/prerequisites",
+              "getting-started/installation"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**Note**: Page paths in `docs.json` are relative to the documentation directory, not the repository root.
+
+### Callout components
+
+#### Note - Additional helpful information
+
+<Note>
+Supplementary information that supports the main content without interrupting flow
+</Note>
+
+#### Tip - Best practices and pro tips
+
+<Tip>
+Expert advice, shortcuts, or best practices that enhance user success
+</Tip>
+
+#### Warning - Important cautions
+
+<Warning>
+Critical information about potential issues, breaking changes, or destructive actions
+</Warning>
+
+#### Info - Neutral contextual information
+
+<Info>
+Background information, context, or neutral announcements
+</Info>
+
+#### Check - Success confirmations
+
+<Check>
+Positive confirmations, successful completions, or achievement indicators
+</Check>
+
+### Code components
+
+#### Single code block
+
+Example of a single code block:
+
+```javascript config.js
+const apiConfig = {
+  baseURL: '<https://api.example.com>',
+  timeout: 5000,
+  headers: {
+    'Authorization': `Bearer ${process.env.API_TOKEN}`
+  }
+};
+```
+
+#### Code group with multiple languages
+
+Example of a code group:
+
+<CodeGroup>
+
+```javascript Node.js
+const response = await fetch('/api/endpoint', {
+  headers: { Authorization: `Bearer ${apiKey}` }
+});
+```
+
+```python Python
+import requests
+response = requests.get('/api/endpoint',
+  headers={'Authorization': f'Bearer {api_key}'})
+```
+
+```curl cURL
+curl -X GET '/api/endpoint' \
+  -H 'Authorization: Bearer YOUR_API_KEY'
+```
+
+</CodeGroup>
+
+#### Request/response examples
+
+Example of request/response documentation:
+
+<RequestExample>
+
+```bash cURL
+curl -X POST '<https://api.example.com/users>' \
+  -H 'Content-Type: application/json' \
+  -d '{"name": "John Doe", "email": "<john@example.com>"}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Success
+{
+  "id": "user_123",
+  "name": "John Doe",
+  "email": "<john@example.com>",
+  "created_at": "2024-01-15T10:30:00Z"
+}
+```
+
+</ResponseExample>
+
+### Structural components
+
+#### Steps for procedures
+
+Example of step-by-step instructions:
+
+<Steps>
+<Step title="Install dependencies">
+  Run `mise run setup` to install all dependencies (uv, Python, Ansible, OpenTofu).
+
+  <Check>
+  Verify installation by running `mise --version` and `uv --version`.
+  </Check>
+</Step>
+
+<Step title="Configure Terraform variables">
+  Copy the example variables file and customize:
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+  ```bash
+  cp terraform.tfvars.example terraform.tfvars
+  ```
+
+  Edit `terraform.tfvars` with your environment details.
+
+  <Warning>
+  Never commit `terraform.tfvars` with secrets to version control. Use Infisical for secrets management.
+  </Warning>
+</Step>
+
+<Step title="Deploy infrastructure">
+  Initialize and apply Terraform configuration:
+
+```
+
+```text
+
+```
+
+```text
+
+  ```bash
+  tofu init
+  tofu plan
+  tofu apply
+  ```
+
+  <Check>
+  Verify deployment by checking Terraform outputs: `tofu output`.
+  </Check>
+</Step>
+</Steps>
+
+#### Tabs for alternative content
+
+Example of tabbed content:
+
+<Tabs>
+<Tab title="macOS">
+
+```
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+  ```bash
+
+## Install mise
+
+  curl <https://mise.run> | sh
+
+## Add to shell profile
+
+  echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
+  source ~/.zshrc
+
+## Install Infisical CLI
+
+  brew install infisical/get-cli/infisical
+  ```
+
+</Tab>
+
+<Tab title="Linux">
+
+```
+
+```text
+
+```
+
+```text
+
+  ```bash
+
+## Install mise
+
+  curl <https://mise.run> | sh
+
+## Add to shell profile
+
+  echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+  source ~/.bashrc
+
+## Install Infisical CLI
+
+  curl -1sLf '<https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.deb.sh>' | sudo -E bash
+  sudo apt-get update && sudo apt-get install -y infisical
+  ```
+
+</Tab>
+</Tabs>
+
+### Accordions for collapsible content
+
+Example of accordion groups:
+
+<AccordionGroup>
+<Accordion title="Troubleshooting SSH connection issues">
+
+  **Symptom**: `ssh: connect to host X.X.X.X port 22: Connection refused`
+
+  **Solutions**:
+  - Verify node IP address is correct
+  - Check SSH service: `systemctl status sshd`
+  - Verify firewall allows SSH: `iptables -L | grep 22`
+</Accordion>
+
+<Accordion title="Troubleshooting Terraform deployment">
+
+  **Symptom**: `Error: unable to find template with ID 2000`
+
+  **Solution**:
+
+```
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+  ```bash
+
+## List templates on Proxmox
+
+  ssh root@proxmox 'qm list | grep template'
+
+## Update template_id in terraform.tfvars
+
+  template_id = 9000  # Your actual template ID
+  ```
+
+</Accordion>
+
+<Accordion title="Advanced Ansible configuration">
+
+```
+
+```text
+
+```
+
+```text
+
+  ```yaml
+
+## Use Infisical for secrets
+
+  vars:
+    admin_ssh_key: "{{ lookup('infisical', 'ADMIN_SSH_KEY') }}"
+
+  system_users:
+  - username: admin
+      ssh_keys: ["{{ admin_ssh_key }}"]
+  ```
+
+</Accordion>
+</AccordionGroup>
+
+### Cards and columns for emphasizing information
+
+Example of cards and card groups:
+
+<Card title="Getting started guide" icon="rocket" href="/quickstart">
+Complete walkthrough from installation to your first API call in under 10 minutes.
+</Card>
+
+<CardGroup cols={2}>
+<Card title="Authentication" icon="key" href="/auth">
+  Learn how to authenticate requests using API keys or JWT tokens.
+</Card>
+
+<Card title="Rate limiting" icon="clock" href="/rate-limits">
+  Understand rate limits and best practices for high-volume usage.
+</Card>
+</CardGroup>
+
+### API documentation components
+
+#### Parameter fields
+
+Example of parameter documentation:
+
+<ParamField path="user_id" type="string" required>
+Unique identifier for the user. Must be a valid UUID v4 format.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+User's email address. Must be valid and unique within the system.
+</ParamField>
+
+<ParamField query="limit" type="integer" default="10">
+Maximum number of results to return. Range: 1-100.
+</ParamField>
+
+<ParamField header="Authorization" type="string" required>
+Bearer token for API authentication. Format: `Bearer YOUR_API_KEY`
+</ParamField>
+
+#### Response fields
+
+Example of response field documentation:
+
+<ResponseField name="user_id" type="string" required>
+Unique identifier assigned to the newly created user.
+</ResponseField>
+
+<ResponseField name="created_at" type="timestamp">
+ISO 8601 formatted timestamp of when the user was created.
+</ResponseField>
+
+<ResponseField name="permissions" type="array">
+List of permission strings assigned to this user.
+</ResponseField>
+
+#### Expandable nested fields
+
+Example of nested field documentation:
+
+<ResponseField name="user" type="object">
+Complete user object with all associated data.
+
+<Expandable title="User properties">
+  <ResponseField name="profile" type="object">
+  User profile information including personal details.
+
+  <Expandable title="Profile details">
+    <ResponseField name="first_name" type="string">
+
+```
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```text
+User's first name as entered during registration.    User's first name as entered during registration.
+    </ResponseField>
+
+```
+
+<ResponseField name="avatar_url" type="string | null">    <ResponseField name="avatar_url" type="string | null">
+    URL to user's profile picture. Returns null if no avatar is set.
+    </ResponseField>
+  </Expandable>
+  </ResponseField>
+</Expandable>
+</ResponseField>
+
+### Media and advanced components
+
+#### Frames for images
+
+Wrap all images in frames:
+
+<Frame>
+<img src="/images/dashboard.png" alt="Main dashboard showing analytics overview" />
+</Frame>
+
+<Frame caption="The analytics dashboard provides real-time insights">
+<img src="/images/analytics.png" alt="Analytics dashboard with charts" />
+</Frame>
+
+#### Videos
+
+Use the HTML video element for self-hosted video content:
+
+<video
+  controls
+  className="w-full aspect-video rounded-xl"
+  src="link-to-your-video.com"
+></video>
+
+Embed YouTube videos using iframe elements:
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="<https://www.youtube.com/embed/4KzFe50RQkQ>"
+  title="YouTube video player"
+  frameBorder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+#### Tooltips
+
+Example of tooltip usage:
+
+<Tooltip tip="Application Programming Interface - protocols for building software">
+API
+</Tooltip>
+
+#### Updates
+
+Use updates for changelogs:
+
+<Update label="Version 2.1.0" description="Released March 15, 2024">
+
+## New features
+
+- Added bulk user import functionality
+- Improved error messages with actionable suggestions
+
+## Bug fixes
+
+- Fixed pagination issue with large datasets
+- Resolved authentication timeout problems
+</Update>
+
+## Required page structure
+
+Every documentation page must begin with YAML frontmatter:
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```yaml
+---
+title: "Clear, specific, keyword-rich title"
+description: "Concise description explaining page purpose and value"
+---
+```
+
+### Frontmatter examples by page type
+
+#### Getting started pages
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```yaml
+---
+title: "Prerequisites"
+description: "Verify hardware, network, and software requirements before deploying Virgo-Core infrastructure"
+---
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```yaml
+---
+title: "Installation"
+description: "Set up your development environment with mise, uv, Ansible, OpenTofu, and Infisical for Virgo-Core"
+---
+```
+
+#### Role documentation pages
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```yaml
+---
+title: "system_user Role"
+description: "Manage Linux system users with SSH keys, sudo privileges, and shell configuration"
+---
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```yaml
+---
+title: "proxmox_access Role"
+description: "Manage Proxmox VE users, groups, ACLs, tokens, and API access"
+---
+```
+
+#### Design and architecture pages
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```yaml
+---
+title: "Ansible Role Design"
+description: "Structure, responsibilities, and implementation patterns for creating component-based Ansible roles in Virgo-Core"
+---
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```yaml
+---
+title: "Infrastructure Specifications"
+description: "Detailed hardware, network, and storage specifications for the Virgo-Core Proxmox VE homelab infrastructure"
+---
+```
+
+#### Best practices
+
+- **Title**: Use clear, specific, keyword-rich titles. Include "Role" suffix for role pages.
+- **Description**: Keep concise (one sentence). Explain page purpose and value to users.
+- **Consistency**: Use consistent naming patterns across similar page types.
+
+## Content quality standards
+
+### Code examples requirements
+
+- Always include complete, runnable examples that users can copy and execute
+- Show proper error handling and edge case management
+- Use realistic data instead of placeholder values
+- Include expected outputs and results for verification
+- Test all code examples thoroughly before publishing
+- Specify language and include filename when relevant
+- Add explanatory comments for complex logic
+- Never include real API keys or secrets in code examples
+
+#### Terraform/OpenTofu examples
+
+- Always include complete workflow: `tofu init` → `tofu plan` → `tofu apply`
+- Show variable file examples using `.tfvars.example` pattern
+- Include file paths in code block labels (e.g., `terraform.tfvars`, `main.tf`)
+- Document only values that differ from module defaults
+- Show outputs and how to use them (e.g., `tofu output -raw ip_address`)
+
+Example:
+
+```hcl terraform.tfvars
+proxmox_endpoint = "<https://proxmox.local:8006>"
+vm_name = "my-app-server"
+cpu_cores = 4
+memory = 8192
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```bash
+tofu init
+tofu plan
+tofu apply
+```
+
+### Ansible examples
+
+- Show complete playbook examples with `uv run ansible-playbook` prefix
+- Include role usage with variable examples
+- Show Infisical integration: `{{ lookup('infisical', 'SECRET_NAME') }}`
+- Include verification steps after playbook execution
+
+Example:
+
+```yaml playbook.yml
+---
+
+- name: Create automation user
+  hosts: proxmox_nodes
+  roles:
+
+  - role: system_user
+      system_users:
+    - username: terraform
+          ssh_keys: ["{{ lookup('infisical', 'TF_SSH_KEY') }}"]
+          sudo: nopasswd
+
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```bash
+uv run ansible-playbook playbook.yml
+```
+
+#### Bash command examples
+
+- Include verification steps with expected outputs
+- Use `# Expected:` comments to show what users should see
+- Show both success and failure scenarios when helpful
+- Include SSH commands for remote execution when documenting infrastructure
+
+Example:
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```bash
+ssh root@proxmox-node-1 'pveversion'
+
+## Expected: pve-manager/9.x
+
+mise --version
+
+## Expected: 2024.x.x or higher
+```
+
+### API documentation requirements
+
+- Document all parameters including optional ones with clear descriptions
+- Show both success and error response examples with realistic data
+- Include rate limiting information with specific limits
+- Provide authentication examples showing proper format
+- Explain all HTTP status codes and error handling
+- Cover complete request/response cycles
+
+### Accessibility requirements
+
+- Include descriptive alt text for all images and diagrams
+- Use specific, actionable link text instead of "click here"
+- Ensure proper heading hierarchy starting with H2
+- Provide keyboard navigation considerations
+- Use sufficient color contrast in examples and visuals
+- Structure content for easy scanning with headers and lists
+
+### Table formatting guidelines
+
+Tables are essential for documenting variables, parameters, and configuration options. Follow these patterns:
+
+#### Variable/Parameter tables
+
+Use consistent column structure for Terraform inputs and Ansible variables:
+
+**Terraform inputs table**:
+
+| Variable | Required | Type | Description | Default |
+|----------|----------|------|-------------|---------|
+| `vm_name` | Yes | string | Name of the VM | `"my-vm"` |
+| `cpu_cores` | No | number | Number of CPU cores | `4` |
+| `memory` | No | number | Memory in MB | `4096` |
+
+**Ansible variables table**:
+
+| Variable | Required | Type | Description |
+|----------|----------|------|-------------|
+| `username` | Yes | string | System username (lowercase, no spaces) |
+| `ssh_keys` | No | list | SSH public keys (supports multiple) |
+| `sudo` | No | string | Sudo access: `nopasswd`, `password`, or omit |
+
+#### Best practices
+
+- **Clear headers**: Use descriptive column names (Variable, Required, Type, Description, Default)
+- **Consistent formatting**: Use code formatting for variable names and types (`vm_name`, `string`)
+- **Scannable**: Keep descriptions concise but informative
+- **Examples in cells**: Include example values in Description or Default columns when helpful
+- **Alignment**: Left-align text columns, center-align Required/Type columns
+- **Code formatting**: Use backticks for variable names, types, and default values
+
+#### Example table structure
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```markdown
+
+| Variable | Required | Type | Description | Default |
+|----------|----------|------|-------------|---------|
+| `proxmox_endpoint` | No | string | Proxmox API endpoint URL | `"<https://proxmox.local:8006>"` |
+| `vm_name` | Yes | string | Name of the VM | n/a |
+| `cpu_cores` | No | number | Number of CPU cores (1-128) | `4` |
+
+```
+
+## Component usage decision tree
+
+Use this guide to decide when to use Mintlify components versus plain markdown:
+
+### When to use Steps
+
+- Multi-step procedures (installation, deployment, configuration workflows)
+- Sequential instructions where order matters
+- Complex procedures with verification steps between stages
+
+Example: Installation guides, deployment procedures, setup workflows
+
+### When to use Tabs
+
+- Platform-specific content (macOS/Linux/Windows installation)
+- Alternative approaches to the same task
+- Multiple implementation options
+
+Example: Installation instructions for different operating systems, alternative configuration methods
+
+### When to use Accordions
+
+- Troubleshooting sections with multiple issues
+- Advanced topics that not all users need
+- Progressive disclosure of detailed information
+- FAQ-style content
+
+Example: Troubleshooting guides, advanced configuration options, detailed explanations
+
+### When to use Cards
+
+- Quick links to related documentation
+- Feature highlights on landing pages
+- Navigation aids
+- Visual grouping of related concepts
+
+Example: Homepage feature cards, quick start links, related documentation
+
+### When to use Warning/Info/Note/Check
+
+- **Warning**: Critical cautions, breaking changes, destructive actions
+- **Info**: Neutral contextual information, background details
+- **Note**: Additional helpful information that supports main content
+- **Tip**: Best practices, shortcuts, expert advice
+- **Check**: Success confirmations, completion indicators
+
+### When to use plain markdown
+
+- Simple lists and basic content
+- Straightforward code blocks without special formatting needs
+- Standard documentation sections (overview, configuration, examples)
+- Tables for variables/parameters documentation
+- Basic troubleshooting with simple Symptom/Solution format
+
+**Guideline**: Use components when they add value (progressive disclosure, visual organization, interactivity). Use plain markdown for straightforward content.
+
+## Component selection logic
+
+- Use **Steps** for procedures and sequential instructions
+- Use **Tabs** for platform-specific content or alternative approaches
+- Use **CodeGroup** when showing the same concept in multiple programming languages
+- Use **Accordions** for progressive disclosure of information
+- Use **RequestExample/ResponseExample** specifically for API endpoint documentation
+- Use **ParamField** for API parameters, **ResponseField** for API responses
+- Use **Expandable** for nested object properties or hierarchical information
+
+## Terraform/Ansible documentation patterns
+
+### Terraform module documentation
+
+When documenting Terraform modules, include:
+
+#### Structure
+
+1. **Overview**: Purpose, use cases, key features
+2. **Prerequisites**: Required templates, network configs, credentials
+3. **Quick Start**: Minimal working example
+4. **Configuration**: Inputs/outputs tables, variable descriptions
+5. **Common Use Cases**: Development server, production server, database, etc.
+6. **Post-Deployment**: Verification steps, next steps, cleanup
+7. **Troubleshooting**: Common issues and solutions
+
+#### Inputs/Outputs tables
+
+Use markdown tables with columns:
+
+| Variable | Required | Type | Description | Default |
+|----------|----------|------|-------------|---------|
+| `vm_name` | Yes | string | Name of the VM | `"my-vm"` |
+| `cpu_cores` | No | number | Number of CPU cores | `4` |
+
+#### Usage examples
+
+Show complete, runnable examples:
+
+```hcl main.tf
+module "web_server" {
+  source = "github.com/basher83/Triangulum-Prime//terraform-bgp-vm"
+
+  vm_name = "web-server"
+  cpu_cores = 4
+  memory = 8192
+}
+```
+
+```text
+
+```text
+
+```
+
+```text
+
+```
+
+```text
+
+```bash
+tofu init
+tofu plan
+tofu apply
+```
+
+### Ansible role documentation
+
+When documenting Ansible roles, include:
+
+#### Structure
+
+1. **Overview**: Purpose, use cases, dependencies
+2. **Quick Start**: Minimal playbook example
+3. **Configuration**: Variables table with descriptions
+4. **Integration Patterns**: How to use with other roles
+5. **Examples**: Common use cases with complete playbooks
+6. **Troubleshooting**: Common issues and solutions
+
+#### Variables table
+
+Use markdown tables:
+
+| Variable | Required | Type | Description |
+|----------|----------|------|-------------|
+| `username` | Yes | string | System username |
+| `ssh_keys` | No | list | SSH public keys |
+| `sudo` | No | string | Sudo access: `nopasswd`, `password`, or omit |
+
+#### Playbook examples
+
+Show complete playbooks with `uv run ansible-playbook`:
+
+```yaml playbook.yml
+---
+
+- name: Create automation user
+  hosts: proxmox_nodes
+  roles:
+
+  - role: system_user
+      system_users:
+    - username: terraform
+          ssh_keys: ["{{ lookup('infisical', 'TF_SSH_KEY') }}"]
+          sudo: nopasswd
+
+```
+
+```text
+
+```text
+
+```
+
+```bash
+uv run ansible-playbook playbook.yml
+```
+
+### Integration patterns
+
+Show how roles work together:
+
+```text
+
+```text
+
+```
+
+```yaml
+- name: Setup Terraform automation
+  hosts: proxmox_nodes
+  tasks:
+
+  - name: Create system user
+      include_role:
+        name: system_user
+      vars:
+        system_users:
+
+    - username: terraform
+            ssh_keys: ["{{ terraform_ssh_key }}"]
+            sudo: nopasswd
+
+  - name: Create Proxmox token
+      include_role:
+        name: proxmox_access
+      vars:
+        proxmox_tokens:
+
+    - user: terraform@pam
+            name: automation
+
+```
+
+### Common use cases
+
+Document practical deployment scenarios:
+
+- **Development Server**: Lower resources, flexible configuration
+- **Production Server**: Higher resources, protected lifecycle
+- **Database Server**: High memory, large disk, protected from deletion
+- **Jumpbox/Bastion**: Minimal resources, early boot priority
+- **Docker Host**: High CPU/memory for container workloads
+- **CI/CD Runner**: Balanced resources for automation tasks
+
+For each use case, show:
+
+- Configuration example
+- Resource requirements
+- Use case description

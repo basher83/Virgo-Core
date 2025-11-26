@@ -21,44 +21,44 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "documentation/getting-started/prerequisites",
-              "documentation/getting-started/installation",
-              "documentation/getting-started/first-deployment",
-              "documentation/core/goals",
-              "documentation/core/infrastructure"
+              "getting-started/prerequisites",
+              "getting-started/installation",
+              "getting-started/first-deployment",
+              "core/goals",
+              "core/infrastructure"
             ]
           },
           {
             "group": "Ansible Roles",
             "pages": [
-              "documentation/roles/system_user",
-              "documentation/roles/proxmox_access",
-              "documentation/roles/proxmox_network",
-              "documentation/roles/proxmox_repository",
-              "documentation/roles/proxmox_cluster",
-              "documentation/roles/proxmox_ceph"
+              "roles/system_user",
+              "roles/proxmox_access",
+              "roles/proxmox_network",
+              "roles/proxmox_repository",
+              "roles/proxmox_cluster",
+              "roles/proxmox_ceph"
             ]
           },
           {
             "group": "Ansible Architecture",
             "pages": [
-              "documentation/design/ansible-philosophy",
-              "documentation/design/ansible-design-patterns",
-              "documentation/design/ansible-role-design",
-              "documentation/design/ansible-playbook-design"
+              "design/ansible-philosophy",
+              "design/ansible-design-patterns",
+              "design/ansible-role-design",
+              "design/ansible-playbook-design"
             ]
           },
           {
             "group": "Integration & Testing",
             "pages": [
-              "documentation/core/netbox-powerdns",
-              "documentation/core/references"
+              "core/netbox-powerdns",
+              "core/references"
             ]
           },
           {
             "group": "Roadmap",
             "pages": [
-              "documentation/brainstorming/next-features-2025-11"
+              "brainstorming/next-features-2025-11"
             ]
           }
         ]

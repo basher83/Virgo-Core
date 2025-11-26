@@ -1,10 +1,10 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [
-        "local>basher83/renovate-config",
-        "local>basher83/renovate-config//presets/python.json",
-        "local>basher83/renovate-config//presets/ansible.json",
-        "local>basher83/renovate-config//presets/terraform-tofu.json",
-        "local>basher83/renovate-config//presets/github-actions-security.json"
-    ]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>basher83/renovate-config",
+    "local>basher83/renovate-config//presets/python.json",
+    "local>basher83/renovate-config//presets/ansible.json",
+    "local>basher83/renovate-config//presets/terraform-tofu.json",
+    "local>basher83/renovate-config//presets/github-actions-security.json"
+  ]
 }
