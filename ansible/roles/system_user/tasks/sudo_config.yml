@@ -1,0 +1,46 @@
+---
+# ansible/roles/system_user/tasks/sudo_config.yml
+# Configure sudo privileges for users
+
+- name: Ensure /etc/sudoers.d directory exists
+  ansible.builtin.file:
+    path: /etc/sudoers.d
+    state: directory
+    owner: root
+    group: root
+    mode: '0750'
+
+- name: Configure sudo privileges for {{ user_item.name }}
+  ansible.builtin.template:
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/{{ user_item.name }}"
+    owner: root
+    group: root
+    mode: '0440'
+    validate: '/usr/sbin/visudo -cf %s'
+  register: system_user_sudoers_result
+
+- name: Display sudoers configuration status
+  ansible.builtin.debug:
+    msg: "Sudoers configuration for '{{ user_item.name }}' {{ 'updated' if system_user_sudoers_result.changed else 'already current' }}"
+
+- name: Verify sudo configuration with test command
+  ansible.builtin.command:
+    argv:
+      - sudo
+      - -l
+      - -U
+      - "{{ user_item.name }}"
+  register: system_user_sudo_verify
+  changed_when: false
+  failed_when: false
+
+- name: Display sudo privileges summary
+  ansible.builtin.debug:
+    msg: |
+      Sudo privileges configured for {{ user_item.name }}:
+      {% if user_item.sudo_nopasswd | default(false) %}
+      - Full sudo access (NOPASSWD:ALL)
+      {% elif user_item.sudo_rules is defined %}
+      - Limited sudo access ({{ user_item.sudo_rules | length }} command(s))
+      {% endif %}

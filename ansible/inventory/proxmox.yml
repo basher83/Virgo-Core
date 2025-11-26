@@ -1,16 +1,32 @@
+---
+# Ansible inventory for Virgo-Core infrastructure
+# 3 Proxmox VE clusters with different topologies
+
 all:
   children:
-    nexus_cluster:
-      hosts:
-        alpha:
-        bravo:
-    doggos_cluster:
-      hosts:
-        holly:
-        lloyd:
-        mable:
-    matrix_cluster:
-      hosts:
-        foxtrot:
-        golf:
-        hotel:
+    proxmox_clusters:
+      children:
+        nexus_cluster:
+          hosts:
+            alpha:
+              node_id: 50
+            bravo:
+              node_id: 30
+
+        quantum_cluster:
+          hosts:
+            holly:
+              node_id: 3
+            lloyd:
+              node_id: 2
+            mable:
+              node_id: 4
+
+        matrix_cluster:
+          hosts:
+            foxtrot:
+              node_id: 5
+            golf:
+              node_id: 6
+            hotel:
+              node_id: 7

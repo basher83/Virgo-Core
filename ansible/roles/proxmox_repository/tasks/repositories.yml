@@ -1,0 +1,28 @@
+---
+# Configure Proxmox VE APT repositories
+
+- name: Disable Proxmox Enterprise repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://enterprise.proxmox.com/debian/pve {{ ansible_distribution_release }} pve-enterprise"
+    state: absent
+    filename: pve-enterprise
+  when: not proxmox_enterprise_repo | bool
+
+- name: Remove Enterprise repository file if exists
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/pve-enterprise.list
+    state: absent
+  when: not proxmox_enterprise_repo | bool
+
+- name: Enable Proxmox no-subscription repository
+  ansible.builtin.apt_repository:
+    repo: "deb http://download.proxmox.com/debian/pve {{ ansible_distribution_release }} pve-no-subscription"
+    state: present
+    filename: pve-no-subscription
+  when: proxmox_no_subscription_repo | bool
+
+- name: Enable Proxmox test repository
+  ansible.builtin.apt_repository:
+    repo: "deb http://download.proxmox.com/debian/pve {{ ansible_distribution_release }} pvetest"
+    state: "{{ 'present' if proxmox_test_repo else 'absent' }}"
+    filename: pvetest

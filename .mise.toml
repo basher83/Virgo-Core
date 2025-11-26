@@ -1,5 +1,6 @@
 # Mise configuration for terraform-homelab
 min_version = "2024.9.5"
+
 [settings]
 auto_install = true
 not_found_auto_install = true
@@ -11,17 +12,15 @@ show_env = false
 truncate = true
 
 [tools]
-cosign = "3.0.2"
 eza = "0.23.0"
 fd = "10.2.0"
-pre-commit = "4.3.0"
 rg = "14.1.1"
 terraform-docs = "0.20.0"
-tflint = "0.59.1"
+tflint = "0.60.0"
 python = "3.13.7"
 git-cliff = "2.10.1"
 yamllint = "1.37.1"
-yamlfmt = "0.19.0"
+yamlfmt = "0.20.0"
 shellcheck = "0.11.0"
 markdownlint-cli2 = "0.18.1"
 uv = "0.9.5"
@@ -29,7 +28,7 @@ opentofu = "1.10.6"
 
 
 [env]
-_.python.venv = { path = ".venv", create = true } # create the venv if it doesn't exist
+_.python.venv = { path = ".venv", create = true }  # create the venv if it doesn't exist
 
 [tasks.setup]
 description = "Set up complete development environment"
@@ -77,6 +76,75 @@ run = "uv run ansible-galaxy collection install -r requirements.yml --force"
 description = "Test Ansible connectivity to all hosts"
 dir = "ansible"
 run = "uv run ansible all -m ansible.builtin.ping"
+
+[tasks."ansible:test-roles"]
+description = "Test all roles with tag-based selection"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml playbooks/test-roles.yml \
+  --limit ${CLUSTER:-matrix_cluster} \
+  ${TAGS:+--tags $TAGS} \
+  ${CHECK:+--check --diff}
+"""
+
+[tasks."ansible:setup-terraform"]
+description = "Setup Terraform automation (role-based)"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/setup-terraform-automation.yml \
+  --limit ${CLUSTER:-matrix_cluster}
+"""
+
+[tasks."ansible:create-admin"]
+description = "Create administrative user with SSH and sudo access"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/create-admin-user.yml \
+  --limit ${HOSTS:-all} \
+  -e "admin_name=${ADMIN_NAME}" \
+  -e "admin_ssh_key=${ADMIN_SSH_KEY}"
+"""
+
+[tasks."ansible:configure-network"]
+description = "Configure Proxmox network bridges and VLANs"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/configure-network.yml \
+  --limit ${CLUSTER:-matrix_cluster} \
+  ${CHECK:+--check --diff}
+"""
+
+[tasks."ansible:install-docker"]
+description = "Install Docker on Proxmox nodes"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/install-docker.yml \
+  --limit ${HOSTS:-all}
+"""
+
+[tasks."ansible:init-cluster"]
+description = "Initialize Proxmox cluster (WARNING: Potentially destructive)"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/initialize-${CLUSTER:-matrix}-cluster.yml \
+  ${CHECK:+--check --diff}
+"""
+
+[tasks."ansible:build-template"]
+description = "Build VM template from cloud image"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/proxmox-build-template.yml \
+  --limit ${NODE:-foxtrot} \
+  -e "template_name=${TEMPLATE_NAME}" \
+  -e "cloud_image_url=${IMAGE_URL}"
+"""
 # === Ansible tasks ===
 
 [tasks.fmt]
@@ -96,7 +164,6 @@ run = "tofu fmt -recursive -check -diff"
 [tasks.fmt-all]
 description = "Format all files (Terraform and YAML)"
 depends = ["fmt", "yaml-fmt"]
-
 
 [tasks.prod-validate]
 description = "Validate Terraform configuration"
@@ -120,14 +187,13 @@ env = { TF_IN_AUTOMATION = "true", TF_INPUT = "false" }
 
 # === Hooks tasks ===
 [tasks.hooks-install]
-description = "Install pre-commit and infisical hooks"
-run = "pre-commit install && infisical scan install --pre-commit-hook"
+description = "Install prek and infisical hooks"
+run = "prek install && infisical scan install --pre-commit-hook"
 
 [tasks.hooks-run]
 description = "Run pre-commit hooks"
-run = "pre-commit run --all-files"
+run = "prek run --all-files"
 # === Hooks tasks ===
-
 
 # === Infisical tasks ===
 [tasks.infisical-scan]
@@ -145,20 +211,25 @@ run = "yamllint ."
 
 [tasks.markdown-lint]
 description = "Lint Markdown files"
-run = "markdownlint-cli2 '**/*.md'"
+run = "rumdl check ."
+
+[tasks.markdown-fix]
+description = "Fix Markdown files"
+run = "rumdl fmt ."
 
 [tasks.ansible-lint]
-description = "Lint Ansible files"
-run = "ansible-lint ansible/"
+description = "Lint Ansible files (playbooks and roles)"
+dir = "ansible"
+run = "uv run ansible-lint playbooks/ roles/"
 
 [tasks.lint-all]
 description = "Run all linting tasks"
 depends = [
-    "shellcheck",
-    "yaml-lint",
-    "markdown-lint",
-    "lint-prod",
-    "ansible-lint",
+  "shellcheck",
+  "yaml-lint",
+  "markdown-lint",
+  "lint-prod",
+  "ansible-lint",
 ]
 
 [tasks.validate-all]
@@ -168,10 +239,10 @@ depends = ["prod-validate"]
 [tasks.full-check]
 description = "Complete validation including formatting, linting, docs, and security"
 depends = [
-    "fmt-all",
-    "validate-all",
-    "lint-all",
-    "docs-check",
-    "infisical-scan",
+  "fmt-all",
+  "validate-all",
+  "lint-all",
+  "docs-check",
+  "infisical-scan",
 ]
 env = { TF_IN_AUTOMATION = "true", TF_INPUT = "false" }

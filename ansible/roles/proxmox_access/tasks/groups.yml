@@ -1,0 +1,28 @@
+---
+# tasks/groups.yml - Create Proxmox groups
+# Purpose: Organize users into groups for easier permission management
+#
+# Uses community.proxmox.proxmox_group module for proper idempotency
+
+- name: Create Proxmox groups
+  community.proxmox.proxmox_group:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+    comment: "{{ item.comment | default('') }}"
+    api_host: "{{ proxmox_api_host }}"
+    api_user: "{{ proxmox_api_user }}"
+    api_password: "{{ proxmox_api_password }}"
+    validate_certs: "{{ proxmox_validate_certs }}"
+  loop: "{{ proxmox_groups }}"
+  delegate_to: localhost
+  become: false
+  register: proxmox_access_group_result
+  no_log: "{{ proxmox_no_log }}"
+
+- name: Display group creation status
+  ansible.builtin.debug:
+    msg: "Group '{{ item.item.name }}' {{ 'created' if item.changed else 'already exists' }}"
+  loop: "{{ proxmox_access_group_result.results }}"
+  when: proxmox_access_group_result.results is defined
+  loop_control:
+    label: "{{ item.item.name }}"

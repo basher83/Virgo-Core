@@ -47,7 +47,7 @@
 
 **community.proxmox** - Score: 72/100
 
-- **Repository**: https://github.com/ansible-collections/community.proxmox
+- **Repository**: <https://github.com/ansible-collections/community.proxmox>
 - **Namespace**: community.proxmox
 - **Category**: Community Collection (matched namespace pattern `^community\..*`)
 - **Metrics**: 68 stars `[API: search_repositories]`, 39 forks `[API: search_repositories]`
@@ -171,7 +171,7 @@
 
 **rpenziol/proxmox-kubernetes-bootstrap** - Score: 45/100
 
-- **Repository**: https://github.com/rpenziol/proxmox-kubernetes-bootstrap
+- **Repository**: <https://github.com/rpenziol/proxmox-kubernetes-bootstrap>
 - **Namespace**: N/A (not a collection, just playbooks/scripts)
 - **Category**: Personal/Individual
 - **Metrics**: 26 stars `[API: search_repositories]`, 6 forks `[API: search_repositories]`
@@ -214,6 +214,7 @@ ansible-galaxy collection install -r requirements.yml
 #### 2. Migrate Existing Playbook
 
 **Current Approach** (pveum commands only):
+
 ```yaml
 # Your current playbook: ansible/playbooks/proxmox-create-terraform-user.yml
 - name: Create terraform user
@@ -221,6 +222,7 @@ ansible-galaxy collection install -r requirements.yml
 ```
 
 **Recommended Approach** (native modules):
+
 ```yaml
 ---
 - name: Create Proxmox Terraform User with API Token
@@ -324,6 +326,7 @@ ansible-galaxy collection install -r requirements.yml
 ### Technical Risks
 
 **Risk: API Token Management Gap**
+
 - **Impact**: Must use shell commands for token operations
 - **Mitigation**:
   - Keep current pveum command approach for tokens
@@ -331,6 +334,7 @@ ansible-galaxy collection install -r requirements.yml
   - Consider contributing a `proxmox_user_token` module to the collection
 
 **Risk: Module Breaking Changes**
+
 - **Impact**: Future updates may change module behavior
 - **Mitigation**:
   - Pin collection version in requirements.yml
@@ -338,6 +342,7 @@ ansible-galaxy collection install -r requirements.yml
   - Test in non-production first
 
 **Risk: Proxmoxer Dependency**
+
 - **Impact**: Python library updates could break compatibility
 - **Mitigation**:
   - Document tested versions (Proxmoxer >= 2.0)
@@ -346,11 +351,13 @@ ansible-galaxy collection install -r requirements.yml
 ### Maintenance Risks
 
 **Risk: Collection Abandonment (Low)**
+
 - **Probability**: Low (100 contributors, active development)
 - **Impact**: Would need to fork or use pveum commands
 - **Mitigation**: Collection is in ansible-collections org (official community support)
 
 **Risk: API Changes in Proxmox**
+
 - **Probability**: Medium (Proxmox updates API periodically)
 - **Impact**: Module compatibility issues
 - **Mitigation**:
@@ -410,6 +417,7 @@ ansible-galaxy collection install -r requirements.yml
 ### Immediate Actions
 
 1. **Install community.proxmox collection**:
+
    ```bash
    ansible-galaxy collection install community.proxmox
    ```
@@ -428,6 +436,7 @@ ansible-galaxy collection install -r requirements.yml
 ### Testing Recommendations
 
 1. **Create test playbook** with check mode:
+
    ```bash
    ansible-playbook proxmox-create-terraform-user.yml --check
    ```

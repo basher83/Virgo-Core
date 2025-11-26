@@ -11,6 +11,7 @@
 The MicroK8s Ansible ecosystem consists primarily of **community-developed roles** rather than official collections. There is **no official Canonical Ansible collection** for MicroK8s. The most mature and widely-adopted solution is **istvano/ansible_role_microk8s** with 118 stars and active maintenance through 2024. Most implementations follow similar patterns: snap-based installation, cluster join operations using tokens, and addon management via `microk8s enable`.
 
 **Key Findings:**
+
 - No official Ansible Galaxy collections for MicroK8s from Canonical
 - Community roles focus on HA clustering and addon management
 - Most implementations are playbook-based rather than collection-based
@@ -63,11 +64,12 @@ The MicroK8s Ansible ecosystem consists primarily of **community-developed roles
 
 #### 1. **istvano/ansible_role_microk8s** - Score: 85/100
 
-**Repository**: https://github.com/istvano/ansible_role_microk8s
+**Repository**: <https://github.com/istvano/ansible_role_microk8s>
 **Namespace**: Galaxy role (not collection): `istvano.microk8s`
 **Category**: Community (Personal namespace)
 
 **Metrics**:
+
 - **Stars**: 118 `[API: get_repository]`
 - **Forks**: 80 `[API: get_repository]`
 - **Open Issues**: 13 `[API: list_issues]`
@@ -76,12 +78,14 @@ The MicroK8s Ansible ecosystem consists primarily of **community-developed roles
 - **License**: MIT
 
 **Activity Indicators**:
+
 - Last commit: March 2024 (PATH environment fix)
 - Active issue discussion (2025 issues opened)
 - Recent PRs merged
 - Molecule testing framework implemented
 
 **Strengths**:
+
 - **Comprehensive feature set**: HA clustering, worker nodes, 30+ addon support
 - **Well-documented**: Detailed README with examples
 - **Testing infrastructure**: Molecule tests with Docker
@@ -92,12 +96,14 @@ The MicroK8s Ansible ecosystem consists primarily of **community-developed roles
 - **Idempotent**: Designed for safe re-runs
 
 **Use Cases**:
+
 - Multi-node HA clusters
 - Ubuntu/Debian systems (Xenial, Bionic, Focal, Jammy)
 - Arch Linux support (untested)
 - Raspberry Pi support (with raspi-specific packages)
 
 **Code Quality**:
+
 - Modular task organization (install, configure-HA, configure-WORKERS, addons)
 - Proper use of handlers for certificate refresh
 - Comprehensive plugin management
@@ -215,12 +221,14 @@ microk8s_bin_path: ""
 ```
 
 **Known Issues**:
+
 - Certificate copy task uses `with_fileglob` on controller instead of remote host (#55)
 - Refresh certs handler missing required parameters (#54)
 - Idempotency issue on second run with 'addons' attribute error (#51)
 - Ubuntu 24.04 missing `linux-modules-extra-raspi` package (#52)
 
 **Recommendations**:
+
 - **Production use**: Good for HA clusters with mature configuration needs
 - **Watch**: Open issues before deploying to Ubuntu 24.04
 - **Consider**: Forking to fix certificate and idempotency issues if needed
@@ -229,11 +237,12 @@ microk8s_bin_path: ""
 
 #### 2. **z3dm4n/k8s-dev-cluster-hcloud** - Score: 72/100
 
-**Repository**: https://github.com/z3dm4n/k8s-dev-cluster-hcloud
+**Repository**: <https://github.com/z3dm4n/k8s-dev-cluster-hcloud>
 **Namespace**: Playbook-based (not a role/collection)
 **Category**: Community (Infrastructure Example)
 
 **Metrics**:
+
 - **Stars**: 11 `[API: get_repository]`
 - **Forks**: 1 `[API: get_repository]`
 - **Open Issues**: 0 `[API: list_issues]`
@@ -242,11 +251,13 @@ microk8s_bin_path: ""
 - **License**: None specified
 
 **Activity Indicators**:
+
 - Last commit: November 2021 (stale)
 - No recent activity
 - Complete Terraform + Ansible example
 
 **Strengths**:
+
 - **Complete infrastructure example**: Terraform + Ansible for Hetzner Cloud
 - **HA cluster setup**: Multi-node with proper join token handling
 - **Modular playbooks**: Separated into logical steps
@@ -254,6 +265,7 @@ microk8s_bin_path: ""
 - **Addon integration**: MetalLB and Ingress configuration
 
 **Use Cases**:
+
 - Hetzner Cloud deployments
 - Learning HA cluster setup patterns
 - Terraform + Ansible integration reference
@@ -297,18 +309,21 @@ microk8s_bin_path: ""
 ```
 
 **Key Learnings**:
+
 - Uses dummy host pattern for sharing join tokens between plays
 - Hardcoded IPs (not ideal for dynamic environments)
 - Separate playbooks for each configuration phase
 - Direct shell commands instead of modules
 
 **Limitations**:
+
 - Not maintained since 2021
 - Hardcoded network configuration
 - No error handling for join failures
 - No idempotency checks
 
 **Recommendations**:
+
 - **Reference only**: Good for understanding patterns, not for production use
 - **Adapt patterns**: Token handling approach is useful
 - **Update required**: Needs modernization for current MicroK8s versions
@@ -319,11 +334,12 @@ microk8s_bin_path: ""
 
 #### 3. **accanto-systems/ansible-role-microk8s** - Score: 65/100
 
-**Repository**: https://github.com/accanto-systems/ansible-role-microk8s
+**Repository**: <https://github.com/accanto-systems/ansible-role-microk8s>
 **Namespace**: Galaxy role: `accanto-systems.microk8s`
 **Category**: Community (Organization)
 
 **Metrics**:
+
 - **Stars**: 13 `[API: get_repository]`
 - **Forks**: 1 `[API: get_repository]`
 - **Open Issues**: 2 `[API: list_issues]`
@@ -331,23 +347,27 @@ microk8s_bin_path: ""
 - **License**: Apache 2.0
 
 **Activity Indicators**:
+
 - Last commit: April 2020 (abandoned)
 - No activity for 5+ years
 - Limited feature set
 
 **Strengths**:
+
 - Clean code structure
 - Apache 2.0 license
 - Insecure registry support
 - PATH environment fix
 
 **Limitations**:
+
 - **Severely outdated**: No updates since 2020
 - No HA support
 - No addon management
 - Single-node focus only
 
 **Recommendations**:
+
 - **Do not use**: Outdated and unmaintained
 - **Historical reference**: Shows early MicroK8s automation attempts
 
@@ -355,27 +375,31 @@ microk8s_bin_path: ""
 
 #### 4. **K8sPlayBook/KubePlaybook** - Score: 68/100
 
-**Repository**: https://github.com/K8sPlayBook/KubePlaybook
+**Repository**: <https://github.com/K8sPlayBook/KubePlaybook>
 **Namespace**: Playbook collection (not Galaxy role)
 **Category**: Community (Educational)
 
 **Metrics**:
+
 - **Stars**: 10 `[API: get_repository]`
 - **Forks**: 0 `[API: get_repository]`
 - **Last Updated**: June 2024 `[API: get_repository]`
 - **License**: MIT
 
 **Strengths**:
+
 - Recent activity (2024)
 - Multiple Kubernetes automation examples
 - MicroK8s included alongside other K8s distributions
 
 **Limitations**:
+
 - Not a dedicated MicroK8s solution
 - Limited documentation
 - Educational focus rather than production
 
 **Recommendations**:
+
 - **Learning resource**: Good for comparing different K8s automation approaches
 - **Not production-ready**: Lacks comprehensive MicroK8s coverage
 
@@ -383,26 +407,30 @@ microk8s_bin_path: ""
 
 #### 5. **skosachiov/ansiblecd** - Score: 62/100
 
-**Repository**: https://github.com/skosachiov/ansiblecd
+**Repository**: <https://github.com/skosachiov/ansiblecd>
 **Namespace**: GitOps demonstration
 **Category**: Community (Experimental)
 
 **Metrics**:
+
 - **Stars**: 5 `[API: get_repository]`
 - **Forks**: 1 `[API: get_repository]`
 - **Topics**: ansible, argocd, gitops, kubernetes, microk8s
 
 **Strengths**:
+
 - **Interesting concept**: Ansible as GitOps replacement for FluxCD/ArgoCD
 - Uses MicroK8s as target platform
 - GitHub Actions integration
 
 **Limitations**:
+
 - Experimental approach
 - Limited adoption
 - Not focused on MicroK8s deployment, but on GitOps workflow
 
 **Recommendations**:
+
 - **Conceptual interest**: Novel approach to GitOps
 - **Not for MicroK8s deployment**: Doesn't solve the installation problem
 
@@ -451,6 +479,7 @@ microk8s_bin_path: ""
 ### Finding: No Official Ansible Collection
 
 **Research Conducted**:
+
 - Searched `ansible-collections` GitHub organization (141+ official collections)
 - No MicroK8s collection found
 - Searched Ansible Galaxy for official Canonical content
@@ -458,12 +487,14 @@ microk8s_bin_path: ""
 
 **Canonical's Position**:
 MicroK8s documentation focuses on:
+
 1. Manual installation via snap
 2. Cloud-init for initial setup
 3. CLI-based cluster management
 4. No official Ansible automation provided
 
 **Why No Official Collection?**
+
 - MicroK8s design philosophy: Simple CLI-first approach
 - Snap package handles most automation needs
 - Community solutions sufficient for most use cases
@@ -488,6 +519,7 @@ MicroK8s documentation focuses on:
 ```
 
 **Key considerations**:
+
 - `classic: yes` required (MicroK8s needs full system access)
 - Channel format: `X.Y/stable`, `X.Y/edge`, `X.Y/beta`
 - Wait for ready state after installation
@@ -514,6 +546,7 @@ MicroK8s documentation focuses on:
 ```
 
 **Variations**:
+
 1. **istvano approach**: Uses IP regex to filter correct join URL
 2. **z3dm4n approach**: Uses dummy host to pass tokens between plays
 3. **Common issue**: Idempotency - need to check if node already joined
@@ -605,6 +638,7 @@ microk8s_plugins:
 **Finding**: No dedicated Ansible automation found for Rancher on MicroK8s
 
 **Manual approach required**:
+
 1. Deploy MicroK8s cluster via Ansible
 2. Install Rancher via Helm (manual or separate Ansible tasks)
 3. Import MicroK8s cluster into Rancher
@@ -646,6 +680,7 @@ microk8s_plugins:
 **Finding**: One experimental repo (ansiblecd), no production patterns
 
 **Manual approach required**:
+
 1. Deploy MicroK8s via Ansible
 2. Install ArgoCD via kubectl or Helm
 3. Configure ArgoCD applications separately
@@ -686,7 +721,7 @@ microk8s_plugins:
 
 From project structure analysis:
 
-```
+```text
 ansible/roles/
 ├── microk8s_install/     # Installation
 ├── microk8s_cluster/     # Cluster formation
@@ -906,6 +941,7 @@ Pattern from istvano:
 ### 1. Installation Phase
 
 **Best practices from community**:
+
 - Always use `classic: yes` for snap installation
 - Wait for `microk8s status --wait-ready` before proceeding
 - Create kubectl and helm aliases immediately after installation
@@ -915,6 +951,7 @@ Pattern from istvano:
 ### 2. Cluster Formation
 
 **Best practices**:
+
 - Use a designated master approach (first node alphabetically)
 - Always check if node is already in cluster before joining
 - Handle "already known to dqlite" error gracefully
@@ -924,6 +961,7 @@ Pattern from istvano:
 ### 3. Addon Management
 
 **Best practices**:
+
 - Check current addon status before enabling
 - Support both boolean and string-parameter addons
 - Handle addon dependencies (e.g., metrics-server before dashboard)
@@ -933,6 +971,7 @@ Pattern from istvano:
 ### 4. High Availability
 
 **Best practices**:
+
 - Use Ansible groups to define masters vs workers
 - Implement separate plays for HA nodes and worker nodes
 - Wait for cluster stability between node additions
@@ -942,6 +981,7 @@ Pattern from istvano:
 ### 5. Security
 
 **Best practices**:
+
 - Support custom CSR templates for certificates
 - Trust generated CA certificates in system store
 - Manage RBAC addon separately
@@ -951,6 +991,7 @@ Pattern from istvano:
 ### 6. Idempotency
 
 **Best practices**:
+
 - Check existing state before making changes
 - Use `changed_when: false` for read-only commands
 - Handle "already exists" errors gracefully
@@ -1338,7 +1379,7 @@ microk8s_workers
 
 ### Example 4: Complete Role Structure
 
-```
+```text
 roles/microk8s/
 ├── defaults/
 │   └── main.yml                 # All configurable variables
@@ -1387,6 +1428,7 @@ Your Infisical integration is **unique**. Maintain this pattern:
 **Alternative patterns from community**:
 
 1. **Ansible Vault** (most common):
+
 ```yaml
 # ansible-vault encrypt_string 'secret_value' --name 'rancher_password'
 rancher_password: !vault |
@@ -1394,7 +1436,8 @@ rancher_password: !vault |
           ...encrypted...
 ```
 
-2. **HashiCorp Vault** (enterprise):
+1. **HashiCorp Vault** (enterprise):
+
 ```yaml
 - name: Get secret from Vault
   community.hashi_vault.vault_read:
@@ -1443,6 +1486,7 @@ IP.2 = {{ cluster_vip }}
 **Root cause**: MicroK8s status output format changes after cluster formation
 
 **Workaround**:
+
 ```yaml
 - name: Get status safely
   command: microk8s status --format yaml
@@ -1464,6 +1508,7 @@ IP.2 = {{ cluster_vip }}
 **Root cause**: Misuse of `with_fileglob` with `remote_src: yes`
 
 **Fix**:
+
 ```yaml
 # Use find module instead
 - name: Find certificates
@@ -1487,6 +1532,7 @@ IP.2 = {{ cluster_vip }}
 **Problem**: `linux-modules-extra-raspi` package not available on Ubuntu 24.04
 
 **Workaround**:
+
 ```yaml
 - name: Install Raspberry Pi packages
   package:
@@ -1505,6 +1551,7 @@ IP.2 = {{ cluster_vip }}
 **Problem**: `microk8s refresh-certs` requires cert name or path parameter
 
 **Fix**:
+
 ```yaml
 # Handler in handlers/main.yml
 - name: Refresh certs
@@ -1520,6 +1567,7 @@ IP.2 = {{ cluster_vip }}
 **Common issue**: Snap updates MicroK8s unexpectedly, breaking clusters
 
 **Solution A** (istvano current):
+
 ```yaml
 - name: Block snap autoupdate
   blockinfile:
@@ -1529,6 +1577,7 @@ IP.2 = {{ cluster_vip }}
 ```
 
 **Solution B** (recommended, from issue #50):
+
 ```yaml
 - name: Hold snap updates
   command: snap refresh --hold microk8s
@@ -1539,6 +1588,7 @@ IP.2 = {{ cluster_vip }}
 **Common**: `/snap/bin` not in PATH for some systems
 
 **Solution** (from istvano):
+
 ```yaml
 # Variable in defaults
 microk8s_bin_path: ""  # Set to "/snap/bin/" if needed
@@ -1554,6 +1604,7 @@ command: "{{ microk8s_bin_path }}microk8s status"
 ### Best Documentation: istvano/ansible_role_microk8s
 
 **Strengths**:
+
 - Clear README with examples
 - Variable documentation in defaults/main.yml
 - Comments in task files
@@ -1561,6 +1612,7 @@ command: "{{ microk8s_bin_path }}microk8s status"
 - License included
 
 **Gaps**:
+
 - No architecture diagrams
 - Limited troubleshooting guide
 - No changelog
@@ -1570,7 +1622,7 @@ command: "{{ microk8s_bin_path }}microk8s status"
 
 Based on analysis, your documentation should include:
 
-```
+```text
 docs/
 ├── README.md                    # Overview and quickstart
 ├── INSTALLATION.md              # Detailed installation guide
@@ -1693,16 +1745,19 @@ verifier:
 Based on community deployments:
 
 **Small (1-3 nodes)**:
+
 - Single master
 - No HA required
 - Use istvano role without HA flag
 
 **Medium (3-6 nodes)**:
+
 - 3 master HA cluster
 - Optional worker nodes
 - Use istvano HA configuration
 
 **Large (7+ nodes)**:
+
 - 3 master nodes
 - Remaining as workers
 - Consider control plane dedicated nodes
@@ -1712,20 +1767,24 @@ Based on community deployments:
 From MicroK8s documentation + community experience:
 
 **Minimum per node**:
+
 - 2 CPU cores
 - 4GB RAM
 - 20GB disk
 
 **Recommended per node**:
+
 - 4 CPU cores
 - 8GB RAM
 - 50GB disk
 
 **With Rancher**:
+
 - Add 2GB RAM per node
 - Add 10GB disk per node
 
 **With ArgoCD**:
+
 - Add 1GB RAM per node
 - Add 5GB disk per node
 
@@ -1770,18 +1829,21 @@ From MicroK8s documentation + community experience:
 ### Recommendations Priority
 
 **High Priority**:
+
 1. Adopt istvano's HA cluster formation patterns
 2. Implement comprehensive idempotency checks
 3. Add molecule testing framework
 4. Document all variables and usage patterns
 
 **Medium Priority**:
+
 1. Add certificate customization support
 2. Implement snap autoupdate control
 3. Improve error handling for edge cases
 4. Add user/group management patterns
 
 **Low Priority**:
+
 1. Package as Ansible collection
 2. Publish to Ansible Galaxy
 3. Create comprehensive documentation site
@@ -1817,15 +1879,15 @@ roles:
 
 ### Useful Resources
 
-- **MicroK8s Docs**: https://microk8s.io/docs
-- **MicroK8s GitHub**: https://github.com/canonical/microk8s
-- **Ansible Galaxy**: https://galaxy.ansible.com/istvano/microk8s
-- **Kubernetes Ansible Collection**: https://github.com/ansible-collections/kubernetes.core
+- **MicroK8s Docs**: <https://microk8s.io/docs>
+- **MicroK8s GitHub**: <https://github.com/canonical/microk8s>
+- **Ansible Galaxy**: <https://galaxy.ansible.com/istvano/microk8s>
+- **Kubernetes Ansible Collection**: <https://github.com/ansible-collections/kubernetes.core>
 
 ### Community Contacts
 
 - **istvano/ansible_role_microk8s**: Open issues on GitHub
-- **MicroK8s Discourse**: https://discourse.ubuntu.com/c/microk8s
+- **MicroK8s Discourse**: <https://discourse.ubuntu.com/c/microk8s>
 - **Kubernetes Slack**: #microk8s channel
 
 ---

@@ -23,6 +23,7 @@ When invoked, you must follow these steps:
 
    Execute these commands IN PARALLEL using multiple tool calls in a single
    message:
+
    - `git status` - inventory all modifications
    - `git diff --cached` - check already staged changes
    - `git diff` - check unstaged changes
@@ -33,6 +34,7 @@ When invoked, you must follow these steps:
 2. **Deep Dive Analysis (SELECTIVE PARALLEL)**
 
    For complex changes, run in parallel:
+
    - `git diff path/to/file1.ext` - for key modified files
    - `git diff path/to/file2.ext` - for other modified files
    - `git blame -L start,end path/to/file` - if context needed
@@ -68,6 +70,7 @@ When invoked, you must follow these steps:
 6. **Execute Commits with Pre-commit Hooks**
 
    For each commit:
+
    - Stage files using `git add <files>`
    - Create commit with message using heredoc format for proper formatting:
 

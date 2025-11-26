@@ -1,0 +1,62 @@
+---
+# Initialize Proxmox cluster on first node
+
+- name: Set corosync link0 address for this node
+  ansible.builtin.set_fact:
+    corosync_link0_address: "{{ cluster_nodes | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='corosync_ip') | first | default('') }}"
+  when: cluster_nodes | length > 0
+
+- name: Validate corosync address is set
+  ansible.builtin.assert:
+    that:
+      - corosync_link0_address is defined
+      - corosync_link0_address | length > 0
+    fail_msg: "Could not find corosync_ip for {{ inventory_hostname_short }} in cluster_nodes"
+    success_msg: "Corosync address validated: {{ corosync_link0_address }}"
+
+- name: Check if cluster already exists
+  ansible.builtin.command: pvecm status
+  register: cluster_check
+  changed_when: false
+  failed_when: false
+
+- name: Initialize cluster operation
+  block:
+    - name: Create Proxmox cluster
+      ansible.builtin.command:
+        cmd: "pvecm create {{ cluster_name }} --link0 {{ corosync_link0_address }}"
+      when:
+        - cluster_check.rc != 0
+        - corosync_link0_address is defined
+        - corosync_link0_address | length > 0
+      register: cluster_create
+      changed_when: cluster_create.rc == 0
+      failed_when:
+        - cluster_create.rc != 0
+        - "'already part of a cluster' not in cluster_create.stderr"
+
+    - name: Wait for cluster to be ready
+      ansible.builtin.command: pvecm status
+      register: cluster_ready
+      until:
+        - "'Quorum information' in cluster_ready.stdout"
+        - "'Quorate: Yes' in cluster_ready.stdout"
+      retries: 10
+      delay: 3
+      changed_when: false
+      when: cluster_create is changed
+
+  rescue:
+    - name: Cluster initialization failed
+      ansible.builtin.fail:
+        msg: |
+          Failed to initialize cluster {{ cluster_name }}
+          Error: {{ cluster_create.stderr | default('Unknown error') }}
+          This may indicate networking issues or existing cluster state.
+          Verify with: pvecm status
+
+- name: Display cluster initialization status
+  ansible.builtin.debug:
+    msg: |
+      Cluster {{ cluster_name }} initialized on {{ inventory_hostname }}
+      Status: {{ 'Created' if (cluster_create is defined and cluster_create is changed) else 'Already exists' }}

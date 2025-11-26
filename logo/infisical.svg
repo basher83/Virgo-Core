@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Infisical Yellow/Black Theme -->
+  <rect x="10" y="25" width="80" height="50" rx="10" fill="#FCE300"/>
+  <circle cx="35" cy="50" r="10" fill="black"/>
+  <rect x="55" y="45" width="20" height="10" fill="black"/>
+</svg>

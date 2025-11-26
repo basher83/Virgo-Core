@@ -1,3 +1,5 @@
+minimum_prek_version: "0.2.0"
+
 default_install_hook_types:
   - pre-commit
   - post-checkout
@@ -28,11 +30,17 @@ repos:
       - id: check-merge-conflict
       - id: check-symlinks
 
-  - repo: local
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 42.19.3
     hooks:
-      - id: mise-terraform-fmt
-        name: terraform fmt via mise
-        entry: bash -c 'command -v mise >/dev/null 2>&1 && mise run fmt || \ terraform fmt -recursive'
-        language: system
-        pass_filenames: false
-        files: '\.tf$'
+      - id: renovate-config-validator
+        args: [--strict]
+
+  - repo: https://github.com/rvben/rumdl-pre-commit
+    rev: v0.0.166 # Use the latest release tag
+    hooks:
+      - id: rumdl
+        # To only check (default):
+        # args: []
+        # To automatically fix issues:
+        args: [--fix]

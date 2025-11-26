@@ -185,7 +185,7 @@ This scoring system is **intentionally specialized for Ansible collections**. Wh
 
 When Terraform module scoring becomes necessary, we'll create a **separate specialized scorer**:
 
-```
+```text
 .claude/
 ├── scoring-system/        # Current Ansible scorer
 └── terraform-scorer/      # Future Terraform scorer (independent)

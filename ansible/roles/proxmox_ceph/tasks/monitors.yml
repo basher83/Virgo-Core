@@ -1,0 +1,73 @@
+---
+# Deploy CEPH monitors (sequential deployment)
+
+- name: Check if monitor already exists on this node
+  ansible.builtin.shell: |
+    set -o pipefail
+    ceph mon dump 2>/dev/null | grep "{{ inventory_hostname_short }}" || echo "not_found"
+  args:
+    executable: /bin/bash
+  register: mon_check
+  changed_when: false
+  failed_when: false
+
+- name: Set monitor existence fact
+  ansible.builtin.set_fact:
+    has_monitor: "{{ 'not_found' not in mon_check.stdout }}"
+    is_first_node: "{{ inventory_hostname == groups[cluster_group][0] }}"
+
+- name: Create CEPH monitor on first node
+  ansible.builtin.command: pveceph mon create
+  when:
+    - is_first_node
+    - not has_monitor
+  register: mon_create_first
+  changed_when: mon_create_first.rc == 0
+  failed_when:
+    - mon_create_first.rc != 0
+    - "'already exists' not in mon_create_first.stderr"
+
+- name: Wait for first monitor to stabilize
+  ansible.builtin.pause:
+    seconds: 10
+  when:
+    - is_first_node
+    - mon_create_first is changed
+
+- name: Verify first monitor is in quorum
+  ansible.builtin.command: ceph mon stat
+  register: first_mon_stat
+  when: is_first_node
+  changed_when: false
+  retries: 10
+  delay: 3
+  until: first_mon_stat.rc == 0
+
+- name: Create CEPH monitors on other nodes
+  ansible.builtin.command: pveceph mon create
+  when:
+    - not is_first_node
+    - not has_monitor
+  register: mon_create_other
+  changed_when: mon_create_other.rc == 0
+  failed_when:
+    - mon_create_other.rc != 0
+    - "'already exists' not in mon_create_other.stderr"
+    - "'already running' not in mon_create_other.stderr"
+
+- name: Wait for monitor to join quorum
+  ansible.builtin.shell: |
+    set -o pipefail
+    ceph mon stat | grep "{{ inventory_hostname_short }}"
+  args:
+    executable: /bin/bash
+  register: mon_status
+  until: mon_status.rc == 0
+  retries: 10
+  delay: 5
+  changed_when: false
+  when: not has_monitor
+
+- name: Display monitor status
+  ansible.builtin.debug:
+    msg: "CEPH monitor on {{ inventory_hostname }}: {{ 'Created' if (mon_create_first is changed or mon_create_other is changed) else 'Already exists' }}"
