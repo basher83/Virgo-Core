@@ -33,6 +33,7 @@ proxmox_tuning_sysctl_enabled: true    # Apply sysctl tuning
 proxmox_tuning_journald_enabled: true  # Apply journald optimization
 proxmox_tuning_bbr_enabled: true       # Enable TCP BBR congestion control
 proxmox_tuning_ksm_enabled: true       # Enable KSM memory deduplication
+proxmox_tuning_kexec_enabled: false    # Enable kexec fast reboot
 proxmox_tuning_verify: true            # Run verification tasks
 ```
 
@@ -158,6 +159,7 @@ This role creates or modifies the following files:
 - `/etc/sysctl.d/99-proxmox-tuning.conf` - Sysctl settings (including TCP BBR)
 - `/etc/systemd/journald.conf` - Journald configuration
 - `/etc/ksmtuned.conf` - KSM tuning daemon configuration
+- `/usr/local/bin/reboot-quick` - Fast reboot script (if kexec enabled)
 - `/var/crash/` - Core dump directory (created if kernel panic enabled)
 
 ## Verification

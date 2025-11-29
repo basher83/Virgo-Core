@@ -18,6 +18,10 @@
   ansible.builtin.include_tasks: ksm.yml
   when: proxmox_tuning_ksm_enabled | bool
 
+- name: Configure kexec fast reboot
+  ansible.builtin.include_tasks: kexec.yml
+  when: proxmox_tuning_kexec_enabled | bool
+
 - name: Flush handlers before verification
   ansible.builtin.meta: flush_handlers
 

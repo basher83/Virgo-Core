@@ -11,6 +11,7 @@ proxmox_tuning_sysctl_enabled: true
 proxmox_tuning_journald_enabled: true
 proxmox_tuning_bbr_enabled: true      # TCP BBR congestion control
 proxmox_tuning_ksm_enabled: true      # Kernel Samepage Merging (memory dedup)
+proxmox_tuning_kexec_enabled: false   # kexec fast reboot (skips BIOS/POST)
 proxmox_tuning_verify: true
 
 # Sysctl defaults (overridden by profile or user)

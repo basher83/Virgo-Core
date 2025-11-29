@@ -18,6 +18,7 @@ Ansible roles, and features under consideration for future integration.
 | TCP BBR | `customizable_post_install.sh` | `proxmox_tuning` | Google BBR congestion control via sysctl |
 | pigz | `customizable_post_install.sh` | `proxmox_repository` | Parallel gzip for faster vzdump backups |
 | KSM tuning | `customizable_post_install.sh` | `proxmox_tuning` | Memory deduplication with profile-based settings |
+| kexec | `customizable_post_install.sh` | `proxmox_tuning` | Fast reboot via `reboot-quick` script |
 
 ### High Priority - To Consider
 
@@ -30,7 +31,6 @@ Ansible roles, and features under consideration for future integration.
 
 | Feature | Description | Complexity | Value |
 |---------|-------------|------------|-------|
-| **kexec** | Fast reboots that skip BIOS/POST. Installs kexec-tools and creates `reboot-quick` alias. | Low | Medium |
 | **haveged** | Entropy generation daemon. Prevents slowdowns in cryptographic operations. | Low | Medium |
 | **AMD CPU fixes** | Adds `idle=nomwait` kernel parameter and KVM MSR options for AMD EPYC/Ryzen stability. | Medium | Medium |
 | **Network optimization** | Additional TCP/IP sysctl tuning (buffers, queues, security hardening). | Low | Medium |
