@@ -1,0 +1,29 @@
+---
+# noqa: var-naming[no-role-prefix] - Profile variables override defaults
+# Aggressive profile - Maximum optimization
+# For dedicated Proxmox hosts with ample resources
+
+# Kernel behavior
+sysctl_kernel_panic: 10
+sysctl_kernel_panic_on_oops: 1
+
+# Memory management (aggressive)
+sysctl_vm_swappiness: 1              # Almost never swap (RAM is king)
+sysctl_vm_dirty_ratio: 10            # Lower threshold, flush faster
+sysctl_vm_dirty_background_ratio: 3  # Start background flush earlier
+sysctl_vm_max_map_count: 262144      # Higher for container-heavy workloads
+
+# File system limits (maximum)
+sysctl_fs_inotify_max_user_watches: 2097152    # 2M watches
+sysctl_fs_inotify_max_user_instances: 2097152  # 2M instances
+sysctl_fs_file_max: 9223372036854775807        # Max open files
+
+# Journald configuration (minimal logging overhead)
+journald_storage: persistent
+journald_compress: "yes"
+journald_system_max_use: "32M"       # Minimal persistent storage
+journald_runtime_max_use: "32M"      # Minimal runtime storage
+journald_max_level_store: warning    # Only warnings and errors
+journald_max_level_syslog: warning
+journald_forward_to_syslog: "no"
+journald_forward_to_wall: "yes"

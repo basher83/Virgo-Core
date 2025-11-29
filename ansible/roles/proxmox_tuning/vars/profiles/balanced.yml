@@ -1,0 +1,29 @@
+---
+# noqa: var-naming[no-role-prefix] - Profile variables override defaults
+# Balanced profile - ProxMenux defaults (recommended)
+# Good balance of performance and safety for most Proxmox deployments
+
+# Kernel behavior
+sysctl_kernel_panic: 10              # Reboot 10 seconds after panic
+sysctl_kernel_panic_on_oops: 1       # Treat kernel oops as panic
+
+# Memory management
+sysctl_vm_swappiness: 10             # Prefer RAM over swap
+sysctl_vm_dirty_ratio: 15            # Max % of RAM for dirty pages before blocking
+sysctl_vm_dirty_background_ratio: 5  # % of RAM before background flush starts
+sysctl_vm_max_map_count: 65530       # Memory mappings (good for containers)
+
+# File system limits
+sysctl_fs_inotify_max_user_watches: 1048576    # 1M watches per user
+sysctl_fs_inotify_max_user_instances: 1048576  # 1M instances per user
+sysctl_fs_file_max: 9223372036854775807        # Max open files (near unlimited)
+
+# Journald configuration
+journald_storage: persistent
+journald_compress: "yes"
+journald_system_max_use: "64M"       # Limit persistent journal size
+journald_runtime_max_use: "60M"      # Limit runtime journal size
+journald_max_level_store: warning    # Only store warning and above
+journald_max_level_syslog: warning
+journald_forward_to_syslog: "no"     # Reduce duplicate logging
+journald_forward_to_wall: "yes"      # Keep wall messages for emergencies

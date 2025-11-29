@@ -1,0 +1,38 @@
+---
+# Verification tasks to confirm settings are applied
+
+- name: Verify sysctl settings applied
+  when:
+    - not ansible_check_mode
+    - proxmox_tuning_sysctl_enabled | bool
+  block:
+    - name: Check vm.swappiness value
+      ansible.builtin.command: sysctl -n vm.swappiness
+      register: verify_swappiness
+      changed_when: false
+      failed_when: verify_swappiness.stdout | int != sysctl_vm_swappiness
+
+    - name: Check kernel.panic value
+      ansible.builtin.command: sysctl -n kernel.panic
+      register: verify_panic
+      changed_when: false
+      failed_when: verify_panic.stdout | int != sysctl_kernel_panic
+
+    - name: Check fs.inotify.max_user_watches value
+      ansible.builtin.command: sysctl -n fs.inotify.max_user_watches
+      register: verify_inotify
+      changed_when: false
+      failed_when: verify_inotify.stdout | int != sysctl_fs_inotify_max_user_watches
+
+- name: Verify journald configuration
+  when:
+    - not ansible_check_mode
+    - proxmox_tuning_journald_enabled | bool
+  block:
+    - name: Check journald service is running
+      ansible.builtin.systemd:
+        name: systemd-journald
+        state: started
+      check_mode: true
+      register: journald_status
+      failed_when: journald_status.status.ActiveState != "active"

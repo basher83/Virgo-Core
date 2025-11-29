@@ -1,0 +1,38 @@
+---
+# proxmox_tuning role defaults
+# noqa: var-naming[no-role-prefix] - These are the role's public API variables
+
+# Profile selection: minimal, balanced, aggressive, or custom
+# Use 'custom' to define all values manually without loading a profile
+proxmox_tuning_profile: balanced
+
+# Feature toggles
+proxmox_tuning_sysctl_enabled: true
+proxmox_tuning_journald_enabled: true
+proxmox_tuning_verify: true
+
+# Sysctl defaults (overridden by profile or user)
+# Kernel behavior
+sysctl_kernel_panic: 10
+sysctl_kernel_panic_on_oops: 1
+
+# Memory management
+sysctl_vm_swappiness: 10
+sysctl_vm_dirty_ratio: 15
+sysctl_vm_dirty_background_ratio: 5
+sysctl_vm_max_map_count: 65530
+
+# File limits
+sysctl_fs_inotify_max_user_watches: 1048576
+sysctl_fs_inotify_max_user_instances: 1048576
+sysctl_fs_file_max: 9223372036854775807
+
+# Journald defaults (overridden by profile or user)
+journald_storage: persistent
+journald_compress: "yes"
+journald_system_max_use: "64M"
+journald_runtime_max_use: "60M"
+journald_max_level_store: warning
+journald_max_level_syslog: warning
+journald_forward_to_syslog: "no"
+journald_forward_to_wall: "yes"

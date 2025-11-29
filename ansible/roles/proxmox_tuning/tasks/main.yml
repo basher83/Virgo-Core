@@ -1,0 +1,19 @@
+---
+# Main entry point for proxmox_tuning role
+
+- name: Load tuning profile
+  ansible.builtin.include_vars:
+    file: "profiles/{{ proxmox_tuning_profile }}.yml"
+  when: proxmox_tuning_profile != 'custom'
+
+- name: Apply sysctl tuning
+  ansible.builtin.include_tasks: sysctl.yml
+  when: proxmox_tuning_sysctl_enabled | bool
+
+- name: Apply journald optimization
+  ansible.builtin.include_tasks: journald.yml
+  when: proxmox_tuning_journald_enabled | bool
+
+- name: Verify applied settings
+  ansible.builtin.include_tasks: verify.yml
+  when: proxmox_tuning_verify | default(true) | bool

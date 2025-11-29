@@ -1,0 +1,21 @@
+# Journald configuration
+# Managed by Ansible - proxmox_tuning role
+# Profile: {{ proxmox_tuning_profile }}
+
+[Journal]
+Storage={{ journald_storage }}
+Compress={{ journald_compress }}
+SplitMode=none
+RateLimitInterval=0
+RateLimitIntervalSec=0
+RateLimitBurst=0
+ForwardToSyslog={{ journald_forward_to_syslog }}
+ForwardToWall={{ journald_forward_to_wall }}
+Seal=no
+SystemMaxUse={{ journald_system_max_use }}
+RuntimeMaxUse={{ journald_runtime_max_use }}
+MaxLevelStore={{ journald_max_level_store }}
+MaxLevelSyslog={{ journald_max_level_syslog }}
+MaxLevelKMsg={{ journald_max_level_store }}
+MaxLevelConsole=notice
+MaxLevelWall=crit

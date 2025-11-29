@@ -1,0 +1,24 @@
+---
+galaxy_info:
+  role_name: proxmox_tuning
+  namespace: virgo_core
+  author: basher83
+  description: >-
+    System tuning for Proxmox VE nodes including kernel parameters,
+    memory optimization, and journald configuration. Based on proven
+    optimizations from ProxMenux.
+  license: MIT
+  min_ansible_version: "2.14"
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+        - bullseye
+  galaxy_tags:
+    - proxmox
+    - tuning
+    - sysctl
+    - performance
+    - optimization
+
+dependencies: []
