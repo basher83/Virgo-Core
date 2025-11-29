@@ -1,0 +1,18 @@
+---
+# Playbook: Create Ansible automation user
+# Usage: uv run ansible-playbook -i inventory/hosts.yml playbooks/create-ansible-user.yml -e ansible_user=root
+
+- name: Create Ansible automation user
+  hosts: matrix_cluster
+  become: true
+
+  roles:
+    - role: system_user
+      vars:
+        system_users:
+          - name: ansible
+            comment: "Ansible automation user"
+            shell: /bin/bash
+            ssh_keys:
+              - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKls14HDdv2r2QIhGQfEluBmzrGI2cxjwtdkAWrc4ZRr staging@homelab"
+            sudo_nopasswd: true

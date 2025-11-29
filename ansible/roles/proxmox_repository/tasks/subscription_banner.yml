@@ -10,12 +10,19 @@
 - name: Remove subscription nag from proxmoxlib.js
   when: proxmox_repository_proxmoxlib_stat.stat.exists
   block:
+    - name: Check if subscription banner is already patched
+      ansible.builtin.command:
+        cmd: grep -c "void({" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+      register: proxmox_repository_banner_patched
+      changed_when: false
+      failed_when: false
+
     - name: Patch proxmoxlib.js to remove subscription check
-      ansible.builtin.replace:
-        path: /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
-        regexp: '(Ext\.Msg\.show\(\{\s*title:\s*gettext\(.No valid subscription)'
-        replace: 'void({ //\1'
-        backup: true
+      ansible.builtin.shell:
+        cmd: >
+          sed -i.bak '0,/Ext\.Msg\.show({/s//void({ \/\/Ext.Msg.show({/'
+          /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+      when: proxmox_repository_banner_patched.stdout | default('0') | int == 0
       notify: Restart pveproxy
 
     - name: Remove gzipped version to force browser to use patched file

@@ -1,11 +1,3 @@
 // Managed by Ansible - proxmox_repository role
 // Re-applies subscription banner removal after proxmox-widget-toolkit updates
-DPkg::Post-Invoke {
-  "dpkg -V proxmox-widget-toolkit | grep -q '/proxmoxlib\\.js$'; \
-   if [ $? -eq 1 ]; then { \
-     echo 'Removing subscription nag from UI...'; \
-     sed -i '/Ext\\.Msg\\.show.*No valid subscription/s/^/void({ \\/\\//' \
-       /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js; \
-     rm -f /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.gz; \
-   }; fi";
-};
+DPkg::Post-Invoke { "if dpkg -V proxmox-widget-toolkit 2>/dev/null | grep -q proxmoxlib.js; then sed -i.bak \"s/Ext.Msg.show({/void({/\" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js && rm -f /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.gz; fi"; };

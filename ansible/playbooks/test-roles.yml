@@ -49,6 +49,7 @@
           - proxmox_access
           - proxmox_cluster
           - proxmox_ceph
+          - proxmox_tuning
           ========================================
       run_once: true
 
@@ -217,6 +218,25 @@
           ansible.builtin.debug:
             msg: "⊘ proxmox_ceph role test skipped (requires --check mode)"
           when: not (ansible_check_mode | default(false))
+
+    # =========================================================================
+    # Test 7: proxmox_tuning role
+    # =========================================================================
+    - name: Test proxmox_tuning role
+      tags: [proxmox_tuning, tuning, performance]
+      block:
+        - name: Test proxmox_tuning role with balanced profile
+          ansible.builtin.include_role:
+            name: proxmox_tuning
+          vars:
+            proxmox_tuning_profile: balanced
+            proxmox_tuning_sysctl_enabled: true
+            proxmox_tuning_journald_enabled: true
+            proxmox_tuning_verify: true
+
+        - name: Verify test completed
+          ansible.builtin.debug:
+            msg: "✓ proxmox_tuning role test completed"
 
   post_tasks:
     - name: Display test summary
