@@ -10,3 +10,12 @@
   ansible.builtin.systemd:
     name: systemd-journald
     state: restarted
+
+- name: Reload systemd daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+
+- name: Restart ksmtuned
+  ansible.builtin.systemd:
+    name: ksmtuned
+    state: restarted

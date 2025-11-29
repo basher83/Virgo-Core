@@ -27,3 +27,7 @@ journald_max_level_store: warning    # Only store warning and above
 journald_max_level_syslog: warning
 journald_forward_to_syslog: "no"     # Reduce duplicate logging
 journald_forward_to_wall: "yes"      # Keep wall messages for emergencies
+
+# KSM configuration (balanced deduplication)
+ksm_pages_to_scan: 100               # Pages per scan interval
+ksm_sleep_millisecs: 20              # 20ms between scans

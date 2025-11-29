@@ -27,3 +27,7 @@ journald_max_level_store: warning    # Only warnings and errors
 journald_max_level_syslog: warning
 journald_forward_to_syslog: "no"
 journald_forward_to_wall: "yes"
+
+# KSM configuration (aggressive - maximize memory savings)
+ksm_pages_to_scan: 200               # More pages per scan
+ksm_sleep_millisecs: 10              # Faster scan rate

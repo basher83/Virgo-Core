@@ -14,6 +14,13 @@
   ansible.builtin.include_tasks: journald.yml
   when: proxmox_tuning_journald_enabled | bool
 
+- name: Apply KSM tuning
+  ansible.builtin.include_tasks: ksm.yml
+  when: proxmox_tuning_ksm_enabled | bool
+
+- name: Flush handlers before verification
+  ansible.builtin.meta: flush_handlers
+
 - name: Verify applied settings
   ansible.builtin.include_tasks: verify.yml
   when: proxmox_tuning_verify | default(true) | bool

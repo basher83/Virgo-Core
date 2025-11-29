@@ -27,3 +27,7 @@ journald_max_level_store: info       # Store info and above
 journald_max_level_syslog: info
 journald_forward_to_syslog: "no"
 journald_forward_to_wall: "yes"
+
+# KSM configuration (conservative - less CPU overhead)
+ksm_pages_to_scan: 50                # Fewer pages per scan
+ksm_sleep_millisecs: 50              # Longer interval between scans
