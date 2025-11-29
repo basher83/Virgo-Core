@@ -1,6 +1,14 @@
 ---
 # Sysctl tuning tasks
 
+- name: Load TCP BBR kernel module
+  community.general.modprobe:
+    name: tcp_bbr
+    state: present
+    persistent: present
+  when: proxmox_tuning_bbr_enabled | bool
+  notify: Reload sysctl
+
 - name: Ensure core dump directory exists
   ansible.builtin.file:
     path: /var/crash

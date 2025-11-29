@@ -24,6 +24,18 @@
       changed_when: false
       failed_when: verify_inotify.stdout | int != sysctl_fs_inotify_max_user_watches
 
+- name: Verify TCP BBR settings
+  when:
+    - not ansible_check_mode
+    - proxmox_tuning_sysctl_enabled | bool
+    - proxmox_tuning_bbr_enabled | bool
+  block:
+    - name: Check TCP congestion control is BBR
+      ansible.builtin.command: sysctl -n net.ipv4.tcp_congestion_control
+      register: verify_bbr
+      changed_when: false
+      failed_when: verify_bbr.stdout != "bbr"
+
 - name: Verify journald configuration
   when:
     - not ansible_check_mode
@@ -36,3 +48,16 @@
       check_mode: true
       register: journald_status
       failed_when: journald_status.status.ActiveState != "active"
+
+- name: Verify KSM configuration
+  when:
+    - not ansible_check_mode
+    - proxmox_tuning_ksm_enabled | bool
+  block:
+    - name: Check ksmtuned service is running
+      ansible.builtin.systemd:
+        name: ksmtuned
+        state: started
+      check_mode: true
+      register: ksm_status
+      failed_when: ksm_status.status.ActiveState != "active"

@@ -17,3 +17,10 @@ vm.max_map_count = {{ sysctl_vm_max_map_count }}
 fs.inotify.max_user_watches = {{ sysctl_fs_inotify_max_user_watches }}
 fs.inotify.max_user_instances = {{ sysctl_fs_inotify_max_user_instances }}
 fs.file-max = {{ sysctl_fs_file_max }}
+{% if proxmox_tuning_bbr_enabled | default(true) %}
+
+# TCP BBR congestion control (Google BBR)
+# Improves network throughput, especially on high-latency or lossy links
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+{% endif %}
