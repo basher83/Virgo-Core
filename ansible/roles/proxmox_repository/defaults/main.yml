@@ -25,6 +25,10 @@ proxmox_packages:
 auto_update_packages: false
 auto_remove_old_kernels: false
 
+# System upgrade (apt dist-upgrade)
+run_system_upgrade: false
+system_upgrade_auto_reboot: false
+
 # APT cache update
 update_apt_cache: true
 

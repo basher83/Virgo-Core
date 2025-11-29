@@ -1,0 +1,34 @@
+---
+# Full system upgrade (apt dist-upgrade)
+
+- name: Run full system upgrade
+  ansible.builtin.apt:
+    upgrade: dist
+    update_cache: true
+    cache_valid_time: 3600
+  register: proxmox_repository_upgrade_result
+
+- name: Display upgrade summary
+  ansible.builtin.debug:
+    msg: >-
+      System upgrade complete.
+      Packages upgraded: {{ proxmox_repository_upgrade_result.stdout_lines | default([]) | length }}
+  when: proxmox_repository_upgrade_result is changed
+
+- name: Check if reboot is required
+  ansible.builtin.stat:
+    path: /var/run/reboot-required
+  register: proxmox_repository_reboot_required
+
+- name: Display reboot notification
+  ansible.builtin.debug:
+    msg: "⚠️  REBOOT REQUIRED - kernel or core system packages were updated"
+  when: proxmox_repository_reboot_required.stat.exists
+
+- name: Reboot if required and allowed
+  ansible.builtin.reboot:
+    msg: "Rebooting after system upgrade"
+    reboot_timeout: 300
+  when:
+    - proxmox_repository_reboot_required.stat.exists
+    - system_upgrade_auto_reboot | default(false) | bool

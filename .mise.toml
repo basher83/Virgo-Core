@@ -145,6 +145,16 @@ uv run ansible-playbook -i inventory/hosts.yml \
   -e "template_name=${TEMPLATE_NAME}" \
   -e "cloud_image_url=${IMAGE_URL}"
 """
+
+[tasks."ansible:system-upgrade"]
+description = "Rolling system upgrade (CEPH-aware, one node at a time)"
+dir = "ansible"
+run = """
+uv run ansible-playbook -i inventory/hosts.yml \
+  playbooks/system-upgrade.yml \
+  ${CHECK:+--check --diff} \
+  ${REBOOT:+-e auto_reboot=true}
+"""
 # === Ansible tasks ===
 
 [tasks.fmt]
