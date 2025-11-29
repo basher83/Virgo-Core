@@ -23,3 +23,7 @@
 - name: Clean old kernels
   ansible.builtin.include_tasks: kernel_cleanup.yml
   when: auto_remove_old_kernels | bool
+
+- name: Remove subscription nag banner
+  ansible.builtin.include_tasks: subscription_banner.yml
+  when: remove_subscription_banner | bool
