@@ -24,3 +24,28 @@ fs.file-max = {{ sysctl_fs_file_max }}
 net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 {% endif %}
+{% if proxmox_tuning_network_enabled | default(true) %}
+
+# Network stack optimization
+# Core network buffer sizes
+net.core.rmem_max = {{ net_core_rmem_max }}
+net.core.wmem_max = {{ net_core_wmem_max }}
+net.core.rmem_default = {{ net_core_rmem_default }}
+net.core.wmem_default = {{ net_core_wmem_default }}
+net.core.netdev_max_backlog = {{ net_core_netdev_max_backlog }}
+net.core.somaxconn = {{ net_core_somaxconn }}
+
+# TCP buffer auto-tuning (min/default/max)
+net.ipv4.tcp_rmem = {{ net_ipv4_tcp_rmem }}
+net.ipv4.tcp_wmem = {{ net_ipv4_tcp_wmem }}
+
+# TCP connection handling
+net.ipv4.tcp_max_syn_backlog = {{ net_ipv4_tcp_max_syn_backlog }}
+net.ipv4.tcp_tw_reuse = {{ net_ipv4_tcp_tw_reuse }}
+net.ipv4.tcp_fin_timeout = {{ net_ipv4_tcp_fin_timeout }}
+
+# TCP keepalive settings
+net.ipv4.tcp_keepalive_time = {{ net_ipv4_tcp_keepalive_time }}
+net.ipv4.tcp_keepalive_intvl = {{ net_ipv4_tcp_keepalive_intvl }}
+net.ipv4.tcp_keepalive_probes = {{ net_ipv4_tcp_keepalive_probes }}
+{% endif %}

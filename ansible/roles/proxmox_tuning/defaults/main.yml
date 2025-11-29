@@ -13,7 +13,27 @@ proxmox_tuning_bbr_enabled: true      # TCP BBR congestion control
 proxmox_tuning_ksm_enabled: true      # Kernel Samepage Merging (memory dedup)
 proxmox_tuning_kexec_enabled: false   # kexec fast reboot (skips BIOS/POST)
 proxmox_tuning_haveged_enabled: true  # Entropy daemon for crypto operations
+proxmox_tuning_network_enabled: true  # Network stack optimization
 proxmox_tuning_verify: true
+
+# Network tuning defaults
+# TCP buffer sizes (bytes) - auto-tuned between min/default/max
+net_core_rmem_max: 16777216           # 16MB max receive buffer
+net_core_wmem_max: 16777216           # 16MB max send buffer
+net_core_rmem_default: 1048576        # 1MB default receive buffer
+net_core_wmem_default: 1048576        # 1MB default send buffer
+net_core_netdev_max_backlog: 16384    # Network device backlog queue
+net_core_somaxconn: 8192              # Max socket listen backlog
+
+# TCP-specific tuning
+net_ipv4_tcp_rmem: "4096 1048576 16777216"   # min/default/max
+net_ipv4_tcp_wmem: "4096 1048576 16777216"   # min/default/max
+net_ipv4_tcp_max_syn_backlog: 8192    # SYN queue size
+net_ipv4_tcp_tw_reuse: 1              # Reuse TIME_WAIT sockets
+net_ipv4_tcp_fin_timeout: 15          # FIN timeout (default 60)
+net_ipv4_tcp_keepalive_time: 600      # Keepalive interval (seconds)
+net_ipv4_tcp_keepalive_intvl: 30      # Keepalive probe interval
+net_ipv4_tcp_keepalive_probes: 3      # Keepalive probe count
 
 # Sysctl defaults (overridden by profile or user)
 # Kernel behavior

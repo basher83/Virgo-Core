@@ -20,6 +20,7 @@ Ansible roles, and features under consideration for future integration.
 | KSM tuning | `customizable_post_install.sh` | `proxmox_tuning` | Memory deduplication with profile-based settings |
 | kexec | `customizable_post_install.sh` | `proxmox_tuning` | Fast reboot via `reboot-quick` script |
 | haveged | `customizable_post_install.sh` | `proxmox_tuning` | Entropy daemon for crypto operations |
+| Network optimization | `customizable_post_install.sh` | `proxmox_tuning` | TCP buffers, keepalive, connection handling |
 
 ### High Priority - To Consider
 
@@ -33,7 +34,6 @@ Ansible roles, and features under consideration for future integration.
 | Feature | Description | Complexity | Value |
 |---------|-------------|------------|-------|
 | **AMD CPU fixes** | Adds `idle=nomwait` kernel parameter and KVM MSR options for AMD EPYC/Ryzen stability. | Medium | Medium |
-| **Network optimization** | Additional TCP/IP sysctl tuning (buffers, queues, security hardening). | Low | Medium |
 | **System utilities** | Package installation for htop, btop, iftop, iotop, tmux, etc. | Low | Low |
 | **OpenVSwitch** | Virtual switching for advanced network configurations. | Medium | Low |
 
