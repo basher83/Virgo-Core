@@ -34,6 +34,7 @@ proxmox_tuning_journald_enabled: true  # Apply journald optimization
 proxmox_tuning_bbr_enabled: true       # Enable TCP BBR congestion control
 proxmox_tuning_ksm_enabled: true       # Enable KSM memory deduplication
 proxmox_tuning_kexec_enabled: false    # Enable kexec fast reboot
+proxmox_tuning_haveged_enabled: true   # Enable haveged entropy daemon
 proxmox_tuning_verify: true            # Run verification tasks
 ```
 

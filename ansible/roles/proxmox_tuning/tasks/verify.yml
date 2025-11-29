@@ -61,3 +61,16 @@
       check_mode: true
       register: ksm_status
       failed_when: ksm_status.status.ActiveState != "active"
+
+- name: Verify haveged configuration
+  when:
+    - not ansible_check_mode
+    - proxmox_tuning_haveged_enabled | bool
+  block:
+    - name: Check haveged service is running
+      ansible.builtin.systemd:
+        name: haveged
+        state: started
+      check_mode: true
+      register: haveged_status
+      failed_when: haveged_status.status.ActiveState != "active"

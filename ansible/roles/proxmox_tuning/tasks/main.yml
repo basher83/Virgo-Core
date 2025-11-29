@@ -22,6 +22,10 @@
   ansible.builtin.include_tasks: kexec.yml
   when: proxmox_tuning_kexec_enabled | bool
 
+- name: Configure haveged entropy daemon
+  ansible.builtin.include_tasks: haveged.yml
+  when: proxmox_tuning_haveged_enabled | bool
+
 - name: Flush handlers before verification
   ansible.builtin.meta: flush_handlers
 

@@ -19,6 +19,7 @@ Ansible roles, and features under consideration for future integration.
 | pigz | `customizable_post_install.sh` | `proxmox_repository` | Parallel gzip for faster vzdump backups |
 | KSM tuning | `customizable_post_install.sh` | `proxmox_tuning` | Memory deduplication with profile-based settings |
 | kexec | `customizable_post_install.sh` | `proxmox_tuning` | Fast reboot via `reboot-quick` script |
+| haveged | `customizable_post_install.sh` | `proxmox_tuning` | Entropy daemon for crypto operations |
 
 ### High Priority - To Consider
 
@@ -31,7 +32,6 @@ Ansible roles, and features under consideration for future integration.
 
 | Feature | Description | Complexity | Value |
 |---------|-------------|------------|-------|
-| **haveged** | Entropy generation daemon. Prevents slowdowns in cryptographic operations. | Low | Medium |
 | **AMD CPU fixes** | Adds `idle=nomwait` kernel parameter and KVM MSR options for AMD EPYC/Ryzen stability. | Medium | Medium |
 | **Network optimization** | Additional TCP/IP sysctl tuning (buffers, queues, security hardening). | Low | Medium |
 | **System utilities** | Package installation for htop, btop, iftop, iotop, tmux, etc. | Low | Low |
