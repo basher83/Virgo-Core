@@ -15,15 +15,15 @@ Ansible roles, and features under consideration for future integration.
 | Journald optimization | `customizable_post_install.sh` | `proxmox_tuning` | 64M limit, compression, warning-level |
 | Sysctl kernel tuning | `customizable_post_install.sh` | `proxmox_tuning` | Panic, swappiness, inotify, file limits |
 | System upgrade | `global/update-pve9_2.sh` | `system-upgrade.yml` | CEPH-aware rolling upgrade |
+| TCP BBR | `customizable_post_install.sh` | `proxmox_tuning` | Google BBR congestion control via sysctl |
+| pigz | `customizable_post_install.sh` | `proxmox_repository` | Parallel gzip for faster vzdump backups |
+| KSM tuning | `customizable_post_install.sh` | `proxmox_tuning` | Memory deduplication with profile-based settings |
 
 ### High Priority - To Consider
 
 | Feature | Description | Complexity | Value |
 |---------|-------------|------------|-------|
-| **TCP BBR** | Google's BBR congestion control algorithm. Improves network throughput especially on high-latency links. | Low | High |
 | **IOMMU/VFIO** | PCI passthrough configuration. Detects Intel/AMD, configures GRUB/systemd-boot, loads VFIO modules, blacklists GPU drivers. | High | High |
-| **pigz** | Parallel gzip replacement. Significantly speeds up vzdump backups on multi-core systems. Creates wrapper script. | Low | High |
-| **KSM tuning** | Kernel Samepage Merging for memory deduplication. Configures thresholds based on available RAM. | Low | Medium |
 | **ZFS ARC optimization** | Tunes ZFS ARC cache size based on available RAM. Useful for ZFS-based storage. | Low | Medium |
 
 ### Medium Priority - To Consider
@@ -60,16 +60,6 @@ Ansible roles, and features under consideration for future integration.
 
 ## Implementation Notes
 
-### TCP BBR
-
-```bash
-# /etc/sysctl.d/99-kernel-bbr.conf
-net.core.default_qdisc = fq
-net.ipv4.tcp_congestion_control = bbr
-```
-
-Simple to implement, requires kernel 4.9+ (all modern PVE versions).
-
 ### IOMMU/VFIO
 
 Complex feature with multiple components:
@@ -82,40 +72,18 @@ Complex feature with multiple components:
 
 Should be optional and well-documented due to potential for breaking systems.
 
-### pigz
-
-```bash
-# Enable in vzdump
-sed -i "s/#pigz:.*/pigz: 1/" /etc/vzdump.conf
-
-# Create wrapper
-cat > /bin/pigzwrapper << 'EOF'
-#!/bin/sh
-PATH=/bin:$PATH
-GZIP="-1"
-exec /usr/bin/pigz "$@"
-EOF
-chmod +x /bin/pigzwrapper
-
-# Replace gzip (backup original)
-mv /bin/gzip /bin/gzip.original
-cp /bin/pigzwrapper /bin/gzip
-```
-
-Low risk, high reward for backup performance.
-
 ## Proposed Role Structure
 
 For new features, consider:
 
 1. **Extend `proxmox_tuning`** for:
-   - TCP BBR congestion control
+   - ~~TCP BBR congestion control~~ ✓ Implemented
    - Network optimization (TCP/IP tuning)
-   - KSM tuning (memory deduplication)
+   - ~~KSM tuning (memory deduplication)~~ ✓ Implemented
    - ZFS ARC optimization (if ZFS detected)
 
 2. **Extend `proxmox_repository`** for:
-   - pigz installation and configuration (faster backups)
+   - ~~pigz installation and configuration (faster backups)~~ ✓ Implemented
    - APT optimizations (skip languages, force IPv4)
 
 3. **New role `proxmox_passthrough`** for:
