@@ -20,7 +20,6 @@ Ansible roles, and features under consideration for future integration.
 
 | Feature | Description | Complexity | Value |
 |---------|-------------|------------|-------|
-| **Fail2Ban** | Brute force protection for SSH and Proxmox web UI (port 8006). Includes proxmox-specific filter and jail configuration. | Medium | High |
 | **TCP BBR** | Google's BBR congestion control algorithm. Improves network throughput especially on high-latency links. | Low | High |
 | **IOMMU/VFIO** | PCI passthrough configuration. Detects Intel/AMD, configures GRUB/systemd-boot, loads VFIO modules, blacklists GPU drivers. | High | High |
 | **pigz** | Parallel gzip replacement. Significantly speeds up vzdump backups on multi-core systems. Creates wrapper script. | Low | High |
@@ -53,38 +52,13 @@ Ansible roles, and features under consideration for future integration.
 
 | Feature | Reason |
 |---------|--------|
+| Fail2Ban | Nodes not internet-exposed; known issues with Ansible (rapid SSH connections trigger bans, control host lockout). Risk outweighs benefit for internal-only infrastructure. |
 | Ceph installation | Already handled by `proxmox_ceph` role with proper cluster awareness |
 | ZFS auto-snapshot | Site-specific; would need flexible configuration |
 | Kernel headers | Usually installed as-needed for specific drivers |
 | Disable RPC/portmapper | May break NFS; needs careful consideration |
 
 ## Implementation Notes
-
-### Fail2Ban
-
-ProxMenux configuration:
-
-```ini
-# /etc/fail2ban/filter.d/proxmox.conf
-[Definition]
-failregex = pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*
-ignoreregex =
-
-# /etc/fail2ban/jail.d/proxmox.conf
-[proxmox]
-enabled = true
-port = 8006
-filter = proxmox
-logpath = /var/log/daemon.log
-maxretry = 3
-bantime = 3600
-findtime = 600
-```
-
-Considerations:
-- Use nftables backend (not iptables) for PVE 9
-- Configure `ignoreip` for management networks
-- Test filter regex against actual log format
 
 ### TCP BBR
 
@@ -135,22 +109,19 @@ Low risk, high reward for backup performance.
 For new features, consider:
 
 1. **Extend `proxmox_tuning`** for:
-   - TCP BBR
-   - Network optimization
-   - KSM tuning
-   - ZFS ARC (if ZFS detected)
+   - TCP BBR congestion control
+   - Network optimization (TCP/IP tuning)
+   - KSM tuning (memory deduplication)
+   - ZFS ARC optimization (if ZFS detected)
 
 2. **Extend `proxmox_repository`** for:
-   - pigz installation and configuration
+   - pigz installation and configuration (faster backups)
    - APT optimizations (skip languages, force IPv4)
 
-3. **New role `proxmox_security`** for:
-   - Fail2Ban
-   - Future security hardening
-
-4. **New role `proxmox_passthrough`** for:
+3. **New role `proxmox_passthrough`** for:
    - IOMMU/VFIO configuration
-   - GPU passthrough setup
+   - GPU driver blacklisting
+   - Kernel parameter management (GRUB/systemd-boot)
 
 ## References
 
