@@ -1,0 +1,52 @@
+---
+# pigz installation and configuration for faster backups
+# Uses parallel gzip to speed up vzdump compression
+
+- name: Install pigz package
+  ansible.builtin.apt:
+    name: pigz
+    state: present
+    update_cache: false
+
+- name: Enable pigz in vzdump.conf
+  ansible.builtin.lineinfile:
+    path: /etc/vzdump.conf
+    regexp: '^#?pigz:'
+    line: "pigz: 1"
+    create: true
+    mode: "0644"
+    backup: true
+
+- name: Create pigz wrapper script
+  ansible.builtin.copy:
+    content: |
+      #!/bin/sh
+      # pigz wrapper - Managed by Ansible
+      PATH=/bin:$PATH
+      GZIP="-{{ pigz_compression_level }}"
+      exec /usr/bin/pigz "$@"
+    dest: /bin/pigzwrapper
+    owner: root
+    group: root
+    mode: "0755"
+
+- name: Check if gzip is original binary
+  ansible.builtin.stat:
+    path: /bin/gzip.original
+  register: gzip_original
+
+- name: Backup original gzip binary
+  ansible.builtin.copy:
+    src: /bin/gzip
+    dest: /bin/gzip.original
+    remote_src: true
+    mode: preserve
+  when: not gzip_original.stat.exists
+
+- name: Replace gzip with pigz wrapper
+  ansible.builtin.copy:
+    src: /bin/pigzwrapper
+    dest: /bin/gzip
+    remote_src: true
+    mode: "0755"
+  when: not gzip_original.stat.exists

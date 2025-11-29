@@ -39,3 +39,9 @@ validate_certs: true
 # Removes the "No valid subscription" nag from Proxmox web UI
 # Installs APT hook to persist across package updates
 remove_subscription_banner: false
+
+# pigz - Parallel gzip for faster backups
+# Replaces single-threaded gzip with multi-threaded pigz for vzdump
+# Significantly speeds up backup compression on multi-core systems
+pigz_enabled: false
+pigz_compression_level: 1  # 1-9, lower = faster, higher = smaller
