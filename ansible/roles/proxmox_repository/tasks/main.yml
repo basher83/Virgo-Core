@@ -20,6 +20,18 @@
   ansible.builtin.include_tasks: packages.yml
   when: proxmox_packages | length > 0
 
+- name: Run full system upgrade
+  ansible.builtin.include_tasks: system_upgrade.yml
+  when: run_system_upgrade | bool
+
 - name: Clean old kernels
   ansible.builtin.include_tasks: kernel_cleanup.yml
   when: auto_remove_old_kernels | bool
+
+- name: Remove subscription nag banner
+  ansible.builtin.include_tasks: subscription_banner.yml
+  when: remove_subscription_banner | bool
+
+- name: Configure pigz for faster backups
+  ansible.builtin.include_tasks: pigz.yml
+  when: pigz_enabled | bool

@@ -1,0 +1,31 @@
+---
+# kexec fast reboot configuration
+# Enables fast reboots that skip BIOS/POST by loading the new kernel before reboot
+
+- name: Install kexec-tools package
+  ansible.builtin.apt:
+    name: kexec-tools
+    state: present
+    update_cache: false
+
+- name: Create reboot-quick script
+  ansible.builtin.copy:
+    content: |
+      #!/bin/bash
+      # Fast reboot using kexec - skips BIOS/POST
+      # Managed by Ansible - proxmox_tuning role
+      set -euo pipefail
+
+      KERNEL="/boot/vmlinuz-$(uname -r)"
+      INITRD="/boot/initrd.img-$(uname -r)"
+      CMDLINE="$(cat /proc/cmdline)"
+
+      echo "Loading kernel for kexec..."
+      kexec -l "$KERNEL" --initrd="$INITRD" --command-line="$CMDLINE"
+
+      echo "Rebooting via kexec (skipping BIOS/POST)..."
+      systemctl kexec
+    dest: /usr/local/bin/reboot-quick
+    owner: root
+    group: root
+    mode: "0755"

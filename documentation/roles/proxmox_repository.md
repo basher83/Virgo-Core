@@ -1,3 +1,8 @@
+---
+title: proxmox_repository Role
+description: Manage Proxmox VE and CEPH APT repository configuration, package updates, and kernel management
+---
+
 # proxmox_repository Role
 
 Manage Proxmox VE and CEPH APT repository configuration.

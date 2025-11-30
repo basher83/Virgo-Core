@@ -1,3 +1,51 @@
+## [unreleased]
+
+### 🚀 Features
+
+- *(docs)* Add Mintlify documentation configuration and assets
+- *(ansible)* Add proxmox_tuning role for system optimization
+- *(ansible)* Add subscription banner removal to proxmox_repository
+- *(ansible)* Add CEPH-aware rolling system upgrade
+- *(ansible)* Add TCP BBR congestion control to proxmox_tuning
+- *(ansible)* Add KSM tuning to proxmox_tuning role
+- *(ansible)* Add pigz backup acceleration to proxmox_repository
+
+### 🐛 Bug Fixes
+
+- *(mintlify)* Convert relative .md links to root-relative paths
+- *(mintlify)* Remove leading slash from internal link paths
+- *(ansible)* Make subscription banner removal idempotent
+
+### 🚜 Refactor
+
+- Move archive and brainstorming folders to docs/
+
+### 📚 Documentation
+
+- Apply markdown formatting fixes across documentation
+- Apply formatting fixes and finalize linting scope
+- Fix Mintlify site issues and split philosophy doc
+- *(research)* Add PowerDNS Ansible and setup research
+- *(research)* Add NetBox PowerDNS integration research
+- *(plans)* Add IPAM/DNS stack design document
+- *(research)* Add PowerDNS Ansible GitHub research report
+- *(mintlify)* Add frontmatter to all documentation pages
+- Move documentation files to documentation/ directory
+- Add proxmox_tuning role design document
+- Add ProxMenux integration research tracking
+- Deprioritize Fail2Ban for internal infrastructure
+- *(ansible)* Update role READMEs and ProxMenux integration tracking
+
+### ⚙️ Miscellaneous Tasks
+
+- Update linting configuration
+- Migrate markdown linter from markdownlint-cli2 to rumdl
+- *(claude)* Update agents and commands markdown formatting
+- *(claude)* Fix research reports markdown formatting
+- *(claude)* Fix scoring system markdown formatting
+- *(claude)* Fix Ansible skills markdown formatting
+- Expand rumdl exclude patterns for documentation
+- *(agents)* Replace meta-agent with jina-search agent
 
 ## [1.1.0] - 2025-11-20
 
@@ -49,6 +97,7 @@
 ### ⚙️ Miscellaneous Tasks
 
 - *(changelog)* Fix git-cliff template for markdownlint compliance
+- *(release)* Update changelog for v1.1.0
 
 ## [1.0.0] - 2025-11-18
 

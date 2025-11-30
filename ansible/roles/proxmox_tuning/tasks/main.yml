@@ -1,0 +1,34 @@
+---
+# Main entry point for proxmox_tuning role
+
+- name: Load tuning profile
+  ansible.builtin.include_vars:
+    file: "profiles/{{ proxmox_tuning_profile }}.yml"
+  when: proxmox_tuning_profile != 'custom'
+
+- name: Apply sysctl tuning
+  ansible.builtin.include_tasks: sysctl.yml
+  when: proxmox_tuning_sysctl_enabled | bool
+
+- name: Apply journald optimization
+  ansible.builtin.include_tasks: journald.yml
+  when: proxmox_tuning_journald_enabled | bool
+
+- name: Apply KSM tuning
+  ansible.builtin.include_tasks: ksm.yml
+  when: proxmox_tuning_ksm_enabled | bool
+
+- name: Configure kexec fast reboot
+  ansible.builtin.include_tasks: kexec.yml
+  when: proxmox_tuning_kexec_enabled | bool
+
+- name: Configure haveged entropy daemon
+  ansible.builtin.include_tasks: haveged.yml
+  when: proxmox_tuning_haveged_enabled | bool
+
+- name: Flush handlers before verification
+  ansible.builtin.meta: flush_handlers
+
+- name: Verify applied settings
+  ansible.builtin.include_tasks: verify.yml
+  when: proxmox_tuning_verify | default(true) | bool

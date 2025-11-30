@@ -15,6 +15,7 @@
 ### Task 1: Update docs.json Navigation Paths
 
 **Files:**
+
 - Modify: `docs.json:15-46`
 - Test: Manual verification on live site
 
@@ -95,6 +96,7 @@ Fixes all 404 errors by matching actual file locations"
 ### Task 2: Extract Insights from Archived Docs
 
 **Files:**
+
 - Read: `documentation/archive/2025-11-v1.0/testing-validation-results.md`
 - Read: `documentation/archive/2025-11-v1.0/ansible-migration-completion.md`
 - Modify: `documentation/design/ansible-philosophy.md` (add metrics)
@@ -102,6 +104,7 @@ Fixes all 404 errors by matching actual file locations"
 **Step 1: Extract testing metrics**
 
 Read `documentation/archive/2025-11-v1.0/testing-validation-results.md`, note:
+
 - Total bugs found and fixed: 15
 - Idempotency validation: Perfect across 3 nodes
 - Test coverage metrics
@@ -109,6 +112,7 @@ Read `documentation/archive/2025-11-v1.0/testing-validation-results.md`, note:
 **Step 2: Extract migration insights**
 
 Read `documentation/archive/2025-11-v1.0/ansible-migration-completion.md`, note:
+
 - 6-phase migration approach proven effective
 - Key lessons learned
 - Success metrics
@@ -139,6 +143,7 @@ Extract validation results from archived testing documentation:
 ### Task 3: Update index.mdx Links
 
 **Files:**
+
 - Modify: `index.mdx:40-50` (Quick Links section)
 
 **Step 1: Read current index.mdx**
@@ -204,7 +209,8 @@ git push origin main
 
 **Step 4: Test on live Mintlify site**
 
-Visit https://themothership.mintlify.app/ and verify:
+Visit <https://themothership.mintlify.app/> and verify:
+
 - All navigation links work (no 404s)
 - 7 reference docs accessible
 - Homepage Quick Links updated
@@ -216,6 +222,7 @@ Visit https://themothership.mintlify.app/ and verify:
 ### Task 5: Create Directory Structure
 
 **Files:**
+
 - Create: `documentation/getting-started/` (directory)
 
 **Step 1: Create getting-started directory**
@@ -244,6 +251,7 @@ Prepare for Phase 2 tutorial content"
 ### Task 6: Write prerequisites.md
 
 **Files:**
+
 - Create: `documentation/getting-started/prerequisites.md`
 
 **Step 1: Create prerequisites.md with header**
@@ -277,23 +285,34 @@ Verify you have 3+ identical nodes meeting these specifications:
 Test node specifications:
 
 ```bash
-# Check CPU cores
+
+## Check CPU cores
+
 ssh root@proxmox-node-1 'nproc'
-# Expected: 8 or higher
 
-# Check RAM
+## Expected: 8 or higher
+
+## Check RAM
+
 ssh root@proxmox-node-1 'free -h | grep Mem'
-# Expected: 32Gi or higher
 
-# Check storage devices
+## Expected: 32Gi or higher
+
+## Check storage devices
+
 ssh root@proxmox-node-1 'lsblk'
-# Expected: 3 drives (1 boot + 2 NVMe)
 
-# Check network interfaces
+## Expected: 3 drives (1 boot + 2 NVMe)
+
+## Check network interfaces
+
 ssh root@proxmox-node-1 'ip link show'
-# Expected: 3+ interfaces
+
+## Expected: 3+ interfaces
 ```
-```
+
+
+```text
 
 **Step 3: Add network requirements section**
 
@@ -319,14 +338,20 @@ Configure these networks before deployment:
 Test network connectivity:
 
 ```bash
-# Test management network
+
+## Test management network
+
 ping -c 3 192.168.3.11
 
-# Test MTU 9000 on CEPH network
+## Test MTU 9000 on CEPH network
+
 ping -M do -s 8972 -c 3 192.168.5.11
-# Expected: 0% packet loss
+
+## Expected: 0% packet loss
 ```
-```
+
+
+```text
 
 **Step 4: Add software prerequisites section**
 
@@ -351,23 +376,34 @@ ping -M do -s 8972 -c 3 192.168.5.11
 Test software versions:
 
 ```bash
-# Check Proxmox version
+
+## Check Proxmox version
+
 ssh root@proxmox-node-1 'pveversion'
-# Expected: pve-manager/9.x
 
-# Check SSH access
+## Expected: pve-manager/9.x
+
+## Check SSH access
+
 ssh root@proxmox-node-1 'hostname'
-# Expected: node hostname
 
-# Check mise
+## Expected: node hostname
+
+## Check mise
+
 mise --version
-# Expected: 2024.x or higher
 
-# Check Git
+## Expected: 2024.x or higher
+
+## Check Git
+
 git --version
-# Expected: 2.x or higher
+
+## Expected: 2.x or higher
 ```
-```
+
+
+```text
 
 **Step 5: Add Infisical setup section**
 
@@ -384,11 +420,14 @@ git --version
 2. Install Infisical CLI:
 
 ```bash
-# macOS
+
+## macOS
+
 brew install infisical/get-cli/infisical
 
-# Linux
-curl -1sLf 'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.deb.sh' | sudo -E bash
+## Linux
+
+curl -1sLf '<https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.deb.sh>' | sudo -E bash
 sudo apt-get update && sudo apt-get install -y infisical
 ```
 
@@ -402,9 +441,12 @@ infisical login
 
 ```bash
 infisical secrets
-# Expected: See secrets list (may be empty)
+
+## Expected: See secrets list (may be empty)
 ```
-```
+
+
+```text
 
 **Step 6: Add completion summary**
 
@@ -447,11 +489,50 @@ If all checkboxes are checked and validations pass, you're ready to proceed to i
 
 **Step 7: Commit prerequisites.md**
 
+```
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
 ```bash
 git add documentation/getting-started/prerequisites.md
 git commit -m "docs: Add comprehensive prerequisites checklist
 
 Create detailed hardware, network, and software requirements with:
+
 - Hardware specifications (CPU, RAM, storage, network)
 - Network configuration requirements (management, CEPH networks)
 - Software prerequisites (Proxmox, mise, Infisical)
@@ -461,15 +542,17 @@ Create detailed hardware, network, and software requirements with:
 Provides complete pre-flight checklist for new deployments"
 ```
 
-### Task 7: Write installation.md
+## Task 7: Write installation.md
 
 **Files:**
+
 - Create: `documentation/getting-started/installation.md`
 
 **Step 1: Create installation.md with overview**
 
 ```markdown
-# Installation
+
+## Installation
 
 Set up your development environment to deploy and manage Virgo-Core infrastructure.
 
@@ -480,6 +563,7 @@ Set up your development environment to deploy and manage Virgo-Core infrastructu
 ## Overview
 
 This guide installs:
+
 - **mise** - Tool version manager and task runner
 - **uv** - Fast Python package manager
 - **Ansible** - Infrastructure automation
@@ -492,13 +576,14 @@ This guide installs:
 **Step 2: Add repository clone section**
 
 ```markdown
+
 ## Step 1: Clone Repository
 
 Clone the Virgo-Core repository:
 
 ```bash
 cd ~/dev/infra-as-code
-git clone https://github.com/basher83/Virgo-Core.git
+git clone <https://github.com/basher83/Virgo-Core.git>
 cd Virgo-Core
 ```
 
@@ -506,29 +591,35 @@ cd Virgo-Core
 
 ```bash
 ls -la
-# Expected: See .mise.toml, ansible/, terraform/, etc.
+
+## Expected: See .mise.toml, ansible/, terraform/, etc
 ```
-```
+
+```text
 
 **Step 3: Add mise installation section**
 
 ```markdown
+
 ## Step 2: Install mise
 
 Install mise (tool version manager):
 
 ```bash
-curl https://mise.run | sh
+curl <https://mise.run> | sh
 ```
 
 Add to shell profile:
 
 ```bash
-# For bash
+
+## For bash
+
 echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
 source ~/.bashrc
 
-# For zsh
+## For zsh
+
 echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
 source ~/.zshrc
 ```
@@ -537,13 +628,16 @@ source ~/.zshrc
 
 ```bash
 mise --version
-# Expected: 2024.x.x or higher
+
+## Expected: 2024.x.x or higher
 ```
-```
+
+```text
 
 **Step 4: Add dependencies installation section**
 
 ```markdown
+
 ## Step 3: Install Dependencies
 
 Run mise setup to install all dependencies:
@@ -553,6 +647,7 @@ mise run setup
 ```
 
 This installs:
+
 - uv (Python package manager)
 - Python 3.13+
 - Ansible and collections
@@ -561,7 +656,7 @@ This installs:
 
 **Expected Output**:
 
-```
+```text
 ✓ mise Installing mise tools...
 ✓ uv Installing Python packages...
 ✓ ansible-galaxy Installing Ansible collections...
@@ -571,27 +666,38 @@ Setup complete!
 **Verify**:
 
 ```bash
-# Check uv
+
+## Check uv
+
 uv --version
-# Expected: 0.x.x
 
-# Check Python
+## Expected: 0.x.x
+
+## Check Python
+
 python3 --version
-# Expected: 3.13.x
 
-# Check Ansible
+## Expected: 3.13.x
+
+## Check Ansible
+
 ansible --version
-# Expected: 2.x.x
 
-# Check OpenTofu
+## Expected: 2.x.x
+
+## Check OpenTofu
+
 tofu --version
-# Expected: 1.10.x
+
+## Expected: 1.10.x
 ```
-```
+
+```text
 
 **Step 5: Add Infisical configuration section**
 
 ```markdown
+
 ## Step 4: Configure Infisical
 
 Authenticate with Infisical:
@@ -617,19 +723,22 @@ Edit `.infisical.json` with your project ID:
 
 ```bash
 infisical secrets
-# Expected: See secrets list (configured in Infisical dashboard)
+
+## Expected: See secrets list (configured in Infisical dashboard)
 ```
-```
+
+```text
 
 **Step 6: Add SSH configuration section**
 
 ```markdown
+
 ## Step 5: Configure SSH Access
 
 Generate SSH key if needed:
 
 ```bash
-ssh-keygen -t ed25519 -C "your-email@example.com"
+ssh-keygen -t ed25519 -C "<your-email@example.com>"
 ```
 
 Add SSH key to Proxmox nodes:
@@ -644,23 +753,28 @@ ssh-copy-id root@192.168.3.13
 
 ```bash
 ssh root@192.168.3.11 'hostname'
-# Expected: Node hostname (no password prompt)
+
+## Expected: Node hostname (no password prompt)
 ```
-```
+
+```text
 
 **Step 7: Add validation section**
 
 ```markdown
+
 ## Installation Complete
 
 Verify all tools installed:
 
 ```bash
 mise doctor
-# Expected: All tools available
+
+## Expected: All tools available
 
 mise list
-# Expected: Show installed tools and versions
+
+## Expected: Show installed tools and versions
 ```
 
 **Next Step:** [First Deployment](first-deployment.md)
@@ -672,15 +786,17 @@ mise list
 **Symptom**: `curl https://mise.run | sh` returns error
 
 **Solutions**:
+
 - Check internet connectivity
 - Verify curl installed: `curl --version`
-- Try manual install from https://mise.jdx.dev/installing-mise.html
+- Try manual install from <https://mise.jdx.dev/installing-mise.html>
 
 ### Dependencies Installation Fails
 
 **Symptom**: `mise run setup` fails
 
 **Solutions**:
+
 - Check Python version: `python3 --version` (need 3.13+)
 - Clear mise cache: `rm -rf ~/.local/share/mise`
 - Run with verbose: `mise run setup --verbose`
@@ -690,10 +806,12 @@ mise list
 **Symptom**: Browser auth fails or times out
 
 **Solutions**:
-- Check Infisical service status: https://status.infisical.com
+
+- Check Infisical service status: <https://status.infisical.com>
 - Clear Infisical cache: `rm -rf ~/.config/infisical`
 - Try CLI token auth: `infisical login --token`
-```
+
+```text
 
 **Step 8: Commit installation.md**
 
@@ -702,6 +820,7 @@ git add documentation/getting-started/installation.md
 git commit -m "docs: Add development environment installation guide
 
 Create step-by-step installation instructions:
+
 - Repository cloning
 - mise installation and configuration
 - Dependencies installation (uv, Ansible, OpenTofu)
@@ -713,27 +832,31 @@ Create step-by-step installation instructions:
 Estimated time: 15-20 minutes"
 ```
 
-### Task 8: Write first-deployment.md (Part 1: Structure)
+## Task 8: Write first-deployment.md (Part 1: Structure)
 
 **Files:**
+
 - Create: `documentation/getting-started/first-deployment.md`
 
 **Step 1: Create first-deployment.md with header**
 
 ```markdown
-# First Deployment: Zero to Cluster in 60 Minutes
+
+## First Deployment: Zero to Cluster in 60 Minutes
 
 Deploy a production-ready 3-node Proxmox cluster with CEPH storage in 60 minutes.
 
 **Time Required**: 50-70 minutes
 
 **Prerequisites**:
+
 - [Prerequisites](prerequisites.md) complete
 - [Installation](installation.md) complete
 
 ## Overview
 
 This tutorial deploys the Matrix cluster with:
+
 - 3 Proxmox nodes (Foxtrot, Golf, Hotel)
 - Cluster formation with corosync
 - CEPH distributed storage (12 OSDs, 12TB usable)
@@ -753,6 +876,7 @@ Total: 60 minutes
 **Step 2: Add Phase 1: Inventory Configuration**
 
 ```markdown
+
 ## Phase 1: Inventory Configuration (10 minutes)
 
 Configure your cluster nodes and network settings.
@@ -811,7 +935,8 @@ uv run ansible-inventory --list
 **Expected**: JSON output showing 3 nodes with correct IPs
 
 **What Happens Next**: Ansible will use this inventory to configure all 3 nodes
-```
+
+```text
 
 **Step 3: Commit first-deployment.md part 1**
 
@@ -820,6 +945,7 @@ git add documentation/getting-started/first-deployment.md
 git commit -m "docs: Add first-deployment tutorial (part 1)
 
 Add Zero to Cluster tutorial structure:
+
 - Overview and time estimates
 - Phase breakdown (5 phases, 60 minutes)
 - Phase 1: Inventory configuration with examples
@@ -830,11 +956,13 @@ Part 1 of 5 - inventory setup"
 ### Task 9: Write first-deployment.md (Part 2: Network Setup)
 
 **Files:**
+
 - Modify: `documentation/getting-started/first-deployment.md`
 
 **Step 1: Add Phase 2: Network Setup section**
 
 ```markdown
+
 ## Phase 2: Network Setup (15 minutes)
 
 Configure network bridges, VLANs, and MTU for CEPH networks.
@@ -842,6 +970,7 @@ Configure network bridges, VLANs, and MTU for CEPH networks.
 ### What Will Happen
 
 The `configure-network` playbook will:
+
 - Create network bridges (vmbr0, vmbr1, vmbr2)
 - Configure VLAN interfaces
 - Set MTU to 9000 on CEPH networks
@@ -855,7 +984,7 @@ CHECK=1 mise run ansible:configure-network
 
 **Expected Output**:
 
-```
+```text
 PLAY [Configure Proxmox Network] ******
 
 TASK [proxmox_network : Create bridges] ******
@@ -884,21 +1013,29 @@ mise run ansible:configure-network
 ### Step 3: Verify network configuration
 
 ```bash
-# Check bridges created
+
+## Check bridges created
+
 ssh root@192.168.3.11 'ip link show | grep vmbr'
-# Expected: vmbr0, vmbr1, vmbr2
 
-# Check MTU 9000 on CEPH networks
+## Expected: vmbr0, vmbr1, vmbr2
+
+## Check MTU 9000 on CEPH networks
+
 ssh root@192.168.3.11 'ip link show vmbr1 | grep mtu'
-# Expected: mtu 9000
 
-# Test jumbo frames
+## Expected: mtu 9000
+
+## Test jumbo frames
+
 ping -M do -s 8972 -c 3 192.168.5.11
-# Expected: 0% packet loss
+
+## Expected: 0% packet loss
 ```
 
 **Checkpoint**: All nodes should have bridges configured with correct MTU
-```
+
+```text
 
 **Step 2: Commit first-deployment.md part 2**
 
@@ -907,6 +1044,7 @@ git add documentation/getting-started/first-deployment.md
 git commit -m "docs: Add first-deployment Phase 2 (network setup)
 
 Add network configuration phase:
+
 - What will happen explanation
 - Dry-run before apply
 - Network bridge creation
@@ -916,14 +1054,16 @@ Add network configuration phase:
 Part 2 of 5 - network configuration"
 ```
 
-### Task 10: Write first-deployment.md (Part 3-5)
+## Task 10: Write first-deployment.md (Part 3-5)
 
 **Files:**
+
 - Modify: `documentation/getting-started/first-deployment.md`
 
 **Step 1: Add Phase 3: Cluster Formation**
 
 ```markdown
+
 ## Phase 3: Cluster Formation (10 minutes)
 
 Form Proxmox cluster and join nodes.
@@ -931,6 +1071,7 @@ Form Proxmox cluster and join nodes.
 ### What Will Happen
 
 The `init-cluster` playbook will:
+
 - Create cluster on first node (Foxtrot)
 - Join Golf and Hotel to cluster
 - Configure Corosync for cluster communication
@@ -944,7 +1085,7 @@ mise run ansible:init-cluster
 
 **Expected Output**:
 
-```
+```text
 TASK [proxmox_cluster : Create cluster] ******
 changed: [foxtrot]
 
@@ -968,16 +1109,25 @@ ssh root@192.168.3.11 'pvecm status'
 
 **Expected Output**:
 
-```
-Cluster information
--------------------
+```text
+
+## Cluster information
+
+## -------------------
+
+---
+
 Name:             matrix
 Config Version:   3
 Transport:        knet
 Secure auth:      on
 
-Quorum information
-------------------
+## Quorum information
+
+## ------------------
+
+---
+
 Date:             Mon Nov 19 12:34:56 2025
 Quorum provider:  corosync_votequorum
 Nodes:            3
@@ -985,8 +1135,12 @@ Node ID:          0x00000001
 Ring ID:          1.5
 Quorate:          Yes
 
-Membership information
-----------------------
+## Membership information
+
+## ----------------------
+
+---
+
 Nodeid      Votes Name
 0x00000001      1 foxtrot (local)
 0x00000002      1 golf
@@ -994,11 +1148,13 @@ Nodeid      Votes Name
 ```
 
 **Checkpoint**: All 3 nodes should appear in cluster, status "Quorate: Yes"
-```
+
+```text
 
 **Step 2: Add Phase 4: CEPH Deployment**
 
 ```markdown
+
 ## Phase 4: CEPH Deployment (15 minutes)
 
 Deploy CEPH distributed storage across all nodes.
@@ -1006,6 +1162,7 @@ Deploy CEPH distributed storage across all nodes.
 ### What Will Happen
 
 The `deploy-ceph` playbook will:
+
 - Install CEPH packages on all nodes
 - Create monitors (1 per node)
 - Create managers (1 per node)
@@ -1021,7 +1178,7 @@ mise run ansible:deploy-ceph
 
 **Expected Output**:
 
-```
+```text
 TASK [proxmox_ceph : Install CEPH] ******
 changed: [foxtrot]
 changed: [golf]
@@ -1053,7 +1210,7 @@ ssh root@192.168.3.11 'ceph -s'
 
 **Expected Output**:
 
-```
+```text
   cluster:
     id:     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     health: HEALTH_OK
@@ -1071,11 +1228,13 @@ ssh root@192.168.3.11 'ceph -s'
 ```
 
 **Checkpoint**: HEALTH_OK, 12 OSDs up and in
-```
+
+```text
 
 **Step 3: Add Phase 5: Verification**
 
 ```markdown
+
 ## Phase 5: Verification (10 minutes)
 
 Validate complete deployment.
@@ -1126,18 +1285,21 @@ Expected: See CEPH pool listed and available
 ## Deployment Complete! 🎉
 
 Your Matrix cluster is production-ready with:
+
 - ✅ 3-node Proxmox cluster
 - ✅ CEPH distributed storage (12TB usable)
 - ✅ High-performance network (jumbo frames)
 - ✅ Production-grade configuration
 
 **Next Steps**:
+
 - Deploy your first VM
 - Configure additional storage pools
 - Set up monitoring
 
 **Troubleshooting**: See [Troubleshooting Basics](troubleshooting-basics.md)
-```
+
+```text
 
 **Step 4: Commit first-deployment.md completion**
 
@@ -1146,6 +1308,7 @@ git add documentation/getting-started/first-deployment.md
 git commit -m "docs: Complete first-deployment tutorial (phases 3-5)
 
 Add remaining deployment phases:
+
 - Phase 3: Cluster formation with verification
 - Phase 4: CEPH deployment with expected timings
 - Phase 5: Complete verification checklist
@@ -1156,6 +1319,7 @@ Tutorial complete - full Zero to Cluster in 60 minutes workflow"
 ### Task 11: Update docs.json for Phase 2 Content
 
 **Files:**
+
 - Modify: `docs.json:22-26`
 
 **Step 1: Add getting-started pages to docs.json**
@@ -1191,6 +1355,7 @@ git add docs.json
 git commit -m "docs: Add getting-started pages to navigation
 
 Add Phase 2 tutorial pages:
+
 - prerequisites.md
 - installation.md
 - first-deployment.md
@@ -1205,6 +1370,7 @@ Places tutorials before goals/infrastructure for better UX"
 ### Task 12: Create Roles Directory
 
 **Files:**
+
 - Create: `documentation/roles/` (directory)
 
 **Step 1: Create roles directory**
@@ -1225,13 +1391,15 @@ Prepare for enhanced role documentation"
 ### Task 13: Create system_user Role Documentation
 
 **Files:**
+
 - Create: `documentation/roles/system_user.md`
 - Read: `ansible/roles/system_user/README.md` (source material)
 
 **Step 1: Create system_user.md header**
 
 ```markdown
-# system_user Role
+
+## system_user Role
 
 Manage Linux system users with SSH keys, sudo privileges, and shell configuration.
 
@@ -1244,6 +1412,7 @@ Manage Linux system users with SSH keys, sudo privileges, and shell configuratio
 ## Overview
 
 The `system_user` role provides declarative user management:
+
 - Create/remove users with specific UID/GID
 - Configure SSH authorized keys (supports multiple keys per user)
 - Manage sudo privileges (password/NOPASSWD)
@@ -1256,22 +1425,26 @@ The `system_user` role provides declarative user management:
 **Step 2: Add quick start example**
 
 ```markdown
+
 ## Quick Start
 
 Create an automation user for Terraform:
 
 ```yaml
 ---
+
 - name: Create Terraform automation user
   hosts: proxmox_nodes
   roles:
-    - role: system_user
+
+  - role: system_user
       system_users:
-        - username: terraform
+    - username: terraform
           comment: "Terraform Automation"
           shell: /bin/bash
           ssh_keys:
-            - "{{ lookup('env', 'TF_SSH_KEY') }}"
+
+      - "{{ lookup('env', 'TF_SSH_KEY') }}"
           sudo: nopasswd
 ```
 
@@ -1282,11 +1455,13 @@ uv run ansible-playbook create-automation-user.yml
 ```
 
 Expected: User `terraform` created on all nodes with SSH key and sudo access
-```
+
+```text
 
 **Step 3: Add configuration reference**
 
 ```markdown
+
 ## Configuration
 
 ### User Variables
@@ -1308,26 +1483,30 @@ Expected: User `terraform` created on all nodes with SSH key and sudo access
 
 ```yaml
 system_users:
-  - username: deployer
+
+- username: deployer
     comment: "CI/CD Deploy User"
     uid: 2000
     gid: 2000
     shell: /bin/bash
     home: /home/deployer
     ssh_keys:
-      - "ssh-ed25519 AAAA... ci-server@example.com"
-      - "ssh-ed25519 BBBB... backup-key@example.com"
+
+  - "ssh-ed25519 AAAA... <ci-server@example.com>"
+  - "ssh-ed25519 BBBB... <backup-key@example.com>"
     sudo: nopasswd
     groups:
-      - docker
-      - libvirt
+  - docker
+  - libvirt
     state: present
 ```
-```
+
+```text
 
 **Step 4: Add integration examples**
 
 ```markdown
+
 ## Integration Patterns
 
 ### With proxmox_access Role
@@ -1336,24 +1515,28 @@ Create automation user and Proxmox API token:
 
 ```yaml
 ---
+
 - name: Setup Terraform automation
   hosts: proxmox_nodes
   tasks:
-    - name: Create system user
+
+  - name: Create system user
       include_role:
         name: system_user
       vars:
         system_users:
-          - username: terraform
+
+    - username: terraform
             ssh_keys: ["{{ terraform_ssh_key }}"]
             sudo: nopasswd
 
-    - name: Create Proxmox token
+  - name: Create Proxmox token
       include_role:
         name: proxmox_access
       vars:
         proxmox_tokens:
-          - user: terraform@pam
+
+    - user: terraform@pam
             name: automation
             privilege_separation: true
 ```
@@ -1367,14 +1550,17 @@ vars:
   admin_ssh_key: "{{ lookup('infisical', 'ADMIN_SSH_KEY') }}"
 
 system_users:
-  - username: admin
+
+- username: admin
     ssh_keys: ["{{ admin_ssh_key }}"]
 ```
-```
+
+```text
 
 **Step 5: Add troubleshooting section**
 
 ```markdown
+
 ## Troubleshooting
 
 ### SSH Key Not Working
@@ -1384,15 +1570,20 @@ system_users:
 **Diagnosis**:
 
 ```bash
-# Check authorized_keys file
+
+## Check authorized_keys file
+
 ssh root@node 'cat /home/username/.ssh/authorized_keys'
 
-# Check file permissions
+## Check file permissions
+
 ssh root@node 'ls -la /home/username/.ssh/'
-# Expected: .ssh/ directory 700, authorized_keys 600
+
+## Expected: .ssh/ directory 700, authorized_keys 600
 ```
 
 **Solutions**:
+
 - Verify key format (must be valid SSH public key)
 - Check key not commented out
 - Ensure home directory exists
@@ -1404,11 +1595,14 @@ ssh root@node 'ls -la /home/username/.ssh/'
 **Diagnosis**:
 
 ```bash
-# Check sudoers file
+
+## Check sudoers file
+
 ssh root@node 'cat /etc/sudoers.d/username'
 ```
 
 **Solutions**:
+
 - Verify `sudo: nopasswd` or `sudo: password` set
 - Check sudoers syntax: `visudo -c`
 
@@ -1416,7 +1610,8 @@ ssh root@node 'cat /etc/sudoers.d/username'
 
 - [proxmox_access](proxmox_access.md) - Proxmox user and token management
 - [Ansible User Module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html)
-```
+
+```text
 
 **Step 6: Commit system_user.md**
 
@@ -1425,6 +1620,7 @@ git add documentation/roles/system_user.md
 git commit -m "docs: Add enhanced system_user role documentation
 
 Create comprehensive role guide with:
+
 - Quick start example
 - Complete configuration reference table
 - Integration patterns (proxmox_access, Infisical)
@@ -1434,9 +1630,10 @@ Create comprehensive role guide with:
 Enhanced from existing README with additional examples"
 ```
 
-### Task 14: Create Roles Index in docs.json
+## Task 14: Create Roles Index in docs.json
 
 **Files:**
+
 - Modify: `docs.json` (add Ansible Roles group)
 
 **Step 1: Add Ansible Roles navigation group**
@@ -1476,6 +1673,7 @@ Currently includes system_user, prepared for remaining 5 roles"
 ### Task 15-19: Create Remaining Role Documentation
 
 **Note**: Tasks 15-19 follow the same pattern as Task 13:
+
 - Read existing `ansible/roles/<role>/README.md`
 - Create enhanced `documentation/roles/<role>.md`
 - Add configuration tables
@@ -1484,14 +1682,16 @@ Currently includes system_user, prepared for remaining 5 roles"
 - Commit each role individually
 
 **Roles to document**:
-15. `proxmox_access.md` (based on 580-line README)
-16. `proxmox_network.md` (based on 480-line README)
-17. `proxmox_repository.md` (based on 99-line README)
-18. `proxmox_cluster.md` (based on 156-line README)
-19. `proxmox_ceph.md` (based on 290-line README)
+
+1. `proxmox_access.md` (based on 580-line README)
+2. `proxmox_network.md` (based on 480-line README)
+3. `proxmox_repository.md` (based on 99-line README)
+4. `proxmox_cluster.md` (based on 156-line README)
+5. `proxmox_ceph.md` (based on 290-line README)
 
 Each commit message follows pattern:
-```
+
+```text
 docs: Add enhanced <role> role documentation
 
 Create comprehensive role guide with examples, configuration reference,
@@ -1501,6 +1701,7 @@ Enhanced from existing README with additional context.
 ```
 
 ---
+
 
 ## Verification & Deployment
 
@@ -1550,15 +1751,16 @@ git push origin main
 
 Mintlify auto-deploys from main branch. Check build status:
 
-https://dashboard.mintlify.com/
+<https://dashboard.mintlify.com/>
 
 Expected: Build succeeds
 
 **Step 3: Test live site**
 
-Visit https://themothership.mintlify.app/
+Visit <https://themothership.mintlify.app/>
 
 Verify:
+
 - [ ] All navigation links work (no 404s)
 - [ ] Getting Started section visible
 - [ ] Ansible Roles section visible
@@ -1577,10 +1779,13 @@ Expected: Find references in multiple docs
 **Step 1: Generate metrics**
 
 ```bash
-# Count new documentation lines
+
+## Count new documentation lines
+
 find documentation/getting-started documentation/roles -name "*.md" -exec wc -l {} + | tail -1
 
-# Count commits
+## Count commits
+
 git log --oneline --since="1 day ago" | wc -l
 ```
 
@@ -1589,7 +1794,8 @@ git log --oneline --since="1 day ago" | wc -l
 Create `docs/plans/2025-11-19-implementation-complete.md`:
 
 ```markdown
-# Documentation Enhancement - Implementation Complete
+
+## Documentation Enhancement - Implementation Complete
 
 **Date**: 2025-11-19
 **Status**: ✅ Complete
@@ -1598,12 +1804,14 @@ Create `docs/plans/2025-11-19-implementation-complete.md`:
 ## Deliverables
 
 ### Phase 1: Foundation Fix
+
 - ✅ Fixed docs.json navigation paths
 - ✅ Extracted insights from archived docs
 - ✅ Updated homepage links
 - **Impact**: 7 reference docs now accessible (0 404s)
 
 ### Phase 2: Getting Started Content
+
 - ✅ prerequisites.md (hardware, network, software checklists)
 - ✅ installation.md (development environment setup)
 - ✅ first-deployment.md (Zero to Cluster in 60 minutes)
@@ -1611,6 +1819,7 @@ Create `docs/plans/2025-11-19-implementation-complete.md`:
 - **Impact**: Complete onboarding path for new users
 
 ### Phase 3: Enhanced Role Documentation
+
 - ✅ system_user.md
 - ✅ proxmox_access.md
 - ✅ proxmox_network.md
@@ -1630,11 +1839,13 @@ Create `docs/plans/2025-11-19-implementation-complete.md`:
 ## Site Transformation
 
 **Before**:
+
 - Homepage only
 - 10 broken navigation links (404s)
 - No getting-started content
 
 **After**:
+
 - Complete getting-started through advanced reference
 - 16 accessible documentation pages
 - Zero 404 errors
@@ -1642,9 +1853,10 @@ Create `docs/plans/2025-11-19-implementation-complete.md`:
 
 ## Verification
 
-Site URL: https://themothership.mintlify.app/
+Site URL: <https://themothership.mintlify.app/>
 
 All acceptance criteria met:
+
 - ✅ All navigation links work
 - ✅ New users can deploy cluster following tutorial
 - ✅ All 6 roles documented comprehensively
@@ -1663,6 +1875,7 @@ git commit -m "docs: Add implementation completion summary
 Document Phase 1-3 deliverables, metrics, and verification.
 
 All three phases complete:
+
 - Phase 1: Foundation fix (404s resolved)
 - Phase 2: Getting-started content (onboarding path)
 - Phase 3: Enhanced role docs (comprehensive reference)
@@ -1681,6 +1894,7 @@ This plan provides bite-sized tasks (2-5 minutes each) for implementing all thre
 **Commits**: ~20 atomic commits
 
 Each task includes:
+
 - Exact file paths
 - Complete code/content
 - Verification commands

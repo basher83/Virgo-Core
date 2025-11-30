@@ -1,3 +1,8 @@
+---
+title: proxmox_network Role
+description: Manage Proxmox VE network infrastructure with bridges, VLANs, and jumbo frames for CEPH storage networks
+---
+
 # proxmox_network Role
 
 Manage Proxmox VE network infrastructure with bridges, VLANs, and jumbo frames.

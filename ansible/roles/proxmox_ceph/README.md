@@ -17,7 +17,8 @@ This role manages the complete CEPH cluster lifecycle:
 
 ## Key Features
 
-**Automated OSD Creation**: ProxSpray requires manual OSD setup. This role creates OSDs automatically from declarative configuration. The role supports:
+**Automated OSD Creation**: ProxSpray requires manual OSD setup. This role creates OSDs automatically from declarative
+configuration. The role supports:
 
 - Multiple OSDs per disk (partitioning)
 - Separate DB and WAL devices
@@ -168,7 +169,8 @@ verify_ceph_health: true                # Verify health after deployment
 
 ### WARNING: Destructive Operations
 
-OSD creation destroys all data on the specified devices. Back up your data before running this role. Verify device paths carefully. A single typo destroys data. Test in a non-production environment first.
+OSD creation destroys all data on the specified devices. Back up your data before running this role. Verify device paths
+carefully. A single typo destroys data. Test in a non-production environment first.
 
 **Best Practices**:
 

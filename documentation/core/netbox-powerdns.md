@@ -1,3 +1,8 @@
+---
+title: NetBox + PowerDNS Integration
+description: Automated DNS and IPAM synchronization using NetBox with PowerDNS for seamless homelab infrastructure management
+---
+
 # Layering NetBox with PowerDNS: The Ideal Homelab DNS Solution
 
 ![DNS Management Approaches for Homelab: NetBox+PowerDNS vs UniFi Controller](https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/00062210d7893c5c3f7c67eb6ab980c4/741b7224-5bb6-4453-9459-90e991d411c7/b90f3fc9.png)
@@ -34,13 +39,13 @@ The **netbox-powerdns-sync** plugin provides seamless automation between these s
 
 The plugin offers several strategies for creating your `docker-01-nexus.spaceships.work` style naming:[^1]
 
--   **Device-based naming**: Uses NetBox device names as DNS records
+- **Device-based naming**: Uses NetBox device names as DNS records
 
--   **IP-based naming**: Generates names based on IP address patterns
+- **IP-based naming**: Generates names based on IP address patterns
 
--   **FHRP Group naming**: Uses First Hop Redundancy Protocol group names
+- **FHRP Group naming**: Uses First Hop Redundancy Protocol group names
 
--   **Tag-based matching**: Routes records to appropriate zones based on NetBox tags
+- **Tag-based matching**: Routes records to appropriate zones based on NetBox tags
 
 ### Installation and Configuration
 

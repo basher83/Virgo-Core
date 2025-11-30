@@ -1,3 +1,8 @@
+---
+title: proxmox_access Role
+description: Manage Proxmox VE access control including users, groups, tokens, and ACLs for automation and operators
+---
+
 # proxmox_access Role
 
 Manage Proxmox VE access control for automation and operators.
@@ -307,7 +312,7 @@ tofu apply
 
 Environment file exports:
 
-- `PROXMOX_VE_ENDPOINT`: API URL (https://hostname:8006)
+- `PROXMOX_VE_ENDPOINT`: API URL (<https://hostname:8006>)
 - `PROXMOX_VE_API_TOKEN`: Full token (userid!tokenid=secret)
 - `TF_VAR_proxmox_*`: Alternative variable format
 
@@ -424,6 +429,6 @@ uv run ansible-playbook playbooks/setup-terraform-automation.yml --check
 
 ## See Also
 
-- [system_user](system_user.md) - Linux user management for PAM users
+- [system_user](documentation/roles/system_user) - Linux user management for PAM users
 - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management) - Official documentation
 - [API Token Documentation](https://pve.proxmox.com/wiki/Proxmox_VE_API#API_Tokens) - Token details

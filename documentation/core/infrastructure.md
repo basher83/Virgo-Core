@@ -1,3 +1,8 @@
+---
+title: Infrastructure Specifications
+description: Detailed hardware, network, and storage specifications for the Virgo-Core Proxmox VE homelab infrastructure
+---
+
 # Infrastructure Specifications
 
 This document provides detailed specifications for the Virgo-Core Proxmox VE homelab infrastructure.
@@ -40,6 +45,7 @@ Each node has three NVMe drives:
   - Device: `nvme0n1`
   - Purpose: Boot disk
   - Partitioning:
+
     ```bash
     nvme0n1            931.5G disk
     ├─nvme0n1p1         1007K part

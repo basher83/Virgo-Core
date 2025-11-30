@@ -1,10 +1,15 @@
+---
+title: Installation
+description: Set up your development environment with mise, uv, Ansible, OpenTofu, and Infisical for Virgo-Core
+---
+
 # Installation
 
 Set up your development environment to deploy and manage Virgo-Core infrastructure.
 
 **Time Required**: 15-20 minutes
 
-**Prerequisites**: Complete [Prerequisites](prerequisites.md) checklist
+**Prerequisites**: Complete [Prerequisites](documentation/getting-started/prerequisites) checklist
 
 ## Overview
 
@@ -170,7 +175,7 @@ mise list
 # Expected: Show installed tools and versions
 ```
 
-**Next Step:** [First Deployment](first-deployment.md)
+**Next Step:** [First Deployment](documentation/getting-started/first-deployment)
 
 ## Troubleshooting
 
@@ -182,7 +187,7 @@ mise list
 
 - Check internet connectivity
 - Verify curl installed: `curl --version`
-- Try manual install from https://mise.jdx.dev/installing-mise.html
+- Try manual install from <https://mise.jdx.dev/installing-mise.html>
 
 ### Dependencies Installation Fails
 
@@ -200,6 +205,6 @@ mise list
 
 **Solutions**:
 
-- Check Infisical service status: https://status.infisical.com
+- Check Infisical service status: <https://status.infisical.com>
 - Clear Infisical cache: `rm -rf ~/.config/infisical`
 - Try CLI token auth: `infisical login --token`

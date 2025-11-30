@@ -25,8 +25,23 @@ proxmox_packages:
 auto_update_packages: false
 auto_remove_old_kernels: false
 
+# System upgrade (apt dist-upgrade)
+run_system_upgrade: false
+system_upgrade_auto_reboot: false
+
 # APT cache update
 update_apt_cache: true
 
 # SSL/TLS certificate validation
 validate_certs: true
+
+# Subscription banner removal
+# Removes the "No valid subscription" nag from Proxmox web UI
+# Installs APT hook to persist across package updates
+remove_subscription_banner: false
+
+# pigz - Parallel gzip for faster backups
+# Replaces single-threaded gzip with multi-threaded pigz for vzdump
+# Significantly speeds up backup compression on multi-core systems
+pigz_enabled: false
+pigz_compression_level: 1  # 1-9, lower = faster, higher = smaller

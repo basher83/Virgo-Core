@@ -54,7 +54,7 @@ For each claim:
 **Counter-evidence:** ANY script in PR #7 that:
 
 - Uses httpx/requests (not MCP dependencies)
-- Calls https://r.jina.ai/
+- Calls <https://r.jina.ai/>
 - Downloads docs directly
 
 **Commands:**

@@ -11,6 +11,8 @@ This role configures APT repositories for Proxmox VE and CEPH:
 - Configures CEPH repositories (Squid for PVE 9.x)
 - Installs and updates Proxmox packages
 - Cleans up old kernels
+- Removes "No valid subscription" banner from web UI
+- Enables pigz for faster backup compression
 
 ## Requirements
 
@@ -46,6 +48,13 @@ auto_remove_old_kernels: false          # Clean up old kernels
 
 # APT cache
 update_apt_cache: true                  # Update cache before operations
+
+# Subscription banner removal
+remove_subscription_banner: false       # Remove "No valid subscription" nag
+
+# pigz - Parallel gzip for faster backups
+pigz_enabled: false                     # Replace gzip with pigz
+pigz_compression_level: 1               # 1-9, lower = faster
 ```
 
 ## Dependencies

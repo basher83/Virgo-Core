@@ -69,7 +69,7 @@ Trade-offs we accept:
 
 Good:
 
-```
+```text
 ansible-scorer/
 ├── all config files here
 └── complete and independent
@@ -77,7 +77,7 @@ ansible-scorer/
 
 Bad:
 
-```
+```text
 shared/base.yaml → scorer/specific.yaml → overrides/custom.yaml
 (Requires checking 3 places to understand one rule)
 ```
@@ -116,7 +116,7 @@ Current score: 0/5 - **Stay specialized**
 
 When you need scoring for multiple tools:
 
-```
+```text
 .claude/
 ├── scoring-system/        # Ansible scorer (current)
 ├── terraform-scorer/      # Terraform scorer (if needed)
@@ -163,9 +163,9 @@ If Terraform scoring becomes necessary:
 ## Remember
 
 > "Duplication is far cheaper than the wrong abstraction" - Sandi Metz
-
+>
 > "The first rule of optimization is: Don't do it. The second rule is: Don't do it yet." - Michael A. Jackson
-
+>
 > "YAGNI - You Aren't Gonna Need It" - XP Principle
 
 These principles ensure we build what we need, when we need it, without overengineering for imaginary future requirements.

@@ -1,6 +1,7 @@
 # Virgo-Core Documentation
 
-This directory contains comprehensive documentation for the Virgo-Core infrastructure automation project. This index helps you find what you need quickly.
+This directory contains comprehensive documentation for the Virgo-Core infrastructure automation project. This index
+helps you find what you need quickly.
 
 ## Start Here
 
@@ -16,14 +17,17 @@ Essential references you will consult regularly:
 
 ### Infrastructure Specifications
 
-- **[core/infrastructure.md](core/infrastructure.md)** - Complete hardware, network, and storage specifications for the Matrix cluster (Foxtrot, Golf, Hotel nodes)
+- **[core/infrastructure.md](core/infrastructure.md)** - Complete hardware, network, and storage specifications for
+  the Matrix cluster (Foxtrot, Golf, Hotel nodes)
 - **[core/goals.md](core/goals.md)** - Project roadmap, v1.0.0 achievements, v2.0.0 objectives
 
 ### Ansible Architecture
 
-- **[design/ansible-philosophy.md](design/ansible-philosophy.md)** - Fundamental design principles: component-based roles, workflow playbooks, declarative configuration
+- **[design/ansible-philosophy.md](design/ansible-philosophy.md)** - Fundamental design principles: component-based
+  roles, workflow playbooks, declarative configuration
 - **[design/ansible-role-design.md](design/ansible-role-design.md)** - Role structure patterns, molecule testing, documentation standards
-- **[design/ansible-playbook-design.md](design/ansible-playbook-design.md)** - Playbook orchestration, inventory management, secrets handling with Infisical
+- **[design/ansible-playbook-design.md](design/ansible-playbook-design.md)** - Playbook orchestration, inventory
+  management, secrets handling with Infisical
 
 ### Integration Architecture
 
@@ -31,14 +35,17 @@ Essential references you will consult regularly:
 
 ### External References
 
-- **[core/references.md](core/references.md)** - Comprehensive bibliography of tools, projects, documentation for Proxmox, CEPH, Ansible, OpenTofu, NetBox, PowerDNS, Infisical
+- **[core/references.md](core/references.md)** - Comprehensive bibliography of tools, projects, documentation for
+  Proxmox, CEPH, Ansible, OpenTofu, NetBox, PowerDNS, Infisical
 
 ## Planning Documents
 
 Active planning and brainstorming:
 
-- **[brainstorming/next-features-2025-11.md](brainstorming/next-features-2025-11.md)** - Roadmap for v2.0.0 development: NetBox integration, VM provisioning pipeline, documentation enhancement
-- **[brainstorming/documentation-audit-2025-11.md](brainstorming/documentation-audit-2025-11.md)** - Documentation reorganization analysis and implementation plan
+- **[brainstorming/next-features-2025-11.md](brainstorming/next-features-2025-11.md)** - Roadmap for v2.0.0
+  development: NetBox integration, VM provisioning pipeline, documentation enhancement
+- **[brainstorming/documentation-audit-2025-11.md](brainstorming/documentation-audit-2025-11.md)** - Documentation
+  reorganization analysis and implementation plan
 
 ## Quick Reference Guide
 
@@ -75,7 +82,8 @@ The `archive/` directory preserves historical documents that informed current de
 
 ### v1.0.0 Completion Archive (2025-11)
 
-- **[archive/2025-11-v1.0/](archive/2025-11-v1.0/)** - Ansible migration documents, comprehensive testing results, ProxSpray analysis, skills planning, PR reviews
+- **[archive/2025-11-v1.0/](archive/2025-11-v1.0/)** - Ansible migration documents, comprehensive testing results,
+  ProxSpray analysis, skills planning, PR reviews
   - Migration plan and completion reports
   - Testing validation results
   - Code review documents
@@ -85,7 +93,8 @@ The `archive/` directory preserves historical documents that informed current de
 
 - **[archive/2025-10-23/](archive/2025-10-23/)** - Early research summaries, role validation studies, improvement plans
 
-These documents provide historical context but are superseded by current documentation. Consult them when researching design evolution or implementation details from v1.0.0 development.
+These documents provide historical context but are superseded by current documentation. Consult them when researching
+design evolution or implementation details from v1.0.0 development.
 
 ## Mintlify Documentation Site
 
@@ -142,6 +151,7 @@ These principles ensure clarity and precision across all documents.
 ## Current State (Post-v1.0.0)
 
 **Active Documents**: 9 files organized by purpose
+
 - 4 core specification documents
 - 3 Ansible design documents
 - 2 active planning documents

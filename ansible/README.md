@@ -1,10 +1,12 @@
 # Ansible Automation for Virgo-Core
 
-Infrastructure automation for Proxmox VE clusters using role-based architecture. Manages cluster formation, CEPH storage, network configuration, and system access control.
+Infrastructure automation for Proxmox VE clusters using role-based architecture. Manages cluster formation, CEPH
+storage, network configuration, and system access control.
 
 ## Overview
 
-This Ansible automation delivers production-ready infrastructure configuration for Proxmox VE 9.x clusters. The codebase uses component-based design with reusable roles that work across multiple clusters.
+This Ansible automation delivers production-ready infrastructure configuration for Proxmox VE 9.x clusters. The codebase
+uses component-based design with reusable roles that work across multiple clusters.
 
 **Key Features**:
 
@@ -15,7 +17,8 @@ This Ansible automation delivers production-ready infrastructure configuration f
 - Comprehensive test coverage and validation
 - Complete documentation for all roles
 
-**Migration Status**: This codebase completed migration from monolithic playbooks to role-based architecture on 2025-11-17. See [docs/ansible-migration-completion.md](../docs/ansible-migration-completion.md) for details.
+**Migration Status**: This codebase completed migration from monolithic playbooks to role-based architecture on
+2025-11-17. See [docs/ansible-migration-completion.md](../docs/ansible-migration-completion.md) for details.
 
 ## Directory Structure
 
@@ -214,13 +217,13 @@ curl -1sLf 'https://dl.cloudsmith.io/public/infisical/infisical-cli/setup.deb.sh
 sudo apt-get update && sudo apt-get install -y infisical
 ```
 
-2. Authenticate:
+1. Authenticate:
 
 ```bash
 infisical login
 ```
 
-3. Set project context (from repository root):
+1. Set project context (from repository root):
 
 ```bash
 infisical use

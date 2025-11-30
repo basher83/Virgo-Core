@@ -1,3 +1,8 @@
+---
+title: Prerequisites
+description: Verify hardware, network, and software requirements before deploying Virgo-Core infrastructure
+---
+
 # Prerequisites
 
 Before deploying Virgo-Core, verify you have the required hardware, network, and software.
@@ -105,7 +110,7 @@ git --version
 
 ## Credentials & Secrets
 
-- [ ] **Infisical account** created at https://infisical.com
+- [ ] **Infisical account** created at <https://infisical.com>
 - [ ] **Infisical project** created for cluster secrets
 - [ ] **Infisical CLI** authenticated
 
@@ -140,7 +145,7 @@ git --version
 
 When all checkboxes are checked and validations pass, proceed to installation.
 
-**Next Step:** [Installation Guide](installation.md)
+**Next Step:** [Installation Guide](documentation/getting-started/installation)
 
 ## Troubleshooting
 
