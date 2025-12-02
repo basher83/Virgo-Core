@@ -14,8 +14,6 @@
 mise run setup  # OR manually: uv sync && cd ansible && uv run ansible-galaxy collection install -r requirements.yml
 ```
 
-**Note**: `uv sync` may fail with DNS errors in restricted environments - use system Python with `pip install ansible-dev-tools` as fallback.
-
 ## Commands (via Mise or Manual)
 
 **Complete validation** (ALWAYS run before commit):
@@ -129,7 +127,6 @@ mise run full-check  # MUST pass before pushing
 | Issue | Solution |
 |-------|----------|
 | `mise: command not found` | Use manual commands (see "Commands" section) |
-| `uv sync` DNS errors | Expected in restricted networks; use system Python + `pip install ansible-dev-tools` |
 | Ansible connection refused | Check SSH config, verify `ansible_user`, ensure SSH keys deployed |
 | yamllint line-length warnings | Acceptable per `.ansible-lint` skip_list |
 | Terraform state errors | Check Proxmox connectivity, verify env vars: `PROXMOX_VE_USERNAME`, `PROXMOX_VE_PASSWORD`, or `PROXMOX_VE_API_TOKEN` |
