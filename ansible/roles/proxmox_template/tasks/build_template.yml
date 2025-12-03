@@ -1,0 +1,111 @@
+---
+# tasks/build_template.yml - Execute build-template script to create VM template
+
+- name: "build | Verify cloud image exists"
+  ansible.builtin.stat:
+    path: "{{ proxmox_template_image_path }}"
+  register: _cloud_image_stat
+  failed_when: not _cloud_image_stat.stat.exists
+  tags: [build]
+
+- name: "build | Check if VM ID already exists"
+  ansible.builtin.shell: |
+    set -o pipefail
+    qm list | awk '{print $1}' | grep -q "^{{ proxmox_template_id }}$"
+  args:
+    executable: /bin/bash
+  register: _vm_exists
+  failed_when: false
+  changed_when: false
+  when: not (proxmox_template_dry_run | bool)
+  tags: [build]
+
+- name: "build | Fail if VM ID already exists"
+  ansible.builtin.fail:
+    msg: "VM ID {{ proxmox_template_id }} already exists. Choose a different ID or remove the existing VM."
+  when:
+    - not (proxmox_template_dry_run | bool)
+    - _vm_exists.rc == 0
+  tags: [build]
+
+- name: "build | Copy build-template script to host"
+  ansible.builtin.copy:
+    src: build-template.sh
+    dest: /usr/local/bin/build-template
+    mode: "0755"
+    owner: root
+    group: root
+  tags: [build]
+
+- name: "build | Construct build-template command"
+  ansible.builtin.set_fact:
+    _build_template_cmd: >-
+      /usr/local/bin/build-template
+      --id {{ proxmox_template_id }}
+      --name {{ proxmox_template_name }}
+      --img {{ proxmox_template_image_path }}
+      --bios {{ proxmox_template_bios }}
+      --cpu-cores {{ proxmox_template_cpu_cores }}
+      --cpu-sockets {{ proxmox_template_cpu_sockets }}
+      --cpu-type {{ proxmox_template_cpu_type }}
+      --machine {{ proxmox_template_machine }}
+      --memory {{ proxmox_template_memory }}
+      --storage {{ proxmox_template_storage }}
+      --scsihw {{ proxmox_template_scsihw }}
+      --os {{ proxmox_template_os_type }}
+      --net-bridge {{ proxmox_template_net_bridge }}
+      --net-type {{ proxmox_template_net_type }}
+      --net-ip {{ proxmox_template_net_ip }}
+      {% if proxmox_template_disk_resize | length > 0 %}--resize {{ proxmox_template_disk_resize }}{% endif %}
+      {% if proxmox_template_net_vlan | length > 0 %}--net-vlan {{ proxmox_template_net_vlan }}{% endif %}
+      {% if proxmox_template_net_gateway | length > 0 %}--net-gw {{ proxmox_template_net_gateway }}{% endif %}
+      {% if proxmox_template_net2_bridge | length > 0 %}--net2-bridge {{ proxmox_template_net2_bridge }}{% endif %}
+      {% if proxmox_template_net2_bridge | length > 0 %}--net2-type {{ proxmox_template_net2_type }}{% endif %}
+      {% if proxmox_template_net2_bridge | length > 0 %}--net2-ip {{ proxmox_template_net2_ip }}{% endif %}
+      {% if proxmox_template_net2_vlan | length > 0 %}--net2-vlan {{ proxmox_template_net2_vlan }}{% endif %}
+      {% if proxmox_template_net2_gateway | length > 0 %}--net2-gw {{ proxmox_template_net2_gateway }}{% endif %}
+      --vendor-file {{ proxmox_template_vendor_file }}
+      --ci-user {{ proxmox_template_user }}
+      {% if proxmox_template_dry_run | bool %}--dry-run{% endif %}
+  tags: [build]
+
+- name: "build | Display build command"
+  ansible.builtin.debug:
+    msg: "{{ _build_template_cmd }}"
+  tags: [build]
+
+- name: "build | Execute build-template script"
+  ansible.builtin.command: "{{ _build_template_cmd }}"
+  register: _build_output
+  changed_when: _build_output.rc == 0
+  ignore_errors: true
+  tags: [build]
+
+- name: "build | Display error output on failure"
+  ansible.builtin.debug:
+    msg:
+      - "Build script failed!"
+      - "Return code: {{ _build_output.rc }}"
+      - "STDOUT: {{ _build_output.stdout_lines | default([]) }}"
+      - "STDERR: {{ _build_output.stderr_lines | default([]) }}"
+  when: _build_output.rc != 0
+  tags: [build]
+
+- name: "build | Fail if build script failed"
+  ansible.builtin.fail:
+    msg: "Build template script failed with return code {{ _build_output.rc }}"
+  when: _build_output.rc != 0
+  tags: [build]
+
+- name: "build | Display build output"
+  ansible.builtin.debug:
+    var: _build_output.stdout_lines
+  when: _build_output.rc == 0
+  tags: [build]
+
+- name: "build | Clean up vendor-data file"
+  ansible.builtin.file:
+    path: "/var/lib/vz/snippets/{{ proxmox_template_vendor_file }}"
+    state: absent
+  when: proxmox_template_cleanup_vendor_data | bool
+  tags: [build]
