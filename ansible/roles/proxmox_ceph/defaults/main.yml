@@ -1,0 +1,59 @@
+---
+# defaults file for proxmox_ceph
+# noqa: var-naming[no-role-prefix] - This is the role's public API
+
+# CEPH version
+ceph_version: "squid"
+
+# Network configuration
+ceph_network: "192.168.5.0/24"          # Public network (vmbr1)
+ceph_cluster_network: "192.168.7.0/24"  # Private network (vmbr2)
+
+# Cluster configuration
+cluster_group: "all"
+ceph_mon_group: "{{ cluster_group }}"    # Deploy monitors on these nodes
+ceph_mgr_group: "{{ cluster_group }}"    # Deploy managers on these nodes
+
+# OSD configuration (define in group_vars or host_vars)
+ceph_osds: {}
+# Safety flags
+ceph_allow_zap_devices: false  # Must be explicitly enabled for disk wiping
+ceph_wipe_disks: false          # Set to true for fresh deployment (DESTRUCTIVE!)
+
+# CEPH repository
+ceph_repository: "no-subscription"  # or "enterprise" with subscription
+# Example for Matrix cluster:
+# ceph_osds:
+#   foxtrot:
+#     - device: /dev/nvme1n1
+#       partitions: 2
+#       db_device: null
+#       wal_device: null
+#       crush_device_class: nvme
+#     - device: /dev/nvme2n1
+#       partitions: 2
+#       crush_device_class: nvme
+
+# Pool configuration
+ceph_pools:
+  - name: vm_ssd
+    pg_num: 128
+    pgp_num: 128
+    size: 3              # Replicas
+    min_size: 2          # Minimum replicas
+    application: rbd
+    crush_rule: replicated_rule
+
+# Installation options
+install_ceph_packages: true
+initialize_ceph: true
+
+# Monitor and Manager deployment
+deploy_monitors: true
+deploy_managers: true
+deploy_osds: true
+create_pools: true
+
+# Verification
+verify_ceph_health: true
+expected_health_status: "HEALTH_OK"

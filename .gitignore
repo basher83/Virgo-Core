@@ -21,6 +21,12 @@ terraform/tfplan
 # Python virtual environments
 .venv/
 
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
 # Sensitive override files
 terraform.tfvars
 *.auto.tfvars
@@ -52,3 +58,5 @@ Thumbs.db
 .mcp.json.backup
 
 .envrc
+*.pyc
+.worktrees/

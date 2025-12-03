@@ -1,0 +1,47 @@
+---
+# Configure SSH keys for passwordless cluster access
+
+- name: Check if SSH key exists
+  ansible.builtin.stat:
+    path: "/root/.ssh/id_{{ ssh_key_type }}"
+  register: ssh_key_stat
+
+- name: Generate SSH key pair
+  ansible.builtin.command: "ssh-keygen -t {{ ssh_key_type }} -b {{ ssh_key_bits }} -f /root/.ssh/id_{{ ssh_key_type }} -N ''"
+  when: not ssh_key_stat.stat.exists
+  register: ssh_keygen
+  changed_when: ssh_keygen.rc == 0
+
+- name: Read SSH public key
+  ansible.builtin.slurp:
+    src: "/root/.ssh/id_{{ ssh_key_type }}.pub"
+  register: ssh_public_key
+
+- name: Distribute SSH keys from all nodes (run locally)
+  ansible.posix.authorized_key:
+    user: root
+    state: present
+    key: "{{ hostvars[item].ssh_public_key.content | b64decode }}"
+    comment: "cluster-{{ item }}"
+  loop: "{{ groups[cluster_group] }}"
+  when:
+    - item != inventory_hostname
+    - hostvars[item].ssh_public_key is defined
+
+- name: Test SSH connectivity between nodes
+  ansible.builtin.command: "ssh -o StrictHostKeyChecking=no -o BatchMode=yes {{ item }} echo 'SSH OK'"
+  loop: "{{ groups[cluster_group] }}"
+  when: item != inventory_hostname
+  changed_when: false
+  failed_when: false
+  register: ssh_test
+
+- name: Report SSH connectivity failures
+  ansible.builtin.debug:
+    msg: "WARNING: SSH connectivity failed to {{ item.item }}"
+  loop: "{{ ssh_test.results }}"
+  when:
+    - item.rc is defined
+    - item.rc != 0
+  loop_control:
+    label: "{{ item.item | default('N/A') }}"

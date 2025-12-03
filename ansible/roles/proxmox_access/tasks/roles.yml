@@ -1,0 +1,28 @@
+---
+# tasks/roles.yml - Create custom Proxmox roles with specific privileges
+# Purpose: Define custom roles (e.g., TerraformUser) with granular permissions
+#
+# Note: Uses pveum command because community.proxmox doesn't have a role module yet
+
+- name: Check existing Proxmox roles
+  ansible.builtin.command: pveum role list
+  register: proxmox_access_existing_roles
+  changed_when: false
+  failed_when: false
+
+- name: Create custom Proxmox roles
+  ansible.builtin.command: >
+    pveum role add {{ item.name }}
+    -privs "{{ item.privileges | join(' ') }}"
+  loop: "{{ proxmox_roles }}"
+  when: item.name not in proxmox_access_existing_roles.stdout
+  register: proxmox_access_role_create_result
+  changed_when: proxmox_access_role_create_result.rc == 0
+
+- name: Display role creation status
+  ansible.builtin.debug:
+    msg: "Role '{{ item.item.name }}' {{ 'created' if item.changed else 'already exists' }}"
+  loop: "{{ proxmox_access_role_create_result.results }}"
+  when: proxmox_access_role_create_result.results is defined
+  loop_control:
+    label: "{{ item.item.name }}"

@@ -1,0 +1,139 @@
+---
+# Create OSDs from configuration with partition support
+
+- name: Get list of existing OSDs on this node
+  ansible.builtin.command: ceph osd tree --format json
+  register: existing_osds_json
+  changed_when: false
+  failed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+
+- name: Parse existing OSD count for this node
+  ansible.builtin.set_fact:
+    existing_osd_ids: "{{ (existing_osds_json.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | default([]) }}"
+  when:
+    - existing_osds_json.rc == 0
+    - existing_osds_json.stdout | length > 0
+
+- name: Calculate expected OSD count for this node
+  ansible.builtin.set_fact:
+    expected_osd_count: "{{ ceph_osds[inventory_hostname_short] | default([]) | map(attribute='partitions') | map('default', 1) | sum }}"
+
+- name: Display OSD creation plan
+  ansible.builtin.debug:
+    msg: |
+      Node: {{ inventory_hostname_short }}
+      Expected OSDs: {{ expected_osd_count }}
+      Existing OSDs: {{ existing_osd_ids | default([]) | length }}
+      Devices configured: {{ ceph_osds[inventory_hostname_short] | default([]) | length }}
+
+- name: Create OSDs from whole devices (partitions=1 or not specified)
+  ansible.builtin.command: >
+    pveceph osd create {{ item.device }}
+    {% if item.db_device is defined and item.db_device %}--db_dev {{ item.db_device }}{% endif %}
+    {% if item.wal_device is defined and item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %}
+    {% if item.crush_device_class is defined %}--crush-device-class {{ item.crush_device_class }}{% endif %}
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  loop_control:
+    label: "{{ item.device }}"
+  when:
+    - item.partitions | default(1) == 1
+    - existing_osd_ids | default([]) | length < expected_osd_count | int
+  register: osd_create_whole
+  changed_when: "'successfully created' in osd_create_whole.stdout | default('')"
+  failed_when:
+    - osd_create_whole.rc != 0
+    - "'already in use' not in osd_create_whole.stderr | default('')"
+
+# Fix Bug #12: Implement ceph-volume lvm batch for multiple OSDs per device
+# Reference: https://docs.ceph.com/en/latest/cephadm/services/osd/
+# Reference: https://ceph.io/en/news/blog/2023/reef-osds-per-nvme/
+# pveceph does not support multiple OSDs per device. Use ceph-volume lvm batch instead.
+#
+# IMPORTANT: ceph-volume lvm batch requires clean devices. If transitioning from pveceph
+# to ceph-volume, existing OSDs must be destroyed first using ceph-volume lvm zap --destroy
+
+- name: Identify devices requiring multiple OSDs (partitions > 1)
+  ansible.builtin.set_fact:
+    multi_osd_devices: "{{ ceph_osds[inventory_hostname_short] | default([]) | selectattr('partitions', 'defined') | selectattr('partitions', 'gt', 1) | list }}"
+
+- name: Check for conflicting OSD configuration
+  ansible.builtin.debug:
+    msg: |
+      WARNING: This node has {{ existing_osd_ids | default([]) | length }} existing OSDs but expects {{ expected_osd_count }}.
+      If switching from single OSDs (pveceph) to multiple OSDs per device (ceph-volume),
+      you must first destroy existing OSDs and re-zap the devices.
+  when:
+    - multi_osd_devices | length > 0
+    - existing_osd_ids | default([]) | length > 0
+    - existing_osd_ids | default([]) | length != expected_osd_count | int
+
+- name: Display multi-OSD device plan
+  ansible.builtin.debug:
+    msg: |
+      Devices requiring multiple OSDs: {{ multi_osd_devices | length }}
+      {% for device in multi_osd_devices %}
+      - {{ device.device }}: {{ device.partitions }} OSDs
+      {% endfor %}
+  when: multi_osd_devices | length > 0
+
+- name: Create multiple OSDs per device using ceph-volume lvm batch
+  ansible.builtin.command: >
+    ceph-volume lvm batch
+    --osds-per-device {{ item.partitions }}
+    {% if item.crush_device_class is defined %}--crush-device-class {{ item.crush_device_class }}{% endif %}
+    {% if item.db_device is defined and item.db_device %}--db-devices {{ item.db_device }}{% endif %}
+    {% if item.wal_device is defined and item.wal_device %}--wal-devices {{ item.wal_device }}{% endif %}
+    --yes
+    {{ item.device }}
+  loop: "{{ multi_osd_devices }}"
+  loop_control:
+    label: "{{ item.device }} ({{ item.partitions }} OSDs)"
+  when:
+    - multi_osd_devices | length > 0
+    - existing_osd_ids | default([]) | length < expected_osd_count | int
+  register: osd_create_batch
+  changed_when: "'Created' in osd_create_batch.stdout | default('') or 'created' in osd_create_batch.stdout | default('')"
+  failed_when:
+    - osd_create_batch.rc != 0
+    - "'already created' not in osd_create_batch.stderr | default('')"
+    - "'already exists' not in osd_create_batch.stderr | default('')"
+
+- name: Wait for OSDs to come up
+  ansible.builtin.command: ceph osd tree --format json
+  register: osd_tree_final
+  changed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+  until: >
+    (osd_tree_final.stdout | from_json).nodes
+    | selectattr('type', 'equalto', 'host')
+    | selectattr('name', 'equalto', inventory_hostname_short)
+    | map(attribute='children')
+    | flatten
+    | list | length >= expected_osd_count | int
+  retries: 20
+  delay: 10
+  when:
+    - osd_create_whole is changed or osd_create_batch is changed
+
+- name: Get final OSD count for this node
+  ansible.builtin.command: ceph osd tree --format json
+  register: final_osd_tree_json
+  changed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+
+- name: Parse final OSD count for this node
+  ansible.builtin.set_fact:
+    final_osd_count: "{{ (final_osd_tree_json.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | list | length }}"
+
+- name: Verify OSD count matches expectation
+  ansible.builtin.assert:
+    that:
+      - final_osd_count | int >= expected_osd_count | int
+    fail_msg: "Expected {{ expected_osd_count }} OSDs, but only {{ final_osd_count }} are active"
+    success_msg: "All {{ expected_osd_count }} OSDs successfully created and active"
+  when: not ansible_check_mode
+
+- name: Display OSD creation status
+  ansible.builtin.debug:
+    msg: "OSDs on {{ inventory_hostname }}: {{ final_osd_count }}/{{ expected_osd_count }} OSDs active"

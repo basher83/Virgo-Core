@@ -1,0 +1,151 @@
+---
+# ⚠️  DEPRECATED - This playbook is deprecated in favor of the system_user role
+# Use playbooks/create-admin-user.yml instead
+# This file will be removed in a future release (after Phase 1 migration testing)
+#
+# Migration: ansible/roles/system_user provides better flexibility and maintainability
+# See: docs/ansible-migration-plan.md
+
+# Playbook to create system users with sudo privileges
+# This playbook creates a user with home directory and configures sudoers
+
+- name: Add system user with sudo privileges
+  hosts: all
+  gather_facts: true
+  become: true
+
+  vars:
+    # User configuration
+    system_username: "terraform"
+    system_user_shell: "/bin/bash"
+    system_user_comment: "Terraform automation user"
+
+    # SSH authorized_keys file configuration
+    # Path to the authorized_keys file on the Ansible controller
+    # authorized_keys_file: "{{ playbook_dir }}/../files/terraform_authorized_keys"
+    # Already set via cloud-init
+
+    # Sudoers configuration
+    sudoers_commands:
+      - "/sbin/pvesm"
+      - "/sbin/qm"
+      - "/usr/bin/tee /var/lib/vz/*"
+
+  tasks:
+    - name: Check if user already exists
+      ansible.builtin.getent:
+        database: passwd
+        key: "{{ system_username }}"
+      register: user_check
+      failed_when: false
+
+    - name: Display user existence status
+      ansible.builtin.debug:
+        msg: "User '{{ system_username }}' {{ 'already exists' if (user_check.ansible_facts is defined and user_check.ansible_facts.getent_passwd is defined) else 'will be created' }}"
+
+    - name: Create system user with home directory
+      ansible.builtin.user:
+        name: "{{ system_username }}"
+        comment: "{{ system_user_comment }}"
+        shell: "{{ system_user_shell }}"
+        create_home: true
+        state: present
+      when: user_check.ansible_facts is not defined or user_check.ansible_facts.getent_passwd is not defined
+
+    - name: Ensure .ssh directory exists
+      ansible.builtin.file:
+        path: "/home/{{ system_username }}/.ssh"
+        state: directory
+        owner: "{{ system_username }}"
+        group: "{{ system_username }}"
+        mode: '0700'
+
+    - name: Copy authorized_keys file
+      ansible.builtin.copy:
+        src: "{{ authorized_keys_file }}"
+        dest: "/home/{{ system_username }}/.ssh/authorized_keys"
+        owner: "{{ system_username }}"
+        group: "{{ system_username }}"
+        mode: '0600'
+      register: ssh_key_result
+
+    - name: Display SSH key status
+      ansible.builtin.debug:
+        msg: "authorized_keys file {{ 'updated' if ssh_key_result.changed else 'already current' }} for {{ system_username }}"
+
+    - name: Create sudoers.d directory if it doesn't exist
+      ansible.builtin.file:
+        path: /etc/sudoers.d
+        state: directory
+        owner: root
+        group: root
+        mode: '0750'
+
+    - name: Configure sudo privileges for user
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/sudoers.j2"
+        dest: "/etc/sudoers.d/{{ system_username }}"
+        owner: root
+        group: root
+        mode: '0440'
+        validate: '/usr/sbin/visudo -cf %s'
+      register: sudoers_result
+
+    - name: Display sudoers configuration status
+      ansible.builtin.debug:
+        msg: "Sudoers file for '{{ system_username }}' has been {{ 'updated' if sudoers_result.changed else 'verified' }}"
+
+    - name: Verify user was created successfully
+      ansible.builtin.command: id {{ system_username }}
+      register: user_id
+      changed_when: false
+
+    - name: Display user information
+      ansible.builtin.debug:
+        msg: "{{ user_id.stdout }}"
+
+    - name: Test sudo access (dry run)
+      ansible.builtin.shell: |
+        sudo -l -U {{ system_username }} | grep -E '({{ sudoers_commands | join("|") }})'
+      register: sudo_test
+      changed_when: false
+      failed_when: false
+
+    - name: Display sudo privileges
+      ansible.builtin.debug:
+        msg: |
+          Sudo privileges configured for {{ system_username }}:
+          {{ sudo_test.stdout_lines | default(['No output from sudo -l']) | join('\n          ') }}
+
+    - name: Test passwordless sudo with actual command
+      ansible.builtin.command: sudo -u {{ system_username }} sudo /sbin/pvesm apiinfo
+      register: sudo_command_test
+      changed_when: false
+      failed_when: false
+
+    - name: Display passwordless sudo test result
+      ansible.builtin.debug:
+        msg: |
+          Passwordless sudo test for {{ system_username }}:
+          Status: {{ 'SUCCESS ✓' if sudo_command_test.rc == 0 else 'FAILED ✗' }}
+          {% if sudo_command_test.rc == 0 %}
+          Output: {{ sudo_command_test.stdout_lines | join('\n          ') }}
+          {% else %}
+          Error: {{ sudo_command_test.stderr | default('Command failed') }}
+          {% endif %}
+
+    - name: Summary of configuration
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          Configuration Summary for {{ inventory_hostname }}
+          ========================================
+          User: {{ system_username }}
+          Shell: {{ system_user_shell }}
+          Home: /home/{{ system_username }}
+          SSH Keys File: {{ 'Configured' if ssh_key_result.changed is defined else 'Not configured' }}
+          Sudoers File: /etc/sudoers.d/{{ system_username }}
+          Passwordless Sudo: {{ 'Working ✓' if sudo_command_test.rc == 0 else 'Check logs ✗' }}
+
+          Test SSH connection from your machine:
+          ssh {{ system_username }}@{{ ansible_host | default(inventory_hostname) }} sudo pvesm apiinfo

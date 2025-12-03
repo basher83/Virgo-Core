@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- OpenTofu-like Cube/Block -->
+  <path d="M50 15 L85 35 V75 L50 95 L15 75 V35 Z" fill="#FFDA1A" stroke="#000" stroke-width="0"/>
+  <path d="M50 15 L85 35 L50 55 L15 35 Z" fill="#FFEA60"/>
+  <path d="M85 35 V75 L50 95 L50 55 Z" fill="#E6C200"/>
+  <path d="M15 35 V75 L50 95 L50 55 Z" fill="#FFDA1A"/>
+</svg>

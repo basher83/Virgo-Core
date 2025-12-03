@@ -1,0 +1,26 @@
+---
+# ansible/roles/system_user/tasks/create_users.yml
+# Create or update system users
+
+- name: Create/update system user {{ user_item.name }}
+  ansible.builtin.user:
+    name: "{{ user_item.name }}"
+    comment: "{{ user_item.comment | default('') }}"
+    shell: "{{ user_item.shell | default('/bin/bash') }}"
+    groups: "{{ user_item.groups | default([]) }}"
+    create_home: "{{ user_item.create_home | default(true) }}"
+    state: present
+  register: system_user_create_result
+
+- name: Display user creation status
+  ansible.builtin.debug:
+    msg: "User '{{ user_item.name }}' {{ 'created' if system_user_create_result.changed else 'already exists and is up to date' }}"
+
+- name: Ensure .ssh directory exists for {{ user_item.name }}
+  ansible.builtin.file:
+    path: "/home/{{ user_item.name }}/.ssh"
+    state: directory
+    owner: "{{ user_item.name }}"
+    group: "{{ user_item.name }}"
+    mode: '0700'
+  when: user_item.ssh_keys is defined and user_item.ssh_keys | length > 0

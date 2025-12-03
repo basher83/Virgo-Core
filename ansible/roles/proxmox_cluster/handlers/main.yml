@@ -1,0 +1,27 @@
+---
+# Handlers for proxmox_cluster role
+
+- name: Reload corosync
+  ansible.builtin.systemd:
+    name: corosync
+    state: reloaded
+  listen: reload corosync
+
+- name: Restart pve-cluster
+  ansible.builtin.systemd:
+    name: pve-cluster
+    state: restarted
+  listen: restart pve-cluster
+  throttle: 1  # Restart one node at a time
+
+- name: Restart pvedaemon
+  ansible.builtin.systemd:
+    name: pvedaemon
+    state: restarted
+  listen: restart pvedaemon
+
+- name: Restart pveproxy
+  ansible.builtin.systemd:
+    name: pveproxy
+    state: restarted
+  listen: restart pveproxy

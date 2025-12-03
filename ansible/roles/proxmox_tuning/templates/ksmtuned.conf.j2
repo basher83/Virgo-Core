@@ -1,0 +1,23 @@
+# Configuration file for ksmtuned
+# Managed by Ansible - proxmox_tuning role
+# Profile: {{ proxmox_tuning_profile }}
+
+# How long ksmtuned should sleep between tuning adjustments (seconds)
+KSM_MONITOR_INTERVAL=60
+
+# Millisecond sleep between ksm scans for 16Gb server
+# Smaller servers sleep more, bigger sleep less
+KSM_SLEEP_MSEC={{ ksm_sleep_millisecs }}
+
+# Page scanning bounds
+KSM_NPAGES_BOOST=300
+KSM_NPAGES_DECAY=-50
+KSM_NPAGES_MIN={{ ksm_pages_to_scan }}
+KSM_NPAGES_MAX={{ ksm_pages_to_scan * 10 }}
+
+# Memory threshold coefficient (% of total RAM as threshold)
+KSM_THRES_COEF=20
+KSM_THRES_CONST=2048
+
+# Metric for calculating QEMU memory usage
+KSM_PS_METRIC=pss

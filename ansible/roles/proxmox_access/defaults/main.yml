@@ -1,0 +1,152 @@
+---
+# defaults/main.yml - Default variables for proxmox_access role
+# Purpose: Provide sensible defaults and document all available variables
+
+# =============================================================================
+# Proxmox API Connection
+# =============================================================================
+
+# API host (defaults to current node's management IP)
+# noqa: var-naming[no-role-prefix] - Public API variable
+proxmox_api_host: "{{ ansible_default_ipv4.address }}"
+
+# SSL certificate validation (set to true in production with valid certs)
+proxmox_validate_certs: false  # noqa: var-naming[no-role-prefix]
+
+# Suppress sensitive output in logs (passwords, tokens)
+proxmox_no_log: true  # noqa: var-naming[no-role-prefix]
+
+# =============================================================================
+# Infisical Secret Management (Optional)
+# =============================================================================
+
+# Infisical configuration - only required if using Infisical for secrets
+# If not set, proxmox_api_user and proxmox_api_password must be provided directly
+
+# infisical_project_id: '7b832220-24c0-45bc-a5f1-ce9794a31259'
+# infisical_env: 'prod'
+# infisical_path: '/matrix-cluster'
+
+# =============================================================================
+# Proxmox Roles
+# =============================================================================
+
+# List of custom Proxmox roles to create
+# Each role defines a set of privileges that can be assigned via ACLs
+proxmox_roles: []  # noqa: var-naming[no-role-prefix]
+# Example:
+# proxmox_roles:
+#   - name: TerraformUser
+#     privileges:
+#       - Datastore.Allocate
+#       - Datastore.AllocateSpace
+#       - Datastore.AllocateTemplate
+#       - Datastore.Audit
+#       - Pool.Allocate
+#       - Sys.Audit
+#       - Sys.Console
+#       - Sys.Modify
+#       - SDN.Use
+#       - VM.Allocate
+#       - VM.Audit
+#       - VM.Clone
+#       - VM.Config.CDROM
+#       - VM.Config.Cloudinit
+#       - VM.Config.CPU
+#       - VM.Config.Disk
+#       - VM.Config.HWType
+#       - VM.Config.Memory
+#       - VM.Config.Network
+#       - VM.Config.Options
+#       - VM.Migrate
+#       - VM.Monitor
+#       - VM.PowerMgmt
+#       - User.Modify
+
+# =============================================================================
+# Proxmox Groups
+# =============================================================================
+
+# List of Proxmox groups to create
+# Groups organize users for easier permission management
+proxmox_groups: []  # noqa: var-naming[no-role-prefix]
+# Example:
+# proxmox_groups:
+#   - name: terraform-users
+#     comment: "Automation users for Terraform/OpenTofu"
+#     state: present
+#   - name: api-users
+#     comment: "General API access users"
+
+# =============================================================================
+# Proxmox Users
+# =============================================================================
+
+# List of Proxmox users to create
+# Note: PAM users (@pam) must exist as Linux users first
+# Use system_user role to create Linux users before running this role
+proxmox_users: []  # noqa: var-naming[no-role-prefix]
+# Example:
+# proxmox_users:
+#   - userid: terraform@pam
+#     groups:
+#       - terraform-users
+#     comment: "Terraform automation user"
+#     email: terraform@example.com
+#     state: present
+#   - userid: api_user@pve
+#     groups:
+#       - api-users
+#     comment: "PVE realm API user"
+
+# =============================================================================
+# API Tokens
+# =============================================================================
+
+# List of API tokens to generate for users
+# Tokens provide passwordless API access (recommended for automation)
+proxmox_tokens: []  # noqa: var-naming[no-role-prefix]
+# Example:
+# proxmox_tokens:
+#   - userid: terraform@pam
+#     tokenid: automation
+#     privsep: false  # false = token inherits user permissions
+#     comment: "Terraform automation token"
+#     state: present
+#     # expire: 0  # 0 = no expiration (default)
+
+# =============================================================================
+# Access Control Lists (ACLs)
+# =============================================================================
+
+# List of ACL rules to configure
+# ACLs grant specific roles to users/groups on paths/resources
+proxmox_acls: []  # noqa: var-naming[no-role-prefix]
+# Example:
+# proxmox_acls:
+#   - path: /
+#     type: group
+#     ugid: terraform-users
+#     roleid: TerraformUser
+#     state: present
+#   - path: /storage/local
+#     type: user
+#     ugid: api_user@pve
+#     roleid: PVEDatastoreUser
+
+# =============================================================================
+# Terraform Environment Export
+# =============================================================================
+
+# Whether to export Terraform/OpenTofu environment files
+export_terraform_env: false  # noqa: var-naming[no-role-prefix]
+
+# Directory for Terraform environment files
+terraform_env_dir: "{{ lookup('env', 'HOME') }}/tmp/.proxmox-terraform"  # noqa: var-naming[no-role-prefix]
+
+# =============================================================================
+# Validation & Safety
+# =============================================================================
+
+# Dry run mode (for testing, not yet implemented)
+# proxmox_dry_run: false

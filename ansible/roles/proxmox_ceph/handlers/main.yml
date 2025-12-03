@@ -1,0 +1,26 @@
+---
+# Handlers for proxmox_ceph role
+
+- name: Restart ceph-mon
+  ansible.builtin.systemd:
+    name: "ceph-mon@{{ inventory_hostname_short }}"
+    state: restarted
+  listen: restart ceph monitors
+
+- name: Restart ceph-mgr
+  ansible.builtin.systemd:
+    name: "ceph-mgr@{{ inventory_hostname_short }}"
+    state: restarted
+  listen: restart ceph managers
+
+- name: Restart all CEPH services
+  ansible.builtin.systemd:
+    name: ceph.target
+    state: restarted
+  listen: restart ceph
+  throttle: 1  # One node at a time
+
+- name: Reload CEPH configuration
+  ansible.builtin.command: ceph config dump
+  listen: reload ceph config
+  changed_when: false

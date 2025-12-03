@@ -1,0 +1,83 @@
+---
+# Prepare OSD disks (wipe if necessary with safety checks)
+
+- name: Validate safety flag for disk operations
+  ansible.builtin.assert:
+    that:
+      - ceph_wipe_disks | default(false) | bool or ceph_allow_zap_devices | default(false) | bool
+    fail_msg: |
+      Disk wiping requires explicit confirmation.
+      Set ceph_wipe_disks: true for fresh deployment (DESTRUCTIVE!)
+      or ceph_allow_zap_devices: true to allow zapping.
+      WARNING: This DESTROYS ALL DATA on configured devices
+    quiet: true
+  when: ceph_osds[inventory_hostname_short] is defined
+
+- name: Check if devices exist
+  ansible.builtin.stat:
+    path: "{{ item.device }}"
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  register: device_check
+  loop_control:
+    label: "{{ item.device }}"
+
+- name: Display devices to be used
+  ansible.builtin.debug:
+    msg: "OSD devices on {{ inventory_hostname }}: {{ ceph_osds[inventory_hostname_short] | map(attribute='device') | list | join(', ') }}"
+  when: ceph_osds[inventory_hostname_short] is defined
+
+- name: Check for existing OSDs on this node before zapping
+  ansible.builtin.command: ceph osd tree --format json
+  register: existing_osds_check
+  changed_when: false
+  failed_when: false
+  delegate_to: "{{ groups[cluster_group][0] }}"
+  when: ceph_allow_zap_devices | default(false) | bool
+
+- name: Parse existing OSD count before zapping
+  ansible.builtin.set_fact:
+    existing_osds_before_zap: "{{ (existing_osds_check.stdout | from_json).nodes | selectattr('type', 'equalto', 'host') | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='children') | flatten | list | length }}"
+    osd_count_check_successful: true
+  when:
+    - ceph_allow_zap_devices | default(false) | bool
+    - existing_osds_check.rc == 0
+    - existing_osds_check.stdout | length > 0
+
+- name: Set safe default if OSD count check failed
+  ansible.builtin.set_fact:
+    existing_osds_before_zap: 999  # High number prevents zapping
+    osd_count_check_successful: false
+  when:
+    - ceph_allow_zap_devices | default(false) | bool
+    - existing_osds_check.rc != 0 or existing_osds_check.stdout | length == 0
+
+- name: Wipe existing partitions on OSD devices (wipefs)
+  ansible.builtin.command: wipefs -a {{ item.device }}
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  when:
+    - ceph_wipe_disks | default(false) | bool
+    - item.device is defined
+  loop_control:
+    label: "{{ item.device }}"
+  register: wipe_result
+  changed_when: wipe_result.rc == 0
+  failed_when:
+    - wipe_result.rc != 0
+    - "'No such file or directory' not in wipe_result.stderr"
+
+- name: Zap devices with ceph-volume if needed (for re-deployment)
+  ansible.builtin.command: ceph-volume lvm zap {{ item.device }} --destroy
+  loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
+  when:
+    - ceph_allow_zap_devices | default(false) | bool
+    - not (ceph_wipe_disks | default(false) | bool)
+    - osd_count_check_successful | default(false) | bool
+    - existing_osds_before_zap | int == 0
+  loop_control:
+    label: "{{ item.device }}"
+  register: device_zap
+  changed_when: device_zap.rc == 0
+  failed_when:
+    - device_zap.rc != 0
+    - "'No LVM found' not in device_zap.stderr"
+    - "'not found' not in device_zap.stderr"

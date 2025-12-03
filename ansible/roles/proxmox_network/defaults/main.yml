@@ -1,0 +1,68 @@
+---
+# ansible/roles/proxmox_network/defaults/main.yml
+# Default variables for proxmox_network role
+# These can be overridden in playbooks, inventory, or group_vars
+
+# Network bridge configuration
+# Each bridge definition supports:
+#   - name: Bridge interface name (e.g., vmbr0, vmbr1)
+#   - interface: Physical interface to bridge
+#   - address: IP address with CIDR notation
+#   - gateway: Default gateway (optional, usually only on management bridge)
+#   - vlan_aware: Enable VLAN filtering (true/false)
+#   - vlan_ids: List of VLAN IDs or range (e.g., [9] or "2-4094")
+#   - mtu: MTU size (optional, default 1500)
+#   - comment: Description for documentation
+proxmox_bridges: []  # noqa: var-naming[no-role-prefix]
+
+# Example bridge configuration:
+# proxmox_bridges:
+#   - name: vmbr0
+#     interface: enp4s0
+#     address: "192.168.3.{{ node_id }}/24"
+#     gateway: 192.168.3.1
+#     vlan_aware: true
+#     vlan_ids: [9]
+#     comment: "Management network"
+#
+#   - name: vmbr1
+#     interface: enp5s0f0np0
+#     address: "192.168.5.{{ node_id }}/24"
+#     mtu: 9000
+#     comment: "CEPH Public network"
+
+# VLAN subinterface configuration
+# Each VLAN definition supports:
+#   - id: VLAN ID number
+#   - raw_device: Parent interface (usually a bridge)
+#   - address: IP address with CIDR notation
+#   - comment: Description for documentation
+proxmox_vlans: []  # noqa: var-naming[no-role-prefix]
+
+# Example VLAN configuration:
+# proxmox_vlans:
+#   - id: 9
+#     raw_device: vmbr0
+#     address: "192.168.8.{{ node_id }}/24"
+#     comment: "Corosync network"
+
+# Backup configuration before making changes
+proxmox_network_backup: true
+
+# Reload network after configuration changes
+proxmox_network_reload: true
+
+# Verify network configuration after changes
+proxmox_network_verify: true
+
+# Dry run mode - check configuration without applying
+proxmox_network_dry_run: false
+
+# Network configuration file
+proxmox_network_interfaces_file: "/etc/network/interfaces"
+
+# Default MTU for standard networks
+proxmox_network_default_mtu: 1500
+
+# Jumbo frames MTU for storage networks
+proxmox_network_jumbo_mtu: 9000

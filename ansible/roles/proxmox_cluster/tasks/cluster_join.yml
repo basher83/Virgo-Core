@@ -1,0 +1,78 @@
+---
+# Join additional nodes to Proxmox cluster
+
+- name: Set corosync link0 address for this node
+  ansible.builtin.set_fact:
+    corosync_link0_address: "{{ cluster_nodes | selectattr('name', 'equalto', inventory_hostname_short) | map(attribute='corosync_ip') | first | default('') }}"
+  when: cluster_nodes | length > 0
+
+- name: Validate corosync address is set
+  ansible.builtin.assert:
+    that:
+      - corosync_link0_address is defined
+      - corosync_link0_address | length > 0
+    fail_msg: "Could not find corosync_ip for {{ inventory_hostname_short }} in cluster_nodes"
+    success_msg: "Corosync address validated: {{ corosync_link0_address }}"
+
+- name: Check if already in cluster
+  ansible.builtin.command: pvecm status
+  register: member_check
+  changed_when: false
+  failed_when: false
+
+- name: Get first node hostname
+  ansible.builtin.set_fact:
+    first_node: "{{ groups[cluster_group][0] }}"
+    first_node_hostname: "{{ cluster_nodes | selectattr('name', 'equalto', groups[cluster_group][0]) | map(attribute='hostname') | first | default('') }}"
+  when: cluster_nodes | length > 0
+
+- name: Validate first node hostname is set
+  ansible.builtin.assert:
+    that:
+      - first_node_hostname is defined
+      - first_node_hostname | length > 0
+    fail_msg: "Could not find hostname for first node {{ groups[cluster_group][0] }} in cluster_nodes"
+    success_msg: "First node hostname validated: {{ first_node_hostname }}"
+
+- name: Join cluster operation
+  block:
+    - name: Join cluster via SSH
+      ansible.builtin.command:
+        cmd: "pvecm add {{ first_node_hostname }} --link0 {{ corosync_link0_address }}"
+      when:
+        - member_check.rc != 0
+        - first_node_hostname is defined
+        - first_node_hostname | length > 0
+        - corosync_link0_address is defined
+        - corosync_link0_address | length > 0
+      register: cluster_join
+      changed_when: cluster_join.rc == 0
+      failed_when:
+        - cluster_join.rc != 0
+        - "'already part of a cluster' not in cluster_join.stderr"
+
+    - name: Wait for node to join cluster
+      ansible.builtin.command: pvecm status
+      register: join_status
+      until:
+        - "'Quorum information' in join_status.stdout"
+        - "'Quorate: Yes' in join_status.stdout"
+      retries: 15
+      delay: 5
+      changed_when: false
+      when: cluster_join is changed
+
+  rescue:
+    - name: Cluster join failed
+      ansible.builtin.fail:
+        msg: |
+          Failed to join cluster {{ cluster_name }}
+          Error: {{ cluster_join.stderr | default('Unknown error') }}
+          Verify SSH connectivity to {{ first_node_hostname }}
+          Check: pvecm status on {{ first_node }}
+
+- name: Display cluster join status
+  ansible.builtin.debug:
+    msg: |
+      Node {{ inventory_hostname }} join status: {{ 'Joined' if (cluster_join is defined and cluster_join is changed) else 'Already member' }}
+      Cluster: {{ cluster_name }}

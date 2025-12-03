@@ -1,14 +1,16 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with code in this repository.
 
 ## Repository Overview
 
-Virgo-Core is Infrastructure as Code for managing Proxmox VE homelab integration with NetBox and PowerDNS. The repository uses OpenTofu/Terraform for VM provisioning and Ansible for configuration management, targeting a 3-node Proxmox cluster named "Matrix" (nodes: Foxtrot, Golf, Hotel).
+Virgo-Core is Infrastructure as Code for managing a Proxmox VE homelab with NetBox and PowerDNS integration.
+The repository uses OpenTofu/Terraform for VM provisioning and Ansible for configuration management, targeting
+a 3-node Proxmox cluster named "Matrix" (nodes: Foxtrot, Golf, Hotel).
 
 ## Core Technologies
 
-- **OpenTofu**: v1.10.x (migrating from Terraform) for VM/template provisioning
+- **OpenTofu**: v1.10.x for VM/template provisioning
 - **Ansible**: For Proxmox configuration, template building, and system setup
 - **Python**: 3.13+ with `uv` for dependency management
 - **Mise**: Task runner and tool version manager
@@ -16,303 +18,115 @@ Virgo-Core is Infrastructure as Code for managing Proxmox VE homelab integration
 
 ## Claude Code Skills
 
-This repository includes **Agent Skills** that extend Claude Code's capabilities for infrastructure management. Skills are automatically activated based on your task:
+This repository includes an Agent Skill that extends Claude Code's capabilities:
 
-- **proxmox-infrastructure** - Proxmox VE cluster management, VM provisioning, template creation, CEPH storage
-- **netbox-powerdns-integration** - NetBox IPAM, PowerDNS DNS automation, dynamic inventory, naming conventions
-- **ansible-best-practices** - Ansible playbook patterns, Infisical secrets, idempotency, error handling
+- **ansible-best-practices** - Ansible playbook patterns, role design, Infisical secrets, idempotency, error handling
 
-**Skills Documentation:** [.claude/skills/README.md](.claude/skills/README.md)
+## Project Structure
 
-Skills include:
-- Reference documentation and workflows
-- Working tools (Python scripts, shell scripts)
-- Tutorial and integration examples
-- Best practices from this repository
+### Terraform/OpenTofu
 
-Example interactions:
-- "Help me create a Proxmox template" → Loads proxmox-infrastructure skill
-- "Set up DNS automation with NetBox" → Loads netbox-powerdns-integration skill
-- "Review this playbook for idempotency" → Loads ansible-best-practices skill
+- `terraform/netbox-template/` - VM template creation using external module
+- `terraform/netbox-vm/` - Single VM deployment using external module
 
-## Common Development Commands
+Both use the external module from `github.com/basher83/Triangulum-Prime//terraform-bgp-vm` which supports:
 
-### Initial Setup
+- `vm_type = "image"` - Downloads cloud image and creates template
+- `vm_type = "clone"` - Clones from existing template to create VMs
 
-```bash
-mise run setup           # Complete dev environment setup
-```
+**Key Principle**: Only specify values that differ from module defaults (see module's `DEFAULTS.md`)
 
-This runs `python-install`, `ansible-setup`, and `hooks-install`.
+### Ansible
 
-### OpenTofu/Terraform Operations
+**Migration Status**: Migrating to role-based architecture. See [docs/ansible-migration-plan.md](docs/ansible-migration-plan.md).
 
-```bash
-# Format and validation
-mise run fmt            # Format Terraform files
-mise run fmt-check      # Check formatting (CI-friendly)
-mise run prod-validate  # Validate configuration
+**Key Roles**:
 
-# Linting and checking
-mise run lint-prod      # Run TFLint
-mise run check          # Format, lint, and validate
-mise run full-check     # Complete validation (format, lint, docs, security)
-```
+- `system_user` - Linux user management with SSH keys and sudo
+- `proxmox_access` - Proxmox access control, users, tokens, ACLs
+- `proxmox_network` - Network bridges, VLANs, MTU configuration
+- `proxmox_repository` - APT repository and package management
+- `proxmox_cluster` - Cluster formation and corosync
+- `proxmox_ceph` - CEPH distributed storage deployment
 
-### Ansible Operations
+**Collections Used**: `community.proxmox`, `infisical.vault`, `ansible.posix`, `geerlingguy.docker`
 
-```bash
-mise run ansible-install  # Install Ansible Galaxy collections
-mise run ansible-ping     # Test connectivity to all hosts
-mise run ansible-lint     # Lint Ansible files
+## Important Project Conventions
 
-# Run playbooks directly
-cd ansible && uv run ansible-playbook playbooks/<playbook-name>.yml
-```
+- **Use `tofu` not `terraform`**: Repository has migrated to OpenTofu
+- **Ansible via uv**: Always prefix with `uv run` (e.g., `uv run ansible-playbook`)
+- **Mise for tasks**: Use `mise run <task>` for all common operations (see `.mise.toml`)
+- **Module defaults**: Don't repeat module defaults in Terraform configs
+- **Secrets management**: Infisical integration (never commit secrets)
+- **VLAN-aware bridges**: Network bridges support VLANs
 
-### Python/Dependencies
+## Multi-Agent Orchestration Patterns
 
-```bash
-mise run python-install  # Install dependencies (uv sync)
-mise run python-upgrade  # Upgrade dependencies
-mise run python-clean    # Clean virtual environment
-```
+This repository has proven multi-agent patterns for high-quality, efficient work:
 
-### Code Quality
+### Pattern 1: Parallel Scout Agents
 
-```bash
-mise run yaml-fmt        # Format YAML files
-mise run yaml-lint       # Lint YAML files
-mise run shellcheck      # Lint shell scripts
-mise run markdown-lint   # Lint Markdown files
-mise run lint-all        # Run all linters
-```
-
-### Git and Security
-
-```bash
-mise run hooks-install   # Install pre-commit and Infisical hooks
-mise run hooks-run       # Run pre-commit hooks manually
-mise run infisical-scan  # Scan for secrets
-```
-
-### Documentation
-
-```bash
-mise run changelog       # Update CHANGELOG.md using git-cliff
-mise run docs-check      # Check Terraform docs are up-to-date
-```
-
-## Architecture and Structure
-
-### Terraform/OpenTofu Structure
+For comprehensive codebase exploration, dispatch multiple general-purpose agents in parallel:
 
 ```text
-terraform/
-├── netbox-template/     # VM template creation with custom cloud-init
-│   ├── main.tf          # Uses 'image' vm_type to build templates
-│   ├── variables.tf
-│   └── provider.tf
-└── netbox-vm/           # Single VM deployment
-    ├── main.tf          # Uses 'clone' vm_type for VM provisioning
-    ├── variables.tf
-    ├── outputs.tf
-    └── provider.tf
+Launch 5 scouts simultaneously:
+- Agent 1: Explore root-level docs
+- Agent 2: Explore docs/ directory
+- Agent 3: Explore ansible/ structure
+- Agent 4: Explore terraform/ layout
+- Agent 5: Explore scripts/ utilities
 ```
 
-**Module Architecture**: Both deployments use an external unified VM module from `github.com/basher83/Triangulum-Prime//terraform-bgp-vm`. This module supports two `vm_type` values:
+**Why**: Provides complete repo overview in one shot for strategic planning.
 
-- `vm_type = "image"`: Downloads cloud image and creates a template
-- `vm_type = "clone"`: Clones from existing template to create VMs
+### Pattern 2: Creation + Polish Pipeline
 
-**Key Principles**:
+For documentation tasks requiring quality writing:
 
-- Follow DRY: Only specify values that differ from module defaults
-- Module defaults documented in referenced repository's `DEFAULTS.md`
-- Templates use minimal resources (refined during cloning)
-- VMs use production-ready resources (CPU, memory, disk customized)
+**Wave 1** - Create content in parallel (3+ agents)
+**Wave 2** - Polish with Elements of Style skill in parallel
 
-### Ansible Structure
+Each agent in Wave 2 must:
 
-```text
-ansible/
-├── playbooks/
-│   ├── proxmox-build-template.yml         # Build Ubuntu cloud-init templates
-│   ├── proxmox-create-terraform-user.yml  # Configure Proxmox for Terraform
-│   ├── proxmox-enable-vlan-bridging.yml   # Configure VLAN-aware bridges
-│   ├── install-docker.yml                  # Docker installation
-│   ├── add-system-user.yml                 # User management
-│   └── add-file-to-host.yml                # File deployment
-├── inventory/            # Proxmox hosts inventory
-├── roles/                # Custom Ansible roles
-├── tasks/                # Reusable task files
-├── templates/            # Jinja2 templates
-├── group_vars/           # Group variables
-├── host_vars/            # Host-specific variables
-├── requirements.yml      # Galaxy collections/roles
-└── ansible.cfg           # Ansible configuration
-```
+1. **First** invoke `elements-of-style:writing-clearly-and-concisely` skill using Skill tool
+2. **Then** apply skill guidance to polish the document
+3. Report improvements made
 
-**Ansible Collections Used**:
+**Why**: Skills provide more rigorous guidance than natural language instructions.
+Caught 15+ improvements that "follow Strunk's principles" instruction missed.
 
-- `community.proxmox`: Proxmox management modules
-- `community.general`: General utility modules
-- `infisical.vault`: Infisical secrets integration
-- `ansible.posix`: POSIX system management
-- `ansible.utils`: Network/data utilities
-- `community.docker`: Docker management
+### Pattern 3: Research → Validate → Execute
 
-**Ansible Roles**:
-
-- `geerlingguy.docker`: Docker installation and management
-
-### Important Files
-
-- `.mise.toml`: Task definitions and tool versions
-- `pyproject.toml`: Python project metadata and dependencies
-- `uv.lock`: Locked Python dependencies
-- `.pre-commit-config.yaml`: Pre-commit hooks configuration
-- `.opentofu-version`: Pinned OpenTofu version (1.10.0)
-- `.infisical.json`: Infisical secrets scanning configuration
-- `cliff.toml`: git-cliff changelog configuration
-
-## Infrastructure Details
-
-### Proxmox Cluster Configuration
-
-**Cluster Name**: Matrix
-
-**Nodes**: 3× MINISFORUM MS-A2 mini PCs (Foxtrot, Golf, Hotel)
-
-**Hardware per Node**:
-
-- AMD Ryzen 9 9955HX (16 cores / 32 threads)
-- 64GB DDR5 RAM (2× 32GB @ 5600 MT/s)
-- 3× NVMe drives:
-  - 1× 1TB Crucial P3 (boot disk, nvme0n1)
-  - 2× 4TB Samsung 990 PRO (CEPH storage, nvme1n1/nvme2n1)
-- 4× Network interfaces:
-  - 2× Intel X710 10GbE SFP+ (CEPH public/private, MTU 9000)
-  - 2× Realtek RTL8125 2.5GbE (management, one active)
-
-**Network Architecture**:
-
-- `vmbr0`: Management bridge (192.168.3.0/24) with VLAN 9 support
-- `vmbr1`: CEPH Public network (192.168.5.0/24, MTU 9000)
-- `vmbr2`: CEPH Private network (192.168.7.0/24, MTU 9000)
-- `vlan9`: Corosync network (192.168.8.0/24)
-
-**Storage**:
-
-- Boot disk: nvme0n1 (LVM)
-- CEPH OSD targets: nvme1n1, nvme2n1 (4 OSDs per node = 2 per NVMe)
-
-### NetBox + PowerDNS Integration
-
-The infrastructure aims to integrate:
-
-- **NetBox**: Single source of truth for IPAM and infrastructure documentation
-- **PowerDNS**: Authoritative DNS server with API integration
-- **NetBox PowerDNS Sync Plugin**: Automatic DNS record generation from NetBox data
-- **Diode + Orb Agent**: Automated network discovery
-
-**DNS Naming Convention**: `<service>-<number>-<purpose>.<domain>` (e.g., `docker-01-nexus.spaceships.work`)
-
-## Development Workflow
-
-### Pre-commit Hooks
-
-Pre-commit hooks run automatically on commit:
-
-- `uv-sync`: Ensure Python dependencies are synced
-- `trailing-whitespace`: Remove trailing whitespace
-- `end-of-file-fixer`: Ensure files end with newline
-- `check-yaml`: Validate YAML syntax
-- `check-json`: Validate JSON syntax
-- `check-added-large-files`: Prevent large files
-- `detect-private-key`: Detect private keys
-- `detect-aws-credentials`: Detect AWS credentials
-- `mise-terraform-fmt`: Auto-format Terraform files
-
-Additionally, Infisical pre-commit hook scans for secrets.
-
-### Working with Terraform/OpenTofu
-
-When working with Terraform deployments:
-
-1. Navigate to deployment directory (e.g., `terraform/netbox-vm/`)
-2. Initialize: `tofu init`
-3. Validate: `tofu validate`
-4. Plan: `tofu plan`
-5. Apply: `tofu apply`
-
-**Provider Authentication**: Set Proxmox credentials via environment variables:
+For technical configurations, use research tools before implementing:
 
 ```bash
-export PROXMOX_VE_USERNAME="root@pam"
-export PROXMOX_VE_PASSWORD="your-password"
-# OR use API token
-export PROXMOX_VE_API_TOKEN="user@realm!token-id=secret"
+./scripts/firecrawl_sdk_research.py "terraform-docs configuration usage" --limit 5
 ```
 
-### Working with Ansible
+**Why**: Verify against official documentation instead of guessing. Prevents trial-and-error loops.
 
-Ansible playbooks expect:
+### Pattern 4: Specialized Agents for Complex Workflows
 
-- Inventory configured in `ansible/inventory/`
-- Become/sudo enabled (configured in `ansible.cfg`)
-- SSH connectivity via SSH config or jumphost
-- Python 3 on target hosts
+Use predefined agents for multi-step processes:
 
-**Running playbooks**:
+- `commit-craft` - Creates atomic, conventional commits; discovers and fixes issues autonomously
+- `elements-of-style:writing-clearly-and-concisely` - Applies Strunk's principles rigorously
 
-```bash
-cd ansible
-uv run ansible-playbook playbooks/<playbook>.yml
-```
+**Why**: Specialized agents have workflows and can solve problems independently.
 
-**Testing connectivity**:
+### Key Learnings
 
-```bash
-mise run ansible-ping
-```
-
-## Testing and Validation
-
-Before committing:
-
-```bash
-mise run full-check  # Format, validate, lint, docs, and security scan
-```
-
-This runs:
-
-- `fmt-all`: Format Terraform and YAML
-- `validate-all`: Validate Terraform
-- `lint-all`: Lint shell, YAML, Markdown, Terraform, Ansible
-- `docs-check`: Check Terraform docs
-- `infisical-scan`: Scan for secrets
-
-## Goals and Future Development
-
-See `docs/goals.md` for detailed roadmap. Key objectives:
-
-- Ansible collection for complete Proxmox VE 9.x management
-- PVE networking automation (interfaces, corosync, VLANs, DNS, DHCP)
-- CEPH cluster configuration (monitors, managers, OSDs)
-- NetBox integration for IPAM and DNS automation
+1. **Skills beat instructions**: Invoking skills > describing principles in prompts
+2. **Parallel > Sequential**: Multiple scouts exploring simultaneously >> one at a time
+3. **Verify don't guess**: Research first (firecrawl) before implementing
+4. **Let agents solve problems**: Agents discover and fix issues autonomously (e.g., pre-commit hooks)
+5. **General-purpose agents work**: Most tasks used on-demand general-purpose agents, not predefined subagents
 
 ## Documentation
 
-- `docs/netbox-powerdns.md`: NetBox + PowerDNS integration architecture
-- `docs/goals.md`: Project goals and infrastructure specifications
-- `terraform/netbox-vm/README.md`: Comprehensive VM deployment guide with examples and troubleshooting
-
-## Important Notes
-
-- **Use `tofu` not `terraform`**: Repository is migrating to OpenTofu
-- **Ansible via uv**: Always prefix ansible commands with `uv run` (e.g., `uv run ansible-playbook`)
-- **Mise for tasks**: Use `mise run <task>` for all common operations
-- **Module defaults**: Don't repeat module defaults in Terraform configs (see module's DEFAULTS.md)
-- **Secrets management**: Infisical integration for secrets (never commit secrets)
-- **VLAN-aware bridges**: Network bridges support VLANs (see `bridge-vlan-aware yes` in Proxmox configs)
+- **[docs/README.md](docs/README.md)** - Documentation index with "Start Here" guide
+- **[docs/infrastructure.md](docs/infrastructure.md)** - Detailed infrastructure specifications (hardware, networking, storage)
+- **[docs/goals.md](docs/goals.md)** - Project goals and roadmap
+- **[docs/ansible-migration-plan.md](docs/ansible-migration-plan.md)** - Ansible role development plan
+- **[docs/netbox-powerdns.md](docs/netbox-powerdns.md)** - NetBox and PowerDNS integration architecture
+- **[terraform/netbox-vm/README.md](terraform/netbox-vm/README.md)** - VM deployment guide with examples

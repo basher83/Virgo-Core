@@ -1,0 +1,76 @@
+---
+# Playbook: Configure Network Infrastructure
+# Purpose: Configure Proxmox VE network bridges, VLANs, and MTU settings
+# Phase: Ansible Migration Phase 3
+#
+# This playbook uses the proxmox_network role to declaratively configure
+# network infrastructure across Proxmox VE clusters.
+#
+# Usage:
+#   # Standard deployment
+#   cd ansible && uv run ansible-playbook -i inventory/proxmox.yml playbooks/configure-network.yml
+#
+#   # Dry run (check mode)
+#   cd ansible && uv run ansible-playbook playbooks/configure-network.yml \
+#     -e "proxmox_network_dry_run=true" --check --diff
+#
+#   # Single host
+#   cd ansible && uv run ansible-playbook playbooks/configure-network.yml --limit foxtrot
+#
+# Related:
+#   - ansible/roles/proxmox_network/README.md
+#   - docs/ansible-migration-plan.md (Phase 3)
+
+- name: Configure Proxmox Network Infrastructure
+  hosts: "{{ target_cluster | default('all') }}"
+  gather_facts: true
+  become: true
+
+  # Example configuration (override in inventory or extra vars):
+  # vars:
+  #   proxmox_bridges:
+  #     - name: vmbr0
+  #       interface: enp4s0
+  #       address: "192.168.3.{{ node_id }}/24"
+  #       gateway: 192.168.3.1
+  #       vlan_aware: true
+  #       vlan_ids: [9]
+  #       comment: "Management network"
+
+  pre_tasks:
+    - name: Display target hosts
+      ansible.builtin.debug:
+        msg:
+          - "Configuring network on: {{ inventory_hostname }}"
+          - "Site/Group: {{ group_names }}"
+          - "Ansible host: {{ ansible_host | default(inventory_hostname) }}"
+      tags: [always]
+
+    - name: Check for required variables
+      ansible.builtin.assert:
+        that:
+          - proxmox_bridges is defined or proxmox_vlans is defined
+        fail_msg: "No network configuration defined. Set proxmox_bridges or proxmox_vlans."
+        success_msg: "Network configuration variables found"
+      tags: [always]
+
+  roles:
+    - role: proxmox_network
+      tags: [proxmox_network]
+
+  post_tasks:
+    - name: Test network connectivity
+      ansible.builtin.ping:
+      register: connectivity_test
+      failed_when: false
+      tags: [verify]
+
+    - name: Display connectivity status
+      ansible.builtin.debug:
+        msg: >
+          {% if connectivity_test is success %}
+          ✓ Network connectivity verified on {{ inventory_hostname }}
+          {% else %}
+          ✗ Warning: Network connectivity test failed on {{ inventory_hostname }}
+          {% endif %}
+      tags: [verify]

@@ -1,0 +1,94 @@
+---
+# Playbook: Manage Administrative User
+# Purpose: Create or remove admin user with SSH and sudo access using system_user role
+# Role: ansible/roles/system_user
+# Usage:
+#   # Create user:
+#   uv run ansible-playbook -i inventory/proxmox.yml playbooks/create-admin-user.yml \
+#     -e "admin_name=myuser" \
+#     -e "admin_ssh_key='ssh-rsa AAAAB3...'"
+#
+#   # Remove user:
+#   uv run ansible-playbook -i inventory/proxmox.yml playbooks/create-admin-user.yml \
+#     -e "admin_name=myuser" \
+#     -e "admin_state=absent"
+
+- name: Manage Administrative User
+  hosts: "{{ target_cluster | default('all') }}"
+  gather_facts: true
+  become: true
+
+  pre_tasks:
+    - name: Set default state
+      ansible.builtin.set_fact:
+        admin_state_value: "{{ admin_state | default('present') }}"
+
+    - name: Validate required variables are provided
+      ansible.builtin.assert:
+        that:
+          - admin_name is defined
+          - admin_name | length > 0
+          - (admin_state_value == 'absent') or (admin_ssh_key is defined and admin_ssh_key | length > 0)
+        fail_msg: "admin_name is required. admin_ssh_key is required when creating (state=present)"
+        success_msg: "All required variables are present"
+
+    - name: Set default values for optional variables
+      ansible.builtin.set_fact:
+        admin_shell_value: "{{ admin_shell | default('/bin/bash') }}"
+        admin_comment_value: "{{ admin_comment | default('System Administrator') }}"
+      when: admin_state_value == 'present'
+
+    - name: Display configuration summary
+      ansible.builtin.debug:
+        msg: |
+          {{ 'Creating' if admin_state_value == 'present' else 'Removing' }} administrative user with the following configuration:
+          - Username: {{ admin_name }}
+          - State: {{ admin_state_value }}
+          {% if admin_state_value == 'present' %}
+          - Shell: {{ admin_shell_value }}
+          - Comment: {{ admin_comment_value }}
+          - Groups: [sudo]
+          - Sudo Access: Full (NOPASSWD:ALL)
+          - SSH Key: {{ admin_ssh_key[:50] }}...
+          {% endif %}
+
+  roles:
+    - role: system_user
+      vars:
+        system_users:
+          - name: "{{ admin_name }}"
+            state: "{{ admin_state_value }}"
+            comment: "{{ admin_comment_value | default('') }}"
+            shell: "{{ admin_shell_value | default('/bin/bash') }}"
+            groups: "{{ [] if admin_state_value == 'absent' else ['sudo'] }}"
+            ssh_keys: "{{ [] if admin_state_value == 'absent' else [admin_ssh_key] }}"
+            sudo_nopasswd: "{{ false if admin_state_value == 'absent' else true }}"
+
+  post_tasks:
+    - name: Display success message (user created)
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          User Creation Complete
+          ========================================
+          User '{{ admin_name }}' has been configured on {{ inventory_hostname }}
+
+          Test SSH connection:
+            ssh {{ admin_name }}@{{ ansible_host | default(inventory_hostname) }}
+
+          Test sudo access:
+            ssh {{ admin_name }}@{{ ansible_host | default(inventory_hostname) }} sudo id
+      when: admin_state_value == 'present'
+
+    - name: Display success message (user removed)
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          User Removal Complete
+          ========================================
+          User '{{ admin_name }}' has been removed from {{ inventory_hostname }}
+
+          Verify removal:
+            ssh root@{{ ansible_host | default(inventory_hostname) }} "id {{ admin_name }}"
+            (Expected: 'no such user' error - confirms removal)
+      when: admin_state_value == 'absent'

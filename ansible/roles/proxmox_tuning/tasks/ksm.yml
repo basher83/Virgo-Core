@@ -1,0 +1,20 @@
+---
+# KSM (Kernel Samepage Merging) tuning tasks
+# Proxmox includes ksmtuned which auto-tunes KSM based on memory pressure
+# We configure it rather than replacing it
+
+- name: Configure ksmtuned settings
+  ansible.builtin.template:
+    src: ksmtuned.conf.j2
+    dest: /etc/ksmtuned.conf
+    owner: root
+    group: root
+    mode: "0644"
+    backup: true
+  notify: Restart ksmtuned
+
+- name: Ensure ksmtuned is enabled and running
+  ansible.builtin.systemd:
+    name: ksmtuned
+    enabled: true
+    state: started

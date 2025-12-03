@@ -1,0 +1,113 @@
+---
+title: Virgo-Core Documentation
+description: Infrastructure as Code for Proxmox VE with NetBox and PowerDNS integration
+---
+
+<img
+  className="block dark:hidden"
+  src="/images/hero-light.svg"
+  alt="Virgo-Core Hero Light"
+/>
+<img
+  className="hidden dark:block"
+  src="/images/hero-dark.svg"
+  alt="Virgo-Core Hero Dark"
+/>
+
+## Welcome to Virgo-Core
+
+Virgo-Core automates the deployment and configuration of production-grade Proxmox VE clusters using modern Infrastructure as Code practices.
+
+<CardGroup cols={2}>
+  <Card
+    title="Quick Start"
+    icon="rocket"
+    href="/getting-started/prerequisites"
+  >
+    Get started with prerequisites and installation
+  </Card>
+  <Card
+    title="Infrastructure Specs"
+    icon="server"
+    href="/core/infrastructure"
+  >
+    Explore the hardware and network architecture
+  </Card>
+  <Card
+    title="Ansible Roles"
+    icon="code"
+    href="/design/ansible-philosophy"
+  >
+    Learn about the role-based automation architecture
+  </Card>
+</CardGroup>
+
+## Key Features
+
+<AccordionGroup>
+  <Accordion title="Complete Cluster Automation">
+    Initialize Proxmox clusters from bare metal to production-ready state with automated network configuration, CEPH storage, and cluster formation.
+  </Accordion>
+
+  <Accordion title="Production-Ready Ansible Roles">
+    6 production-quality roles with zero ansible-lint violations, perfect idempotency, and comprehensive documentation.
+  </Accordion>
+
+  <Accordion title="CEPH Distributed Storage">
+    Automated deployment of CEPH storage with 12 OSDs across 3 nodes, providing 12TB usable capacity with replication.
+  </Accordion>
+
+  <Accordion title="NetBox + PowerDNS Integration">
+    Automated DNS and IPAM synchronization for infrastructure management.
+  </Accordion>
+</AccordionGroup>
+
+
+## Technology Stack
+
+<CardGroup cols={3}>
+  <Card title="OpenTofu v1.10.x" icon="/logo/opentofu.svg">
+    VM and template provisioning
+  </Card>
+  <Card title="Ansible" icon="/logo/ansible.svg">
+    Configuration management
+  </Card>
+  <Card title="Proxmox VE 9.x" icon="/logo/proxmox.svg">
+    Virtualization platform
+  </Card>
+  <Card title="CEPH Storage" icon="/logo/ceph.svg">
+    Distributed storage
+  </Card>
+  <Card title="Python 3.13+" icon="/logo/python.svg">
+    Automation scripts
+  </Card>
+  <Card title="Infisical" icon="/logo/infisical.svg">
+    Secrets management
+  </Card>
+</CardGroup>
+
+## Quick Links
+
+<CardGroup cols={2}>
+  <Card
+    title="Ansible Architecture"
+    icon="book"
+    href="/design/ansible-philosophy"
+  >
+    Learn about the role-based automation design
+  </Card>
+  <Card
+    title="Infrastructure Roadmap"
+    icon="map"
+    href="/brainstorming/next-features-2025-11"
+  >
+    See planned features and development timeline
+  </Card>
+  <Card
+    title="GitHub Repository"
+    icon="github"
+    href="https://github.com/basher83/Virgo-Core"
+  >
+    View the source code and releases
+  </Card>
+</CardGroup>

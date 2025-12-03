@@ -1,0 +1,16 @@
+---
+# haveged entropy daemon configuration
+# Provides additional entropy for cryptographic operations
+# Prevents slowdowns when /dev/random blocks on low entropy
+
+- name: Install haveged package
+  ansible.builtin.apt:
+    name: haveged
+    state: present
+    update_cache: false
+
+- name: Enable and start haveged service
+  ansible.builtin.systemd:
+    name: haveged
+    enabled: true
+    state: started

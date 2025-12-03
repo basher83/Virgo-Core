@@ -1,0 +1,86 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Virgo-Core",
+  "theme": "linden",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/logo/favicon.svg",
+  "colors": {
+    "primary": "#00DC82",
+    "light": "#07C983",
+    "dark": "#00AE68"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "index",
+              "getting-started/prerequisites",
+              "getting-started/installation",
+              "getting-started/first-deployment",
+              "core/goals",
+              "core/infrastructure"
+            ]
+          },
+          {
+            "group": "Ansible Roles",
+            "pages": [
+              "roles/system_user",
+              "roles/proxmox_access",
+              "roles/proxmox_network",
+              "roles/proxmox_repository",
+              "roles/proxmox_cluster",
+              "roles/proxmox_ceph"
+            ]
+          },
+          {
+            "group": "Ansible Architecture",
+            "pages": [
+              "design/ansible-philosophy",
+              "design/ansible-design-patterns",
+              "design/ansible-role-design",
+              "design/ansible-playbook-design"
+            ]
+          },
+          {
+            "group": "Integration & Testing",
+            "pages": [
+              "core/netbox-powerdns",
+              "core/references"
+            ]
+          },
+          {
+            "group": "Roadmap",
+            "pages": [
+              "brainstorming/next-features-2025-11"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/basher83/Virgo-Core"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "v1.1.0",
+      "href": "https://github.com/basher83/Virgo-Core/releases/tag/v1.1.0"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/basher83/Virgo-Core"
+    }
+  }
+}

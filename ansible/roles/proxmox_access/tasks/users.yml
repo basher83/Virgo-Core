@@ -1,0 +1,55 @@
+---
+# tasks/users.yml - Create Proxmox users (PAM/PVE realms)
+# Purpose: Create Proxmox users and associate them with groups
+#
+# Note: Uses pveum command because community.proxmox.proxmox_user has limitations
+# with PAM realm users (they must exist as Linux users first)
+
+- name: Check existing Proxmox users
+  ansible.builtin.command: pveum user list
+  register: proxmox_access_existing_users
+  changed_when: false
+  failed_when: false
+
+- name: Create Proxmox users (PAM realm)
+  ansible.builtin.command: >
+    pveum user add {{ item.userid }}
+    {% if item.groups is defined and item.groups | length > 0 %}
+    --groups {{ item.groups | join(',') }}
+    {% endif %}
+    {% if item.comment is defined %}
+    --comment "{{ item.comment }}"
+    {% endif %}
+    {% if item.email is defined %}
+    --email {{ item.email }}
+    {% endif %}
+    {% if item.firstname is defined %}
+    --firstname "{{ item.firstname }}"
+    {% endif %}
+    {% if item.lastname is defined %}
+    --lastname "{{ item.lastname }}"
+    {% endif %}
+  loop: "{{ proxmox_users }}"
+  when:
+    - item.state | default('present') == 'present'
+    - item.userid not in proxmox_access_existing_users.stdout
+    - "'@pam' in item.userid"
+  register: proxmox_access_pam_user_create
+  changed_when: proxmox_access_pam_user_create.rc == 0
+
+- name: Remove Proxmox users
+  ansible.builtin.command: pveum user delete {{ item.userid }}
+  loop: "{{ proxmox_users }}"
+  when:
+    - item.state | default('present') == 'absent'
+    - item.userid in proxmox_access_existing_users.stdout
+  register: proxmox_access_user_delete
+  changed_when: proxmox_access_user_delete.rc == 0
+
+- name: Display user creation status
+  ansible.builtin.debug:
+    msg: "User '{{ item.item.userid }}' {{ 'created' if item.changed else 'already exists' }}"
+  loop: "{{ proxmox_access_pam_user_create.results | default([]) }}"
+  when: proxmox_access_pam_user_create.results is defined
+  loop_control:
+    label: "{{ item.item.userid }}"

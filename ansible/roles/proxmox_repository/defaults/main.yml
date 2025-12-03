@@ -1,0 +1,47 @@
+---
+# defaults file for proxmox_repository
+# noqa: var-naming[no-role-prefix] - This is the role's public API
+
+# Proxmox VE version
+proxmox_version: "9.0"
+
+# Repository configuration
+proxmox_enterprise_repo: false
+proxmox_no_subscription_repo: true
+proxmox_test_repo: false
+
+# CEPH version (squid for PVE 9.x)
+ceph_version: "squid"
+ceph_repo_enabled: false  # Let pveceph install manage CEPH repos
+
+# Package management
+proxmox_packages:
+  - proxmox-ve
+  - pve-kernel
+  - postfix
+  - open-iscsi
+
+# Automatic updates
+auto_update_packages: false
+auto_remove_old_kernels: false
+
+# System upgrade (apt dist-upgrade)
+run_system_upgrade: false
+system_upgrade_auto_reboot: false
+
+# APT cache update
+update_apt_cache: true
+
+# SSL/TLS certificate validation
+validate_certs: true
+
+# Subscription banner removal
+# Removes the "No valid subscription" nag from Proxmox web UI
+# Installs APT hook to persist across package updates
+remove_subscription_banner: false
+
+# pigz - Parallel gzip for faster backups
+# Replaces single-threaded gzip with multi-threaded pigz for vzdump
+# Significantly speeds up backup compression on multi-core systems
+pigz_enabled: false
+pigz_compression_level: 1  # 1-9, lower = faster, higher = smaller

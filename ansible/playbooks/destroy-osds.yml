@@ -1,0 +1,96 @@
+---
+# Playbook to destroy existing OSDs and clean devices
+# Use this when transitioning from pveceph to ceph-volume
+# WARNING: This will DESTROY ALL DATA on the specified OSDs
+
+- name: Destroy OSDs and prepare devices for ceph-volume
+  hosts: foxtrot
+  become: true
+  gather_facts: false
+
+  vars:
+    osds_to_destroy: [0, 1]  # OSD IDs to destroy
+    devices_to_zap:
+      - /dev/nvme1n1
+      - /dev/nvme2n1
+
+  tasks:
+    - name: Display warning
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          WARNING: OSD DESTRUCTION
+          ========================================
+          This will destroy OSDs: {{ osds_to_destroy | join(', ') }}
+          This will zap devices: {{ devices_to_zap | join(', ') }}
+          ALL DATA WILL BE LOST
+          ========================================
+
+    - name: Check current OSD status
+      ansible.builtin.command: ceph osd tree
+      register: osd_tree_before
+      changed_when: false
+
+    - name: Display current OSD tree
+      ansible.builtin.debug:
+        msg: "{{ osd_tree_before.stdout_lines }}"
+
+    - name: Mark OSDs as out
+      ansible.builtin.command: "ceph osd out osd.{{ item }}"
+      loop: "{{ osds_to_destroy }}"
+      register: osd_out
+      changed_when: "'marked out' in osd_out.stdout"
+      failed_when:
+        - osd_out.rc != 0
+        - "'not exist' not in osd_out.stderr"
+
+    - name: Stop OSD services
+      ansible.builtin.systemd:
+        name: "ceph-osd@{{ item }}.service"
+        state: stopped
+      loop: "{{ osds_to_destroy }}"
+      failed_when: false
+
+    - name: Purge OSDs from cluster
+      ansible.builtin.command: "ceph osd purge osd.{{ item }} --yes-i-really-mean-it"
+      loop: "{{ osds_to_destroy }}"
+      register: osd_purge
+      changed_when: osd_purge.rc == 0
+      failed_when:
+        - osd_purge.rc != 0
+        - "'does not exist' not in osd_purge.stderr"
+
+    - name: Zap devices to clean LVM/partitions
+      ansible.builtin.command: "ceph-volume lvm zap {{ item }} --destroy"
+      loop: "{{ devices_to_zap }}"
+      register: device_zap
+      changed_when: device_zap.rc == 0
+
+    - name: Verify OSD tree is clean
+      ansible.builtin.command: ceph osd tree
+      register: osd_tree_after
+      changed_when: false
+
+    - name: Display final OSD tree
+      ansible.builtin.debug:
+        msg: "{{ osd_tree_after.stdout_lines }}"
+
+    - name: Check LVM status
+      ansible.builtin.command: pvs
+      register: pvs_output
+      changed_when: false
+      failed_when: false
+
+    - name: Display LVM status
+      ansible.builtin.debug:
+        msg: "{{ pvs_output.stdout_lines }}"
+
+    - name: Success message
+      ansible.builtin.debug:
+        msg: |
+          ========================================
+          OSD DESTRUCTION COMPLETE
+          ========================================
+          Devices are now clean and ready for
+          ceph-volume lvm batch deployment
+          ========================================

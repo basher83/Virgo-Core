@@ -1,0 +1,17 @@
+---
+# Install/update Proxmox packages
+
+- name: Install Proxmox packages
+  ansible.builtin.apt:
+    name: "{{ proxmox_packages }}"
+    state: "{{ 'latest' if auto_update_packages else 'present' }}"
+    update_cache: false
+  register: package_install
+  retries: 3
+  delay: 5
+  until: package_install is success
+
+- name: Display installed packages
+  ansible.builtin.debug:
+    msg: "Proxmox packages installed/updated: {{ proxmox_packages | join(', ') }}"
+  when: package_install is changed

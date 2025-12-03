@@ -1,0 +1,21 @@
+---
+# ansible/roles/system_user/tasks/remove_users.yml
+# Remove system users
+
+- name: Remove system user {{ user_item.name }}
+  ansible.builtin.user:
+    name: "{{ user_item.name }}"
+    state: absent
+    remove: true
+  register: system_user_remove_result
+
+- name: Display user removal status
+  ansible.builtin.debug:
+    msg: "User '{{ user_item.name }}' {{ 'removed' if system_user_remove_result.changed else 'was already absent' }}"
+
+- name: Remove sudoers file for {{ user_item.name }}  # noqa: no-handler
+  ansible.builtin.file:
+    path: "/etc/sudoers.d/{{ user_item.name }}"
+    state: absent
+  when: system_user_remove_result.changed
+  # Not a handler - this is conditional cleanup logic tied to user removal
