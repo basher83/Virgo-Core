@@ -90,7 +90,11 @@ cleanup() {
         log_error "Script failed with exit code: $exit_code"
         if [[ "$VM_CREATION_STARTED" == "true" ]] && [[ -n "${VM_ID:-}" ]]; then
             log_info "Attempting to clean up partial VM creation..."
-            qm destroy "$VM_ID" 2>/dev/null || true
+            if qm destroy "$VM_ID" 2>&1 | tee -a "$LOG_FILE"; then
+                log_info "Successfully cleaned up partial VM ${VM_ID}"
+            else
+                log_warn "Cleanup of VM ${VM_ID} failed - manual cleanup may be required"
+            fi
         fi
         echo -e "${RED}Script failed! Check the log for details: $LOG_FILE${NC}"
     fi
@@ -105,7 +109,7 @@ VM_ID=${VM_ID:-9000}
 VM_NAME=${VM_NAME:-"template"}
 VM_IMAGE=${VM_IMAGE:-""}
 # Optional Values
-VM_BIOS=${VM_BIOS:-"seabios"}
+VM_BIOS=${VM_BIOS:-"ovmf"}
 VM_CPU_CORES=${VM_CPU_CORES:-1}
 VM_CPU_SOCKETS=${VM_CPU_SOCKETS:-1}
 VM_CPU_TYPE=${VM_CPU_TYPE:-"host"}
@@ -120,7 +124,7 @@ VM_NET_GW=${VM_NET_GW:-""}
 # ====================================================================
 # ENHANCEMENT 5: Dual network interface support
 # Author: basher83
-# Date: September 2025
+# Date: December 2024
 #
 # This enhancement extends the original script to support dual network
 # interfaces on Proxmox VMs. This is particularly useful for VMs that
@@ -475,18 +479,10 @@ function main() {
   fi
 
   # create a new VM
-  # Create base command
-  local qm_cmd="/usr/sbin/qm create ${VM_ID} --name ${VM_NAME} \
-    --description \"template created on $(date)\" \
-    --ostype ${VM_OS} \
-    --bios ${VM_BIOS} --machine ${VM_MACHINE} \
-    --scsihw ${VM_SCSIHW} --agent enabled=1 \
-    --cores ${VM_CPU_CORES} --sockets ${VM_CPU_SOCKETS} --cpu ${VM_CPU_TYPE} --memory ${VM_MEMORY} \
-    --net0 ${VM_NET_TYPE},bridge=${VM_NET_BRIDGE}"
-
-  # Add VLAN tag if specified
+  # Build net0 parameter with proper quoting
+  local net0_param="${VM_NET_TYPE},bridge=${VM_NET_BRIDGE}"
   if [ -n "${VM_NET_VLAN}" ]; then
-    qm_cmd="${qm_cmd},tag=${VM_NET_VLAN}"
+    net0_param="${net0_param},tag=${VM_NET_VLAN}"
   fi
 
   # ====================================================================
@@ -494,14 +490,12 @@ function main() {
   # This code implements dual network support for VMs that need to span
   # multiple network segments or require network isolation between services.
   # ====================================================================
-  # Add second network interface if bridge is specified
+  # Build net1 parameter if second network interface is specified
+  local net1_param=""
   if [ -n "${VM_NET2_BRIDGE}" ]; then
-    qm_cmd="${qm_cmd} \
-    --net1 ${VM_NET2_TYPE},bridge=${VM_NET2_BRIDGE}"
-
-    # Add VLAN tag if specified for second interface
+    net1_param="${VM_NET2_TYPE},bridge=${VM_NET2_BRIDGE}"
     if [ -n "${VM_NET2_VLAN}" ]; then
-      qm_cmd="${qm_cmd},tag=${VM_NET2_VLAN}"
+      net1_param="${net1_param},tag=${VM_NET2_VLAN}"
     fi
   fi
 
@@ -509,8 +503,30 @@ function main() {
   if [[ "$DRY_RUN" == "false" ]]; then
     VM_CREATION_STARTED=true
     log_info "Creating VM ${VM_ID}..."
-    eval "${qm_cmd}"
+    if [ -n "${net1_param}" ]; then
+      /usr/sbin/qm create "${VM_ID}" --name "${VM_NAME}" \
+        --description "template created on $(date)" \
+        --ostype "${VM_OS}" \
+        --bios "${VM_BIOS}" --machine "${VM_MACHINE}" \
+        --scsihw "${VM_SCSIHW}" --agent enabled=1 \
+        --cores "${VM_CPU_CORES}" --sockets "${VM_CPU_SOCKETS}" --cpu "${VM_CPU_TYPE}" --memory "${VM_MEMORY}" \
+        --net0 "${net0_param}" \
+        --net1 "${net1_param}"
+    else
+      /usr/sbin/qm create "${VM_ID}" --name "${VM_NAME}" \
+        --description "template created on $(date)" \
+        --ostype "${VM_OS}" \
+        --bios "${VM_BIOS}" --machine "${VM_MACHINE}" \
+        --scsihw "${VM_SCSIHW}" --agent enabled=1 \
+        --cores "${VM_CPU_CORES}" --sockets "${VM_CPU_SOCKETS}" --cpu "${VM_CPU_TYPE}" --memory "${VM_MEMORY}" \
+        --net0 "${net0_param}"
+    fi
   else
+    local qm_cmd
+    qm_cmd="/usr/sbin/qm create ${VM_ID} --name ${VM_NAME} --description \"template created on $(date)\" --ostype ${VM_OS} --bios ${VM_BIOS} --machine ${VM_MACHINE} --scsihw ${VM_SCSIHW} --agent enabled=1 --cores ${VM_CPU_CORES} --sockets ${VM_CPU_SOCKETS} --cpu ${VM_CPU_TYPE} --memory ${VM_MEMORY} --net0 ${net0_param}"
+    if [ -n "${net1_param}" ]; then
+      qm_cmd="${qm_cmd} --net1 ${net1_param}"
+    fi
     log_info "[DRY-RUN] Would execute: ${qm_cmd}"
   fi
 
@@ -537,17 +553,14 @@ function main() {
     fi
   fi
 
-  local cloudinit_cmd="/usr/sbin/qm set ${VM_ID} --ide2 ${VM_STORAGE}:cloudinit --ipconfig0 ${ipconfig0}"
-
   # ====================================================================
   # ENHANCEMENT 5: Second network interface cloud-init configuration
   # Configures IP settings for the second network interface through
   # Proxmox cloud-init. Supports both DHCP and static IP configuration.
   # ====================================================================
-  # Add ipconfig1 if second network interface is configured
+  # Build ipconfig1 if second network interface is configured
+  local ipconfig1=""
   if [ -n "${VM_NET2_BRIDGE}" ]; then
-    local ipconfig1=""
-
     # Configure second network interface
     if [ "${VM_NET2_IP}" = "dhcp" ]; then
       ipconfig1="ip=dhcp"
@@ -557,28 +570,41 @@ function main() {
         ipconfig1="${ipconfig1},gw=${VM_NET2_GW}"
       fi
     fi
-
-    cloudinit_cmd="${cloudinit_cmd} --ipconfig1 ${ipconfig1}"
-  fi
-
-  # Complete the command
-  cloudinit_cmd="${cloudinit_cmd} --citype nocloud --cicustom vendor=local:snippets/${VM_VENDOR_FILE}"
-
-  # ====================================================================
-  # ENHANCEMENT: Custom cloud-init username support
-  # - Allows setting custom default username instead of distro defaults
-  # - Useful for standardizing usernames across templates
-  # ====================================================================
-  # Add cloud-init username if provided
-  if [ -n "${VM_CI_USER}" ]; then
-    cloudinit_cmd="${cloudinit_cmd} --ciuser ${VM_CI_USER}"
   fi
 
   # Execute the command
   if [[ "$DRY_RUN" == "true" ]]; then
+    local cloudinit_cmd
+    cloudinit_cmd="/usr/sbin/qm set ${VM_ID} --ide2 ${VM_STORAGE}:cloudinit --ipconfig0 ${ipconfig0}"
+    if [ -n "${ipconfig1}" ]; then
+      cloudinit_cmd="${cloudinit_cmd} --ipconfig1 ${ipconfig1}"
+    fi
+    cloudinit_cmd="${cloudinit_cmd} --citype nocloud --cicustom vendor=local:snippets/${VM_VENDOR_FILE}"
+    if [ -n "${VM_CI_USER}" ]; then
+      cloudinit_cmd="${cloudinit_cmd} --ciuser ${VM_CI_USER}"
+    fi
     log_info "[DRY-RUN] Would run: ${cloudinit_cmd}"
   else
-    eval "${cloudinit_cmd}"
+    # ====================================================================
+    # ENHANCEMENT: Custom cloud-init username support
+    # - Allows setting custom default username instead of distro defaults
+    # - Useful for standardizing usernames across templates
+    # ====================================================================
+    if [ -n "${ipconfig1}" ] && [ -n "${VM_CI_USER}" ]; then
+      /usr/sbin/qm set "${VM_ID}" --ide2 "${VM_STORAGE}":cloudinit --ipconfig0 "${ipconfig0}" \
+        --ipconfig1 "${ipconfig1}" --citype nocloud --cicustom "vendor=local:snippets/${VM_VENDOR_FILE}" \
+        --ciuser "${VM_CI_USER}"
+    elif [ -n "${ipconfig1}" ]; then
+      /usr/sbin/qm set "${VM_ID}" --ide2 "${VM_STORAGE}":cloudinit --ipconfig0 "${ipconfig0}" \
+        --ipconfig1 "${ipconfig1}" --citype nocloud --cicustom "vendor=local:snippets/${VM_VENDOR_FILE}"
+    elif [ -n "${VM_CI_USER}" ]; then
+      /usr/sbin/qm set "${VM_ID}" --ide2 "${VM_STORAGE}":cloudinit --ipconfig0 "${ipconfig0}" \
+        --citype nocloud --cicustom "vendor=local:snippets/${VM_VENDOR_FILE}" \
+        --ciuser "${VM_CI_USER}"
+    else
+      /usr/sbin/qm set "${VM_ID}" --ide2 "${VM_STORAGE}":cloudinit --ipconfig0 "${ipconfig0}" \
+        --citype nocloud --cicustom "vendor=local:snippets/${VM_VENDOR_FILE}"
+    fi
   fi
 
   if [ "$VM_BIOS" = "ovmf" ]; then

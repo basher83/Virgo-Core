@@ -1,4 +1,15 @@
 ---
+# ⚠️ DEPRECATED: This playbook is deprecated and will be removed in a future release.
+# Please use the new role-based approach instead:
+#   - Playbook: ansible/playbooks/create-template.yml
+#   - Role: ansible/roles/proxmox_template
+#
+# The role-based approach provides better:
+#   - Modularity and reusability
+#   - Secret management (Infisical integration)
+#   - Error handling and verification
+#   - Documentation and test coverage
+#
 # Playbook to build a Proxmox VM template from cloud image
 # This playbook uses the build-template script to create templates with cloud-init vendor data
 - name: Build Proxmox VM template from cloud image

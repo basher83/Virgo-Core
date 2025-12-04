@@ -10,7 +10,7 @@
 
 - name: "build | Check if VM ID already exists"
   ansible.builtin.shell: |
-    set -o pipefail
+    set -euo pipefail
     qm list | awk '{print $1}' | grep -q "^{{ proxmox_template_id }}$"
   args:
     executable: /bin/bash
@@ -78,7 +78,7 @@
   ansible.builtin.command: "{{ _build_template_cmd }}"
   register: _build_output
   changed_when: _build_output.rc == 0
-  ignore_errors: true
+  failed_when: false
   tags: [build]
 
 - name: "build | Display error output on failure"

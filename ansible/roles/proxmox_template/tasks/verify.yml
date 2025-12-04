@@ -1,13 +1,23 @@
 ---
 # tasks/verify.yml - Verify template was created successfully
 
-- name: "verify | Check template exists"
+- name: "verify | Check template exists in VM list"
   ansible.builtin.shell: |
-    set -o pipefail
-    qm list | grep "{{ proxmox_template_id }}"
+    set -euo pipefail
+    qm list | awk '{print $1}' | grep -q "^{{ proxmox_template_id }}$"
   args:
     executable: /bin/bash
   register: _template_verify
+  changed_when: false
+  when: not (proxmox_template_dry_run | bool)
+  tags: [verify]
+
+- name: "verify | Confirm VM is actually a template"
+  ansible.builtin.shell: |
+    set -euo pipefail
+    qm config {{ proxmox_template_id }} | grep -q "^template: 1"
+  args:
+    executable: /bin/bash
   changed_when: false
   when: not (proxmox_template_dry_run | bool)
   tags: [verify]

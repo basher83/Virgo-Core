@@ -155,7 +155,7 @@ uv run ansible-playbook playbooks/create-template.yml \
 
 The SSH keys secret should be stored as newline-separated public keys:
 
-```
+```text
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... key1@host
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... key2@host
 ssh-rsa AAAAB3NzaC1yc2... key3@host

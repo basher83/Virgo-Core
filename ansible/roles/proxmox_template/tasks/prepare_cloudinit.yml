@@ -1,6 +1,12 @@
 ---
 # tasks/prepare_cloudinit.yml - Prepare cloud-init vendor data file
 
+- name: "cloudinit | Set vendor file name if not provided"
+  ansible.builtin.set_fact:
+    proxmox_template_vendor_file: "vendor-data-{{ proxmox_template_name }}.yaml"
+  when: proxmox_template_vendor_file == ""
+  tags: [cloudinit]
+
 - name: "cloudinit | Ensure snippets directory exists"
   ansible.builtin.file:
     path: /var/lib/vz/snippets
