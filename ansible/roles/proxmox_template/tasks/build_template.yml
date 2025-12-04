@@ -78,7 +78,7 @@
   ansible.builtin.command: "{{ _build_template_cmd }}"
   register: _build_output
   changed_when: _build_output.rc == 0
-  ignore_errors: true
+  failed_when: false
   tags: [build]
 
 - name: "build | Display error output on failure"
