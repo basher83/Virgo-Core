@@ -1,0 +1,27 @@
+---
+# meta/main.yml - Role metadata for proxmox_template
+
+galaxy_info:
+  role_name: proxmox_template
+  author: basher83
+  description: >-
+    Create Proxmox VM templates from Ubuntu cloud images with cloud-init
+    customization, Infisical SSH key integration, and dual-NIC support.
+  license: MIT
+  min_ansible_version: "2.14"
+
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+
+  galaxy_tags:
+    - proxmox
+    - virtualization
+    - cloud-init
+    - template
+    - infrastructure
+
+dependencies: []
+# Note: infisical.vault collection is required when proxmox_template_use_infisical=true
+# It should be installed via requirements.yml at the project level
