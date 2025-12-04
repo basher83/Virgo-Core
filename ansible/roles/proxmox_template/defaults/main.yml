@@ -117,8 +117,7 @@ proxmox_template_ssh_keys: []
 #   - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... user2@host"
 
 # Vendor data filename (stored in /var/lib/vz/snippets/)
-# Note: Will be computed at runtime to include template name
-proxmox_template_vendor_file: ""
+proxmox_template_vendor_file: "vendor-data.yaml"
 
 # =============================================================================
 # Infisical Secret Management (Optional)
