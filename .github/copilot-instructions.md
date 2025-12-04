@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Purpose**: Infrastructure as Code for 3-node Proxmox VE homelab cluster (Matrix: Foxtrot/Golf/Hotel) with CEPH storage, NetBox/PowerDNS integration  
+**Purpose**: Infrastructure as Code for 3-node Proxmox VE homelab cluster (Matrix: Foxtrot/Golf/Hotel) with CEPH storage, NetBox/PowerDNS integration
 **Size**: ~9,500 LOC | **Stack**: OpenTofu 1.10.x, Ansible, Python 3.13+, Mise task runner | **Target**: Proxmox VE 9.x cluster
 
 ## Setup
@@ -10,6 +10,7 @@
 **Required tools**: `uv` (Python package manager), `tofu` (NOT `terraform`), Ansible via `uv run`
 
 **First time setup**:
+
 ```bash
 mise run setup  # OR manually: uv sync && cd ansible && uv run ansible-galaxy collection install -r requirements.yml
 ```
@@ -17,11 +18,13 @@ mise run setup  # OR manually: uv sync && cd ansible && uv run ansible-galaxy co
 ## Commands (via Mise or Manual)
 
 **Complete validation** (ALWAYS run before commit):
+
 ```bash
 mise run full-check  # Formats, lints, validates, scans secrets (15-30s)
 ```
 
 **Key individual tasks**:
+
 ```bash
 mise run fmt-all              # Format Terraform + YAML
 mise run lint-all             # All linters (shell, YAML, markdown, Terraform, Ansible)
@@ -33,6 +36,7 @@ TAGS=proxmox_network CHECK=1 mise run ansible:test-roles  # Dry-run specific rol
 ```
 
 **Without Mise** (manual fallbacks):
+
 ```bash
 cd terraform && tofu fmt -recursive && tofu validate  # Format + validate Terraform
 yamllint . && shellcheck scripts/*.sh                # YAML + shell linting
@@ -42,13 +46,14 @@ uv run ansible-playbook -i inventory/hosts.yml playbooks/test-roles.yml --check 
 ```
 
 **Terraform workflow**:
+
 ```bash
 cd terraform/netbox-vm && tofu init && tofu plan && tofu apply
 ```
 
 ## Structure
 
-```
+```text
 .mise.toml                    # Task definitions (AUTHORITATIVE)
 .pre-commit-config.yaml       # Hooks: rumdl, secrets, uv-sync
 ansible/
@@ -88,17 +93,19 @@ docs/                         # ARCHITECTURE.md, goals.md, etc.
 
 ## Validation Pipeline
 
-**Pre-commit hooks** (auto-run): uv-sync, trailing-whitespace, check-yaml/json, detect-private-key, renovate-config, rumdl (markdown)  
+**Pre-commit hooks** (auto-run): uv-sync, trailing-whitespace, check-yaml/json, detect-private-key, renovate-config, rumdl (markdown)
 **Bypass emergencies only**: `git commit --no-verify`
 
 **CI/CD**: Single workflow `.github/workflows/use-sync-labels.yml` (weekly label sync) - NO automated testing in CI
 
 **Local validation required**:
+
 ```bash
 mise run full-check  # MUST pass before pushing
 ```
 
 **Manual steps**:
+
 1. Format: `mise run fmt-all`
 2. Lint: `mise run lint-all` (MUST be zero ansible-lint violations)
 3. Secret scan: `mise run infisical-scan` (CRITICAL)
@@ -108,6 +115,7 @@ mise run full-check  # MUST pass before pushing
 ## Workflows
 
 **Ansible changes**:
+
 1. Edit role in `ansible/roles/<role>/`
 2. Dry-run: `TAGS=<role> CHECK=1 mise run ansible:test-roles`
 3. Lint: `mise run ansible-lint` (zero violations)
@@ -115,6 +123,7 @@ mise run full-check  # MUST pass before pushing
 5. Apply: Remove `CHECK=1` and re-run
 
 **Terraform changes**:
+
 1. Edit in `terraform/netbox-vm/` or `terraform/netbox-template/`
 2. Format: `tofu fmt -recursive`
 3. Plan: `tofu plan` (review carefully)
