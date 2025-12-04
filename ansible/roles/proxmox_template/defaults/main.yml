@@ -117,7 +117,7 @@ proxmox_template_ssh_keys: []
 #   - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... user2@host"
 
 # Vendor data filename (stored in /var/lib/vz/snippets/)
-proxmox_template_vendor_file: "vendor-data-{{ proxmox_template_name }}.yaml"
+proxmox_template_vendor_file: "vendor-data.yaml"
 
 # =============================================================================
 # Infisical Secret Management (Optional)
@@ -126,9 +126,6 @@ proxmox_template_vendor_file: "vendor-data-{{ proxmox_template_name }}.yaml"
 
 # Whether to use Infisical for SSH key retrieval
 proxmox_template_use_infisical: false
-
-# Infisical project ID (get from Infisical dashboard)
-proxmox_template_infisical_project_id: "7b832220-24c0-45bc-a5f1-ce9794a31259"
 
 # Infisical path for secrets (typically cluster-specific)
 proxmox_template_infisical_path: "/matrix"

@@ -13,7 +13,7 @@ timezone: {{ proxmox_template_timezone }}
 users:
   - name: {{ proxmox_template_user }}
     gecos: {{ proxmox_template_user_gecos }}
-    groups: users,admin,sudo
+    groups: users,sudo
     sudo: "ALL=(ALL) NOPASSWD:ALL"
     shell: /bin/bash
     lock_passwd: true

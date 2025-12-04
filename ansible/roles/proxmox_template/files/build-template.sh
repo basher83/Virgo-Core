@@ -90,7 +90,11 @@ cleanup() {
         log_error "Script failed with exit code: $exit_code"
         if [[ "$VM_CREATION_STARTED" == "true" ]] && [[ -n "${VM_ID:-}" ]]; then
             log_info "Attempting to clean up partial VM creation..."
-            qm destroy "$VM_ID" 2>/dev/null || true
+            if ! qm destroy "$VM_ID" 2>&1 | tee -a "$LOG_FILE"; then
+                log_warn "Cleanup of VM ${VM_ID} failed - manual cleanup may be required"
+            else
+                log_info "Successfully cleaned up partial VM ${VM_ID}"
+            fi
         fi
         echo -e "${RED}Script failed! Check the log for details: $LOG_FILE${NC}"
     fi
@@ -105,7 +109,7 @@ VM_ID=${VM_ID:-9000}
 VM_NAME=${VM_NAME:-"template"}
 VM_IMAGE=${VM_IMAGE:-""}
 # Optional Values
-VM_BIOS=${VM_BIOS:-"seabios"}
+VM_BIOS=${VM_BIOS:-"ovmf"}
 VM_CPU_CORES=${VM_CPU_CORES:-1}
 VM_CPU_SOCKETS=${VM_CPU_SOCKETS:-1}
 VM_CPU_TYPE=${VM_CPU_TYPE:-"host"}
@@ -173,7 +177,7 @@ function help() {
 
   Arguments:
     --help, -h      Display this help message and exit
-    --bios, -b      Specify the VM bios, ex: 'seabios' or 'ovmf' (default: 'seabios')
+    --bios, -b      Specify the VM bios, ex: 'seabios' or 'ovmf' (default: 'ovmf')
     --cpu-cores     Specify the number of CPU cores (default: '1')
     --cpu-sockets   Specify the number of CPU sockets (default: '1')
     --cpu-type      Specify the CPU type (default: 'host')
@@ -474,20 +478,25 @@ function main() {
     log_warn "DRY-RUN MODE: No actual changes will be made"
   fi
 
-  # create a new VM
-  # Create base command
-  local qm_cmd="/usr/sbin/qm create ${VM_ID} --name ${VM_NAME} \
-    --description \"template created on $(date)\" \
-    --ostype ${VM_OS} \
-    --bios ${VM_BIOS} --machine ${VM_MACHINE} \
-    --scsihw ${VM_SCSIHW} --agent enabled=1 \
-    --cores ${VM_CPU_CORES} --sockets ${VM_CPU_SOCKETS} --cpu ${VM_CPU_TYPE} --memory ${VM_MEMORY} \
-    --net0 ${VM_NET_TYPE},bridge=${VM_NET_BRIDGE}"
+  # create a new VM using array for safe command execution (no eval)
+  local -a qm_cmd
+  local net0_config="${VM_NET_TYPE},bridge=${VM_NET_BRIDGE}${VM_NET_VLAN:+,tag=${VM_NET_VLAN}}"
 
-  # Add VLAN tag if specified
-  if [ -n "${VM_NET_VLAN}" ]; then
-    qm_cmd="${qm_cmd},tag=${VM_NET_VLAN}"
-  fi
+  qm_cmd=(
+    /usr/sbin/qm create "$VM_ID"
+    --name "$VM_NAME"
+    --description "template created on $(date)"
+    --ostype "$VM_OS"
+    --bios "$VM_BIOS"
+    --machine "$VM_MACHINE"
+    --scsihw "$VM_SCSIHW"
+    --agent enabled=1
+    --cores "$VM_CPU_CORES"
+    --sockets "$VM_CPU_SOCKETS"
+    --cpu "$VM_CPU_TYPE"
+    --memory "$VM_MEMORY"
+    --net0 "$net0_config"
+  )
 
   # ====================================================================
   # ENHANCEMENT 5: Second network interface configuration
@@ -496,22 +505,17 @@ function main() {
   # ====================================================================
   # Add second network interface if bridge is specified
   if [ -n "${VM_NET2_BRIDGE}" ]; then
-    qm_cmd="${qm_cmd} \
-    --net1 ${VM_NET2_TYPE},bridge=${VM_NET2_BRIDGE}"
-
-    # Add VLAN tag if specified for second interface
-    if [ -n "${VM_NET2_VLAN}" ]; then
-      qm_cmd="${qm_cmd},tag=${VM_NET2_VLAN}"
-    fi
+    local net1_config="${VM_NET2_TYPE},bridge=${VM_NET2_BRIDGE}${VM_NET2_VLAN:+,tag=${VM_NET2_VLAN}}"
+    qm_cmd+=(--net1 "$net1_config")
   fi
 
   # Execute the command
   if [[ "$DRY_RUN" == "false" ]]; then
     VM_CREATION_STARTED=true
     log_info "Creating VM ${VM_ID}..."
-    eval "${qm_cmd}"
+    "${qm_cmd[@]}"
   else
-    log_info "[DRY-RUN] Would execute: ${qm_cmd}"
+    log_info "[DRY-RUN] Would execute: ${qm_cmd[*]}"
   fi
 
   # import the cloud image
@@ -537,7 +541,12 @@ function main() {
     fi
   fi
 
-  local cloudinit_cmd="/usr/sbin/qm set ${VM_ID} --ide2 ${VM_STORAGE}:cloudinit --ipconfig0 ${ipconfig0}"
+  # Configure cloud-init using array for safe command execution (no eval)
+  local -a cloudinit_cmd=(
+    /usr/sbin/qm set "$VM_ID"
+    --ide2 "${VM_STORAGE}:cloudinit"
+    --ipconfig0 "$ipconfig0"
+  )
 
   # ====================================================================
   # ENHANCEMENT 5: Second network interface cloud-init configuration
@@ -558,11 +567,11 @@ function main() {
       fi
     fi
 
-    cloudinit_cmd="${cloudinit_cmd} --ipconfig1 ${ipconfig1}"
+    cloudinit_cmd+=(--ipconfig1 "$ipconfig1")
   fi
 
-  # Complete the command
-  cloudinit_cmd="${cloudinit_cmd} --citype nocloud --cicustom vendor=local:snippets/${VM_VENDOR_FILE}"
+  # Add cloud-init type and vendor config
+  cloudinit_cmd+=(--citype nocloud --cicustom "vendor=local:snippets/${VM_VENDOR_FILE}")
 
   # ====================================================================
   # ENHANCEMENT: Custom cloud-init username support
@@ -571,14 +580,14 @@ function main() {
   # ====================================================================
   # Add cloud-init username if provided
   if [ -n "${VM_CI_USER}" ]; then
-    cloudinit_cmd="${cloudinit_cmd} --ciuser ${VM_CI_USER}"
+    cloudinit_cmd+=(--ciuser "$VM_CI_USER")
   fi
 
   # Execute the command
   if [[ "$DRY_RUN" == "true" ]]; then
-    log_info "[DRY-RUN] Would run: ${cloudinit_cmd}"
+    log_info "[DRY-RUN] Would run: ${cloudinit_cmd[*]}"
   else
-    eval "${cloudinit_cmd}"
+    "${cloudinit_cmd[@]}"
   fi
 
   if [ "$VM_BIOS" = "ovmf" ]; then

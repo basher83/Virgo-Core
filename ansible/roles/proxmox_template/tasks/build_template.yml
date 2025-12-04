@@ -10,7 +10,7 @@
 
 - name: "build | Check if VM ID already exists"
   ansible.builtin.shell: |
-    set -o pipefail
+    set -euo pipefail
     qm list | awk '{print $1}' | grep -q "^{{ proxmox_template_id }}$"
   args:
     executable: /bin/bash
