@@ -523,9 +523,9 @@ function main() {
     fi
   else
     local qm_cmd
-    qm_cmd="/usr/sbin/qm create ${VM_ID} --name ${VM_NAME} --description \"template created on $(date)\" --ostype ${VM_OS} --bios ${VM_BIOS} --machine ${VM_MACHINE} --scsihw ${VM_SCSIHW} --agent enabled=1 --cores ${VM_CPU_CORES} --sockets ${VM_CPU_SOCKETS} --cpu ${VM_CPU_TYPE} --memory ${VM_MEMORY} --net0 ${net0_param}"
+    qm_cmd="/usr/sbin/qm create \"${VM_ID}\" --name \"${VM_NAME}\" --description \"template created on $(date)\" --ostype \"${VM_OS}\" --bios \"${VM_BIOS}\" --machine \"${VM_MACHINE}\" --scsihw \"${VM_SCSIHW}\" --agent enabled=1 --cores \"${VM_CPU_CORES}\" --sockets \"${VM_CPU_SOCKETS}\" --cpu \"${VM_CPU_TYPE}\" --memory \"${VM_MEMORY}\" --net0 \"${net0_param}\""
     if [ -n "${net1_param}" ]; then
-      qm_cmd="${qm_cmd} --net1 ${net1_param}"
+      qm_cmd="${qm_cmd} --net1 \"${net1_param}\""
     fi
     log_info "[DRY-RUN] Would execute: ${qm_cmd}"
   fi
@@ -575,13 +575,13 @@ function main() {
   # Execute the command
   if [[ "$DRY_RUN" == "true" ]]; then
     local cloudinit_cmd
-    cloudinit_cmd="/usr/sbin/qm set ${VM_ID} --ide2 ${VM_STORAGE}:cloudinit --ipconfig0 ${ipconfig0}"
+    cloudinit_cmd="/usr/sbin/qm set \"${VM_ID}\" --ide2 \"${VM_STORAGE}\":cloudinit --ipconfig0 \"${ipconfig0}\""
     if [ -n "${ipconfig1}" ]; then
-      cloudinit_cmd="${cloudinit_cmd} --ipconfig1 ${ipconfig1}"
+      cloudinit_cmd="${cloudinit_cmd} --ipconfig1 \"${ipconfig1}\""
     fi
-    cloudinit_cmd="${cloudinit_cmd} --citype nocloud --cicustom vendor=local:snippets/${VM_VENDOR_FILE}"
+    cloudinit_cmd="${cloudinit_cmd} --citype nocloud --cicustom \"vendor=local:snippets/${VM_VENDOR_FILE}\""
     if [ -n "${VM_CI_USER}" ]; then
-      cloudinit_cmd="${cloudinit_cmd} --ciuser ${VM_CI_USER}"
+      cloudinit_cmd="${cloudinit_cmd} --ciuser \"${VM_CI_USER}\""
     fi
     log_info "[DRY-RUN] Would run: ${cloudinit_cmd}"
   else
