@@ -1,8 +1,11 @@
 ---
 name: skill-forced-eval
-enabled: true
+enabled: false
 event: prompt
-pattern: .*
+conditions:
+  - field: user_prompt
+    operator: regex_match
+    pattern: .*
 ---
 
 INSTRUCTION: MANDATORY SKILL ACTIVATION SEQUENCE
@@ -21,6 +24,7 @@ CRITICAL: You MUST call Skill() tool in Step 2. Do NOT skip to implementation.
 The evaluation (Step 1) is WORTHLESS unless you ACTIVATE (Step 2) the skills.
 
 Example of correct sequence:
+
 - research: NO - not a research task
 - brainstorming: YES - need to brainstorm
 - writing-plans: YES - need to write plans
