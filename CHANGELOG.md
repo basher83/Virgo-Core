@@ -22,11 +22,15 @@
 - *(mintlify)* Remove leading slash from internal link paths
 - *(ansible)* Make subscription banner removal idempotent
 - *(ansible)* Address PR review feedback for proxmox_template role
+- *(ansible)* Remove hardcoded paths from commands and agents
+- *(ansible)* Use CLAUDE_PLUGIN_ROOT for script references
+- *(ansible)* Correct hooks.json structure for Claude Code
 
 ### 🚜 Refactor
 
 - Move archive and brainstorming folders to docs/
 - *(ansible)* Remove monolithic ansible-best-practices skill
+- *(ansible)* Move references to skill-level directories
 
 ### 📚 Documentation
 
@@ -46,10 +50,14 @@
 - Update changelog
 - Add infrastructure diagrams and architecture decision records
 - Remove DNS error warning from copilot instructions
+- Update changelog
+- *(ansible)* Add community.proxmox collection reference
+- *(ansible)* Add Additional Resources sections to skills
 
 ### 🎨 Styling
 
 - *(ansible)* Use failed_when instead of ignore_errors
+- *(ansible)* Remove second-person voice from skill files
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -63,6 +71,9 @@
 - *(agents)* Replace meta-agent with jina-search agent
 - *(mise)* Remove markdownlint-cli2 from tool list
 - *(github)* Add validate workflow for PR checks
+- Add new hooks
+- *(hookify)* Disable skill-forced-eval hook and update structure
+- *(rumdl)* Update markdown linter configuration
 
 ## [1.1.0] - 2025-11-20
 
