@@ -355,6 +355,15 @@ cd ansible
 uv run ansible-galaxy collection install -r requirements.yml
 ```
 
+## Additional Resources
+
+For detailed Proxmox automation patterns, consult:
+
+- **`references/ceph-automation.md`** - CEPH storage deployment and OSD management
+- **`references/cluster-automation.md`** - Proxmox cluster creation and node joining
+- **`references/network-automation.md`** - VLAN-aware bridges and network configuration
+- **`references/community-proxmox-plugin-index.md`** - Complete community.proxmox module reference
+
 ## Related Skills
 
 - **ansible-fundamentals** - Core module selection patterns

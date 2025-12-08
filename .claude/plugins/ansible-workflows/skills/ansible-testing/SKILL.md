@@ -339,6 +339,12 @@ Choose appropriate profile based on needs:
 | `safety` | High | Security-sensitive |
 | `production` | Highest | Production deployments |
 
+## Additional Resources
+
+For detailed testing patterns and techniques, consult:
+
+- **`references/testing-comprehensive.md`** - ansible-lint configuration, integration testing strategies, CI/CD patterns
+
 ## Related Skills
 
 - **ansible-fundamentals** - Core Ansible patterns

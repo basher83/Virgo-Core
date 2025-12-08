@@ -371,6 +371,12 @@ Add validation at the start of playbooks:
         msg: "Playbook completed successfully"
 ```
 
+## Additional Resources
+
+For detailed playbook patterns and techniques, consult:
+
+- **`references/playbook-role-patterns.md`** - Comprehensive playbook organization patterns, play structure, import strategies
+
 ## Related Skills
 
 - **ansible-role-design** - When to use roles vs playbooks

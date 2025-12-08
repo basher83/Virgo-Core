@@ -338,6 +338,12 @@ export INFISICAL_UNIVERSAL_AUTH_CLIENT_SECRET="secret-xyz789"
     fallback_env_var: 'DEFAULT_API_KEY'
 ```
 
+## Additional Resources
+
+For detailed secrets management patterns, consult:
+
+- **`references/secrets-management.md`** - Infisical integration patterns, no_log best practices, credential security
+
 ## Related Skills
 
 - **ansible-fundamentals** - Core Ansible patterns
