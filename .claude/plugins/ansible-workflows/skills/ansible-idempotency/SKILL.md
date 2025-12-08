@@ -341,16 +341,16 @@ Use the idempotency checker to analyze playbooks for common issues:
 
 ```bash
 # Check a single playbook
-./scripts/check_idempotency.py ansible/playbooks/my-playbook.yml
+${CLAUDE_PLUGIN_ROOT}/skills/ansible-idempotency/scripts/check_idempotency.py ansible/playbooks/my-playbook.yml
 
 # Check multiple playbooks
-./scripts/check_idempotency.py ansible/playbooks/*.yml
+${CLAUDE_PLUGIN_ROOT}/skills/ansible-idempotency/scripts/check_idempotency.py ansible/playbooks/*.yml
 
 # Strict mode (info issues become warnings)
-./scripts/check_idempotency.py --strict ansible/playbooks/my-playbook.yml
+${CLAUDE_PLUGIN_ROOT}/skills/ansible-idempotency/scripts/check_idempotency.py --strict ansible/playbooks/my-playbook.yml
 
 # Summary only
-./scripts/check_idempotency.py --summary ansible/playbooks/*.yml
+${CLAUDE_PLUGIN_ROOT}/skills/ansible-idempotency/scripts/check_idempotency.py --summary ansible/playbooks/*.yml
 ```
 
 The script detects:
@@ -361,7 +361,7 @@ The script detects:
 - Tasks missing name attribute
 - Use of deprecated short module names (non-FQCN)
 
-Script location: `scripts/check_idempotency.py` in this skill directory.
+Script location: `${CLAUDE_PLUGIN_ROOT}/skills/ansible-idempotency/scripts/check_idempotency.py`
 
 ## Related Skills
 
