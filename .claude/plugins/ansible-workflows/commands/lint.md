@@ -7,7 +7,7 @@ model: haiku
 
 Run ansible-lint on `$ARGUMENTS` (or `ansible/` if no path provided).
 
-Execute: `cd /Users/basher8383/dev/infra-as-code/Virgo-Core && uv run ansible-lint $ARGUMENTS 2>&1 || true`
+Execute: `uv run ansible-lint $ARGUMENTS 2>&1 || true`
 
 Parse results and categorize:
 - **Errors:** Must fix

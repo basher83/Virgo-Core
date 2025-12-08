@@ -69,7 +69,7 @@ Determine what needs validation:
 Execute Ansible syntax validation for each playbook:
 
 ```bash
-cd /Users/basher8383/dev/infra-as-code/Virgo-Core && uv run ansible-playbook --syntax-check <playbook_path>
+uv run ansible-playbook --syntax-check <playbook_path>
 ```
 
 Record any syntax errors with file and line numbers.
@@ -79,7 +79,7 @@ Record any syntax errors with file and line numbers.
 Execute linting with repository configuration:
 
 ```bash
-cd /Users/basher8383/dev/infra-as-code/Virgo-Core && uv run ansible-lint <target_path> 2>&1 || true
+uv run ansible-lint <target_path> 2>&1 || true
 ```
 
 Parse the output to categorize:
