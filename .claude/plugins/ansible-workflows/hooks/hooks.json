@@ -1,14 +1,17 @@
 {
-  "PostToolUse": [
-    {
-      "matcher": "Write|Edit",
-      "hooks": [
-        {
-          "type": "prompt",
-          "prompt": "Check if the file that was just written/edited is an Ansible file (path contains 'ansible/' and ends with .yml or .yaml). If YES: Run ansible-lint on that specific file using: cd $CLAUDE_PROJECT_DIR && uv run ansible-lint <file_path> 2>&1 || true. Report any ERROR-level issues (not warnings). If NO errors or file is not an Ansible file: respond with just 'Validated' or 'Skipped (not Ansible)'. Keep response under 50 words unless reporting errors.",
-          "timeout": 30
-        }
-      ]
-    }
-  ]
+  "description": "Ansible-lint validation for YAML files in ansible/ directory",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Check if the file that was just written/edited is an Ansible file (path contains 'ansible/' and ends with .yml or .yaml). If YES: Run ansible-lint on that specific file using: cd $CLAUDE_PROJECT_DIR && uv run ansible-lint <file_path> 2>&1 || true. Report any ERROR-level issues (not warnings). If NO errors or file is not an Ansible file: respond with just 'Validated' or 'Skipped (not Ansible)'. Keep response under 50 words unless reporting errors.",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
 }
