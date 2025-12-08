@@ -9,7 +9,7 @@
 # enable = ["MD001", "MD003", "MD004"]
 
 # List of file/directory patterns to include for linting (if provided, only these will be linted)
-include = ["README.md", "WARP.md", ".agent/**/*.md"]
+# include = ["README.md", "WARP.md", ".agent/**/*.md"]
 # List of file/directory patterns to exclude from linting
 exclude = [
   # Common directories to exclude
@@ -49,10 +49,10 @@ respect_gitignore = true
 # indent = 4  # Unordered list indentation
 
 [MD013]
-line-length = 120  # Line length (more lenient for technical documentation)
-code-blocks = false  # Exclude code blocks from line length check
-tables = false  # Exclude tables from line length check
-headings = true  # Include headings in line length check
+line-length = 120   # Line length (more lenient for technical documentation)
+code-blocks = false # Exclude code blocks from line length check
+tables = false      # Exclude tables from line length check
+headings = true     # Include headings in line length check
 
 # [MD044]
 # names = ["rumdl", "Markdown", "GitHub"]  # Proper names that should be capitalized correctly
