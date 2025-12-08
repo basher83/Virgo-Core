@@ -117,7 +117,7 @@ uv run ansible-playbook playbooks/my-playbook.yml
 
 ## Security Best Practices
 
-### 1. Always Use no_log
+### 1. Use no_log
 
 On tasks that handle secrets:
 
@@ -133,10 +133,10 @@ On tasks that handle secrets:
   no_log: true
 ```
 
-### 2. Never Hard-Code Secrets
+### 2. Avoid Hard-Coded Secrets
 
 ```yaml
-# BAD - Never do this
+# BAD - Exposes secrets
 - name: Create user
   community.proxmox.proxmox_user:
     api_password: "my-password-123"  # EXPOSED!
