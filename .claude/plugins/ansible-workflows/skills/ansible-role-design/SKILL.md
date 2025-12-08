@@ -50,7 +50,7 @@ role-name/
 
 ### When to Omit Directories
 
-Only create directories you actually use:
+Only create directories that are actually needed:
 
 - **Omit `templates/`** if using only `lineinfile` or `copy`
 - **Omit `handlers/`** if role doesn't manage services
@@ -384,6 +384,16 @@ Every role needs a README.md with:
 3. **Role Variables** - All variables with defaults
 4. **Dependencies** - Other roles needed
 5. **Example Playbook** - How to use it
+
+## Additional Resources
+
+For detailed role design patterns and techniques, consult:
+
+- **`references/role-structure-standards.md`** - Production role structure patterns from geerlingguy analysis
+- **`references/handler-best-practices.md`** - Handler design, notification patterns, flush strategies
+- **`references/meta-dependencies.md`** - Role dependencies, Galaxy metadata, platform support
+- **`references/variable-management-patterns.md`** - Variable naming, scoping, precedence patterns
+- **`references/documentation-templates.md`** - README templates and documentation standards
 
 ## Related Skills
 

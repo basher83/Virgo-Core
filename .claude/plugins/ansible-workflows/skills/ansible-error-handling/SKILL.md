@@ -276,7 +276,7 @@ Run checks from controller for better error context:
 
 - Non-critical cleanup tasks
 - Optional operations that shouldn't block playbook
-- When you immediately check the result anyway
+- When the result is immediately checked anyway
 
 ### Prefer failed_when
 
@@ -368,6 +368,12 @@ Run checks from controller for better error context:
             path: /tmp/app.tar.gz
             state: absent
 ```
+
+## Additional Resources
+
+For detailed error handling patterns and techniques, consult:
+
+- **`references/error-handling.md`** - Comprehensive error handling patterns, block/rescue/always examples, retry strategies
 
 ## Related Skills
 
