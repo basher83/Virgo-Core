@@ -1,6 +1,4 @@
----
 # Install/update Proxmox packages
-
 - name: Install Proxmox packages
   ansible.builtin.apt:
     name: "{{ proxmox_packages }}"
@@ -10,7 +8,6 @@
   retries: 3
   delay: 5
   until: package_install is success
-
 - name: Display installed packages
   ansible.builtin.debug:
     msg: "Proxmox packages installed/updated: {{ proxmox_packages | join(', ') }}"

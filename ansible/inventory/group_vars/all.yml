@@ -1,41 +1,33 @@
----
 # Global variables for ALL hosts across ALL clusters
 # These settings apply to: nexus_cluster, matrix_cluster, quantum_cluster
-
 # =============================================================================
 # Ansible Connection Settings
 # =============================================================================
-
 ansible_user: ansible
 ansible_python_interpreter: /usr/bin/python3
 ansible_become: true
 ansible_become_method: sudo
-
 # =============================================================================
 # System Configuration
 # =============================================================================
 
 # Timezone (America/New_York for all clusters)
 system_timezone: America/New_York
-
 # NTP servers for time synchronization
 system_ntp_servers:
   - time.google.com
   - time.cloudflare.com
-
 # =============================================================================
 # SSH Hardening (Global Security Posture)
 # =============================================================================
-
 ssh_port: 22
-ssh_password_authentication: "no"              # Key-only authentication
-ssh_permit_root_login: "yes"                   # Allowed via key only
-ssh_x11_forwarding: "no"                       # Disabled for security
-ssh_use_dns: "no"                              # Faster connections
+ssh_password_authentication: "no" # Key-only authentication
+ssh_permit_root_login: "yes" # Allowed via key only
+ssh_x11_forwarding: "no" # Disabled for security
+ssh_use_dns: "no" # Faster connections
 ssh_permit_empty_password: "no"
 ssh_challenge_response_auth: "no"
 ssh_gss_api_authentication: "no"
-
 # =============================================================================
 # Infisical Configuration (Secrets Management)
 # =============================================================================
@@ -43,7 +35,6 @@ ssh_gss_api_authentication: "no"
 # Global Infisical settings
 infisical_project_id: '7b832220-24c0-45bc-a5f1-ce9794a31259'
 infisical_env: 'prod'
-
 # Per-cluster paths (overridden in group_vars/<cluster>.yml if needed)
 # - Nexus: /nexus
 # - Matrix: /matrix
@@ -65,18 +56,15 @@ common_packages:
   - screen
   - net-tools
   - dnsutils
-
 # =============================================================================
 # Shared Storage Configuration
 # =============================================================================
 
 # TrueNAS server (shared across Nexus and Quantum clusters)
 truenas_server: 192.168.30.6
-
 # Proxmox Backup Server (currently unreachable)
 pbs_server: 192.168.30.200
 pbs_status: unreachable
-
 # =============================================================================
 # Network Settings (Defaults)
 # =============================================================================

@@ -1,3 +1,2 @@
----
 # handlers/main.yml - Handlers for proxmox_template role
 # Currently no handlers are needed for this role

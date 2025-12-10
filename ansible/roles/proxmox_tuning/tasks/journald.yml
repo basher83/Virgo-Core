@@ -1,6 +1,4 @@
----
 # Journald optimization tasks
-
 - name: Deploy optimized journald configuration
   ansible.builtin.template:
     src: journald.conf.j2
@@ -9,7 +7,6 @@
     group: root
     mode: "0644"
   notify: Restart journald
-
 - name: Vacuum existing journal to new size limit
   ansible.builtin.command:
     cmd: journalctl --vacuum-size={{ journald_system_max_use }}

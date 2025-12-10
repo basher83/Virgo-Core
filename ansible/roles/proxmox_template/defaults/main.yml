@@ -1,17 +1,13 @@
----
 # defaults/main.yml - Default variables for proxmox_template role
 # Purpose: Create Proxmox VM templates from Ubuntu cloud images with cloud-init
 
 # =============================================================================
 # Template Identity
 # =============================================================================
-
 # Unique VM ID for the template (typically 9000+ range for templates)
 proxmox_template_id: 9000
-
 # Template name (descriptive, used for identification)
 proxmox_template_name: "ubuntu-2404-template"
-
 # =============================================================================
 # Cloud Image Configuration
 # =============================================================================
@@ -19,7 +15,6 @@ proxmox_template_name: "ubuntu-2404-template"
 # Path to the cloud image on the Proxmox node
 # Download from: https://cloud-images.ubuntu.com/releases/24.04/release/
 proxmox_template_image_path: "/var/lib/vz/template/iso/ubuntu-24.04-server-cloudimg-amd64.img"
-
 # =============================================================================
 # Hardware Configuration
 # =============================================================================
@@ -27,54 +22,41 @@ proxmox_template_image_path: "/var/lib/vz/template/iso/ubuntu-24.04-server-cloud
 # BIOS type: 'seabios' (legacy) or 'ovmf' (UEFI)
 # UEFI recommended for modern OS and secure boot support
 proxmox_template_bios: "ovmf"
-
 # CPU configuration
 proxmox_template_cpu_cores: 2
 proxmox_template_cpu_sockets: 1
 proxmox_template_cpu_type: "x86-64-v2-AES"
-
 # Machine type: 'q35' (modern) or 'pc' (i440fx legacy)
 proxmox_template_machine: "q35"
-
 # Memory in MB
 proxmox_template_memory: 2048
-
 # OS type for Proxmox (l26 = Linux 2.6+ kernel)
 proxmox_template_os_type: "l26"
-
 # =============================================================================
 # Storage Configuration
 # =============================================================================
 
 # Storage backend for VM disk and cloud-init drive
 proxmox_template_storage: "local-lvm"
-
 # SCSI controller type
 proxmox_template_scsihw: "virtio-scsi-pci"
-
 # Disk resize amount (e.g., "8G", "20G", or "" to skip)
 # Added to the base cloud image size
 proxmox_template_disk_resize: ""
-
 # =============================================================================
 # Primary Network Configuration (net0)
 # =============================================================================
 
 # Network bridge for primary interface
 proxmox_template_net_bridge: "vmbr0"
-
 # Network type (virtio recommended for performance)
 proxmox_template_net_type: "virtio"
-
 # VLAN tag (leave empty for untagged)
 proxmox_template_net_vlan: ""
-
 # IP configuration: 'dhcp' or static 'x.x.x.x/xx'
 proxmox_template_net_ip: "dhcp"
-
 # Gateway (only used with static IP)
 proxmox_template_net_gateway: ""
-
 # =============================================================================
 # Secondary Network Configuration (net1) - Optional
 # =============================================================================
@@ -82,32 +64,24 @@ proxmox_template_net_gateway: ""
 
 # Network bridge for secondary interface (empty = disabled)
 proxmox_template_net2_bridge: ""
-
 # Network type for secondary interface
 proxmox_template_net2_type: "virtio"
-
 # VLAN tag for secondary interface
 proxmox_template_net2_vlan: ""
-
 # IP configuration for secondary interface
 proxmox_template_net2_ip: "dhcp"
-
 # Gateway for secondary interface (only used with static IP)
 proxmox_template_net2_gateway: ""
-
 # =============================================================================
 # Cloud-init Configuration
 # =============================================================================
 
 # Default user created by cloud-init
 proxmox_template_user: "ansible"
-
 # User description (GECOS field)
 proxmox_template_user_gecos: "Ansible Automation User"
-
 # Timezone for the VM
 proxmox_template_timezone: "America/New_York"
-
 # SSH public keys to inject (list of key strings)
 # Can be provided directly or retrieved from Infisical
 proxmox_template_ssh_keys: []
@@ -118,7 +92,6 @@ proxmox_template_ssh_keys: []
 
 # Vendor data filename (stored in /var/lib/vz/snippets/)
 proxmox_template_vendor_file: "vendor-data.yaml"
-
 # =============================================================================
 # Infisical Secret Management (Optional)
 # =============================================================================
@@ -126,28 +99,21 @@ proxmox_template_vendor_file: "vendor-data.yaml"
 
 # Whether to use Infisical for SSH key retrieval
 proxmox_template_use_infisical: false
-
 # Infisical path for secrets (typically cluster-specific)
 proxmox_template_infisical_path: "/matrix"
-
 # Secret name in Infisical containing SSH keys (newline-separated)
 proxmox_template_infisical_secret_name: "ANSIBLE_SSH_KEYS"
-
 # Infisical environment
 proxmox_template_infisical_env: "prod"
-
 # =============================================================================
 # Operational Flags
 # =============================================================================
 
 # Dry run mode - show what would be done without making changes
 proxmox_template_dry_run: false
-
 # Skip verification step after template creation
 proxmox_template_skip_verify: false
-
 # Clean up vendor-data file after template creation
 proxmox_template_cleanup_vendor_data: false
-
 # Suppress sensitive output in logs
 proxmox_template_no_log: true

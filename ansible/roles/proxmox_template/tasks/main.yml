@@ -1,24 +1,18 @@
----
 # tasks/main.yml - Main task orchestration for proxmox_template role
 # Purpose: Create Proxmox VM templates from Ubuntu cloud images with cloud-init
-
 - name: "proxmox_template | Validate input variables"
   ansible.builtin.include_tasks: validate.yml
   tags: [proxmox_template, validate]
-
 - name: "proxmox_template | Retrieve SSH keys from Infisical"
   ansible.builtin.include_tasks: secrets.yml
   when: proxmox_template_use_infisical | bool
   tags: [proxmox_template, secrets]
-
 - name: "proxmox_template | Prepare cloud-init vendor data"
   ansible.builtin.include_tasks: prepare_cloudinit.yml
   tags: [proxmox_template, cloudinit]
-
 - name: "proxmox_template | Build VM template"
   ansible.builtin.include_tasks: build_template.yml
   tags: [proxmox_template, build]
-
 - name: "proxmox_template | Verify template creation"
   ansible.builtin.include_tasks: verify.yml
   when: not (proxmox_template_skip_verify | bool)
