@@ -27,7 +27,7 @@ automation practices for homelab environments.
 
 The project completed a comprehensive 6-phase Ansible migration from monolithic playbooks to a modern role-based
 architecture. All 6 production roles passed validation with perfect idempotency, zero ansible-lint violations, and
-comprehensive documentation. See [ansible-migration-completion.md](docs/ansible-migration-completion.md) for details.
+comprehensive documentation. See [ansible-migration-completion.md](docs/archive/2025-11-v1.0/ansible-migration-completion.md) for details.
 
 ## Architecture
 
@@ -231,11 +231,11 @@ Each role includes comprehensive documentation, example playbooks, and safety fe
 
 Detailed documentation covers all aspects of the project:
 
-- **[infrastructure.md](docs/infrastructure.md)**: Hardware specifications, network architecture, CEPH configuration
-- **[goals.md](docs/goals.md)**: Project objectives and roadmap
-- **[ansible-migration-plan.md](docs/ansible-migration-plan.md)**: Role development strategy
-- **[ansible-migration-completion.md](docs/ansible-migration-completion.md)**: Migration results and metrics
-- **[netbox-powerdns.md](docs/netbox-powerdns.md)**: DNS and IPAM integration architecture
+- **[infrastructure.md](documentation/core/infrastructure.md)**: Hardware specifications, network architecture, CEPH configuration
+- **[goals.md](documentation/core/goals.md)**: Project objectives and roadmap
+- **[ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md)**: Role development strategy
+- **[ansible-migration-completion.md](docs/archive/2025-11-v1.0/ansible-migration-completion.md)**: Migration results and metrics
+- **[netbox-powerdns.md](documentation/core/netbox-powerdns.md)**: DNS and IPAM integration architecture
 - **[terraform/netbox-vm/README.md](terraform/netbox-vm/README.md)**: VM deployment guide with examples
 
 ## Development Workflow
