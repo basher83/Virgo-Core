@@ -4,9 +4,13 @@ Infrastructure as Code for managing a Proxmox VE homelab cluster with NetBox and
 
 ## Overview
 
-Virgo-Core automates the deployment and configuration of a production-grade Proxmox VE cluster using modern Infrastructure as Code practices. The project targets a 3-node cluster named "Matrix" (Foxtrot, Golf, Hotel), providing automated cluster initialization, CEPH distributed storage deployment, network configuration, and VM provisioning.
+Virgo-Core automates the deployment and configuration of a production-grade Proxmox VE cluster using modern
+Infrastructure as Code practices. The project targets a 3-node cluster named "Matrix" (Foxtrot, Golf, Hotel),
+providing automated cluster initialization, CEPH distributed storage deployment, network configuration, and VM
+provisioning.
 
-OpenTofu handles infrastructure provisioning while Ansible manages configuration, demonstrating enterprise-level automation practices for homelab environments.
+OpenTofu handles infrastructure provisioning while Ansible manages configuration, demonstrating enterprise-level
+automation practices for homelab environments.
 
 ## Key Features
 
@@ -21,7 +25,9 @@ OpenTofu handles infrastructure provisioning while Ansible manages configuration
 
 ## Recent Milestone
 
-The project completed a comprehensive 6-phase Ansible migration from monolithic playbooks to a modern role-based architecture. All 6 production roles passed validation with perfect idempotency, zero ansible-lint violations, and comprehensive documentation. See [ansible-migration-completion.md](docs/ansible-migration-completion.md) for details.
+The project completed a comprehensive 6-phase Ansible migration from monolithic playbooks to a modern role-based
+architecture. All 6 production roles passed validation with perfect idempotency, zero ansible-lint violations, and
+comprehensive documentation. See [ansible-migration-completion.md](docs/ansible-migration-completion.md) for details.
 
 ## Architecture
 
@@ -314,7 +320,8 @@ Contributions welcome. Follow these guidelines:
 
 This repository includes an agent skill for Claude Code:
 
-- **ansible-best-practices**: Guidance for Ansible playbook patterns, role design, Infisical secrets, idempotency, and error handling
+- **ansible-best-practices**: Guidance for Ansible playbook patterns, role design, Infisical secrets, idempotency,
+  and error handling
 
 ## License
 
