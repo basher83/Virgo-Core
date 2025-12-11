@@ -1,9 +1,7 @@
----
 # tasks/acls.yml - Configure Proxmox Access Control Lists (ACLs)
 # Purpose: Grant permissions to users/groups on specific paths/resources
 #
 # Uses community.proxmox.proxmox_access_acl module for idempotent ACL management
-
 - name: Configure ACL permissions
   community.proxmox.proxmox_access_acl:
     path: "{{ item.path }}"
@@ -22,12 +20,10 @@
   become: false
   register: proxmox_access_acl_result
   no_log: "{{ proxmox_no_log }}"
-
 - name: Display ACL configuration status
   ansible.builtin.debug:
     msg: >-
-      ACL {{ item.item.type }}/{{ item.item.ugid }} on '{{ item.item.path }}'
-      → '{{ item.item.roleid }}' {{ 'configured' if item.changed else 'already set' }}
+      ACL {{ item.item.type }}/{{ item.item.ugid }} on '{{ item.item.path }}' → '{{ item.item.roleid }}' {{ 'configured' if item.changed else 'already set' }}
   loop: "{{ proxmox_access_acl_result.results }}"
   when: proxmox_access_acl_result.results is defined
   loop_control:

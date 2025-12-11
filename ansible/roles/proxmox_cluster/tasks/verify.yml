@@ -1,12 +1,9 @@
----
 # Verify cluster health and quorum
-
 - name: Get cluster status
   ansible.builtin.command: pvecm status
   register: cluster_status
   changed_when: false
   failed_when: cluster_status.rc != 0
-
 - name: Get cluster node count
   ansible.builtin.shell: |
     set -o pipefail
@@ -15,7 +12,6 @@
     executable: /bin/bash
   register: cluster_node_count
   changed_when: false
-
 - name: Check quorum status
   ansible.builtin.shell: |
     set -o pipefail
@@ -25,7 +21,6 @@
   register: quorum_status
   changed_when: false
   failed_when: false
-
 - name: Verify cluster is quorate
   ansible.builtin.assert:
     that:
@@ -36,7 +31,6 @@
     - not ansible_check_mode
     - ansible_play_hosts | length == groups[cluster_group] | length
     - cluster_status.rc == 0
-
 - name: Verify expected number of nodes
   ansible.builtin.assert:
     that:
@@ -47,7 +41,6 @@
     - not ansible_check_mode
     - ansible_play_hosts | length == groups[cluster_group] | length
     - cluster_status.rc == 0
-
 - name: Display cluster health summary
   ansible.builtin.debug:
     msg: |

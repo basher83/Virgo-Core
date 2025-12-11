@@ -1,4 +1,3 @@
----
 galaxy_info:
   author: Virgo-Core Team
   description: Manage Proxmox VE cluster formation and configuration
@@ -14,5 +13,4 @@ galaxy_info:
     - cluster
     - corosync
     - ha
-
 dependencies: []

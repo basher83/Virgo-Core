@@ -1,9 +1,7 @@
----
 # tasks/groups.yml - Create Proxmox groups
 # Purpose: Organize users into groups for easier permission management
 #
 # Uses community.proxmox.proxmox_group module for proper idempotency
-
 - name: Create Proxmox groups
   community.proxmox.proxmox_group:
     name: "{{ item.name }}"
@@ -18,7 +16,6 @@
   become: false
   register: proxmox_access_group_result
   no_log: "{{ proxmox_no_log }}"
-
 - name: Display group creation status
   ansible.builtin.debug:
     msg: "Group '{{ item.item.name }}' {{ 'created' if item.changed else 'already exists' }}"

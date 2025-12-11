@@ -1,11 +1,8 @@
----
 # Clean up old PVE kernels
-
 - name: Get current running kernel
   ansible.builtin.command: uname -r
   register: current_kernel
   changed_when: false
-
 - name: Get list of installed PVE kernels
   ansible.builtin.shell: |
     set -o pipefail
@@ -14,7 +11,6 @@
     executable: /bin/bash
   register: installed_kernels
   changed_when: false
-
 - name: Remove old PVE kernels (keep current)
   ansible.builtin.apt:
     name: "{{ item }}"

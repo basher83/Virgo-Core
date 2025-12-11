@@ -1,7 +1,5 @@
----
 # Ansible inventory for Virgo-Core infrastructure
 # 3 Proxmox VE clusters with different topologies
-
 all:
   children:
     proxmox_clusters:
@@ -12,7 +10,6 @@ all:
               node_id: 50
             bravo:
               node_id: 30
-
         quantum_cluster:
           hosts:
             holly:
@@ -21,7 +18,6 @@ all:
               node_id: 2
             mable:
               node_id: 4
-
         matrix_cluster:
           hosts:
             foxtrot:

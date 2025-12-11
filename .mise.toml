@@ -16,7 +16,7 @@ eza = "0.23.0"
 fd = "10.2.0"
 rg = "14.1.1"
 terraform-docs = "0.20.0"
-python = "3.14.0"
+python = "3.13"
 tflint = "0.60.0"
 git-cliff = "2.10.1"
 yamllint = "1.37.1"
@@ -25,10 +25,10 @@ shellcheck = "0.11.0"
 opentofu = "1.10.7"
 uv = "0.9.16"
 prek = "0.2.19"
-
+"pipx:rumdl" = "0.0.191"
 
 [env]
-_.python.venv = { path = ".venv", create = true } # create the venv if it doesn't exist
+_.python.venv = { path = ".venv", create = true }  # create the venv if it doesn't exist
 
 [tasks.setup]
 description = "Set up complete development environment"
@@ -158,9 +158,9 @@ uv run ansible-playbook -i inventory/hosts.yml \
 # === Ansible tasks ===
 
 [tasks.fmt]
-description = "Format all Terraform files recursively"
+description = "Format all OpenTofu files recursively"
 dir = "terraform"
-run = "terraform fmt -recursive"
+run = "tofu fmt -recursive"
 
 [tasks.yaml-fmt]
 description = "Format YAML files"

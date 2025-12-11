@@ -1,7 +1,5 @@
----
 # ansible/roles/system_user/tasks/sudo_config.yml
 # Configure sudo privileges for users
-
 - name: Ensure /etc/sudoers.d directory exists
   ansible.builtin.file:
     path: /etc/sudoers.d
@@ -9,7 +7,6 @@
     owner: root
     group: root
     mode: '0750'
-
 - name: Configure sudo privileges for {{ user_item.name }}
   ansible.builtin.template:
     src: sudoers.j2
@@ -19,11 +16,9 @@
     mode: '0440'
     validate: '/usr/sbin/visudo -cf %s'
   register: system_user_sudoers_result
-
 - name: Display sudoers configuration status
   ansible.builtin.debug:
     msg: "Sudoers configuration for '{{ user_item.name }}' {{ 'updated' if system_user_sudoers_result.changed else 'already current' }}"
-
 - name: Verify sudo configuration with test command
   ansible.builtin.command:
     argv:
@@ -34,7 +29,6 @@
   register: system_user_sudo_verify
   changed_when: false
   failed_when: false
-
 - name: Display sudo privileges summary
   ansible.builtin.debug:
     msg: |

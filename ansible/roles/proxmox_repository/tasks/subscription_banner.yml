@@ -1,12 +1,9 @@
----
 # Remove Proxmox subscription nag banner from web UI
 # Based on ProxMenux implementation with APT hook for persistence
-
 - name: Check if proxmoxlib.js exists
   ansible.builtin.stat:
     path: /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
   register: proxmox_repository_proxmoxlib_stat
-
 - name: Remove subscription nag from proxmoxlib.js
   when: proxmox_repository_proxmoxlib_stat.stat.exists
   block:
@@ -16,21 +13,18 @@
       register: proxmox_repository_banner_patched
       changed_when: false
       failed_when: false
-
     - name: Patch proxmoxlib.js to remove subscription check
       ansible.builtin.shell:
         cmd: >
-          sed -i.bak '0,/Ext\.Msg\.show({/s//void({ \/\/Ext.Msg.show({/'
-          /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+          sed -i.bak '0,/Ext\.Msg\.show({/s//void({ \/\/Ext.Msg.show({/' /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+
       when: proxmox_repository_banner_patched.stdout | default('0') | int == 0
       notify: Restart pveproxy
-
     - name: Remove gzipped version to force browser to use patched file
       ansible.builtin.file:
         path: /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.gz
         state: absent
       notify: Restart pveproxy
-
 - name: Install APT hook for subscription banner persistence
   ansible.builtin.template:
     src: no-subscription-nag.j2

@@ -1,4 +1,3 @@
----
 # meta/main.yml - Role metadata for proxmox_access
 galaxy_info:
   role_name: proxmox_access
@@ -7,7 +6,6 @@ galaxy_info:
   company: Spaceships Homelab
   license: MIT
   min_ansible_version: "2.15"
-
   platforms:
     - name: Debian
       versions:
@@ -16,7 +14,6 @@ galaxy_info:
       versions:
         - jammy
         - noble
-
   galaxy_tags:
     - proxmox
     - proxmoxve
@@ -26,7 +23,6 @@ galaxy_info:
     - terraform
     - opentofu
     - automation
-
 # Role dependencies
 dependencies: []
 # Note: This role works best with system_user role for Linux user creation

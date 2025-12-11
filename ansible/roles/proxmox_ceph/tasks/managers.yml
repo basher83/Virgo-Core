@@ -1,6 +1,4 @@
----
 # Deploy CEPH managers
-
 - name: Check existing managers
   ansible.builtin.shell: |
     set -o pipefail
@@ -10,7 +8,6 @@
   register: existing_managers
   changed_when: false
   failed_when: false
-
 - name: Create CEPH manager
   ansible.builtin.command: pveceph mgr create
   register: mgr_create
@@ -19,7 +16,6 @@
     - mgr_create.rc != 0
     - "'already exists' not in mgr_create.stderr"
     - "'already running' not in mgr_create.stderr"
-
 - name: Wait for manager to be active
   ansible.builtin.shell: |
     set -o pipefail
@@ -32,7 +28,6 @@
   delay: 5
   changed_when: false
   when: mgr_create is changed
-
 - name: Display manager status
   ansible.builtin.debug:
     msg: "CEPH manager on {{ inventory_hostname }}: {{ 'Created' if mgr_create is changed else 'Already exists' }}"

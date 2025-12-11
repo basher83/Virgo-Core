@@ -1,6 +1,4 @@
----
 # tasks/validate.yml - Input validation for proxmox_template role
-
 - name: "validate | Assert required variables are defined"
   ansible.builtin.assert:
     that:
@@ -18,7 +16,6 @@
     success_msg: "Required variables validated"
     quiet: true
   tags: [validate]
-
 - name: "validate | Assert SSH keys are configured"
   ansible.builtin.assert:
     that:
@@ -30,7 +27,6 @@
     success_msg: "SSH key configuration validated"
     quiet: true
   tags: [validate]
-
 - name: "validate | Display template configuration summary"
   ansible.builtin.debug:
     msg:
