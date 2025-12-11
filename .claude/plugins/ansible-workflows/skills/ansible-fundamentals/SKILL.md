@@ -15,7 +15,7 @@ Core principles and golden rules for writing production-quality Ansible automati
 
 These rules apply to ALL Ansible code in this repository:
 
-1. **Use `uv run` prefix** - Always execute Ansible through uv:
+1. **Use `uv run` prefix** - Execute all Ansible commands through uv:
 
    ```bash
    uv run ansible-playbook playbooks/my-playbook.yml
@@ -23,7 +23,7 @@ These rules apply to ALL Ansible code in this repository:
    uv run ansible-galaxy collection install -r requirements.yml
    ```
 
-2. **Fully Qualified Collection Names (FQCN)** - Never use short module names:
+2. **Fully Qualified Collection Names (FQCN)** - Avoid short module names:
 
    ```yaml
    # CORRECT
@@ -38,7 +38,7 @@ These rules apply to ALL Ansible code in this repository:
        name: nginx
    ```
 
-3. **Control command/shell modules** - Always use `changed_when` and `failed_when`:
+3. **Control command/shell modules** - Add `changed_when` and `failed_when`:
 
    ```yaml
    - name: Check if service exists
@@ -116,7 +116,7 @@ Use `command` or `shell` modules when:
 2. Interacting with vendor CLI tools (pvecm, pveceph, kubectl)
 3. Running one-off scripts
 
-Always add proper controls:
+Add proper controls:
 
 ```yaml
 - name: Create Proxmox API token

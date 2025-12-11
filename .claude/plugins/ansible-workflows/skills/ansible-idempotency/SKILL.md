@@ -151,7 +151,7 @@ Allow specific "failures" that are actually expected:
 
 ## Pattern 6: Read-Only Operations
 
-Always mark read-only operations as never changed:
+Mark read-only operations as never changed:
 
 ```yaml
 # Checking status
@@ -276,7 +276,7 @@ Use facts to track state across tasks:
 
 ## Shell Script Requirements
 
-Always use strict error handling in shell scripts:
+Use strict error handling in shell scripts:
 
 ```yaml
 - name: Run pipeline

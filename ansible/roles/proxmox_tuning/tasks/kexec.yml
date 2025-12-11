@@ -1,13 +1,10 @@
----
 # kexec fast reboot configuration
 # Enables fast reboots that skip BIOS/POST by loading the new kernel before reboot
-
 - name: Install kexec-tools package
   ansible.builtin.apt:
     name: kexec-tools
     state: present
     update_cache: false
-
 - name: Create reboot-quick script
   ansible.builtin.copy:
     content: |

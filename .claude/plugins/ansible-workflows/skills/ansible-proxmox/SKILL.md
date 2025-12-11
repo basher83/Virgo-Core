@@ -14,7 +14,7 @@ Expert Proxmox automation using community.proxmox collection with minimal CLI us
 
 ### Prefer Native Modules
 
-Always use `community.proxmox` modules when available:
+Use `community.proxmox` modules when available:
 
 | Operation | Use Module | NOT CLI |
 |-----------|------------|---------|

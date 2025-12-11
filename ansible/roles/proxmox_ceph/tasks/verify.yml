@@ -1,30 +1,24 @@
----
 # Verify CEPH health
-
 - name: Get CEPH status
   ansible.builtin.command: ceph -s
   register: ceph_status
   changed_when: false
   failed_when: false
-
 - name: Get CEPH health detail
   ansible.builtin.command: ceph health detail
   register: ceph_health_detail
   changed_when: false
   failed_when: false
-
 - name: Get OSD tree
   ansible.builtin.command: ceph osd tree
   register: ceph_osd_tree
   changed_when: false
   failed_when: false
-
 - name: Get pool list
   ansible.builtin.command: ceph osd pool ls detail
   register: ceph_pool_list
   changed_when: false
   failed_when: false
-
 - name: Check if CEPH health is OK
   ansible.builtin.assert:
     that:
@@ -34,7 +28,6 @@
   when:
     - expected_health_status == "HEALTH_OK"
     - not ansible_check_mode
-
 - name: Display CEPH health summary
   ansible.builtin.debug:
     msg: |

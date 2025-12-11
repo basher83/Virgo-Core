@@ -61,7 +61,7 @@ Both use the external module from `github.com/basher83/Triangulum-Prime//terrafo
 
 ### Ansible
 
-**Migration Status**: Migrating to role-based architecture. See [docs/ansible-migration-plan.md](docs/ansible-migration-plan.md).
+**Migration Status**: Migrating to role-based architecture. See [ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md).
 
 **Key Roles**:
 
@@ -147,9 +147,9 @@ Use predefined agents for multi-step processes:
 
 ## Documentation
 
-- **[docs/README.md](docs/README.md)** - Documentation index with "Start Here" guide
-- **[docs/infrastructure.md](docs/infrastructure.md)** - Detailed infrastructure specifications (hardware, networking, storage)
-- **[docs/goals.md](docs/goals.md)** - Project goals and roadmap
-- **[docs/ansible-migration-plan.md](docs/ansible-migration-plan.md)** - Ansible role development plan
-- **[docs/netbox-powerdns.md](docs/netbox-powerdns.md)** - NetBox and PowerDNS integration architecture
+- **[documentation/README.md](documentation/README.md)** - Documentation index with "Start Here" guide
+- **[infrastructure.md](documentation/core/infrastructure.md)** - Detailed infrastructure specifications (hardware, networking, storage)
+- **[goals.md](documentation/core/goals.md)** - Project goals and roadmap
+- **[ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md)** - Ansible role development plan
+- **[netbox-powerdns.md](documentation/core/netbox-powerdns.md)** - NetBox and PowerDNS integration architecture
 - **[terraform/netbox-vm/README.md](terraform/netbox-vm/README.md)** - VM deployment guide with examples

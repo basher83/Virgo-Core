@@ -348,6 +348,35 @@ ssh root@proxmox 'pvesh get /nodes/<node>/network'
 9. **Environment variables**: Never commit credentials
 10. **Use `tofu`**: Use `tofu`, not `terraform` - this project uses OpenTofu
 
+<!-- BEGIN_TF_DOCS -->
+
+
+## Requirements
+
+No requirements.
+
+## Providers
+
+No providers.
+
+## Modules
+
+No modules.
+
+## Resources
+
+No resources.
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
+
+<!-- END_TF_DOCS -->
+
 ## License
 
 Copyright 2025 RalZareck. Licensed under Apache 2.0.

@@ -1,6 +1,4 @@
----
 # Enable CEPH manager modules (dashboard, prometheus)
-
 - name: Check if dashboard module is enabled
   ansible.builtin.shell: |
     set -o pipefail
@@ -10,7 +8,6 @@
   register: dashboard_check
   changed_when: false
   failed_when: false
-
 - name: Enable CEPH dashboard module
   ansible.builtin.command: ceph mgr module enable dashboard --force
   when: "'not_enabled' in dashboard_check.stdout"
@@ -19,7 +16,6 @@
   failed_when:
     - dashboard_enable.rc != 0
     - "'already enabled' not in dashboard_enable.stderr"
-
 - name: Check if Prometheus module is enabled
   ansible.builtin.shell: |
     set -o pipefail
@@ -29,7 +25,6 @@
   register: prometheus_check
   changed_when: false
   failed_when: false
-
 - name: Enable Prometheus module
   ansible.builtin.command: ceph mgr module enable prometheus --force
   when: "'not_enabled' in prometheus_check.stdout"
@@ -38,7 +33,6 @@
   failed_when:
     - prometheus_enable.rc != 0
     - "'already enabled' not in prometheus_enable.stderr"
-
 - name: Display enabled modules status
   ansible.builtin.debug:
     msg: |

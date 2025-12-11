@@ -1,11 +1,8 @@
----
 # Playbook: Create Ansible automation user
 # Usage: uv run ansible-playbook -i inventory/hosts.yml playbooks/create-ansible-user.yml -e ansible_user=root
-
 - name: Create Ansible automation user
   hosts: matrix_cluster
   become: true
-
   roles:
     - role: system_user
       vars:

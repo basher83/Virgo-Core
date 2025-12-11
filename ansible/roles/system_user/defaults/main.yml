@@ -1,7 +1,5 @@
----
 # ansible/roles/system_user/defaults/main.yml
 # Default variables for system_user role
-
 # List of system users to manage
 # Leave empty to manage no users
 # noqa: var-naming[no-role-prefix] - This is the role's public API variable

@@ -1,7 +1,5 @@
----
 # Distribute CEPH bootstrap keyrings to additional nodes
 # Bug #15: Bootstrap keyrings must be distributed from cluster for OSD creation
-
 - name: Create bootstrap-osd keyring directory
   ansible.builtin.file:
     path: /var/lib/ceph/bootstrap-osd
@@ -9,12 +7,10 @@
     owner: ceph
     group: ceph
     mode: '0755'
-
 - name: Check if bootstrap-osd keyring already exists
   ansible.builtin.stat:
     path: /var/lib/ceph/bootstrap-osd/ceph.keyring
   register: bootstrap_osd_keyring_stat
-
 - name: Generate bootstrap-osd keyring from cluster
   ansible.builtin.shell: |
     ceph auth get client.bootstrap-osd > /var/lib/ceph/bootstrap-osd/ceph.keyring
@@ -24,7 +20,6 @@
   changed_when: true
   failed_when: false
   register: bootstrap_keyring_result
-
 - name: Set ownership on bootstrap-osd keyring
   ansible.builtin.file:
     path: /var/lib/ceph/bootstrap-osd/ceph.keyring
@@ -32,7 +27,6 @@
     group: ceph
     mode: '0600'
   when: bootstrap_osd_keyring_stat.stat.exists or bootstrap_keyring_result.rc == 0
-
 - name: Display bootstrap keyring status
   ansible.builtin.debug:
     msg: |

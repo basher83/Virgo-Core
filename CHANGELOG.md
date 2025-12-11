@@ -25,6 +25,7 @@
 - *(ansible)* Remove hardcoded paths from commands and agents
 - *(ansible)* Use CLAUDE_PLUGIN_ROOT for script references
 - *(ansible)* Correct hooks.json structure for Claude Code
+- *(ansible)* Restore correct hooks.json wrapper structure
 
 ### 🚜 Refactor
 
@@ -53,11 +54,13 @@
 - Update changelog
 - *(ansible)* Add community.proxmox collection reference
 - *(ansible)* Add Additional Resources sections to skills
+- Update changelog
 
 ### 🎨 Styling
 
 - *(ansible)* Use failed_when instead of ignore_errors
 - *(ansible)* Remove second-person voice from skill files
+- *(ansible)* Convert prescriptive language to imperative form in skills
 
 ### ⚙️ Miscellaneous Tasks
 

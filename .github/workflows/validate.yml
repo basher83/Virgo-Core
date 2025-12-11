@@ -1,16 +1,12 @@
----
 name: Validate
-
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
   validate:
     name: Lint & Validate
@@ -21,35 +17,26 @@ jobs:
 
       - name: Install mise
         uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3
+
         with:
           install: true
-
       - name: Install Python dependencies
         run: mise run python-install
-
       - name: Install Ansible collections
         run: mise run ansible-setup
-
       - name: Check Terraform formatting
         run: mise run fmt-check
-
       - name: Validate Terraform
         run: mise run prod-validate
-
       - name: Lint Terraform (tflint)
         run: mise run lint-prod
-
       - name: Check Terraform docs
         run: mise run docs-check
-
       - name: Lint YAML
         run: mise run yaml-lint
-
       - name: Lint Shell scripts
         run: mise run shellcheck
-
       - name: Lint Markdown
         run: mise run markdown-lint
-
       - name: Lint Ansible
         run: mise run ansible-lint

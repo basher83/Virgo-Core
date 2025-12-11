@@ -167,7 +167,7 @@ Advanced pattern with fallback:
 
 ## Variable Naming Convention
 
-Always prefix variables with role name:
+Prefix variables with role name:
 
 ```yaml
 # Pattern: {role_name}_{feature}_{attribute}
@@ -357,7 +357,7 @@ Start task names with action verbs:
 
 ## File Validation
 
-Always validate critical configuration files:
+Validate critical configuration files:
 
 ```yaml
 - name: Update SSH configuration
