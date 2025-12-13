@@ -43,6 +43,7 @@
           - proxmox_cluster
           - proxmox_ceph
           - proxmox_tuning
+          - proxmox_template
           ========================================
       run_once: true
   tasks:
@@ -211,6 +212,43 @@
         - name: Verify test completed
           ansible.builtin.debug:
             msg: "✓ proxmox_tuning role test completed"
+    # =========================================================================
+    # Test 8: proxmox_template role
+    # =========================================================================
+    - name: Test proxmox_template role (check mode only)
+      tags: [proxmox_template, template]
+      block:
+        - name: Warning - Template role test
+          ansible.builtin.debug:
+            msg: |
+              ========================================
+              WARNING: proxmox_template role testing
+              ========================================
+              This role creates VM templates from cloud images.
+              Only run in check mode unless you intend
+              to actually build a template.
+              ========================================
+        - name: Test proxmox_template role
+          ansible.builtin.include_role:
+            name: proxmox_template
+          vars:
+            proxmox_template_id: 9999
+            proxmox_template_name: "ansible-test-template"
+            proxmox_template_image_path: "/var/lib/vz/template/iso/test-image.img"
+            proxmox_template_dry_run: true
+            proxmox_template_skip_verify: true
+            proxmox_template_use_infisical: false
+            proxmox_template_ssh_keys:
+              - "{{ test_ssh_key }}"
+          when: ansible_check_mode | default(false)
+        - name: Verify test completed
+          ansible.builtin.debug:
+            msg: "✓ proxmox_template role test completed (check mode only)"
+          when: ansible_check_mode | default(false)
+        - name: Skip template test in non-check mode
+          ansible.builtin.debug:
+            msg: "⊘ proxmox_template role test skipped (requires --check mode)"
+          when: not (ansible_check_mode | default(false))
   post_tasks:
     - name: Display test summary
       ansible.builtin.debug:
