@@ -8,7 +8,8 @@
     state: directory
     mode: '0755'
   delegate_to: localhost
-  become: false
+  vars:
+    ansible_become: false
   run_once: true
 - name: Export Terraform environment file
   ansible.builtin.template:
@@ -16,12 +17,12 @@
     dest: "{{ terraform_env_dir }}/proxmox-{{ inventory_hostname_short }}"
     mode: '0600'
   delegate_to: localhost
-  become: false
-  when: proxmox_access_generated_tokens is defined
   vars:
+    ansible_become: false
     node_host: "{{ proxmox_api_host }}"
     node_name: "{{ inventory_hostname_short }}"
     generated_tokens: "{{ proxmox_access_generated_tokens }}"
+  when: proxmox_access_generated_tokens is defined
 - name: Display environment file location
   ansible.builtin.debug:
     msg: |

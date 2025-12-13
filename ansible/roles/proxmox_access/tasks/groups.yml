@@ -13,7 +13,8 @@
     validate_certs: "{{ proxmox_validate_certs }}"
   loop: "{{ proxmox_groups }}"
   delegate_to: localhost
-  become: false
+  vars:
+    ansible_become: false
   register: proxmox_access_group_result
   no_log: "{{ proxmox_no_log }}"
 - name: Display group creation status

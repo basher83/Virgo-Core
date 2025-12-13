@@ -17,7 +17,8 @@
   loop_control:
     label: "{{ item.type }} {{ item.ugid }} on {{ item.path }}"
   delegate_to: localhost
-  become: false
+  vars:
+    ansible_become: false
   register: proxmox_access_acl_result
   no_log: "{{ proxmox_no_log }}"
 - name: Display ACL configuration status
