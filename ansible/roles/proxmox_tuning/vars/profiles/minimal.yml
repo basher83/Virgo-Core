@@ -1,33 +1,27 @@
----
 # noqa: var-naming[no-role-prefix] - Profile variables override defaults
 # Minimal profile - Conservative settings
 # Safe for any system, less aggressive optimization
-
 # Kernel behavior (safety-critical, same as balanced)
 sysctl_kernel_panic: 10
 sysctl_kernel_panic_on_oops: 1
-
 # Memory management (less aggressive)
-sysctl_vm_swappiness: 30             # More willing to use swap
-sysctl_vm_dirty_ratio: 20            # Higher threshold for blocking writes
+sysctl_vm_swappiness: 30 # More willing to use swap
+sysctl_vm_dirty_ratio: 20 # Higher threshold for blocking writes
 sysctl_vm_dirty_background_ratio: 10 # Higher threshold for background flush
-sysctl_vm_max_map_count: 65530       # Standard container support
-
+sysctl_vm_max_map_count: 65530 # Standard container support
 # File system limits (lower but still adequate)
-sysctl_fs_inotify_max_user_watches: 262144     # 256K watches
-sysctl_fs_inotify_max_user_instances: 262144   # 256K instances
-sysctl_fs_file_max: 2097152                    # 2M open files
-
+sysctl_fs_inotify_max_user_watches: 262144 # 256K watches
+sysctl_fs_inotify_max_user_instances: 262144 # 256K instances
+sysctl_fs_file_max: 2097152 # 2M open files
 # Journald configuration (more log retention)
 journald_storage: persistent
 journald_compress: "yes"
-journald_system_max_use: "128M"      # More space for logs
+journald_system_max_use: "128M" # More space for logs
 journald_runtime_max_use: "100M"
-journald_max_level_store: info       # Store info and above
+journald_max_level_store: info # Store info and above
 journald_max_level_syslog: info
 journald_forward_to_syslog: "no"
 journald_forward_to_wall: "yes"
-
 # KSM configuration (conservative - less CPU overhead)
-ksm_pages_to_scan: 50                # Fewer pages per scan
-ksm_sleep_millisecs: 50              # Longer interval between scans
+ksm_pages_to_scan: 50 # Fewer pages per scan
+ksm_sleep_millisecs: 50 # Longer interval between scans

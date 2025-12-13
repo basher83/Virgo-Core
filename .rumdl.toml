@@ -9,12 +9,12 @@
 # enable = ["MD001", "MD003", "MD004"]
 
 # List of file/directory patterns to include for linting (if provided, only these will be linted)
-include = ["README.md", "WARP.md", ".agent/**/*.md"]
+# include = ["README.md", "WARP.md", ".agent/**/*.md"]
 # List of file/directory patterns to exclude from linting
 exclude = [
   # Common directories to exclude
   ".git",
-  ".github",
+  ".github/**",
   "node_modules",
   "vendor",
   "dist",
@@ -31,7 +31,7 @@ exclude = [
   "scripts/**",
 ]
 # Respect .gitignore files when scanning directories (default: true)
-respect_gitignore = true
+# respect_gitignore = true
 
 # Markdown flavor/dialect (uncomment to enable)
 # Options: mkdocs, gfm, commonmark

@@ -1,0 +1,32 @@
+---
+extends: default
+
+ignore:
+  - .venv/
+  - node_modules/
+
+rules:
+  # Relax line length for readability in complex Ansible tasks
+  line-length:
+    max: 120
+    level: warning
+
+  # Allow document-start to be optional for config files
+  document-start: disable
+
+  # Allow inline comments with single space
+  comments:
+    min-spaces-from-content: 1
+
+  # Comments indentation can vary in complex YAML
+  comments-indentation: disable
+
+  # Allow blank lines in Ansible files for readability
+  empty-lines:
+    max: 2
+    max-start: 0
+    max-end: 1
+
+  # Truthy values in GitHub Actions use 'on:' which triggers false positive
+  truthy:
+    allowed-values: ['true', 'false', 'on']

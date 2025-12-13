@@ -1,21 +1,15 @@
----
 # Nexus cluster configuration
 # Nodes: alpha (node_id: 50), bravo (node_id: 30)
 # Purpose: Original cluster - mixed LXC/VM workloads
 # Network: Single bridge, local + NFS storage
-
 # =============================================================================
 # Cluster Configuration
 # =============================================================================
-
 cluster_name: nexus
-
 # Infisical path for Nexus secrets
 infisical_path: /nexus
-
 # Corosync network
 cluster_corosync_network: 192.168.30.0/24
-
 # =============================================================================
 # Network Configuration
 # =============================================================================
@@ -28,21 +22,17 @@ proxmox_bridges:
     gateway: 192.168.30.1
     vlan_aware: false
     comment: "Management network"
-
 # No VLANs configured
 proxmox_vlans: []
-
 # Standard MTU
 network_mtu: 1500
 network_jumbo_frames_enabled: false
-
 # =============================================================================
 # Storage Configuration
 # =============================================================================
 
 # Local storage type
 nexus_local_storage_type: lvm-thin
-
 # NFS mounts (shared TrueNAS storage)
 nexus_nfs_mounts:
   - server: 192.168.30.6
@@ -54,7 +44,6 @@ nexus_nfs_mounts:
       - templates
       - images
     size: 13TB
-
   - server: 192.168.30.6
     export: /mnt/DataLake/NFSshare
     mount_point: /mnt/pve/TrueNAS
@@ -64,7 +53,6 @@ nexus_nfs_mounts:
       - isos
       - images
     size: 11TB
-
   - server: 192.168.30.6
     export: /mnt/DataLake/swarm
     mount_point: /mnt/pve/swarm

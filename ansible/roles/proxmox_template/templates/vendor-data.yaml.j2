@@ -1,0 +1,41 @@
+#cloud-config
+# Managed by Ansible - proxmox_template role
+# Template: {{ proxmox_template_name }}
+# Generated: {{ ansible_date_time.iso8601 }}
+
+# Disable password authentication for SSH
+ssh_pwauth: false
+
+# Set timezone
+timezone: {{ proxmox_template_timezone }}
+
+# Create default user with sudo access
+users:
+  - name: {{ proxmox_template_user }}
+    gecos: {{ proxmox_template_user_gecos }}
+    groups: users,sudo
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+{% for key in proxmox_template_ssh_keys %}
+      - {{ key }}
+{% endfor %}
+
+# Update packages on first boot
+package_upgrade: true
+
+# Install essential packages
+packages:
+  - qemu-guest-agent
+
+# Ensure qemu-guest-agent is started
+runcmd:
+  - systemctl enable qemu-guest-agent
+  - systemctl start qemu-guest-agent
+
+# Reboot after cloud-init completes to apply all changes
+power_state:
+  mode: reboot
+  timeout: 30
+  condition: true

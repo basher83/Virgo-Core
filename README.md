@@ -4,9 +4,13 @@ Infrastructure as Code for managing a Proxmox VE homelab cluster with NetBox and
 
 ## Overview
 
-Virgo-Core automates the deployment and configuration of a production-grade Proxmox VE cluster using modern Infrastructure as Code practices. The project targets a 3-node cluster named "Matrix" (Foxtrot, Golf, Hotel), providing automated cluster initialization, CEPH distributed storage deployment, network configuration, and VM provisioning.
+Virgo-Core automates the deployment and configuration of a production-grade Proxmox VE cluster using modern
+Infrastructure as Code practices. The project targets a 3-node cluster named "Matrix" (Foxtrot, Golf, Hotel),
+providing automated cluster initialization, CEPH distributed storage deployment, network configuration, and VM
+provisioning.
 
-OpenTofu handles infrastructure provisioning while Ansible manages configuration, demonstrating enterprise-level automation practices for homelab environments.
+OpenTofu handles infrastructure provisioning while Ansible manages configuration, demonstrating enterprise-level
+automation practices for homelab environments.
 
 ## Key Features
 
@@ -21,7 +25,9 @@ OpenTofu handles infrastructure provisioning while Ansible manages configuration
 
 ## Recent Milestone
 
-The project completed a comprehensive 6-phase Ansible migration from monolithic playbooks to a modern role-based architecture. All 6 production roles passed validation with perfect idempotency, zero ansible-lint violations, and comprehensive documentation. See [ansible-migration-completion.md](docs/ansible-migration-completion.md) for details.
+The project completed a comprehensive 6-phase Ansible migration from monolithic playbooks to a modern role-based
+architecture. All 6 production roles passed validation with perfect idempotency, zero ansible-lint violations, and
+comprehensive documentation. See [ansible-migration-completion.md](docs/archive/2025-11-v1.0/ansible-migration-completion.md) for details.
 
 ## Architecture
 
@@ -225,11 +231,11 @@ Each role includes comprehensive documentation, example playbooks, and safety fe
 
 Detailed documentation covers all aspects of the project:
 
-- **[infrastructure.md](docs/infrastructure.md)**: Hardware specifications, network architecture, CEPH configuration
-- **[goals.md](docs/goals.md)**: Project objectives and roadmap
-- **[ansible-migration-plan.md](docs/ansible-migration-plan.md)**: Role development strategy
-- **[ansible-migration-completion.md](docs/ansible-migration-completion.md)**: Migration results and metrics
-- **[netbox-powerdns.md](docs/netbox-powerdns.md)**: DNS and IPAM integration architecture
+- **[infrastructure.md](documentation/core/infrastructure.md)**: Hardware specifications, network architecture, CEPH configuration
+- **[goals.md](documentation/core/goals.md)**: Project objectives and roadmap
+- **[ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md)**: Role development strategy
+- **[ansible-migration-completion.md](docs/archive/2025-11-v1.0/ansible-migration-completion.md)**: Migration results and metrics
+- **[netbox-powerdns.md](documentation/core/netbox-powerdns.md)**: DNS and IPAM integration architecture
 - **[terraform/netbox-vm/README.md](terraform/netbox-vm/README.md)**: VM deployment guide with examples
 
 ## Development Workflow
@@ -314,7 +320,8 @@ Contributions welcome. Follow these guidelines:
 
 This repository includes an agent skill for Claude Code:
 
-- **ansible-best-practices**: Guidance for Ansible playbook patterns, role design, Infisical secrets, idempotency, and error handling
+- **ansible-best-practices**: Guidance for Ansible playbook patterns, role design, Infisical secrets, idempotency,
+  and error handling
 
 ## License
 

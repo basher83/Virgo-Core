@@ -1,6 +1,4 @@
----
 # Configure APT repository priorities
-
 - name: Configure APT repository pinning
   ansible.builtin.copy:
     dest: /etc/apt/preferences.d/proxmox-pinning

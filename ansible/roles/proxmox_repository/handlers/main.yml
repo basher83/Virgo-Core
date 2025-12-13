@@ -1,6 +1,4 @@
----
 # Handlers for proxmox_repository role
-
 - name: Restart pveproxy
   ansible.builtin.systemd:
     name: pveproxy

@@ -1,18 +1,13 @@
----
 # Create OSDs from configuration (improves on ProxSpray)
-
 - name: Check existing OSDs
   ansible.builtin.command: pveceph osd ls
   register: existing_osds
   changed_when: false
   failed_when: false
-
 - name: Create OSDs from device configuration
   ansible.builtin.command: >
-    pveceph osd create {{ item.device }}
-    {% if item.db_device is defined and item.db_device %}--db_dev {{ item.db_device }}{% endif %}
-    {% if item.wal_device is defined and item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %}
-    {% if item.crush_device_class is defined %}--crush-device-class {{ item.crush_device_class }}{% endif %}
+    pveceph osd create {{ item.device }} {% if item.db_device is defined and item.db_device %}--db_dev {{ item.db_device }}{% endif %} {% if item.wal_device is defined and item.wal_device %}--wal_dev {{ item.wal_device }}{% endif %} {% if item.crush_device_class is defined %}--crush-device-class {{ item.crush_device_class }}{% endif %}
+
   loop: "{{ ceph_osds[inventory_hostname_short] | default([]) }}"
   when:
     - item.device not in existing_osds.stdout
@@ -22,7 +17,6 @@
     - osd_create.rc != 0
     - "'already in use' not in osd_create.stderr"
     - "'already exists' not in osd_create.stderr"
-
 - name: Wait for OSDs to be active
   ansible.builtin.shell: |
     set -o pipefail
@@ -35,7 +29,6 @@
   delay: 10
   changed_when: false
   when: osd_create is changed
-
 - name: Get OSD count for this node
   ansible.builtin.shell: |
     set -o pipefail
@@ -44,7 +37,6 @@
     executable: /bin/bash
   register: osd_count
   changed_when: false
-
 - name: Display OSD creation status
   ansible.builtin.debug:
     msg: "OSDs on {{ inventory_hostname }}: {{ osd_count.stdout }} OSDs active"

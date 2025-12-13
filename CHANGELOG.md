@@ -9,16 +9,29 @@
 - *(ansible)* Add TCP BBR congestion control to proxmox_tuning
 - *(ansible)* Add KSM tuning to proxmox_tuning role
 - *(ansible)* Add pigz backup acceleration to proxmox_repository
+- *(ansible)* Add kexec fast reboot to proxmox_tuning role
+- *(ansible)* Add haveged entropy daemon to proxmox_tuning role
+- *(ansible)* Add network stack optimization to proxmox_tuning role
+- Add comprehensive .github/copilot-instructions.md
+- *(ansible)* Add proxmox_template role for VM template creation
+- *(ansible)* Add ansible-workflows plugin with 8 skills, 4 commands, 4 agents
 
 ### 🐛 Bug Fixes
 
 - *(mintlify)* Convert relative .md links to root-relative paths
 - *(mintlify)* Remove leading slash from internal link paths
 - *(ansible)* Make subscription banner removal idempotent
+- *(ansible)* Address PR review feedback for proxmox_template role
+- *(ansible)* Remove hardcoded paths from commands and agents
+- *(ansible)* Use CLAUDE_PLUGIN_ROOT for script references
+- *(ansible)* Correct hooks.json structure for Claude Code
+- *(ansible)* Restore correct hooks.json wrapper structure
 
 ### 🚜 Refactor
 
 - Move archive and brainstorming folders to docs/
+- *(ansible)* Remove monolithic ansible-best-practices skill
+- *(ansible)* Move references to skill-level directories
 
 ### 📚 Documentation
 
@@ -35,6 +48,19 @@
 - Add ProxMenux integration research tracking
 - Deprioritize Fail2Ban for internal infrastructure
 - *(ansible)* Update role READMEs and ProxMenux integration tracking
+- Update changelog
+- Add infrastructure diagrams and architecture decision records
+- Remove DNS error warning from copilot instructions
+- Update changelog
+- *(ansible)* Add community.proxmox collection reference
+- *(ansible)* Add Additional Resources sections to skills
+- Update changelog
+
+### 🎨 Styling
+
+- *(ansible)* Use failed_when instead of ignore_errors
+- *(ansible)* Remove second-person voice from skill files
+- *(ansible)* Convert prescriptive language to imperative form in skills
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -46,6 +72,11 @@
 - *(claude)* Fix Ansible skills markdown formatting
 - Expand rumdl exclude patterns for documentation
 - *(agents)* Replace meta-agent with jina-search agent
+- *(mise)* Remove markdownlint-cli2 from tool list
+- *(github)* Add validate workflow for PR checks
+- Add new hooks
+- *(hookify)* Disable skill-forced-eval hook and update structure
+- *(rumdl)* Update markdown linter configuration
 
 ## [1.1.0] - 2025-11-20
 

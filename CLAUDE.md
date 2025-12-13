@@ -16,11 +16,34 @@ a 3-node Proxmox cluster named "Matrix" (nodes: Foxtrot, Golf, Hotel).
 - **Mise**: Task runner and tool version manager
 - **Proxmox VE**: 9.x cluster with CEPH storage
 
-## Claude Code Skills
+## Claude Code Plugin
 
-This repository includes an Agent Skill that extends Claude Code's capabilities:
+This repository includes the **ansible-workflows** plugin that extends Claude Code's capabilities:
 
-- **ansible-best-practices** - Ansible playbook patterns, role design, Infisical secrets, idempotency, error handling
+### Skills (8)
+
+| Skill | Purpose |
+|-------|---------|
+| `ansible-fundamentals` | Golden rules, FQCN, module selection, uv run patterns |
+| `ansible-playbook-design` | State-based playbooks, play structure, imports |
+| `ansible-role-design` | Role structure, vars/defaults, handlers, meta |
+| `ansible-idempotency` | changed_when, failed_when, check-before-create |
+| `ansible-secrets` | Infisical integration, no_log, security |
+| `ansible-error-handling` | Try/rescue, fail module, validation patterns |
+| `ansible-testing` | ansible-lint configuration, integration testing |
+| `ansible-proxmox` | community.proxmox modules, cluster/CEPH automation |
+
+### Commands
+
+- `/ansible:create-role` - Scaffold a new Ansible role
+- `/ansible:create-playbook` - Scaffold a state-based playbook
+- `/ansible:lint` - Run ansible-lint with fix guidance
+- `/ansible:analyze` - Analyze existing code or suggest enhancements
+
+### Agents
+
+Multi-agent workflow: `ansible-generator` → `ansible-validator` → `ansible-reviewer`
+(with `ansible-debugger` for failures)
 
 ## Project Structure
 
@@ -38,7 +61,7 @@ Both use the external module from `github.com/basher83/Triangulum-Prime//terrafo
 
 ### Ansible
 
-**Migration Status**: Migrating to role-based architecture. See [docs/ansible-migration-plan.md](docs/ansible-migration-plan.md).
+**Migration Status**: Migrating to role-based architecture. See [ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md).
 
 **Key Roles**:
 
@@ -124,9 +147,9 @@ Use predefined agents for multi-step processes:
 
 ## Documentation
 
-- **[docs/README.md](docs/README.md)** - Documentation index with "Start Here" guide
-- **[docs/infrastructure.md](docs/infrastructure.md)** - Detailed infrastructure specifications (hardware, networking, storage)
-- **[docs/goals.md](docs/goals.md)** - Project goals and roadmap
-- **[docs/ansible-migration-plan.md](docs/ansible-migration-plan.md)** - Ansible role development plan
-- **[docs/netbox-powerdns.md](docs/netbox-powerdns.md)** - NetBox and PowerDNS integration architecture
+- **[documentation/README.md](documentation/README.md)** - Documentation index with "Start Here" guide
+- **[infrastructure.md](documentation/core/infrastructure.md)** - Detailed infrastructure specifications (hardware, networking, storage)
+- **[goals.md](documentation/core/goals.md)** - Project goals and roadmap
+- **[ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md)** - Ansible role development plan
+- **[netbox-powerdns.md](documentation/core/netbox-powerdns.md)** - NetBox and PowerDNS integration architecture
 - **[terraform/netbox-vm/README.md](terraform/netbox-vm/README.md)** - VM deployment guide with examples

@@ -1,0 +1,43 @@
+# tasks/verify.yml - Verify template was created successfully
+- name: "verify | Check template exists"
+  ansible.builtin.shell: |
+    set -euo pipefail
+    qm list | grep -E "^\s*{{ proxmox_template_id }}\s"
+  args:
+    executable: /bin/bash
+  register: _template_verify
+  changed_when: false
+  when: not (proxmox_template_dry_run | bool)
+  tags: [verify]
+- name: "verify | Confirm VM is actually a template"
+  ansible.builtin.shell: |
+    set -euo pipefail
+    qm config {{ proxmox_template_id }} | grep -q "^template: 1"
+  args:
+    executable: /bin/bash
+  changed_when: false
+  when: not (proxmox_template_dry_run | bool)
+  tags: [verify]
+- name: "verify | Display template creation summary"
+  ansible.builtin.debug:
+    msg:
+      - "=== Template Created Successfully ==="
+      - "VM ID:        {{ proxmox_template_id }}"
+      - "Name:         {{ proxmox_template_name }}"
+      - "Image:        {{ proxmox_template_image_path }}"
+      - "Storage:      {{ proxmox_template_storage }}"
+      - "Network:      {{ proxmox_template_net_bridge }}{% if proxmox_template_net2_bridge %}, {{ proxmox_template_net2_bridge }}{% endif %}"
+      - "Cloud-init:   {{ proxmox_template_user }}@{{ proxmox_template_timezone }}"
+      - "Vendor Data:  /var/lib/vz/snippets/{{ proxmox_template_vendor_file }}"
+      - "======================================"
+  when: not (proxmox_template_dry_run | bool)
+  tags: [verify]
+- name: "verify | Dry run summary"
+  ansible.builtin.debug:
+    msg:
+      - "=== Dry Run Complete ==="
+      - "No changes were made."
+      - "To create the template, run without --dry-run"
+      - "========================="
+  when: proxmox_template_dry_run | bool
+  tags: [verify]

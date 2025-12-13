@@ -1,0 +1,48 @@
+# tasks/validate.yml - Input validation for proxmox_template role
+- name: "validate | Assert required variables are defined"
+  ansible.builtin.assert:
+    that:
+      - proxmox_template_id is defined
+      - proxmox_template_id | int > 0
+      - proxmox_template_name is defined
+      - proxmox_template_name | length > 0
+      - proxmox_template_image_path is defined
+      - proxmox_template_image_path | length > 0
+    fail_msg: |
+      Missing required variables:
+        - proxmox_template_id: {{ proxmox_template_id | default('NOT SET') }}
+        - proxmox_template_name: {{ proxmox_template_name | default('NOT SET') }}
+        - proxmox_template_image_path: {{ proxmox_template_image_path | default('NOT SET') }}
+    success_msg: "Required variables validated"
+    quiet: true
+  tags: [validate]
+- name: "validate | Assert SSH keys are configured"
+  ansible.builtin.assert:
+    that:
+      - proxmox_template_use_infisical | bool or (proxmox_template_ssh_keys | length > 0)
+    fail_msg: |
+      SSH keys must be configured either via:
+        - proxmox_template_ssh_keys list (direct)
+        - proxmox_template_use_infisical: true (retrieve from Infisical)
+    success_msg: "SSH key configuration validated"
+    quiet: true
+  tags: [validate]
+- name: "validate | Display template configuration summary"
+  ansible.builtin.debug:
+    msg:
+      - "=== Proxmox Template Configuration ==="
+      - "Template ID:     {{ proxmox_template_id }}"
+      - "Template Name:   {{ proxmox_template_name }}"
+      - "Cloud Image:     {{ proxmox_template_image_path }}"
+      - "BIOS:            {{ proxmox_template_bios }}"
+      - "Machine:         {{ proxmox_template_machine }}"
+      - "CPU:             {{ proxmox_template_cpu_cores }} cores x {{ proxmox_template_cpu_sockets }} sockets ({{ proxmox_template_cpu_type }})"
+      - "Memory:          {{ proxmox_template_memory }} MB"
+      - "Storage:         {{ proxmox_template_storage }}"
+      - "Network (net0):  {{ proxmox_template_net_bridge }}{% if proxmox_template_net_vlan %} (VLAN {{ proxmox_template_net_vlan }}){% endif %} - {{ proxmox_template_net_ip }}"
+      - "{% if proxmox_template_net2_bridge %}Network (net1):  {{ proxmox_template_net2_bridge }}{% if proxmox_template_net2_vlan %} (VLAN {{ proxmox_template_net2_vlan }}){% endif %} - {{ proxmox_template_net2_ip }}{% endif %}"
+      - "Cloud-init User: {{ proxmox_template_user }}"
+      - "SSH Keys:        {{ 'From Infisical' if proxmox_template_use_infisical else (proxmox_template_ssh_keys | length | string + ' keys configured') }}"
+      - "Dry Run:         {{ proxmox_template_dry_run }}"
+      - "======================================="
+  tags: [validate]

@@ -1,4 +1,3 @@
----
 galaxy_info:
   author: Virgo-Core Team
   description: Manage Proxmox VE and CEPH APT repositories
@@ -14,5 +13,4 @@ galaxy_info:
     - repository
     - apt
     - ceph
-
 dependencies: []
