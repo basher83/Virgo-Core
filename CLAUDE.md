@@ -16,9 +16,15 @@ a 3-node Proxmox cluster named "Matrix" (nodes: Foxtrot, Golf, Hotel).
 - **Mise**: Task runner and tool version manager
 - **Proxmox VE**: 9.x cluster with CEPH storage
 
-## Claude Code Plugin
+## Ansible Workflows Plugin
 
-This repository includes the **ansible-workflows** plugin that extends Claude Code's capabilities:
+Install the **ansible-workflows** plugin from lunar-claude marketplace:
+
+```bash
+/plugin install ansible-workflows@lunar-claude
+```
+
+This plugin extends Claude Code's capabilities for Ansible development:
 
 ### Skills (8)
 
