@@ -10,4 +10,4 @@ permissions:
 jobs:
   sync-labels:
     # yamllint disable-line rule:line-length
-    uses: basher83/.github/.github/workflows/sync-labels.yml@41dd9c4479354a825e28faec399c5f8e79e94d21
+    uses: basher83/.github/.github/workflows/sync-labels.yml@6a41839fcb63aa8ffd2e421fa421eef188556b97
