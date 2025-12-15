@@ -16,41 +16,6 @@ a 3-node Proxmox cluster named "Matrix" (nodes: Foxtrot, Golf, Hotel).
 - **Mise**: Task runner and tool version manager
 - **Proxmox VE**: 9.x cluster with CEPH storage
 
-## Ansible Workflows Plugin
-
-Install the **ansible-workflows** plugin from lunar-claude marketplace:
-
-```bash
-/plugin install ansible-workflows@lunar-claude
-```
-
-This plugin extends Claude Code's capabilities for Ansible development:
-
-### Skills (8)
-
-| Skill | Purpose |
-|-------|---------|
-| `ansible-fundamentals` | Golden rules, FQCN, module selection, uv run patterns |
-| `ansible-playbook-design` | State-based playbooks, play structure, imports |
-| `ansible-role-design` | Role structure, vars/defaults, handlers, meta |
-| `ansible-idempotency` | changed_when, failed_when, check-before-create |
-| `ansible-secrets` | Infisical integration, no_log, security |
-| `ansible-error-handling` | Try/rescue, fail module, validation patterns |
-| `ansible-testing` | ansible-lint configuration, integration testing |
-| `ansible-proxmox` | community.proxmox modules, cluster/CEPH automation |
-
-### Commands
-
-- `/ansible:create-role` - Scaffold a new Ansible role
-- `/ansible:create-playbook` - Scaffold a state-based playbook
-- `/ansible:lint` - Run ansible-lint with fix guidance
-- `/ansible:analyze` - Analyze existing code or suggest enhancements
-
-### Agents
-
-Multi-agent workflow: `ansible-generator` → `ansible-validator` → `ansible-reviewer`
-(with `ansible-debugger` for failures)
-
 ## Project Structure
 
 ### Terraform/OpenTofu
@@ -67,7 +32,7 @@ Both use the external module from `github.com/basher83/Triangulum-Prime//terrafo
 
 ### Ansible
 
-**Migration Status**: Migrating to role-based architecture. See [ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md).
+**Migration Status**: Has migrated to role-based architecture. See [ansible-migration-plan.md](docs/archive/2025-11-v1.0/ansible-migration-plan.md).
 
 **Key Roles**:
 
@@ -108,23 +73,7 @@ Launch 5 scouts simultaneously:
 
 **Why**: Provides complete repo overview in one shot for strategic planning.
 
-### Pattern 2: Creation + Polish Pipeline
-
-For documentation tasks requiring quality writing:
-
-**Wave 1** - Create content in parallel (3+ agents)
-**Wave 2** - Polish with Elements of Style skill in parallel
-
-Each agent in Wave 2 must:
-
-1. **First** invoke `elements-of-style:writing-clearly-and-concisely` skill using Skill tool
-2. **Then** apply skill guidance to polish the document
-3. Report improvements made
-
-**Why**: Skills provide more rigorous guidance than natural language instructions.
-Caught 15+ improvements that "follow Strunk's principles" instruction missed.
-
-### Pattern 3: Research → Validate → Execute
+### Research → Validate → Execute
 
 For technical configurations, use research tools before implementing:
 
@@ -134,7 +83,7 @@ For technical configurations, use research tools before implementing:
 
 **Why**: Verify against official documentation instead of guessing. Prevents trial-and-error loops.
 
-### Pattern 4: Specialized Agents for Complex Workflows
+### Specialized Agents for Complex Workflows
 
 Use predefined agents for multi-step processes:
 
