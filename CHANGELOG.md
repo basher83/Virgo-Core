@@ -15,6 +15,8 @@
 - Add comprehensive .github/copilot-instructions.md
 - *(ansible)* Add proxmox_template role for VM template creation
 - *(ansible)* Add ansible-workflows plugin with 8 skills, 4 commands, 4 agents
+- *(agents)* Add Ansible quality assurance agent definitions
+- *(validator)* Add Ansible role quality validation MVP
 
 ### 🐛 Bug Fixes
 
@@ -26,12 +28,17 @@
 - *(ansible)* Use CLAUDE_PLUGIN_ROOT for script references
 - *(ansible)* Correct hooks.json structure for Claude Code
 - *(ansible)* Restore correct hooks.json wrapper structure
+- *(ci)* Correct terraform-docs markers in README files
+- *(ansible)* Add proxmox_template role to test suite
+- *(proxmox_access)* Override global become for localhost delegation
 
 ### 🚜 Refactor
 
 - Move archive and brainstorming folders to docs/
 - *(ansible)* Remove monolithic ansible-best-practices skill
 - *(ansible)* Move references to skill-level directories
+- Migrate ansible-workflows plugin to lunar-claude
+- *(validator)* Recalibrate scoring with comprehensive error handling
 
 ### 📚 Documentation
 
@@ -55,12 +62,19 @@
 - *(ansible)* Add community.proxmox collection reference
 - *(ansible)* Add Additional Resources sections to skills
 - Update changelog
+- Update changelog
+- Fix broken relative links to moved documentation
+- *(claude)* Streamline multi-agent orchestration patterns
+- *(strategy)* Add Ansible playbook generation strategy framework
+- *(prompts)* Add AI agent guidance templates for validator work
 
 ### 🎨 Styling
 
 - *(ansible)* Use failed_when instead of ignore_errors
 - *(ansible)* Remove second-person voice from skill files
 - *(ansible)* Convert prescriptive language to imperative form in skills
+- *(docs)* Fix line length violations in root README
+- Apply yamlfmt formatting across all YAML files
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -77,6 +91,8 @@
 - Add new hooks
 - *(hookify)* Disable skill-forced-eval hook and update structure
 - *(rumdl)* Update markdown linter configuration
+- Fix configuration and workflow issues
+- *(docs)* Remove obsolete documentation files
 
 ## [1.1.0] - 2025-11-20
 
