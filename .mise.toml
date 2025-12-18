@@ -23,9 +23,9 @@ yamllint = "1.37.1"
 yamlfmt = "0.20.0"
 shellcheck = "0.11.0"
 opentofu = "1.11.1"
-uv = "0.9.17"
+uv = "0.9.18"
 prek = "0.2.19"
-"pipx:rumdl" = "0.0.194"
+"pipx:rumdl" = "0.0.195"
 
 [env]
 _.python.venv = { path = ".venv", create = true }  # create the venv if it doesn't exist
