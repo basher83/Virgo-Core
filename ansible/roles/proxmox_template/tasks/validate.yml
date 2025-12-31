@@ -3,14 +3,15 @@
   ansible.builtin.assert:
     that:
       - proxmox_template_id is defined
-      - proxmox_template_id | int > 0
+      - proxmox_template_id | int >= 100
+      - proxmox_template_id | int <= 999999999
       - proxmox_template_name is defined
       - proxmox_template_name | length > 0
       - proxmox_template_image_path is defined
       - proxmox_template_image_path | length > 0
     fail_msg: |
-      Missing required variables:
-        - proxmox_template_id: {{ proxmox_template_id | default('NOT SET') }}
+      Invalid or missing required variables:
+        - proxmox_template_id: {{ proxmox_template_id | default('NOT SET') }} (must be 100-999999999)
         - proxmox_template_name: {{ proxmox_template_name | default('NOT SET') }}
         - proxmox_template_image_path: {{ proxmox_template_image_path | default('NOT SET') }}
     success_msg: "Required variables validated"

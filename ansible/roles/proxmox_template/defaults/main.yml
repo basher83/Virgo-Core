@@ -72,6 +72,17 @@ proxmox_template_net2_vlan: ""
 proxmox_template_net2_ip: "dhcp"
 # Gateway for secondary interface (only used with static IP)
 proxmox_template_net2_gateway: ""
+
+# =============================================================================
+# DNS Configuration
+# =============================================================================
+
+# DNS servers (space-separated, e.g., "1.1.1.1 8.8.8.8")
+proxmox_template_dns: ""
+
+# DNS search domain (e.g., "home.local")
+proxmox_template_searchdomain: ""
+
 # =============================================================================
 # Cloud-init Configuration
 # =============================================================================

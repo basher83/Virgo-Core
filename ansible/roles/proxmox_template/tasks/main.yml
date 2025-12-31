@@ -7,6 +7,27 @@
   ansible.builtin.include_tasks: secrets.yml
   when: proxmox_template_use_infisical | bool
   tags: [proxmox_template, secrets]
+- name: "proxmox_template | FATAL - No SSH keys configured"
+  ansible.builtin.fail:
+    msg: |
+      ❌ FATAL: No SSH keys available for template {{ proxmox_template_name }}
+
+      The template would be created with user '{{ proxmox_template_user }}' but NO SSH keys.
+      This results in a VM you cannot access (password auth is disabled).
+
+      Fix by either:
+        1. Set proxmox_template_ssh_keys directly:
+           proxmox_template_ssh_keys:
+             - "ssh-ed25519 AAAAC3... user@host"
+
+        2. Enable Infisical and ensure {{ proxmox_template_infisical_secret_name }} contains valid keys:
+           proxmox_template_use_infisical: true
+
+      Current state:
+        - proxmox_template_use_infisical: {{ proxmox_template_use_infisical }}
+        - proxmox_template_ssh_keys count: {{ proxmox_template_ssh_keys | length }}
+  when: proxmox_template_ssh_keys | length == 0
+  tags: [proxmox_template, validate]
 - name: "proxmox_template | Prepare cloud-init vendor data"
   ansible.builtin.include_tasks: prepare_cloudinit.yml
   tags: [proxmox_template, cloudinit]

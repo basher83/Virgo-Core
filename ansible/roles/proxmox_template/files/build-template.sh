@@ -34,37 +34,41 @@ trap 'echo "Error occurred at line $LINENO. Exit code: $?" >&2' ERR
 # Logging setup
 LOG_FILE="/var/log/proxmox-template-build-$(date +%Y%m%d_%H%M%S).log"
 if ! touch "$LOG_FILE" 2>/dev/null; then
-    LOG_FILE="/tmp/proxmox-template-build-$(date +%Y%m%d_%H%M%S).log"
+  LOG_FILE="/tmp/proxmox-template-build-$(date +%Y%m%d_%H%M%S).log"
 fi
 readonly LOG_FILE
 
+# Clean up old log files (keep last 30 days)
+find /var/log -maxdepth 1 -name "proxmox-template-build-*.log" -mtime +30 -delete 2>/dev/null || true
+find /tmp -maxdepth 1 -name "proxmox-template-build-*.log" -mtime +30 -delete 2>/dev/null || true
+
 # Color codes
 if [[ -t 1 ]] && [[ "${TERM:-}" != "dumb" ]] && [[ -z "${NO_COLOR:-}" ]]; then
-    readonly RED='\033[0;31m'
-    readonly GREEN='\033[0;32m'
-    readonly YELLOW='\033[1;33m'
-    readonly NC='\033[0m'
+  readonly RED='\033[0;31m'
+  readonly GREEN='\033[0;32m'
+  readonly YELLOW='\033[1;33m'
+  readonly NC='\033[0m'
 else
-    readonly RED=''
-    readonly GREEN=''
-    readonly YELLOW=''
-    readonly NC=''
+  readonly RED=''
+  readonly GREEN=''
+  readonly YELLOW=''
+  readonly NC=''
 fi
 
 # Logging functions
 log_info() {
-    echo -e "${GREEN}[INFO]${NC} $1"
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [INFO] $1" >> "$LOG_FILE"
+  echo -e "${GREEN}[INFO]${NC} $1"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] [INFO] $1" >>"$LOG_FILE"
 }
 
 log_warn() {
-    echo -e "${YELLOW}[WARN]${NC} $1"
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [WARN] $1" >> "$LOG_FILE"
+  echo -e "${YELLOW}[WARN]${NC} $1"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] [WARN] $1" >>"$LOG_FILE"
 }
 
 log_error() {
-    echo -e "${RED}[ERROR]${NC} $1" >&2
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [ERROR] $1" >> "$LOG_FILE"
+  echo -e "${RED}[ERROR]${NC} $1" >&2
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] [ERROR] $1" >>"$LOG_FILE"
 }
 
 # ====================================================================
@@ -75,29 +79,29 @@ log_error() {
 # ====================================================================
 # Dry-run wrapper function
 run() {
-    if [[ "$DRY_RUN" == "true" ]]; then
-        log_info "[DRY-RUN] Would run: $*"
-    else
-        "$@"
-    fi
+  if [[ "$DRY_RUN" == "true" ]]; then
+    log_info "[DRY-RUN] Would run: $*"
+  else
+    "$@"
+  fi
 }
 
 # Cleanup function
 VM_CREATION_STARTED=false
 cleanup() {
-    local exit_code=$?
-    if [[ $exit_code -ne 0 ]]; then
-        log_error "Script failed with exit code: $exit_code"
-        if [[ "$VM_CREATION_STARTED" == "true" ]] && [[ -n "${VM_ID:-}" ]]; then
-            log_info "Attempting to clean up partial VM creation..."
-            if ! qm destroy "$VM_ID" 2>&1 | tee -a "$LOG_FILE"; then
-                log_warn "Cleanup of VM ${VM_ID} failed - manual cleanup may be required"
-            else
-                log_info "Successfully cleaned up partial VM ${VM_ID}"
-            fi
-        fi
-        echo -e "${RED}Script failed! Check the log for details: $LOG_FILE${NC}"
+  local exit_code=$?
+  if [[ $exit_code -ne 0 ]]; then
+    log_error "Script failed with exit code: $exit_code"
+    if [[ "$VM_CREATION_STARTED" == "true" ]] && [[ -n "${VM_ID:-}" ]]; then
+      log_info "Attempting to clean up partial VM creation..."
+      if ! qm destroy "$VM_ID" 2>&1 | tee -a "$LOG_FILE"; then
+        log_warn "Cleanup of VM ${VM_ID} failed - manual cleanup may be required"
+      else
+        log_info "Successfully cleaned up partial VM ${VM_ID}"
+      fi
     fi
+    echo -e "${RED}Script failed! Check the log for details: $LOG_FILE${NC}"
+  fi
 }
 trap cleanup EXIT
 
@@ -143,19 +147,20 @@ VM_NET2_TYPE=${VM_NET2_TYPE:-"virtio"}
 VM_NET2_VLAN=${VM_NET2_VLAN:-""}
 VM_NET2_IP=${VM_NET2_IP:-"dhcp"}
 VM_NET2_GW=${VM_NET2_GW:-""}
+VM_DNS=${VM_DNS:-""}                   # DNS servers (comma-separated, e.g., "1.1.1.1 8.8.8.8")
+VM_SEARCHDOMAIN=${VM_SEARCHDOMAIN:-""} # DNS search domain
 VM_OS=${VM_OS:-"l26"}
 VM_RESIZE=${VM_RESIZE:-"1G"}
 VM_SCSIHW=${VM_SCSIHW:-"virtio-scsi-pci"}
 VM_STORAGE=${VM_STORAGE:-"local-lvm"}
 VM_VENDOR_FILE=${VM_VENDOR_FILE:-"vendor-data.yaml"}
 # ====================================================================
-# ENHANCEMENT 4: SSH key injection and custom cloud-init username
+# ENHANCEMENT 4: SSH key injection
 # - Added VM_SSH_KEYS for SSH public key injection
-# - Added VM_CI_USER for custom cloud-init username
 # - Integrates with Proxmox cloud-init for secure access
+# - User creation is handled entirely via vendor-data cloud-init
 # ====================================================================
 VM_SSH_KEYS=${VM_SSH_KEYS:-""}
-VM_CI_USER=${VM_CI_USER:-""}  # Cloud-init username
 DRY_RUN=${DRY_RUN:-false}
 
 function err() {
@@ -200,13 +205,14 @@ function help() {
                     Format: 'dhcp' or 'x.x.x.x/xx' (e.g., '192.168.2.100/24')
     --net2-gw       Specify the second VM network gateway (optional)
                     Only used with static IP configuration
+    --dns           Specify DNS servers (space-separated, e.g., '1.1.1.1 8.8.8.8')
+    --searchdomain  Specify DNS search domain (e.g., 'home.local')
     --os            Specify the VM OS (default: 'l26')
     --resize        Increase the VM boot disk size (default: '1G')
     --scsihw        Specify the VM storage controller (default: 'virtio-scsi-pci')
     --storage, -s   Specify the VM storage (default: 'local-lvm')
     --vendor-file   Specify the cloud-init vendor file (default: 'vendor-data.yaml')
     --ssh-keys      Path to SSH public keys file to inject
-    --ci-user       Cloud-init username for the default user
     --dry-run       Test mode - show what would be done without making changes
 
   Using Environment Variables:
@@ -223,7 +229,7 @@ function usage() {
 }
 
 function main() {
-  if [[ ($? -ne 0) || ($# -eq 0) ]]; then
+  if [[ $# -eq 0 ]]; then
     usage
   fi
 
@@ -243,7 +249,7 @@ function main() {
   fi
 
   OPTIONS=hb:i:m:n:s:
-  LONGOPTS=help,bios:,cpu-cores:,cpu-sockets:,cpu-type:,id:,img:,image:,machine:,memory:,name:,net-bridge:,net-type:,net-vlan:,net-ip:,net-gw:,net2-bridge:,net2-type:,net2-vlan:,net2-ip:,net2-gw:,os:,resize:,scsihw:,storage:,vendor-file:,ssh-keys:,ci-user:,dry-run
+  LONGOPTS=help,bios:,cpu-cores:,cpu-sockets:,cpu-type:,id:,img:,image:,machine:,memory:,name:,net-bridge:,net-type:,net-vlan:,net-ip:,net-gw:,net2-bridge:,net2-type:,net2-vlan:,net2-ip:,net2-gw:,dns:,searchdomain:,os:,resize:,scsihw:,storage:,vendor-file:,ssh-keys:,dry-run
   NOARG_OPTS=(-h --help --dry-run)
 
   TEMP=$(getopt -n "${0##*/}" -o $OPTIONS --long $LONGOPTS -- "${@}") || exit 2
@@ -353,6 +359,16 @@ function main() {
       shift 2
       continue
       ;;
+    --dns)
+      VM_DNS=${2}
+      shift 2
+      continue
+      ;;
+    --searchdomain)
+      VM_SEARCHDOMAIN=${2}
+      shift 2
+      continue
+      ;;
     --os)
       VM_OS=${2}
       shift 2
@@ -383,11 +399,6 @@ function main() {
       shift 2
       continue
       ;;
-    --ci-user)
-      VM_CI_USER=${2}
-      shift 2
-      continue
-      ;;
     --dry-run)
       DRY_RUN=true
       shift
@@ -406,6 +417,7 @@ function main() {
   readonly VM_BIOS VM_CPU_CORES VM_CPU_SOCKETS VM_CPU_TYPE VM_ID VM_IMAGE
   readonly VM_MACHINE VM_MEMORY VM_NAME VM_NET_BRIDGE VM_NET_TYPE VM_NET_VLAN VM_NET_IP VM_NET_GW
   readonly VM_NET2_BRIDGE VM_NET2_TYPE VM_NET2_VLAN VM_NET2_IP VM_NET2_GW
+  readonly VM_DNS VM_SEARCHDOMAIN
   readonly VM_OS VM_RESIZE VM_SCSIHW VM_STORAGE VM_VENDOR_FILE
 
   # check required variables
@@ -470,6 +482,12 @@ function main() {
   echo "VM Storage:        ${VM_STORAGE}"
   echo "VM Storage HW:     ${VM_SCSIHW}"
   echo "Resize Boot Drive: ${VM_RESIZE}"
+  if [ -n "${VM_DNS}" ]; then
+    echo "DNS Servers:       ${VM_DNS}"
+  fi
+  if [ -n "${VM_SEARCHDOMAIN}" ]; then
+    echo "Search Domain:     ${VM_SEARCHDOMAIN}"
+  fi
   echo "Cloud-init File:   ${VM_VENDOR_FILE}"
 
   log_info "Building Proxmox Template..."
@@ -573,14 +591,14 @@ function main() {
   # Add cloud-init type and vendor config
   cloudinit_cmd+=(--citype nocloud --cicustom "vendor=local:snippets/${VM_VENDOR_FILE}")
 
-  # ====================================================================
-  # ENHANCEMENT: Custom cloud-init username support
-  # - Allows setting custom default username instead of distro defaults
-  # - Useful for standardizing usernames across templates
-  # ====================================================================
-  # Add cloud-init username if provided
-  if [ -n "${VM_CI_USER}" ]; then
-    cloudinit_cmd+=(--ciuser "$VM_CI_USER")
+  # Add DNS configuration if specified
+  if [ -n "${VM_DNS}" ]; then
+    cloudinit_cmd+=(--nameserver "$VM_DNS")
+  fi
+
+  # Add search domain if specified
+  if [ -n "${VM_SEARCHDOMAIN}" ]; then
+    cloudinit_cmd+=(--searchdomain "$VM_SEARCHDOMAIN")
   fi
 
   # Execute the command
