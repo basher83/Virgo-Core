@@ -1,0 +1,25 @@
+# Group variables for Doggos cluster
+# 3-node Proxmox VE cluster (Lloyd, Mable, Holly)
+
+# =============================================================================
+# Cluster Configuration
+# =============================================================================
+cluster_name: doggos
+cluster_nodes:
+  - lloyd
+  - mable
+  - holly
+
+# =============================================================================
+# Network Configuration
+# =============================================================================
+# Primary management network
+proxmox_bridges:
+  - name: vmbr0
+    comment: "Management network"
+
+# =============================================================================
+# Infisical Configuration
+# =============================================================================
+# Path for Doggos cluster secrets
+proxmox_template_infisical_path: "/doggos"

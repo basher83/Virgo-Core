@@ -1,0 +1,62 @@
+# playbooks/create-template-doggos.yml
+# Create a Proxmox VM template on Doggos cluster
+#
+# Usage:
+#   uv run ansible-playbook playbooks/create-template-doggos.yml
+#   uv run ansible-playbook playbooks/create-template-doggos.yml -e "target_host=mable"
+#   uv run ansible-playbook playbooks/create-template-doggos.yml -e "proxmox_template_dry_run=true"
+- name: Create Proxmox VM Template on Doggos Cluster
+  hosts: "{{ target_host | default('holly') }}"
+  become: true
+  gather_facts: true
+  vars:
+    # Template configuration
+    proxmox_template_id: 9000
+    proxmox_template_name: "ubuntu-2404-template"
+
+    # Hardware configuration - 2 vCPU / 4GB RAM / 32GB disk
+    proxmox_template_cpu_cores: 2
+    proxmox_template_memory: 4096
+    proxmox_template_disk_resize: "32G"
+
+    # Network configuration - Single NIC on vmbr0 with DHCP
+    proxmox_template_net_bridge: "vmbr0"
+    proxmox_template_net_ip: "dhcp"
+
+    # DNS configuration
+    proxmox_template_dns: "192.168.30.1 1.1.1.1"
+
+    # Enable Infisical for SSH key management
+    proxmox_template_use_infisical: true
+    proxmox_template_infisical_path: "/ssh"
+    proxmox_template_infisical_secret_name: "PROD_PUB_KEY"
+
+  pre_tasks:
+    - name: Display target host information
+      ansible.builtin.debug:
+        msg:
+          - "Target Host: {{ inventory_hostname }}"
+          - "Cluster: Doggos"
+          - "Template ID: {{ proxmox_template_id }}"
+          - "Template Name: {{ proxmox_template_name }}"
+          - "Hardware: {{ proxmox_template_cpu_cores }} vCPU / {{ proxmox_template_memory }}MB RAM / {{ proxmox_template_disk_resize }} disk"
+          - "Network: {{ proxmox_template_net_bridge }} ({{ proxmox_template_net_ip }})"
+
+  roles:
+    - role: proxmox_template
+
+  post_tasks:
+    - name: Next steps
+      ansible.builtin.debug:
+        msg:
+          - "Template created successfully on {{ inventory_hostname }}!"
+          - ""
+          - "To clone VMs from this template:"
+          - "  1. Use Terraform/OpenTofu with the bpg/proxmox provider"
+          - "  2. Reference template ID {{ proxmox_template_id }}"
+          - ""
+          - "Example Terraform:"
+          - "  clone {"
+          - "    vm_id = {{ proxmox_template_id }}"
+          - "  }"
+      when: not (proxmox_template_dry_run | default(false) | bool)
