@@ -42,7 +42,9 @@ def get_api_key() -> str:
     """Get Firecrawl API key from environment or exit."""
     api_key = os.getenv("FIRECRAWL_API_KEY")
     if not api_key:
-        console.print("[red]Error: FIRECRAWL_API_KEY environment variable not set[/red]")
+        console.print(
+            "[red]Error: FIRECRAWL_API_KEY environment variable not set[/red]"
+        )
         console.print("Set it with: export FIRECRAWL_API_KEY='fc-your-api-key'")
         sys.exit(1)
     return api_key
@@ -63,8 +65,10 @@ async def retry_with_backoff(func, max_retries: int = 3, base_delay: float = 1.0
         except Exception as e:
             if attempt == max_retries - 1:
                 raise
-            delay = base_delay * (2 ** attempt)
-            console.print(f"[yellow]Retry {attempt + 1}/{max_retries} after {delay:.1f}s: {e}[/yellow]")
+            delay = base_delay * (2**attempt)
+            console.print(
+                f"[yellow]Retry {attempt + 1}/{max_retries} after {delay:.1f}s: {e}[/yellow]"
+            )
             await asyncio.sleep(delay)
 
 
@@ -135,7 +139,9 @@ async def search_and_scrape(
                     description = metadata.get("description", "")
                 else:
                     # Fallback for object-like metadata (if SDK changes)
-                    url = getattr(metadata, "url", "") or getattr(metadata, "sourceURL", "")
+                    url = getattr(metadata, "url", "") or getattr(
+                        metadata, "sourceURL", ""
+                    )
                     title = getattr(metadata, "title", "")
                     description = getattr(metadata, "description", "")
 
@@ -175,6 +181,7 @@ async def scrape_url(firecrawl: AsyncFirecrawl, url: str) -> dict | None:
 
     Returns dict with markdown, title, url, metadata or None on failure.
     """
+
     async def _scrape():
         return await firecrawl.scrape(url, formats=["markdown"])
 
@@ -287,7 +294,9 @@ async def scrape_all(urls: list[str]) -> list[dict]:
 
     # Filter out failed scrapes
     successful = [r for r in results if r is not None]
-    console.print(f"[green]Successfully scraped {len(successful)}/{len(urls)} URLs[/green]")
+    console.print(
+        f"[green]Successfully scraped {len(successful)}/{len(urls)} URLs[/green]"
+    )
 
     return successful
 
@@ -328,7 +337,9 @@ def combine_results(
 
     # Quality distribution
     if scraped_content and any("quality_score" in r for r in scraped_content):
-        high_quality = sum(1 for r in scraped_content if r.get("quality_score", 0) >= 10)
+        high_quality = sum(
+            1 for r in scraped_content if r.get("quality_score", 0) >= 10
+        )
         doc += f"- **High Quality Sources:** {high_quality}/{len(scraped_content)}\n"
     doc += "\n"
 
@@ -421,10 +432,14 @@ async def research(
     # Step 3: Filter by quality
     console.print("[cyan]Filtering results by quality...[/cyan]")
     filtered_content = filter_quality(scraped_content)
-    console.print(f"[green]Kept {len(filtered_content)}/{len(scraped_content)} high-quality results[/green]")
+    console.print(
+        f"[green]Kept {len(filtered_content)}/{len(scraped_content)} high-quality results[/green]"
+    )
 
     if not filtered_content:
-        console.print("[yellow]Warning: All results filtered out. Saving unfiltered results.[/yellow]")
+        console.print(
+            "[yellow]Warning: All results filtered out. Saving unfiltered results.[/yellow]"
+        )
         filtered_content = scraped_content
 
     # Step 4: Combine into research document
@@ -435,12 +450,16 @@ async def research(
     output_path.write_text(document, encoding="utf-8")
 
     console.print(f"[green]✓ Research saved to:[/green] {output_path}")
-    console.print(f"[dim]Total pages: {len(filtered_content)}, Characters: {len(document)}[/dim]")
+    console.print(
+        f"[dim]Total pages: {len(filtered_content)}, Characters: {len(document)}[/dim]"
+    )
 
 
 def main(
     query: str = typer.Argument(..., help="Search query for research"),
-    limit: int = typer.Option(10, "--limit", "-l", help="Number of search results to scrape"),
+    limit: int = typer.Option(
+        10, "--limit", "-l", help="Number of search results to scrape"
+    ),
     output: str = typer.Option(
         "ai_docs/research.md", "--output", "-o", help="Output markdown file path"
     ),
