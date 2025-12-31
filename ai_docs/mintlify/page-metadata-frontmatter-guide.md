@@ -63,6 +63,7 @@ icon: "book"
 ```
 
 **Icon Options**:
+
 - Font Awesome icon name: `"book"`
 - Lucide icon name: `"book-open"`
 - URL to external icon: `"https://example.com/icon.svg"`

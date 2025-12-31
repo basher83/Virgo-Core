@@ -57,6 +57,7 @@ The name of your project, organization, or product:
 Configure your site's color scheme. Colors are applied differently across themes.
 
 **Primary color** (required): Used for emphasis in light mode
+
 ```json
 {
   "colors": {
@@ -66,6 +67,7 @@ Configure your site's color scheme. Colors are applied differently across themes
 ```
 
 **Full color configuration** (optional):
+
 ```json
 {
   "colors": {

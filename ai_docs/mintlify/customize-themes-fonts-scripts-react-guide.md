@@ -17,6 +17,7 @@ Configure your theme in `docs.json`:
 ```
 
 **Theme Options**:
+
 - `mint` - Default theme
 - `maple`
 - `palm`
@@ -174,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
 Use Tailwind CSS v3 to style HTML elements. Tailwind classes are available in your MDX files.
 
 **Common Tailwind Classes**:
+
 - `w-full` - Full width
 - `aspect-video` - 16:9 aspect ratio
 - `rounded-xl` - Large rounded corners
@@ -210,6 +212,7 @@ Use Tailwind CSS v3 to style HTML elements. Tailwind classes are available in yo
 Mintlify provides identifiers for UI elements. Use browser inspect element to find specific selectors:
 
 **Common Identifiers**:
+
 - `#navbar` - Navigation bar
 - `#sidebar` - Sidebar navigation
 - `#footer` - Footer
@@ -260,7 +263,7 @@ export const ColorGenerator = () => {
 
 **Important**: Use arrow function syntax (`=>`) rather than `function` declarations.
 
-2. **Import and use in MDX**:
+1. **Import and use in MDX**:
 
 ```mdx
 ---
@@ -397,7 +400,7 @@ For complete control, use CSS variables:
 }
 ```
 
-2. Override colors in your CSS:
+1. Override colors in your CSS:
 
 ```css
 :root {
@@ -411,6 +414,7 @@ For complete control, use CSS variables:
 ```
 
 **Available CSS Variables**:
+
 - `--mint-color-text` - Default text color
 - `--mint-color-background` - Background color
 - `--mint-token-constant` - Constants and literals
@@ -471,7 +475,7 @@ Here's a comprehensive `docs.json` example:
 
 ## File Structure
 
-```
+```text
 your-project/
 ├── docs.json
 ├── style.css          # Custom CSS
@@ -486,21 +490,25 @@ your-project/
 ## Troubleshooting
 
 **Fonts not loading**:
+
 - Verify font file paths are correct
 - Check font format is supported
 - Ensure Google Fonts name is spelled correctly
 
 **React components not rendering**:
+
 - Verify component is in `snippets` folder
 - Check import path uses `/snippets/` prefix
 - Ensure arrow function syntax is used
 
 **Custom CSS not applying**:
+
 - Check CSS file is in repository root
 - Verify class names match exactly
 - Use browser inspector to check specificity
 
 **Tailwind classes not working**:
+
 - Ensure you're using Tailwind v3 syntax
 - Avoid arbitrary values (use `style` prop instead)
 - Check for typos in class names

@@ -13,6 +13,7 @@ Use standard Markdown syntax for text formatting.
 - **Strikethrough**: `~text~` → ~text~
 
 **Best practices**:
+
 - Use bold for emphasis, not entire paragraphs
 - Reserve italics for terms, titles, or subtle emphasis
 - Avoid over-formatting that distracts from content
@@ -56,6 +57,7 @@ Use heading hierarchy properly (H1 → H2 → H3):
 ```
 
 **Best practices**:
+
 - Use descriptive link text instead of "click here"
 - Use root-relative paths for internal links
 - Test links regularly to prevent broken references
@@ -117,6 +119,7 @@ class HelloWorld {
 ````
 
 **Meta options**:
+
 - **Filename**: `HelloWorld.java` - Displayed in header
 - **Icon**: `icon="java"` - Icon in header
 - **Lines**: `lines` - Show line numbers
@@ -175,6 +178,7 @@ Use Markdown syntax:
 ```
 
 **Requirements**:
+
 - Always include descriptive alt text
 - Image files must be less than 20 MB
 - For larger files, host on CDN (Amazon S3, Cloudinary)
@@ -265,7 +269,7 @@ Mintlify automatically serves static assets from your repository.
 
 Organize files using folders:
 
-```
+```text
 /your-project
   |- docs.json
   |- images/
@@ -409,10 +413,36 @@ Show and hide content sections:
       }
   }
   ```
+
 </Accordion>
+
 ```
 
 **Accordion Groups**:
+
+```
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
 
 ```markdown
 <AccordionGroup>
@@ -691,11 +721,12 @@ rss: true
 
 Using `<Update>` components automatically creates an RSS feed at:
 
-```
+```text
 https://your-docs.com/changelog/rss.xml
 ```
 
 **RSS feed features**:
+
 - Entries added when new `<Update>` components are published
 - Top-level headings become RSS entry titles
 - Entries link to heading anchors in your docs

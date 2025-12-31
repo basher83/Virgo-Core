@@ -48,6 +48,7 @@ Update formulas: Start low, penalties dominate.
 ## CLI Sync
 
 Add:
+
 - `--playbook` (alias `--role`)
 - `--scenario` (map to targets)
 - `--raw` (no skips)

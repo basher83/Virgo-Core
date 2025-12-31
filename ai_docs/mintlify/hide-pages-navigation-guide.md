@@ -5,12 +5,14 @@ Hidden pages are removed from your site's navigation but remain publicly accessi
 ## Overview
 
 **Hidden pages**:
+
 - Are removed from navigation menus
 - Remain accessible via direct URL
 - Use the same URL structure as regular pages
 - Can be indexed for search/AI (with configuration)
 
 **Use cases**:
+
 - Content referenced from other pages
 - Context for AI assistants
 - Internal documentation accessible via direct links
@@ -28,6 +30,7 @@ A page is hidden if it's **not included** in your `docs.json` navigation structu
 Simply omit the page from your navigation:
 
 **Before** (page visible):
+
 ```json
 {
   "navigation": {
@@ -46,6 +49,7 @@ Simply omit the page from your navigation:
 ```
 
 **After** (page hidden):
+
 ```json
 {
   "navigation": {
@@ -154,6 +158,7 @@ For OpenAPI-generated pages, use the `x-hidden` extension in your OpenAPI specif
 ```
 
 **Use cases for `x-hidden`**:
+
 - Endpoints you want to document but not promote
 - Pages linked from other content
 - Endpoints for specific users
@@ -177,6 +182,7 @@ Use `x-excluded: true` to completely exclude an endpoint (no page generated):
 ```
 
 **Difference**:
+
 - `x-hidden: true` - Creates page but hides from navigation
 - `x-excluded: true` - No page generated at all
 
@@ -185,6 +191,7 @@ Use `x-excluded: true` to completely exclude an endpoint (no page generated):
 ### Default Behavior
 
 By default, hidden pages are **excluded** from:
+
 - Search engine indexing
 - Internal search within your docs
 - AI assistant context
@@ -202,6 +209,7 @@ To include hidden pages in search results and AI context, add to `docs.json`:
 ```
 
 **Options**:
+
 - `"navigable"` (default) - Index only pages in navigation
 - `"all"` - Index all pages, including hidden ones
 
@@ -346,19 +354,23 @@ Hide pages used as AI context but include in indexing:
 ## Troubleshooting
 
 **Hidden page not accessible**:
+
 - Verify the file path matches the URL structure
 - Check that the file exists in your repository
 - Ensure the file has valid frontmatter
 
 **Hidden page still appears in search**:
+
 - Check `seo.indexing` setting in `docs.json`
 - Add `noindex: true` to page frontmatter if needed
 
 **Navigation looks broken on hidden page**:
+
 - This is expected—hidden pages aren't in navigation structure
 - Consider using `mode: "custom"` or `mode: "wide"` for better layout
 
 **OpenAPI endpoint still visible**:
+
 - Verify `x-hidden: true` is correctly placed in OpenAPI spec
 - Check that you're using the correct OpenAPI spec file
 - Run `mint openapi-check` to validate your spec

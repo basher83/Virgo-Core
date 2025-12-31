@@ -5,6 +5,7 @@ The `navigation` property in `docs.json` controls the structure and information 
 ## Overview
 
 Navigation elements include:
+
 - **Groups**: Organize sidebar navigation into sections
 - **Anchors**: Persistent navigation items at the top of the sidebar
 - **Tabs**: Create distinct sections with separate URL paths
@@ -403,6 +404,7 @@ Set `hidden: true` to hide an entire group:
 ## Icons
 
 Icons can be specified using:
+
 - **Font Awesome icon name**: `"icon": "book"`
 - **Lucide icon name**: `"icon": "book-open"`
 - **Custom SVG**: `"icon": {<svg>...</svg>}`
