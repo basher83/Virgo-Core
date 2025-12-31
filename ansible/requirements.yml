@@ -1,5 +1,6 @@
 # Ansible Galaxy requirements file
-# Install with: ansible-galaxy install -r requirements.yml
+# Install roles: ansible-galaxy role install -r requirements.yml -p ~/.ansible/roles
+# Install collections: ansible-galaxy collection install -r requirements.yml
 roles:
   # Docker installation and management
   - name: geerlingguy.docker

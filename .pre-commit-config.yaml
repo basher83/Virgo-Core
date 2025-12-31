@@ -1,4 +1,3 @@
-minimum_prek_version: "0.2.0"
 default_install_hook_types:
   - pre-commit
   - post-checkout
@@ -32,10 +31,32 @@ repos:
       - id: renovate-config-validator
         args: [--strict]
   - repo: https://github.com/rvben/rumdl-pre-commit
-    rev: v0.0.166 # Use the latest release tag
+    rev: v0.0.166
     hooks:
       - id: rumdl
-        # To only check (default):
-        # args: []
-        # To automatically fix issues:
         args: [--fix]
+        files: README\.md$
+  # Python linting and formatting
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.10
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  # Shell linting
+  - repo: https://github.com/koalaman/shellcheck-precommit
+    rev: v0.11.0
+    hooks:
+      - id: shellcheck
+        args: [--severity=warning]
+  # Shell formatting
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.12.0-2
+    hooks:
+      - id: shfmt
+        args: [-w, -i, "2"]
+  # Terraform formatting and validation
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.104.0
+    hooks:
+      - id: terraform_fmt
