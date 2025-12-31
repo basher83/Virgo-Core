@@ -54,7 +54,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 
 #### **PowerDNS/pdns-ansible** - Score: 85/100
 
-- **Repository:** https://github.com/PowerDNS/pdns-ansible
+- **Repository:** <https://github.com/PowerDNS/pdns-ansible>
 - **Type:** Official Ansible Role
 - **Metrics:** 167 stars, 141 forks
 - **Activity:** Last commit 2025-10-30 (very recent)
@@ -62,6 +62,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - **License:** MIT
 
 **Strengths:**
+
 - Official PowerDNS project with organizational backing
 - Comprehensive server installation and configuration
 - Supports multiple backends (MySQL, PostgreSQL, SQLite, LMDB, Bind)
@@ -72,6 +73,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - Extensive documentation
 
 **Features:**
+
 - Server installation from official repos (4.8.x, 4.9.x, 5.0.x, master)
 - Backend configuration (gmysql, gpgsql, gsqlite3, lmdb, bind)
 - Automatic database initialization for MySQL/SQLite
@@ -103,11 +105,13 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 ```
 
 **Integration Points:**
+
 - Works with MySQL/PostgreSQL backends
 - Can be paired with API-based management modules
 - Supports configuration via variables
 
 **Risks:**
+
 - 46 open issues (community engagement, but some may be stale)
 - Focused on server setup, not zone/record management
 - Requires additional modules for API-based operations
@@ -116,7 +120,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 
 #### **kpfleming/ansible-powerdns-auth** - Score: 82/100
 
-- **Repository:** https://github.com/kpfleming/ansible-powerdns-auth
+- **Repository:** <https://github.com/kpfleming/ansible-powerdns-auth>
 - **Type:** Ansible Collection (API modules)
 - **Metrics:** 16 stars, 7 forks
 - **Activity:** Last commit 2025-11-24 (actively maintained)
@@ -124,6 +128,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - **License:** Apache 2.0
 
 **Strengths:**
+
 - Modern Ansible collection structure
 - API-based zone and record management
 - Actively maintained with recent improvements
@@ -134,6 +139,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - Idempotent operations
 
 **Features:**
+
 - **Modules:**
   - `kpfleming.powerdns_auth.zone` - Manage zones
   - `kpfleming.powerdns_auth.rrset` - Manage resource record sets
@@ -176,11 +182,13 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 ```
 
 **Integration Points:**
+
 - Works with any PowerDNS server (backend-agnostic)
 - Perfect for NetBox-driven automation
 - Can be used with dynamic inventory
 
 **Risks:**
+
 - Smaller community (16 stars)
 - Single primary maintainer
 - Requires Bravado Python library with specific version constraints
@@ -194,7 +202,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 
 #### **Nosmoht/ansible-module-powerdns** - Score: 68/100
 
-- **Repository:** https://github.com/Nosmoht/ansible-module-powerdns
+- **Repository:** <https://github.com/Nosmoht/ansible-module-powerdns>
 - **Type:** Ansible Modules (standalone)
 - **Metrics:** 73 stars, 51 forks
 - **Activity:** Last commit 2024-07-03 (recent maintenance merge)
@@ -202,6 +210,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - **License:** Apache 2.0
 
 **Strengths:**
+
 - API-based zone and record management
 - Simple, straightforward module design
 - Support for HTTP Basic Auth
@@ -209,6 +218,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - Community contributions being merged
 
 **Features:**
+
 - `powerdns_zone` - Manage zones
 - `powerdns_record` - Manage individual records
 - Support for A, AAAA, CNAME, MX records
@@ -233,10 +243,12 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 ```
 
 **Integration Points:**
+
 - Works with PowerDNS API
 - Simple integration for basic use cases
 
 **Risks:**
+
 - **IMPORTANT:** Original author states "not using PowerDNS anymore, only merging PRs"
 - Less feature-rich than kpfleming collection
 - Not packaged as collection (older module format)
@@ -246,7 +258,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 
 #### **dunielpls/ddi** - Score: 65/100
 
-- **Repository:** https://github.com/dunielpls/ddi
+- **Repository:** <https://github.com/dunielpls/ddi>
 - **Type:** Complete DDI Solution
 - **Metrics:** 15 stars, 1 fork
 - **Activity:** Last commit 2023-04-07 (18 months old, stale)
@@ -254,6 +266,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - **License:** MIT
 
 **Strengths:**
+
 - Complete DDI solution (DNS + DHCP + IPAM)
 - NetBox integration (primary use case)
 - Integrates PowerDNS with ISC Kea DHCP
@@ -261,6 +274,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 - Addresses exact use case of NetBox-driven DNS
 
 **Features:**
+
 - Create reverse DNS zones from NetBox prefixes
 - Create DNS zones from NetBox custom models
 - Enable Dynamic DNS from NetBox prefixes
@@ -272,12 +286,14 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 **Use Case:** Full DDI stack with NetBox as source of truth
 
 **Architecture:**
+
 - NetBox as central IPAM
 - PowerDNS Authoritative for DNS
 - ISC Kea for DHCP
 - Automation scripts/playbooks for synchronization
 
 **Risks:**
+
 - **ABANDONED:** Last commit April 2023 (18 months ago)
 - No recent activity or maintenance
 - Single maintainer with no backup
@@ -295,13 +311,14 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 
 #### **pschiffe/docker-pdns** - Score: 58/100
 
-- **Repository:** https://github.com/pschiffe/docker-pdns
+- **Repository:** <https://github.com/pschiffe/docker-pdns>
 - **Type:** Docker Images with Ansible Examples
 - **Metrics:** 319 stars, 92 forks
 - **Activity:** Last commit 2025-06-11 (recent)
 - **License:** MIT
 
 **Features:**
+
 - Docker images for PowerDNS Authoritative, Recursor, and Admin
 - Docker Compose examples
 - Ansible playbooks for container deployment
@@ -312,6 +329,7 @@ Research identified 68 repositories related to PowerDNS and Ansible automation. 
 **Recommendation:** Consider if you want Docker-based deployment instead of bare-metal
 
 **Risks:**
+
 - Focus is on Docker images, not Ansible automation
 - Ansible examples are basic
 - Different approach than bare-metal installation
@@ -615,6 +633,7 @@ all:
 ### Immediate Actions (Week 1)
 
 1. **Install Ansible dependencies:**
+
    ```bash
    cd /Users/basher8383/dev/infra-as-code/Virgo-Core
    uv run ansible-galaxy role install PowerDNS.pdns
@@ -678,6 +697,7 @@ all:
 To reproduce this research:
 
 1. **GitHub API Queries:**
+
    ```bash
    # Search for PowerDNS Ansible repositories
    curl -H "Accept: application/vnd.github.v3+json" \
@@ -723,20 +743,20 @@ To reproduce this research:
 
 ### Official Documentation
 
-- **PowerDNS Authoritative:** https://doc.powerdns.com/authoritative/
-- **PowerDNS API:** https://doc.powerdns.com/authoritative/http-api/
-- **Ansible Collections:** https://docs.ansible.com/ansible/latest/user_guide/collections_using.html
-- **NetBox API:** https://netbox.readthedocs.io/en/stable/integrations/rest-api/
+- **PowerDNS Authoritative:** <https://doc.powerdns.com/authoritative/>
+- **PowerDNS API:** <https://doc.powerdns.com/authoritative/http-api/>
+- **Ansible Collections:** <https://docs.ansible.com/ansible/latest/user_guide/collections_using.html>
+- **NetBox API:** <https://netbox.readthedocs.io/en/stable/integrations/rest-api/>
 
 ### Community Resources
 
-- **PowerDNS Discourse:** https://community.powerdns.com/
-- **Ansible Galaxy:** https://galaxy.ansible.com/
-- **NetBox Community:** https://github.com/netbox-community/
+- **PowerDNS Discourse:** <https://community.powerdns.com/>
+- **Ansible Galaxy:** <https://galaxy.ansible.com/>
+- **NetBox Community:** <https://github.com/netbox-community/>
 
 ### Related Projects
 
-- **PowerDNS Admin:** https://github.com/PowerDNS-Admin/PowerDNS-Admin (Web GUI)
+- **PowerDNS Admin:** <https://github.com/PowerDNS-Admin/PowerDNS-Admin> (Web GUI)
 - **Designate (OpenStack DNS):** Uses PowerDNS as backend
 - **DNSControl:** Alternative declarative DNS management
 
@@ -764,6 +784,7 @@ For the Virgo-Core Proxmox infrastructure, the recommended approach is:
 4. **Reference dunielpls/ddi** architecture patterns for NetBox integration ideas
 
 This combination provides:
+
 - Official, well-maintained server deployment (167 stars, active)
 - Modern API-based zone management (actively maintained, good design)
 - Flexibility for NetBox integration

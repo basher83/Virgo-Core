@@ -183,6 +183,7 @@ uv run scripts/validator.py --compare baseline.json current.json  # Output: Delt
 - Assumptions (e.g., YAML parse handles Jinja strings? Fix if not).
 - False positives (e.g., flag proxmox_access intentionally? Suppress).
 - Gaps (e.g., scoring <70% on reference? Tune weights).
+
 Fix silently; deliver polished code only.
 
 ## Quality Standards
