@@ -154,6 +154,7 @@ Each hypothesis includes a pre-defined kill switch to prevent sunk cost fallacy:
 ### Lint Dimension: SOLVED
 
 Both repos achieve **100% lint PASS** with existing configs:
+
 - Virgo-Core: `ansible/.ansible-lint` (profile: moderate)
 - Supernova: `.ansible-lint.yml` (profile: min, achieves production)
 

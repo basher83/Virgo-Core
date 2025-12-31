@@ -63,6 +63,7 @@ Ansible roles, and features under consideration for future integration.
 ### IOMMU/VFIO
 
 Complex feature with multiple components:
+
 1. Detect CPU vendor (Intel/AMD)
 2. Add kernel parameters (`intel_iommu=on` or `amd_iommu=on`, `iommu=pt`)
 3. Handle both GRUB and systemd-boot (ZFS) configurations

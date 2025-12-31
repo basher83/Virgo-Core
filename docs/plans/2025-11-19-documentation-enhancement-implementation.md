@@ -527,6 +527,30 @@ If all checkboxes are checked and validations pass, you're ready to proceed to i
 
 ```text
 
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
+```text
+
 ```bash
 git add documentation/getting-started/prerequisites.md
 git commit -m "docs: Add comprehensive prerequisites checklist

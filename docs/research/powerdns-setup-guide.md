@@ -19,31 +19,29 @@ Found 10 search results, successfully scraped 8 pages.
 1. [Authoritative Server Settings — PowerDNS Authoritative Server  documentation](https://doc.powerdns.com/authoritative/settings.html) ✓
    - Domain: `doc.powerdns.com`
    - Quality Score: 5
-2. [Setting up a self-hosted authoritative DNS server with PowerDNS - Tarneo's blog
-](https://tarneo.fr/posts/powerdns/) ✓
-   - Domain: `tarneo.fr`
-   - Quality Score: 5
+2. [Setting up a self-hosted authoritative DNS server with PowerDNS - Tarneo's blog](https://tarneo.fr/posts/powerdns/) ✓
+
+- Domain: `tarneo.fr`
+- Quality Score: 5
 3. [PowerDNS Configuration Requirements](https://docs.cloudblue.com/cbc/21.0/DNS-Hosting-Services/PowerDNS-Configuration-Requirements.htm) ✓
    - Domain: `docs.cloudblue.com`
    - Quality Score: 5
-4. [
-Hosting your own authoritative DNS servers using PowerDNS | Bluemedia
+4. [Hosting your own authoritative DNS servers using PowerDNS | Bluemedia](https://bluemedia.dev/blog/authorative-dns-server-using-powerdns/)
 
-  ](https://bluemedia.dev/blog/authorative-dns-server-using-powerdns/)
-   - Domain: `bluemedia.dev`
-   - Quality Score: 3
+- Domain: `bluemedia.dev`
+- Quality Score: 3
 5. [Guides and How Tos — PowerDNS Authoritative Server  documentation](https://doc.powerdns.com/authoritative/guides/index.html)
-   - Domain: `doc.powerdns.com`
-   - Quality Score: 3
+- Domain: `doc.powerdns.com`
+- Quality Score: 3
 6. [Performance and Tuning — PowerDNS Authoritative Server  documentation](https://doc.powerdns.com/authoritative/performance.html)
-   - Domain: `doc.powerdns.com`
-   - Quality Score: 3
+- Domain: `doc.powerdns.com`
+- Quality Score: 3
 7. [PowerDNS Authoritative Nameserver — PowerDNS Authoritative Server  documentation](https://doc.powerdns.com/authoritative/index.html)
-   - Domain: `doc.powerdns.com`
-   - Quality Score: 3
+- Domain: `doc.powerdns.com`
+- Quality Score: 3
 8. [Local DNS configuration and best practices - Super User](https://superuser.com/questions/1113260/local-dns-configuration-and-best-practices)
-   - Domain: `superuser.com`
-   - Quality Score: 3
+- Domain: `superuser.com`
+- Quality Score: 3
 
 ## Content
 
@@ -281,7 +279,7 @@ Hosting your own authoritative DNS servers using PowerDNS | Bluemedia
 1. [Docs](https://doc.powerdns.com/authoritative/indexTOC.html)
 2. Authoritative Server Settings
 
-# Authoritative Server Settings [¶](https://doc.powerdns.com/authoritative/settings.html\#authoritative-server-settings "Permalink to this headline")
+## Authoritative Server Settings [¶](https://doc.powerdns.com/authoritative/settings.html\#authoritative-server-settings "Permalink to this headline")
 
 All PowerDNS Authoritative Server settings are listed here, excluding
 those that originate from backends, which are documented in the relevant
@@ -981,7 +979,7 @@ Which backends to launch and order to query them in. Launches backends.
 In its most simple form, supply all backends that need to be launched.
 e.g.
 
-```
+```text
 launch=bind,gmysql,remote
 ```
 
@@ -989,7 +987,7 @@ If you find that you need to query a backend multiple times with
 different configuration, you can specify a name for later
 instantiations. e.g.:
 
-```
+```text
 launch=gmysql,gmysql:server2
 ```
 
@@ -1027,7 +1025,7 @@ brackets.
 
 Examples:
 
-```
+```text
 local-address=127.0.0.1 ::1
 local-address=0.0.0.0:5353
 local-address=[::]:8053
@@ -1371,7 +1369,7 @@ always receive AXFR NOTIFYs.
 IP addresses and netmasks can be excluded by prefixing them with a `!`.
 To notify all IP addresses apart from the 192.168.0.0/24 subnet use the following:
 
-```
+```text
 only-notify=0.0.0.0/0, ::/0, !192.168.0.0/24
 ```
 
@@ -1396,7 +1394,7 @@ Otherwise, there will be error trying to resolve address.
 For example, secondaries support both IPv4 and IPv6, but PowerDNS primary have only IPv4,
 so allow only IPv4 with `only-notify`:
 
-```
+```text
 only-notify=0.0.0.0/0
 ```
 
@@ -1535,7 +1533,7 @@ It is assumed that the specified recursive DNS server, and the network path to i
 
 Examples:
 
-```
+```text
 resolver=127.0.0.1
 resolver=[::1]:5300
 ```
@@ -1842,7 +1840,7 @@ Note
 
 When using a generic SQL backend, records with an unknown record type (see [Supported Record Types](https://doc.powerdns.com/authoritative/appendices/types.html)) can be identified with the following SQL query:
 
-```
+```text
 SELECT * from records where type like 'TYPE%';
 ```
 
@@ -1911,13 +1909,13 @@ Note that this option only applies to credentials stored in the configuration as
 The amount of logging the webserver must do. “none” means no useful webserver information will be logged.
 When set to “normal”, the webserver will log a line per request that should be familiar:
 
-```
+```text
 [webserver] e235780e-a5cf-415e-9326-9d33383e739e 127.0.0.1:55376 "GET /api/v1/servers/localhost/bla HTTP/1.1" 404 196
 ```
 
 When set to “detailed”, all information about the request and response are logged:
 
-```
+```text
 [webserver] e235780e-a5cf-415e-9326-9d33383e739e Request Details:
 [webserver] e235780e-a5cf-415e-9326-9d33383e739e  Headers:
 [webserver] e235780e-a5cf-415e-9326-9d33383e739e   accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
@@ -2067,7 +2065,7 @@ disables caching.
 **Domain:** `tarneo.fr`
 **Quality Score:** 5
 
-*Programming, Linux, self-hosting, ergo keyboards, IT ethics...*
+_Programming, Linux, self-hosting, ergo keyboards, IT ethics..._
 
 I have been using Cloudflare for over a year now for multiple domain names. I wanted to migrate away from that, and chose to self-host DNS using [PowerDNS](https://www.powerdns.com/).
 
@@ -2114,7 +2112,7 @@ I had a permission issue when trying to run the container again, so I ran a `sud
 
 Then run `docker-compose up -d` again. The container’s log should end with the following line:
 
-```
+```text
 Done launching threads, ready to distribute questions
 ```
 
@@ -2188,7 +2186,7 @@ Now I was able to test the server with the following command:
 nslookup charennes.org <server-ip>
 ```
 
-```
+```text
 ...
 Address: 82.64.143.64
 ...
@@ -2213,13 +2211,13 @@ Now you’ll need to tell your registrar about the server you just created. This
 
 You also need to add a DS record in your registrar’s control panel for DNSSEC to work! Here is how to find the DS record(s):
 
-```
+```text
 docker exec -it pdns pdnsutil show-zone charennes.org
 ```
 
 Two of the outputted lines will be something like:
 
-```
+```text
 ID = 3 (CSK), flags = 257, tag = 7327, algo = 13, bits = 256      Active         Published  ( ECDSAP256SHA256 )
 CSK DNSKEY = charennes.org. IN DNSKEY 257 3 13 <base64 encoded key> ; ( ECDSAP256SHA256 )
 ```
@@ -2238,7 +2236,7 @@ For security, I would also recommend setting the `version-string` option to `ano
 **Domain:** `docs.cloudblue.com`
 **Quality Score:** 5
 
-# PowerDNS Configuration Requirements
+## PowerDNS Configuration Requirements
 
 On each server that you prepared, install and configure PowerDNS so that the following requirements are met:
 
@@ -2254,8 +2252,7 @@ On each server that you prepared, install and configure PowerDNS so that the fol
 
 05. The service uses a public IP address. For example:
 
-
-    ```
+    ```text
     /etc/pdns/pdns.conf
     ...
     local-address=PUBLIC_IP_ADDRESS_OF_POWERDNS_SERVER
@@ -2264,8 +2261,7 @@ On each server that you prepared, install and configure PowerDNS so that the fol
 
 06. The service can act as a primary or secondary DNS server. For example:
 
-
-    ```
+    ```text
     /etc/pdns/pdns.conf
     ...
     master=yes
@@ -2275,8 +2271,7 @@ On each server that you prepared, install and configure PowerDNS so that the fol
 
 07. DNS zone transfer is allowed between primary and secondary PowerDNS servers. For example:
 
-
-    ```
+    ```text
     /etc/pdns/pdns.conf
     ...
     disable-axfr=no
@@ -2286,8 +2281,7 @@ On each server that you prepared, install and configure PowerDNS so that the fol
 
 08. The REST API of the service is enabled and uses the 127.0.0.1 IP address. For example:
 
-
-    ```
+    ```text
     /etc/pdns/pdns.conf
     ...
     api=yes
@@ -2301,43 +2295,37 @@ On each server that you prepared, install and configure PowerDNS so that the fol
 09. The service and its backend are running.
 10. HTTPS access to the REST API of the service is configured:
 
-
     - An HTTPS proxy is installed and configured on the server. It uses a private IP address configured on the server and proxies connections to the REST API.
 
     - This HTTPS proxy uses an SSL certificate that contains the private IP address of the server in its Subject Alternative Name (SAN).
 
-
 For example, you can generate such an SSL certificate in the following way:
 
-    1. Generate a self-signed certificate:
+1. Generate a self-signed certificate:
 
-
-       ```
+       ```text
        openssl genrsa -out ca.key 2048
        openssl req -new -x509 -days 365 -key ca.key -subj "/C=CN/ST=GD/L=SZ/O=Acme, Inc./CN=Acme Root CA" -out ca.crt
        ```
 
-    2. Generate a certificate that contains the required private IP address in its SAN and sign it by the certificate you created in step a.
+2. Generate a certificate that contains the required private IP address in its SAN and sign it by the certificate you created in step a.
 
-
-       ```
+       ```text
        openssl req -newkey rsa:2048 -nodes -keyout cert.key -subj "/C=CN/ST=GD/L=SZ/O=Acme, Inc./CN=*.example.com" -out cert.csr
        openssl x509 -req -extfile <(printf "subjectAltName=IP:PRIVATE_IP_ADDRESS_OF_POWERDNS_SERVER") -days 365 -in cert.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out cert.crt
        ```
 
-
 For example, you can install [NGINX](https://www.nginx.com/) on the server and configure it to proxy connections:
-    1. Install NGINX:
 
+1. Install NGINX:
 
-       ```
+       ```text
        yum install nginx -y
        ```
 
-    2. Disable the default server in `/etc/nginx/nginx.conf`:
+2. Disable the default server in `/etc/nginx/nginx.conf`:
 
-
-       ```
+       ```text
        #    server {
        #        listen       80;
        #        listen       [::]:80;
@@ -2357,12 +2345,11 @@ For example, you can install [NGINX](https://www.nginx.com/) on the server and c
        #    }
        ```
 
-    3. Place your SSL certificate, which contains the private IP address of the server in its SAN, and its private key (`cert.key` and `cert.crt`) to `/etc/nginx/`.
+3. Place your SSL certificate, which contains the private IP address of the server in its SAN, and its private key (`cert.key` and `cert.crt`) to `/etc/nginx/`.
 
-    4. Create `/etc/nginx/conf.d/powerdns.conf`:
+4. Create `/etc/nginx/conf.d/powerdns.conf`:
 
-
-       ```
+       ```text
        server {
 
          listen 443 ssl;
@@ -2392,17 +2379,15 @@ For example, you can install [NGINX](https://www.nginx.com/) on the server and c
        }
        ```
 
-    5. Configure NGINX to start automatically:
+5. Configure NGINX to start automatically:
 
-
-       ```
+       ```text
        systemctl enable nginx
        ```
 
-    6. Start NGINX and check its status:
+6. Start NGINX and check its status:
 
-
-       ```
+       ```text
        systemctl start nginx
        systemctl status nginx
        ```
@@ -2411,7 +2396,8 @@ For example, you can install [NGINX](https://www.nginx.com/) on the server and c
 
 ---
 
-### 4.
+## 4
+
 Hosting your own authoritative DNS servers using PowerDNS | Bluemedia
 
 
@@ -2420,7 +2406,7 @@ Hosting your own authoritative DNS servers using PowerDNS | Bluemedia
 **Domain:** `bluemedia.dev`
 **Quality Score:** 3
 
-# Hosting your own authoritative DNS servers using PowerDNS
+## Hosting your own authoritative DNS servers using PowerDNS
 
 
 Bluemedia (Oliver)
@@ -2472,7 +2458,7 @@ On NS1, there is also another PowerDNS instance running inside Docker, this time
 PowerDNS-Admin is a comprehensive administration toolkit for PowerDNS. It provides full multi-tenancy in terms of zone management and can manage API keys restricted to individual zones. It also provides a well-organized web interface for the overall administration.
 
 This is how my finished concept looks on the drawing board:
-![](https://bluemedia.dev/images/posts/authorative-dns-server-using-powerdns/pdns-architecture.png)
+![Pdns Architecture image](https://bluemedia.dev/images/posts/authorative-dns-server-using-powerdns/pdns-architecture.png)
 
 ## Keeping security in mind
 
@@ -2575,7 +2561,7 @@ Because PowerDNS is very resource-saving and I don’t expect many DNS requests 
 1. [Docs](https://doc.powerdns.com/authoritative/indexTOC.html)
 2. Guides and How Tos
 
-# Guides and How Tos [¶](https://doc.powerdns.com/authoritative/guides/index.html\#guides-and-how-tos "Permalink to this headline")
+## Guides and How Tos [¶](https://doc.powerdns.com/authoritative/guides/index.html\#guides-and-how-tos "Permalink to this headline")
 
 - [Basic setup: configuring database connectivity](https://doc.powerdns.com/authoritative/guides/basic-database.html)
 - [Migrating from using recursion on the Authoritative Server to using a Recursor](https://doc.powerdns.com/authoritative/guides/recursion.html)
@@ -2592,7 +2578,7 @@ Because PowerDNS is very resource-saving and I don’t expect many DNS requests 
 
 [Basic setup: configuring database connectivity](https://doc.powerdns.com/authoritative/guides/basic-database.html "next chapter (use the right arrow)")
 
-### Navigation
+## Navigation
 
 - [index](https://doc.powerdns.com/authoritative/genindex.html "General Index")
 - [routing table](https://doc.powerdns.com/authoritative/http-routingtable.html "HTTP Routing Table") \|
@@ -2739,7 +2725,7 @@ Because PowerDNS is very resource-saving and I don’t expect many DNS requests 
 1. [Docs](https://doc.powerdns.com/authoritative/indexTOC.html)
 2. Performance and Tuning
 
-# Performance and Tuning [¶](https://doc.powerdns.com/authoritative/performance.html\#performance-and-tuning "Permalink to this headline")
+## Performance and Tuning [¶](https://doc.powerdns.com/authoritative/performance.html\#performance-and-tuning "Permalink to this headline")
 
 In general, best performance is achieved on recent Linux kernels with
 the bindbackend, or if something more database-like is preferred,
@@ -3167,12 +3153,16 @@ message. Indicates that hosts are trying to connect to services
 really not in your zone.
 - **udp-queries**: All UDP queries seen.
 - **remotes**: Remote server IP addresses. Number of hosts querying
+
 PowerDNS. Be aware that UDP is anonymous - person A can send queries
 that appear to be coming from person B.
+
 - **remote-corrupts**: Remotes sending corrupt packets. Hosts sending
+
 PowerDNS broken packets, possibly meant to disrupt service. Be aware
 that UDP is anonymous - person A can send queries that appear to be
 coming from person B.
+
 - **remote-unauth**: Remotes querying domains for which we are not
 authoritative. It may happen that there are misconfigured hosts on
 the internet which are configured to think that a PowerDNS
@@ -3183,9 +3173,11 @@ queries for domains which PowerDNS does not know about.
 backend errors. For one reason or another, a backend may be unable to
 extract answers for a certain domain from its storage. This may be
 due to a corrupt database or to inconsistent data. When this happens,
+
 PowerDNS sends out a ‘servfail’ packet indicating that it was unable
 to answer the question. This buffer shows which queries have been
 causing servfails.
+
 - **unauth-queries**: Queries for domains that we are not authoritative
 for. If a domain is delegated to a PowerDNS instance, but the backend
 is not made aware of this fact, questions come in for which no answer
@@ -3298,7 +3290,7 @@ As PowerDNS assumes you know what you are doing if you override your hostname.
 1. [Docs](https://doc.powerdns.com/authoritative/indexTOC.html)
 2. PowerDNS Authoritative Nameserver
 
-# PowerDNS Authoritative Nameserver [¶](https://doc.powerdns.com/authoritative/index.html\#powerdns-authoritative-nameserver "Permalink to this headline")
+## PowerDNS Authoritative Nameserver [¶](https://doc.powerdns.com/authoritative/index.html\#powerdns-authoritative-nameserver "Permalink to this headline")
 
 The PowerDNS Authoritative Server is a versatile nameserver which
 supports a large number of backends. These backends can either be plain
@@ -3391,7 +3383,7 @@ You can file a feature request on [GitHub](https://github.com/PowerDNS/pdns/issu
 **Domain:** `superuser.com`
 **Quality Score:** 3
 
-*I have recently set up a PowerDNS + PowerAdmin server on my home network. I have set this up as a combination authoritative + recursive DNS server just to keep things simple for me. I have set 8.8....*
+_I have recently set up a PowerDNS + PowerAdmin server on my home network. I have set this up as a combination authoritative + recursive DNS server just to keep things simple for me. I have set 8.8...._
 
 **Stack Internal**
 
@@ -3401,7 +3393,7 @@ Bring the best of human thought and AI automation together at your work.
 
 [Explore Stack Internal](https://stackoverflow.co/internal/?utm_medium=referral&utm_source=superuser-community&utm_campaign=side-bar&utm_content=explore-teams-compact-popover)
 
-# [Local DNS configuration and best practices](https://superuser.com/questions/1113260/local-dns-configuration-and-best-practices)
+## [Local DNS configuration and best practices](https://superuser.com/questions/1113260/local-dns-configuration-and-best-practices)
 
 [Ask Question](https://superuser.com/questions/ask)
 
@@ -3438,11 +3430,12 @@ So I have a few questions.
 2. I want to be able to tell at a glance if a server is "internal only" or is available externally also. I was considering using another subdomain, so it would be something like wiki01.lan.catpants.com for an "internal only" wiki, and wiki02.catpants.com for an externally available wiki. It would work, but I think is a bit ugly and requires extra typing. Or, should I buy and use a domain name just for internal use? Seems like a bit of a waste to me, since I have external services I want to run anyway. See, using .lan definitely has some advantages in my mind. The advantages being free and easy to tell if a server is internal only or available externally.
 
 3. (Main question) I've been trying to test creating a few internal dns records with a domain I already own. Call it foo.com. I am using he.net for the nameservers for foo.com currently. When I try to create a master zone for foo.com with poweradmin, it creates an SOA record for it, but the defaults are: `8.8.8.8  2016081300 28800 7200 604800 86400`
+
 IIRC, When configuring poweradmin for the first time, it asked me a question about some sort of defaults (possibly SOA related). Not knowing what goes there, I just put 8.8.8.8 thinking it was asking about the recursor. Of course it looks like there is no way to edit that setting now, so not sure what it was. **What should the SOA record look like?**
 
-4. Should I be using DNSSEC? I can research it on my own if it's considered "best practice".
+1. Should I be using DNSSEC? I can research it on my own if it's considered "best practice".
 
-5. Is it possible to get "leakage"? ie, I think from a security perspective it would be nice if packets with my internal DNS records never get routed on the internet. If someone was capturing all outbound traffic from my network, the string "wiki01.lan.catpants.com" should _never_ appear in that traffic. Could that occur with this setup?
+2. Is it possible to get "leakage"? ie, I think from a security perspective it would be nice if packets with my internal DNS records never get routed on the internet. If someone was capturing all outbound traffic from my network, the string "wiki01.lan.catpants.com" should _never_ appear in that traffic. Could that occur with this setup?
 
 
 Thanks!!
@@ -3531,7 +3524,7 @@ answered Aug 14, 2016 at 1:33
 
 [Add a comment](https://superuser.com/questions/1113260/local-dns-configuration-and-best-practices# "Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.") \| [Expand to show all comments on this post](https://superuser.com/questions/1113260/local-dns-configuration-and-best-practices# "Expand to show all comments on this post")
 
-## You must [log in](https://superuser.com/users/login?ssrc=question_page&returnurl=https%3a%2f%2fsuperuser.com%2fquestions%2f1113260) to answer this question.
+## You must [log in](https://superuser.com/users/login?ssrc=question_page&returnurl=https%3a%2f%2fsuperuser.com%2fquestions%2f1113260) to answer this question
 
 Start asking to get answers
 

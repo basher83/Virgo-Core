@@ -20,16 +20,19 @@ Virgo-Core manages three Proxmox VE clusters with distinct topologies, hardware 
 ### Quick Reference
 
 **Cluster Names & Node IDs:**
+
 - **Matrix**: foxtrot (5), golf (6), hotel (7)
 - **Nexus**: alpha (50), bravo (30)
 - **Quantum**: holly (3), lloyd (2), mable (4)
 
 **Network Subnets:**
+
 - **Matrix**: 192.168.3.0/24 (mgmt), 192.168.5.0/24 (CEPH public), 192.168.7.0/24 (CEPH private), 192.168.8.0/24 (corosync)
 - **Nexus**: 192.168.30.0/24 (management)
 - **Quantum**: 192.168.10.0/24 (mgmt), 192.168.11.0/24 (secondary)
 
 **Shared Infrastructure:**
+
 - TrueNAS server: 192.168.30.6 (NFS storage)
 - Proxmox Backup Server: 192.168.30.200 (currently unreachable)
 - DNS domain: spaceships.work
@@ -69,6 +72,7 @@ Per-cluster Infisical paths for secrets management:
 - **Quantum**: `/quantum`
 
 **Global Settings:**
+
 - Project ID: `7b832220-24c0-45bc-a5f1-ce9794a31259`
 - Environment: `prod`
 
@@ -121,6 +125,7 @@ All nodes have identical hardware:
 **Chassis**: MINISFORUM MS-A2 (mini PC)
 
 **Compute:**
+
 - **CPU**: AMD Ryzen 9 9955HX
   - 16 cores / 32 threads
 - **RAM**: 64GB total
@@ -128,6 +133,7 @@ All nodes have identical hardware:
   - Running at 5600 MT/s (dual-channel)
 
 **Storage:**
+
 - **Boot Disk**: 1× 1TB Crucial P3 (nvme0n1)
   - Partitioning: EFI partition + LVM2_member
 - **CEPH Storage**: 2× 4TB Samsung 990 PRO
@@ -136,6 +142,7 @@ All nodes have identical hardware:
   - Total: 4 OSDs per node = 12 OSDs cluster-wide
 
 **Network Interfaces:**
+
 - **Management**: Realtek RTL8125 2.5GbE (enp4s0)
 - **CEPH Public**: Intel X710 10GbE SFP+ port 0 (enp5s0f0np0)
 - **CEPH Private**: Intel X710 10GbE SFP+ port 1 (enp5s0f1np1)
@@ -152,12 +159,14 @@ All nodes have identical hardware:
 | vmbr2 | enp5s0f1np1 | 192.168.7.0/24 | 9000 | CEPH Private network |
 
 **VLAN Configuration:**
+
 - **vlan9**: Corosync network
   - Parent: vmbr0
   - IP Range: 192.168.8.0/24
   - Purpose: Cluster communication
 
 **Network Notes:**
+
 - Gateway: 192.168.3.1 (via vmbr0)
 - Jumbo frames (MTU 9000) required for CEPH networks
 - UniFi Controller must have jumbo frames enabled for CEPH ports
@@ -165,6 +174,7 @@ All nodes have identical hardware:
 ### Storage Architecture
 
 **CEPH Configuration:**
+
 - **Version**: Squid (for PVE 9.x)
 - **Monitors**: 3 (1 per node)
 - **Managers**: 3 (1 per node)
@@ -173,11 +183,13 @@ All nodes have identical hardware:
   - Device class: nvme
 
 **Storage Capacity:**
+
 - **Raw Capacity**: 24TB (12 OSDs × 2TB per OSD)
 - **Usable Capacity**: ~12TB (with replication factor 3)
 - **Performance**: NVMe-backed, 10GbE network, jumbo frames
 
 **CEPH Pools:**
+
 - **vm_ssd**: 128 PGs, size 3, min_size 2 (for VM storage)
 - **vm_containers**: 64 PGs, size 3, min_size 2 (for container storage)
 
@@ -191,6 +203,7 @@ All nodes have identical hardware:
 ### Initialization
 
 Matrix cluster initialization is automated via `ansible/playbooks/initialize-matrix-cluster.yml`, which:
+
 1. Configures Proxmox repositories
 2. Forms the cluster
 3. Deploys CEPH storage
@@ -219,6 +232,7 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
 **Vendor/Model**: Protectli VP4630
 
 **Compute:**
+
 - **CPU**: Intel Core i3-10110U @ 2.10GHz (Comet Lake, 10th Gen)
   - 2 cores / 4 threads
   - Speed: 400 MHz - 4.1 GHz (turbo)
@@ -228,15 +242,18 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
   - Current usage: ~7GB used, 55GB available
 
 **Storage:**
+
 - **Primary**: 3.6TB Samsung SSD 870 EVO 4TB (SATA)
 - **Secondary**: 1.8TB Kingston SNV2S2000G (NVMe)
 - **Additional**: 14.6GB eMMC storage
 
 **Network:**
+
 - **Management**: Intel I225-V 2.5GbE (enp1s0) - Active
 - **Additional NICs**: 5× Intel I225-V 2.5GbE controllers (enp2s0, enp3s0, enp4s0, enp5s0, enp6s0) - All DOWN, available
 
 **Software:**
+
 - **OS**: Debian GNU/Linux
 - **Proxmox VE**: 8.4.0 (manager 8.4.14)
 - **Kernel**: 6.8.12-15-pve
@@ -246,6 +263,7 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
 **Vendor/Model**: Dell PowerEdge T430 (Serial: GN23XM2)
 
 **Compute:**
+
 - **CPU**: Intel Xeon E5-2680 v4 @ 2.40GHz
   - 2 sockets
   - 14 cores per socket (28 total cores)
@@ -257,16 +275,19 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
   - Currently available: 217 GiB
 
 **Storage:**
+
 - **Boot Disk**: /dev/sda (10.9TB)
 - **VM Storage**: LVM-thin pool on /dev/sda3 (VG: pve, thin pool: data)
 
 **Network:**
+
 - **Management**: Intel X550 1GbE (enp130s0f1) - Active
 - **Additional NICs**:
   - Intel X550 10GbE (enp130s0f0) - DOWN, bridged to vmbr1
   - 2× Broadcom BCM5720 1GbE (eno1, eno2) - DOWN
 
 **Software:**
+
 - **OS**: Debian GNU/Linux 12 (bookworm)
 - **Kernel**: Linux 6.8.12-15-pve (Proxmox VE)
 - **Firmware**: 2.16.0
@@ -280,6 +301,7 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
 | vmbr0 | enp1s0 (alpha) / enp130s0f1 (bravo) | 192.168.30.0/24 | 1500 | No |
 
 **Network Notes:**
+
 - Gateway: 192.168.30.1
 - Single bridge configuration (management only)
 - No VLANs configured
@@ -288,6 +310,7 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
 ### Storage Architecture
 
 **Local Storage:**
+
 - **Type**: LVM-thin
 - **Storage Backend**: `local-lvm` using thin pool `data` in VG `pve`
 
@@ -300,6 +323,7 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
 | /mnt/pve/swarm | /mnt/DataLake/swarm | images, rootdir | 11TB |
 
 **Backup Locations:**
+
 - Local: `/var/lib/vz` (local directory)
 - NFS: TrueNAS mounts
 - PBS: `pbs-real` at 192.168.30.200 (currently unreachable)
@@ -335,15 +359,18 @@ All nodes have identical hardware:
 **Vendor/Model**: Minisforum MS-01
 
 **Compute:**
+
 - **CPU**: Intel Core i9-13900H
   - 14 cores / 20 threads
 - **RAM**: 32GB total (31GiB usable)
 
 **Storage:**
+
 - **Boot Disk**: 1TB NVMe (nvme0n1, 953.9GB)
 - **Additional Storage**: None detected (single NVMe only)
 
 **Network:**
+
 - **Active NICs**:
   - enp87s0: Active on vmbr0 (management)
   - enp2s0f0np0: Active on vmbr1 (10GbE SFP+)
@@ -364,6 +391,7 @@ All nodes have identical hardware:
 | vmbr1 | enp2s0f0np0 | 192.168.11.0/24 | 1500 | Yes (VLANs 2-4094) |
 
 **Network Notes:**
+
 - Gateway: 192.168.10.1 (via vmbr0)
 - Dual bridge configuration
 - VLAN capability enabled on both bridges (no specific VLANs actively configured)
@@ -373,6 +401,7 @@ All nodes have identical hardware:
 ### Storage Architecture
 
 **Local Storage:**
+
 - **Type**: LVM-thin (primary) + dir (secondary)
 - **Boot Disk**: nvme0n1 (953.9GB)
 - **VM Storage**: `local-lvm` (LVM-thin on `pve/data`)
@@ -385,6 +414,7 @@ All nodes have identical hardware:
 | /mnt/pve/nomad-volumes | /mnt/DataLake/nomad-volumes | VMs, LXCs, ISOs, backups, snippets, templates | 10.6TB |
 
 **Storage Layout Preferences:**
+
 - **VMs**: Primary `local-lvm`, available `nomad-volumes`
 - **LXCs**: Primary `local-lvm`, available `nomad-volumes`
 - **Backups**: local, nomad-volumes, PBS (currently offline)
@@ -399,6 +429,7 @@ All nodes have identical hardware:
 ### Former Workloads
 
 Previously hosted:
+
 - 4-node HashiCorp Vault cluster
 - 3-node HashiCorp Nomad/Consul cluster
 - 3-node MicroK8s cluster
@@ -434,6 +465,7 @@ All workloads have been removed. Cluster is now idle awaiting future purpose.
 **Format**: `<service>-<number>-<cluster>.<domain>`
 
 **Examples:**
+
 - `docker-01-nexus.spaceships.work`
 - `foxtrot.matrix.spaceships.work`
 - `alpha.nexus.spaceships.work`
@@ -445,20 +477,24 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 ### Matrix Cluster: CEPH Distributed Storage
 
 **Configuration:**
+
 - **CEPH Version**: Squid (for PVE 9.x)
 - **Monitors**: 3 (1 per node)
 - **Managers**: 3 (1 per node)
 - **OSDs**: 12 total (4 per node, 2 per NVMe drive)
 
 **Storage Pools:**
+
 - **vm_ssd**: VM storage (128 PGs, replication factor 3)
 - **vm_containers**: Container storage (64 PGs, replication factor 3)
 
 **Capacity:**
+
 - Raw: 24TB
 - Usable: ~12TB (with replication factor 3)
 
 **Performance:**
+
 - NVMe-backed OSDs
 - 10GbE network (separate public/private networks)
 - Jumbo frames (MTU 9000)
@@ -466,26 +502,31 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 ### Nexus Cluster: Local + NFS Storage
 
 **Local Storage:**
+
 - LVM-thin volumes (`local-lvm`)
 - Thin pool: `data` in VG `pve`
 
 **NFS Storage (TrueNAS 192.168.30.6):**
+
 - 3 NFS mounts totaling 35TB shared storage
 - Used for backups, ISOs, templates, images, container rootdirs
 
 ### Quantum Cluster: Local + NFS Storage
 
 **Local Storage:**
+
 - LVM-thin volumes (`local-lvm`) - primary
 - Directory storage (`local`) - secondary
 
 **NFS Storage (TrueNAS 192.168.30.6):**
+
 - 1 NFS mount: `nomad-volumes` (10.6TB)
 - Used for VMs, LXCs, ISOs, backups, snippets, templates
 
 ### Shared Storage Infrastructure
 
 **TrueNAS Server:**
+
 - **IP**: 192.168.30.6
 - **Exports**:
   - `/mnt/DataLake/pbs` → Nexus (13TB)
@@ -494,6 +535,7 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
   - `/mnt/DataLake/nomad-volumes` → Quantum (10.6TB)
 
 **Proxmox Backup Server:**
+
 - **IP**: 192.168.30.200
 - **Status**: Currently unreachable
 - **Intended Use**: Centralized backups for all clusters
@@ -545,6 +587,7 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 **Purpose**: Single source of truth for IPAM and automated DNS management
 
 **Components:**
+
 - **NetBox**: Infrastructure documentation and IPAM
 - **PowerDNS**: Authoritative DNS server
 - **NetBox PowerDNS Sync Plugin**: Automatic DNS record generation
@@ -557,6 +600,7 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 ### Infisical Secrets Management
 
 **Per-Cluster Paths:**
+
 - Matrix: `/matrix`
 - Nexus: `/nexus`
 - Quantum: `/quantum`
@@ -570,6 +614,7 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 **Modules Used**: External module from `github.com/basher83/Triangulum-Prime//terraform-bgp-vm`
 
 **Supported VM Types:**
+
 - `vm_type = "image"`: Downloads cloud image and creates template
 - `vm_type = "clone"`: Clones from existing template to create VMs
 
@@ -580,6 +625,7 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 ### Ansible Automation
 
 **Roles**: 6 production-ready roles managing Proxmox infrastructure:
+
 - `system_user`: Linux user management
 - `proxmox_access`: Proxmox users, tokens, ACLs
 - `proxmox_network`: Network bridges, VLANs, MTU
@@ -612,7 +658,8 @@ Node IDs match the last octet of management IP addresses:
 **File**: `ansible/inventory/proxmox.yml`
 
 **Hierarchy:**
-```
+
+```text
 all
 └── proxmox_clusters
     ├── matrix_cluster
@@ -621,6 +668,7 @@ all
 ```
 
 **Group Variables:**
+
 - `group_vars/all.yml`: Global settings
 - `group_vars/proxmox_clusters.yml`: Shared Proxmox settings
 - `group_vars/matrix_cluster.yml`: Matrix-specific configuration
@@ -630,9 +678,11 @@ all
 ### Playbook References
 
 **Matrix Cluster Initialization:**
+
 - `ansible/playbooks/initialize-matrix-cluster.yml`: Complete Matrix cluster setup (network, cluster, CEPH)
 
 **Common Playbooks:**
+
 - `ansible/playbooks/system-upgrade.yml`: CEPH-aware rolling upgrades
 - `ansible/playbooks/configure-network.yml`: Network configuration
 - `ansible/playbooks/create-ansible-user.yml`: User management

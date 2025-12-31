@@ -18,50 +18,65 @@ Found 15 search results, successfully scraped 15 pages.
 ## Sources
 
 1. [GitHub - PowerDNS/pdns-ansible: PowerDNS Authoritative Ansible role](https://github.com/PowerDNS/pdns-ansible) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 2. [GitHub - PowerDNS/pdns_recursor-ansible: PowerDNS Recursor Ansible role](https://github.com/PowerDNS/pdns_recursor-ansible) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 3. [GitHub - PowerDNS/dnsdist-ansible: An ansible role for dnsdist](https://github.com/PowerDNS/dnsdist-ansible) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 4. [GitHub - mrlesmithjr/ansible-vsphere-management](https://github.com/mrlesmithjr/ansible-vsphere-management) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 5. [GitHub - RunOnFlux/flux-pdns](https://github.com/RunOnFlux/flux-pdns) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 6. [GitHub - pschiffe/docker-pdns: Docker images for PowerDNS](https://github.com/pschiffe/docker-pdns) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 7. [GitHub - Knighten-Homelab/vm-cloudflare-ddns: DDNS solution using a ProxMox VM and a Cloudflare DNS updater container image. Leverages Terraform for infrastructure provisioning, Ansible for deployment automation, and GitHub Actions for CI/CD.](https://github.com/Knighten-Homelab/vm-cloudflare-ddns) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 8. [GitHub - CentOS/ansible-infra-playbooks](https://github.com/CentOS/ansible-infra-playbooks) ⭐
-   - Domain: `github.com`
-   - Quality Score: 20
+
+- Domain: `github.com`
+- Quality Score: 20
 9. [PowerDNS · GitHub](https://github.com/powerdns) ⭐
-   - Domain: `github.com`
-   - Quality Score: 18
+
+- Domain: `github.com`
+- Quality Score: 18
 10. [Keep old versions of pdns packages in repo.powerdns.com · Issue #4395 · PowerDNS/pdns](https://github.com/PowerDNS/pdns/issues/4395) ⭐
-   - Domain: `github.com`
-   - Quality Score: 18
+
+- Domain: `github.com`
+- Quality Score: 18
 11. [powerdns · GitHub Topics · GitHub](https://github.com/topics/powerdns?l=python&o=asc&s=forks) ⭐
-   - Domain: `github.com`
-   - Quality Score: 18
+
+- Domain: `github.com`
+- Quality Score: 18
 12. [GitHub - jlu5/ansible-dn42: Ansible code to configure dn42](https://github.com/jlu5/ansible-dn42) ⭐
-   - Domain: `github.com`
-   - Quality Score: 18
+
+- Domain: `github.com`
+- Quality Score: 18
 13. [fabiiw05 (Fabio Furushou) · GitHub](https://github.com/fabiiw05) ⭐
-   - Domain: `github.com`
-   - Quality Score: 18
+
+- Domain: `github.com`
+- Quality Score: 18
 14. [kpfleming (Kevin P. Fleming) · GitHub](https://github.com/kpfleming) ⭐
-   - Domain: `github.com`
-   - Quality Score: 18
+
+- Domain: `github.com`
+- Quality Score: 18
 15. [awx · GitHub Topics · GitHub](https://github.com/topics/awx?o=asc&s=forks) ⭐
-   - Domain: `github.com`
-   - Quality Score: 18
+
+- Domain: `github.com`
+- Quality Score: 18
 
 ## Content
 
@@ -87,9 +102,7 @@ You signed in with another tab or window. [Reload](https://github.com/PowerDNS/p
 - [Star\\
 167](https://github.com/login?return_to=%2FPowerDNS%2Fpdns-ansible)
 
-
 PowerDNS Authoritative Ansible role
-
 
 ### License
 
@@ -103,7 +116,7 @@ forks](https://github.com/PowerDNS/pdns-ansible/forks) [Branches](https://github
 
 [Notifications](https://github.com/login?return_to=%2FPowerDNS%2Fpdns-ansible) You must be signed in to change notification settings
 
-# PowerDNS/pdns-ansible
+## PowerDNS/pdns-ansible
 
 master
 
@@ -121,7 +134,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>## History<br>[296 Commits](https://github.com/PowerDNS/pdns-ansible/commits/master/)<br>[View commit history for this file.](https://github.com/PowerDNS/pdns-ansible/commits/master/) |
+| ## Latest commit<br>## History<br>[296 Commits](https://github.com/PowerDNS/pdns-ansible/commits/master/)<br>[View commit history for this file.](https://github.com/PowerDNS/pdns-ansible/commits/master/) |  |  |  |
 | [.github](https://github.com/PowerDNS/pdns-ansible/tree/master/.github ".github") | [.github](https://github.com/PowerDNS/pdns-ansible/tree/master/.github ".github") |  |  |
 | [defaults](https://github.com/PowerDNS/pdns-ansible/tree/master/defaults "defaults") | [defaults](https://github.com/PowerDNS/pdns-ansible/tree/master/defaults "defaults") |  |  |
 | [meta](https://github.com/PowerDNS/pdns-ansible/tree/master/meta "meta") | [meta](https://github.com/PowerDNS/pdns-ansible/tree/master/meta "meta") |  |  |
@@ -138,11 +151,11 @@ Open more actions menu
 | [requirements.yml](https://github.com/PowerDNS/pdns-ansible/blob/master/requirements.yml "requirements.yml") | [requirements.yml](https://github.com/PowerDNS/pdns-ansible/blob/master/requirements.yml "requirements.yml") |  |  |
 | [test-requirements.txt](https://github.com/PowerDNS/pdns-ansible/blob/master/test-requirements.txt "test-requirements.txt") | [test-requirements.txt](https://github.com/PowerDNS/pdns-ansible/blob/master/test-requirements.txt "test-requirements.txt") |  |  |
 | [tox.ini](https://github.com/PowerDNS/pdns-ansible/blob/master/tox.ini "tox.ini") | [tox.ini](https://github.com/PowerDNS/pdns-ansible/blob/master/tox.ini "tox.ini") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# Ansible Role: PowerDNS Authoritative Server
+## Ansible Role: PowerDNS Authoritative Server
 
 [Permalink: Ansible Role: PowerDNS Authoritative Server](https://github.com/PowerDNS/pdns-ansible#ansible-role-powerdns-authoritative-server)
 
@@ -168,13 +181,13 @@ None.
 
 Available variables are listed below, along with their default values (see `defaults/main.yml`):
 
-```
+```text
 pdns_install_repo: ""
 ```
 
 By default, the PowerDNS Authoritative Server is installed from the software repositories configured on the target hosts.
 
-```
+```text
 # Install the PowerDNS Authoritative Server from the 'master' official repository
 - hosts: all
   roles:
@@ -204,7 +217,7 @@ By default, the PowerDNS Authoritative Server is installed from the software rep
 The examples above, show how to install the PowerDNS Authoritative Server from the official PowerDNS repositories
 (see the complete list of pre-defined repos in `vars/main.yml`).
 
-```
+```text
 - hosts: all
   vars:
     pdns_install_repo:
@@ -222,39 +235,39 @@ The examples above, show how to install the PowerDNS Authoritative Server from t
 It is also possible to install the PowerDNS Authoritative Server from custom repositories as demonstrated in the example above.
 **Note:** These repositories are ignored on Arch Linux
 
-```
+```text
  pdns_install_epel: True
 ```
 
 By default, install EPEL to satisfy some PowerDNS Authoritative Server dependencies like `protobuf`.
 To skip the installtion of EPEL set `pdns_install_epel` to `False`.
 
-```
+```text
 pdns_package_name: "{{ default_pdns_package_name }}"
 ```
 
 The name of the PowerDNS Authoritative Server package, `pdns` on RedHat-like systems and `pdns-server` on Debian-like systems.
 
-```
+```text
 pdns_package_version: ""
 ```
 
 Optionally, allow to set a specific version of the PowerDNS Authoritative Server package to be installed.
 
-```
+```text
 pdns_install_debug_symbols_package: False
 ```
 
 Install the PowerDNS Authoritative Server debug symbols.
 
-```
+```text
 pdns_debug_symbols_package_name: "{{ default_pdns_debug_symbols_package_name }}"
 ```
 
 The name of the PowerDNS Authoritative Server debug package to be installed when `pdns_install_debug_symbols_package` is `True`,
 `pdns-debuginfo` on RedHat-like systems and `pdns-server-dbg` on Debian-like systems.
 
-```
+```text
 pdns_user: pdns
 pdns_group: pdns
 ```
@@ -264,33 +277,33 @@ The user and group the PowerDNS Authoritative Server process will run as.
 **NOTE**: This role does not create the user or group as we assume that they've been created
 by the package or other roles.
 
-```
+```text
 pdns_service_name: "pdns"
 ```
 
 Name of the PowerDNS service.
 
-```
+```text
 pdns_service_state: "started"
 pdns_service_enabled: "yes"
 ```
 
 Allow to specify the desired state of the PowerDNS Authoritative Server service.
 
-```
+```text
 pdns_disable_handlers: False
 ```
 
 Disable automated service restart on configuration changes.
 
-```
+```text
 pdns_config_dir: "{{ default_pdns_config_dir }}"
 pdns_config_file: "pdns.conf"
 ```
 
 PowerDNS Authoritative Server configuration file and directory.
 
-```
+```text
 pdns_config: {}
 ```
 
@@ -299,7 +312,7 @@ Dictionary containing the PowerDNS Authoritative Server configuration.
 **NOTE:** The PowerDNS backends configuration and the `config-dir`, `setuid` and `setgid` directives must be configured through the `pdns_user`, `pdns_group` and `pdns_backends` role variables (see `templates/pdns.conf.j2`).
 For example:
 
-```
+```text
 pdns_config:
   master: yes
   slave: no
@@ -310,7 +323,7 @@ pdns_config:
 
 configures PowerDNS Authoritative Server to listen incoming DNS requests on port 5300.
 
-```
+```text
 pdns_service_overrides:
   User: {{ pdns_user }}
   Group: {{ pdns_group }}
@@ -319,7 +332,7 @@ pdns_service_overrides:
 Dict with overrides for the service (systemd only).
 This can be used to change any systemd settings in the `[Service]` category.
 
-```
+```text
 pdns_backends:
   bind:
     config: '/dev/null'
@@ -329,7 +342,7 @@ Dictionary declaring all the backends you'd like to enable. You can use
 multiple backends of the same kind by using the `{backend}:{instance_name}` syntax.
 For example:
 
-```
+```text
 pdns_backends:
   'gmysql:one':
     'user': root
@@ -349,14 +362,14 @@ pdns_backends:
 
 By default this role starts just the bind-backend with an empty config file.
 
-```
+```text
 pdns_mysql_databases_credentials: {}
 ```
 
 Administrative credentials for the MySQL backend used to create the PowerDNS Authoritative Server databases and users.
 For example:
 
-```
+```text
 pdns_mysql_databases_credentials:
   'gmysql:one':
     'priv_user': root
@@ -374,14 +387,14 @@ pdns_mysql_databases_credentials:
 Notice that this must only contain the credentials
 for the `gmysql` backends provided in `pdns_backends`.
 
-```
+```text
 pdns_sqlite_databases_locations: []
 ```
 
 Locations of the SQLite3 databases that have to be created if using the
 `gsqlite3` backend.
 
-```
+```text
 pdns_lmdb_databases_locations: []
 ```
 
@@ -391,7 +404,7 @@ Locations of the LMDB databases that have to be created if using the
 Locations of the mysql and sqlite3 base schema.
 When set, this value is used and they are not automatically detected.
 
-```
+```text
 pdns_mysql_schema_file: ''
 
 pdns_sqlite3_schema_file: ''
@@ -403,7 +416,7 @@ pdns_sqlite3_schema_file: ''
 
 Run as a master using the bind backend (when you already have a `named.conf` file):
 
-```
+```text
 - hosts: ns1.example.net
   roles:
     - { role: PowerDNS.pdns }
@@ -419,7 +432,7 @@ Run as a master using the bind backend (when you already have a `named.conf` fil
 Install the latest '41' build of PowerDNS Authoritative Server enabling the MySQL backend.
 Provides also the MySQL administrative credentials to automatically create and initialize the PowerDNS Authoritative Server user and database:
 
-```
+```text
 - hosts: ns2.example.net
   roles:
     - { role: PowerDNS.pdns }
@@ -448,7 +461,7 @@ Provides also the MySQL administrative credentials to automatically create and i
 
 Configure PowerDNS Authoritative Server in 'master' mode reading zones from two different PostgreSQL databases:
 
-```
+```text
 - hosts: ns2.example.net
   roles:
     - { role: PowerDNS.pdns }
@@ -474,7 +487,7 @@ Configure PowerDNS Authoritative Server to run with the `gsqlite3` backend.
 The SQLite database will be created and initialized by the role
 in the location specified by the `database_name` variable.
 
-```
+```text
 - hosts: ns4.example.net
   roles:
     - { role: PowerDNS.pdns }
@@ -504,19 +517,19 @@ A detailed changelog of all the changes applied to the role is available [here](
 
 Tests are performed by [Molecule](http://molecule.readthedocs.org/en/latest/).
 
-```
+```text
 $ pip install tox
 ```
 
 To test all the scenarios run
 
-```
+```text
 $ tox
 ```
 
 To run a custom molecule command
 
-```
+```text
 $ tox -e ansible214 -- molecule test -s pdns-49
 ```
 
@@ -530,7 +543,6 @@ MIT
 
 PowerDNS Authoritative Ansible role
 
-
 ### Topics
 
 [hacktoberfest](https://github.com/topics/hacktoberfest "Topic: hacktoberfest")
@@ -543,7 +555,7 @@ PowerDNS Authoritative Ansible role
 
 [MIT license](https://github.com/PowerDNS/pdns-ansible#MIT-1-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/PowerDNS/pdns-ansible).
 
@@ -581,7 +593,7 @@ on Aug 3, 2023Aug 3, 2023](https://github.com/PowerDNS/pdns-ansible/releases/tag
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/PowerDNS/pdns-ansible).
 
@@ -651,7 +663,7 @@ forks](https://github.com/PowerDNS/pdns_recursor-ansible/forks) [Branches](https
 
 [Notifications](https://github.com/login?return_to=%2FPowerDNS%2Fpdns_recursor-ansible) You must be signed in to change notification settings
 
-# PowerDNS/pdns\_recursor-ansible
+## PowerDNS/pdns\_recursor-ansible
 
 master
 
@@ -669,7 +681,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>## History<br>[304 Commits](https://github.com/PowerDNS/pdns_recursor-ansible/commits/master/)<br>[View commit history for this file.](https://github.com/PowerDNS/pdns_recursor-ansible/commits/master/) |
+| ## Latest commit<br>## History<br>[304 Commits](https://github.com/PowerDNS/pdns_recursor-ansible/commits/master/)<br>[View commit history for this file.](https://github.com/PowerDNS/pdns_recursor-ansible/commits/master/) |  |  |  |
 | [.github](https://github.com/PowerDNS/pdns_recursor-ansible/tree/master/.github ".github") | [.github](https://github.com/PowerDNS/pdns_recursor-ansible/tree/master/.github ".github") |  |  |
 | [defaults](https://github.com/PowerDNS/pdns_recursor-ansible/tree/master/defaults "defaults") | [defaults](https://github.com/PowerDNS/pdns_recursor-ansible/tree/master/defaults "defaults") |  |  |
 | [meta](https://github.com/PowerDNS/pdns_recursor-ansible/tree/master/meta "meta") | [meta](https://github.com/PowerDNS/pdns_recursor-ansible/tree/master/meta "meta") |  |  |
@@ -686,11 +698,11 @@ Open more actions menu
 | [requirements.yml](https://github.com/PowerDNS/pdns_recursor-ansible/blob/master/requirements.yml "requirements.yml") | [requirements.yml](https://github.com/PowerDNS/pdns_recursor-ansible/blob/master/requirements.yml "requirements.yml") |  |  |
 | [test-requirements.txt](https://github.com/PowerDNS/pdns_recursor-ansible/blob/master/test-requirements.txt "test-requirements.txt") | [test-requirements.txt](https://github.com/PowerDNS/pdns_recursor-ansible/blob/master/test-requirements.txt "test-requirements.txt") |  |  |
 | [tox.ini](https://github.com/PowerDNS/pdns_recursor-ansible/blob/master/tox.ini "tox.ini") | [tox.ini](https://github.com/PowerDNS/pdns_recursor-ansible/blob/master/tox.ini "tox.ini") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# Ansible Role: PowerDNS Recursor
+## Ansible Role: PowerDNS Recursor
 
 [Permalink: Ansible Role: PowerDNS Recursor](https://github.com/PowerDNS/pdns_recursor-ansible#ansible-role-powerdns-recursor)
 
@@ -716,13 +728,13 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-```
+```text
 pdns_rec_install_repo: ""
 ```
 
 By default, the PowerDNS Recursor is installed from the software repositories configured on the target hosts.
 
-```
+```text
 # Install the PowerDNS Recursor from the 'master' official repository
 - hosts: pdns-recursors
   roles:
@@ -753,7 +765,7 @@ The examples above, show how to install the PowerDNS Recursor from the official 
 
 The roles also supports custom repositories
 
-```
+```text
 - hosts: all
   vars:
     pdns_rec_install_repo:
@@ -770,39 +782,39 @@ The roles also supports custom repositories
 
 It is also possible to install the PowerDNS Recursor from custom repositories as demonstrated in the example above.
 
-```
+```text
 pdns_rec_install_epel: True
 ```
 
 By default, install EPEL to satisfy some PowerDNS Recursor dependencies like `protobuf`.
 To skip the installation of EPEL set `pdns_rec_install_epel` to `False`.
 
-```
+```text
 pdns_rec_package_name: "{{ default_pdns_rec_package_name }}"
 ```
 
 The name of the PowerDNS Recursor package, `pdns-recursor` on RedHat-like Debian-like systems.
 
-```
+```text
 pdns_rec_package_version: ""
 ```
 
 Optionally, allow to set a specific version of the PowerDNS Recursor package to be installed.
 
-```
+```text
 pdns_rec_install_debug_symbols_package: False
 ```
 
 Install the PowerDNS Recursor debug symbols.
 
-```
+```text
 pdns_rec_debug_symbols_package_name: "{{ default_pdns_rec_debug_symbols_package_name }}"
 ```
 
 The name of the PowerDNS Recursor debug package to be installed when `pdns_install_debug_symbols_package` is `True`,
 `pdns-recursor-debuginfo` on RedHat-like systems and `pdns-recursor-dbg` on Debian-like systems.
 
-```
+```text
 pdns_rec_user: "{{ default_pdns_rec_user }}"
 pdns_rec_group: "{{ default_pdns_rec_group }}"
 ```
@@ -812,20 +824,20 @@ The user and group the PowerDNS Recursor will run as, `pdns-recursor` on RedHat-
 **NOTE**: This role does not create any user or group as we assume that they're created
 by the package or other roles.
 
-```
+```text
 pdns_rec_file_owner: "root"
 pdns_rec_file_group: "{{ default_pdns_file_group }}"
 ```
 
 User and group owning the configuration files and directories.
 
-```
+```text
 pdns_rec_service_name: "pdns-recursor"
 ```
 
 The name of the PowerDNS Recursor service.
 
-```
+```text
 pdns_rec_service_state: "started"
 pdns_rec_service_enabled: "yes"
 ```
@@ -833,27 +845,27 @@ pdns_rec_service_enabled: "yes"
 Allow to specify the desired state of the PowerDNS Recursor service.
 E.g. This allows to install and configure the PowerDNS Recursor without automatically starting the service.
 
-```
+```text
 pdns_rec_disable_handlers: False
 ```
 
 Disable automated service restart on configuration changes.
 
-```
+```text
 pdns_rec_config_dir: "{{ default_pdns_rec_config_dir }}"
 pdns_rec_config_file: "recursor.conf"
 ```
 
 The PowerDNS Recursor configuration files and directories, where `default_pdns_rec_config_dir` is `/etc/powerdns` on Debian and `/etc/pdns-recursor` on RedHat.
 
-```
+```text
 pdns_rec_custom_config: { }
 ```
 
 Dictionary containing in YAML format the custom configuration of PowerDNS Recursor.
 **NOTE**: You should not set the `config-dir`, `lua_config_file`,`lua_dns_script`, `set-uid` and `set-gid` because are set by other role variables (respectively `pdns_rec_config_dir`, `pdns_rec_user`, `pdns_rec_group`).
 
-```
+```text
 pdns_res_config_lua: "{{ pdns_rec_config_dir }}/config.lua"
 pdns_rec_config_lua_file_content: ""
 ```
@@ -862,7 +874,7 @@ If `pdns_rec_config_lua_file_content` is not `""`, this will dump
 the content of this variable to the `pdns_res_config_lua` file and
 define accordingly the `lua-config-file` setting in the `recursor.conf` configuration file.
 
-```
+```text
 pdns_rec_config_dns_script: "{{ pdns_rec_config_dir }}/dns-script.lua"
 pdns_rec_config_dns_script_file_content: ""
 ```
@@ -871,7 +883,7 @@ If `pdns_rec_config_dns_script_file_content` is not `""`, this will dump
 the content of this variable to the `pdns_rec_config_dns_script` file and
 define accordingly the `lua-dns-script` setting in the `recursor.conf` configuration file.
 
-```
+```text
 pdns_rec_service_overrides:
   User: "{{ pdns_rec_user }}"
   Group: "{{ pdns_rec_group }}"
@@ -880,7 +892,7 @@ pdns_rec_service_overrides:
 Dict with overrides for the service (systemd only).
 This can be used to change any systemd settings in the `[Service]` category
 
-```
+```text
 pdns_rec_config_from_files_dir_mode: 0750
 pdns_rec_config_from_files: []
 #pdns_rec_config_from_files:
@@ -891,7 +903,7 @@ pdns_rec_config_from_files: []
 List of files to copy to the PowerDNS Recursor instance, could be used for the `*-from-file` settings in the `recursor.conf` configuration file.
 The variable `pdns_rec_config_from_files_dir_mode` allows to change the ownership mode of files, if required.
 
-```
+```text
 pdns_rec_config_include_dir_mode: 0750
 ```
 
@@ -903,7 +915,7 @@ The `pdns_rec_config_include_dir_mode` will change the mode of directories form 
 
 Bind to `203.0.113.53` on port `5300` and allow only traffic from the `198.51.100.0/24` subnet:
 
-```
+```text
 - hosts: pdns-recursors
   vars:
     pdns_rec_config:
@@ -915,7 +927,7 @@ Bind to `203.0.113.53` on port `5300` and allow only traffic from the `198.51.10
 
 Allow traffic from multiple networks and set some custom ulimits overriding the default systemd service:
 
-```
+```text
 - hosts: pdns-recursors
   vars:
     pdns_rec_config:
@@ -932,7 +944,7 @@ Allow traffic from multiple networks and set some custom ulimits overriding the 
 Allow traffic from multiple networks and set some custom ulimits overriding the default systemd service,
 but keeping in the default overrides from this role. This is recommended when using PowerDNS 4.3 and up.
 
-```
+```text
 - hosts: pdns-recursors
   vars:
     pdns_rec_config:
@@ -947,7 +959,7 @@ but keeping in the default overrides from this role. This is recommended when us
 
 Forward queries for corp.example.net to a nameserver on localhost and queries for foo.example to other nameservers:
 
-```
+```text
 - hosts: pdns-recursors
   vars:
     pdns_rec_config:
@@ -970,19 +982,19 @@ A detailed changelog of all the changes applied to the role is available [here](
 
 Tests are performed by [Molecule](http://molecule.readthedocs.org/en/latest/).
 
-```
+```text
 $ pip install tox
 ```
 
 To test all the scenarios run
 
-```
+```text
 $ tox
 ```
 
 To run a custom molecule command
 
-```
+```text
 $ tox -e ansible216 -- molecule test -s pdns-rec-52
 ```
 
@@ -1009,7 +1021,7 @@ PowerDNS Recursor Ansible role
 
 [MIT license](https://github.com/PowerDNS/pdns_recursor-ansible#MIT-1-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/PowerDNS/pdns_recursor-ansible).
 
@@ -1047,7 +1059,7 @@ last monthOct 29, 2025](https://github.com/PowerDNS/pdns_recursor-ansible/releas
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/PowerDNS/pdns_recursor-ansible).
 
@@ -1058,7 +1070,7 @@ There was an error while loading. [Please reload this page](https://github.com/P
 - [![@atosatto](https://avatars.githubusercontent.com/u/871302?s=64&v=4)](https://github.com/atosatto)
 - [![@SrX](https://avatars.githubusercontent.com/u/1928065?s=64&v=4)](https://github.com/SrX)
 - [![@romeroalx](https://avatars.githubusercontent.com/u/7632974?s=64&v=4)](https://github.com/romeroalx)
-- [![@dependabot[bot]](https://avatars.githubusercontent.com/in/29110?s=64&v=4)](https://github.com/apps/dependabot)
+- [![@dependabot[bot]](https://avatars.githubusercontent.com/in/29110?s=64&v=4)](<https://github.com/apps/dependabot>)
 - [![@Habbie](https://avatars.githubusercontent.com/u/525838?s=64&v=4)](https://github.com/Habbie)
 - [![@Bodenhaltung](https://avatars.githubusercontent.com/u/12759677?s=64&v=4)](https://github.com/Bodenhaltung)
 - [![@sgf-dma](https://avatars.githubusercontent.com/u/2964243?s=64&v=4)](https://github.com/sgf-dma)
@@ -1101,9 +1113,7 @@ You signed in with another tab or window. [Reload](https://github.com/PowerDNS/d
 - [Star\\
 36](https://github.com/login?return_to=%2FPowerDNS%2Fdnsdist-ansible)
 
-
 An ansible role for dnsdist
-
 
 ### License
 
@@ -1117,7 +1127,7 @@ forks](https://github.com/PowerDNS/dnsdist-ansible/forks) [Branches](https://git
 
 [Notifications](https://github.com/login?return_to=%2FPowerDNS%2Fdnsdist-ansible) You must be signed in to change notification settings
 
-# PowerDNS/dnsdist-ansible
+## PowerDNS/dnsdist-ansible
 
 master
 
@@ -1135,7 +1145,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>## History<br>[157 Commits](https://github.com/PowerDNS/dnsdist-ansible/commits/master/)<br>[View commit history for this file.](https://github.com/PowerDNS/dnsdist-ansible/commits/master/) |
+| ## Latest commit<br>## History<br>[157 Commits](https://github.com/PowerDNS/dnsdist-ansible/commits/master/)<br>[View commit history for this file.](https://github.com/PowerDNS/dnsdist-ansible/commits/master/) |  |  |  |
 | [.github](https://github.com/PowerDNS/dnsdist-ansible/tree/master/.github ".github") | [.github](https://github.com/PowerDNS/dnsdist-ansible/tree/master/.github ".github") |  |  |
 | [defaults](https://github.com/PowerDNS/dnsdist-ansible/tree/master/defaults "defaults") | [defaults](https://github.com/PowerDNS/dnsdist-ansible/tree/master/defaults "defaults") |  |  |
 | [handlers](https://github.com/PowerDNS/dnsdist-ansible/tree/master/handlers "handlers") | [handlers](https://github.com/PowerDNS/dnsdist-ansible/tree/master/handlers "handlers") |  |  |
@@ -1153,11 +1163,11 @@ Open more actions menu
 | [requirements.yml](https://github.com/PowerDNS/dnsdist-ansible/blob/master/requirements.yml "requirements.yml") | [requirements.yml](https://github.com/PowerDNS/dnsdist-ansible/blob/master/requirements.yml "requirements.yml") |  |  |
 | [test-requirements.txt](https://github.com/PowerDNS/dnsdist-ansible/blob/master/test-requirements.txt "test-requirements.txt") | [test-requirements.txt](https://github.com/PowerDNS/dnsdist-ansible/blob/master/test-requirements.txt "test-requirements.txt") |  |  |
 | [tox.ini](https://github.com/PowerDNS/dnsdist-ansible/blob/master/tox.ini "tox.ini") | [tox.ini](https://github.com/PowerDNS/dnsdist-ansible/blob/master/tox.ini "tox.ini") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# Ansible Role: dnsdist
+## Ansible Role: dnsdist
 
 [Permalink: Ansible Role: dnsdist](https://github.com/PowerDNS/dnsdist-ansible#ansible-role-dnsdist)
 
@@ -1183,13 +1193,13 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-```
+```text
 dnsdist_install_repo: ""
 ```
 
 By default, dnsdist is installed from the software repositories configured on the target hosts.
 
-```
+```text
 # Install dnsdist from the master branch
 - hosts: dnsdist
   roles:
@@ -1206,7 +1216,7 @@ By default, dnsdist is installed from the software repositories configured on th
 The examples above, show how to install DNSdist from the official PowerDNS repositories
 (see the complete list of pre-defined repos in `vars/main.yml`).
 
-```
+```text
 - hosts: all
   vars:
     dnsdist_install_repo:
@@ -1223,56 +1233,56 @@ The examples above, show how to install DNSdist from the official PowerDNS repos
 
 It is also possible to install dnsdist from custom repositories as demonstrated in the example above.
 
-```
+```text
 dnsdist_install_epel: True
 ```
 
 By default, install EPEL to satisfy some DNSdist dependencies like `lidsodium`.
 To skip the installation of EPEL set the `dnsdist_install_epel` variable to `False`.
 
-```
+```text
 dnsdist_package_name: "{{ default_dnsdist_package_name }}"
 ```
 
 The name of the dnsdist package: "dnsdist" on both RHEL and Debian derivates distributions.
 
-```
+```text
 dnsdist_package_version: ""
 ```
 
 Optionally, allow to set a specific version of the dnsdist package to be installed.
 
-```
+```text
 dnsdist_install_debug_symbols_package: False
 ```
 
 Install dnsdist debug symbols package.
 
-```
+```text
 dnsdist_debug_symbols_package_name: "{{ default_dnsdist_debug_symbols_package_name }}"
 ```
 
 The name of the dnsdist debug symbols package to be installed when `dnsdist_install_debug_symbols_package` is `True`.
 
-```
+```text
 dnsdist_additional_packages: []
 ```
 
 List of additional packages to install, list support version pining for each of the packages.
 
-```
+```text
 dnsdist_acls: []
 ```
 
 Configures the dnsdist ACLS (netmasks).
 
-```
+```text
 dnsdist_locals: ['127.0.0.1:5300']
 ```
 
 Configure dnsdist's listen addresses.
 
-```
+```text
 dnsdist_servers:
   - '127.0.0.1'
   - "{ address='127.0.0.1:5300', source='127.0.0.1@lo', order=1 }"
@@ -1281,89 +1291,89 @@ dnsdist_servers:
 The list of IP addresses of the downstream DNS servers dnsdist should be send traffic to
 OR of Lua tables that the newServer function ( [https://dnsdist.org/reference/config.html#newServer](https://dnsdist.org/reference/config.html#newServer) ) can parse.
 
-```
+```text
 dnsdist_carbonserver: ""
 ```
 
 The IP address of the Carbon server that should receive dnsdist metrics.
 
-```
+```text
 dnsdist_controlsocket: "127.0.0.1"
 ```
 
 The listen IP address of the dnsdist's TCP control socket.
 
-```
+```text
 dnsdist_setkey: ""
 ```
 
 Encryption key for the dnsdist's TCP control socket. If it is empty, a random key will be generated. If a key is already present in the file, it will be kept.
 
-```
+```text
 dnsdist_webserver_address: ""
 ```
 
 The listen IP address of the built-in webserver, empty thus disable by default.
 
-```
+```text
 dnsdist_webserver_password: ""
 ```
 
 The authentication credentials for the built-in webserver. Must be set when `dnsdist_webserver_address` is set.
 
-```
+```text
 dnsdist_webserver_apikey: ""
 ```
 
 The authentication credentials for the built-in API.
 
-```
+```text
 dnsdist_webserver_acl: ""
 ```
 
 Since 1.5.0, only connections from 127.0.0.1 and ::1 are allowed by default. See [https://dnsdist.org/guides/webserver.html](https://dnsdist.org/guides/webserver.html) for more information.
 
-```
+```text
 dnsdist_config: ""
 ```
 
 Additional dnsdist configuration to be injected verbatim in the `dnsdist.conf` file.
 
-```
+```text
 dnsdist_config_files: {}
 ```
 
 Additional dnsdist configuration files to be placed in the configuration directory.
 
-```
+```text
 dnsdist_config_owner: 'root'
 dnsdist_config_group: 'root'
 ```
 
 User and Group that own the `dnsdist.conf` file.
 
-```
+```text
 dnsdist_service_overrides: {}
 ```
 
 Dict with overrides for the service (systemd only).
 This can be used to change any systemd settings in the `[Service]` category.
 
-```
+```text
 dnsdist_unit_overrides: {}
 ```
 
 Dict with overrides for the service unit (systemd only).
 This can be used to change any systemd settings in the `[Unit]` category.
 
-```
+```text
 dnsdist_environment_overrides: {}
 ```
 
 Dict with overrides for the service environments (systemd only).
 This can be used to change any environment variables in systemd settings in the `[Service]` category.
 
-```
+```text
 dnsdist_service_state: "started"
 dnsdist_service_enabled: "yes"
 ```
@@ -1371,19 +1381,19 @@ dnsdist_service_enabled: "yes"
 Allow to specify the desired state of the DNSdist service.
 E.g. This allows to install and configure DNSdist without automatically starting the service.
 
-```
+```text
 dnsdist_disable_handlers: False
 ```
 
 Disable automated service restart on configuration changes.
 
-```
+```text
 dnsdist_tlslocals: []
 ```
 
 Configures DNS over TLS listeners. The entries are copied verbatim entry-by-entry.
 
-```
+```text
 dnsdist_force_reinstall: False
 ```
 
@@ -1395,7 +1405,7 @@ Force reinstall of dnsdist packages by performing a removal prior to the package
 
 Deploy dnsdist in front of Quad9 and enable the web monitoring interface
 
-```
+```text
 - hosts: dnsdist
   roles:
     - { role: PowerDNS.dnsdist,
@@ -1416,19 +1426,19 @@ A detailed changelog of all the changes applied to the role is available [here](
 
 Tests are performed by [Molecule](http://molecule.readthedocs.org/en/latest/).
 
-```
+```text
 $ pip install tox
 ```
 
 To test all the scenarios run
 
-```
+```text
 $ tox
 ```
 
 To run a custom molecule command
 
-```
+```text
 $ tox -e ansible29 -- molecule test -s dnsdist-18
 ```
 
@@ -1442,7 +1452,6 @@ MIT
 
 An ansible role for dnsdist
 
-
 ### Topics
 
 [hacktoberfest](https://github.com/topics/hacktoberfest "Topic: hacktoberfest")
@@ -1455,7 +1464,7 @@ An ansible role for dnsdist
 
 [MIT license](https://github.com/PowerDNS/dnsdist-ansible#MIT-1-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/PowerDNS/dnsdist-ansible).
 
@@ -1493,7 +1502,7 @@ last monthOct 29, 2025](https://github.com/PowerDNS/dnsdist-ansible/releases/tag
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/PowerDNS/dnsdist-ansible).
 
@@ -1508,7 +1517,7 @@ There was an error while loading. [Please reload this page](https://github.com/P
 - [![@Godwottery](https://avatars.githubusercontent.com/u/2536922?s=64&v=4)](https://github.com/Godwottery)
 - [![@Paktosan](https://avatars.githubusercontent.com/u/4009269?s=64&v=4)](https://github.com/Paktosan)
 - [![@SrX](https://avatars.githubusercontent.com/u/1928065?s=64&v=4)](https://github.com/SrX)
-- [![@dependabot[bot]](https://avatars.githubusercontent.com/in/29110?s=64&v=4)](https://github.com/apps/dependabot)
+- [![@dependabot[bot]](https://avatars.githubusercontent.com/in/29110?s=64&v=4)](<https://github.com/apps/dependabot>)
 - [![@xgin](https://avatars.githubusercontent.com/u/5378093?s=64&v=4)](https://github.com/xgin)
 - [![@Bodenhaltung](https://avatars.githubusercontent.com/u/12759677?s=64&v=4)](https://github.com/Bodenhaltung)
 - [![@lpmhouben](https://avatars.githubusercontent.com/u/18721840?s=64&v=4)](https://github.com/lpmhouben)
@@ -1554,7 +1563,7 @@ forks](https://github.com/mrlesmithjr/ansible-vsphere-management/forks) [Branche
 
 [Notifications](https://github.com/login?return_to=%2Fmrlesmithjr%2Fansible-vsphere-management) You must be signed in to change notification settings
 
-# mrlesmithjr/ansible-vsphere-management
+## mrlesmithjr/ansible-vsphere-management
 
 master
 
@@ -1572,7 +1581,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![mrlesmithjr](https://avatars.githubusercontent.com/u/4006149?v=4&size=40)](https://github.com/mrlesmithjr)[mrlesmithjr](https://github.com/mrlesmithjr/ansible-vsphere-management/commits?author=mrlesmithjr)<br>[Update README.md](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/5ea2bfdbba110aaca41278242ba94f4cc0a0cb99)<br>2 years agoMay 29, 2023<br>[5ea2bfd](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/5ea2bfdbba110aaca41278242ba94f4cc0a0cb99) · 2 years agoMay 29, 2023<br>## History<br>[183 Commits](https://github.com/mrlesmithjr/ansible-vsphere-management/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/mrlesmithjr/ansible-vsphere-management/commits/master/) |
+| ## Latest commit<br>[![mrlesmithjr](https://avatars.githubusercontent.com/u/4006149?v=4&size=40)](https://github.com/mrlesmithjr)[mrlesmithjr](https://github.com/mrlesmithjr/ansible-vsphere-management/commits?author=mrlesmithjr)<br>[Update README.md](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/5ea2bfdbba110aaca41278242ba94f4cc0a0cb99)<br>2 years agoMay 29, 2023<br>[5ea2bfd](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/5ea2bfdbba110aaca41278242ba94f4cc0a0cb99) · 2 years agoMay 29, 2023<br>## History<br>[183 Commits](https://github.com/mrlesmithjr/ansible-vsphere-management/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/mrlesmithjr/ansible-vsphere-management/commits/master/) |  |  |  |
 | [Vagrant](https://github.com/mrlesmithjr/ansible-vsphere-management/tree/master/Vagrant "Vagrant") | [Vagrant](https://github.com/mrlesmithjr/ansible-vsphere-management/tree/master/Vagrant "Vagrant") | [Resolves](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/c0f2f21539b18c87b0e2a1e1cdb08f6b9f954673 "Resolves #36") [#36](https://github.com/mrlesmithjr/ansible-vsphere-management/issues/36) | 8 years agoOct 6, 2017 |
 | [defaults](https://github.com/mrlesmithjr/ansible-vsphere-management/tree/master/defaults "defaults") | [defaults](https://github.com/mrlesmithjr/ansible-vsphere-management/tree/master/defaults "defaults") | [First Commit Of iSCSI Software Management](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/a09c90b9ff309075b707a5346e0da66d1a88d6d5 "First Commit Of iSCSI Software Management  Currently we can:  - enable/disable adapter  - add target portal IPs  - rescan HBA to discover LUNs  - Gather all newly created LUNs and partition them if they are not already, and add them as a new datastore based on SanId  Resolves #54") | 8 years agoOct 21, 2017 |
 | [handlers](https://github.com/mrlesmithjr/ansible-vsphere-management/tree/master/handlers "handlers") | [handlers](https://github.com/mrlesmithjr/ansible-vsphere-management/tree/master/handlers "handlers") | [First Commit](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/3084e925d261776bbb52208bd1c32a8eb073f440 "First Commit  Signed-off-by: Larry Smith Jr <mrlesmithjr@gmail.com>") | 8 years agoSep 10, 2017 |
@@ -1591,7 +1600,7 @@ Open more actions menu
 | [README.md](https://github.com/mrlesmithjr/ansible-vsphere-management/blob/master/README.md "README.md") | [README.md](https://github.com/mrlesmithjr/ansible-vsphere-management/blob/master/README.md "README.md") | [Update README.md](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/5ea2bfdbba110aaca41278242ba94f4cc0a0cb99 "Update README.md") | 2 years agoMay 29, 2023 |
 | [ansible.cfg](https://github.com/mrlesmithjr/ansible-vsphere-management/blob/master/ansible.cfg "ansible.cfg") | [ansible.cfg](https://github.com/mrlesmithjr/ansible-vsphere-management/blob/master/ansible.cfg "ansible.cfg") | [Resolves](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/c0f2f21539b18c87b0e2a1e1cdb08f6b9f954673 "Resolves #36") [#36](https://github.com/mrlesmithjr/ansible-vsphere-management/issues/36) | 8 years agoOct 6, 2017 |
 | [requirements.yml](https://github.com/mrlesmithjr/ansible-vsphere-management/blob/master/requirements.yml "requirements.yml") | [requirements.yml](https://github.com/mrlesmithjr/ansible-vsphere-management/blob/master/requirements.yml "requirements.yml") | [Resolves](https://github.com/mrlesmithjr/ansible-vsphere-management/commit/335fe2a87e9952f3c04d43e1fcef31ebf905a6ea "Resolves #56") [#56](https://github.com/mrlesmithjr/ansible-vsphere-management/issues/56) | 8 years agoOct 25, 2017 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
@@ -1638,7 +1647,7 @@ Open more actions menu
   - [License](https://github.com/mrlesmithjr/ansible-vsphere-management#license)
   - [Author Information](https://github.com/mrlesmithjr/ansible-vsphere-management#author-information)
 
-# ansible-vsphere-management
+## ansible-vsphere-management
 
 [Permalink: ansible-vsphere-management](https://github.com/mrlesmithjr/ansible-vsphere-management#ansible-vsphere-management)
 
@@ -1683,7 +1692,7 @@ Because of the discovery required for VMs, Ansible version must be at least 2.4.
 
 Adjust `inventory/hosts.0.inv` to include your Windows `powecli_host`.
 
-```
+```text
 [powercli_host]
 node0 ansible_ssh_host=192.168.250.10
 ```
@@ -1697,7 +1706,7 @@ leak. We will eventually use `ansible-vault` to encrypt this file as well in
 order to add additional security measures in place. You must create this file
 manually and it should look similar to below:
 
-```
+```text
 ---
 powercli_host_user_info:
   password: vagrant
@@ -1769,7 +1778,7 @@ roles to properly prep this host to get up and running quickly as well as a play
 - [ansible-windows-powercli](https://github.com/mrlesmithjr/ansible-windows-powercli)
 - [ansible-windows-remote-desktop](https://github.com/mrlesmithjr/ansible-windows-remote-desktop)
 
-```
+```text
 ---
 - hosts: powercli_host
   roles:
@@ -1822,14 +1831,14 @@ needs to be defined as one of the examples below.
 
 `host_vars/esxi-01/iscsi.yml`
 
-```
+```text
 ---
 vsphere_enable_software_iscsi: true
 ```
 
 `group_vars/vsphere_hosts/iscsi.yml`
 
-```
+```text
 ---
 vsphere_enable_software_iscsi: true
 ```
@@ -1851,7 +1860,7 @@ In order to deploy the `VCSA` you will need to obtain the `ISO` and extract it
 to a folder on the [Deployment Host](https://github.com/mrlesmithjr/ansible-vsphere-management/blob/master/deployment-host) and define the following
 variable in `inventory/group_vars/all/environment.yml`:
 
-```
+```text
 vsphere_vcsa_iso_directory: C:\vagrant\vApps\VCSA_ISO
 ```
 
@@ -1876,7 +1885,7 @@ against it.
 
 [Permalink: Spinning It Up](https://github.com/mrlesmithjr/ansible-vsphere-management#spinning-it-up)
 
-```
+```text
 cd /Vagrant
 vagrant up
 ```
@@ -1906,11 +1915,11 @@ The deployment script has now become the main method to deloy. We have now
 included help for the script usage. Which you can use to help understand how to
 use the script.
 
-```
+```text
 vsphere_management.sh --help
 ```
 
-```
+```text
 vSphere Management Script
 
 This script is for managing your vSphere environment in a holistic fashion.
@@ -1994,7 +2003,7 @@ Example:
 So for example, say we would like to redistribute SSH Keys. We could just run
 the following:
 
-```
+```text
 ./scripts/vsphere_management.sh vsphere_ssh_key_distribution
 
 ...
@@ -2105,7 +2114,7 @@ exist in order to auto destroy VMs.
 The first definition would need to be defined as `true` either in `defaults/main.yml`
 or in `inventory/group_vars/all/environment.yml`.
 
-```
+```text
 # Defines if VMs defined as not defined to deploy to be destroyed
 # reference vsphere_vm_services_groups as well
 # Good for keeping environment in a defined state
@@ -2132,7 +2141,7 @@ However, the next measure that must be in place is the following when defining
 your VM definitions. The `deploy` definition is what defines whether the VM
 should exist or not.
 
-```
+```text
 vsphere_bootstrap_vms:
   - vm_name: bootstrap-vm-1.{{ vsphere_pri_domain_name }}
     cpus: "{{ vsphere_bootstrap_vms_cpu }}"
@@ -2157,7 +2166,7 @@ Based on the above VM definitions we have also made the `deploy` a single defini
 by default for each Core Service VM type. The defaults are as follows which can
 be found in `inventory/group_vars/all/environment.yml`:
 
-```
+```text
 vsphere_bootstrap_vms_deploy: false
 vsphere_ddi_vms_deploy: true
 vsphere_dnsdist_vms_deploy: true
@@ -2169,13 +2178,13 @@ vsphere_samba_vms_deploy: true
 
 As well as if you run the following using the `vsphere_management.sh` script:
 
-```
+```text
 vsphere_management.sh vsphere_destroy_vms
 ```
 
 You will be prompted as below:
 
-```
+```text
 CAUTION:	You are about to DESTROY Core Services VMs!
 		Only VMs defined as deploy: false will be affected.....
 
@@ -2190,7 +2199,7 @@ You are about to DESTROY Core Services VMs!! Continue? (y/n)
 
 As this project proceeds the common variables will begin to be consolidated into `inventory/groups_vars/all/environment.yml`. This will allow for environmental specific variables to be defined in a central location. These will be defined and feed into additional variables. This makes management of specific environments much easier.
 
-```
+```text
 ---
 pri_domain_name: lab.etsbv.internal
 
@@ -2330,7 +2339,7 @@ likely change a bit once vCenter is in place.
 
 Below is an example of the current DDI VM definitions in `inventory/group_vars/all/vsphere_ddi.yml`:
 
-```
+```text
 ---
 # These define the IP addresses for the DDI VMs
 vsphere_ddi_vm_ips:
@@ -2386,7 +2395,7 @@ Below is an example of the current DNS record definitions in `inventory/group_va
 > `content` variable. This is **REQUIRED** to ensure Canonical naming standards
 > otherwise the record creation will fail.
 
-```
+```text
 pdns_records:
   - hostname: lb
     content: "{{ vsphere_lb_vips[0] }}"
@@ -2478,7 +2487,7 @@ rsync cron job. This job is scheduled to run every 5 minutes.
 In order to create Samba AD users and groups the info below must be defined. This
 is also a pre-requisite to [Host User Roles Domain Permissions](https://github.com/mrlesmithjr/ansible-vsphere-management#host-user-roles-domain-permissions).
 
-```
+```text
 samba_domain_groups:
   - name: vSphere-Admins
     members:
@@ -2512,7 +2521,7 @@ We have also added the ability to manage the hosts user roles domain permissions
 If the host is joined to the domain then any groups defined as below will be added
 to the correct host role.
 
-```
+```text
 # roles can be NoAccess, Anonymous, View, ReadOnly, Admin
 vsphere_domain_access:
   - name: "{{ vsphere_ad_netbios_name|upper }}\\vSphere-Admins"
@@ -2548,11 +2557,11 @@ vsphere_domain_access:
 The following information can be used to determine the sizing required for the
 VCSA deployment.
 
-```
+```text
 vsphere_vcsa_appliance_deployment_option: tiny
 ```
 
-```
+```text
 {
     "large": {
         "cpu": 16,
@@ -2744,7 +2753,7 @@ As part of all of this we also auto generate an Ansible inventory file which
 includes the important information for our provisioning. This file will be
 created as `inventory/terraform.inv` and it will look like something like:
 
-```
+```text
 [rancher_lbs]
 rancher-lb-02.lab.etsbv.internal
 rancher-lb-01.lab.etsbv.internal
@@ -2847,7 +2856,7 @@ No description or website provided.
 
 [Contributing](https://github.com/mrlesmithjr/ansible-vsphere-management#contributing-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/mrlesmithjr/ansible-vsphere-management).
 
@@ -2910,7 +2919,6 @@ You signed in with another tab or window. [Reload](https://github.com/RunOnFlux/
 - [Star\\
 4](https://github.com/login?return_to=%2FRunOnFlux%2Fflux-pdns)
 
-
 [4\\
 stars](https://github.com/RunOnFlux/flux-pdns/stargazers) [0\\
 forks](https://github.com/RunOnFlux/flux-pdns/forks) [Branches](https://github.com/RunOnFlux/flux-pdns/branches) [Tags](https://github.com/RunOnFlux/flux-pdns/tags) [Activity](https://github.com/RunOnFlux/flux-pdns/activity)
@@ -2919,7 +2927,7 @@ forks](https://github.com/RunOnFlux/flux-pdns/forks) [Branches](https://github.c
 
 [Notifications](https://github.com/login?return_to=%2FRunOnFlux%2Fflux-pdns) You must be signed in to change notification settings
 
-# RunOnFlux/flux-pdns
+## RunOnFlux/flux-pdns
 
 master
 
@@ -2937,7 +2945,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>## History<br>[46 Commits](https://github.com/RunOnFlux/flux-pdns/commits/master/)<br>[View commit history for this file.](https://github.com/RunOnFlux/flux-pdns/commits/master/) |
+| ## Latest commit<br>## History<br>[46 Commits](https://github.com/RunOnFlux/flux-pdns/commits/master/)<br>[View commit history for this file.](https://github.com/RunOnFlux/flux-pdns/commits/master/) |  |  |  |
 | [.github/workflows](https://github.com/RunOnFlux/flux-pdns/tree/master/.github/workflows "This path skips through empty directories") | [.github/workflows](https://github.com/RunOnFlux/flux-pdns/tree/master/.github/workflows "This path skips through empty directories") |  |  |
 | [scripts](https://github.com/RunOnFlux/flux-pdns/tree/master/scripts "scripts") | [scripts](https://github.com/RunOnFlux/flux-pdns/tree/master/scripts "scripts") |  |  |
 | [src](https://github.com/RunOnFlux/flux-pdns/tree/master/src "src") | [src](https://github.com/RunOnFlux/flux-pdns/tree/master/src "src") |  |  |
@@ -2948,11 +2956,11 @@ Open more actions menu
 | [pdns\_logrotate.conf](https://github.com/RunOnFlux/flux-pdns/blob/master/pdns_logrotate.conf "pdns_logrotate.conf") | [pdns\_logrotate.conf](https://github.com/RunOnFlux/flux-pdns/blob/master/pdns_logrotate.conf "pdns_logrotate.conf") |  |  |
 | [powerdns\_setup.yml](https://github.com/RunOnFlux/flux-pdns/blob/master/powerdns_setup.yml "powerdns_setup.yml") | [powerdns\_setup.yml](https://github.com/RunOnFlux/flux-pdns/blob/master/powerdns_setup.yml "powerdns_setup.yml") |  |  |
 | [resolv.conf](https://github.com/RunOnFlux/flux-pdns/blob/master/resolv.conf "resolv.conf") | [resolv.conf](https://github.com/RunOnFlux/flux-pdns/blob/master/resolv.conf "resolv.conf") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# Flux DNS
+## Flux DNS
 
 [Permalink: Flux DNS](https://github.com/RunOnFlux/flux-pdns#flux-dns)
 
@@ -2974,7 +2982,7 @@ Each application gets a CNAME `appName.app.runonflux.io`. Flux DNS gets the DNS 
 
 [Permalink: Repository Structure](https://github.com/RunOnFlux/flux-pdns#repository-structure)
 
-```
+```text
 .
 ├── powerdns_setup.yml            # Ansible configuration file
 ├── pdns.conf                     # PowerDNS configuration file
@@ -2998,42 +3006,33 @@ Each application gets a CNAME `appName.app.runonflux.io`. Flux DNS gets the DNS 
 
 1. Clone this repository on your control machine:
 
-
-
-```
+```text
 git clone https://github.com/RunOnFlux/flux-pdns.git
 cd flux-pdns
 ```
 
-2. Update the Ansible inventory file (`hosts.ini`) with the target server's IP address, SSH user, and SSH key:
+1. Update the Ansible inventory file (`hosts.ini`) with the target server's IP address, SSH user, and SSH key:
 
-
-
-```
+```text
 [dns-server]
 target_ip ansible_user=your_ssh_user ansible_ssh_private_key_file=path/to/your/private_key
 ```
 
-3. Update `powerdns_setup.yml` file with the correct hosts selector:
+1. Update `powerdns_setup.yml` file with the correct hosts selector:
 
-
-
-```
+```text
  - name: Install and configure PowerDNS
 hosts: "YOUR HOST SETTING HERE"
 become: yes
 ```
 
-4. Run the Ansible playbook to deploy Flux DNS on the target server:
+1. Run the Ansible playbook to deploy Flux DNS on the target server:
 
-
-
-```
+```text
 ansible-playbook -i hosts.ini powerdns_setup.yml
 ```
 
-5. After the deployment is successful, the custom DNS server will be up and running on the target server.
-
+1. After the deployment is successful, the custom DNS server will be up and running on the target server.
 
 ## Contributing
 
@@ -3051,12 +3050,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 No description, website, or topics provided.
 
-
 ### Resources
 
 [Readme](https://github.com/RunOnFlux/flux-pdns#readme-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/RunOnFlux/flux-pdns).
 
@@ -3094,7 +3092,7 @@ on Jun 17Jun 17, 2025](https://github.com/RunOnFlux/flux-pdns/releases/tag/0.0.8
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/RunOnFlux/flux-pdns).
 
@@ -3139,7 +3137,7 @@ You signed in with another tab or window. [Reload](https://github.com/pschiffe/d
 
 
 
-# Sponsor pschiffe/docker-pdns
+## Sponsor pschiffe/docker-pdns
 
 
 
@@ -3163,7 +3161,7 @@ You signed in with another tab or window. [Reload](https://github.com/pschiffe/d
 
 
 
-##### GitHub Sponsors
+## GitHub Sponsors
 
 [Learn more about Sponsors](https://github.com/sponsors)
 
@@ -3195,7 +3193,7 @@ You signed in with another tab or window. [Reload](https://github.com/pschiffe/d
 
 
 
-##### External links
+### External links
 
 
 
@@ -3244,7 +3242,7 @@ forks](https://github.com/pschiffe/docker-pdns/forks) [Branches](https://github.
 
 [Notifications](https://github.com/login?return_to=%2Fpschiffe%2Fdocker-pdns) You must be signed in to change notification settings
 
-# pschiffe/docker-pdns
+## pschiffe/docker-pdns
 
 master
 
@@ -3262,7 +3260,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![pschiffe](https://avatars.githubusercontent.com/u/3899107?v=4&size=40)](https://github.com/pschiffe)[pschiffe](https://github.com/pschiffe/docker-pdns/commits?author=pschiffe)<br>[Update base images](https://github.com/pschiffe/docker-pdns/commit/f358fe24e369a12091a45856ad22901266bad877)<br>success<br>5 months agoJun 11, 2025<br>[f358fe2](https://github.com/pschiffe/docker-pdns/commit/f358fe24e369a12091a45856ad22901266bad877) · 5 months agoJun 11, 2025<br>## History<br>[157 Commits](https://github.com/pschiffe/docker-pdns/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/pschiffe/docker-pdns/commits/master/) |
+| ## Latest commit<br>[![pschiffe](https://avatars.githubusercontent.com/u/3899107?v=4&size=40)](https://github.com/pschiffe)[pschiffe](https://github.com/pschiffe/docker-pdns/commits?author=pschiffe)<br>[Update base images](https://github.com/pschiffe/docker-pdns/commit/f358fe24e369a12091a45856ad22901266bad877)<br>success<br>5 months agoJun 11, 2025<br>[f358fe2](https://github.com/pschiffe/docker-pdns/commit/f358fe24e369a12091a45856ad22901266bad877) · 5 months agoJun 11, 2025<br>## History<br>[157 Commits](https://github.com/pschiffe/docker-pdns/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/pschiffe/docker-pdns/commits/master/) |  |  |  |
 | [.github](https://github.com/pschiffe/docker-pdns/tree/master/.github ".github") | [.github](https://github.com/pschiffe/docker-pdns/tree/master/.github ".github") | [Allow manual trigger of the main CI action](https://github.com/pschiffe/docker-pdns/commit/fb97eceefa78a0af0c6ecc930d7184a0fdd93bf6 "Allow manual trigger of the main CI action") | 8 months agoMar 20, 2025 |
 | [deprecated](https://github.com/pschiffe/docker-pdns/tree/master/deprecated "deprecated") | [deprecated](https://github.com/pschiffe/docker-pdns/tree/master/deprecated "deprecated") | [Replace pdns-admin-static and pdns-admin-uwsgi images with single pdn…](https://github.com/pschiffe/docker-pdns/commit/2b264c149e2a0f4512325cb678173f37d12d8dba "Replace pdns-admin-static and pdns-admin-uwsgi images with single pdns-admin") | 2 years agoJan 1, 2024 |
 | [examples/kubernetes](https://github.com/pschiffe/docker-pdns/tree/master/examples/kubernetes "This path skips through empty directories") | [examples/kubernetes](https://github.com/pschiffe/docker-pdns/tree/master/examples/kubernetes "This path skips through empty directories") | [Update to f41 & alpine 3.21](https://github.com/pschiffe/docker-pdns/commit/f14e4be0086770f1944adf562d74d837098abdad "Update to f41 & alpine 3.21  There's now pdns 4.9 also in Fedora version.") | 11 months agoJan 1, 2025 |
@@ -3279,11 +3277,11 @@ Open more actions menu
 | [docker-compose-mysql-ipv6.yml](https://github.com/pschiffe/docker-pdns/blob/master/docker-compose-mysql-ipv6.yml "docker-compose-mysql-ipv6.yml") | [docker-compose-mysql-ipv6.yml](https://github.com/pschiffe/docker-pdns/blob/master/docker-compose-mysql-ipv6.yml "docker-compose-mysql-ipv6.yml") | [Increase nofile limit for recursor](https://github.com/pschiffe/docker-pdns/commit/036420859d412e5c5350eb7c66a61dfa15ffa399 "Increase nofile limit for recursor") | 11 months agoJan 1, 2025 |
 | [docker-compose-mysql.yml](https://github.com/pschiffe/docker-pdns/blob/master/docker-compose-mysql.yml "docker-compose-mysql.yml") | [docker-compose-mysql.yml](https://github.com/pschiffe/docker-pdns/blob/master/docker-compose-mysql.yml "docker-compose-mysql.yml") | [Increase nofile limit for recursor](https://github.com/pschiffe/docker-pdns/commit/036420859d412e5c5350eb7c66a61dfa15ffa399 "Increase nofile limit for recursor") | 11 months agoJan 1, 2025 |
 | [docker-compose-pgsql.yml](https://github.com/pschiffe/docker-pdns/blob/master/docker-compose-pgsql.yml "docker-compose-pgsql.yml") | [docker-compose-pgsql.yml](https://github.com/pschiffe/docker-pdns/blob/master/docker-compose-pgsql.yml "docker-compose-pgsql.yml") | [Increase nofile limit for recursor](https://github.com/pschiffe/docker-pdns/commit/036420859d412e5c5350eb7c66a61dfa15ffa399 "Increase nofile limit for recursor") | 11 months agoJan 1, 2025 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# PowerDNS Docker Images
+## PowerDNS Docker Images
 
 [Permalink: PowerDNS Docker Images](https://github.com/pschiffe/docker-pdns#powerdns-docker-images)
 
@@ -3303,7 +3301,7 @@ All images are available on Docker Hub:
 
 Source GitHub repository: [https://github.com/pschiffe/docker-pdns](https://github.com/pschiffe/docker-pdns)
 
-* * *
+- * *
 
 [![Static Badge](https://camo.githubusercontent.com/7267d833c352b793f8656feb118b86168a8089f8724d70bde983acd4024410dc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875625f53706f6e736f72732d677265793f6c6f676f3d676974687562)](https://github.com/sponsors/pschiffe)[![Static Badge](https://camo.githubusercontent.com/d81fde81ef7ae73d7498dc9a5dbf8ab67baf793e7ec59610f2c4f34702acb0ee/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f70617970616c2e6d652d677265793f6c6f676f3d70617970616c)](https://www.paypal.com/paypalme/pschiffe)
 
@@ -3319,7 +3317,7 @@ If this project is useful to you, please consider sponsoring me to support maint
 
 Docker image with [PowerDNS 4.x server](https://doc.powerdns.com/authoritative/) and mysql backend. Requires external mysql server. Env vars for mysql configuration:
 
-```
+```text
 (name=default value)
 
 PDNS_gmysql_host=mysql
@@ -3343,7 +3341,7 @@ You can find all the available settings [here](https://doc.powerdns.com/authorit
 
 Example of a master server with the API enabled and one slave server configured:
 
-```
+```text
 docker run -d -p 53:53 -p 53:53/udp --name pdns-master \
   --hostname ns1.example.com --link mariadb:mysql \
   -e PDNS_primary=yes \
@@ -3361,7 +3359,7 @@ docker run -d -p 53:53 -p 53:53/udp --name pdns-master \
 
 Example of a slave server with a supermaster:
 
-```
+```text
 docker run -d -p 53:53 -p 53:53/udp --name pdns-slave \
   --hostname ns2.example.com --link mariadb:mysql \
   -e PDNS_gmysql_dbname=powerdnsslave \
@@ -3384,7 +3382,7 @@ docker run -d -p 53:53 -p 53:53/udp --name pdns-slave \
 
 Docker image with [PowerDNS 4.x server](https://doc.powerdns.com/authoritative/) and postgres backend. Requires external postgres server. Env vars for pgsql configuration:
 
-```
+```text
 (name=default value)
 
 PDNS_gpgsql_host=pgsql
@@ -3408,7 +3406,7 @@ You can find all the available settings [here](https://doc.powerdns.com/authorit
 
 Example of a master server with the API enabled and one slave server configured:
 
-```
+```text
 docker run -d -p 53:53 -p 53:53/udp --name pdns-master \
   --hostname ns1.example.com --link postgres:pgsql \
   -e PDNS_primary=yes \
@@ -3426,7 +3424,7 @@ docker run -d -p 53:53 -p 53:53/udp --name pdns-master \
 
 Example of a slave server with a supermaster:
 
-```
+```text
 docker run -d -p 53:53 -p 53:53/udp --name pdns-slave \
   --hostname ns2.example.com --link postgres:pgsql \
   -e PDNS_gpgsql_dbname=powerdnsslave \
@@ -3459,7 +3457,7 @@ You can find all available settings [here](https://doc.powerdns.com/recursor/set
 
 Recursor server with API enabled:
 
-```
+```text
 docker run -d -p 53:53 -p 53:53/udp --name pdns-recursor \
   -e PDNS_api_key=secret \
   -e PDNS_webserver=yes \
@@ -3482,7 +3480,7 @@ There is also an official image for the pdns-admin on [Docker Hub](https://hub.d
 
 Env vars for mysql configuration:
 
-```
+```text
 (name=default value)
 
 PDNS_ADMIN_SQLA_DB_HOST=mysql
@@ -3496,7 +3494,7 @@ If linked with official [mariadb](https://hub.docker.com/_/mariadb/) image with 
 
 Env vars for pgsql configuration:
 
-```
+```text
 PDNS_ADMIN_SQLA_DB_TYPE=postgres
 PDNS_ADMIN_SQLA_DB_HOST=pgsql
 PDNS_ADMIN_SQLA_DB_PORT=5432
@@ -3515,7 +3513,7 @@ Similar to the pdns-mysql, pdns-admin is also completely configurable via env va
 
 For the pdns-admin to make sense, it needs a PowerDNS server to manage. The PowerDNS server needs to have exposed API (example configuration for PowerDNS 4.x):
 
-```
+```text
 api=yes
 api-key=secret
 webserver=yes
@@ -3525,7 +3523,7 @@ webserver-allow-from=172.5.0.0/16
 
 And again, PowerDNS connection is configured via env vars (it needs url of the PowerDNS server, api key and a version of PowerDNS server, for example 4.0):
 
-```
+```text
 (name=default value)
 
 PDNS_API_URL="http://pdns:8081/"
@@ -3541,7 +3539,7 @@ If this container is linked with pdns-mysql from this repo with alias `pdns`, it
 
 In order to be able to generate an API Key, you will need to specify the SALT via `PDNS_ADMIN_SALT` env var. This is a secret value, which can be generated via command:
 
-```
+```text
 python3 -c 'import bcrypt; print(bcrypt.gensalt().decode("utf-8"));'
 ```
 
@@ -3567,7 +3565,7 @@ There is also a directory with user uploads which should be persistent: `/opt/po
 
 When linked with pdns-mysql from this repo:
 
-```
+```text
 docker run -d -p 8080:8080 --name pdns-admin \
   --link mariadb:mysql --link pdns-master:pdns \
   -v pdns-admin-upload:/opt/powerdns-admin/upload \
@@ -3576,7 +3574,7 @@ docker run -d -p 8080:8080 --name pdns-admin \
 
 The same with HTTPS:
 
-```
+```text
 docker run -d -p 80:8080 -p 443:8443 -p 443:8443/udp --name pdns-admin \
   --link mariadb:mysql --link pdns-master:pdns \
   -v pdns-admin-caddy:/var/lib/caddy \
@@ -3592,7 +3590,7 @@ docker run -d -p 80:8080 -p 443:8443 -p 443:8443/udp --name pdns-admin \
 
 Included docker compose files contain example configuration of how to use these containers:
 
-```
+```text
 docker-compose -f docker-compose-mysql.yml up -d
 ```
 
@@ -3602,7 +3600,7 @@ docker-compose -f docker-compose-mysql.yml up -d
 
 Included ansible playbooks can be used to build and run the containers from this repo. Run it with:
 
-```
+```text
 ansible-playbook ansible-playbook-mysql.yml
 ```
 
@@ -3627,7 +3625,7 @@ Docker images for PowerDNS
 
 [Code of conduct](https://github.com/pschiffe/docker-pdns#coc-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/pschiffe/docker-pdns).
 
@@ -3658,14 +3656,14 @@ forks](https://github.com/pschiffe/docker-pdns/forks)
 
 [Learn more about GitHub Sponsors](https://github.com/sponsors)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/pschiffe/docker-pdns).
 
 ## [Contributors\  14](https://github.com/pschiffe/docker-pdns/graphs/contributors)
 
 - [![@pschiffe](https://avatars.githubusercontent.com/u/3899107?s=64&v=4)](https://github.com/pschiffe)
-- [![@dependabot[bot]](https://avatars.githubusercontent.com/in/29110?s=64&v=4)](https://github.com/apps/dependabot)
+- [![@dependabot[bot]](https://avatars.githubusercontent.com/in/29110?s=64&v=4)](<https://github.com/apps/dependabot>)
 - [![@draga79](https://avatars.githubusercontent.com/u/6455261?s=64&v=4)](https://github.com/draga79)
 - [![@PoppyPop](https://avatars.githubusercontent.com/u/8221539?s=64&v=4)](https://github.com/PoppyPop)
 - [![@byteit101](https://avatars.githubusercontent.com/u/577344?s=64&v=4)](https://github.com/byteit101)
@@ -3690,7 +3688,7 @@ You can’t perform that action at this time.
 
 ---
 
-### 7. GitHub - Knighten-Homelab/vm-cloudflare-ddns: DDNS solution using a ProxMox VM and a Cloudflare DNS updater container image. Leverages Terraform for infrastructure provisioning, Ansible for deployment automation, and GitHub Actions for CI/CD.
+### 7. GitHub - Knighten-Homelab/vm-cloudflare-ddns: DDNS solution using a ProxMox VM and a Cloudflare DNS updater container image. Leverages Terraform for infrastructure provisioning, Ansible for deployment automation, and GitHub Actions for CI/CD
 
 **Source:** [https://github.com/Knighten-Homelab/vm-cloudflare-ddns](https://github.com/Knighten-Homelab/vm-cloudflare-ddns)
 **Domain:** `github.com`
@@ -3712,9 +3710,7 @@ You signed in with another tab or window. [Reload](https://github.com/Knighten-H
 - [Star\\
 1](https://github.com/login?return_to=%2FKnighten-Homelab%2Fvm-cloudflare-ddns)
 
-
 DDNS solution using a ProxMox VM and a Cloudflare DNS updater container image. Leverages Terraform for infrastructure provisioning, Ansible for deployment automation, and GitHub Actions for CI/CD.
-
 
 [1\\
 star](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/stargazers) [0\\
@@ -3724,7 +3720,7 @@ forks](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/forks) [Branches](
 
 [Notifications](https://github.com/login?return_to=%2FKnighten-Homelab%2Fvm-cloudflare-ddns) You must be signed in to change notification settings
 
-# Knighten-Homelab/vm-cloudflare-ddns
+## Knighten-Homelab/vm-cloudflare-ddns
 
 main
 
@@ -3742,7 +3738,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>## History<br>[85 Commits](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/commits/main/)<br>[View commit history for this file.](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/commits/main/) |
+| ## Latest commit<br>## History<br>[85 Commits](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/commits/main/)<br>[View commit history for this file.](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/commits/main/) |  |  |  |
 | [.devcontainer](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/tree/main/.devcontainer ".devcontainer") | [.devcontainer](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/tree/main/.devcontainer ".devcontainer") |  |  |
 | [.github/workflows](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/tree/main/.github/workflows "This path skips through empty directories") | [.github/workflows](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/tree/main/.github/workflows "This path skips through empty directories") |  |  |
 | [ansible](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/tree/main/ansible "ansible") | [ansible](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/tree/main/ansible "ansible") |  |  |
@@ -3754,11 +3750,11 @@ Open more actions menu
 | [CHANGELOG.md](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/blob/main/CHANGELOG.md "CHANGELOG.md") | [CHANGELOG.md](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/blob/main/CHANGELOG.md "CHANGELOG.md") |  |  |
 | [README.md](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/blob/main/README.md "README.md") | [README.md](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/blob/main/README.md "README.md") |  |  |
 | [requirements.txt](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/blob/main/requirements.txt "requirements.txt") | [requirements.txt](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/blob/main/requirements.txt "requirements.txt") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# Homelab - Cloudflare DDNS
+## Homelab - Cloudflare DDNS
 
 [Permalink: Homelab - Cloudflare DDNS](https://github.com/Knighten-Homelab/vm-cloudflare-ddns#homelab---cloudflare-ddns)
 
@@ -3852,7 +3848,7 @@ This project uses the [terraform-homelab-pve-vm](https://github.com/Johnny-Knigh
 
 Below are the commands to launch the infrastructure deployment using Terraform. A partial Terraform backend is used, so the remaining backend configuration must be provided.
 
-```
+```text
 terraform init -backend-config=backend-example.hcl
 terraform apply -var-file=envs/example.tfvars
 ```
@@ -3865,7 +3861,7 @@ This project uses a [partial backend configuration](https://developer.hashicorp.
 
 Alternatively, you can configure the S3 backend using environment variables:
 
-```
+```text
 export AWS_ENDPOINT_URL_S3="https://minio.local:9000"
 export AWS_ACCESS_KEY_ID="your-access-key"
 export AWS_SECRET_ACCESS_KEY="your-secret-key"
@@ -3874,7 +3870,7 @@ export AWS_S3_STATE_BUCKET="terraform-state"
 
 An example backend configuration file to complete the supplied partial setup:
 
-```
+```text
 bucket = "terraform-state"
 access_key="terraform-service-account"
 secret_key="PASSWORD"
@@ -3889,7 +3885,7 @@ endpoints = {
 
 Below is an example of the **tfvars** file required to apply the Terraform configuration.
 
-```
+```text
 /* Proxmox/VM Vars */
 pve_url="https://proxmox.local/api2/json"
 pve_node="alpha"
@@ -3915,7 +3911,7 @@ dns_zone="example.com"
 
 The Terraform providers for Proxmox and PowerDNS require the following secrets to be supplied via environment variables:
 
-```
+```text
 export PM_API_TOKEN_ID="your-proxmox-api-token-id"
 export PM_API_TOKEN_SECRET="your-proxmox-api-token-secret"
 export PDNS_API_KEY="your-powerdns-api-key"
@@ -3927,7 +3923,7 @@ This project uses API keys for authentication with Proxmox and PowerDNS. Refer t
 
 Additionally, the Terraform module requires SSH key pairs used with the Debian Cloud-Init image. These should not be stored in tfvars files. Instead, they should be injected using environment variables:
 
-```
+```text
 export TF_VAR_pve_ci_ssh_private_key="your-private-key"
 export TF_VAR_pve_ci_ssh_public_key="your-public-key"
 ```
@@ -3953,7 +3949,7 @@ The only playbook designed to be launched manually (or via CI/CD) is the AWX res
 
 Before running this playbook, you need to install the required Ansible dependencies. You have two options:
 
-```
+```text
 # Install just the awx.awx collection required for the playbook
 ansible-galaxy collection install awx.awx
 
@@ -3963,7 +3959,7 @@ ansible-galaxy collection install -r ./collections/requirements.yml
 
 Here is an example command for running the playbook that creates all AWX resources:
 
-```
+```text
 # From within the ansible directory
 ansible-playbook -i localhost create-awx-cloudflare-ddns-deployment-resources.yml \
   -e awx_target_org="Homelab" \
@@ -3977,7 +3973,7 @@ ansible-playbook -i localhost create-awx-cloudflare-ddns-deployment-resources.ym
 
 If preferred, you can create a variable file like this:
 
-```
+```text
 awx_target_org: "Homelab"
 awx_target_inv: "Homelab"
 awx_git_credential: "Github - AWX SSH Key"
@@ -3994,7 +3990,7 @@ cloudflare_ddns_records:
 
 Then, run the playbook like this:
 
-```
+```text
 # From inside the ansible directory
 ansible-playbook -i localhost create-awx-cloudflare-ddns-deployment-resources.yml -e @vars.yml
 ```
@@ -4123,7 +4119,6 @@ Here are a few additional details about my Homelab setup that enable the use of 
 
 DDNS solution using a ProxMox VM and a Cloudflare DNS updater container image. Leverages Terraform for infrastructure provisioning, Ansible for deployment automation, and GitHub Actions for CI/CD.
 
-
 ### Topics
 
 [docker](https://github.com/topics/docker "Topic: docker") [ansible](https://github.com/topics/ansible "Topic: ansible") [docker-compose](https://github.com/topics/docker-compose "Topic: docker-compose") [vault](https://github.com/topics/vault "Topic: vault") [terraform](https://github.com/topics/terraform "Topic: terraform") [ddns](https://github.com/topics/ddns "Topic: ddns") [cloudflare](https://github.com/topics/cloudflare "Topic: cloudflare") [powerdns](https://github.com/topics/powerdns "Topic: powerdns") [awx](https://github.com/topics/awx "Topic: awx") [github-actions](https://github.com/topics/github-actions "Topic: github-actions")
@@ -4132,7 +4127,7 @@ DDNS solution using a ProxMox VM and a Cloudflare DNS updater container image. L
 
 [Readme](https://github.com/Knighten-Homelab/vm-cloudflare-ddns#readme-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/Knighten-Homelab/vm-cloudflare-ddns).
 
@@ -4166,7 +4161,7 @@ on Apr 17Apr 17, 2025](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/re
 
 [\+ 23 releases](https://github.com/Knighten-Homelab/vm-cloudflare-ddns/releases)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/Knighten-Homelab/vm-cloudflare-ddns).
 
@@ -4219,7 +4214,7 @@ forks](https://github.com/CentOS/ansible-infra-playbooks/forks) [Branches](https
 
 [Notifications](https://github.com/login?return_to=%2FCentOS%2Fansible-infra-playbooks) You must be signed in to change notification settings
 
-# CentOS/ansible-infra-playbooks
+## CentOS/ansible-infra-playbooks
 
 master
 
@@ -4237,7 +4232,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![arrfab](https://avatars.githubusercontent.com/u/728893?v=4&size=40)](https://github.com/arrfab)[arrfab](https://github.com/CentOS/ansible-infra-playbooks/commits?author=arrfab)<br>[Adapted playbook/template for ec2 and retrieve instance\_id/security\_g…](https://github.com/CentOS/ansible-infra-playbooks/commit/cee5ca64ef4464df5d62f4b2c43a6c4ca4e14499)<br>Open commit details<br>2 weeks agoNov 9, 2025<br>[cee5ca6](https://github.com/CentOS/ansible-infra-playbooks/commit/cee5ca64ef4464df5d62f4b2c43a6c4ca4e14499) · 2 weeks agoNov 9, 2025<br>## History<br>[252 Commits](https://github.com/CentOS/ansible-infra-playbooks/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/CentOS/ansible-infra-playbooks/commits/master/) |
+| ## Latest commit<br>[![arrfab](https://avatars.githubusercontent.com/u/728893?v=4&size=40)](https://github.com/arrfab)[arrfab](https://github.com/CentOS/ansible-infra-playbooks/commits?author=arrfab)<br>[Adapted playbook/template for ec2 and retrieve instance\_id/security\_g…](https://github.com/CentOS/ansible-infra-playbooks/commit/cee5ca64ef4464df5d62f4b2c43a6c4ca4e14499)<br>Open commit details<br>2 weeks agoNov 9, 2025<br>[cee5ca6](https://github.com/CentOS/ansible-infra-playbooks/commit/cee5ca64ef4464df5d62f4b2c43a6c4ca4e14499) · 2 weeks agoNov 9, 2025<br>## History<br>[252 Commits](https://github.com/CentOS/ansible-infra-playbooks/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/CentOS/ansible-infra-playbooks/commits/master/) |  |  |  |
 | [files](https://github.com/CentOS/ansible-infra-playbooks/tree/master/files "files") | [files](https://github.com/CentOS/ansible-infra-playbooks/tree/master/files "files") |  |  |
 | [handlers](https://github.com/CentOS/ansible-infra-playbooks/tree/master/handlers "handlers") | [handlers](https://github.com/CentOS/ansible-infra-playbooks/tree/master/handlers "handlers") |  |  |
 | [tasks](https://github.com/CentOS/ansible-infra-playbooks/tree/master/tasks "tasks") | [tasks](https://github.com/CentOS/ansible-infra-playbooks/tree/master/tasks "tasks") |  |  |
@@ -4412,11 +4407,11 @@ Open more actions menu
 | [role-zabbix-agent.yml](https://github.com/CentOS/ansible-infra-playbooks/blob/master/role-zabbix-agent.yml "role-zabbix-agent.yml") | [role-zabbix-agent.yml](https://github.com/CentOS/ansible-infra-playbooks/blob/master/role-zabbix-agent.yml "role-zabbix-agent.yml") |  |  |
 | [role-zabbix-proxy.yml](https://github.com/CentOS/ansible-infra-playbooks/blob/master/role-zabbix-proxy.yml "role-zabbix-proxy.yml") | [role-zabbix-proxy.yml](https://github.com/CentOS/ansible-infra-playbooks/blob/master/role-zabbix-proxy.yml "role-zabbix-proxy.yml") |  |  |
 | [role-zabbix-server.yml](https://github.com/CentOS/ansible-infra-playbooks/blob/master/role-zabbix-server.yml "role-zabbix-server.yml") | [role-zabbix-server.yml](https://github.com/CentOS/ansible-infra-playbooks/blob/master/role-zabbix-server.yml "role-zabbix-server.yml") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# CentOS.org Ansible Infra playbooks
+## CentOS.org Ansible Infra playbooks
 
 [Permalink: CentOS.org Ansible Infra playbooks](https://github.com/CentOS/ansible-infra-playbooks#centosorg-ansible-infra-playbooks)
 
@@ -4433,8 +4428,8 @@ Mainly divided into :
 When you want to contribute to playbooks or roles, you should always open a merge request (PR) against `staging` branch and not `master` branch.
 One reviewer from the correct org will then get notification and will discuss/review your PR and eventually guide you.
 Ideally just look at the common way roles are organised, to reuse other roles and convention.
-Always have default variables for _Everything_, with safe default values (of course never the ones deployed for staging/prod)
-When proposing a change in the behaviour, always make that change a opt-in, that defaults to "no" (safest) so that only that change would be applied on other nodes _if_ variable used to include that task would be turned on. Of course we can have on real needs a default to `True` if we know that such change would need to be replicated by default on all nodes controlled by Ansible and using that role.
+Always have default variables for *Everything*, with safe default values (of course never the ones deployed for staging/prod)
+When proposing a change in the behaviour, always make that change a opt-in, that defaults to "no" (safest) so that only that change would be applied on other nodes *if* variable used to include that task would be turned on. Of course we can have on real needs a default to `True` if we know that such change would need to be replicated by default on all nodes controlled by Ansible and using that role.
 
 ## Naming convention
 
@@ -4476,7 +4471,7 @@ Those specific playbooks can need some tasks/vars/handlers, so for those special
 
 The "on-disk" ansible directory should then look like this :
 
-```
+```text
 .
 ├── ansible.cfg
 ├── files -> playbooks/files
@@ -4532,7 +4527,7 @@ No description, website, or topics provided.
 
 [MIT license](https://github.com/CentOS/ansible-infra-playbooks#MIT-1-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/CentOS/ansible-infra-playbooks).
 
@@ -4565,7 +4560,7 @@ No releases published
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/CentOS/ansible-infra-playbooks).
 
@@ -4607,32 +4602,15 @@ You signed in with another tab or window. [Reload](https://github.com/powerdns) 
 
 1. [pdns](https://github.com/PowerDNS/pdns) pdnsPublic
 
-
-
-
-
-
 PowerDNS Authoritative, PowerDNS Recursor, dnsdist
-
-
-
 
 C++[4.2k](https://github.com/PowerDNS/pdns/stargazers) [973](https://github.com/PowerDNS/pdns/forks)
 
-2. [pdns-protobuf-receiver](https://github.com/PowerDNS/pdns-protobuf-receiver) pdns-protobuf-receiverPublic
-
-
-
-
-
+1. [pdns-protobuf-receiver](https://github.com/PowerDNS/pdns-protobuf-receiver) pdns-protobuf-receiverPublic
 
 pdns protobuf receiver
 
-
-
-
 Python[25](https://github.com/PowerDNS/pdns-protobuf-receiver/stargazers) [12](https://github.com/PowerDNS/pdns-protobuf-receiver/forks)
-
 
 ### Repositories
 
@@ -4653,241 +4631,135 @@ Last updatedNameStars
 Showing 10 of 102 repositories
 
 - [simpleblob](https://github.com/PowerDNS/simpleblob)
+
 Public
 
-
-
-
 PowerDNS/simpleblob’s past year of commit activity
-
-
 
 Go[9](https://github.com/PowerDNS/simpleblob/stargazers)MIT
 [7](https://github.com/PowerDNS/simpleblob/forks) [4](https://github.com/PowerDNS/simpleblob/issues) [7](https://github.com/PowerDNS/simpleblob/pulls)
 Updated 12 hours agoNov 24, 2025
 
 - [pdns](https://github.com/PowerDNS/pdns)
+
 Public
-
-
 
 PowerDNS Authoritative, PowerDNS Recursor, dnsdist
 
-
-
-
-
-
 PowerDNS/pdns’s past year of commit activity
-
-
 
 C++[4,157](https://github.com/PowerDNS/pdns/stargazers)GPL-2.0
 [973](https://github.com/PowerDNS/pdns/forks) [834](https://github.com/PowerDNS/pdns/issues) [84](https://github.com/PowerDNS/pdns/pulls)
 Updated 14 hours agoNov 24, 2025
 
 - [dnsdist-ansible](https://github.com/PowerDNS/dnsdist-ansible)
+
 Public
 
-
-
 An ansible role for dnsdist
-
-
-
-
-
-
-
-
-
-
-
-
 
 [**Uh oh!**](https://github.com/PowerDNS/dnsdist-ansible/graphs/commit-activity)
 
 [There was an error while loading.](https://github.com/PowerDNS/dnsdist-ansible/graphs/commit-activity) [Please reload this page](https://github.com/powerdns).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 PowerDNS/dnsdist-ansible’s past year of commit activity
-
-
 
 Jinja[36](https://github.com/PowerDNS/dnsdist-ansible/stargazers)MIT
 [34](https://github.com/PowerDNS/dnsdist-ansible/forks) [5](https://github.com/PowerDNS/dnsdist-ansible/issues) [14](https://github.com/PowerDNS/dnsdist-ansible/pulls)
 Updated 4 days agoNov 21, 2025
 
 - [pdns\_recursor-ansible](https://github.com/PowerDNS/pdns_recursor-ansible)
+
 Public
-
-
 
 PowerDNS Recursor Ansible role
 
-
-
-
-
-
 PowerDNS/pdns\_recursor-ansible’s past year of commit activity
-
-
 
 Python[56](https://github.com/PowerDNS/pdns_recursor-ansible/stargazers)MIT
 [58](https://github.com/PowerDNS/pdns_recursor-ansible/forks) [7](https://github.com/PowerDNS/pdns_recursor-ansible/issues) [8](https://github.com/PowerDNS/pdns_recursor-ansible/pulls)
 Updated 5 days agoNov 20, 2025
 
 - [openwrt-packages](https://github.com/PowerDNS/openwrt-packages)
+
 Public
 
 Forked from
 [openwrt/packages](https://github.com/openwrt/packages)
 
-
 Community maintained packages for OpenWrt. Documentation for submitting pull requests is in CONTRIBUTING.md
 
-
-
-
-
-
 PowerDNS/openwrt-packages’s past year of commit activity
-
-
 
 Makefile[4](https://github.com/PowerDNS/openwrt-packages/stargazers)GPL-2.0
 [3,858](https://github.com/PowerDNS/openwrt-packages/forks) [0](https://github.com/PowerDNS/openwrt-packages/issues) [18](https://github.com/PowerDNS/openwrt-packages/pulls)
 Updated 2 weeks agoNov 14, 2025
 
 - [draft-edns-otel-trace-ids](https://github.com/PowerDNS/draft-edns-otel-trace-ids)
+
 Public
 
-
-
-
 PowerDNS/draft-edns-otel-trace-ids’s past year of commit activity
-
-
 
 Makefile0
 [1](https://github.com/PowerDNS/draft-edns-otel-trace-ids/forks) [2](https://github.com/PowerDNS/draft-edns-otel-trace-ids/issues) [1](https://github.com/PowerDNS/draft-edns-otel-trace-ids/pulls)
 Updated 2 weeks agoNov 13, 2025
 
 - [openwrt-actions-shared-workflows](https://github.com/PowerDNS/openwrt-actions-shared-workflows)
+
 Public
 
 Forked from
 [openwrt/actions-shared-workflows](https://github.com/openwrt/actions-shared-workflows)
 
-
-
 PowerDNS/openwrt-actions-shared-workflows’s past year of commit activity
-
-
 
 0
 [21](https://github.com/PowerDNS/openwrt-actions-shared-workflows/forks) [0](https://github.com/PowerDNS/openwrt-actions-shared-workflows/issues) [0](https://github.com/PowerDNS/openwrt-actions-shared-workflows/pulls)
 Updated 2 weeks agoNov 10, 2025
 
 - [weakforced](https://github.com/PowerDNS/weakforced)
+
 Public
-
-
 
 Anti-Abuse for servers at authentication time
 
-
-
-
-
-
 PowerDNS/weakforced’s past year of commit activity
-
-
 
 C++[130](https://github.com/PowerDNS/weakforced/stargazers)GPL-3.0
 [36](https://github.com/PowerDNS/weakforced/forks) [7](https://github.com/PowerDNS/weakforced/issues) [2](https://github.com/PowerDNS/weakforced/pulls)
 Updated 3 weeks agoNov 7, 2025
 
 - [FOSDEM-website](https://github.com/PowerDNS/FOSDEM-website)
+
 Public
 
 Forked from
 [FOSDEM/website](https://github.com/FOSDEM/website)
 
-
 FOSDEM website
 
-
-
-
-
-
 PowerDNS/FOSDEM-website’s past year of commit activity
-
-
 
 PostScript0
 [131](https://github.com/PowerDNS/FOSDEM-website/forks) [0](https://github.com/PowerDNS/FOSDEM-website/issues) [0](https://github.com/PowerDNS/FOSDEM-website/pulls)
 Updated 3 weeks agoNov 6, 2025
 
 - [pdns-ansible](https://github.com/PowerDNS/pdns-ansible)
+
 Public
 
-
-
 PowerDNS Authoritative Ansible role
-
-
-
-
-
-
-
-
-
-
-
-
 
 [**Uh oh!**](https://github.com/PowerDNS/pdns-ansible/graphs/commit-activity)
 
 [There was an error while loading.](https://github.com/PowerDNS/pdns-ansible/graphs/commit-activity) [Please reload this page](https://github.com/powerdns).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 PowerDNS/pdns-ansible’s past year of commit activity
-
-
 
 Python[167](https://github.com/PowerDNS/pdns-ansible/stargazers)MIT
 [141](https://github.com/PowerDNS/pdns-ansible/forks) [14](https://github.com/PowerDNS/pdns-ansible/issues) [32](https://github.com/PowerDNS/pdns-ansible/pulls)
 Updated last monthOct 30, 2025
-
 
 [View all repositories](https://github.com/orgs/PowerDNS/repositories?type=all)
 
@@ -4930,7 +4802,7 @@ You signed in with another tab or window. [Reload](https://github.com/PowerDNS/p
 4.2k](https://github.com/login?return_to=%2FPowerDNS%2Fpdns)
 
 
-# Keep old versions of pdns packages in repo.powerdns.com\#4395
+## Keep old versions of pdns packages in repo.powerdns.com\#4395
 
 [New issue](https://github.com/login?return_to=https://github.com/PowerDNS/pdns/issues/4395)
 
@@ -5072,7 +4944,7 @@ More actions
 
 By the way, I would recommend using a repository you maintain yourself (with our packages) to fix the engineering issue you have here. If you're using our ansible playbooks, keep `pdns_repo_provider` or `pdns_recursor_repo_provider` on 'os' and add your own repository via your own (small) role.
 
-[![](https://avatars.githubusercontent.com/u/525838?s=64&u=8c2eb05a268d81600f97e138c6a269abf14ac4a4&v=4)Habbie](https://github.com/Habbie)
+[![525838?s=64&u=8c2eb05a268d81600f97e138c6a269abf14ac4a4&v=4 image](https://avatars.githubusercontent.com/u/525838?s=64&u=8c2eb05a268d81600f97e138c6a269abf14ac4a4&v=4)Habbie](https://github.com/Habbie)
 
 added
 
@@ -5112,7 +4984,7 @@ More actions
 
 We decided this is too much of a hassle.
 
-[![](https://avatars.githubusercontent.com/u/731232?s=64&u=e00e993b34bfbd6ba5eb5826f99eb256c8640711&v=4)pieterlexis](https://github.com/pieterlexis)
+[![731232?s=64&u=e00e993b34bfbd6ba5eb5826f99eb256c8640711&v=4 image](https://avatars.githubusercontent.com/u/731232?s=64&u=e00e993b34bfbd6ba5eb5826f99eb256c8640711&v=4)pieterlexis](https://github.com/pieterlexis)
 
 closed this as [completed](https://github.com/PowerDNS/pdns/issues?q=is%3Aissue%20state%3Aclosed%20archived%3Afalse%20reason%3Acompleted) [on Feb 4, 2021on Feb 4, 2021](https://github.com/PowerDNS/pdns/issues/4395#event-4290959091)
 
@@ -5181,16 +5053,13 @@ You signed in with another tab or window. [Reload](https://github.com/topics/pow
 
 {{ message }}
 
-#
-
-
-# powerdns
+## powerdns
 
 [Star](https://github.com/login?return_to=%2Ftopic.powerdns)
 
-## Here are  37 public repositories  matching this topic...
+## Here are  37 public repositories  matching this topic
 
-_Language:_ Python
+*Language:* Python
 
 Filter by language
 
@@ -5207,7 +5076,7 @@ Filter by language
 5](https://github.com/topics/powerdns?l=hcl&o=asc&s=forks) [Lua\\
 4](https://github.com/topics/powerdns?l=lua&o=asc&s=forks)
 
-_Sort:_ Fewest forks
+*Sort:* Fewest forks
 
 Sort options
 
@@ -5475,13 +5344,11 @@ on Apr 10, 2024Apr 10, 2024
 
 Load more…
 
-
 ## Improve this page
 
 Add a description, image, and links to the
 powerdns
 topic page so that developers can more easily learn about it.
-
 
 [Curate this topic](https://github.com/github/explore/tree/master/CONTRIBUTING.md?source=add-description-powerdns)
 
@@ -5490,7 +5357,6 @@ topic page so that developers can more easily learn about it.
 To associate your repository with the
 powerdns
 topic, visit your repo's landing page and select "manage topics."
-
 
 [Learn more](https://docs.github.com/en/articles/classifying-your-repository-with-topics)
 
@@ -5547,7 +5413,7 @@ forks](https://github.com/jlu5/ansible-dn42/forks) [Branches](https://github.com
 
 [Notifications](https://github.com/login?return_to=%2Fjlu5%2Fansible-dn42) You must be signed in to change notification settings
 
-# jlu5/ansible-dn42
+## jlu5/ansible-dn42
 
 main
 
@@ -5565,7 +5431,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>## History<br>[1,987 Commits](https://github.com/jlu5/ansible-dn42/commits/main/)<br>[View commit history for this file.](https://github.com/jlu5/ansible-dn42/commits/main/) |
+| ## Latest commit<br>## History<br>[1,987 Commits](https://github.com/jlu5/ansible-dn42/commits/main/)<br>[View commit history for this file.](https://github.com/jlu5/ansible-dn42/commits/main/) |  |  |  |
 | [.github](https://github.com/jlu5/ansible-dn42/tree/main/.github ".github") | [.github](https://github.com/jlu5/ansible-dn42/tree/main/.github ".github") |  |  |
 | [.vscode](https://github.com/jlu5/ansible-dn42/tree/main/.vscode ".vscode") | [.vscode](https://github.com/jlu5/ansible-dn42/tree/main/.vscode ".vscode") |  |  |
 | [dn42-registry @ afe9f75](https://github.com/jlu5/ansible-dn42/blob/main/dn42-registry "dn42-registry") | [dn42-registry @ afe9f75](https://github.com/jlu5/ansible-dn42/blob/main/dn42-registry "dn42-registry") |  |  |
@@ -5604,11 +5470,11 @@ Open more actions menu
 | [smokeping.yml](https://github.com/jlu5/ansible-dn42/blob/main/smokeping.yml "smokeping.yml") | [smokeping.yml](https://github.com/jlu5/ansible-dn42/blob/main/smokeping.yml "smokeping.yml") |  |  |
 | [splash-site.yml](https://github.com/jlu5/ansible-dn42/blob/main/splash-site.yml "splash-site.yml") | [splash-site.yml](https://github.com/jlu5/ansible-dn42/blob/main/splash-site.yml "splash-site.yml") |  |  |
 | [update-local-state.yml](https://github.com/jlu5/ansible-dn42/blob/main/update-local-state.yml "update-local-state.yml") | [update-local-state.yml](https://github.com/jlu5/ansible-dn42/blob/main/update-local-state.yml "update-local-state.yml") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# ansible-dn42
+## ansible-dn42
 
 [Permalink: ansible-dn42](https://github.com/jlu5/ansible-dn42#ansible-dn42)
 
@@ -5688,7 +5554,7 @@ LICENSE.md](https://github.com/jlu5/ansible-dn42/blob/main/LICENSE.md) [GPL-3.0\
 \\
 LICENSE.GPL3](https://github.com/jlu5/ansible-dn42/blob/main/LICENSE.GPL3)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/jlu5/ansible-dn42).
 
@@ -5719,7 +5585,7 @@ No releases published
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/jlu5/ansible-dn42).
 
@@ -5785,7 +5651,7 @@ More
 
 🐰
 
-# Fabio Furushou    fabiiw05
+## Fabio Furushou    fabiiw05
 
 🐰
 
@@ -5797,7 +5663,6 @@ following](https://github.com/fabiiw05?tab=following)
 
 - Craftsman Software, Inc
 
-
 ## [Achievements](https://github.com/fabiiw05?tab=achievements)
 
 [![Achievement: Pull Shark](https://github.githubassets.com/assets/pull-shark-default-498c279a747d.png)](https://github.com/fabiiw05?achievement=pull-shark&tab=achievements)[![Achievement: Arctic Code Vault Contributor](https://github.githubassets.com/assets/arctic-code-vault-contributor-default-df8d74122a06.png)](https://github.com/fabiiw05?achievement=arctic-code-vault-contributor&tab=achievements)
@@ -5808,16 +5673,14 @@ following](https://github.com/fabiiw05?tab=following)
 
 Block or Report
 
-# Block or report fabiiw05
+## Block or report fabiiw05
 
 **Block user**
 
 Prevent this user from interacting with your repositories and sending you notifications.
 Learn more about [blocking users](https://docs.github.com/articles/blocking-a-user-from-your-personal-account).
 
-
 You must be logged in to block users.
-
 
 Add an optional note
 
@@ -5825,12 +5688,10 @@ Maximum 250 characters. Please don't include any personal information such as le
 
 Block user
 
-
 **Report abuse**
 
 Contact GitHub support about this user’s behavior.
 Learn more about [reporting abuse](https://docs.github.com/articles/reporting-abuse-or-spam).
-
 
 [Report abuse](https://github.com/contact/report-abuse?report=fabiiw05+%28user%29)
 
@@ -5846,70 +5707,38 @@ More
 
 1. [ansible](https://github.com/fabiiw05/ansible) ansiblePublic
 
-
-
-
 Forked from [ansible/ansible](https://github.com/ansible/ansible)
-
-
-
 
 Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy. Avoid writing scripts or custom code to deploy and update your applications — automat…
 
-
-
-
 Python
 
-2. [fabiiw05.github.io](https://github.com/fabiiw05/fabiiw05.github.io) fabiiw05.github.ioPublic
-
-
-
-
-
-
+1. [fabiiw05.github.io](https://github.com/fabiiw05/fabiiw05.github.io) fabiiw05.github.ioPublic
 
 JavaScript
 
-3. [setup](https://github.com/fabiiw05/setup) setupPublic
-
-
-
-
-
-
+1. [setup](https://github.com/fabiiw05/setup) setupPublic
 
 Shell
 
-4. [powerdns.rabbithouse.coffee](https://github.com/fabiiw05/powerdns.rabbithouse.coffee) powerdns.rabbithouse.coffeePublic
+1. [powerdns.rabbithouse.coffee](https://github.com/fabiiw05/powerdns.rabbithouse.coffee) powerdns.rabbithouse.coffeePublic
 
-5. [citrix.rabbithouse.coffee](https://github.com/fabiiw05/citrix.rabbithouse.coffee) citrix.rabbithouse.coffeePublic
+2. [citrix.rabbithouse.coffee](https://github.com/fabiiw05/citrix.rabbithouse.coffee) citrix.rabbithouse.coffeePublic
 
-6. [ansible-role-promtail](https://github.com/fabiiw05/ansible-role-promtail) ansible-role-promtailPublic
-
-
-
+3. [ansible-role-promtail](https://github.com/fabiiw05/ansible-role-promtail) ansible-role-promtailPublic
 
 Forked from [patrickjahns/ansible-role-promtail](https://github.com/patrickjahns/ansible-role-promtail)
 
-
-
-
 🔧 Ansible role for deploying promtail
 
-
-
-
 Python
-
 
 Something went wrong, please refresh the page to try again.
 
 If the problem persists, check the [GitHub status page](https://www.githubstatus.com/)
 or [contact support](https://github.com/contact).
 
-
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/fabiiw05).
 
@@ -5948,7 +5777,7 @@ More
 
 [![View kpfleming's full-sized avatar](https://avatars.githubusercontent.com/u/305938?v=4)](https://avatars.githubusercontent.com/u/305938?v=4)
 
-# Kevin P. Fleming    kpfleming
+## Kevin P. Fleming    kpfleming
 
 [Follow](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fkpfleming)
 
@@ -5983,7 +5812,7 @@ following](https://github.com/kpfleming?tab=following)
 
 Block or Report
 
-# Block or report kpfleming
+## Block or report kpfleming
 
 **Block user**
 
@@ -6034,7 +5863,7 @@ Ansible modules which manage content in a PowerDNS Authoritative server.
 
 Python[16](https://github.com/kpfleming/ansible-powerdns-auth/stargazers) [7](https://github.com/kpfleming/ansible-powerdns-auth/forks)
 
-2. [ansible-systemd-networkd](https://github.com/kpfleming/ansible-systemd-networkd) ansible-systemd-networkdPublic
+1. [ansible-systemd-networkd](https://github.com/kpfleming/ansible-systemd-networkd) ansible-systemd-networkdPublic
 
 
 
@@ -6048,7 +5877,7 @@ A collection of Ansible roles for managing the configuration of systemd-networkd
 
 Jinja[8](https://github.com/kpfleming/ansible-systemd-networkd/stargazers) [5](https://github.com/kpfleming/ansible-systemd-networkd/forks)
 
-3. [jinjanator](https://github.com/kpfleming/jinjanator) jinjanatorPublic
+1. [jinjanator](https://github.com/kpfleming/jinjanator) jinjanatorPublic
 
 
 
@@ -6062,7 +5891,7 @@ Jinja2 Command-Line Tool, reworked, again
 
 Python[115](https://github.com/kpfleming/jinjanator/stargazers) [7](https://github.com/kpfleming/jinjanator/forks)
 
-4. [jinjanator-plugin-ansible](https://github.com/kpfleming/jinjanator-plugin-ansible) jinjanator-plugin-ansiblePublic
+1. [jinjanator-plugin-ansible](https://github.com/kpfleming/jinjanator-plugin-ansible) jinjanator-plugin-ansiblePublic
 
 
 
@@ -6076,7 +5905,7 @@ Plugin which provides Ansible filters and tests to the Jinjanator tool
 
 Python[4](https://github.com/kpfleming/jinjanator-plugin-ansible/stargazers) [1](https://github.com/kpfleming/jinjanator-plugin-ansible/forks)
 
-5. [jinjanator-plugin-format-xml](https://github.com/kpfleming/jinjanator-plugin-format-xml) jinjanator-plugin-format-xmlPublic
+1. [jinjanator-plugin-format-xml](https://github.com/kpfleming/jinjanator-plugin-format-xml) jinjanator-plugin-format-xmlPublic
 
 
 
@@ -6090,7 +5919,7 @@ Plugin for Jinjanator to allow XML-format data to be parsed and used in template
 
 Shell
 
-6. [jinjanator-plugin-format-toml](https://github.com/kpfleming/jinjanator-plugin-format-toml) jinjanator-plugin-format-tomlPublic
+1. [jinjanator-plugin-format-toml](https://github.com/kpfleming/jinjanator-plugin-format-toml) jinjanator-plugin-format-tomlPublic
 
 
 
@@ -6111,7 +5940,7 @@ If the problem persists, check the [GitHub status page](https://www.githubstatus
 or [contact support](https://github.com/contact).
 
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/kpfleming).
 
@@ -6133,16 +5962,13 @@ You signed in with another tab or window. [Reload](https://github.com/topics/awx
 
 {{ message }}
 
-#
-
-
-# awx
+## awx
 
 [Star](https://github.com/login?return_to=%2Ftopic.awx)
 
-## Here are  178 public repositories  matching this topic...
+## Here are  178 public repositories  matching this topic
 
-_Language:_ All
+*Language:* All
 
 Filter by language
 
@@ -6159,7 +5985,7 @@ Filter by language
 5](https://github.com/topics/awx?l=powershell&o=asc&s=forks) [CSS\\
 2](https://github.com/topics/awx?l=css&o=asc&s=forks)
 
-_Sort:_ Fewest forks
+*Sort:* Fewest forks
 
 Sort options
 
@@ -6422,13 +6248,11 @@ on Nov 6, 2021Nov 7, 2021
 
 Load more…
 
-
 ## Improve this page
 
 Add a description, image, and links to the
 awx
 topic page so that developers can more easily learn about it.
-
 
 [Curate this topic](https://github.com/github/explore/tree/master/CONTRIBUTING.md?source=add-description-awx)
 
@@ -6437,7 +6261,6 @@ topic page so that developers can more easily learn about it.
 To associate your repository with the
 awx
 topic, visit your repo's landing page and select "manage topics."
-
 
 [Learn more](https://docs.github.com/en/articles/classifying-your-repository-with-topics)
 

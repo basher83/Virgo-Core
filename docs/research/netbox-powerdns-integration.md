@@ -47,7 +47,7 @@ Found 9 search results, successfully scraped 9 pages.
 
 ## Content
 
-### 1. GitHub - peteeckel/netbox-plugin-dns: NetBox DNS is a NetBox plugin for managing DNS data.
+### 1. GitHub - peteeckel/netbox-plugin-dns: NetBox DNS is a NetBox plugin for managing DNS data
 
 **Source:** [https://github.com/peteeckel/netbox-plugin-dns](https://github.com/peteeckel/netbox-plugin-dns)
 **Domain:** `github.com`
@@ -69,9 +69,7 @@ You signed in with another tab or window. [Reload](https://github.com/peteeckel/
 - [Star\\
 306](https://github.com/login?return_to=%2Fpeteeckel%2Fnetbox-plugin-dns)
 
-
 NetBox DNS is a NetBox plugin for managing DNS data.
-
 
 [pypi.org/project/netbox-plugin-dns](https://pypi.org/project/netbox-plugin-dns "https://pypi.org/project/netbox-plugin-dns")
 
@@ -87,7 +85,7 @@ forks](https://github.com/peteeckel/netbox-plugin-dns/forks) [Branches](https://
 
 [Notifications](https://github.com/login?return_to=%2Fpeteeckel%2Fnetbox-plugin-dns) You must be signed in to change notification settings
 
-# peteeckel/netbox-plugin-dns
+## peteeckel/netbox-plugin-dns
 
 main
 
@@ -105,7 +103,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![peteeckel](https://avatars.githubusercontent.com/u/6815386?v=4&size=40)](https://github.com/peteeckel)[peteeckel](https://github.com/peteeckel/netbox-plugin-dns/commits?author=peteeckel)<br>[Merge pull request](https://github.com/peteeckel/netbox-plugin-dns/commit/4e9bb00f63b6051a823eec24257307cc216bdca4) [#741](https://github.com/peteeckel/netbox-plugin-dns/pull/741) [from peteeckel/fix/dnssec-key-template-filter…](https://github.com/peteeckel/netbox-plugin-dns/commit/4e9bb00f63b6051a823eec24257307cc216bdca4)<br>Open commit detailssuccess<br>3 days agoNov 22, 2025<br>[4e9bb00](https://github.com/peteeckel/netbox-plugin-dns/commit/4e9bb00f63b6051a823eec24257307cc216bdca4) · 3 days agoNov 22, 2025<br>## History<br>[1,754 Commits](https://github.com/peteeckel/netbox-plugin-dns/commits/main/) <br>Open commit details<br>[View commit history for this file.](https://github.com/peteeckel/netbox-plugin-dns/commits/main/) |
+| ## Latest commit<br>[![peteeckel](https://avatars.githubusercontent.com/u/6815386?v=4&size=40)](https://github.com/peteeckel)[peteeckel](https://github.com/peteeckel/netbox-plugin-dns/commits?author=peteeckel)<br>[Merge pull request](https://github.com/peteeckel/netbox-plugin-dns/commit/4e9bb00f63b6051a823eec24257307cc216bdca4) [#741](https://github.com/peteeckel/netbox-plugin-dns/pull/741) [from peteeckel/fix/dnssec-key-template-filter…](https://github.com/peteeckel/netbox-plugin-dns/commit/4e9bb00f63b6051a823eec24257307cc216bdca4)<br>Open commit detailssuccess<br>3 days agoNov 22, 2025<br>[4e9bb00](https://github.com/peteeckel/netbox-plugin-dns/commit/4e9bb00f63b6051a823eec24257307cc216bdca4) · 3 days agoNov 22, 2025<br>## History<br>[1,754 Commits](https://github.com/peteeckel/netbox-plugin-dns/commits/main/) <br>Open commit details<br>[View commit history for this file.](https://github.com/peteeckel/netbox-plugin-dns/commits/main/) |  |  |  |
 | [.github](https://github.com/peteeckel/netbox-plugin-dns/tree/main/.github ".github") | [.github](https://github.com/peteeckel/netbox-plugin-dns/tree/main/.github ".github") | [Fixed test workflow name](https://github.com/peteeckel/netbox-plugin-dns/commit/fc1989a18f7abd8304795aefcb62ae9d1c77472d "Fixed test workflow name") | 3 days agoNov 22, 2025 |
 | [docs](https://github.com/peteeckel/netbox-plugin-dns/tree/main/docs "docs") | [docs](https://github.com/peteeckel/netbox-plugin-dns/tree/main/docs "docs") | [add missing object types to the list](https://github.com/peteeckel/netbox-plugin-dns/commit/bb711d9c73b4d795dd0108a3a2563f1b4bf8fbe7 "add missing object types to the list  `s/eight/ten/` on the object types and order them as they appear by default in the menu.") | last monthOct 6, 2025 |
 | [examples](https://github.com/peteeckel/netbox-plugin-dns/tree/main/examples "examples") | [examples](https://github.com/peteeckel/netbox-plugin-dns/tree/main/examples "examples") | [add example for DNS Name Record Updater](https://github.com/peteeckel/netbox-plugin-dns/commit/ddcc629977063c137a9e245b7e4a3690b79d97f2 "add example for DNS Name Record Updater") | last monthOct 23, 2025 |
@@ -120,11 +118,11 @@ Open more actions menu
 | [netbox-plugin.yaml](https://github.com/peteeckel/netbox-plugin-dns/blob/main/netbox-plugin.yaml "netbox-plugin.yaml") | [netbox-plugin.yaml](https://github.com/peteeckel/netbox-plugin-dns/blob/main/netbox-plugin.yaml "netbox-plugin.yaml") | [Prepared release 1.4.4](https://github.com/peteeckel/netbox-plugin-dns/commit/94827fe6040b1e315f1f1986fb87ca9dd74942c7 "Prepared release 1.4.4") | 3 days agoNov 22, 2025 |
 | [pyproject.toml](https://github.com/peteeckel/netbox-plugin-dns/blob/main/pyproject.toml "pyproject.toml") | [pyproject.toml](https://github.com/peteeckel/netbox-plugin-dns/blob/main/pyproject.toml "pyproject.toml") | [Prepared release 1.4.4](https://github.com/peteeckel/netbox-plugin-dns/commit/94827fe6040b1e315f1f1986fb87ca9dd74942c7 "Prepared release 1.4.4") | 3 days agoNov 22, 2025 |
 | [ruff.toml](https://github.com/peteeckel/netbox-plugin-dns/blob/main/ruff.toml "ruff.toml") | [ruff.toml](https://github.com/peteeckel/netbox-plugin-dns/blob/main/ruff.toml "ruff.toml") | [Cleaned up the code after running ruff](https://github.com/peteeckel/netbox-plugin-dns/commit/15550a0d9b3268fa4e1d47274d371926248dd5f6 "Cleaned up the code after running ruff") | last yearSep 3, 2024 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# NetBox DNS
+## NetBox DNS
 
 [Permalink: NetBox DNS](https://github.com/peteeckel/netbox-plugin-dns#netbox-dns)
 
@@ -203,7 +201,7 @@ For integration with a large number of DNS server implementations integration to
 
 [Permalink: Installation](https://github.com/peteeckel/netbox-plugin-dns#installation)
 
-```
+```text
 $ source /opt/netbox/venv/bin/activate
 (venv) $ pip install netbox-plugin-dns
 ```
@@ -214,7 +212,7 @@ $ source /opt/netbox/venv/bin/activate
 
 Add the plugin to the NetBox config. `~/netbox/configuration.py`
 
-```
+```text
 PLUGINS = [\
     "netbox_dns",\
 ]
@@ -222,13 +220,13 @@ PLUGINS = [\
 
 To permanently keep the plugin installed when updating NetBox via `upgrade.sh`:
 
-```
+```text
 echo netbox-plugin-dns >> ~/netbox/local_requirements.txt
 ```
 
 To add the required netbox\_dns tables to your database run the following command from your NetBox directory:
 
-```
+```text
 ./manage.py migrate
 ```
 
@@ -256,7 +254,6 @@ MIT
 
 NetBox DNS is a NetBox plugin for managing DNS data.
 
-
 [pypi.org/project/netbox-plugin-dns](https://pypi.org/project/netbox-plugin-dns "https://pypi.org/project/netbox-plugin-dns")
 
 ### Topics
@@ -279,7 +276,7 @@ NetBox DNS is a NetBox plugin for managing DNS data.
 
 [Security policy](https://github.com/peteeckel/netbox-plugin-dns#security-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/peteeckel/netbox-plugin-dns).
 
@@ -315,7 +312,7 @@ Latest\\
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/peteeckel/netbox-plugin-dns).
 
@@ -347,7 +344,7 @@ You can’t perform that action at this time.
 
 ---
 
-### 2. GitHub - mikeroyal/Self-Hosting-Guide: Self-Hosting Guide. Learn all about  locally hosting (on premises & private web servers) and managing software applications by yourself or your organization. Including Cloud, LLMs, WireGuard, Automation, Home Assistant, and Networking.
+### 2. GitHub - mikeroyal/Self-Hosting-Guide: Self-Hosting Guide. Learn all about  locally hosting (on premises & private web servers) and managing software applications by yourself or your organization. Including Cloud, LLMs, WireGuard, Automation, Home Assistant, and Networking
 
 **Source:** [https://github.com/mikeroyal/Self-Hosting-Guide](https://github.com/mikeroyal/Self-Hosting-Guide)
 **Domain:** `github.com`
@@ -381,7 +378,7 @@ forks](https://github.com/mikeroyal/Self-Hosting-Guide/forks) [Branches](https:/
 
 [Notifications](https://github.com/login?return_to=%2Fmikeroyal%2FSelf-Hosting-Guide) You must be signed in to change notification settings
 
-# mikeroyal/Self-Hosting-Guide
+## mikeroyal/Self-Hosting-Guide
 
 main
 
@@ -399,25 +396,24 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![mikeroyal](https://avatars.githubusercontent.com/u/45159366?v=4&size=40)](https://github.com/mikeroyal)[mikeroyal](https://github.com/mikeroyal/Self-Hosting-Guide/commits?author=mikeroyal)<br>[Merge pull request](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf) [#294](https://github.com/mikeroyal/Self-Hosting-Guide/pull/294) [from rr404/jdv-add-crowdsec](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf)<br>Open commit details<br>5 months agoJun 26, 2025<br>[3eaf827](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf) · 5 months agoJun 26, 2025<br>## History<br>[639 Commits](https://github.com/mikeroyal/Self-Hosting-Guide/commits/main/) <br>Open commit details<br>[View commit history for this file.](https://github.com/mikeroyal/Self-Hosting-Guide/commits/main/) |
+| ## Latest commit<br>[![mikeroyal](https://avatars.githubusercontent.com/u/45159366?v=4&size=40)](https://github.com/mikeroyal)[mikeroyal](https://github.com/mikeroyal/Self-Hosting-Guide/commits?author=mikeroyal)<br>[Merge pull request](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf) [#294](https://github.com/mikeroyal/Self-Hosting-Guide/pull/294) [from rr404/jdv-add-crowdsec](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf)<br>Open commit details<br>5 months agoJun 26, 2025<br>[3eaf827](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf) · 5 months agoJun 26, 2025<br>## History<br>[639 Commits](https://github.com/mikeroyal/Self-Hosting-Guide/commits/main/) <br>Open commit details<br>[View commit history for this file.](https://github.com/mikeroyal/Self-Hosting-Guide/commits/main/) |  |  |  |
 | [CONTRIBUTING.md](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/CONTRIBUTING.md "CONTRIBUTING.md") | [CONTRIBUTING.md](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/CONTRIBUTING.md "CONTRIBUTING.md") | [Added Contributing Guidelines.md](https://github.com/mikeroyal/Self-Hosting-Guide/commit/0aaa3a94a5bb1a9a05283f3abd45b8830fdcd8be "Added Contributing Guidelines.md") | 2 years agoApr 5, 2023 |
 | [Getting Started with Self-Hosting.dockerfile](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/Getting%20Started%20%20with%20Self-Hosting.dockerfile "Getting Started  with Self-Hosting.dockerfile") | [Getting Started with Self-Hosting.dockerfile](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/Getting%20Started%20%20with%20Self-Hosting.dockerfile "Getting Started  with Self-Hosting.dockerfile") | [Updated Dockerfile.](https://github.com/mikeroyal/Self-Hosting-Guide/commit/ff13e81cb883ab6c714de4a0c5e0747c30bb0950 "Updated Dockerfile.") | 3 years agoOct 23, 2022 |
 | [README.md](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/README.md "README.md") | [README.md](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/README.md "README.md") | [Merge pull request](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf "Merge pull request #294 from rr404/jdv-add-crowdsec  Add CrowdSec to Security Section") [#294](https://github.com/mikeroyal/Self-Hosting-Guide/pull/294) [from rr404/jdv-add-crowdsec](https://github.com/mikeroyal/Self-Hosting-Guide/commit/3eaf827bf42ff047b2a0fdf7a6bfbb61b720d9bf "Merge pull request #294 from rr404/jdv-add-crowdsec  Add CrowdSec to Security Section") | 5 months agoJun 26, 2025 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# [![](https://user-images.githubusercontent.com/45159366/152699296-73cb8002-9a24-47f8-9941-519afacd2195.png)](https://user-images.githubusercontent.com/45159366/152699296-73cb8002-9a24-47f8-9941-519afacd2195.png)    Self Hosting Guide
+## [![152699296 73cb8002 9a24 47f8 9941 519afacd2195 image](https://user-images.githubusercontent.com/45159366/152699296-73cb8002-9a24-47f8-9941-519afacd2195.png)](https://user-images.githubusercontent.com/45159366/152699296-73cb8002-9a24-47f8-9941-519afacd2195.png)    Self Hosting Guide
 
 [Permalink:\
-Self Hosting Guide\
-](https://github.com/mikeroyal/Self-Hosting-Guide#----self-hosting-guide)
+Self Hosting Guide\](https://github.com/mikeroyal/Self-Hosting-Guide#----self-hosting-guide)
 
 [![followers](https://camo.githubusercontent.com/a20b284ce3e9623113a32cf17c2374972f96fb4321afbc52557474d0ea6749c8/68747470733a2f2f637573746f6d2d69636f6e2d6261646765732e64656d6f6c61622e636f6d2f6769746875622f666f6c6c6f776572732f6d696b65726f79616c3f636f6c6f723d323336616433266c6162656c436f6c6f723d313135356261267374796c653d666f722d7468652d6261646765266c6f676f3d706572736f6e2d616464266c6162656c3d466f6c6c6f77266c6f676f436f6c6f723d7768697465)](https://github.com/mikeroyal?tab=followers)
 
 [![Maintenance](https://camo.githubusercontent.com/ed6a1bfe4e9972ddfdd7c8e23b02c073c347fc8799ef858329be5cd90a03fc47/68747470733a2f2f696d672e736869656c64732e696f2f6d61696e74656e616e63652f7965732f323032343f7374796c653d666f722d7468652d6261646765)](https://camo.githubusercontent.com/ed6a1bfe4e9972ddfdd7c8e23b02c073c347fc8799ef858329be5cd90a03fc47/68747470733a2f2f696d672e736869656c64732e696f2f6d61696e74656e616e63652f7965732f323032343f7374796c653d666f722d7468652d6261646765)[![Last-Commit](https://camo.githubusercontent.com/1ef44c5c62ec0948369186bf756fff85d52ef3eff38db2950d6fbacf0c1d8875/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6173742d636f6d6d69742f6d696b65726f79616c2f73656c662d686f7374696e672d67756964653f7374796c653d666f722d7468652d6261646765)](https://camo.githubusercontent.com/1ef44c5c62ec0948369186bf756fff85d52ef3eff38db2950d6fbacf0c1d8875/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6173742d636f6d6d69742f6d696b65726f79616c2f73656c662d686f7374696e672d67756964653f7374796c653d666f722d7468652d6261646765)
 
-#### A guide for getting started with Self Hosting devices including software and hardware that will make you a better and more efficient Self Hosting.
+## A guide for getting started with Self Hosting devices including software and hardware that will make you a better and more efficient Self Hosting
 
 [Permalink: A guide for getting started with Self Hosting devices including software and hardware that will make you a better and more efficient Self Hosting.](https://github.com/mikeroyal/Self-Hosting-Guide#a-guide-for-getting-started-with-self-hosting-devices-including-software-and-hardware-that-will-make-you-a-better-and-more-efficient-self-hosting)
 
@@ -425,9 +421,9 @@ Self Hosting Guide\
 
 **Note 2: This guide will constantly be updated with new info as becomes available and please feel to make an [issue](https://github.com/mikeroyal/Self-Hosting-Guide/issues) if you think something should be added.**
 
-[![](https://user-images.githubusercontent.com/45159366/152699307-1c4ebfcd-a2b0-456c-9a84-01ac255e3782.png)](https://user-images.githubusercontent.com/45159366/152699307-1c4ebfcd-a2b0-456c-9a84-01ac255e3782.png)
+[![152699307 1c4ebfcd A2b0 456c 9a84 01ac255e3782 image](https://user-images.githubusercontent.com/45159366/152699307-1c4ebfcd-a2b0-456c-9a84-01ac255e3782.png)](https://user-images.githubusercontent.com/45159366/152699307-1c4ebfcd-a2b0-456c-9a84-01ac255e3782.png)
 
-# Table of Contents
+## Table of Contents
 
 [Permalink: Table of Contents](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)
 
@@ -600,7 +596,7 @@ Self Hosting Guide\
 34. [XML Development](https://github.com/mikeroyal/Self-Hosting-Guide#xml-development)
 
 
-# Getting Started with Self-Hosting
+## Getting Started with Self-Hosting
 
 [Permalink: Getting Started with Self-Hosting](https://github.com/mikeroyal/Self-Hosting-Guide#getting-started-with-self-hosting)
 
@@ -610,7 +606,7 @@ Self Hosting Guide\
 
 Most self-hosted software can be installed using [Docker](https://en.wikipedia.org/wiki/Docker_(software)), a packaging system which allows software to bundle their configuration and dependencies and isolate them from your operating system. Software using docker can be installed using the command line or via graphical interfaces such as [Portainer](https://github.com/portainer/portainer). Software is installed with Docker by downloading an image file containing the application, then creating a copy that sets up its own dependencies and configuration within what is called a container. Without containers you would often need to install different versions of the same programming languages or tools to satisfy the dependencies for the software you want to use which can get complicated.
 
-[![](https://user-images.githubusercontent.com/45159366/152699308-36691800-8078-4af3-9d5c-711da4e9b26e.png)](https://user-images.githubusercontent.com/45159366/152699308-36691800-8078-4af3-9d5c-711da4e9b26e.png)
+[![152699308 36691800 8078 4af3 9d5c 711da4e9b26e image](https://user-images.githubusercontent.com/45159366/152699308-36691800-8078-4af3-9d5c-711da4e9b26e.png)](https://user-images.githubusercontent.com/45159366/152699308-36691800-8078-4af3-9d5c-711da4e9b26e.png)
 
 ## Tools for Self-Hosting
 
@@ -944,24 +940,24 @@ Most self-hosted software can be installed using [Docker](https://en.wikipedia.o
 
 **Build locally with Docker:**
 
-```
+```text
 docker build -t chatgpt-ui .
 docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 chatgpt-ui
 ```
 
-### Running Locally on Windows, MacOS, and Linux:
+### Running Locally on Windows, MacOS, and Linux
 
 [Permalink: Running Locally on Windows, MacOS, and Linux:](https://github.com/mikeroyal/Self-Hosting-Guide#running-locally-on-windows-macos-and-linux)
 
 **1\. Clone Project Repo**
 
-```
+```text
 git clone https://github.com/mckaywrigley/chatbot-ui.git
 ```
 
 **2\. Install Dependencies**
 
-```
+```text
 npm i
 ```
 
@@ -969,7 +965,7 @@ npm i
 
 Create a .env.local file in the root of the repo with your **[OpenAI API Key](https://platform.openai.com/account/api-keys)**:
 
-```
+```text
 OPENAI_API_KEY=YOUR_KEY
 ```
 
@@ -980,13 +976,13 @@ OPENAI_API_KEY=YOUR_KEY
 
 **4\. Run App**
 
-```
+```text
 npm run dev
 ```
 
 **You done you should be able to start chatting with ChatGPT!**
 
-[![](https://user-images.githubusercontent.com/45159366/230762358-a51124d1-9ee4-4d42-b83b-0dab95b7a93f.png)](https://user-images.githubusercontent.com/45159366/230762358-a51124d1-9ee4-4d42-b83b-0dab95b7a93f.png)
+[![230762358 A51124d1 9ee4 4d42 B83b 0dab95b7a93f image](https://user-images.githubusercontent.com/45159366/230762358-a51124d1-9ee4-4d42-b83b-0dab95b7a93f.png)](https://user-images.githubusercontent.com/45159366/230762358-a51124d1-9ee4-4d42-b83b-0dab95b7a93f.png)
 
 Chatbot UI
 
@@ -1000,17 +996,17 @@ Try out the demo [demo.py](https://github.com/Vision-CAIR/MiniGPT-4/blob/main/de
 
 Here, the demo loads Vicuna as 8 bit by default to save some GPU memory usage. Besides, the default beam search width is 1. Under this setting, the **demo cost about 23G GPU memory**. If you have a more powerful GPU with larger GPU memory, you can run the model in 16 bit by setting low\_resource to False in the config file [minigpt4\_eval.yaml](https://github.com/Vision-CAIR/MiniGPT-4/blob/main/eval_configs/minigpt4_eval.yaml) and use a larger beam search width.
 
-[![](https://user-images.githubusercontent.com/45159366/233298431-db46ccd6-c0c8-48db-9d9f-c142776de51f.png)](https://user-images.githubusercontent.com/45159366/233298431-db46ccd6-c0c8-48db-9d9f-c142776de51f.png)
+[![233298431 Db46ccd6 C0c8 48db 9d9f C142776de51f image](https://user-images.githubusercontent.com/45159366/233298431-db46ccd6-c0c8-48db-9d9f-c142776de51f.png)](https://user-images.githubusercontent.com/45159366/233298431-db46ccd6-c0c8-48db-9d9f-c142776de51f.png)
 
 MiniGPT-4 Demo
 
 [GPT4All](https://github.com/nomic-ai/gpt4all) is an ecosystem of open-source chatbots trained on a massive collections of clean assistant data including code, stories and dialogue based on [LLaMa](https://github.com/facebookresearch/llama).
 
-[![](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)[![](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)[Open in new window](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)
+[![232368422 447387b2 5d7b 4aec 872d 7b711a313b4f image](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)[![232368422 447387b2 5d7b 4aec 872d 7b711a313b4f image](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)[Open in new window](https://user-images.githubusercontent.com/45159366/232368422-447387b2-5d7b-4aec-872d-7b711a313b4f.gif)
 
 [GPT4All UI](https://github.com/nomic-ai/gpt4all-ui) is a Flask web application that provides a chat UI for interacting with the GPT4All chatbot.
 
-[![](https://user-images.githubusercontent.com/45159366/232368426-2b555ca6-e620-4d18-bfb8-fa71e4eed64e.png)](https://user-images.githubusercontent.com/45159366/232368426-2b555ca6-e620-4d18-bfb8-fa71e4eed64e.png)
+[![232368426 2b555ca6 E620 4d18 Bfb8 Fa71e4eed64e image](https://user-images.githubusercontent.com/45159366/232368426-2b555ca6-e620-4d18-bfb8-fa71e4eed64e.png)](https://user-images.githubusercontent.com/45159366/232368426-2b555ca6-e620-4d18-bfb8-fa71e4eed64e.png)
 
 [Alpaca.cpp](https://github.com/antimatter15/alpaca.cpp) is a fast ChatGPT-like model locally on your device. It combines the [LLaMA foundation model](https://github.com/facebookresearch/llama) with an [open reproduction](https://github.com/tloen/alpaca-lora) of [Stanford Alpaca](https://github.com/tatsu-lab/stanford_alpaca) a fine-tuning of the base model to obey instructions (akin to the [RLHF](https://huggingface.co/blog/rlhf) used to train ChatGPT) and a set of modifications to [llama.cpp](https://github.com/ggerganov/llama.cpp) to add a chat interface.
 
@@ -1108,7 +1104,7 @@ MiniGPT-4 Demo
 
 [Sonarr](https://sonarr.tv/) \- Automatic TV Shows downloader and manager for Usenet and BitTorrent. It can grab, sort and rename new episodes and automatically upgrade the quality of files already downloaded when a better quality format becomes available.
 
-[StackStorm](https://stackstorm.com/) \- StackStorm (aka _IFTTT for Ops_) is event-driven automation for auto-remediation, security responses, troubleshooting, deployments, and more. Includes rules engine, workflow, 160 integration packs with 6000+ actions and ChatOps.
+[StackStorm](https://stackstorm.com/) \- StackStorm (aka *IFTTT for Ops*) is event-driven automation for auto-remediation, security responses, troubleshooting, deployments, and more. Includes rules engine, workflow, 160 integration packs with 6000+ actions and ChatOps.
 
 [µTask](https://github.com/ovh/utask) \- Automation engine that models and executes business processes declared in yaml.
 
@@ -1168,7 +1164,7 @@ MiniGPT-4 Demo
 
 [Permalink: Linode](https://github.com/mikeroyal/Self-Hosting-Guide#linode)
 
-[![](https://user-images.githubusercontent.com/45159366/131386177-004d86df-a21b-4257-a502-0fe6c1e0ff4c.png)](https://user-images.githubusercontent.com/45159366/131386177-004d86df-a21b-4257-a502-0fe6c1e0ff4c.png)
+[![131386177 004d86df A21b 4257 A502 0fe6c1e0ff4c image](https://user-images.githubusercontent.com/45159366/131386177-004d86df-a21b-4257-a502-0fe6c1e0ff4c.png)](https://user-images.githubusercontent.com/45159366/131386177-004d86df-a21b-4257-a502-0fe6c1e0ff4c.png)
 
 [Linode](https://www.linode.com/) is a cloud hosting company that provides virtual private servers and variety of other cloud services.
 
@@ -1211,7 +1207,7 @@ MiniGPT-4 Demo
 
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)
 
-[![](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)
+[![150701955 F1f514a8 82e6 462f 9fc9 8926b6b7de3e image](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)
 
 [Nextcloud](https://nextcloud.com/) is an industry-leading, on-premises content collaboration platform for file sync & share and communication server. It is fully open source and you can host it yourself or pay a company to do it for you. Also checkout the following links below:
 
@@ -1222,13 +1218,13 @@ MiniGPT-4 Demo
 - [Nextcloud Developer Program](https://nextcloud.com/developer)
 
 
-[![](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)
+[![150701961 Ac8be115 34c1 4012 Bd69 D1f22a10e48c image](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)
 
 Nexcloud login screen
 
 [Nextcloud Hub](https://nextcloud.com/hub/) is a tool that allows you to share and collaborate on documents, send and receive email, manage your calendar and have video chats without data leaks. As fully on-premises solution, Nextcloud Hub provides the benefits of online collaboration without the compliance and security risks.
 
-[![](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)
+[![150701964 Df1dd8d9 1d3a 4376 81e8 F49439fb4356 image](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)
 
 Nexcloud Hub
 
@@ -1262,7 +1258,7 @@ Nexcloud Hub
 
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)
 
-[![](https://user-images.githubusercontent.com/45159366/117214946-5bbf9c00-adb2-11eb-96cc-fef7d13d4d06.png)](https://user-images.githubusercontent.com/45159366/117214946-5bbf9c00-adb2-11eb-96cc-fef7d13d4d06.png)
+[![117214946 5bbf9c00 Adb2 11eb 96cc Fef7d13d4d06 image](https://user-images.githubusercontent.com/45159366/117214946-5bbf9c00-adb2-11eb-96cc-fef7d13d4d06.png)](https://user-images.githubusercontent.com/45159366/117214946-5bbf9c00-adb2-11eb-96cc-fef7d13d4d06.png)
 
 [DigitalOcean](https://www.digitalocean.com/) is a cloud infrastructure provider that provides developers cloud services that help to deploy and scale applications that run simultaneously on multiple computers with data centers worldwide.
 
@@ -1306,11 +1302,11 @@ Nexcloud Hub
 
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)
 
-[![](https://user-images.githubusercontent.com/45159366/219937490-da874c4e-cf91-4f2e-b009-77b7929383ba.png)](https://user-images.githubusercontent.com/45159366/219937490-da874c4e-cf91-4f2e-b009-77b7929383ba.png)
+[![219937490 Da874c4e Cf91 4f2e B009 77b7929383ba image](https://user-images.githubusercontent.com/45159366/219937490-da874c4e-cf91-4f2e-b009-77b7929383ba.png)](https://user-images.githubusercontent.com/45159366/219937490-da874c4e-cf91-4f2e-b009-77b7929383ba.png)
 
 [MinIO](https://min.io/download) is a High Performance Object Storage released under GNU Affero General Public License v3.0. It is API compatible with [Amazon S3 cloud storage service](https://aws.amazon.com/s3/). Use MinIO to build high performance infrastructure for machine learning, analytics and application data workloads. It's one of the fastest object storage platforms globally, with a read/write speed of **183GB/s-171GB/s** if you use standard hardware. It can function as the main storage tier for many workloads like **Spark, TensorFlow, Presto, Hadoop HDFS, and H2O.**
 
-[![](https://user-images.githubusercontent.com/45159366/219937492-d47107b5-d2c3-4746-a133-cbdac97fa379.png)](https://user-images.githubusercontent.com/45159366/219937492-d47107b5-d2c3-4746-a133-cbdac97fa379.png)
+[![219937492 D47107b5 D2c3 4746 A133 Cbdac97fa379 image](https://user-images.githubusercontent.com/45159366/219937492-d47107b5-d2c3-4746-a133-cbdac97fa379.png)](https://user-images.githubusercontent.com/45159366/219937492-d47107b5-d2c3-4746-a133-cbdac97fa379.png)
 
 MinIO UI
 
@@ -1320,7 +1316,7 @@ MinIO UI
 
 [Permalink: Podman](https://github.com/mikeroyal/Self-Hosting-Guide#podman)
 
-```
+```text
 podman run -p 9000:9000 -p 9001:9001 \
   quay.io/minio/minio server /data --console-address ":9001"
 ```
@@ -1329,13 +1325,13 @@ podman run -p 9000:9000 -p 9001:9001 \
 
 [Permalink: Docker](https://github.com/mikeroyal/Self-Hosting-Guide#docker)
 
-```
+```text
 #docker run -p 9000:9000 --name minio -d minio/minio server /export
 ```
 
 **If you're using an SSD mounted at /mnt/sdd, then we can run the following to use it instead:**
 
-```
+```text
 # docker run -v /mnt/ssd:/export -p 9000:9000 --name minio -d minio/minio server /export
 ```
 
@@ -1343,7 +1339,7 @@ podman run -p 9000:9000 -p 9001:9001 \
 
 [Permalink: MacOS](https://github.com/mikeroyal/Self-Hosting-Guide#macos)
 
-```
+```text
 brew install minio/stable/minio
 minio server /data
 ```
@@ -1352,7 +1348,7 @@ minio server /data
 
 [Permalink: Binary Download for MacOS](https://github.com/mikeroyal/Self-Hosting-Guide#binary-download-for-macos)
 
-```
+```text
 wget https://dl.min.io/server/minio/release/darwin-amd64/minio
 chmod +x minio
 ./minio server /data
@@ -1362,7 +1358,7 @@ chmod +x minio
 
 [Permalink: Linux](https://github.com/mikeroyal/Self-Hosting-Guide#linux)
 
-```
+```text
 wget https://dl.min.io/server/minio/release/linux-amd64/minio
 chmod +x minio
 ./minio server /data
@@ -1401,7 +1397,7 @@ The MinIO deployment starts using default root credentials `minioadmin:minioadmi
 
 When you run Minio you will be issued a key and a secret. These are used by the client or the web front-end to connect securely. I found my codes by typing in `docker logs minio`.
 
-```
+```text
 Created minio configuration file at /root/.minio
 
 Endpoint:  http://172.17.0.2:9000  http://127.0.0.1:9000
@@ -1427,7 +1423,7 @@ Drive Capacity: 50 GiB Free, 70 GiB Total
 
 If you'd like to learn more then most of the Minio client commands support a help flag or give info on the command line:
 
-```
+```text
 NAME:
   mc - Minio Client for cloud storage and filesystems.
 
@@ -1484,7 +1480,7 @@ Minio's test-server called "play" is already configured in the default client, y
 
 [Permalink: SQL](https://github.com/mikeroyal/Self-Hosting-Guide#sql)
 
-[![](https://user-images.githubusercontent.com/45159366/169607509-ba5e092f-c566-4014-86a1-258bf75266d0.png)](https://user-images.githubusercontent.com/45159366/169607509-ba5e092f-c566-4014-86a1-258bf75266d0.png)
+[![169607509 Ba5e092f C566 4014 86a1 258bf75266d0 image](https://user-images.githubusercontent.com/45159366/169607509-ba5e092f-c566-4014-86a1-258bf75266d0.png)](https://user-images.githubusercontent.com/45159366/169607509-ba5e092f-c566-4014-86a1-258bf75266d0.png)
 
 **[SQL](https://en.wikipedia.org/wiki/SQL)** is a standard language for storing, manipulating and retrieving data in relational databases.
 
@@ -1574,7 +1570,7 @@ Minio's test-server called "play" is already configured in the default client, y
 
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)
 
-[![](https://user-images.githubusercontent.com/45159366/169607515-65629e5a-83e1-4578-9eb5-afe915f0fad9.png)](https://user-images.githubusercontent.com/45159366/169607515-65629e5a-83e1-4578-9eb5-afe915f0fad9.png)
+[![169607515 65629e5a 83e1 4578 9eb5 Afe915f0fad9 image](https://user-images.githubusercontent.com/45159366/169607515-65629e5a-83e1-4578-9eb5-afe915f0fad9.png)](https://user-images.githubusercontent.com/45159366/169607515-65629e5a-83e1-4578-9eb5-afe915f0fad9.png)
 
 **[NoSQL](https://www.ibm.com/cloud/blog/sql-vs-nosql)** is a database that is interchangeably referred to as "nonrelational, or "non-SQL" to highlight that the database can handle huge volumes of rapidly changing, unstructured data in different ways than a relational (SQL-based) database with rows and tables.
 
@@ -2415,7 +2411,7 @@ Minio's test-server called "play" is already configured in the default client, y
 - [nostr address book](https://github.com/aitechguy/nostr-address-book) \- A directory of twitter users accounts and their NOSTR addresses.
 - [NNostr](https://github.com/Kukks/NNostr) \- a C# relay.
 - [nostr-rs-relay](https://sr.ht/~gheartsfield/nostr-rs-relay/) \- a minimalistic relay written in Rust that saves data on SQLite.
-- [Relayer Basic](https://github.com/fiatjaf/relayer/tree/master/basic) \- a simple relay based on _relayer_ backed by Postgres.
+- [Relayer Basic](https://github.com/fiatjaf/relayer/tree/master/basic) \- a simple relay based on *relayer* backed by Postgres.
 - [nodestr](https://github.com/Dolu89/nodestr-relay) \- a Node.js implementation.
 - [sovereign-stack](https://www.sovereign-stack.org/) \- a tool that helps you deploy nostr relays and create self-hosted (bitcoin-only) Value4Value websites.
 - [expensive relay](https://github.com/fiatjaf/expensive-relay) \- a relay that requires payment for registration
@@ -2763,7 +2759,7 @@ Minio's test-server called "play" is already configured in the default client, y
 
 **How Encryption Keys work**
 
-[![](https://user-images.githubusercontent.com/45159366/196625534-1cebcd35-7654-41cc-bbb2-33913a391a53.png)](https://user-images.githubusercontent.com/45159366/196625534-1cebcd35-7654-41cc-bbb2-33913a391a53.png)
+[![196625534 1cebcd35 7654 41cc Bbb2 33913a391a53 image](https://user-images.githubusercontent.com/45159366/196625534-1cebcd35-7654-41cc-bbb2-33913a391a53.png)](https://user-images.githubusercontent.com/45159366/196625534-1cebcd35-7654-41cc-bbb2-33913a391a53.png)
 
 - **Symmetric** is a data encryption method whereby the same private key is used to encode and decode information.
 
@@ -2866,7 +2862,7 @@ Minio's test-server called "play" is already configured in the default client, y
 
 [Access to Memory (AtoM)](https://www.accesstomemory.org/) \- Web-based, open source application for standards-based archival description and access in a multilingual, multi-repository environment.
 
-[ArchiveBox](https://archivebox.io/) \- Self-hosted _wayback machine_ that creates HTML & screenshot archives of sites from your bookmarks, browsing history, RSS feeds, or other sources.
+[ArchiveBox](https://archivebox.io/) \- Self-hosted *wayback machine* that creates HTML & screenshot archives of sites from your bookmarks, browsing history, RSS feeds, or other sources.
 
 [Archivematica](https://www.archivematica.org/en/) \- Mature digital preservation system designed to maintain standards-based, long-term access to collections of digital objects.
 
@@ -3068,13 +3064,13 @@ Most **smart devices** have their own [Virtual Local Area Network (VLAN)](https:
 
 [Home Assistant](https://www.home-assistant.io/) is an open source home automation that puts local control and privacy first. Home Assistant is powered by a worldwide community of tinkerers and DIY enthusiasts that runs great on Raspberry Pi. [$13 USD voice assistant remote for Home Assistant](https://www.home-assistant.io/voice_control/thirteen-usd-voice-remote/)
 
-_Add-ons are additional applications and services, that can be run alongside_
-_Home Assistant. The Home Assistant OS and Supervised installations types,_
-_provide the Supervisor, which is capable of running and managing these add-ons._
+*Add-ons are additional applications and services, that can be run alongside*
+*Home Assistant. The Home Assistant OS and Supervised installations types,*
+*provide the Supervisor, which is capable of running and managing these add-ons.*
 
 **Home Assistant Official Add-ons**
 
-_Addons created and maintained by the Home Assistant team._
+*Addons created and maintained by the Home Assistant team.*
 
 - [DuckDNS](https://github.com/home-assistant/hassio-addons/blob/master/duckdns/DOCS.md) \- This updates your Duck DNS IP address and generate SSL using Let's Encrypt.
 - [Almond](https://github.com/home-assistant/hassio-addons/blob/master/almond/DOCS.md) \- An Open, Privacy-Preserving Virtual Assistant.
@@ -3093,7 +3089,7 @@ _Addons created and maintained by the Home Assistant team._
 
 **Home Assistant Third Party Add-ons**
 
-_Add-ons created by the community._
+*Add-ons created by the community.*
 
 - [Dasshio](https://github.com/danimtb/dasshio) \- Easily use your Amazon Dash Buttons.
 - [InfluxDB](https://github.com/hassio-addons/addon-influxdb) \- Scalable datastore for metrics, events, and real-time analytics.
@@ -3126,7 +3122,7 @@ _Add-ons created by the community._
 
 **Home Assistant Custom Cards**
 
-_The Home Assistant Dashboards allows people to build custom cards on top of it, which you can easily add to your instance._
+*The Home Assistant Dashboards allows people to build custom cards on top of it, which you can easily add to your instance.*
 
 - [Simple Thermostat](https://github.com/nervetattoo/simple-thermostat) \- A simpler and more flexible thermostat card.
 - [Card Modder](https://github.com/thomasloven/lovelace-card-mod) \- Style your Lovelace cards.
@@ -3163,7 +3159,7 @@ _The Home Assistant Dashboards allows people to build custom cards on top of it,
 
 **Home Assistant Custom Integrations**
 
-_Additional integrations for Home Assistant created by the community._
+*Additional integrations for Home Assistant created by the community.*
 
 - [Lutron Caseta Pro](https://github.com/upsert/lutron-caseta-pro) \- Integrates Lutron Caseta Smart Bridge PRO / RA2 Select.
 - [SmartIR](https://github.com/smartHomeHub/SmartIR) \- Integrates devices using Broadlink IR.
@@ -3180,7 +3176,7 @@ _Additional integrations for Home Assistant created by the community._
 - [Spotcast](https://github.com/fondberg/spotcast) \- Start Spotify playback on an idle Chromecast device as well as control Spotify connect devices.
 - [The Watchman](https://github.com/dummylabs/thewatchman) \- Keep track of missing entities and services in your config files.
 
-[![](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)
+[![177719765 602b4658 C8bf 4952 A238 4b986efbb7cb image](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)
 
 Home Assistant integrations. Credit: [Home Assistant](https://www.home-assistant.io/integrations/)
 
@@ -3193,7 +3189,7 @@ Home Assistant integrations. Credit: [Home Assistant](https://www.home-assistant
 - View and control Homebridge accessories.
 - Backup and Restore your Homebridge instance.
 
-[![](https://user-images.githubusercontent.com/45159366/202679713-5cc8dede-7e61-42e1-ab71-def824bc70de.png)](https://user-images.githubusercontent.com/45159366/202679713-5cc8dede-7e61-42e1-ab71-def824bc70de.png)
+[![202679713 5cc8dede 7e61 42e1 Ab71 Def824bc70de image](https://user-images.githubusercontent.com/45159366/202679713-5cc8dede-7e61-42e1-ab71-def824bc70de.png)](https://user-images.githubusercontent.com/45159366/202679713-5cc8dede-7e61-42e1-ab71-def824bc70de.png)
 
 [Homebridge Raspberry Pi Image](https://github.com/homebridge/homebridge-raspbian-image) is a free Raspbian based Raspberry Pi image with Homebridge and Homebridge Config UI X pre-installed.
 
@@ -3756,7 +3752,7 @@ Home Assistant integrations. Credit: [Home Assistant](https://www.home-assistant
 
 [Moonlight Game Streaming](https://moonlight-stream.org/) is a program that let you stream from your PC games over the Internet with no configuration required. Stream from almost any device, whether you're in another room or miles away from your gaming rig. [Sunshine](https://github.com/LizardByte/Sunshine) is a **Game stream host for Moonlight** that is a self-hosted, low latency, cloud gaming solution with support for AMD, Intel, and NVIDIA GPUs. It is an open source implementation of NVIDIA's GameStream.
 
-[![](https://user-images.githubusercontent.com/45159366/106686398-11463d80-657f-11eb-841a-d534829ccc3d.png)](https://user-images.githubusercontent.com/45159366/106686398-11463d80-657f-11eb-841a-d534829ccc3d.png)
+[![106686398 11463d80 657f 11eb 841a D534829ccc3d image](https://user-images.githubusercontent.com/45159366/106686398-11463d80-657f-11eb-841a-d534829ccc3d.png)](https://user-images.githubusercontent.com/45159366/106686398-11463d80-657f-11eb-841a-d534829ccc3d.png)
 
 [Chiaki](https://git.sr.ht/~thestr4ng3r/chiaki) is a Free and Open Source Software Client for PlayStation 4 and PlayStation 5 Remote Play for Linux, FreeBSD, OpenBSD, Android, macOS, Windows, Nintendo Switch and potentially even more platforms.
 
@@ -3770,7 +3766,7 @@ Home Assistant integrations. Credit: [Home Assistant](https://www.home-assistant
 
 [RetroPie](https://retropie.org.uk/) is a frontend for emulators that allows you to turn your Raspberry Pi, ODroid C1/C2, or PC into a retro-gaming machine. It builds upon Raspbian, [EmulationStation](https://github.com/Aloshi/EmulationStation), RetroArch and many other projects to enable you to play your favourite Arcade, home-console, and classic PC games with the minimum set-up.
 
-[![](https://user-images.githubusercontent.com/45159366/153087555-e1bde100-6079-4089-a33d-804e29064789.png)](https://user-images.githubusercontent.com/45159366/153087555-e1bde100-6079-4089-a33d-804e29064789.png)
+[![153087555 E1bde100 6079 4089 A33d 804e29064789 image](https://user-images.githubusercontent.com/45159366/153087555-e1bde100-6079-4089-a33d-804e29064789.png)](https://user-images.githubusercontent.com/45159366/153087555-e1bde100-6079-4089-a33d-804e29064789.png)
 
 [RetroArch](https://www.retroarch.com/) is a frontend for emulators, game engines and media players. It enables you to run classic games on a wide range of computers and consoles through its slick graphical interface. Settings are also unified so configuration is done once and for all. [RetroArch Flatpak](https://flathub.org/apps/details/org.libretro.RetroArch)
 
@@ -3789,7 +3785,7 @@ Home Assistant integrations. Credit: [Home Assistant](https://www.home-assistant
 - Play select ROMs in-browser using JS emulators (Planned)
 - Track played and favorite games (even ones that aren't available for download) (Planned)
 
-[![](https://user-images.githubusercontent.com/45159366/172274231-d691a850-1879-44fb-8fa0-08e549d7bb29.png)](https://user-images.githubusercontent.com/45159366/172274231-d691a850-1879-44fb-8fa0-08e549d7bb29.png)
+[![172274231 D691a850 1879 44fb 8fa0 08e549d7bb29 image](https://user-images.githubusercontent.com/45159366/172274231-d691a850-1879-44fb-8fa0-08e549d7bb29.png)](https://user-images.githubusercontent.com/45159366/172274231-d691a850-1879-44fb-8fa0-08e549d7bb29.png)
 
 Cartridge UI
 
@@ -3827,6 +3823,7 @@ Cartridge UI
 \
 **Also checkout these subreddits for more great Game Emulators recommendations**\
 \
+
 - [r/emulation](https://www.reddit.com/r/emulation/)\
 - [r/emulations](https://www.reddit.com/r/emulators/)\
 - [r/RetroArch](https://www.reddit.com/r/RetroArch/)\
@@ -3840,7 +3837,9 @@ Cartridge UI
 - [r/EmuDev](https://www.reddit.com/r/EmuDev/)\
 - [r/Roms](https://www.reddit.com/r/Roms/)\
 \
+
 ### Foundations/Projects\
+
 \
 [Permalink: Foundations/Projects](https://github.com/mikeroyal/Self-Hosting-Guide#foundationsprojects)\
 \
@@ -3862,18 +3861,23 @@ Cartridge UI
 \
 [Eclipse Foundation](https://www.eclipse.org/) provides our global community of individuals and organizations with a mature, scalable and commercially-friendly environment for open source software collaboration and innovation.\
 \
+
 ### System Hardware\
+
 \
 [Permalink: System Hardware](https://github.com/mikeroyal/Self-Hosting-Guide#system-hardware)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/table-of-contents)\
 \
+
 - [Refurbished Servers on Amazon](https://www.amazon.com/refurbished-servers/s?k=refurbished+servers&rh=p_36%3A10000-60000&qid=1667083059&rnid=386442011&ref=sr_nr_p_36_2)\
 - [Network Switches & Hubs on ebay](https://www.ebay.com/b/Enterprise-Network-Switches-Hubs/182091/bn_887002)\
 - [Server Monkey](https://www.servermonkey.com/servers.html)\
 - [The Server Store](https://www.theserverstore.com/)\
 \
+
 #### CPUs\
+
 \
 [Permalink: CPUs](https://github.com/mikeroyal/Self-Hosting-Guide#cpus)\
 \
@@ -3881,12 +3885,13 @@ Cartridge UI
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/198867859-20c9906d-4b0f-41b8-8ed5-cb3b8425c7fd.png)](https://user-images.githubusercontent.com/45159366/198867859-20c9906d-4b0f-41b8-8ed5-cb3b8425c7fd.png)\
+[![198867859 20c9906d 4b0f 41b8 8ed5 Cb3b8425c7fd image](https://user-images.githubusercontent.com/45159366/198867859-20c9906d-4b0f-41b8-8ed5-cb3b8425c7fd.png)](https://user-images.githubusercontent.com/45159366/198867859-20c9906d-4b0f-41b8-8ed5-cb3b8425c7fd.png)\
 \
 I recommend using Intel CPUs no older than the second generation of the Intel Core processors (Core i7, i5, i3) AKA **Sandy Bridge(Jan. 2011)** for those that want to utilize [Intel® Quick Sync Video](https://www.intel.com/content/www/us/en/architecture-and-technology/quick-sync-video/quick-sync-video-general.html). Though, if you're concerned about power efficiency(~5W idle) I would recommend 7th Generation or newer.\
 \
 Also, I recommend using **[Intel® QuickAssist Technology (Intel® QAT)](https://www.intel.com/content/www/us/en/architecture-and-technology/intel-quick-assist-technology-overview.html)** a scalable, flexible, and extendable way to accelerate data encryption/decryption and compression for applications from networking to enterprise, cloud to storage, and content delivery to database. Available in 3rd Gen Intel® Xeon® Scalable Processors and Intel Atom® Processor C Series/P Series.\
 \
+
 - [Intel Celeron Processor N Series](https://ark.intel.com/content/www/us/en/ark/products/series/87282/intel-celeron-processor-n-series.html)\
 - [Intel Atom Series](https://ark.intel.com/content/www/us/en/ark.html#@PanelLabel29035)\
 - [Intel Pentium](https://ark.intel.com/content/www/us/en/ark.html#@PanelLabel29862)\
@@ -3899,7 +3904,7 @@ Also, I recommend using **[Intel® QuickAssist Technology (Intel® QAT)](https:/
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide/blob/main/table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/198867861-ff988ac9-a6f8-4db5-90e4-1f2d8c933fed.png)](https://user-images.githubusercontent.com/45159366/198867861-ff988ac9-a6f8-4db5-90e4-1f2d8c933fed.png)\
+[![198867861 Ff988ac9 A6f8 4db5 90e4 1f2d8c933fed image](https://user-images.githubusercontent.com/45159366/198867861-ff988ac9-a6f8-4db5-90e4-1f2d8c933fed.png)](https://user-images.githubusercontent.com/45159366/198867861-ff988ac9-a6f8-4db5-90e4-1f2d8c933fed.png)\
 \
 - [AMD Athlon](https://www.amd.com/en/processors/athlon-pro)\
 - [AMD Ryzen G-Series](https://cpuarchive.com/CPU/AMD/Ryzen)\
@@ -3908,7 +3913,9 @@ Also, I recommend using **[Intel® QuickAssist Technology (Intel® QAT)](https:/
 - [AMD Ryzen 7](https://cpuarchive.com/CPU/AMD/Ryzen)\
 - [AMD Threadripper](https://www.amd.com/en/processors/threadripper-creators)\
 \
+
 #### Devices\
+
 \
 [Permalink: Devices](https://github.com/mikeroyal/Self-Hosting-Guide#devices)\
 \
@@ -3916,6 +3923,7 @@ Also, I recommend using **[Intel® QuickAssist Technology (Intel® QAT)](https:/
 \
 **Note: Will be adding more device soon!**\
 \
+
 - [Raspberry Pi](https://github.com/mikeroyal/Self-Hosting-Guide#raspberry-pi)\
 - [Turing Pi 2](https://turingpi.com/)\
 - [Home Assistant Yellow](https://www.home-assistant.io/blog/2021/09/13/home-assistant-yellow/)\
@@ -3936,12 +3944,13 @@ Also, I recommend using **[Intel® QuickAssist Technology (Intel® QAT)](https:/
 - [LattePanda Sigma](https://www.lattepanda.com/lattepanda-sigma) is a powerful and compact x86 Windows single board computer (SBC). It features the 13th Intel® Core™ i5-1340P Rapter Lake (12-Core, 16-Thread) processor and 16GB Dual-Channel LPDDR5-6400MHz memory.\
 - [Apex Storage X21](https://www.apexstoragedesign.com/apexstoragex21) is a storage solution that gives you have the freedom to choose system hardware thatworks best for you with the following benefits.\
 \
-  - Host 21 x M.2 Gen 4 NVME SSD’s\
-  - 168 TB + Storage Per Card\
-  - 31 GBps Read/Write Speeds\
-  - Industry Leading IOPS\
-  - 100 PCIe 4.0 Lanes\
-  - Full UEFI/Secure Boot Support\
+
+- Host 21 x M.2 Gen 4 NVME SSD’s\
+- 168 TB + Storage Per Card\
+- 31 GBps Read/Write Speeds\
+- Industry Leading IOPS\
+- 100 PCIe 4.0 Lanes\
+- Full UEFI/Secure Boot Support\
 - [GL.iNet](https://www.gl-inet.com/) is a leading developer of OpenWrt Wi-Fi and IoT Network Solutions. They build Wi-Fi routers, IoT gateways and remote device management platforms for a wide range of scenarios. All their routers include powerful built-in firewall, Shadow also supports OpenVPN, WireGuard® and customized DNS server in order to level up your online security.\
 - [Protectli Vault](https://protectli.com/) is a series of small computers that have firewalls with advanced firmware protection to keep your network safe. All Vaults are Opertaing System (OS) agnostic and support a variety of popular open source software distributions. Run a firewall like OPNsense, pfSense, or others. Also, run any hypervisor on your system.\
 - [Espclicker](https://www.pricelesstoolkit.com/en/projects/32-espclicker.html) is a small device that you can use to integrate not IoT devices into your smart home setup, It connects directly to the push buttons of the device, which you want to control, and then simulates pressing them. You can simulate button clicks, hold time, and multiple clicks.\
@@ -3949,7 +3958,9 @@ Also, I recommend using **[Intel® QuickAssist Technology (Intel® QAT)](https:/
 - [$13 USD voice assistant remote for Home Assistant](https://www.home-assistant.io/voice_control/thirteen-usd-voice-remote/)\
 - [ATOM ECHO](https://docs.m5stack.com/en/atom/atomecho) is a Programmable Smart Speaker based on the M5ATOM design. Music can be played using the BT (Bluetooth Technology) capabilities of the ESP32 from a mobile phone or tablet. The device could be programmed to access AWS, Azure, and other cloud platforms, using the built-in microphone and speaker for voice interaction.\
 \
+
 ### Operating Systems\
+
 \
 [Permalink: Operating Systems](https://github.com/mikeroyal/Self-Hosting-Guide#operating-systems)\
 \
@@ -3959,7 +3970,7 @@ Also, I recommend using **[Intel® QuickAssist Technology (Intel® QAT)](https:/
 \
 [Rufus](https://rufus.ie/) is a utility that helps format and create bootable USB flash drives.\
 \
-[![](https://user-images.githubusercontent.com/45159366/158471950-74640216-66ed-407b-a615-e643284ba0b8.png)](https://user-images.githubusercontent.com/45159366/158471950-74640216-66ed-407b-a615-e643284ba0b8.png)\
+[![158471950 74640216 66ed 407b A615 E643284ba0b8 image](https://user-images.githubusercontent.com/45159366/158471950-74640216-66ed-407b-a615-e643284ba0b8.png)](https://user-images.githubusercontent.com/45159366/158471950-74640216-66ed-407b-a615-e643284ba0b8.png)\
 \
 Rufus\
 \
@@ -3967,7 +3978,7 @@ Rufus\
 \
 [Etcher](https://www.balena.io/etcher/) is an open source, cross-platform software that makes it easy to flash operating system images to a microSD card or USB device.\
 \
-[![](https://user-images.githubusercontent.com/45159366/157350348-e43ea5a2-2346-4b0b-acc0-fc3352c3d820.png)](https://user-images.githubusercontent.com/45159366/157350348-e43ea5a2-2346-4b0b-acc0-fc3352c3d820.png)\
+[![157350348 E43ea5a2 2346 4b0b Acc0 Fc3352c3d820 image](https://user-images.githubusercontent.com/45159366/157350348-e43ea5a2-2346-4b0b-acc0-fc3352c3d820.png)](https://user-images.githubusercontent.com/45159366/157350348-e43ea5a2-2346-4b0b-acc0-fc3352c3d820.png)\
 \
 Etcher UI\
 \
@@ -3975,44 +3986,51 @@ Etcher UI\
 \
 [Home Assistant OS](https://home-assistant.io/hassio/) is a container-based system for managing your Home Assistant Core installation and related applications. The system is controlled via Home Assistant which communicates with the Supervisor. The Supervisor provides an API to manage the installation. This includes changing network settings or installing and updating software.\
 \
-## [![](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)    Home Assistant OS\
+
+## [![177719719 9108f14f 9ca0 45e4 B1f5 55efaf1803e6 image](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)    Home Assistant OS\
+
 \
 [Permalink:\
-Home Assistant OS\
-](https://github.com/mikeroyal/Self-Hosting-Guide#----home-assistant-os-)\
+Home Assistant OS\](https://github.com/mikeroyal/Self-Hosting-Guide#----home-assistant-os-)\
 \
 [Umbrel](https://umbrel.com/) is an OS for running a personal server in your home. It can Self-host open source apps like Nextcloud, Bitcoin node, and more.\
 \
-## [![](https://user-images.githubusercontent.com/45159366/198820005-e10b3c23-f87e-4f3a-bbd2-efe74db3681f.png)](https://user-images.githubusercontent.com/45159366/198820005-e10b3c23-f87e-4f3a-bbd2-efe74db3681f.png)    Umbrel\
+
+## [![198820005 E10b3c23 F87e 4f3a Bbd2 Efe74db3681f image](https://user-images.githubusercontent.com/45159366/198820005-e10b3c23-f87e-4f3a-bbd2-efe74db3681f.png)](https://user-images.githubusercontent.com/45159366/198820005-e10b3c23-f87e-4f3a-bbd2-efe74db3681f.png)    Umbrel\
+
 \
 [Permalink:\
-Umbrel\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----umbrel)\
+Umbrel\](https://github.com/mikeroyal/Self-Hosting-Guide#-----umbrel)\
 \
 [CasaOS](https://casaos.io/) is a simple, easy-to-use, elegant open-source Home Cloud system.\
 \
-## [![](https://user-images.githubusercontent.com/45159366/198867868-bdf3c448-0c0d-49a2-be7b-c32ae5f2ad3a.png)](https://user-images.githubusercontent.com/45159366/198867868-bdf3c448-0c0d-49a2-be7b-c32ae5f2ad3a.png)    CasaOS\
+
+## [![198867868 Bdf3c448 0c0d 49a2 Be7b C32ae5f2ad3a image](https://user-images.githubusercontent.com/45159366/198867868-bdf3c448-0c0d-49a2-be7b-c32ae5f2ad3a.png)](https://user-images.githubusercontent.com/45159366/198867868-bdf3c448-0c0d-49a2-be7b-c32ae5f2ad3a.png)    CasaOS\
+
 \
 [Permalink:\
-CasaOS\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----casaos)\
+CasaOS\](https://github.com/mikeroyal/Self-Hosting-Guide#-----casaos)\
 \
 [TrueNAS® CORE](https://www.truenas.com/truenas-core/) is the world's most popular storage OS because it gives you the power to build your own professional-grade storage system to use in a variety of data-intensive applications without any software costs. It's based on FreeBSD and Linux, using the OpenZFS file system.\
 \
-## [![](https://user-images.githubusercontent.com/45159366/216557724-bf621a1e-01f6-477b-b71a-2675121d20e8.png)](https://user-images.githubusercontent.com/45159366/216557724-bf621a1e-01f6-477b-b71a-2675121d20e8.png)    TrueNAS CORE\
+
+## [![216557724 Bf621a1e 01f6 477b B71a 2675121d20e8 image](https://user-images.githubusercontent.com/45159366/216557724-bf621a1e-01f6-477b-b71a-2675121d20e8.png)](https://user-images.githubusercontent.com/45159366/216557724-bf621a1e-01f6-477b-b71a-2675121d20e8.png)    TrueNAS CORE\
+
 \
 [Permalink:\
-TrueNAS CORE\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----truenas-core)\
+TrueNAS CORE\](https://github.com/mikeroyal/Self-Hosting-Guide#-----truenas-core)\
 \
 [Alpine Linux](https://www.alpinelinux.org/) is a security-oriented, lightweight Linux distribution based on musl libc and busybox.\
 \
+
 - [Alpine Linux Wiki](https://wiki.alpinelinux.org/wiki/Main_Page)\
 \
 - [Alpine Linux Community](https://alpinelinux.org/community)\
 \
 \
-#### Xfce4 Desktop\
+
+### Xfce4 Desktop\
+
 \
 [Permalink: Xfce4 Desktop](https://github.com/mikeroyal/Self-Hosting-Guide#xfce4-desktop)\
 \
@@ -4020,11 +4038,13 @@ TrueNAS CORE\
 \
 `apk add xfce4`\
 \
-[![](https://user-images.githubusercontent.com/45159366/144766372-ec177b63-4d4d-4b00-aee6-889bc15a7597.png)](https://user-images.githubusercontent.com/45159366/144766372-ec177b63-4d4d-4b00-aee6-889bc15a7597.png)\
+[![144766372 Ec177b63 4d4d 4b00 Aee6 889bc15a7597 image](https://user-images.githubusercontent.com/45159366/144766372-ec177b63-4d4d-4b00-aee6-889bc15a7597.png)](https://user-images.githubusercontent.com/45159366/144766372-ec177b63-4d4d-4b00-aee6-889bc15a7597.png)\
 \
 Alpine Linux Xfce\
 \
+
 #### Mate Desktop\
+
 \
 [Permalink: Mate Desktop](https://github.com/mikeroyal/Self-Hosting-Guide#mate-desktop)\
 \
@@ -4032,12 +4052,13 @@ Alpine Linux Xfce\
 \
 `apk add mate-desktop-environment`\
 \
-[![](https://user-images.githubusercontent.com/45159366/144766373-b813b402-16cd-4a99-930a-ff893600f016.png)](https://user-images.githubusercontent.com/45159366/144766373-b813b402-16cd-4a99-930a-ff893600f016.png)\
+[![144766373 B813b402 16cd 4a99 930a Ff893600f016 image](https://user-images.githubusercontent.com/45159366/144766373-b813b402-16cd-4a99-930a-ff893600f016.png)](https://user-images.githubusercontent.com/45159366/144766373-b813b402-16cd-4a99-930a-ff893600f016.png)\
 \
 Alpine Linux MATE\
 \
 [Ubuntu](https://ubuntu.com/) is a modern open source operating system on Linux for the enterprise Server, Desktop, Cloud, and IoT developed by Canonical.\
 \
+
 - [Ubuntu Server](https://ubuntu.com/download/server)\
 \
 - [Ubuntu for ARM](https://ubuntu.com/download/server/arm)\
@@ -4047,46 +4068,52 @@ Alpine Linux MATE\
 - [Ubuntu Flavours](https://www.ubuntu.com/download/flavours) is for those that prefer an alternative desktop environment such as [KDE Plasma Desktop](https://kubuntu.org/), [MATE](https://ubuntu-mate.org/), [Xfce](https://xubuntu.org/), [LXQt](https://lubuntu.me/), [Budgie](https://ubuntubudgie.org/), and [UKUI](https://www.ubuntukylin.com/) you can download a Flavour for your preferred desktop environment and use that to install Ubuntu, pre-configured for the desktop environment of your choice.\
 \
 \
-### [![](https://user-images.githubusercontent.com/45159366/164793005-67371e3c-d74d-4b40-9fd1-b9a71bd4172a.png)](https://user-images.githubusercontent.com/45159366/164793005-67371e3c-d74d-4b40-9fd1-b9a71bd4172a.png)    Ubuntu\
+
+### [![164793005 67371e3c D74d 4b40 9fd1 B9a71bd4172a image](https://user-images.githubusercontent.com/45159366/164793005-67371e3c-d74d-4b40-9fd1-b9a71bd4172a.png)](https://user-images.githubusercontent.com/45159366/164793005-67371e3c-d74d-4b40-9fd1-b9a71bd4172a.png)    Ubuntu\
+
 \
 [Permalink:\
-Ubuntu\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----ubuntu-)\
+Ubuntu\](https://github.com/mikeroyal/Self-Hosting-Guide#-----ubuntu-)\
 \
 [Debian](https://www.debian.org/) is an operating system and a distribution of Free Software. It is maintained and updated through the work of many users who volunteer their time and effort.\
 \
-### [![](https://user-images.githubusercontent.com/45159366/129622953-4b379400-9145-4d5b-9572-bcda571894f4.png)](https://user-images.githubusercontent.com/45159366/129622953-4b379400-9145-4d5b-9572-bcda571894f4.png)    Debian 11\
+
+### [![129622953 4b379400 9145 4d5b 9572 Bcda571894f4 image](https://user-images.githubusercontent.com/45159366/129622953-4b379400-9145-4d5b-9572-bcda571894f4.png)](https://user-images.githubusercontent.com/45159366/129622953-4b379400-9145-4d5b-9572-bcda571894f4.png)    Debian 11\
+
 \
 [Permalink:\
-Debian 11\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----debian-11-)\
+Debian 11\](https://github.com/mikeroyal/Self-Hosting-Guide#-----debian-11-)\
 \
 [Linux Mint](https://linuxmint.com/) is a modern, elegant, and comfortable open source operating system(based on Debian and Ubuntu), which is both powerful and easy to use for both new and advanced users. The flagsip version of Linux Mint uses the [Cinnamon desktop environment](https://cinnamon-spices.linuxmint.com/) similiar to Windows 7.\
 \
-### [![](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)    Linux Mint\
+
+### [![157350295 4c6b8ab5 17d2 4e2f 91ca A111bcdb2a34 image](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)    Linux Mint\
+
 \
 [Permalink:\
-Linux Mint\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----linux-mint-)\
+Linux Mint\](https://github.com/mikeroyal/Self-Hosting-Guide#-----linux-mint-)\
 \
 [Linux Mint Debian Edition (LMDE)](https://www.linuxmint.com/download_lmde.php) uses [Debian Bullseye](https://www.debian.org/) as the base for a very stable and rock solid user experience with the Cinnamon desktop.\
 \
-### [![](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)    Linux Mint Debian Edition (LMDE)\
+
+### [![157350295 4c6b8ab5 17d2 4e2f 91ca A111bcdb2a34 image](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)](https://user-images.githubusercontent.com/45159366/157350295-4c6b8ab5-17d2-4e2f-91ca-a111bcdb2a34.png)    Linux Mint Debian Edition (LMDE)\
+
 \
 [Permalink:\
-Linux Mint Debian Edition (LMDE)\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----linux-mint-debian-edition-lmde)\
+Linux Mint Debian Edition (LMDE)\](https://github.com/mikeroyal/Self-Hosting-Guide#-----linux-mint-debian-edition-lmde)\
 \
 **[Pop!\_OS](https://pop.system76.com/)** created by [System76](https://system76.com/).\
 \
-### [![](https://user-images.githubusercontent.com/45159366/142779593-390dfd58-a246-4299-baf2-adf0207da696.png)](https://user-images.githubusercontent.com/45159366/142779593-390dfd58-a246-4299-baf2-adf0207da696.png)   Pop!\_OS\
+
+### [![142779593 390dfd58 A246 4299 Baf2 Adf0207da696 image](https://user-images.githubusercontent.com/45159366/142779593-390dfd58-a246-4299-baf2-adf0207da696.png)](https://user-images.githubusercontent.com/45159366/142779593-390dfd58-a246-4299-baf2-adf0207da696.png)   Pop!\_OS\
+
 \
 [Permalink:\
-Pop!_OS\
-](https://github.com/mikeroyal/Self-Hosting-Guide#---pop_os-)\
+Pop!_OS\](https://github.com/mikeroyal/Self-Hosting-Guide#---pop_os-)\
 \
 [Fedora Linux](https://getfedora.org/) is a polished, easy to use operating system for laptop & desktop computers, with a complete set of tools for developers and makers of all kinds. The OS serves as the foundation for which you can scale existing apps and roll out emerging technologies across bare-metal, virtual, container, and all types of cloud environments.\
 \
+
 - [Fedora Spins](https://spins.fedoraproject.org/) is for those that prefer an alternative desktop environment such as KDE Plasma Desktop, MATE; or Xfce, you can download a spin for your preferred desktop environment and use that to install Fedora, pre-configured for the desktop environment of your choice.\
 \
 - [Fedora Server](https://getfedora.org/) is a powerful, flexible operating system that includes the best and latest datacenter technologies. It puts you in control of all your infrastructure and services.\
@@ -4100,36 +4127,40 @@ Pop!_OS\
 - [Fedora CoreOS](https://getfedora.org/coreos?stream=stable) is an automatically-updating, minimal operating system for running containerized workloads securely and at scale.\
 \
 \
-### [![](https://user-images.githubusercontent.com/45159366/142779592-8b70c81e-ac10-4bb3-91b5-efe25fa9afb4.png)](https://user-images.githubusercontent.com/45159366/142779592-8b70c81e-ac10-4bb3-91b5-efe25fa9afb4.png)   Fedora Linux\
+
+### [![142779592 8b70c81e Ac10 4bb3 91b5 Efe25fa9afb4 image](https://user-images.githubusercontent.com/45159366/142779592-8b70c81e-ac10-4bb3-91b5-efe25fa9afb4.png)](https://user-images.githubusercontent.com/45159366/142779592-8b70c81e-ac10-4bb3-91b5-efe25fa9afb4.png)   Fedora Linux\
+
 \
 [Permalink:\
-Fedora Linux\
-](https://github.com/mikeroyal/Self-Hosting-Guide#---fedora-linux)\
+Fedora Linux\](https://github.com/mikeroyal/Self-Hosting-Guide#---fedora-linux)\
 \
 [CentOS Stream](https://www.centos.org/centos-stream/) is a continuously delivered distro(uses the Fedora OS base) that tracks just ahead of Red Hat Enterprise Linux (RHEL) development, positioned as a midstream between Fedora Linux and RHEL.\
 \
-### [![](https://user-images.githubusercontent.com/45159366/145488524-ebfd666a-bf90-43d8-bc41-8c363e4e233a.png)](https://user-images.githubusercontent.com/45159366/145488524-ebfd666a-bf90-43d8-bc41-8c363e4e233a.png)    CentOS Stream\
+
+### [![145488524 Ebfd666a Bf90 43d8 Bc41 8c363e4e233a image](https://user-images.githubusercontent.com/45159366/145488524-ebfd666a-bf90-43d8-bc41-8c363e4e233a.png)](https://user-images.githubusercontent.com/45159366/145488524-ebfd666a-bf90-43d8-bc41-8c363e4e233a.png)    CentOS Stream\
+
 \
 [Permalink:\
-CentOS Stream\
-](https://github.com/mikeroyal/Self-Hosting-Guide#----centos-stream)\
+CentOS Stream\](https://github.com/mikeroyal/Self-Hosting-Guide#----centos-stream)\
 \
 [Red Hat® Enterprise Linux® (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) the world's leading enterprise Linux platform. The OS serves as the foundation for which you can scale existing apps and roll out emerging technologies across bare-metal, virtual, container, and all types of cloud environments.\
 \
-### [![](https://user-images.githubusercontent.com/45159366/171923060-f9276330-5d4d-4d6a-9d41-99b9972f0cb2.png)](https://user-images.githubusercontent.com/45159366/171923060-f9276330-5d4d-4d6a-9d41-99b9972f0cb2.png)   Red Hat Enterprise Linux Desktop\
+
+### [![171923060 F9276330 5d4d 4d6a 9d41 99b9972f0cb2 image](https://user-images.githubusercontent.com/45159366/171923060-f9276330-5d4d-4d6a-9d41-99b9972f0cb2.png)](https://user-images.githubusercontent.com/45159366/171923060-f9276330-5d4d-4d6a-9d41-99b9972f0cb2.png)   Red Hat Enterprise Linux Desktop\
+
 \
 [Permalink:\
-Red Hat Enterprise Linux Desktop\
-](https://github.com/mikeroyal/Self-Hosting-Guide#---red-hat-enterprise-linux-desktop)\
+Red Hat Enterprise Linux Desktop\](https://github.com/mikeroyal/Self-Hosting-Guide#---red-hat-enterprise-linux-desktop)\
 \
 [AlmaLinux](https://almalinux.org/) is an open source enterprise-ready Linux distribution forked from Red Hat Enterprise Linux(RHEL). It's a very stable/solid operating system especially for production envrionments such as servers, though, you can also install a GUI on AlmaLinux and use it as a desktop OS. It was founded by the team behind the [CloudLinux OS](https://www.cloudlinux.com/all-products/product-overview/cloudlinuxos).\
 \
+
 - [AlmaLinux Wiki](https://wiki.almalinux.org/)\
 \
 - [Migrate from CentOS 8](https://github.com/AlmaLinux/almalinux-deploy)\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/124993377-24ab7800-dff9-11eb-90b4-4a121eff6de3.png)](https://user-images.githubusercontent.com/45159366/124993377-24ab7800-dff9-11eb-90b4-4a121eff6de3.png)\
+[![124993377 24ab7800 Dff9 11eb 90b4 4a121eff6de3 image](https://user-images.githubusercontent.com/45159366/124993377-24ab7800-dff9-11eb-90b4-4a121eff6de3.png)](https://user-images.githubusercontent.com/45159366/124993377-24ab7800-dff9-11eb-90b4-4a121eff6de3.png)\
 \
 \
 AlmaLinux Desktop Setup and Install\
@@ -4142,7 +4173,7 @@ AlmaLinux Desktop Setup and Install\
 - [Rocky Linux Documentation](https://docs.rockylinux.org/)\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/124993391-2b39ef80-dff9-11eb-9197-40c84c7f385f.png)](https://user-images.githubusercontent.com/45159366/124993391-2b39ef80-dff9-11eb-9197-40c84c7f385f.png)\
+[![124993391 2b39ef80 Dff9 11eb 9197 40c84c7f385f image](https://user-images.githubusercontent.com/45159366/124993391-2b39ef80-dff9-11eb-9197-40c84c7f385f.png)](https://user-images.githubusercontent.com/45159366/124993391-2b39ef80-dff9-11eb-9197-40c84c7f385f.png)\
 \
 Rocky Linux Desktop\
 \
@@ -4157,22 +4188,25 @@ Rocky Linux Desktop\
 - [openSUSE MicroOS](https://get.opensuse.org/microos/) is a M icro Service OS providing Transactional (Atomic) Updates upon a read-only btrfs root filesystem. It's designed to host container workloads with automated administration & patching.\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/145488499-6aae18fa-1dab-4a1f-96dc-fcd73fec5f19.png)](https://user-images.githubusercontent.com/45159366/145488499-6aae18fa-1dab-4a1f-96dc-fcd73fec5f19.png)\
+[![145488499 6aae18fa 1dab 4a1f 96dc Fcd73fec5f19 image](https://user-images.githubusercontent.com/45159366/145488499-6aae18fa-1dab-4a1f-96dc-fcd73fec5f19.png)](https://user-images.githubusercontent.com/45159366/145488499-6aae18fa-1dab-4a1f-96dc-fcd73fec5f19.png)\
 \
-### [![](https://user-images.githubusercontent.com/45159366/110253144-9f766080-7f3d-11eb-9a01-2ac6738637e9.png)](https://user-images.githubusercontent.com/45159366/110253144-9f766080-7f3d-11eb-9a01-2ac6738637e9.png)    SUSE Linux Enterprise 12\
-\
-[Permalink:\
-SUSE Linux Enterprise 12\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----suse-linux-enterprise-12)\
-\
-### [![](https://user-images.githubusercontent.com/45159366/110253145-a00ef700-7f3d-11eb-9b5c-d3cee3cbce84.png)](https://user-images.githubusercontent.com/45159366/110253145-a00ef700-7f3d-11eb-9b5c-d3cee3cbce84.png)    openSUSE\
+
+### [![110253144 9f766080 7f3d 11eb 9a01 2ac6738637e9 image](https://user-images.githubusercontent.com/45159366/110253144-9f766080-7f3d-11eb-9a01-2ac6738637e9.png)](https://user-images.githubusercontent.com/45159366/110253144-9f766080-7f3d-11eb-9a01-2ac6738637e9.png)    SUSE Linux Enterprise 12\
+
 \
 [Permalink:\
-openSUSE\
-](https://github.com/mikeroyal/Self-Hosting-Guide#-----opensuse-)\
+SUSE Linux Enterprise 12\](https://github.com/mikeroyal/Self-Hosting-Guide#-----suse-linux-enterprise-12)\
+\
+
+### [![110253145 A00ef700 7f3d 11eb 9b5c D3cee3cbce84 image](https://user-images.githubusercontent.com/45159366/110253145-a00ef700-7f3d-11eb-9b5c-d3cee3cbce84.png)](https://user-images.githubusercontent.com/45159366/110253145-a00ef700-7f3d-11eb-9b5c-d3cee3cbce84.png)    openSUSE\
+
+\
+[Permalink:\
+openSUSE\](https://github.com/mikeroyal/Self-Hosting-Guide#-----opensuse-)\
 \
 [NixOS](https://nixos.org/) is a Linux distribution built on top of the [Nix package manager](https://nixos.wiki/wiki/Nix). It has tools dedicated to DevOps and deployment tasks. [NixOS Guide](https://github.com/mikeroyal/NixOS-Guide)\
 \
+
 - [Nix Tour](https://nixcloud.io/tour/) is an interactive tour that uses the actual package manager to learn you the language by example, in the browser.\
 \
 - [Nix](https://nixos.wiki/wiki/Nix) is a package manager and build system that parses reproducible build instructions specified in the [Nix Expression Language](https://nixos.wiki/wiki/Nix_Expression_Language), is a pure functional language with lazy evaluation. Nix expressions are pure functions taking dependencies as arguments and producing derivation specifying a reproducible build environment for the package. Nix stores the results of the build in unique addresses specified by a hash of the complete dependency tree, creating an immutable package store that allows for atomic upgrades, rollbacks and concurrent installation of different versions of a package, essentially eliminating [dependency hell](https://en.wikipedia.org/wiki/Dependency_hell).\
@@ -4184,19 +4218,21 @@ openSUSE\
 - [NixOS Packages Search](https://search.nixos.org/packages) is a tool for searching through NixOS packages.\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/173939766-8972583c-855e-4a9b-b9f1-761b60ea255e.png)](https://user-images.githubusercontent.com/45159366/173939766-8972583c-855e-4a9b-b9f1-761b60ea255e.png)\
+[![173939766 8972583c 855e 4a9b B9f1 761b60ea255e image](https://user-images.githubusercontent.com/45159366/173939766-8972583c-855e-4a9b-b9f1-761b60ea255e.png)](https://user-images.githubusercontent.com/45159366/173939766-8972583c-855e-4a9b-b9f1-761b60ea255e.png)\
 \
 NixOS Packages Search\
 \
-[![](https://user-images.githubusercontent.com/45159366/173939768-31847173-88ab-45f0-8501-0980d1a2a29e.png)](https://user-images.githubusercontent.com/45159366/173939768-31847173-88ab-45f0-8501-0980d1a2a29e.png)\
+[![173939768 31847173 88ab 45f0 8501 0980d1a2a29e image](https://user-images.githubusercontent.com/45159366/173939768-31847173-88ab-45f0-8501-0980d1a2a29e.png)](https://user-images.githubusercontent.com/45159366/173939768-31847173-88ab-45f0-8501-0980d1a2a29e.png)\
 \
 NixOS Desktop with the new Calamares Installer\
 \
-[![](https://user-images.githubusercontent.com/45159366/128645111-b2a92dd2-f246-4df0-b05c-5b0ffce05448.png)](https://user-images.githubusercontent.com/45159366/128645111-b2a92dd2-f246-4df0-b05c-5b0ffce05448.png)\
+[![128645111 B2a92dd2 F246 4df0 B05c 5b0ffce05448 image](https://user-images.githubusercontent.com/45159366/128645111-b2a92dd2-f246-4df0-b05c-5b0ffce05448.png)](https://user-images.githubusercontent.com/45159366/128645111-b2a92dd2-f246-4df0-b05c-5b0ffce05448.png)\
 \
 NixOS with the Plasma Desktop\
 \
+
 ### BSD\
+
 \
 [Permalink: BSD](https://github.com/mikeroyal/Self-Hosting-Guide#bsd)\
 \
@@ -4204,7 +4240,7 @@ NixOS with the Plasma Desktop\
 \
 [FreeBSD](https://www.freebsd.org/) is an Unix-like operating system used to power modern servers, desktops, and embedded platforms. A large community has continually developed it for more than thirty years. Its advanced networking, security, and storage features have made FreeBSD the platform of choice for many of the busiest web sites and most pervasive embedded networking and storage devices.\
 \
-[![](https://user-images.githubusercontent.com/45159366/125211868-67ba5500-e25e-11eb-86eb-440fbaf28b7d.png)](https://user-images.githubusercontent.com/45159366/125211868-67ba5500-e25e-11eb-86eb-440fbaf28b7d.png)\
+[![125211868 67ba5500 E25e 11eb 86eb 440fbaf28b7d image](https://user-images.githubusercontent.com/45159366/125211868-67ba5500-e25e-11eb-86eb-440fbaf28b7d.png)](https://user-images.githubusercontent.com/45159366/125211868-67ba5500-e25e-11eb-86eb-440fbaf28b7d.png)\
 \
 **FreeBSD Software ports. Source: [FreeBSD Software](https://www.freebsdsoftware.org/)**\
 \
@@ -4212,33 +4248,40 @@ NixOS with the Plasma Desktop\
 \
 [NetBSD](https://netbsd.org/) is a free, fast, secure, and highly portable Unix-like Open Source operating system. It is available for a wide range of platforms, from large-scale servers and powerful desktop systems to handheld and embedded devices.\
 \
+
 - [NetBSD Documentation](http://netbsd.org/docs/)\
 \
 [DragonFly BSD](https://www.dragonflybsd.org/) is a free and open-source Unix-like operating system forked from FreeBSD 4.8.\
 \
 - [DragonFly Documentation](https://www.dragonflybsd.org/docs/)\
 \
+
 ### The BSD Desktop for the average user\
+
 \
 [Permalink: The BSD Desktop for the average user](https://github.com/mikeroyal/Self-Hosting-Guide#the-bsd-desktop-for-the-average-user)\
 \
 [GhostBSD](https://www.ghostbsd.org/) is a simple desktop-oriented operating system based on FreeBSD with MATE, OpenRC and OS packages for simplicity. GhostBSD has a selection of commonly used software preinstalled and required to start using it to its full potential.\
 \
+
 - [GhostBSD Wiki](https://wiki.ghostbsd.org/index.php/Main_Page)\
 \
 - [GhostBSD Community](https://forums.ghostbsd.org/index.php)\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/125211866-66892800-e25e-11eb-985b-26588de87615.png)](https://user-images.githubusercontent.com/45159366/125211866-66892800-e25e-11eb-985b-26588de87615.png)\
+[![125211866 66892800 E25e 11eb 985b 26588de87615 image](https://user-images.githubusercontent.com/45159366/125211866-66892800-e25e-11eb-985b-26588de87615.png)](https://user-images.githubusercontent.com/45159366/125211866-66892800-e25e-11eb-985b-26588de87615.png)\
 \
 **GhostBSD Desktop. Source: [GhostBSD](https://www.ghostbsd.org/)**\
 \
+
 ### Storage\
+
 \
 [Permalink: Storage](https://github.com/mikeroyal/Self-Hosting-Guide#storage)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 - [Storage Reference Guide by Storage Review](https://www.storagereview.com/storage-reference-guide)\
 \
 - [Western Digital Hard Drives Storage size range 2TB up to 20TB](https://www.westerndigital.com/c/internal-drives.0_TB-4_TB.11_TB-20_TB.5_TB-10_TB.hard_drives)\
@@ -4274,12 +4317,15 @@ NixOS with the Plasma Desktop\
 \
 [Btrfs maintenance toolbox](https://github.com/kdave/btrfsmaintenance) is a set of scripts supplementing the btrfs filesystem and aims to automate a few maintenance tasks. This means the scrub, balance, trim or defragmentation.\
 \
+
 ### File systems\
+
 \
 [Permalink: File systems](https://github.com/mikeroyal/Self-Hosting-Guide#file-systems)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 - [FSArchiver](https://www.fsarchiver.org/) is a system tool that allows you to save the contents of a file system to a compressed archive file. The file system can be restored on a partition which has a different size and it can be restored on a different file system.\
 \
 [WekaFS](https://www.weka.io/resources/datasheet/wekafs-the-weka-file-system/) is the world's fastest shared parallel file system and delivers unmatched performance at ANY scale while offering the same enterprise features and benefits of traditional storage. It meets all storage challenges, delivering 10x the performance of legacy network attached storage (NAS) systems and 3x the performance of local server storage.\
@@ -4345,12 +4391,15 @@ NixOS with the Plasma Desktop\
 \
 [exFAT(Extended File Allocation Table )](https://docs.microsoft.com/en-us/windows/win32/fileio/exfat-specification) is the file system that was the successor to FAT32 in the FAT family of file systems. It was optimized for flash memory such as USB flash drives and SD cards.\
 \
+
 ### Books\
+
 \
 [Permalink: Books](https://github.com/mikeroyal/Self-Hosting-Guide#books)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 - [Self-hosted Cookbook](https://github.com/tborychowski/self-hosted-cookbook) is a cookbook, for docker-compose based recipes, for self-hosted applications and services.\
 \
 - [Geek's Cookbook](https://github.com/geek-cookbook/geek-cookbook) is a collection of guides for establishing your own highly-available "private cloud" and using it to run self-hosted services such as GitLab, Plex, NextCloud, etc.\
@@ -4358,12 +4407,15 @@ NixOS with the Plasma Desktop\
 - [Database Books(PDFs)](https://github.com/miollek/Free-Database-Books)\
 \
 \
+
 ### Podcasts\
+
 \
 [Permalink: Podcasts](https://github.com/mikeroyal/Self-Hosting-Guide#podcasts)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 - [Self-Hosted Podcast](https://selfhosted.show/) is a chat show between Chris and Alex two long-time "self-hosters" who share their lessons and take you along for the journey as they learn new ones.\
 \
 - [Self-Hosted SRE(Site Reality Engineer) Podcast](https://sshsre.fireside.fm/) is a feed to say thank you to our Self-Hosted Site Reality Engineers!\
@@ -4371,12 +4423,15 @@ NixOS with the Plasma Desktop\
 - [Home Assistant Podcast](https://hasspodcast.io/) is a biweekly podcast with the latest news and interesting guests.\
 \
 \
+
 ### YouTube Channels\
+
 \
 [Permalink: YouTube Channels](https://github.com/mikeroyal/Self-Hosting-Guide#youtube-channels)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 - [Jeff Geerling](https://www.youtube.com/c/JeffGeerling)\
 \
 - [Level1Techs](https://www.youtube.com/c/Level1Techs)\
@@ -4410,12 +4465,15 @@ NixOS with the Plasma Desktop\
 - [Home Network Geek](https://www.youtube.com/channel/UCCniXOLmZ85FHN8c8K_c0LA/featured)\
 \
 \
+
 ### Tutorials & Resources\
+
 \
 [Permalink: Tutorials & Resources](https://github.com/mikeroyal/Self-Hosting-Guide#tutorials--resources)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 - [Awesome-SelfHosted](https://github.com/awesome-selfhosted/awesome-selfhosted) is a directory of free software solutions and web applications which can be hosted locally.\
 \
 - [Awesome Sysadmin](https://github.com/awesome-foss/awesome-sysadmin) is a curated list of amazingly awesome open source sysadmin resources.\
@@ -4490,12 +4548,15 @@ NixOS with the Plasma Desktop\
 - [Azure DevOps Self Hosted](https://github.com/Azure/DevOps-Self-Hosted)\
 \
 \
+
 ### Subreddits\
+
 \
 [Permalink: Subreddits](https://github.com/mikeroyal/Self-Hosting-Guide#subreddits)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 - [r/Selfhosted](https://www.reddit.com/r/selfhosted/)\
 - [r/Webhosting](https://www.reddit.com/r/webhosting/)\
 - [r/NextCloud](https://www.reddit.com/r/NextCloud/)\
@@ -4536,15 +4597,19 @@ NixOS with the Plasma Desktop\
 - [r/PFSENSE](https://www.reddit.com/r/PFSENSE/)\
 - [r/OpenMediaVault](https://www.reddit.com/r/OpenMediaVault/)\
 \
-# WireGuard\
+
+## WireGuard\
+
 \
 [Permalink: WireGuard](https://github.com/mikeroyal/Self-Hosting-Guide#wireguard)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/147891038-00f57362-e843-4bfb-be31-606c954d4e6c.png)](https://user-images.githubusercontent.com/45159366/147891038-00f57362-e843-4bfb-be31-606c954d4e6c.png)\
+[![147891038 00f57362 E843 4bfb Be31 606c954d4e6c image](https://user-images.githubusercontent.com/45159366/147891038-00f57362-e843-4bfb-be31-606c954d4e6c.png)](https://user-images.githubusercontent.com/45159366/147891038-00f57362-e843-4bfb-be31-606c954d4e6c.png)\
 \
-### What is WireGuard?\
+
+## What is WireGuard?\
+
 \
 [Permalink: What is WireGuard?](https://github.com/mikeroyal/Self-Hosting-Guide#what-is-wireguard)\
 \
@@ -4552,9 +4617,11 @@ NixOS with the Plasma Desktop\
 \
 [WireGuard®](https://www.wireguard.com/) is a straight-forward, fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec while avoiding the massive headache. WireGuard is designed as a general-purpose VPN for running on embedded interfaces and super computers alike, fit for many circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable.\
 \
-[![](https://user-images.githubusercontent.com/45159366/190848622-d1c8b109-f08c-4a89-b43d-816c510e4f2e.png)](https://user-images.githubusercontent.com/45159366/190848622-d1c8b109-f08c-4a89-b43d-816c510e4f2e.png)\
+[![190848622 D1c8b109 F08c 4a89 B43d 816c510e4f2e image](https://user-images.githubusercontent.com/45159366/190848622-d1c8b109-f08c-4a89-b43d-816c510e4f2e.png)](https://user-images.githubusercontent.com/45159366/190848622-d1c8b109-f08c-4a89-b43d-816c510e4f2e.png)\
 \
+
 ### What is Tailscale?\
+
 \
 [Permalink: What is Tailscale?](https://github.com/mikeroyal/Self-Hosting-Guide#what-is-tailscale)\
 \
@@ -4562,17 +4629,20 @@ NixOS with the Plasma Desktop\
 \
 [Tailscale](https://github.com/tailscale) is a WireGuard-based app that makes secure, private networks easy for teams of any scale. It works like an [overlay network](https://tailscale.com/blog/how-tailscale-works/) between the computers of your networks using all kinds of [NAT traversal sorcery](https://tailscale.com/blog/how-nat-traversal-works/).\
 \
+
 - [Tailscale Terraform Provider](https://github.com/tailscale/terraform-provider-tailscale)\
 - [Tailscale Docker extension](https://github.com/tailscale/docker-extension)\
 - [Tailscale Synology](https://github.com/tailscale/tailscale-synology)\
 \
-[![](https://user-images.githubusercontent.com/45159366/191301110-4c688e1b-da46-4f19-a25f-c285d66403e5.png)](https://user-images.githubusercontent.com/45159366/191301110-4c688e1b-da46-4f19-a25f-c285d66403e5.png)\
+[![191301110 4c688e1b Da46 4f19 A25f C285d66403e5 image](https://user-images.githubusercontent.com/45159366/191301110-4c688e1b-da46-4f19-a25f-c285d66403e5.png)](https://user-images.githubusercontent.com/45159366/191301110-4c688e1b-da46-4f19-a25f-c285d66403e5.png)\
 \
 How NAT Traversal works on a Home router. Credit: [Tailscale](https://tailscale.com/blog/how-nat-traversal-works/).\
 \
 [Headscale](https://github.com/juanfont/headscale) is an open source, self-hosted implementation of the Tailscale coordination server.\
 \
+
 ### What is Netmaker?\
+
 \
 [Permalink: What is Netmaker?](https://github.com/mikeroyal/Self-Hosting-Guide#what-is-netmaker)\
 \
@@ -4580,11 +4650,13 @@ How NAT Traversal works on a Home router. Credit: [Tailscale](https://tailscale.
 \
 [Netmaker](https://www.netmaker.org/) is a tool that enables you to create relays, gateways, full VPN meshes, and even zero trust networks. It's fully configurable to let you maximize the power of Wireguard.\
 \
-[![](https://user-images.githubusercontent.com/45159366/191140241-4ad71f9a-7f1f-4d93-be3a-2d625b144dca.png)](https://user-images.githubusercontent.com/45159366/191140241-4ad71f9a-7f1f-4d93-be3a-2d625b144dca.png)\
+[![191140241 4ad71f9a 7f1f 4d93 Be3a 2d625b144dca image](https://user-images.githubusercontent.com/45159366/191140241-4ad71f9a-7f1f-4d93-be3a-2d625b144dca.png)](https://user-images.githubusercontent.com/45159366/191140241-4ad71f9a-7f1f-4d93-be3a-2d625b144dca.png)\
 \
 NetMaker Architecture. Credit: [Netmaker](https://netmaker.readthedocs.io/en/v0.7.2/index.html).\
 \
+
 ### WireGuard Tools\
+
 \
 [Permalink: WireGuard Tools](https://github.com/mikeroyal/Self-Hosting-Guide#wireguard-tools)\
 \
@@ -4630,13 +4702,15 @@ NetMaker Architecture. Credit: [Netmaker](https://netmaker.readthedocs.io/en/v0.
 \
 [Ethr](https://github.com/microsoft/ethr) is a cross platform network performance measurement tool written in golang. The goal of this project is to provide a native tool for comprehensive network performance measurements of bandwidth, connections/s, packets/s, latency, loss & jitter, across multiple protocols such as TCP, UDP, HTTP, HTTPS, and across multiple platforms such as Windows, Linux and other Unix systems.\
 \
+
 ### Setting up WireGuard with PiVPN\
+
 \
 [Permalink: Setting up WireGuard with PiVPN](https://github.com/mikeroyal/Self-Hosting-Guide#setting-up-wireguard-with-pivpn)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190881122-3accce96-dbc1-46ba-9e67-bff78f160475.png)](https://user-images.githubusercontent.com/45159366/190881122-3accce96-dbc1-46ba-9e67-bff78f160475.png)\
+[![190881122 3accce96 Dbc1 46ba 9e67 Bff78f160475 image](https://user-images.githubusercontent.com/45159366/190881122-3accce96-dbc1-46ba-9e67-bff78f160475.png)](https://user-images.githubusercontent.com/45159366/190881122-3accce96-dbc1-46ba-9e67-bff78f160475.png)\
 \
 **Installing PiVPN:**\
 \
@@ -4644,61 +4718,67 @@ NetMaker Architecture. Credit: [Netmaker](https://netmaker.readthedocs.io/en/v0.
 \
 `curl -L https://install.pivpn.io | bash`\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880700-48034b3b-c3d2-459e-b52b-ed5d699fe31a.png)](https://user-images.githubusercontent.com/45159366/190880700-48034b3b-c3d2-459e-b52b-ed5d699fe31a.png)\
+[![190880700 48034b3b C3d2 459e B52b Ed5d699fe31a image](https://user-images.githubusercontent.com/45159366/190880700-48034b3b-c3d2-459e-b52b-ed5d699fe31a.png)](https://user-images.githubusercontent.com/45159366/190880700-48034b3b-c3d2-459e-b52b-ed5d699fe31a.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880702-9da353e8-2a25-4b9c-bb48-4d28af696e1e.png)](https://user-images.githubusercontent.com/45159366/190880702-9da353e8-2a25-4b9c-bb48-4d28af696e1e.png)\
+[![190880702 9da353e8 2a25 4b9c Bb48 4d28af696e1e image](https://user-images.githubusercontent.com/45159366/190880702-9da353e8-2a25-4b9c-bb48-4d28af696e1e.png)](https://user-images.githubusercontent.com/45159366/190880702-9da353e8-2a25-4b9c-bb48-4d28af696e1e.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880703-5d71fb3c-1ad9-4511-bb21-da60da25c9d7.png)](https://user-images.githubusercontent.com/45159366/190880703-5d71fb3c-1ad9-4511-bb21-da60da25c9d7.png)\
+[![190880703 5d71fb3c 1ad9 4511 Bb21 Da60da25c9d7 image](https://user-images.githubusercontent.com/45159366/190880703-5d71fb3c-1ad9-4511-bb21-da60da25c9d7.png)](https://user-images.githubusercontent.com/45159366/190880703-5d71fb3c-1ad9-4511-bb21-da60da25c9d7.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880704-2042e18b-bc60-4b53-8251-2e3628b3083e.png)](https://user-images.githubusercontent.com/45159366/190880704-2042e18b-bc60-4b53-8251-2e3628b3083e.png)\
+[![190880704 2042e18b Bc60 4b53 8251 2e3628b3083e image](https://user-images.githubusercontent.com/45159366/190880704-2042e18b-bc60-4b53-8251-2e3628b3083e.png)](https://user-images.githubusercontent.com/45159366/190880704-2042e18b-bc60-4b53-8251-2e3628b3083e.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880705-8270b271-2cf4-49b7-b133-a04509167425.png)](https://user-images.githubusercontent.com/45159366/190880705-8270b271-2cf4-49b7-b133-a04509167425.png)\
+[![190880705 8270b271 2cf4 49b7 B133 A04509167425 image](https://user-images.githubusercontent.com/45159366/190880705-8270b271-2cf4-49b7-b133-a04509167425.png)](https://user-images.githubusercontent.com/45159366/190880705-8270b271-2cf4-49b7-b133-a04509167425.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880706-401973df-8d3d-4c18-bd79-49948b8d1ee2.png)](https://user-images.githubusercontent.com/45159366/190880706-401973df-8d3d-4c18-bd79-49948b8d1ee2.png)\
+[![190880706 401973df 8d3d 4c18 Bd79 49948b8d1ee2 image](https://user-images.githubusercontent.com/45159366/190880706-401973df-8d3d-4c18-bd79-49948b8d1ee2.png)](https://user-images.githubusercontent.com/45159366/190880706-401973df-8d3d-4c18-bd79-49948b8d1ee2.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880708-9c8aedf5-81bd-4f93-bf87-d5c713194b13.png)](https://user-images.githubusercontent.com/45159366/190880708-9c8aedf5-81bd-4f93-bf87-d5c713194b13.png)\
+[![190880708 9c8aedf5 81bd 4f93 Bf87 D5c713194b13 image](https://user-images.githubusercontent.com/45159366/190880708-9c8aedf5-81bd-4f93-bf87-d5c713194b13.png)](https://user-images.githubusercontent.com/45159366/190880708-9c8aedf5-81bd-4f93-bf87-d5c713194b13.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880709-28f88ff7-38bf-4ebe-916c-8228c13050ea.png)](https://user-images.githubusercontent.com/45159366/190880709-28f88ff7-38bf-4ebe-916c-8228c13050ea.png)\
+[![190880709 28f88ff7 38bf 4ebe 916c 8228c13050ea image](https://user-images.githubusercontent.com/45159366/190880709-28f88ff7-38bf-4ebe-916c-8228c13050ea.png)](https://user-images.githubusercontent.com/45159366/190880709-28f88ff7-38bf-4ebe-916c-8228c13050ea.png)\
 \
+
 ### Setting up WireGuard on Unraid\
+
 \
 [Permalink: Setting up WireGuard on Unraid](https://github.com/mikeroyal/Self-Hosting-Guide#setting-up-wireguard-on-unraid)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190881124-635b4c29-41c6-423d-bff9-07e811a5f319.png)](https://user-images.githubusercontent.com/45159366/190881124-635b4c29-41c6-423d-bff9-07e811a5f319.png)\
+[![190881124 635b4c29 41c6 423d Bff9 07e811a5f319 image](https://user-images.githubusercontent.com/45159366/190881124-635b4c29-41c6-423d-bff9-07e811a5f319.png)](https://user-images.githubusercontent.com/45159366/190881124-635b4c29-41c6-423d-bff9-07e811a5f319.png)\
 \
 Select Apps, then search for WireGuard and install **Wireguard-Easy**.\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880956-9ad5d1e6-5905-46ec-9d94-6f1c0a42a997.jpg)](https://user-images.githubusercontent.com/45159366/190880956-9ad5d1e6-5905-46ec-9d94-6f1c0a42a997.jpg)\
+[![190880956 9ad5d1e6 5905 46ec 9d94 6f1c0a42a997 image](https://user-images.githubusercontent.com/45159366/190880956-9ad5d1e6-5905-46ec-9d94-6f1c0a42a997.jpg)](https://user-images.githubusercontent.com/45159366/190880956-9ad5d1e6-5905-46ec-9d94-6f1c0a42a997.jpg)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880957-d20e3fa1-b219-407a-b80b-b84cc59bb2a0.png)](https://user-images.githubusercontent.com/45159366/190880957-d20e3fa1-b219-407a-b80b-b84cc59bb2a0.png)\
+[![190880957 D20e3fa1 B219 407a B80b B84cc59bb2a0 image](https://user-images.githubusercontent.com/45159366/190880957-d20e3fa1-b219-407a-b80b-b84cc59bb2a0.png)](https://user-images.githubusercontent.com/45159366/190880957-d20e3fa1-b219-407a-b80b-b84cc59bb2a0.png)\
 \
 VPN manager\
 \
 Almost all of the settings can stay as default, however, there are a few that we will modify.\
 \
+
 - Set the WG\_HOST variable to be the IP address of your Unraid server.\
 - If you’d like to modify the WireGuard port (51820), you can do that here.\
 - Change the default Web GUI password.\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880958-e5c2c3f8-fd85-47c5-beb4-cc06d19899b4.png)](https://user-images.githubusercontent.com/45159366/190880958-e5c2c3f8-fd85-47c5-beb4-cc06d19899b4.png)\
+[![190880958 E5c2c3f8 Fd85 47c5 Beb4 Cc06d19899b4 image](https://user-images.githubusercontent.com/45159366/190880958-e5c2c3f8-fd85-47c5-beb4-cc06d19899b4.png)](https://user-images.githubusercontent.com/45159366/190880958-e5c2c3f8-fd85-47c5-beb4-cc06d19899b4.png)\
 \
+
 ### Setting up WireGuard on pfSense\
+
 \
 [Permalink: Setting up WireGuard on pfSense](https://github.com/mikeroyal/Self-Hosting-Guide#setting-up-wireguard-on-pfsense)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190881128-e03216b9-ecc6-4c12-a41e-0de7d1b51579.png)](https://user-images.githubusercontent.com/45159366/190881128-e03216b9-ecc6-4c12-a41e-0de7d1b51579.png)\
+[![190881128 E03216b9 Ecc6 4c12 A41e 0de7d1b51579 image](https://user-images.githubusercontent.com/45159366/190881128-e03216b9-ecc6-4c12-a41e-0de7d1b51579.png)](https://user-images.githubusercontent.com/45159366/190881128-e03216b9-ecc6-4c12-a41e-0de7d1b51579.png)\
 \
 When looking at how to set up WireGuard on pfSense, the first thing that we need to do is install the package. Follow the instructions below to install the WireGuard package on pfSense.\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880975-b103fead-2596-4819-bb82-18414baa4fb4.jpg)](https://user-images.githubusercontent.com/45159366/190880975-b103fead-2596-4819-bb82-18414baa4fb4.jpg)\
+[![190880975 B103fead 2596 4819 Bb82 18414baa4fb4 image](https://user-images.githubusercontent.com/45159366/190880975-b103fead-2596-4819-bb82-18414baa4fb4.jpg)](https://user-images.githubusercontent.com/45159366/190880975-b103fead-2596-4819-bb82-18414baa4fb4.jpg)\
 \
+
 - Open the Package Manager and search for WireGuard, then Install the latest version of the package.\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880976-1c7d0b18-8e50-4072-8f32-a6991b7d3923.jpg)](https://user-images.githubusercontent.com/45159366/190880976-1c7d0b18-8e50-4072-8f32-a6991b7d3923.jpg)\
+[![190880976 1c7d0b18 8e50 4072 8f32 A6991b7d3923 image](https://user-images.githubusercontent.com/45159366/190880976-1c7d0b18-8e50-4072-8f32-a6991b7d3923.jpg)](https://user-images.githubusercontent.com/45159366/190880976-1c7d0b18-8e50-4072-8f32-a6991b7d3923.jpg)\
 \
 - After the package has installed, select VPN then WireGuard and under the Tunnels section, select Add Tunnel.\
 \
@@ -4709,20 +4789,23 @@ When looking at how to set up WireGuard on pfSense, the first thing that we need
 - Create the tunnel, then select Settings, and ensure that Enable WireGuard is selected. Then Save and Apply.\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/190880978-70ccc9f1-f5be-479a-9f95-234a4f90ee87.jpg)](https://user-images.githubusercontent.com/45159366/190880978-70ccc9f1-f5be-479a-9f95-234a4f90ee87.jpg)\
+[![190880978 70ccc9f1 F5be 479a 9f95 234a4f90ee87 image](https://user-images.githubusercontent.com/45159366/190880978-70ccc9f1-f5be-479a-9f95-234a4f90ee87.jpg)](https://user-images.githubusercontent.com/45159366/190880978-70ccc9f1-f5be-479a-9f95-234a4f90ee87.jpg)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190880979-6a1db7b4-bace-47ea-8ba5-43b375a821ba.jpg)](https://user-images.githubusercontent.com/45159366/190880979-6a1db7b4-bace-47ea-8ba5-43b375a821ba.jpg)\
+[![190880979 6a1db7b4 Bace 47ea 8ba5 43b375a821ba image](https://user-images.githubusercontent.com/45159366/190880979-6a1db7b4-bace-47ea-8ba5-43b375a821ba.jpg)](https://user-images.githubusercontent.com/45159366/190880979-6a1db7b4-bace-47ea-8ba5-43b375a821ba.jpg)\
 \
+
 ### Setting up WireGuard on OpenWRT\
+
 \
 [Permalink: Setting up WireGuard on OpenWRT](https://github.com/mikeroyal/Self-Hosting-Guide#setting-up-wireguard-on-openwrt)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190891717-a0972531-ec9d-4b7d-8543-2a68fb1792d2.png)](https://user-images.githubusercontent.com/45159366/190891717-a0972531-ec9d-4b7d-8543-2a68fb1792d2.png)\
+[![190891717 A0972531 Ec9d 4b7d 8543 2a68fb1792d2 image](https://user-images.githubusercontent.com/45159366/190891717-a0972531-ec9d-4b7d-8543-2a68fb1792d2.png)](https://user-images.githubusercontent.com/45159366/190891717-a0972531-ec9d-4b7d-8543-2a68fb1792d2.png)\
 \
 **Quick Links:**\
 \
+
 - [WireGuard route all traffic through wireguard tunnel](https://openwrt.org/docs/guide-user/services/vpn/wireguard/all-traffic-through-wireguard)\
 - [Automated WireGuard Server and Multi-client](https://openwrt.org/docs/guide-user/services/vpn/wireguard/automated)\
 - [WireGuard basics](https://openwrt.org/docs/guide-user/services/vpn/wireguard/basics)\
@@ -4739,7 +4822,7 @@ In your router’s webUI, navigate to System - Software, click Update lists:\
 \
 In the Filter field, type WireGuard, locate and install the **wireguard, wireguard-tools, kmod-wireguard, and luci-app-wireguard packages.** **Note: The wireguard package is included in version 22.02.**\
 \
-[![](https://user-images.githubusercontent.com/45159366/190891718-b56b1152-2236-4d2c-bfbd-0f9f8f064e01.jpeg)](https://user-images.githubusercontent.com/45159366/190891718-b56b1152-2236-4d2c-bfbd-0f9f8f064e01.jpeg)\
+[![190891718 B56b1152 2236 4d2c Bfbd 0f9f8f064e01 image](https://user-images.githubusercontent.com/45159366/190891718-b56b1152-2236-4d2c-bfbd-0f9f8f064e01.jpeg)](https://user-images.githubusercontent.com/45159366/190891718-b56b1152-2236-4d2c-bfbd-0f9f8f064e01.jpeg)\
 \
 **Generate WireGuard keypair**\
 \
@@ -4792,7 +4875,7 @@ Click the Add button and enter the following configuration:\
 - Allow forward to destination zones - Unspecified\
 - Allow forward from source zones - lan\
 \
-[![](https://user-images.githubusercontent.com/45159366/190891722-8e64c915-9fbf-48e2-ae4d-73a1bd4c9489.jpeg)](https://user-images.githubusercontent.com/45159366/190891722-8e64c915-9fbf-48e2-ae4d-73a1bd4c9489.jpeg)\
+[![190891722 8e64c915 9fbf 48e2 Ae4d 73a1bd4c9489 image](https://user-images.githubusercontent.com/45159366/190891722-8e64c915-9fbf-48e2-ae4d-73a1bd4c9489.jpeg)](https://user-images.githubusercontent.com/45159366/190891722-8e64c915-9fbf-48e2-ae4d-73a1bd4c9489.jpeg)\
 \
 **DNS**\
 \
@@ -4806,7 +4889,7 @@ In the Advanced Settings tab, uncheck the Use DNS servers advertised by peer and
 - 10.0.254.2 = standard AntiTracker to block advertising and malware domains\
 - 10.0.254.3 = Hardcore Mode AntiTracker to also block Google and Facebook domains\
 \
-[![](https://user-images.githubusercontent.com/45159366/190891723-43aa1b88-ab91-4f87-935b-03f052add368.jpeg)](https://user-images.githubusercontent.com/45159366/190891723-43aa1b88-ab91-4f87-935b-03f052add368.jpeg)\
+[![190891723 43aa1b88 Ab91 4f87 935b 03f052add368 image](https://user-images.githubusercontent.com/45159366/190891723-43aa1b88-ab91-4f87-935b-03f052add368.jpeg)](https://user-images.githubusercontent.com/45159366/190891723-43aa1b88-ab91-4f87-935b-03f052add368.jpeg)\
 \
 Click the Save button.\
 \
@@ -4815,22 +4898,25 @@ Click the Save button.\
 - A device reboot is not required, though it may be useful to confirm that everything behaves as expected.\
 - Run a leak test at [https://www.dnsleaktest.com](https://www.dnsleaktest.com/) via one of the internal network clients attached to your OpenWRT router.\
 \
+
 ### Setting up WireGuard on Home Assistant\
+
 \
 [Permalink: Setting up WireGuard on Home Assistant](https://github.com/mikeroyal/Self-Hosting-Guide#setting-up-wireguard-on-home-assistant)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/190974554-6611b441-2487-4e82-a5f5-018e6ee887d8.png)](https://user-images.githubusercontent.com/45159366/190974554-6611b441-2487-4e82-a5f5-018e6ee887d8.png)\
+[![190974554 6611b441 2487 4e82 A5f5 018e6ee887d8 image](https://user-images.githubusercontent.com/45159366/190974554-6611b441-2487-4e82-a5f5-018e6ee887d8.png)](https://user-images.githubusercontent.com/45159366/190974554-6611b441-2487-4e82-a5f5-018e6ee887d8.png)\
 \
 **Install Wireguard Add-on in Home Assistant**\
 \
+
 - Next, open up Home Assistant. Go to Supervisor > Add-on store, and search for WireGuard.\
 \
 - Click the WireGuard addon, and the click Install.\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/190974557-6e466f3a-75c5-46fe-ab95-406fad796318.png)](https://user-images.githubusercontent.com/45159366/190974557-6e466f3a-75c5-46fe-ab95-406fad796318.png)\
+[![190974557 6e466f3a 75c5 46fe Ab95 406fad796318 image](https://user-images.githubusercontent.com/45159366/190974557-6e466f3a-75c5-46fe-ab95-406fad796318.png)](https://user-images.githubusercontent.com/45159366/190974557-6e466f3a-75c5-46fe-ab95-406fad796318.png)\
 \
 **Configure Wireguard Settings**\
 \
@@ -4856,7 +4942,7 @@ Click **Save** once finished.\
 \
 Then, go back to the Info tab and click **Start**.\
 \
-[![](https://user-images.githubusercontent.com/45159366/190974558-dad4b4e4-295d-4074-84b8-44ca1be7078a.png)](https://user-images.githubusercontent.com/45159366/190974558-dad4b4e4-295d-4074-84b8-44ca1be7078a.png)\
+[![190974558 Dad4b4e4 295d 4074 84b8 44ca1be7078a image](https://user-images.githubusercontent.com/45159366/190974558-dad4b4e4-295d-4074-84b8-44ca1be7078a.png)](https://user-images.githubusercontent.com/45159366/190974558-dad4b4e4-295d-4074-84b8-44ca1be7078a.png)\
 \
 **Port Forward**\
 \
@@ -4872,16 +4958,19 @@ If all goes well, you can click into the new tunnel connection from within the a
 \
 Once you have everything setup and working correctly, you should read through the [WireGuard Addon docs](https://github.com/hassio-addons/addon-wireguard/blob/main/wireguard/DOCS.md) to setup up `allowed_ips` and `client_allowed_ips` to further secure your VPN instance. There’s also some other helpful options you can configure such as log level, but these are all optional.\
 \
-# Nextcloud\
+
+## Nextcloud\
+
 \
 [Permalink: Nextcloud](https://github.com/mikeroyal/Self-Hosting-Guide#nextcloud-1)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)\
+[![150701955 F1f514a8 82e6 462f 9fc9 8926b6b7de3e image](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)](https://user-images.githubusercontent.com/45159366/150701955-f1f514a8-82e6-462f-9fc9-8926b6b7de3e.png)\
 \
 [Nextcloud](https://nextcloud.com/) is an industry-leading, on-premises content collaboration platform for file sync & share and communication server. It is fully open source and you can host it yourself or pay a company to do it for you. Also checkout the following links below:\
 \
+
 - [Nextcloud App Store](https://apps.nextcloud.com/)\
 \
 - [Nextcloud GitHub](https://github.com/nextcloud)\
@@ -4889,13 +4978,13 @@ Once you have everything setup and working correctly, you should read through th
 - [Nextcloud Developer Program](https://nextcloud.com/developer)\
 \
 \
-[![](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)\
+[![150701961 Ac8be115 34c1 4012 Bd69 D1f22a10e48c image](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)](https://user-images.githubusercontent.com/45159366/150701961-ac8be115-34c1-4012-bd69-d1f22a10e48c.png)\
 \
 Nexcloud login screen\
 \
 [Nextcloud Hub](https://nextcloud.com/hub/) is a tool that allows you to share and collaborate on documents, send and receive email, manage your calendar and have video chats without data leaks. As fully on-premises solution, Nextcloud Hub provides the benefits of online collaboration without the compliance and security risks.\
 \
-[![](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)\
+[![150701964 Df1dd8d9 1d3a 4376 81e8 F49439fb4356 image](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)](https://user-images.githubusercontent.com/45159366/150701964-df1dd8d9-1d3a-4376-81e8-f49439fb4356.png)\
 \
 Nexcloud Hub\
 \
@@ -4934,15 +5023,19 @@ Nexcloud Hub\
 \
 [LibreSign](https://libresign.github.io/) is a Libre digital signature app for Nextcloud.\
 \
-# Raspberry Pi\
+
+## Raspberry Pi\
+
 \
 [Permalink: Raspberry Pi](https://github.com/mikeroyal/Self-Hosting-Guide#raspberry-pi)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/103486513-4cecbc80-4db3-11eb-89a0-fa155cbcdbda.png)](https://user-images.githubusercontent.com/45159366/103486513-4cecbc80-4db3-11eb-89a0-fa155cbcdbda.png)\
+[![103486513 4cecbc80 4db3 11eb 89a0 Fa155cbcdbda image](https://user-images.githubusercontent.com/45159366/103486513-4cecbc80-4db3-11eb-89a0-fa155cbcdbda.png)](https://user-images.githubusercontent.com/45159366/103486513-4cecbc80-4db3-11eb-89a0-fa155cbcdbda.png)\
 \
+
 ## Models of Raspberry Pi boards\
+
 \
 [Permalink: Models of Raspberry Pi boards](https://github.com/mikeroyal/Self-Hosting-Guide#models-of-raspberry-pi-boards)\
 \
@@ -4950,12 +5043,13 @@ Nexcloud Hub\
 \
 **Raspberry Pi 4 Model B**\
 \
-[![](https://user-images.githubusercontent.com/45159366/103486342-08acec80-4db2-11eb-8696-f51475c9787a.jpeg)](https://user-images.githubusercontent.com/45159366/103486342-08acec80-4db2-11eb-8696-f51475c9787a.jpeg)\
+[![103486342 08acec80 4db2 11eb 8696 F51475c9787a image](https://user-images.githubusercontent.com/45159366/103486342-08acec80-4db2-11eb-8696-f51475c9787a.jpeg)](https://user-images.githubusercontent.com/45159366/103486342-08acec80-4db2-11eb-8696-f51475c9787a.jpeg)\
 \
 [Check out the Raspberry Pi 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/)\
 \
 **Raspberry Pi 4 Model B Hardware Specifications**\
 \
+
 - Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz\
 - 2GB, 4GB or 8GB LPDDR4-3200 SDRAM (depending on model)\
 - 2.4 GHz and 5.0 GHz IEEE 802.11ac wireless\
@@ -4968,7 +5062,7 @@ Nexcloud Hub\
 \
 **Raspberry Pi 400 Personal Computer Kit**\
 \
-[![](https://user-images.githubusercontent.com/45159366/103486343-09458300-4db2-11eb-989a-6f0cd451c7b0.png)](https://user-images.githubusercontent.com/45159366/103486343-09458300-4db2-11eb-989a-6f0cd451c7b0.png)\
+[![103486343 09458300 4db2 11eb 989a 6f0cd451c7b0 image](https://user-images.githubusercontent.com/45159366/103486343-09458300-4db2-11eb-989a-6f0cd451c7b0.png)](https://user-images.githubusercontent.com/45159366/103486343-09458300-4db2-11eb-989a-6f0cd451c7b0.png)\
 \
 [Check out the Raspberry Pi 400 Personal Computer Kit](https://www.raspberrypi.org/products/raspberry-pi-400/)\
 \
@@ -4986,7 +5080,7 @@ Nexcloud Hub\
 \
 **Raspberry Pi Pico Microcontroller**\
 \
-[![](https://user-images.githubusercontent.com/45159366/105645203-e6593c80-5e4e-11eb-96cb-66f64a9a4367.png)](https://user-images.githubusercontent.com/45159366/105645203-e6593c80-5e4e-11eb-96cb-66f64a9a4367.png)\
+[![105645203 E6593c80 5e4e 11eb 96cb 66f64a9a4367 image](https://user-images.githubusercontent.com/45159366/105645203-e6593c80-5e4e-11eb-96cb-66f64a9a4367.png)](https://user-images.githubusercontent.com/45159366/105645203-e6593c80-5e4e-11eb-96cb-66f64a9a4367.png)\
 \
 [Check out the Raspberry Pi Pico](https://www.raspberrypi.org/products/raspberry-pi-pico/)\
 \
@@ -5011,9 +5105,11 @@ Nexcloud Hub\
 \
 [Check out Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/)\
 \
-[![](https://user-images.githubusercontent.com/45159366/103486345-0a76b000-4db2-11eb-9e96-e7f234bdc950.png)](https://user-images.githubusercontent.com/45159366/103486345-0a76b000-4db2-11eb-9e96-e7f234bdc950.png)\
+[![103486345 0a76b000 4db2 11eb 9e96 E7f234bdc950 image](https://user-images.githubusercontent.com/45159366/103486345-0a76b000-4db2-11eb-9e96-e7f234bdc950.png)](https://user-images.githubusercontent.com/45159366/103486345-0a76b000-4db2-11eb-9e96-e7f234bdc950.png)\
 \
+
 ## Raspberry Pi Learning Resources\
+
 \
 [Permalink: Raspberry Pi Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#raspberry-pi-learning-resources)\
 \
@@ -5047,7 +5143,9 @@ Nexcloud Hub\
 \
 [PiSwitch: Build your own Nintendo Switch-style console](https://magpi.raspberrypi.org/articles/piswitch-nintendo-switch-console)\
 \
+
 ## Raspberry Pi Operating Systems\
+
 \
 [Permalink: Raspberry Pi Operating Systems](https://github.com/mikeroyal/Self-Hosting-Guide#raspberry-pi-operating-systems)\
 \
@@ -5093,7 +5191,9 @@ Nexcloud Hub\
 \
 [Windows 10 IoT Core](https://docs.microsoft.com/en-us/windows/iot-core/windows-iot-core)\
 \
+
 ## Raspberry Pi Tools\
+
 \
 [Permalink: Raspberry Pi Tools](https://github.com/mikeroyal/Self-Hosting-Guide#raspberry-pi-tools)\
 \
@@ -5129,41 +5229,48 @@ Nexcloud Hub\
 \
 [OpenBalena](https://balena.io/open) is a platform to deploy and manage connected devices.\
 \
+
 ### Home Assistant\
+
 \
 [Permalink: Home Assistant](https://github.com/mikeroyal/Self-Hosting-Guide#home-assistant)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)\
+[![177719719 9108f14f 9ca0 45e4 B1f5 55efaf1803e6 image](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)](https://user-images.githubusercontent.com/45159366/177719719-9108f14f-9ca0-45e4-b1f5-55efaf1803e6.png)\
 \
 [Home Assistant](https://home-assistant.io/hassio/) is a container-based system for managing your Home Assistant Core installation and related applications. The system is controlled via Home Assistant which communicates with the Supervisor. The Supervisor provides an API to manage the installation. This includes changing network settings or installing and updating software.\
 \
 **Quick Links**\
 \
+
 - [Getting Started with Home Assistant](https://home-assistant.io/getting-started)\
 - [Home Assistant for Raspberry Pi](https://www.home-assistant.io/installation/raspberrypi/)\
 - [Installing Home Assistant OS using Proxmox 7](https://github.com/Kanga-Who/home-assistant/blob/master/Home%20Assistant%20with%20Proxmox%20installation.md)\
 \
 [Home Assistant Frontend](https://demo.home-assistant.io/) is a frontend for Home Assistant.\
 \
+
 #### Tools to write the HA image to your boot media(microSD card or USB device)\
+
 \
 [Permalink: Tools to write the HA image to your boot media(microSD card or USB device)](https://github.com/mikeroyal/Self-Hosting-Guide#tools-to-write-the-ha-image-to-your-boot-mediamicrosd-card-or-usb-device)\
 \
 [Raspberry Pi Imager](https://www.raspberrypi.org/software/) is the quick and easy way to install Raspberry Pi OS and other operating systems to a microSD card, ready to use with your Raspberry Pi.\
 \
-[![](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)\
+[![177719735 575326e7 3f29 4175 8ca1 B9eabb15e2e6 image](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)\
 \
 [Etcher](https://www.balena.io/etcher/) is an open source, cross-platform software that makes it easy to flash operating system images to a microSD card or USB device.\
 \
-[![](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)\
+[![177719741 A88c162f Bfa9 469f A87e E9f12c175e07 image](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)\
 \
+
 ### Home Assistant integrations\
+
 \
 [Permalink: Home Assistant integrations](https://github.com/mikeroyal/Self-Hosting-Guide#home-assistant-integrations)\
 \
-[![](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)\
+[![177719765 602b4658 C8bf 4952 A238 4b986efbb7cb image](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)](https://user-images.githubusercontent.com/45159366/177719765-602b4658-c8bf-4952-a238-4b986efbb7cb.png)\
 \
 Home Assistant integrations. Credit: [Home Assistant](https://www.home-assistant.io/integrations/)\
 \
@@ -5203,60 +5310,71 @@ Home Assistant integrations. Credit: [Home Assistant](https://www.home-assistant
 \
 [Z-Wave JS Config DB Browser](https://devices.zwave-js.io/) is the official device configuration reference to find out if your device is supported. Currently supports 387 brands, spanning at least 2075 device configurations.\
 \
+
 ### Homebridge\
+
 \
 [Permalink: Homebridge](https://github.com/mikeroyal/Self-Hosting-Guide#homebridge)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/177946864-bd962065-a863-4f97-b6be-a8f98861efa4.png)](https://user-images.githubusercontent.com/45159366/177946864-bd962065-a863-4f97-b6be-a8f98861efa4.png)\
+[![177946864 Bd962065 A863 4f97 B6be A8f98861efa4 image](https://user-images.githubusercontent.com/45159366/177946864-bd962065-a863-4f97-b6be-a8f98861efa4.png)](https://user-images.githubusercontent.com/45159366/177946864-bd962065-a863-4f97-b6be-a8f98861efa4.png)\
 \
 [Homebridge](https://homebridge.io/) is a software frameowrk that allows you to integrate with smart home devices that do not natively support [HomeKit](https://www.apple.com/shop/accessories/all/homekit). There are over 2,000 Homebridge plugins supporting thousands of different smart accessories.\
 \
+
 - [Official Homebridge Raspberry Pi Image](https://github.com/homebridge/homebridge-raspbian-image/wiki/Getting-Started)\
 - [Setup Homebridge on a Raspberry Pi (Raspbian)](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Raspbian)\
 - [Setup Homebridge on Debian or Ubuntu](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Debian-or-Ubuntu-Linux)\
 - [Setup Homebridge on Red Hat, CentOS Stream or Fedora](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Red-Hat%2C-CentOS-or-Fedora-Linux)\
 - [Setup Homebridge on Docker (Linux)](https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Docker)\
 \
+
 #### Tools to write the Homebridge image to your boot media(microSD card or USB device)\
+
 \
 [Permalink: Tools to write the Homebridge image to your boot media(microSD card or USB device)](https://github.com/mikeroyal/Self-Hosting-Guide#tools-to-write-the-homebridge-image-to-your-boot-mediamicrosd-card-or-usb-device)\
 \
 [Raspberry Pi Imager](https://www.raspberrypi.org/software/) is the quick and easy way to install Raspberry Pi OS and other operating systems to a microSD card, ready to use with your Raspberry Pi.\
 \
-[![](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)\
+[![177719735 575326e7 3f29 4175 8ca1 B9eabb15e2e6 image](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)\
 \
 [Etcher](https://www.balena.io/etcher/) is an open source, cross-platform software that makes it easy to flash operating system images to a microSD card or USB device.\
 \
-[![](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)\
+[![177719741 A88c162f Bfa9 469f A87e E9f12c175e07 image](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)](https://user-images.githubusercontent.com/45159366/177719741-a88c162f-bfa9-469f-a87e-e9f12c175e07.png)\
 \
 [Homebridge UI](https://github.com/oznu/homebridge-config-ui-x) is a tool that provides an easy to use interface to manage your Homebridge plugins, configuration and accessories.\
 \
+
 - Install and configure Homebridge plugins.\
 - Monitor your Homebridge server via a fully customisable widget-based dashboard.\
 - View and control Homebridge accessories.\
 - Backup and Restore your Homebridge instance.\
 \
-[![](https://user-images.githubusercontent.com/45159366/177949596-0d02c572-fa6b-4fc7-adbd-d136f81149fb.png)](https://user-images.githubusercontent.com/45159366/177949596-0d02c572-fa6b-4fc7-adbd-d136f81149fb.png)\
+[![177949596 0d02c572 Fa6b 4fc7 Adbd D136f81149fb image](https://user-images.githubusercontent.com/45159366/177949596-0d02c572-fa6b-4fc7-adbd-d136f81149fb.png)](https://user-images.githubusercontent.com/45159366/177949596-0d02c572-fa6b-4fc7-adbd-d136f81149fb.png)\
 \
 Homebridge UI\
 \
 \
+
 ### ESPHome\
+
 \
 [Permalink: ESPHome](https://github.com/mikeroyal/Self-Hosting-Guide#esphome)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/178136653-b6e635f6-5fa9-40a6-9903-e0dfb912ed80.png)](https://user-images.githubusercontent.com/45159366/178136653-b6e635f6-5fa9-40a6-9903-e0dfb912ed80.png)\
+[![178136653 B6e635f6 5fa9 40a6 9903 E0dfb912ed80 image](https://user-images.githubusercontent.com/45159366/178136653-b6e635f6-5fa9-40a6-9903-e0dfb912ed80.png)](https://user-images.githubusercontent.com/45159366/178136653-b6e635f6-5fa9-40a6-9903-e0dfb912ed80.png)\
 \
 [ESPHome](https://esphome.io/) is a system to control your ESP8266/ESP32 by simple yet powerful configuration files and control them remotely through Home Automation systems.\
 \
+
 #### Quick Links\
+
 \
 [Permalink: Quick Links](https://github.com/mikeroyal/Self-Hosting-Guide#quick-links)\
 \
+
 - [ESP Web Tools](https://esphome.github.io/esp-web-tools/)\
 \
 - [Installing ESPHome Manually \| ESPHome](https://esphome.io/guides/installing_esphome.html)\
@@ -5272,7 +5390,9 @@ Homebridge UI\
 - [ESPHome Setup \| Integrating Home Assistant with Adafruit IO](https://learn.adafruit.com/integrating-adafruit-io-with-home-assistant/esphome-setup)\
 \
 \
+
 ### Install ESPHome using Home Assistant\
+
 \
 [Permalink: Install ESPHome using Home Assistant](https://github.com/mikeroyal/Self-Hosting-Guide#install-esphome-using-home-assistant)\
 \
@@ -5284,22 +5404,26 @@ Open your Home Assistant instance and show the Supervisor add-on store.\
 \
 [![ESPHome HA](https://user-images.githubusercontent.com/45159366/178136849-9a5deed7-beb8-4a62-aeda-ce9aec3fac3e.svg)](https://my.home-assistant.io/redirect/config_flow_start?domain=esphome)\
 \
+
 - Next, search for ESPHome, click on the result and then click on the Install button.\
 \
-[![](https://user-images.githubusercontent.com/45159366/178137323-40fb0ec9-f35c-43d7-b60c-08588c89fd33.png)](https://user-images.githubusercontent.com/45159366/178137323-40fb0ec9-f35c-43d7-b60c-08588c89fd33.png)\
+[![178137323 40fb0ec9 F35c 43d7 B60c 08588c89fd33 image](https://user-images.githubusercontent.com/45159366/178137323-40fb0ec9-f35c-43d7-b60c-08588c89fd33.png)](https://user-images.githubusercontent.com/45159366/178137323-40fb0ec9-f35c-43d7-b60c-08588c89fd33.png)\
 \
 - When the installation is finished, the Install button will be replaced with Start button – click on it to start the ESPHome add-on.\
 \
-[![](https://user-images.githubusercontent.com/45159366/178137277-b71897d5-2684-451c-af2f-ab85f9b1affa.png)](https://user-images.githubusercontent.com/45159366/178137277-b71897d5-2684-451c-af2f-ab85f9b1affa.png)\
+[![178137277 B71897d5 2684 451c Af2f Ab85f9b1affa image](https://user-images.githubusercontent.com/45159366/178137277-b71897d5-2684-451c-af2f-ab85f9b1affa.png)](https://user-images.githubusercontent.com/45159366/178137277-b71897d5-2684-451c-af2f-ab85f9b1affa.png)\
 \
 - Wait a few seconds for the ESPHome to start and then click on the Open Web UI button.\
 \
-[![](https://user-images.githubusercontent.com/45159366/178137097-7753aed9-c3e7-4fba-9b52-570771609572.png)](https://user-images.githubusercontent.com/45159366/178137097-7753aed9-c3e7-4fba-9b52-570771609572.png)\
+[![178137097 7753aed9 C3e7 4fba 9b52 570771609572 image](https://user-images.githubusercontent.com/45159366/178137097-7753aed9-c3e7-4fba-9b52-570771609572.png)](https://user-images.githubusercontent.com/45159366/178137097-7753aed9-c3e7-4fba-9b52-570771609572.png)\
 \
+
 ### Install ESPHome using Docker\
+
 \
 [Permalink: Install ESPHome using Docker](https://github.com/mikeroyal/Self-Hosting-Guide#install-esphome-using-docker)\
 \
+
 - First thing is to pull the [ESPHome Docker image from Docker Hub](https://hub.docker.com/u/esphome) (Online).\
 \
 `docker pull esphome/esphome`\
@@ -5317,10 +5441,13 @@ Open your Home Assistant instance and show the Supervisor add-on store.\
 \
 `docker run --rm -v "${PWD}":/config --device=/dev/ttyUSB1 -it esphome/esphome run stl.yaml`\
 \
+
 ### Install ESPHome using Python\
+
 \
 [Permalink: Install ESPHome using Python](https://github.com/mikeroyal/Self-Hosting-Guide#install-esphome-using-python)\
 \
+
 - If you are on macOS or Linux check if Python 3.8 or later is installed by executing the command.\
 \
 `python3 --version`\
@@ -5341,42 +5468,52 @@ Open your Home Assistant instance and show the Supervisor add-on store.\
 \
 `esphome run stl-python.yaml`\
 \
+
 ### Turning Raspberry Pi into a Router\
+
 \
 [Permalink: Turning Raspberry Pi into a Router](https://github.com/mikeroyal/Self-Hosting-Guide#turning-raspberry-pi-into-a-router)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
+
 #### Software\
+
 \
 [Permalink: Software](https://github.com/mikeroyal/Self-Hosting-Guide#software)\
 \
 [OpenWrt Project](https://openwrt.org/) is a Linux operating system targeting embedded devices. Instead of trying to create a single, static firmware, OpenWrt provides a fully writable filesystem with package management. It's primarily used on embedded devices to route network traffic.\
 \
+
 - [OpenWrt Wiki - Raspberry Pi setup](https://openwrt.org/toh/raspberry_pi_foundation/raspberry_pi)\
 \
 **Download the appropriate OpenWrt image for your Raspberry PI by going to the link above.**\
 \
+
 ### Tools to write the Operating System (OS) image to your boot media(microSD card)\
+
 \
 [Permalink: Tools to write the Operating System (OS) image to your boot media(microSD card)](https://github.com/mikeroyal/Self-Hosting-Guide#tools-to-write-the-operating-system-os-image-to-your-boot-mediamicrosd-card)\
 \
 [Raspberry Pi Imager](https://www.raspberrypi.org/software/) is the quick and easy way to install Raspberry Pi OS and other operating systems to a microSD card, ready to use with your Raspberry Pi.\
 \
-[![](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)\
+[![177719735 575326e7 3f29 4175 8ca1 B9eabb15e2e6 image](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)](https://user-images.githubusercontent.com/45159366/177719735-575326e7-3f29-4175-8ca1-b9eabb15e2e6.png)\
 \
+
 #### Hardware\
+
 \
 [Permalink: Hardware](https://github.com/mikeroyal/Self-Hosting-Guide#hardware)\
 \
 [Raspberry Pi Router Board for CM4 module (Cost: $55 USD)](https://www.seeedstudio.com/CM4-Router-Board-p-5211.html) is an expansion board based on the Raspberry Pi Compute Module 4. It brings Raspberry Pi CM4 two full-speed gigabit network ports and offers better performance, lower CPU usage, and higher stability for a long time work compared with a USB network card. It's compatible with [Raspberry Pi OS](https://www.raspberrypi.com/software/operating-systems/), [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) and other Raspberry Pi systems.\
 \
-[![](https://user-images.githubusercontent.com/45159366/183271470-728741bd-0d52-480d-8ebe-8c9817589093.png)](https://user-images.githubusercontent.com/45159366/183271470-728741bd-0d52-480d-8ebe-8c9817589093.png)\
+[![183271470 728741bd 0d52 480d 8ebe 8c9817589093 image](https://user-images.githubusercontent.com/45159366/183271470-728741bd-0d52-480d-8ebe-8c9817589093.png)](https://user-images.githubusercontent.com/45159366/183271470-728741bd-0d52-480d-8ebe-8c9817589093.png)\
 \
 Raspberry Pi Router Board for CM4 module\
 \
 **Technical Specs:**\
 \
+
 - Compatible Module: Raspberry Pi Compute Module 4 series.\
 - BCM2711 4 core @ 1.5GHz Cortex-A72.\
 - Support standard Raspberry Pi HAT interface.\
@@ -5393,7 +5530,9 @@ Raspberry Pi Router Board for CM4 module\
   - Port1: PCI Express 1000BASE-T NIC.\
 - GPIO: 40-Pin GPIO compatible with Raspberry Pi.\
 \
+
 ### Setting Watchdog Timer (WDT) on Raspberry Pi\
+
 \
 [Permalink: Setting Watchdog Timer (WDT) on Raspberry Pi](https://github.com/mikeroyal/Self-Hosting-Guide#setting-watchdog-timer-wdt-on-raspberry-pi)\
 \
@@ -5401,7 +5540,9 @@ Raspberry Pi Router Board for CM4 module\
 \
 [Watchdog Timer (WDT)](https://en.wikipedia.org/wiki/Watchdog_timer) is a timer that monitors microcontroller (MCU) programs to see if they are out of control or have stopped operating.\
 \
+
 ### Installing and enabling WDT service\
+
 \
 [Permalink: Installing and enabling WDT service](https://github.com/mikeroyal/Self-Hosting-Guide#installing-and-enabling-wdt-service)\
 \
@@ -5411,12 +5552,15 @@ To enable watchdog you have to change the boot parameters by adding **dtparam=wa
 \
 `pi@raspberrypi:~ $sudo systemctl enable watchdog`\
 \
+
 ### Configure WDT service\
+
 \
 [Permalink: Configure WDT service](https://github.com/mikeroyal/Self-Hosting-Guide#configure-wdt-service)\
 \
 Configuration file for watchdog can be found in **/etc/watchdog.conf**.\
 \
+
 ```\
 max-load-1 = 24\
 watchdog-device = /dev/watchdog\
@@ -5436,7 +5580,9 @@ priority = 1\
 \
 `pi@raspberrypi:~ $ sudo systemctl stop watchdog`\
 \
+
 ## Raspberry Pi Upgrades\
+
 \
 [Permalink: Raspberry Pi Upgrades](https://github.com/mikeroyal/Self-Hosting-Guide#raspberry-pi-upgrades)\
 \
@@ -5444,49 +5590,53 @@ priority = 1\
 \
 [Raspberry Pi Cases from Pi-Shop US](https://www.pishop.us/product-category/raspberry-pi/pi-cases/)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692629-80803580-8e3c-11eb-8b5c-c4879113a058.png)](https://user-images.githubusercontent.com/45159366/112692629-80803580-8e3c-11eb-8b5c-c4879113a058.png)\
+[![112692629 80803580 8e3c 11eb 8b5c C4879113a058 image](https://user-images.githubusercontent.com/45159366/112692629-80803580-8e3c-11eb-8b5c-c4879113a058.png)](https://user-images.githubusercontent.com/45159366/112692629-80803580-8e3c-11eb-8b5c-c4879113a058.png)\
 \
 [Raspberry Pi Cases from The Pi Hut](https://thepihut.com/collections/raspberry-pi-cases)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692621-7eb67200-8e3c-11eb-9a88-ae72443701ce.png)](https://user-images.githubusercontent.com/45159366/112692621-7eb67200-8e3c-11eb-9a88-ae72443701ce.png)\
+[![112692621 7eb67200 8e3c 11eb 9a88 Ae72443701ce image](https://user-images.githubusercontent.com/45159366/112692621-7eb67200-8e3c-11eb-9a88-ae72443701ce.png)](https://user-images.githubusercontent.com/45159366/112692621-7eb67200-8e3c-11eb-9a88-ae72443701ce.png)\
 \
 [X825 expansion board](https://www.amazon.com/Geekworm-Raspberry-Storage-Expansion-Compatible/dp/B07VXF2HJG) provides a complete storage solution for newest Raspberry Pi 4 Model B, it supports up to 4TB 2.5-inch SATA hard disk drives (HDD) / solid-state drive (SSD).\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692608-7bbb8180-8e3c-11eb-80f6-1b1d9d8656e0.png)](https://user-images.githubusercontent.com/45159366/112692608-7bbb8180-8e3c-11eb-80f6-1b1d9d8656e0.png)\
+[![112692608 7bbb8180 8e3c 11eb 80f6 1b1d9d8656e0 image](https://user-images.githubusercontent.com/45159366/112692608-7bbb8180-8e3c-11eb-80f6-1b1d9d8656e0.png)](https://user-images.githubusercontent.com/45159366/112692608-7bbb8180-8e3c-11eb-80f6-1b1d9d8656e0.png)\
 \
 [Sabrent M.2 SSD \[NGFF\] to USB 3.0 / SATA III 2.5-Inch Aluminum Enclosure Adapter](https://www.amazon.com/Sabrent-2-5-Inch-Aluminum-Enclosure-EC-M2CU/dp/B07924J5NT/ref=sr_1_10?crid=28O2JRHO9DE4G&dchild=1&keywords=m.2+to+usb+3.0+adapter&qid=1616632834&sprefix=m.2+to+usb,aps,236&sr=8-10)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692658-88d87080-8e3c-11eb-81f1-1c796145cf7a.png)](https://user-images.githubusercontent.com/45159366/112692658-88d87080-8e3c-11eb-81f1-1c796145cf7a.png)\
+[![112692658 88d87080 8e3c 11eb 81f1 1c796145cf7a image](https://user-images.githubusercontent.com/45159366/112692658-88d87080-8e3c-11eb-81f1-1c796145cf7a.png)](https://user-images.githubusercontent.com/45159366/112692658-88d87080-8e3c-11eb-81f1-1c796145cf7a.png)\
 \
 [Samsung 970 EVO 250GB - NVMe PCIe M.2 2280 SSD](https://www.amazon.com/dp/B07BN5FJZQ/ref=twister_B08KGF1DPF?_encoding=UTF8&psc=1)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692666-8c6bf780-8e3c-11eb-85a6-1f160a10a01a.png)](https://user-images.githubusercontent.com/45159366/112692666-8c6bf780-8e3c-11eb-85a6-1f160a10a01a.png)\
+[![112692666 8c6bf780 8e3c 11eb 85a6 1f160a10a01a image](https://user-images.githubusercontent.com/45159366/112692666-8c6bf780-8e3c-11eb-85a6-1f160a10a01a.png)](https://user-images.githubusercontent.com/45159366/112692666-8c6bf780-8e3c-11eb-85a6-1f160a10a01a.png)\
 \
 [Western Digital 1TB WD Blue SN550 NVMe Internal SSD](https://www.amazon.com/dp/B07YFF8879/ref=twister_B082KVPKQ5?_encoding=UTF8&psc=1)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692675-8d9d2480-8e3c-11eb-9ed1-e08c2932d5ab.png)](https://user-images.githubusercontent.com/45159366/112692675-8d9d2480-8e3c-11eb-9ed1-e08c2932d5ab.png)\
+[![112692675 8d9d2480 8e3c 11eb 9ed1 E08c2932d5ab image](https://user-images.githubusercontent.com/45159366/112692675-8d9d2480-8e3c-11eb-9ed1-e08c2932d5ab.png)](https://user-images.githubusercontent.com/45159366/112692675-8d9d2480-8e3c-11eb-9ed1-e08c2932d5ab.png)\
 \
 [SAMSUNG T5 Portable SSD](https://www.amazon.com/Samsung-500GB-Portable-Solid-State/dp/B074WZJ4MF/ref=sr_1_4?crid=343DRDX8SJJV6&dchild=1&keywords=samsung+t5+portable+ssd&qid=1616632092&sprefix=samsung+t5+portable,aps,374&sr=8-4)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692679-8ece5180-8e3c-11eb-94e5-18796639776e.png)](https://user-images.githubusercontent.com/45159366/112692679-8ece5180-8e3c-11eb-94e5-18796639776e.png)\
+[![112692679 8ece5180 8e3c 11eb 94e5 18796639776e image](https://user-images.githubusercontent.com/45159366/112692679-8ece5180-8e3c-11eb-94e5-18796639776e.png)](https://user-images.githubusercontent.com/45159366/112692679-8ece5180-8e3c-11eb-94e5-18796639776e.png)\
 \
 [Samsung SSD 860 EVO 250GB mSATA Internal SSD](https://www.amazon.com/Samsung-250GB-mSATA-Internal-MZ-M6E250BW/dp/B07864YNTZ/ref=sr_1_8?crid=2KRBSPRQYUIOH&dchild=1&keywords=samsung+850+evo+msata&qid=1616632277&sprefix=samsung+850+evo+m,aps,233&sr=8-8)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692689-91c94200-8e3c-11eb-82ed-28d6ab05c072.png)](https://user-images.githubusercontent.com/45159366/112692689-91c94200-8e3c-11eb-82ed-28d6ab05c072.png)\
+[![112692689 91c94200 8e3c 11eb 82ed 28d6ab05c072 image](https://user-images.githubusercontent.com/45159366/112692689-91c94200-8e3c-11eb-82ed-28d6ab05c072.png)](https://user-images.githubusercontent.com/45159366/112692689-91c94200-8e3c-11eb-82ed-28d6ab05c072.png)\
 \
 [Samsung 850 EVO 120GB SSD mSATA](https://www.amazon.com/Samsung-850-120GB-mSATA-MZ-M5E120BW/dp/B00TGIVQ4G/ref=sr_1_9?crid=2KRBSPRQYUIOH&dchild=1&keywords=samsung+850+evo+msata&qid=1616632277&sprefix=samsung+850+evo+m,aps,233&sr=8-9)\
 \
-[![](https://user-images.githubusercontent.com/45159366/112692696-92fa6f00-8e3c-11eb-8c7a-c169bb0c9b1e.png)](https://user-images.githubusercontent.com/45159366/112692696-92fa6f00-8e3c-11eb-8c7a-c169bb0c9b1e.png)\
+[![112692696 92fa6f00 8e3c 11eb 8c7a C169bb0c9b1e image](https://user-images.githubusercontent.com/45159366/112692696-92fa6f00-8e3c-11eb-8c7a-c169bb0c9b1e.png)](https://user-images.githubusercontent.com/45159366/112692696-92fa6f00-8e3c-11eb-8c7a-c169bb0c9b1e.png)\
 \
-# Grafana\
+
+## Grafana\
+
 \
 [Permalink: Grafana](https://github.com/mikeroyal/Self-Hosting-Guide#grafana)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/124398126-eea08800-dcc8-11eb-8129-087e924d9eed.png)](https://user-images.githubusercontent.com/45159366/124398126-eea08800-dcc8-11eb-8129-087e924d9eed.png)\
+[![124398126 Eea08800 Dcc8 11eb 8129 087e924d9eed image](https://user-images.githubusercontent.com/45159366/124398126-eea08800-dcc8-11eb-8129-087e924d9eed.png)](https://user-images.githubusercontent.com/45159366/124398126-eea08800-dcc8-11eb-8129-087e924d9eed.png)\
 \
+
 ## Grafana Learning Resources\
+
 \
 [Permalink: Grafana Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#grafana-learning-resources)\
 \
@@ -5510,19 +5660,21 @@ priority = 1\
 \
 [Setting Up Grafana to Visualize Our Metrics Course on Coursera](https://www.coursera.org/lecture/continuous-integration/setting-up-grafana-to-visualize-our-metrics-part-4-of-10-OOMzF)\
 \
+
 ## Grafana Tools\
+
 \
 [Permalink: Grafana Tools](https://github.com/mikeroyal/Self-Hosting-Guide#grafana-tools)\
 \
 [Grafana Cloud](https://grafana.com/products/cloud/) is a composable observability platform, integrating metrics, traces and logs with Grafana. Leverage the best open source observability software – including Prometheus, Loki, and Tempo – without the overhead of installing, maintaining, and scaling your observability stack.\
 \
-[![](https://user-images.githubusercontent.com/45159366/124398133-f3653c00-dcc8-11eb-8465-8633072daf41.png)](https://user-images.githubusercontent.com/45159366/124398133-f3653c00-dcc8-11eb-8465-8633072daf41.png)\
+[![124398133 F3653c00 Dcc8 11eb 8465 8633072daf41 image](https://user-images.githubusercontent.com/45159366/124398133-f3653c00-dcc8-11eb-8465-8633072daf41.png)](https://user-images.githubusercontent.com/45159366/124398133-f3653c00-dcc8-11eb-8465-8633072daf41.png)\
 \
 **Grafana Cloud Integrations. Source: [Grafana](https://grafana.com/products/cloud/)**\
 \
 [Grafana Enterprise](https://grafana.com/products/enterprise/) is a service that includes features that provide better scalability, collaboration, operations, and governance in a self-managed environment.\
 \
-[![](https://user-images.githubusercontent.com/45159366/124398134-f4966900-dcc8-11eb-8633-448074c93f71.png)](https://user-images.githubusercontent.com/45159366/124398134-f4966900-dcc8-11eb-8633-448074c93f71.png)\
+[![124398134 F4966900 Dcc8 11eb 8633 448074c93f71 image](https://user-images.githubusercontent.com/45159366/124398134-f4966900-dcc8-11eb-8633-448074c93f71.png)](https://user-images.githubusercontent.com/45159366/124398134-f4966900-dcc8-11eb-8633-448074c93f71.png)\
 \
 **Grafana Enterprise Stack. Source: [Grafana](https://grafana.com/products/enterprise/)**\
 \
@@ -5538,15 +5690,19 @@ priority = 1\
 \
 [Graphite](https://grafana.com/oss/graphite/) is an open source monitoring system.\
 \
-# Networking\
+
+## Networking\
+
 \
 [Permalink: Networking](https://github.com/mikeroyal/Self-Hosting-Guide#networking)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/82833053-d1687b80-9e71-11ea-8c6d-074100f2f54b.png)](https://user-images.githubusercontent.com/45159366/82833053-d1687b80-9e71-11ea-8c6d-074100f2f54b.png)\
+[![82833053 D1687b80 9e71 11ea 8c6d 074100f2f54b image](https://user-images.githubusercontent.com/45159366/82833053-d1687b80-9e71-11ea-8c6d-074100f2f54b.png)](https://user-images.githubusercontent.com/45159366/82833053-d1687b80-9e71-11ea-8c6d-074100f2f54b.png)\
 \
+
 ## Networking Tools & Concepts\
+
 \
 [Permalink: Networking Tools & Concepts](https://github.com/mikeroyal/Self-Hosting-Guide#networking-tools--concepts)\
 \
@@ -5610,7 +5766,9 @@ Some low level protocols are TCP, UDP, IP, and ICMP. Some familiar examples of a
 • VPN: Virtual private network is a means of connecting separate LANs through the internet, while maintaining privacy. This is used as a means of connecting remote systems as if they were on a local network, often for security reasons.\
 ```\
 \
+
 ## Network Layers\
+
 \
 [Permalink: Network Layers](https://github.com/mikeroyal/Self-Hosting-Guide#network-layers)\
 \
@@ -5652,13 +5810,17 @@ The communication takes place between peers network.\
 • Link: The link layer implements the actual topology of the local network that allows the internet layer to present an addressable interface. It establishes connections between neighboring nodes to send data.\
 ```\
 \
+
 ### Interfaces\
+
 \
 [Permalink: Interfaces](https://github.com/mikeroyal/Self-Hosting-Guide#interfaces)\
 \
 **Interfaces** are networking communication points for your computer. Each interface is associated with a physical or virtual networking device. Typically, your server will have one configurable network interface for each Ethernet or wireless internet card you have. In addition, it will define a virtual network interface called the "loopback" or localhost interface. This is used as an interface to connect applications and processes on a single computer to other applications and processes. You can see this referenced as the "lo" interface in many tools.\
 \
+
 ## Network Protocols\
+
 \
 [Permalink: Network Protocols](https://github.com/mikeroyal/Self-Hosting-Guide#network-protocols)\
 \
@@ -5688,19 +5850,23 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [OAuth 2.0](https://oauth.net/2/) is an open source authorization framework that enables applications to obtain limited access to user accounts on an HTTP service, such as Amazon, Google, Facebook, Microsoft, Twitter GitHub, and DigitalOcean. It works by delegating user authentication to the service that hosts the user account, and authorizing third-party applications to access the user account.\
 \
-# Docker\
+
+## Docker\
+
 \
 [Permalink: Docker](https://github.com/mikeroyal/Self-Hosting-Guide#docker-1)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/113521410-2e32c900-954e-11eb-8311-065fa0099546.png)](https://user-images.githubusercontent.com/45159366/113521410-2e32c900-954e-11eb-8311-065fa0099546.png)\
+[![113521410 2e32c900 954e 11eb 8311 065fa0099546 image](https://user-images.githubusercontent.com/45159366/113521410-2e32c900-954e-11eb-8311-065fa0099546.png)](https://user-images.githubusercontent.com/45159366/113521410-2e32c900-954e-11eb-8311-065fa0099546.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/113521413-2ffc8c80-954e-11eb-9d19-b9c996bc524b.png)](https://user-images.githubusercontent.com/45159366/113521413-2ffc8c80-954e-11eb-9d19-b9c996bc524b.png)\
+[![113521413 2ffc8c80 954e 11eb 9d19 B9c996bc524b image](https://user-images.githubusercontent.com/45159366/113521413-2ffc8c80-954e-11eb-9d19-b9c996bc524b.png)](https://user-images.githubusercontent.com/45159366/113521413-2ffc8c80-954e-11eb-9d19-b9c996bc524b.png)\
 \
 **Container Architecture. Source: [Containerd.io](https://containerd.io/)**\
 \
+
 ## Docker Learning Resources\
+
 \
 [Permalink: Docker Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#docker-learning-resources)\
 \
@@ -5720,7 +5886,9 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Docker Courses on Linkedin Learning](https://www.linkedin.com/learning/topics/docker)\
 \
+
 ## Docker Tools\
+
 \
 [Permalink: Docker Tools](https://github.com/mikeroyal/Self-Hosting-Guide#docker-tools)\
 \
@@ -5760,15 +5928,19 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Containerd](https://containerd.io/) is a daemon that manages the complete container lifecycle of its host system, from image transfer and storage to container execution and supervision to low-level storage to network attachments and beyond. It is available for Linux and Windows.\
 \
-# Kubernetes\
+
+## Kubernetes\
+
 \
 [Permalink: Kubernetes](https://github.com/mikeroyal/Self-Hosting-Guide#kubernetes)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/95383873-a884d800-08a0-11eb-8eaf-57af5b119f56.png)](https://user-images.githubusercontent.com/45159366/95383873-a884d800-08a0-11eb-8eaf-57af5b119f56.png)\
+[![95383873 A884d800 08a0 11eb 8eaf 57af5b119f56 image](https://user-images.githubusercontent.com/45159366/95383873-a884d800-08a0-11eb-8eaf-57af5b119f56.png)](https://user-images.githubusercontent.com/45159366/95383873-a884d800-08a0-11eb-8eaf-57af5b119f56.png)\
 \
+
 ## Kubernetes Learning Resources\
+
 \
 [Permalink: Kubernetes Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#kubernetes-learning-resources)\
 \
@@ -5834,7 +6006,9 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Scalable Microservices with Kubernetes course from Udacity](https://www.udacity.com/course/scalable-microservices-with-kubernetes--ud615)\
 \
+
 ## Kubernetes Tools, Frameworks, and Projects\
+
 \
 [Permalink: Kubernetes Tools, Frameworks, and Projects](https://github.com/mikeroyal/Self-Hosting-Guide#kubernetes-tools-frameworks-and-projects)\
 \
@@ -5908,17 +6082,21 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Platform9 Managed Kubernetes (PMK)](https://platform9.com/managed-kubernetes/) is a Kubernetes as a service that ensures fully automated Day-2 operations with 99.9% SLA on any environment, whether in data-centers, public clouds, or at the edge.\
 \
-# Ansible\
+
+## Ansible\
+
 \
 [Permalink: Ansible](https://github.com/mikeroyal/Self-Hosting-Guide#ansible)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/113448802-62bd4e00-93b1-11eb-9114-419e758af23b.png)](https://user-images.githubusercontent.com/45159366/113448802-62bd4e00-93b1-11eb-9114-419e758af23b.png)\
+[![113448802 62bd4e00 93b1 11eb 9114 419e758af23b image](https://user-images.githubusercontent.com/45159366/113448802-62bd4e00-93b1-11eb-9114-419e758af23b.png)](https://user-images.githubusercontent.com/45159366/113448802-62bd4e00-93b1-11eb-9114-419e758af23b.png)\
 \
 **[Mac Development Ansible Playbook by Jeff Geerling](https://github.com/geerlingguy/mac-dev-playbook)**\
 \
+
 ## Ansible Learning Resources\
+
 \
 [Permalink: Ansible Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#ansible-learning-resources)\
 \
@@ -5968,7 +6146,9 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Intro to Ansible on Linode \| Spatial Labs](https://spatial-labs.dev/posts/202101072328-intro-to-ansible-on-linode/)\
 \
+
 ## Ansible DevOps Tools Integration\
+
 \
 [Permalink: Ansible DevOps Tools Integration](https://github.com/mikeroyal/Self-Hosting-Guide#ansible-devops-tools-integration)\
 \
@@ -6004,17 +6184,21 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [OpenShift Hive](https://github.com/openshift/hive) is an operator which runs as a service on top of Kubernetes/OpenShift. The Hive service can be used to provision and perform initial configuration of OpenShift 4 clusters.\
 \
-# Databases\
+
+## Databases\
+
 \
 [Permalink: Databases](https://github.com/mikeroyal/Self-Hosting-Guide#databases-1)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/119279004-daec0700-bbdd-11eb-9662-b1fc86ec8448.png)](https://user-images.githubusercontent.com/45159366/119279004-daec0700-bbdd-11eb-9662-b1fc86ec8448.png)\
+[![119279004 Daec0700 Bbdd 11eb 9662 B1fc86ec8448 image](https://user-images.githubusercontent.com/45159366/119279004-daec0700-bbdd-11eb-9662-b1fc86ec8448.png)](https://user-images.githubusercontent.com/45159366/119279004-daec0700-bbdd-11eb-9662-b1fc86ec8448.png)\
 \
-[![](https://user-images.githubusercontent.com/45159366/119279002-da537080-bbdd-11eb-9d7a-44efb52f3506.png)](https://user-images.githubusercontent.com/45159366/119279002-da537080-bbdd-11eb-9d7a-44efb52f3506.png)\
+[![119279002 Da537080 Bbdd 11eb 9d7a 44efb52f3506 image](https://user-images.githubusercontent.com/45159366/119279002-da537080-bbdd-11eb-9d7a-44efb52f3506.png)](https://user-images.githubusercontent.com/45159366/119279002-da537080-bbdd-11eb-9d7a-44efb52f3506.png)\
 \
+
 ## SQL/NoSQL Learning Resources\
+
 \
 [Permalink: SQL/NoSQL Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#sqlnosql-learning-resources)\
 \
@@ -6056,7 +6240,9 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [What is NoSQL?](https://aws.amazon.com/nosql/)\
 \
+
 ## SQL/NoSQL Tools and Databases\
+
 \
 [Permalink: SQL/NoSQL Tools and Databases](https://github.com/mikeroyal/Self-Hosting-Guide#sqlnosql-tools-and-databases)\
 \
@@ -6132,21 +6318,25 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Sequel Pro](https://sequelpro.com/) is a fast MacOS database management tool for working with MySQL. This SQL management tool helpful for interacting with your database by easily to adding new databases, new tables, and new rows.\
 \
-# Telco 5G\
+
+## Telco 5G\
+
 \
 [Permalink: Telco 5G](https://github.com/mikeroyal/Self-Hosting-Guide#telco-5g)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/105409952-14881380-5be6-11eb-84fc-b07db69698ed.png)](https://user-images.githubusercontent.com/45159366/105409952-14881380-5be6-11eb-84fc-b07db69698ed.png)\
+[![105409952 14881380 5be6 11eb 84fc B07db69698ed image](https://user-images.githubusercontent.com/45159366/105409952-14881380-5be6-11eb-84fc-b07db69698ed.png)](https://user-images.githubusercontent.com/45159366/105409952-14881380-5be6-11eb-84fc-b07db69698ed.png)\
 \
 **VMware Cloud First Approach. Source: [VMware](https://www.vmware.com/products/telco-cloud-automation.html).**\
 \
-[![](https://user-images.githubusercontent.com/45159366/105409956-1520aa00-5be6-11eb-8215-735c92a5470c.png)](https://user-images.githubusercontent.com/45159366/105409956-1520aa00-5be6-11eb-8215-735c92a5470c.png)\
+[![105409956 1520aa00 5be6 11eb 8215 735c92a5470c image](https://user-images.githubusercontent.com/45159366/105409956-1520aa00-5be6-11eb-8215-735c92a5470c.png)](https://user-images.githubusercontent.com/45159366/105409956-1520aa00-5be6-11eb-8215-735c92a5470c.png)\
 \
 **VMware Telco Cloud Automation Components. Source: [VMware](https://www.vmware.com/products/telco-cloud-automation.html).**\
 \
+
 ## Telco Learning Resources\
+
 \
 [Permalink: Telco Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#telco-learning-resources)\
 \
@@ -6196,7 +6386,9 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Cloud Native Computing Foundation Training and Certification Program](https://www.cncf.io/certification/training/)\
 \
+
 ## Tools\
+
 \
 [Permalink: Tools](https://github.com/mikeroyal/Self-Hosting-Guide#tools)\
 \
@@ -6232,7 +6424,9 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Network functions virtualization infrastructure(NFVI)](https://docs.vmware.com/en/VMware-vCloud-NFV/2.0/vmware-vcloud-nfv-reference-architecture-20/GUID-FBEA6C6B-54D8-4A37-87B1-D825F9E0DBC7.html) is the foundation of the overall NFV architecture. It provides the physical compute, storage, and networking hardware that hosts the VNFs. Each NFVI block can be thought of as an NFVI node and many nodes can be deployed and controlled geographically.\
 \
-# Open Source Security\
+
+## Open Source Security\
+
 \
 [Permalink: Open Source Security](https://github.com/mikeroyal/Self-Hosting-Guide#open-source-security)\
 \
@@ -6240,7 +6434,9 @@ Networking works by piggybacks on a number of different protocols on top of each
 \
 [Open Source Security Foundation (OpenSSF)](https://openssf.org/) is a cross-industry collaboration that brings together leaders to improve the security of open source software by building a broader community, targeted initiatives, and best practices. The OpenSSF brings together open source security initiatives under one foundation to accelerate work through cross-industry support. Along with the Core Infrastructure Initiative and the Open Source Security Coalition, and will include new working groups that address vulnerability disclosures, security tooling and more.\
 \
+
 ## Security Standards, Frameworks and Benchmarks\
+
 \
 [Permalink: Security Standards, Frameworks and Benchmarks](https://github.com/mikeroyal/Self-Hosting-Guide#security-standards-frameworks-and-benchmarks)\
 \
@@ -6271,7 +6467,9 @@ It is extended by a set of privacy-specific requirements, control objectives and
 \
 [NIST CSF](https://www.nist.gov/national-security-standards) is a voluntary framework primarily intended for critical infrastructure organizations to manage and mitigate cybersecurity risk based on existing best practice.\
 \
+
 ## Security Tools\
+
 \
 [Permalink: Security Tools](https://github.com/mikeroyal/Self-Hosting-Guide#security-tools)\
 \
@@ -6343,7 +6541,9 @@ It is extended by a set of privacy-specific requirements, control objectives and
 \
 [ClamAV](https://www.clamav.net/) is an open source antivirus engine for detecting trojans, viruses, malware & other malicious threats.\
 \
+
 ## Open Source Security Learning Resources\
+
 \
 [Permalink: Open Source Security Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#open-source-security-learning-resources)\
 \
@@ -6405,17 +6605,21 @@ It is extended by a set of privacy-specific requirements, control objectives and
 \
 [Security Certifications Training from Pluarlsight](https://www.pluralsight.com/browse/information-cyber-security/security-certifications)\
 \
-# Differential Privacy\
+
+## Differential Privacy\
+
 \
 [Permalink: Differential Privacy](https://github.com/mikeroyal/Self-Hosting-Guide#differential-privacy)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/103486337-ff238480-4db1-11eb-9895-f7f49cc5715a.png)](https://user-images.githubusercontent.com/45159366/103486337-ff238480-4db1-11eb-9895-f7f49cc5715a.png)\
+[![103486337 Ff238480 4db1 11eb 9895 F7f49cc5715a image](https://user-images.githubusercontent.com/45159366/103486337-ff238480-4db1-11eb-9895-f7f49cc5715a.png)](https://user-images.githubusercontent.com/45159366/103486337-ff238480-4db1-11eb-9895-f7f49cc5715a.png)\
 \
 Above is a simple diagram of how Differential Privacy-Preserving Data Sharing and Data Mining protects a User's Data\
 \
+
 ## Differential Privacy Learning Resources\
+
 \
 [Permalink: Differential Privacy Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#differential-privacy-learning-resources)\
 \
@@ -6481,7 +6685,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Certified Ethical Emerging Technologist Professional Certificate course on Coursera](https://www.coursera.org/professional-certificates/certified-ethical-emerging-technologist)\
 \
+
 ## Differential Privacy Tools\
+
 \
 [Permalink: Differential Privacy Tools](https://github.com/mikeroyal/Self-Hosting-Guide#differential-privacy-tools)\
 \
@@ -6509,15 +6715,19 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Smart Noise](https://github.com/opendifferentialprivacy/smartnoise-sdk) is a toolkit that uses state-of-the-art differential privacy (DP) techniques to inject noise into data, to prevent disclosure of sensitive information and manage exposure risk.\
 \
-# Machine Learning\
+
+## Machine Learning\
+
 \
 [Permalink: Machine Learning](https://github.com/mikeroyal/Self-Hosting-Guide#machine-learning)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/108111395-756e0480-7049-11eb-85ca-b87315e9d3ef.jpeg)](https://user-images.githubusercontent.com/45159366/108111395-756e0480-7049-11eb-85ca-b87315e9d3ef.jpeg)\
+[![108111395 756e0480 7049 11eb 85ca B87315e9d3ef image](https://user-images.githubusercontent.com/45159366/108111395-756e0480-7049-11eb-85ca-b87315e9d3ef.jpeg)](https://user-images.githubusercontent.com/45159366/108111395-756e0480-7049-11eb-85ca-b87315e9d3ef.jpeg)\
 \
+
 ## ML frameworks & applications\
+
 \
 [Permalink: ML frameworks & applications](https://github.com/mikeroyal/Self-Hosting-Guide#ml-frameworks--applications)\
 \
@@ -6593,7 +6803,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [cuML](https://github.com/rapidsai/cuml) is a suite of libraries that implement machine learning algorithms and mathematical primitives functions that share compatible APIs with other RAPIDS projects. cuML enables data scientists, researchers, and software engineers to run traditional tabular ML tasks on GPUs without going into the details of CUDA programming. In most cases, cuML's Python API matches the API from scikit-learn.\
 \
+
 ## Online ML Learning Resources\
+
 \
 [Permalink: Online ML Learning Resources](https://github.com/mikeroyal/Self-Hosting-Guide#online-ml-learning-resources)\
 \
@@ -6605,7 +6817,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Learn Machine Learning with Online Courses and Classes from edX](https://www.edx.org/learn/machine-learning)\
 \
-# IoT Protocols\
+
+## IoT Protocols\
+
 \
 [Permalink: IoT Protocols](https://github.com/mikeroyal/Self-Hosting-Guide#iot-protocols)\
 \
@@ -6629,7 +6843,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Very Simple Control Protocol (VSCP)](https://vscp.org/) is a free automation protocol suitable for all sorts of automation task where building- or home-automation is in the main focus. Its main advantage is that each VSCP-node can work completely autonomous, being part of distributed network of other nodes.\
 \
-# Operating systems\
+
+## Operating systems\
+
 \
 [Permalink: Operating systems](https://github.com/mikeroyal/Self-Hosting-Guide#operating-systems-1)\
 \
@@ -6693,7 +6909,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Contiki-os](https://github.com/contiki-os) is an operating system for networked, memory-constrained systems with a focus on low-power wireless Internet of Things devices.\
 \
-# Middleware\
+
+## Middleware\
+
 \
 [Permalink: Middleware](https://github.com/mikeroyal/Self-Hosting-Guide#middleware)\
 \
@@ -6707,7 +6925,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Kaa](https://www.kaaproject.org/platform/) is a Enterprise IoT Platform has been designed with heavy-duty, enterprise-grade IoT solutions in mind. It banishes a monolithic approach to architecture in favour of highly portable microservices, which allow for flexible rearrangement and customization even in the middle of the solution's lifecycle.\
 \
-# Node flow editors\
+
+## Node flow editors\
+
 \
 [Permalink: Node flow editors](https://github.com/mikeroyal/Self-Hosting-Guide#node-flow-editors)\
 \
@@ -6715,7 +6935,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Node-RED](https://nodered.org/) is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways. It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.\
 \
-### Toolkits\
+
+## Toolkits\
+
 \
 [Permalink: Toolkits](https://github.com/mikeroyal/Self-Hosting-Guide#toolkits)\
 \
@@ -6725,7 +6947,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [IoT Toolkit](https://www.segger.com/products/security-iot/iot-toolkit/) is a collection of libraries that enables communication with modern IoT based environments and devices. It is a high-performance collection of libraries optimized for minimum memory consumption in RAM, ROM, high speed, and versatility working on any device.\
 \
-# Data Visualization\
+
+## Data Visualization\
+
 \
 [Permalink: Data Visualization](https://github.com/mikeroyal/Self-Hosting-Guide#data-visualization)\
 \
@@ -6735,7 +6959,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [ThingSpeak](https://thingspeak.com/) is an IoT analytics platform service that allows you to aggregate, visualize, and analyze live data streams in the cloud. You can send data to ThingSpeak from your devices, create instant visualization of live data, and send alerts.\
 \
-# Search\
+
+## Search\
+
 \
 [Permalink: Search](https://github.com/mikeroyal/Self-Hosting-Guide#search-1)\
 \
@@ -6743,7 +6969,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Thingful](https://www.thingful.net/) is a Search Engine for the Internet of Things Find & use open IoT data from around the world.\
 \
-# Hardware\
+
+## Hardware\
+
 \
 [Permalink: Hardware](https://github.com/mikeroyal/Self-Hosting-Guide#hardware-1)\
 \
@@ -6759,7 +6987,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Pinoccio](https://www.open-electronics.org/pinoccio-wifi-mesh-networking-for-arduino-and-iot-available-now/) is a solution to add mesh networking capability and WiFi-Internet access to all yout IoT devices, and it is Arduino compatible. Each board can assume the role of Scout in a Troop and one of the Scouts is the Lead to connect internet: Field Scouts talk to each other using a mesh network (called a Troop), using an extremely low-power radio.\
 \
-### In-memory data grids\
+
+## In-memory data grids\
+
 \
 [Permalink: In-memory data grids](https://github.com/mikeroyal/Self-Hosting-Guide#in-memory-data-grids)\
 \
@@ -6769,7 +6999,9 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [Hazelcast](https://hazelcast.com/) is an open source in-memory data grid based on Java.\
 \
-# Home automation\
+
+## Home automation\
+
 \
 [Permalink: Home automation](https://github.com/mikeroyal/Self-Hosting-Guide#home-automation)\
 \
@@ -6783,15 +7015,19 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [The Thing System](https://github.com/TheThingSystem) is a set of software components and network protocols that aims to fix the Internet of Things. Our steward software is written in node.js making it both portable and easily extensible. It can run on your laptop, or fit onto a small single board computer like the Raspberry Pi.\
 \
-# Robotics\
+
+## Robotics\
+
 \
 [Permalink: Robotics](https://github.com/mikeroyal/Self-Hosting-Guide#robotics)\
 \
 [Back to the Top](https://github.com/mikeroyal/Self-Hosting-Guide#table-of-contents)\
 \
-[![](https://user-images.githubusercontent.com/45159366/96352533-b55fb380-1078-11eb-874c-f165cbcce899.png)](https://user-images.githubusercontent.com/45159366/96352533-b55fb380-1078-11eb-874c-f165cbcce899.png)\
+[![96352533 B55fb380 1078 11eb 874c F165cbcce899 image](https://user-images.githubusercontent.com/45159366/96352533-b55fb380-1078-11eb-874c-f165cbcce899.png)](https://user-images.githubusercontent.com/45159366/96352533-b55fb380-1078-11eb-874c-f165cbcce899.png)\
 \
+
 ## Tools for Robotics\
+
 \
 [Permalink: Tools for Robotics](https://github.com/mikeroyal/Self-Hosting-Guide#tools-for-robotics)\
 \
@@ -6809,56 +7045,79 @@ Above is a simple diagram of how Differential Privacy-Preserving Data Sharing an
 \
 [AutoGluon](https://autogluon.mxnet.io/index.html) is tool\
 \
+
 ## About\
+
 \
 Self-Hosting Guide. Learn all about locally hosting (on premises & private web servers) and managing software applications by yourself or your organization. Including Cloud, LLMs, WireGuard, Automation, Home Assistant, and Networking.\
 \
 \
+
 ### Topics\
+
 \
 [search](https://github.com/topics/search "Topic: search") [linux](https://github.com/topics/linux "Topic: linux") [ssh](https://github.com/topics/ssh "Topic: ssh") [open-source](https://github.com/topics/open-source "Topic: open-source") [home-automation](https://github.com/topics/home-automation "Topic: home-automation") [raspberry-pi](https://github.com/topics/raspberry-pi "Topic: raspberry-pi") [oauth](https://github.com/topics/oauth "Topic: oauth") [awesome](https://github.com/topics/awesome "Topic: awesome") [privacy](https://github.com/topics/privacy "Topic: privacy") [authentication](https://github.com/topics/authentication "Topic: authentication") [docker-compose](https://github.com/topics/docker-compose "Topic: docker-compose") [decentralized](https://github.com/topics/decentralized "Topic: decentralized") [selfhosted](https://github.com/topics/selfhosted "Topic: selfhosted") [self-hosted](https://github.com/topics/self-hosted "Topic: self-hosted") [reverse-proxy](https://github.com/topics/reverse-proxy "Topic: reverse-proxy") [awesome-list](https://github.com/topics/awesome-list "Topic: awesome-list") [home-assistant](https://github.com/topics/home-assistant "Topic: home-assistant") [self-hosting](https://github.com/topics/self-hosting "Topic: self-hosting") [observability](https://github.com/topics/observability "Topic: observability") [wireguard](https://github.com/topics/wireguard "Topic: wireguard")\
 \
+
 ### Resources\
+
 \
 [Readme](https://github.com/mikeroyal/Self-Hosting-Guide#readme-ov-file)\
 \
+
 ### Contributing\
+
 \
 [Contributing](https://github.com/mikeroyal/Self-Hosting-Guide#contributing-ov-file)\
 \
+
 ### Uh oh!\
+
 \
 There was an error while loading. [Please reload this page](https://github.com/mikeroyal/Self-Hosting-Guide).\
 \
 [Activity](https://github.com/mikeroyal/Self-Hosting-Guide/activity)\
 \
+
 ### Stars\
+
 \
 [**17.7k**\\
 stars](https://github.com/mikeroyal/Self-Hosting-Guide/stargazers)\
 \
+
 ### Watchers\
+
 \
 [**208**\\
 watching](https://github.com/mikeroyal/Self-Hosting-Guide/watchers)\
 \
+
 ### Forks\
+
 \
 [**881**\\
 forks](https://github.com/mikeroyal/Self-Hosting-Guide/forks)\
 \
 [Report repository](https://github.com/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fmikeroyal%2FSelf-Hosting-Guide&report=mikeroyal+%28user%29)\
 \
+
 ## [Releases](https://github.com/mikeroyal/Self-Hosting-Guide/releases)\
+
 \
 No releases published\
 \
+
 ## [Packages\  0](https://github.com/users/mikeroyal/packages?repo_name=Self-Hosting-Guide)\
+
 \
 No packages published\
 \
+
 ## [Contributors\  20](https://github.com/mikeroyal/Self-Hosting-Guide/graphs/contributors)\
+
 \
+
 - [![@mikeroyal](https://avatars.githubusercontent.com/u/45159366?s=64&v=4)](https://github.com/mikeroyal)\
 - [![@ElianaBrininger](https://avatars.githubusercontent.com/u/134135415?s=64&v=4)](https://github.com/ElianaBrininger)\
 - [![@fiftin](https://avatars.githubusercontent.com/u/914224?s=64&v=4)](https://github.com/fiftin)\
@@ -6876,8 +7135,11 @@ No packages published\
 \
 [\+ 6 contributors](https://github.com/mikeroyal/Self-Hosting-Guide/graphs/contributors)\
 \
+
 ## Languages\
+
 \
+
 - [Dockerfile100.0%](https://github.com/mikeroyal/Self-Hosting-Guide/search?l=dockerfile)\
 \
 You can’t perform that action at this time.
@@ -6894,13 +7156,13 @@ You can’t perform that action at this time.
 
 [Skip to content](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#start-of-content)
 
-[Gist Homepage ](https://gist.github.com/)
+[Gist Homepage](https://gist.github.com/)
 
 Search Gists
 
 Search Gists
 
-[Gist Homepage ](https://gist.github.com/)
+[Gist Homepage](https://gist.github.com/)
 
 [Sign in](https://gist.github.com/auth/github?return_to=https%3A%2F%2Fgist.github.com%2Fjohnfelipe%2F36cab7baf2693fa65817f0cd697fd689) [Sign up](https://gist.github.com/join?return_to=https%3A%2F%2Fgist.github.com%2Fjohnfelipe%2F36cab7baf2693fa65817f0cd697fd689&source=header-gist)
 
@@ -6910,10 +7172,9 @@ You signed in with another tab or window. [Reload](https://gist.github.com/johnf
 
 Instantly share code, notes, and snippets.
 
-
 [![@johnfelipe](https://avatars.githubusercontent.com/u/428820?s=64&v=4)](https://gist.github.com/johnfelipe)
 
-# [johnfelipe](https://gist.github.com/johnfelipe)/ **[Ultimate-Cheatsheet.md](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689)**
+## [johnfelipe](https://gist.github.com/johnfelipe)/ **[Ultimate-Cheatsheet.md](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689)**
 
 Forked from [bgoonz/Ultimate-Cheatsheet.md](https://gist.github.com/bgoonz/be5c5be77169ef333b431bc37d331176)
 
@@ -6929,74 +7190,49 @@ Show Gist options
 
 - Embed
 
-
-
-
-
-
-
-
-# Select an option
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Select an option
 
 - Embed
+
 Embed this gist in your website.
+
 - Share
+
 Copy sharable link for this gist.
+
 - Clone via HTTPS
+
 Clone using the web URL.
 
 ## No results found
 
 [Learn more about clone URLs](https://docs.github.com/articles/which-remote-url-should-i-use)
 
-Clone this repository at &lt;script src=&quot;https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689.js&quot;&gt;&lt;/script&gt;
+Clone this repository at &lt;script src=&quot;<https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689.js&quot;&gt;&lt;/script&gt>;
 
 - Save johnfelipe/36cab7baf2693fa65817f0cd697fd689 to your computer and use it in GitHub Desktop.
 
 Embed
 
-# Select an option
+## Select an option
 
 - Embed
+
 Embed this gist in your website.
+
 - Share
+
 Copy sharable link for this gist.
+
 - Clone via HTTPS
+
 Clone using the web URL.
 
 ## No results found
 
 [Learn more about clone URLs](https://docs.github.com/articles/which-remote-url-should-i-use)
 
-Clone this repository at &lt;script src=&quot;https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689.js&quot;&gt;&lt;/script&gt;
+Clone this repository at &lt;script src=&quot;<https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689.js&quot;&gt;&lt;/script&gt>;
 
 Save johnfelipe/36cab7baf2693fa65817f0cd697fd689 to your computer and use it in GitHub Desktop.
 
@@ -7004,12 +7240,11 @@ Save johnfelipe/36cab7baf2693fa65817f0cd697fd689 to your computer and use it in 
 
 Ultimate-Cheatsheet
 
-
 [Raw](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689/raw/d8a0255e23b507b7b29e7c72f17e004284657878/Ultimate-Cheatsheet.md)
 
 [**Ultimate-Cheatsheet.md**](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#file-ultimate-cheatsheet-md)
 
-# Ultimate Resource List
+## Ultimate Resource List
 
 [Permalink: Ultimate Resource List](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ultimate-resource-list)
 
@@ -7030,13 +7265,13 @@ Ultimate-Cheatsheet
 
 ## 🔱
 
-[Permalink: :trident:  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#trident-)
+[Permalink: :trident:](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#trident-)
 
-#### CLI Tools  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
+### CLI Tools  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: CLI Tools  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#cli-tools-toc)
+[Permalink: CLI Tools](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#cli-tools-toc)
 
-##### ▪️ Shells
+#### ▪️ Shells
 
 [Permalink: :black_small_square: Shells](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#black_small_square-shells)
 
@@ -7452,7 +7687,7 @@ Ultimate-Cheatsheet
 
 #### GUI Tools  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: GUI Tools  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#gui-tools-toc)
+[Permalink: GUI Tools](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#gui-tools-toc)
 
 ##### ▪️ Terminal emulators
 
@@ -7530,7 +7765,7 @@ Ultimate-Cheatsheet
 
 #### Web Tools  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Web Tools  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#web-tools-toc)
+[Permalink: Web Tools](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#web-tools-toc)
 
 ##### ▪️ Browsers
 
@@ -7945,7 +8180,7 @@ performance of any of your sites from across the globe.
 
 #### Systems/Services  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Systems/Services  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#systemsservices-toc)
+[Permalink: Systems/Services](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#systemsservices-toc)
 
 ##### ▪️ Operating Systems
 
@@ -8025,7 +8260,7 @@ performance of any of your sites from across the globe.
 
 #### Networks  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Networks  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#networks-toc)
+[Permalink: Networks](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#networks-toc)
 
 ##### ▪️ Tools
 
@@ -8049,7 +8284,7 @@ performance of any of your sites from across the globe.
 
 #### Containers/Orchestration  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Containers/Orchestration  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#containersorchestration-toc)
+[Permalink: Containers/Orchestration](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#containersorchestration-toc)
 
 ##### ▪️ CLI Tools
 
@@ -8115,7 +8350,7 @@ performance of any of your sites from across the globe.
 
 #### Manuals/Howtos/Tutorials  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Manuals/Howtos/Tutorials  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#manualshowtostutorials-toc)
+[Permalink: Manuals/Howtos/Tutorials](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#manualshowtostutorials-toc)
 
 ##### ▪️ Shell/Command line
 
@@ -8397,7 +8632,7 @@ performance of any of your sites from across the globe.
 
 #### Inspiring Lists  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Inspiring Lists  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#inspiring-lists-toc)
+[Permalink: Inspiring Lists](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#inspiring-lists-toc)
 
 ##### ▪️ SysOps/DevOps
 
@@ -8533,7 +8768,7 @@ performance of any of your sites from across the globe.
 
 #### Blogs/Podcasts/Videos  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Blogs/Podcasts/Videos  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#blogspodcastsvideos-toc)
+[Permalink: Blogs/Podcasts/Videos](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#blogspodcastsvideos-toc)
 
 ##### ▪️ SysOps/DevOps
 
@@ -8731,7 +8966,7 @@ performance of any of your sites from across the globe.
 
 #### Hacking/Penetration Testing  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Hacking/Penetration Testing  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#hackingpenetration-testing-toc)
+[Permalink: Hacking/Penetration Testing](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#hackingpenetration-testing-toc)
 
 ##### ▪️ Pentesters arsenal tools
 
@@ -9176,7 +9411,7 @@ AWS deployment tool.
 
 #### Your daily knowledge and news  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Your daily knowledge and news  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#your-daily-knowledge-and-news-toc)
+[Permalink: Your daily knowledge and news](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#your-daily-knowledge-and-news-toc)
 
 ##### ▪️ RSS Readers
 
@@ -9228,9 +9463,9 @@ AWS deployment tool.
 
 #### Other Cheat Sheets  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: Other Cheat Sheets  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#other-cheat-sheets-toc)
+[Permalink: Other Cheat Sheets](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#other-cheat-sheets-toc)
 
-###### Build your own DNS Servers
+##### Build your own DNS Servers
 
 [Permalink: Build your own DNS Servers](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#build-your-own-dns-servers)
 
@@ -9355,6 +9590,7 @@ In Firefox's address bar, you can limit results by typing special characters bef
 IP addresses can be shortened by dropping the zeroes:
 
 ```
+
 http://1.0.0.1 → http://1.1
 http://127.0.0.1 → http://127.1
 http://192.168.0.1 → http://192.168.1
@@ -9362,7 +9598,8 @@ http://192.168.0.1 → http://192.168.1
 http://0xC0A80001 or http://3232235521 → 192.168.0.1
 http://192.168.257 → 192.168.1.1
 http://192.168.516 → 192.168.2.4
-```
+
+```text
 
 > This bypasses WAF filters for SSRF, open-redirect, etc where any IP as input gets blacklisted.
 
@@ -9372,13 +9609,13 @@ For more information please see [How to Obscure Any URL](http://www.pc-help.org/
 
 [Permalink: Hashing, encryption and encoding (by Michal Špaček)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#hashing-encryption-and-encoding-by-michal-%C5%A1pa%C4%8Dek)
 
-_Hashing_
+*Hashing*
 
 plaintext ➡️ hash
 
 hash ⛔ plaintext
 
-_Symmetric encryption_
+*Symmetric encryption*
 
 plaintext ➡️ 🔑 ➡️ ciphertext
 
@@ -9386,7 +9623,7 @@ plaintext ⬅️ 🔑 ⬅️ ciphertext
 
 (:key: shared key)
 
-_Asymmetric encryption_
+*Asymmetric encryption*
 
 plaintext ➡️ 🔑 ➡️ ciphertext
 
@@ -9394,7 +9631,7 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 
 (:key: public key, :part\_alternation\_mark: private key)
 
-_Encoding_
+*Encoding*
 
 text ➡️ encoded
 
@@ -9402,7 +9639,7 @@ text ⬅️ encoded
 
 #### One-liners  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)
 
-[Permalink: One-liners  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#one-liners-toc)
+[Permalink: One-liners](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#one-liners-toc)
 
 ##### Table of Contents
 
@@ -9472,68 +9709,83 @@ text ⬅️ encoded
 [Permalink: Reload shell without exit](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#reload-shell-without-exit)
 
 ```
+
 exec $SHELL -l
-```
+
+```text
 
 ###### Close shell keeping all subprocess running
 
 [Permalink: Close shell keeping all subprocess running](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#close-shell-keeping-all-subprocess-running)
 
 ```
+
 disown -a && exit
-```
+
+```text
 
 ###### Exit without saving shell history
 
 [Permalink: Exit without saving shell history](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#exit-without-saving-shell-history)
 
 ```
+
 kill -9 $$
 unset HISTFILE && exit
-```
+
+```text
 
 ###### Perform a branching conditional
 
 [Permalink: Perform a branching conditional](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#perform-a-branching-conditional)
 
 ```
+
 true && echo success
 false || echo failed
-```
+
+```text
 
 ###### Pipe stdout and stderr to separate commands
 
 [Permalink: Pipe stdout and stderr to separate commands](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#pipe-stdout-and-stderr-to-separate-commands)
 
 ```
+
 some_command > >(/bin/cmd_for_stdout) 2> >(/bin/cmd_for_stderr)
-```
+
+```text
 
 ###### Redirect stdout and stderr each to separate files and print both to the screen
 
 [Permalink: Redirect stdout and stderr each to separate files and print both to the screen](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#redirect-stdout-and-stderr-each-to-separate-files-and-print-both-to-the-screen)
 
 ```
+
 (some_command 2>&1 1>&3 | tee errorlog ) 3>&1 1>&2 | tee stdoutlog
-```
+
+```text
 
 ###### List of commands you use most often
 
 [Permalink: List of commands you use most often](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#list-of-commands-you-use-most-often)
 
 ```
+
 history | \
 awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | \
 grep -v "./" | \
 column -c3 -s " " -t | \
 sort -nr | nl |  head -n 20
-```
+
+```text
 
 ###### Sterilize bash history
 
 [Permalink: Sterilize bash history](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#sterilize-bash-history)
 
 ```
+
 function sterile() {
 
   history | awk '$2 != "history" { $1=""; print $0 }' | egrep -vi "\
@@ -9549,7 +9801,8 @@ http.?://.+:.+@.*\
 }
 
 export PROMPT_COMMAND="sterile"
-```
+
+```text
 
 > Look also: [A naive utility to censor credentials in command history](https://github.com/lbonanomi/go/blob/master/revisionist.go).
 
@@ -9558,83 +9811,102 @@ export PROMPT_COMMAND="sterile"
 [Permalink: Quickly backup a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#quickly-backup-a-file)
 
 ```
+
 cp filename{,.orig}
-```
+
+```text
 
 ###### Empty a file (truncate to 0 size)
 
 [Permalink: Empty a file (truncate to 0 size)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#empty-a-file-truncate-to-0-size)
 
 ```
+
 >filename
-```
+
+```text
 
 ###### Delete all files in a folder that don't match a certain file extension
 
 [Permalink: Delete all files in a folder that don't match a certain file extension](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#delete-all-files-in-a-folder-that-dont-match-a-certain-file-extension)
 
 ```
+
 rm !(*.foo|*.bar|*.baz)
-```
+
+```text
 
 ###### Pass multi-line string to a file
 
 [Permalink: Pass multi-line string to a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#pass-multi-line-string-to-a-file)
 
 ```
+
 # cat  >filename ... - overwrite the file
 # cat >>filename ... - append to a file
 cat > filename << __EOF__
 data data data
 __EOF__
-```
+
+```text
 
 ###### Edit a file on a remote host using vim
 
 [Permalink: Edit a file on a remote host using vim](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#edit-a-file-on-a-remote-host-using-vim)
 
 ```
+
 vim scp://user@host//etc/fstab
-```
+
+```text
 
 ###### Create a directory and change into it at the same time
 
 [Permalink: Create a directory and change into it at the same time](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#create-a-directory-and-change-into-it-at-the-same-time)
 
 ```
+
 mkd() { mkdir -p "$@" && cd "$@"; }
-```
+
+```text
 
 ###### Convert uppercase files to lowercase files
 
 [Permalink: Convert uppercase files to lowercase files](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#convert-uppercase-files-to-lowercase-files)
 
 ```
+
 rename 'y/A-Z/a-z/' *
-```
+
+```text
 
 ###### Print a row of characters across the terminal
 
 [Permalink: Print a row of characters across the terminal](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-a-row-of-characters-across-the-terminal)
 
 ```
+
 printf "%`tput cols`s" | tr ' ' '#'
-```
+
+```text
 
 ###### Show shell history without line numbers
 
 [Permalink: Show shell history without line numbers](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-shell-history-without-line-numbers)
 
 ```
+
 history | cut -c 8-
 fc -l -n 1 | sed 's/^\s*//'
-```
+
+```text
 
 ###### Run command(s) after exit session
 
 [Permalink: Run command(s) after exit session](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#run-commands-after-exit-session)
 
 ```
+
 cat > /etc/profile << __EOF__
 _after_logout() {
 
@@ -9649,13 +9921,15 @@ _after_logout() {
 }
 trap _after_logout EXIT
 __EOF__
-```
+
+```text
 
 ###### Generate a sequence of numbers
 
 [Permalink: Generate a sequence of numbers](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-a-sequence-of-numbers)
 
 ```
+
 for ((i=1; i<=10; i+=2)) ; do echo $i ; done
 # alternative: seq 1 2 10
 
@@ -9663,17 +9937,20 @@ for ((i=5; i<=10; ++i)) ; do printf '%02d\n' $i ; done
 # alternative: seq -w 5 10
 
 for i in {1..10} ; do echo $i ; done
-```
+
+```text
 
 ###### Simple Bash filewatching
 
 [Permalink: Simple Bash filewatching](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#simple-bash-filewatching)
 
 ```
-unset MAIL; export MAILCHECK=1; export MAILPATH='$FILE_TO_WATCH?$MESSAGE'
-```
 
-* * *
+unset MAIL; export MAILCHECK=1; export MAILPATH='$FILE_TO_WATCH?$MESSAGE'
+
+```text
+
+- * *
 
 ##### Tool: [busybox](https://www.busybox.net/)
 
@@ -9684,10 +9961,12 @@ unset MAIL; export MAILCHECK=1; export MAILPATH='$FILE_TO_WATCH?$MESSAGE'
 [Permalink: Static HTTP web server](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#static-http-web-server)
 
 ```
-busybox httpd -p $PORT -h $HOME [-c httpd.conf]
-```
 
-* * *
+busybox httpd -p $PORT -h $HOME [-c httpd.conf]
+
+```text
+
+- * *
 
 ##### Tool: [mount](https://en.wikipedia.org/wiki/Mount_(Unix))
 
@@ -9698,8 +9977,10 @@ busybox httpd -p $PORT -h $HOME [-c httpd.conf]
 [Permalink: Mount a temporary ram partition](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#mount-a-temporary-ram-partition)
 
 ```
+
 mount -t tmpfs tmpfs /mnt -o size=64M
-```
+
+```text
 
 - `-t` \- filesystem type
 - `-o` \- mount options
@@ -9709,10 +9990,12 @@ mount -t tmpfs tmpfs /mnt -o size=64M
 [Permalink: Remount a filesystem as read/write](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remount-a-filesystem-as-readwrite)
 
 ```
-mount -o remount,rw /
-```
 
-* * *
+mount -o remount,rw /
+
+```text
+
+- * *
 
 ##### Tool: [fuser](https://en.wikipedia.org/wiki/Fuser_(Unix))
 
@@ -9723,17 +10006,21 @@ mount -o remount,rw /
 [Permalink: Show which processes use the files/directories](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-which-processes-use-the-filesdirectories)
 
 ```
+
 fuser /var/log/daemon.log
 fuser -v /home/supervisor
-```
+
+```text
 
 ###### Kills a process that is locking a file
 
 [Permalink: Kills a process that is locking a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#kills-a-process-that-is-locking-a-file)
 
 ```
+
 fuser -ki filename
-```
+
+```text
 
 - `-i` \- interactive option
 
@@ -9742,8 +10029,10 @@ fuser -ki filename
 [Permalink: Kills a process that is locking a file with specific signal](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#kills-a-process-that-is-locking-a-file-with-specific-signal)
 
 ```
+
 fuser -k -HUP filename
-```
+
+```text
 
 - `--list-signals` \- list available signal names
 
@@ -9752,18 +10041,22 @@ fuser -k -HUP filename
 [Permalink: Show what PID is listening on specific port](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-what-pid-is-listening-on-specific-port)
 
 ```
+
 fuser -v 53/udp
-```
+
+```text
 
 ###### Show all processes using the named filesystems or block device
 
 [Permalink: Show all processes using the named filesystems or block device](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-all-processes-using-the-named-filesystems-or-block-device)
 
 ```
-fuser -mv /var/www
-```
 
-* * *
+fuser -mv /var/www
+
+```text
+
+- * *
 
 ##### Tool: [lsof](https://en.wikipedia.org/wiki/Lsof)
 
@@ -9774,84 +10067,104 @@ fuser -mv /var/www
 [Permalink: Show process that use internet connection at the moment](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-process-that-use-internet-connection-at-the-moment)
 
 ```
+
 lsof -P -i -n
-```
+
+```text
 
 ###### Show process that use specific port number
 
 [Permalink: Show process that use specific port number](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-process-that-use-specific-port-number)
 
 ```
+
 lsof -i tcp:443
-```
+
+```text
 
 ###### Lists all listening ports together with the PID of the associated process
 
 [Permalink: Lists all listening ports together with the PID of the associated process](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#lists-all-listening-ports-together-with-the-pid-of-the-associated-process)
 
 ```
+
 lsof -Pan -i tcp -i udp
-```
+
+```text
 
 ###### List all open ports and their owning executables
 
 [Permalink: List all open ports and their owning executables](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#list-all-open-ports-and-their-owning-executables)
 
 ```
+
 lsof -i -P | grep -i "listen"
-```
+
+```text
 
 ###### Show all open ports
 
 [Permalink: Show all open ports](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-all-open-ports)
 
 ```
+
 lsof -Pnl -i
-```
+
+```text
 
 ###### Show open ports (LISTEN)
 
 [Permalink: Show open ports (LISTEN)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-open-ports-listen)
 
 ```
+
 lsof -Pni4 | grep LISTEN | column -t
-```
+
+```text
 
 ###### List all files opened by a particular command
 
 [Permalink: List all files opened by a particular command](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#list-all-files-opened-by-a-particular-command)
 
 ```
+
 lsof -c "process"
-```
+
+```text
 
 ###### View user activity per directory
 
 [Permalink: View user activity per directory](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#view-user-activity-per-directory)
 
 ```
+
 lsof -u username -a +D /etc
-```
+
+```text
 
 ###### Show 10 largest open files
 
 [Permalink: Show 10 largest open files](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-10-largest-open-files)
 
 ```
+
 lsof / | \
 awk '{ if($7 > 1048576) print $7/1048576 "MB" " " $9 " " $1 }' | \
 sort -n -u | tail | column -t
-```
+
+```text
 
 ###### Show current working directory of a process
 
 [Permalink: Show current working directory of a process](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-current-working-directory-of-a-process)
 
 ```
-lsof -p <PID> | grep cwd
-```
 
-* * *
+lsof -p <PID> | grep cwd
+
+```text
+
+- * *
 
 ##### Tool: [ps](https://en.wikipedia.org/wiki/Ps_(Unix))
 
@@ -9862,26 +10175,32 @@ lsof -p <PID> | grep cwd
 [Permalink: Show a 4-way scrollable process tree with full details](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-a-4-way-scrollable-process-tree-with-full-details)
 
 ```
+
 ps awwfux | less -S
-```
+
+```text
 
 ###### Processes per user counter
 
 [Permalink: Processes per user counter](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#processes-per-user-counter)
 
 ```
+
 ps hax -o user | sort | uniq -c | sort -r
-```
+
+```text
 
 ###### Show all processes by name with main header
 
 [Permalink: Show all processes by name with main header](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-all-processes-by-name-with-main-header)
 
 ```
-ps -lfC nginx
-```
 
-* * *
+ps -lfC nginx
+
+```text
+
+- * *
 
 ##### Tool: [find](https://en.wikipedia.org/wiki/Find_(Unix))
 
@@ -9892,48 +10211,59 @@ ps -lfC nginx
 [Permalink: Find files that have been modified on your system in the past 60 minutes](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-files-that-have-been-modified-on-your-system-in-the-past-60-minutes)
 
 ```
+
 find / -mmin 60 -type f
-```
+
+```text
 
 ###### Find all files larger than 20M
 
 [Permalink: Find all files larger than 20M](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-all-files-larger-than-20m)
 
 ```
+
 find / -type f -size +20M
-```
+
+```text
 
 ###### Find duplicate files (based on MD5 hash)
 
 [Permalink: Find duplicate files (based on MD5 hash)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-duplicate-files-based-on-md5-hash)
 
 ```
+
 find -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 33
-```
+
+```text
 
 ###### Change permission only for files
 
 [Permalink: Change permission only for files](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#change-permission-only-for-files)
 
 ```
+
 cd /var/www/site && find . -type f -exec chmod 766 {} \;
 cd /var/www/site && find . -type f -exec chmod 664 {} +
-```
+
+```text
 
 ###### Change permission only for directories
 
 [Permalink: Change permission only for directories](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#change-permission-only-for-directories)
 
 ```
+
 cd /var/www/site && find . -type d -exec chmod g+x {} \;
 cd /var/www/site && find . -type d -exec chmod g+rwx {} +
-```
+
+```text
 
 ###### Find files and directories for specific user/group
 
 [Permalink: Find files and directories for specific user/group](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-files-and-directories-for-specific-usergroup)
 
 ```
+
 # User:
 find . -user <username> -print
 find /etc -type f -user <username> -name "*.conf"
@@ -9941,90 +10271,109 @@ find /etc -type f -user <username> -name "*.conf"
 # Group:
 find /opt -group <group>
 find /etc -type f -group <group> -iname "*.conf"
-```
+
+```text
 
 ###### Find files and directories for all without specific user/group
 
 [Permalink: Find files and directories for all without specific user/group](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-files-and-directories-for-all-without-specific-usergroup)
 
 ```
+
 # User:
 find . \! -user <username> -print
 
 # Group:
 find . \! -group <group>
-```
+
+```text
 
 ###### Looking for files/directories that only have certain permission
 
 [Permalink: Looking for files/directories that only have certain permission](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#looking-for-filesdirectories-that-only-have-certain-permission)
 
 ```
+
 # User
 find . -user <username> -perm -u+rw # -rw-r--r--
 find /home -user $(whoami) -perm 777 # -rwxrwxrwx
 
 # Group:
 find /home -type d -group <group> -perm 755 # -rwxr-xr-x
-```
+
+```text
 
 ###### Delete older files than 60 days
 
 [Permalink: Delete older files than 60 days](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#delete-older-files-than-60-days)
 
 ```
+
 find . -type f -mtime +60 -delete
-```
+
+```text
 
 ###### Recursively remove all empty sub-directories from a directory
 
 [Permalink: Recursively remove all empty sub-directories from a directory](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#recursively-remove-all-empty-sub-directories-from-a-directory)
 
 ```
+
 find . -depth  -type d  -empty -exec rmdir {} \;
-```
+
+```text
 
 ###### How to find all hard links to a file
 
 [Permalink: How to find all hard links to a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#how-to-find-all-hard-links-to-a-file)
 
 ```
+
 find </path/to/dir> -xdev -samefile filename
-```
+
+```text
 
 ###### Recursively find the latest modified files
 
 [Permalink: Recursively find the latest modified files](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#recursively-find-the-latest-modified-files)
 
 ```
+
 find . -type f -exec stat --format '%Y :%y %n' "{}" \; | sort -nr | cut -d: -f2- | head
-```
+
+```text
 
 ###### Recursively find/replace of a string with sed
 
 [Permalink: Recursively find/replace of a string with sed](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#recursively-findreplace-of-a-string-with-sed)
 
 ```
+
 find . -not -path '*/\.git*' -type f -print0 | xargs -0 sed -i 's/foo/bar/g'
-```
+
+```text
 
 ###### Recursively find/replace of a string in directories and file names
 
 [Permalink: Recursively find/replace of a string in directories and file names](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#recursively-findreplace-of-a-string-in-directories-and-file-names)
 
 ```
+
 find . -depth -name '*test*' -execdir bash -c 'mv -v "$1" "${1//foo/bar}"' _ {} \;
-```
+
+```text
 
 ###### Recursively find suid executables
 
 [Permalink: Recursively find suid executables](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#recursively-find-suid-executables)
 
 ```
-find / \( -perm -4000 -o -perm -2000 \) -type f -exec ls -la {} \;
-```
 
-* * *
+find / \( -perm -4000 -o -perm -2000 \) -type f -exec ls -la {} \;
+
+```text
+
+- * *
 
 ##### Tool: [top](https://en.wikipedia.org/wiki/Top_(software))
 
@@ -10035,12 +10384,14 @@ find / \( -perm -4000 -o -perm -2000 \) -type f -exec ls -la {} \;
 [Permalink: Use top to monitor only all processes with the specific string](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#use-top-to-monitor-only-all-processes-with-the-specific-string)
 
 ```
+
 top -p $(pgrep -d , <str>)
-```
+
+```text
 
 - `<str>` \- process containing string (eg. nginx, worker)
 
-* * *
+- * *
 
 ##### Tool: [vmstat](https://en.wikipedia.org/wiki/Vmstat)
 
@@ -10051,8 +10402,10 @@ top -p $(pgrep -d , <str>)
 [Permalink: Show current system utilization (fields in kilobytes)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-current-system-utilization-fields-in-kilobytes)
 
 ```
+
 vmstat 2 20 -t -w
-```
+
+```text
 
 - `2` \- number of times with a defined time interval (delay)
 - `20` \- each execution of the command (count)
@@ -10065,32 +10418,40 @@ vmstat 2 20 -t -w
 [Permalink: Show current system utilization will get refreshed every 5 seconds](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-current-system-utilization-will-get-refreshed-every-5-seconds)
 
 ```
+
 vmstat 5 -w
-```
+
+```text
 
 ###### Display report a summary of disk operations
 
 [Permalink: Display report a summary of disk operations](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#display-report-a-summary-of-disk-operations)
 
 ```
+
 vmstat -D
-```
+
+```text
 
 ###### Display report of event counters and memory stats
 
 [Permalink: Display report of event counters and memory stats](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#display-report-of-event-counters-and-memory-stats)
 
 ```
+
 vmstat -s
-```
+
+```text
 
 ###### Display report about kernel objects stored in slab layer cache
 
 [Permalink: Display report about kernel objects stored in slab layer cache](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#display-report-about-kernel-objects-stored-in-slab-layer-cache)
 
 ```
+
 vmstat -m
-```
+
+```text
 
 ##### Tool: [iostat](https://en.wikipedia.org/wiki/Iostat)
 
@@ -10101,8 +10462,10 @@ vmstat -m
 [Permalink: Show information about the CPU usage, and I/O statistics about all the partitions](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-information-about-the-cpu-usage-and-io-statistics-about-all-the-partitions)
 
 ```
+
 iostat 2 10 -t -m
-```
+
+```text
 
 - `2` \- number of times with a defined time interval (delay)
 - `10` \- each execution of the command (count)
@@ -10114,26 +10477,32 @@ iostat 2 10 -t -m
 [Permalink: Show information only about the CPU utilization](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-information-only-about-the-cpu-utilization)
 
 ```
+
 iostat 2 10 -t -m -c
-```
+
+```text
 
 ###### Show information only about the disk utilization
 
 [Permalink: Show information only about the disk utilization](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-information-only-about-the-disk-utilization)
 
 ```
+
 iostat 2 10 -t -m -d
-```
+
+```text
 
 ###### Show information only about the LVM utilization
 
 [Permalink: Show information only about the LVM utilization](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-information-only-about-the-lvm-utilization)
 
 ```
-iostat -N
-```
 
-* * *
+iostat -N
+
+```text
+
+- * *
 
 ##### Tool: [strace](https://en.wikipedia.org/wiki/Strace)
 
@@ -10144,56 +10513,68 @@ iostat -N
 [Permalink: Track with child processes](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#track-with-child-processes)
 
 ```
+
 # 1)
 strace -f -p $(pidof glusterfsd)
 
 # 2)
 strace -f $(pidof php-fpm | sed 's/\([0-9]*\)/\-p \1/g')
-```
+
+```text
 
 ###### Track process with 30 seconds limit
 
 [Permalink: Track process with 30 seconds limit](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#track-process-with-30-seconds-limit)
 
 ```
+
 timeout 30 strace $(< /var/run/zabbix/zabbix_agentd.pid)
-```
+
+```text
 
 ###### Track processes and redirect output to a file
 
 [Permalink: Track processes and redirect output to a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#track-processes-and-redirect-output-to-a-file)
 
 ```
+
 ps auxw | grep '[a]pache' | awk '{print " -p " $2}' | \
 xargs strace -o /tmp/strace-apache-proc.out
-```
+
+```text
 
 ###### Track with print time spent in each syscall and limit length of print strings
 
 [Permalink: Track with print time spent in each syscall and limit length of print strings](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#track-with-print-time-spent-in-each-syscall-and-limit-length-of-print-strings)
 
 ```
+
 ps auxw | grep '[i]init_policy' | awk '{print " -p " $2}' | \
 xargs strace -f -e trace=network -T -s 10000
-```
+
+```text
 
 ###### Track the open request of a network port
 
 [Permalink: Track the open request of a network port](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#track-the-open-request-of-a-network-port)
 
 ```
+
 strace -f -e trace=bind nc -l 80
-```
+
+```text
 
 ###### Track the open request of a network port (show TCP/UDP)
 
 [Permalink: Track the open request of a network port (show TCP/UDP)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#track-the-open-request-of-a-network-port-show-tcpudp)
 
 ```
-strace -f -e trace=network nc -lu 80
-```
 
-* * *
+strace -f -e trace=network nc -lu 80
+
+```text
+
+- * *
 
 ##### Tool: [kill](https://en.wikipedia.org/wiki/Kill_(command))
 
@@ -10204,10 +10585,12 @@ strace -f -e trace=network nc -lu 80
 [Permalink: Kill a process running on port](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#kill-a-process-running-on-port)
 
 ```
-kill -9 $(lsof -i :<port> | awk '{l=$2} END {print l}')
-```
 
-* * *
+kill -9 $(lsof -i :<port> | awk '{l=$2} END {print l}')
+
+```text
+
+- * *
 
 ##### Tool: [diff](https://en.wikipedia.org/wiki/Diff)
 
@@ -10218,18 +10601,22 @@ kill -9 $(lsof -i :<port> | awk '{l=$2} END {print l}')
 [Permalink: Compare two directory trees](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#compare-two-directory-trees)
 
 ```
+
 diff <(cd directory1 && find | sort) <(cd directory2 && find | sort)
-```
+
+```text
 
 ###### Compare output of two commands
 
 [Permalink: Compare output of two commands](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#compare-output-of-two-commands)
 
 ```
-diff <(cat /etc/passwd) <(cut -f2 /etc/passwd)
-```
 
-* * *
+diff <(cat /etc/passwd) <(cut -f2 /etc/passwd)
+
+```text
+
+- * *
 
 ##### Tool: [vimdiff](http://vimdoc.sourceforge.net/htmldoc/diff.html)
 
@@ -10240,24 +10627,30 @@ diff <(cat /etc/passwd) <(cut -f2 /etc/passwd)
 [Permalink: Highlight the exact differences, based on characters and words](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#highlight-the-exact-differences-based-on-characters-and-words)
 
 ```
+
 vimdiff file1 file2
-```
+
+```text
 
 ###### Compare two JSON files
 
 [Permalink: Compare two JSON files](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#compare-two-json-files)
 
 ```
+
 vimdiff <(jq -S . A.json) <(jq -S . B.json)
-```
+
+```text
 
 ###### Compare Hex dump
 
 [Permalink: Compare Hex dump](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#compare-hex-dump)
 
 ```
+
 d(){ vimdiff <(f $1) <(f $2);};f(){ hexdump -C $1|cut -d' ' -f3-|tr -s ' ';}; d ~/bin1 ~/bin2
-```
+
+```text
 
 ###### diffchar
 
@@ -10273,7 +10666,7 @@ Usefull `vimdiff` commands:
 - `:vertical resize 70` to resize window
 - set window width `Ctrl+W [N columns]+(Shift+)<\>`
 
-* * *
+- * *
 
 ##### Tool: [tail](https://en.wikipedia.org/wiki/Tail_(Unix))
 
@@ -10284,26 +10677,32 @@ Usefull `vimdiff` commands:
 [Permalink: Annotate tail -f with timestamps](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#annotate-tail--f-with-timestamps)
 
 ```
+
 tail -f file | while read ; do echo "$(date +%T.%N) $REPLY" ; done
-```
+
+```text
 
 ###### Analyse an Apache access log for the most common IP addresses
 
 [Permalink: Analyse an Apache access log for the most common IP addresses](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#analyse-an-apache-access-log-for-the-most-common-ip-addresses)
 
 ```
+
 tail -10000 access_log | awk '{print $1}' | sort | uniq -c | sort -n | tail
-```
+
+```text
 
 ###### Analyse web server log and show only 5xx http codes
 
 [Permalink: Analyse web server log and show only 5xx http codes](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#analyse-web-server-log-and-show-only-5xx-http-codes)
 
 ```
-tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
-```
 
-* * *
+tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
+
+```text
+
+- * *
 
 ##### Tool: [tar](https://en.wikipedia.org/wiki/Tar_(computing))
 
@@ -10314,23 +10713,27 @@ tail -n 100 -f /path/to/logfile | grep "HTTP/[1-2].[0-1]\" [5]"
 [Permalink: System backup with exclude specific directories](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#system-backup-with-exclude-specific-directories)
 
 ```
+
 cd /
 tar -czvpf /mnt/system$(date +%d%m%Y%s).tgz --directory=/ \
 --exclude=proc/* --exclude=sys/* --exclude=dev/* --exclude=mnt/* .
-```
+
+```text
 
 ###### System backup with exclude specific directories (pigz)
 
 [Permalink: System backup with exclude specific directories (pigz)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#system-backup-with-exclude-specific-directories-pigz)
 
 ```
+
 cd /
 tar cvpf /backup/snapshot-$(date +%d%m%Y%s).tgz --directory=/ \
 --exclude=proc/* --exclude=sys/* --exclude=dev/* \
 --exclude=mnt/* --exclude=tmp/* --use-compress-program=pigz .
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [dump](https://en.wikipedia.org/wiki/Dump_(program))
 
@@ -10341,19 +10744,23 @@ tar cvpf /backup/snapshot-$(date +%d%m%Y%s).tgz --directory=/ \
 [Permalink: System backup to file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#system-backup-to-file)
 
 ```
+
 dump -y -u -f /backup/system$(date +%d%m%Y%s).lzo /
-```
+
+```text
 
 ###### Restore system from lzo file
 
 [Permalink: Restore system from lzo file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#restore-system-from-lzo-file)
 
 ```
+
 cd /
 restore -rf /backup/system$(date +%d%m%Y%s).lzo
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [cpulimit](http://cpulimit.sourceforge.net/)
 
@@ -10364,10 +10771,12 @@ restore -rf /backup/system$(date +%d%m%Y%s).lzo
 [Permalink: Limit the cpu usage of a process](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#limit-the-cpu-usage-of-a-process)
 
 ```
-cpulimit -p pid -l 50
-```
 
-* * *
+cpulimit -p pid -l 50
+
+```text
+
+- * *
 
 ##### Tool: [pwdx](https://www.cyberciti.biz/faq/unix-linux-pwdx-command-examples-usage-syntax/)
 
@@ -10378,10 +10787,12 @@ cpulimit -p pid -l 50
 [Permalink: Show current working directory of a process](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-current-working-directory-of-a-process-1)
 
 ```
-pwdx <pid>
-```
 
-* * *
+pwdx <pid>
+
+```text
+
+- * *
 
 ##### Tool: [taskset](https://www.cyberciti.biz/faq/taskset-cpu-affinity-command/)
 
@@ -10392,10 +10803,12 @@ pwdx <pid>
 [Permalink: Start a command on only one CPU core](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#start-a-command-on-only-one-cpu-core)
 
 ```
-taskset -c 0 <command>
-```
 
-* * *
+taskset -c 0 <command>
+
+```text
+
+- * *
 
 ##### Tool: [tr](https://en.wikipedia.org/wiki/Tr_(Unix))
 
@@ -10406,10 +10819,12 @@ taskset -c 0 <command>
 [Permalink: Show directories in the PATH, one per line](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-directories-in-the-path-one-per-line)
 
 ```
-tr : '\n' <<<$PATH
-```
 
-* * *
+tr : '\n' <<<$PATH
+
+```text
+
+- * *
 
 ##### Tool: [chmod](https://en.wikipedia.org/wiki/Chmod)
 
@@ -10420,14 +10835,17 @@ tr : '\n' <<<$PATH
 [Permalink: Remove executable bit from all files in the current directory](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-executable-bit-from-all-files-in-the-current-directory)
 
 ```
+
 chmod -R -x+X *
-```
+
+```text
 
 ###### Restore permission for /bin/chmod
 
 [Permalink: Restore permission for /bin/chmod](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#restore-permission-for-binchmod)
 
 ```
+
 # 1:
 cp /bin/ls chmod.01
 cp /bin/chmod chmod.01
@@ -10438,9 +10856,10 @@ cp /bin/chmod chmod.01
 
 # 3:
 setfacl --set u::rwx,g::---,o::--- /bin/chmod
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [who](https://en.wikipedia.org/wiki/Who_(Unix))
 
@@ -10451,18 +10870,22 @@ setfacl --set u::rwx,g::---,o::--- /bin/chmod
 [Permalink: Find last reboot time](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-last-reboot-time)
 
 ```
+
 who -b
-```
+
+```text
 
 ###### Detect a user sudo-su'd into the current shell
 
 [Permalink: Detect a user sudo-su'd into the current shell](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#detect-a-user-sudo-sud-into-the-current-shell)
 
 ```
-[[ $(who -m | awk '{ print $1 }') == $(whoami) ]] || echo "You are su-ed to $(whoami)"
-```
 
-* * *
+[[ $(who -m | awk '{ print $1 }') == $(whoami) ]] || echo "You are su-ed to $(whoami)"
+
+```text
+
+- * *
 
 ##### Tool: [last](https://www.howtoforge.com/linux-last-command/)
 
@@ -10473,11 +10896,13 @@ who -b
 [Permalink: Was the last reboot a panic?](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#was-the-last-reboot-a-panic)
 
 ```
+
 (last -x -f $(ls -1t /var/log/wtmp* | head -2 | tail -1); last -x -f /var/log/wtmp) | \
 grep -A1 reboot | head -2 | grep -q shutdown && echo "Expected reboot" || echo "Panic reboot"
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [screen](https://en.wikipedia.org/wiki/GNU_Screen)
 
@@ -10488,18 +10913,22 @@ grep -A1 reboot | head -2 | grep -q shutdown && echo "Expected reboot" || echo "
 [Permalink: Start screen in detached mode](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#start-screen-in-detached-mode)
 
 ```
+
 screen -d -m <command>
-```
+
+```text
 
 ###### Attach to an existing screen session
 
 [Permalink: Attach to an existing screen session](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#attach-to-an-existing-screen-session)
 
 ```
-screen -r -d <pid>
-```
 
-* * *
+screen -r -d <pid>
+
+```text
+
+- * *
 
 ##### Tool: [script](https://en.wikipedia.org/wiki/Script_(Unix))
 
@@ -10510,6 +10939,7 @@ screen -r -d <pid>
 [Permalink: Record and replay terminal session](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#record-and-replay-terminal-session)
 
 ```
+
 ### Record session
 # 1)
 script -t 2>~/session.time -a ~/session.log
@@ -10519,9 +10949,10 @@ script --timing=session.time session.log
 
 ### Replay session
 scriptreplay --timing=session.time session.log
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [du](https://en.wikipedia.org/wiki/GNU_Screen)
 
@@ -10532,13 +10963,15 @@ scriptreplay --timing=session.time session.log
 [Permalink: Show 20 biggest directories with 'K M G'](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-20-biggest-directories-with-k-m-g)
 
 ```
+
 du | \
 sort -r -n | \
 awk '{split("K M G",v); s=1; while($1>1024){$1/=1024; s++} print int($1)" "v[s]"\t"$2}' | \
 head -n 20
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [inotifywait](https://en.wikipedia.org/wiki/GNU_Screen)
 
@@ -10549,10 +10982,12 @@ head -n 20
 [Permalink: Init tool everytime a file in a directory is modified](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#init-tool-everytime-a-file-in-a-directory-is-modified)
 
 ```
-while true ; do inotifywait -r -e MODIFY dir/ && ls dir/ ; done;
-```
 
-* * *
+while true ; do inotifywait -r -e MODIFY dir/ && ls dir/ ; done;
+
+```text
+
+- * *
 
 ##### Tool: [openssl](https://www.openssl.org/)
 
@@ -10563,46 +10998,57 @@ while true ; do inotifywait -r -e MODIFY dir/ && ls dir/ ; done;
 [Permalink: Testing connection to the remote host](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-connection-to-the-remote-host)
 
 ```
+
 echo | openssl s_client -connect google.com:443 -showcerts
-```
+
+```text
 
 ###### Testing connection to the remote host (debug mode)
 
 [Permalink: Testing connection to the remote host (debug mode)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-connection-to-the-remote-host-debug-mode)
 
 ```
+
 echo | openssl s_client -connect google.com:443 -showcerts -tlsextdebug -status
-```
+
+```text
 
 ###### Testing connection to the remote host (with SNI support)
 
 [Permalink: Testing connection to the remote host (with SNI support)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-connection-to-the-remote-host-with-sni-support)
 
 ```
+
 echo | openssl s_client -showcerts -servername google.com -connect google.com:443
-```
+
+```text
 
 ###### Testing connection to the remote host with specific ssl version
 
 [Permalink: Testing connection to the remote host with specific ssl version](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-connection-to-the-remote-host-with-specific-ssl-version)
 
 ```
+
 openssl s_client -tls1_2 -connect google.com:443
-```
+
+```text
 
 ###### Testing connection to the remote host with specific ssl cipher
 
 [Permalink: Testing connection to the remote host with specific ssl cipher](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-connection-to-the-remote-host-with-specific-ssl-cipher)
 
 ```
+
 openssl s_client -cipher 'AES128-SHA' -connect google.com:443
-```
+
+```text
 
 ###### Verify 0-RTT
 
 [Permalink: Verify 0-RTT](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#verify-0-rtt)
 
 ```
+
 _host="example.com"
 
 cat > req.in << __EOF__
@@ -10613,83 +11059,100 @@ __EOF__
 
 openssl s_client -connect ${_host}:443 -tls1_3 -sess_out session.pem -ign_eof < req.in
 openssl s_client -connect ${_host}:443 -tls1_3 -sess_in session.pem -early_data req.in
-```
+
+```text
 
 ###### Generate private key without passphrase
 
 [Permalink: Generate private key without passphrase](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-private-key-without-passphrase)
 
 ```
+
 # _len: 2048, 4096
 ( _fd="private.key" ; _len="2048" ; \
 openssl genrsa -out ${_fd} ${_len} )
-```
+
+```text
 
 ###### Generate private key with passphrase
 
 [Permalink: Generate private key with passphrase](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-private-key-with-passphrase)
 
 ```
+
 # _ciph: des3, aes128, aes256
 # _len: 2048, 4096
 ( _ciph="aes128" ; _fd="private.key" ; _len="2048" ; \
 openssl genrsa -${_ciph} -out ${_fd} ${_len} )
-```
+
+```text
 
 ###### Remove passphrase from private key
 
 [Permalink: Remove passphrase from private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-passphrase-from-private-key)
 
 ```
+
 ( _fd="private.key" ; _fd_unp="private_unp.key" ; \
 openssl rsa -in ${_fd} -out ${_fd_unp} )
-```
+
+```text
 
 ###### Encrypt existing private key with a passphrase
 
 [Permalink: Encrypt existing private key with a passphrase](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#encrypt-existing-private-key-with-a-passphrase)
 
 ```
+
 # _ciph: des3, aes128, aes256
 ( _ciph="aes128" ; _fd="private.key" ; _fd_pass="private_pass.key" ; \
 openssl rsa -${_ciph} -in ${_fd} -out ${_fd_pass}
-```
+
+```text
 
 ###### Check private key
 
 [Permalink: Check private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#check-private-key)
 
 ```
+
 ( _fd="private.key" ; \
 openssl rsa -check -in ${_fd} )
-```
+
+```text
 
 ###### Get public key from private key
 
 [Permalink: Get public key from private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#get-public-key-from-private-key)
 
 ```
+
 ( _fd="private.key" ; _fd_pub="public.key" ; \
 openssl rsa -pubout -in ${_fd} -out ${_fd_pub} )
-```
+
+```text
 
 ###### Generate private key and CSR
 
 [Permalink: Generate private key and CSR](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-private-key-and-csr)
 
 ```
+
 ( _fd="private.key" ; _fd_csr="request.csr" ; _len="2048" ; \
 openssl req -out ${_fd_csr} -new -newkey rsa:${_len} -nodes -keyout ${_fd} )
-```
+
+```text
 
 ###### Generate CSR
 
 [Permalink: Generate CSR](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-csr)
 
 ```
+
 ( _fd="private.key" ; _fd_csr="request.csr" ; \
 openssl req -out ${_fd_csr} -new -key ${_fd} )
-```
+
+```text
 
 ###### Generate CSR (metadata from existing certificate)
 
@@ -10698,15 +11161,18 @@ openssl req -out ${_fd_csr} -new -key ${_fd} )
 > Where `private.key` is the existing private key. As you can see you do not generate this CSR from your certificate (public key). Also you do not generate the "same" CSR, just a new one to request a new certificate.
 
 ```
+
 ( _fd="private.key" ; _fd_csr="request.csr" ; _fd_crt="cert.crt" ; \
 openssl x509 -x509toreq -in ${_fd_crt} -out ${_fd_csr} -signkey ${_fd} )
-```
+
+```text
 
 ###### Generate CSR with -config param
 
 [Permalink: Generate CSR with -config param](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-csr-with--config-param)
 
 ```
+
 ( _fd="private.key" ; _fd_csr="request.csr" ; \
 openssl req -new -sha256 -key ${_fd} -out ${_fd_csr} \
 -config <(
@@ -10735,11 +11201,13 @@ DNS.2 = <next domain>
 DNS.3 = <next domain>
 __EOF__
 ))
-```
+
+```text
 
 Other values in `[ dn ]`:
 
 ```
+
 countryName            = "DE"                     # C=
 stateOrProvinceName    = "Hessen"                 # ST=
 localityName           = "Keller"                 # L=
@@ -10750,11 +11218,13 @@ organizationName       = "apfelboymschule"        # O=
 organizationalUnitName = "IT Department"          # OU=
 commonName             = "example.com"            # CN=
 emailAddress           = "webmaster@example.com"  # CN/emailAddress=
-```
+
+```text
 
 Example of `oids` (you'll probably also have to make OpenSSL know about the new fields required for EV by adding the following under `[new_oids]`):
 
 ```
+
 [req]
 ...
 oid_section         = new_oids
@@ -10762,7 +11232,8 @@ oid_section         = new_oids
 [ new_oids ]
 postalCode = 2.5.4.17
 streetAddress = 2.5.4.9
-```
+
+```text
 
 For more information please look at these great explanations:
 
@@ -10777,27 +11248,32 @@ For more information please look at these great explanations:
 [Permalink: List available EC curves](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#list-available-ec-curves)
 
 ```
+
 openssl ecparam -list_curves
-```
+
+```text
 
 ###### Print ECDSA private and public keys
 
 [Permalink: Print ECDSA private and public keys](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-ecdsa-private-and-public-keys)
 
 ```
+
 ( _fd="private.key" ; \
 openssl ec -in ${_fd} -noout -text )
 
 # For x25519 only extracting public key
 ( _fd="private.key" ; _fd_pub="public.key" ; \
 openssl pkey -in ${_fd} -pubout -out ${_fd_pub} )
-```
+
+```text
 
 ###### Generate ECDSA private key
 
 [Permalink: Generate ECDSA private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-ecdsa-private-key)
 
 ```
+
 # _curve: prime256v1, secp521r1, secp384r1
 ( _fd="private.key" ; _curve="prime256v1" ; \
 openssl ecparam -out ${_fd} -name ${_curve} -genkey )
@@ -10805,131 +11281,157 @@ openssl ecparam -out ${_fd} -name ${_curve} -genkey )
 # _curve: X25519
 ( _fd="private.key" ; _curve="x25519" ; \
 openssl genpkey -algorithm ${_curve} -out ${_fd} )
-```
+
+```text
 
 ###### Generate private key and CSR (ECC)
 
 [Permalink: Generate private key and CSR (ECC)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-private-key-and-csr-ecc)
 
 ```
+
 # _curve: prime256v1, secp521r1, secp384r1
 ( _fd="domain.com.key" ; _fd_csr="domain.com.csr" ; _curve="prime256v1" ; \
 openssl ecparam -out ${_fd} -name ${_curve} -genkey ; \
 openssl req -new -key ${_fd} -out ${_fd_csr} -sha256 )
-```
+
+```text
 
 ###### Generate self-signed certificate
 
 [Permalink: Generate self-signed certificate](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-self-signed-certificate)
 
 ```
+
 # _len: 2048, 4096
 ( _fd="domain.key" ; _fd_out="domain.crt" ; _len="2048" ; _days="365" ; \
 openssl req -newkey rsa:${_len} -nodes \
 -keyout ${_fd} -x509 -days ${_days} -out ${_fd_out} )
-```
+
+```text
 
 ###### Generate self-signed certificate from existing private key
 
 [Permalink: Generate self-signed certificate from existing private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-self-signed-certificate-from-existing-private-key)
 
 ```
+
 # _len: 2048, 4096
 ( _fd="domain.key" ; _fd_out="domain.crt" ; _days="365" ; \
 openssl req -key ${_fd} -nodes \
 -x509 -days ${_days} -out ${_fd_out} )
-```
+
+```text
 
 ###### Generate self-signed certificate from existing private key and csr
 
 [Permalink: Generate self-signed certificate from existing private key and csr](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-self-signed-certificate-from-existing-private-key-and-csr)
 
 ```
+
 # _len: 2048, 4096
 ( _fd="domain.key" ; _fd_csr="domain.csr" ; _fd_out="domain.crt" ; _days="365" ; \
 openssl x509 -signkey ${_fd} -nodes \
 -in ${_fd_csr} -req -days ${_days} -out ${_fd_out} )
-```
+
+```text
 
 ###### Generate DH public parameters
 
 [Permalink: Generate DH public parameters](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-dh-public-parameters)
 
 ```
+
 ( _dh_size="2048" ; \
 openssl dhparam -out /etc/nginx/ssl/dhparam_${_dh_size}.pem "$_dh_size" )
-```
+
+```text
 
 ###### Display DH public parameters
 
 [Permalink: Display DH public parameters](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#display-dh-public-parameters)
 
 ```
+
 openssl pkeyparam -in dhparam.pem -text
-```
+
+```text
 
 ###### Extract private key from pfx
 
 [Permalink: Extract private key from pfx](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#extract-private-key-from-pfx)
 
 ```
+
 ( _fd_pfx="cert.pfx" ; _fd_key="key.pem" ; \
 openssl pkcs12 -in ${_fd_pfx} -nocerts -nodes -out ${_fd_key} )
-```
+
+```text
 
 ###### Extract private key and certs from pfx
 
 [Permalink: Extract private key and certs from pfx](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#extract-private-key-and-certs-from-pfx)
 
 ```
+
 ( _fd_pfx="cert.pfx" ; _fd_pem="key_certs.pem" ; \
 openssl pkcs12 -in ${_fd_pfx} -nodes -out ${_fd_pem} )
-```
+
+```text
 
 ###### Extract certs from p7b
 
 [Permalink: Extract certs from p7b](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#extract-certs-from-p7b)
 
 ```
+
 # PKCS#7 file doesn't include private keys.
 ( _fd_p7b="cert.p7b" ; _fd_pem="cert.pem" ; \
 openssl pkcs7 -inform DER -outform PEM -in ${_fd_p7b} -print_certs > ${_fd_pem})
 # or:
 openssl pkcs7 -print_certs -in -in ${_fd_p7b} -out ${_fd_pem})
-```
+
+```text
 
 ###### Convert DER to PEM
 
 [Permalink: Convert DER to PEM](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#convert-der-to-pem)
 
 ```
+
 ( _fd_der="cert.crt" ; _fd_pem="cert.pem" ; \
 openssl x509 -in ${_fd_der} -inform der -outform pem -out ${_fd_pem} )
-```
+
+```text
 
 ###### Convert PEM to DER
 
 [Permalink: Convert PEM to DER](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#convert-pem-to-der)
 
 ```
+
 ( _fd_der="cert.crt" ; _fd_pem="cert.pem" ; \
 openssl x509 -in ${_fd_pem} -outform der -out ${_fd_der} )
-```
+
+```text
 
 ###### Verification of the private key
 
 [Permalink: Verification of the private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#verification-of-the-private-key)
 
 ```
+
 ( _fd="private.key" ; \
 openssl rsa -noout -text -in ${_fd} )
-```
+
+```text
 
 ###### Verification of the public key
 
 [Permalink: Verification of the public key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#verification-of-the-public-key)
 
 ```
+
 # 1)
 ( _fd="public.key" ; \
 openssl pkey -noout -text -pubin -in ${_fd} )
@@ -10938,45 +11440,54 @@ openssl pkey -noout -text -pubin -in ${_fd} )
 ( _fd="private.key" ; \
 openssl rsa -inform PEM -noout -in ${_fd} &> /dev/null ; \
 if [ $? = 0 ] ; then echo -en "OK\n" ; fi )
-```
+
+```text
 
 ###### Verification of the certificate
 
 [Permalink: Verification of the certificate](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#verification-of-the-certificate)
 
 ```
+
 ( _fd="certificate.crt" ; # format: pem, cer, crt \
 openssl x509 -noout -text -in ${_fd} )
-```
+
+```text
 
 ###### Verification of the CSR
 
 [Permalink: Verification of the CSR](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#verification-of-the-csr)
 
 ```
+
 ( _fd_csr="request.csr" ; \
 openssl req -text -noout -in ${_fd_csr} )
-```
+
+```text
 
 ###### Check the private key and the certificate are match
 
 [Permalink: Check the private key and the certificate are match](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#check-the-private-key-and-the-certificate-are-match)
 
 ```
+
 (openssl rsa -noout -modulus -in private.key | openssl md5 ; \
 openssl x509 -noout -modulus -in certificate.crt | openssl md5) | uniq
-```
+
+```text
 
 ###### Check the private key and the CSR are match
 
 [Permalink: Check the private key and the CSR are match](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#check-the-private-key-and-the-csr-are-match)
 
 ```
+
 (openssl rsa -noout -modulus -in private.key | openssl md5 ; \
 openssl req -noout -modulus -in request.csr | openssl md5) | uniq
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [secure-delete](https://wiki.archlinux.org/index.php/Securely_wipe_disk)
 
@@ -10987,40 +11498,48 @@ openssl req -noout -modulus -in request.csr | openssl md5) | uniq
 [Permalink: Secure delete with shred](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#secure-delete-with-shred)
 
 ```
+
 shred -vfuz -n 10 file
 shred --verbose --random-source=/dev/urandom -n 1 /dev/sda
-```
+
+```text
 
 ###### Secure delete with scrub
 
 [Permalink: Secure delete with scrub](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#secure-delete-with-scrub)
 
 ```
+
 scrub -p dod /dev/sda
 scrub -p dod -r file
-```
+
+```text
 
 ###### Secure delete with badblocks
 
 [Permalink: Secure delete with badblocks](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#secure-delete-with-badblocks)
 
 ```
+
 badblocks -s -w -t random -v /dev/sda
 badblocks -c 10240 -s -w -t random -v /dev/sda
-```
+
+```text
 
 ###### Secure delete with secure-delete
 
 [Permalink: Secure delete with secure-delete](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#secure-delete-with-secure-delete)
 
 ```
+
 srm -vz /tmp/file
 sfill -vz /local
 sdmem -v
 swapoff /dev/sda5 && sswap -vz /dev/sda5
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [dd](https://en.wikipedia.org/wiki/Dd_(Unix))
 
@@ -11031,19 +11550,23 @@ swapoff /dev/sda5 && sswap -vz /dev/sda5
 [Permalink: Show dd status every so often](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-dd-status-every-so-often)
 
 ```
+
 dd <dd_params> status=progress
 watch --interval 5 killall -USR1 dd
-```
+
+```text
 
 ###### Redirect output to a file with dd
 
 [Permalink: Redirect output to a file with dd](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#redirect-output-to-a-file-with-dd)
 
 ```
-echo "string" | dd of=filename
-```
 
-* * *
+echo "string" | dd of=filename
+
+```text
+
+- * *
 
 ##### Tool: [gpg](https://www.gnupg.org/)
 
@@ -11054,8 +11577,10 @@ echo "string" | dd of=filename
 [Permalink: Export public key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#export-public-key)
 
 ```
+
 gpg --export --armor "<username>" > username.pkey
-```
+
+```text
 
 - `--export` \- export all keys from all keyrings or specific key
 - `-a|--armor` \- create ASCII armored output
@@ -11065,8 +11590,10 @@ gpg --export --armor "<username>" > username.pkey
 [Permalink: Encrypt file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#encrypt-file)
 
 ```
+
 gpg -e -r "<username>" dump.sql
-```
+
+```text
 
 - `-e|--encrypt` \- encrypt data
 - `-r|--recipient` \- encrypt for specific
@@ -11076,8 +11603,10 @@ gpg -e -r "<username>" dump.sql
 [Permalink: Decrypt file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#decrypt-file)
 
 ```
+
 gpg -o dump.sql -d dump.sql.gpg
-```
+
+```text
 
 - `-o|--output` \- use as output file
 - `-d|--decrypt` \- decrypt data (default)
@@ -11087,8 +11616,10 @@ gpg -o dump.sql -d dump.sql.gpg
 [Permalink: Search recipient](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#search-recipient)
 
 ```
+
 gpg --keyserver hkp://keyserver.ubuntu.com --search-keys "<username>"
-```
+
+```text
 
 - `--keyserver` \- set specific key server
 - `--search-keys` \- search for keys on a key server
@@ -11098,11 +11629,13 @@ gpg --keyserver hkp://keyserver.ubuntu.com --search-keys "<username>"
 [Permalink: List all of the packets in an encrypted file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#list-all-of-the-packets-in-an-encrypted-file)
 
 ```
+
 gpg --batch --list-packets archive.gpg
 gpg2 --batch --list-packets archive.gpg
-```
 
-* * *
+```text
+
+- * *
 
 ##### Tool: [system-other](https://github.com/trimstray/the-book-of-secret-knowledge\#tool-system-other)
 
@@ -11113,62 +11646,78 @@ gpg2 --batch --list-packets archive.gpg
 [Permalink: Reboot system from init](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#reboot-system-from-init)
 
 ```
+
 exec /sbin/init 6
-```
+
+```text
 
 ###### Init system from single user mode
 
 [Permalink: Init system from single user mode](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#init-system-from-single-user-mode)
 
 ```
+
 exec /sbin/init
-```
+
+```text
 
 ###### Show current working directory of a process
 
 [Permalink: Show current working directory of a process](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-current-working-directory-of-a-process-2)
 
 ```
+
 readlink -f /proc/<PID>/cwd
-```
+
+```text
 
 ###### Show actual pathname of the executed command
 
 [Permalink: Show actual pathname of the executed command](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-actual-pathname-of-the-executed-command)
 
 ```
+
 readlink -f /proc/<PID>/exe
-```
+
+```text
 
 ##### Tool: [curl](https://curl.haxx.se/)
 
 [Permalink: Tool: curl](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-curl)
 
 ```
+
 curl -Iks https://www.google.com
-```
+
+```text
 
 - `-I` \- show response headers only
 - `-k` \- insecure connection when using ssl
 - `-s` \- silent mode (not display body)
 
 ```
+
 curl -Iks --location -X GET -A "x-agent" https://www.google.com
-```
+
+```text
 
 - `--location` \- follow redirects
 - `-X` \- set method
 - `-A` \- set user-agent
 
 ```
+
 curl -Iks --location -X GET -A "x-agent" --proxy http://127.0.0.1:16379 https://www.google.com
-```
+
+```text
 
 - `--proxy [socks5://|http://]` \- set proxy server
 
 ```
+
 curl -o file.pdf -C - https://example.com/Aiju2goo0Ja2.pdf
-```
+
+```text
 
 - `-o` \- write output to file
 - `-C` \- resume the transfer
@@ -11178,29 +11727,34 @@ curl -o file.pdf -C - https://example.com/Aiju2goo0Ja2.pdf
 [Permalink: Find your external IP address (external services)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-your-external-ip-address-external-services)
 
 ```
+
 curl ipinfo.io
 curl ipinfo.io/ip
 curl icanhazip.com
 curl ifconfig.me/ip ; echo
-```
+
+```text
 
 ###### Repeat URL request
 
 [Permalink: Repeat URL request](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#repeat-url-request)
 
 ```
+
 # URL sequence substitution with a dummy query string:
 curl -ks https://example.com/?[1-20]
 
 # With shell 'for' loop:
 for i in {1..20} ; do curl -ks https://example.com/ ; done
-```
+
+```text
 
 ###### Check DNS and HTTP trace with headers for specific domains
 
 [Permalink: Check DNS and HTTP trace with headers for specific domains](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#check-dns-and-http-trace-with-headers-for-specific-domains)
 
 ```
+
 ### Set domains and external dns servers.
 _domain_list=(google.com) ; _dns_list=("8.8.8.8" "1.1.1.1")
 
@@ -11235,11 +11789,15 @@ for _domain in "${_domain_list[@]}" ; do
 done\
 \
 unset _domain_list _dns_list\
+
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [httpie](https://httpie.org/)\
+
 \
 [Permalink: Tool: httpie](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-httpie)\
 \
@@ -11247,32 +11805,43 @@ unset _domain_list _dns_list\
 http -p Hh https://www.google.com\
 ```\
 \
+
 - `-p` \- print request and response headers\
 \
-  - `H` \- request headers\
-  - `B` \- request body\
-  - `h` \- response headers\
-  - `b` \- response body\
+
+- `H` \- request headers\
+- `B` \- request body\
+- `h` \- response headers\
+- `b` \- response body\
+
 \
 ```\
 http -p Hh https://www.google.com --follow --verify no\
 ```\
 \
+
 - `-F, --follow` \- follow redirects\
 - `--verify no` \- skip SSL verification\
+
 \
 ```\
 http -p Hh https://www.google.com --follow --verify no \\
 --proxy http:http://127.0.0.1:16379\
 ```\
 \
+
 - `--proxy [http:]` \- set proxy server\
+
 \
+
 ##### Tool: [ssh](https://www.openssh.com/)\
+
 \
 [Permalink: Tool: ssh](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-ssh)\
 \
+
 ###### Escape Sequence\
+
 \
 [Permalink: Escape Sequence](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#escape-sequence)\
 \
@@ -11289,7 +11858,9 @@ http -p Hh https://www.google.com --follow --verify no \\
 ~~  - send the escape character by typing it twice\
 ```\
 \
+
 ###### Compare a remote file with a local file\
+
 \
 [Permalink: Compare a remote file with a local file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#compare-a-remote-file-with-a-local-file)\
 \
@@ -11297,7 +11868,9 @@ http -p Hh https://www.google.com --follow --verify no \\
 ssh user@host cat /path/to/remotefile | diff /path/to/localfile -\
 ```\
 \
+
 ###### SSH connection through host in the middle\
+
 \
 [Permalink: SSH connection through host in the middle](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ssh-connection-through-host-in-the-middle)\
 \
@@ -11305,7 +11878,9 @@ ssh user@host cat /path/to/remotefile | diff /path/to/localfile -\
 ssh -t reachable_host ssh unreachable_host\
 ```\
 \
+
 ###### Run command over SSH on remote host\
+
 \
 [Permalink: Run command over SSH on remote host](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#run-command-over-ssh-on-remote-host)\
 \
@@ -11317,7 +11892,9 @@ __EOF__\
 ssh host -l user $(<cmd.txt)\
 ```\
 \
+
 ###### Get public key from private key\
+
 \
 [Permalink: Get public key from private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#get-public-key-from-private-key-1)\
 \
@@ -11325,7 +11902,9 @@ ssh host -l user $(<cmd.txt)\
 ssh-keygen -y -f ~/.ssh/id_rsa\
 ```\
 \
+
 ###### Get all fingerprints\
+
 \
 [Permalink: Get all fingerprints](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#get-all-fingerprints)\
 \
@@ -11333,7 +11912,9 @@ ssh-keygen -y -f ~/.ssh/id_rsa\
 ssh-keygen -l -f .ssh/known_hosts\
 ```\
 \
+
 ###### SSH authentication with user password\
+
 \
 [Permalink: SSH authentication with user password](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ssh-authentication-with-user-password)\
 \
@@ -11341,7 +11922,9 @@ ssh-keygen -l -f .ssh/known_hosts\
 ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no user@remote_host\
 ```\
 \
+
 ###### SSH authentication with publickey\
+
 \
 [Permalink: SSH authentication with publickey](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ssh-authentication-with-publickey)\
 \
@@ -11349,7 +11932,9 @@ ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no user@remote_
 ssh -o PreferredAuthentications=publickey -o PubkeyAuthentication=yes -i id_rsa user@remote_host\
 ```\
 \
+
 ###### Simple recording SSH session\
+
 \
 [Permalink: Simple recording SSH session](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#simple-recording-ssh-session)\
 \
@@ -11367,7 +11952,9 @@ function _ssh_sesslog() {\
 alias ssh='_ssh_sesslog'\
 ```\
 \
+
 ###### Using Keychain for SSH logins\
+
 \
 [Permalink: Using Keychain for SSH logins](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#using-keychain-for-ssh-logins)\
 \
@@ -11388,7 +11975,9 @@ function _scg() {\
 }\
 ```\
 \
+
 ###### SSH login without processing any login scripts\
+
 \
 [Permalink: SSH login without processing any login scripts](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ssh-login-without-processing-any-login-scripts)\
 \
@@ -11396,7 +11985,9 @@ function _scg() {\
 ssh -tt user@host bash\
 ```\
 \
+
 ###### SSH local port forwarding\
+
 \
 [Permalink: SSH local port forwarding](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ssh-local-port-forwarding)\
 \
@@ -11420,11 +12011,14 @@ host1> ssh -nNT -L 9051:db.d.x:5432 node.d.y\
 host1> psql -U db_user -d db_dev -p 9051 -h localhost\
 ```\
 \
+
 - `-n` \- redirects stdin from `/dev/null`\
 - `-N` \- do not execute a remote command\
 - `-T` \- disable pseudo-terminal allocation\
 \
+
 ###### SSH remote port forwarding\
+
 \
 [Permalink: SSH remote port forwarding](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ssh-remote-port-forwarding)\
 \
@@ -11436,13 +12030,18 @@ host1> ssh -nNT -R 9051:db.d.x:5432 node.d.y\
 host2> psql -U postgres -d postgres -p 8000 -h localhost\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [linux-dev](https://www.tldp.org/LDP/abs/html/devref1.html)\
+
 \
 [Permalink: Tool: linux-dev](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-linux-dev)\
 \
+
 ###### Testing remote connection to port\
+
 \
 [Permalink: Testing remote connection to port](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-remote-connection-to-port)\
 \
@@ -11450,11 +12049,14 @@ host2> psql -U postgres -d postgres -p 8000 -h localhost\
 timeout 1 bash -c "</dev/<proto>/<host>/<port>" >/dev/null 2>&1 ; echo $?\
 ```\
 \
+
 - `<proto` \- set protocol (tcp/udp)\
 - `<host>` \- set remote host\
 - `<port>` \- set destination port\
 \
+
 ###### Read and write to TCP or UDP sockets with common bash tools\
+
 \
 [Permalink: Read and write to TCP or UDP sockets with common bash tools](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#read-and-write-to-tcp-or-udp-sockets-with-common-bash-tools)\
 \
@@ -11462,13 +12064,18 @@ timeout 1 bash -c "</dev/<proto>/<host>/<port>" >/dev/null 2>&1 ; echo $?\
 exec 5<>/dev/tcp/<host>/<port>; cat <&5 & cat >&5; exec 5>&-\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [tcpdump](http://www.tcpdump.org/)\
+
 \
 [Permalink: Tool: tcpdump](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-tcpdump)\
 \
+
 ###### Filter incoming (on interface) traffic (specific ip:port)\
+
 \
 [Permalink: Filter incoming (on interface) traffic (specific ip:port)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#filter-incoming-on-interface-traffic-specific-ipport)\
 \
@@ -11476,6 +12083,7 @@ exec 5<>/dev/tcp/<host>/<port>; cat <&5 & cat >&5; exec 5>&-\
 tcpdump -ne -i eth0 -Q in host 192.168.252.1 and port 443\
 ```\
 \
+
 - `-n` \- don't convert addresses (`-nn` will not resolve hostnames or ports)\
 - `-e` \- print the link-level headers\
 - `-i [iface|any]` \- set interface\
@@ -11484,7 +12092,9 @@ tcpdump -ne -i eth0 -Q in host 192.168.252.1 and port 443\
 - `[and|or]` \- set logic\
 - `port [1-65535]` \- set port number, also `[port not]`\
 \
+
 ###### Filter incoming (on interface) traffic (specific ip:port) and write to a file\
+
 \
 [Permalink: Filter incoming (on interface) traffic (specific ip:port) and write to a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#filter-incoming-on-interface-traffic-specific-ipport-and-write-to-a-file)\
 \
@@ -11492,10 +12102,13 @@ tcpdump -ne -i eth0 -Q in host 192.168.252.1 and port 443\
 tcpdump -ne -i eth0 -Q in host 192.168.252.1 and port 443 -c 5 -w tcpdump.pcap\
 ```\
 \
+
 - `-c [num]` \- capture only num number of packets\
 - `-w [filename]` \- write packets to file, `-r [filename]` \- reading from file\
 \
+
 ###### Capture all ICMP packets\
+
 \
 [Permalink: Capture all ICMP packets](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#capture-all-icmp-packets)\
 \
@@ -11503,7 +12116,9 @@ tcpdump -ne -i eth0 -Q in host 192.168.252.1 and port 443 -c 5 -w tcpdump.pcap\
 tcpdump -nei eth0 icmp\
 ```\
 \
+
 ###### Check protocol used (TCP or UDP) for service\
+
 \
 [Permalink: Check protocol used (TCP or UDP) for service](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#check-protocol-used-tcp-or-udp-for-service)\
 \
@@ -11511,7 +12126,9 @@ tcpdump -nei eth0 icmp\
 tcpdump -nei eth0 tcp port 22 -vv -X | egrep "TCP|UDP"\
 ```\
 \
+
 ###### Display ASCII text (to parse the output using grep or other)\
+
 \
 [Permalink: Display ASCII text (to parse the output using grep or other)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#display-ascii-text-to-parse-the-output-using-grep-or-other)\
 \
@@ -11519,7 +12136,9 @@ tcpdump -nei eth0 tcp port 22 -vv -X | egrep "TCP|UDP"\
 tcpdump -i eth0 -A -s0 port 443\
 ```\
 \
+
 ###### Grab everything between two keywords\
+
 \
 [Permalink: Grab everything between two keywords](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#grab-everything-between-two-keywords)\
 \
@@ -11527,7 +12146,9 @@ tcpdump -i eth0 -A -s0 port 443\
 tcpdump -i eth0 port 80 -X | sed -n -e '/username/,/=ldap/ p'\
 ```\
 \
+
 ###### Grab user and pass ever plain http\
+
 \
 [Permalink: Grab user and pass ever plain http](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#grab-user-and-pass-ever-plain-http)\
 \
@@ -11537,7 +12158,9 @@ tcpdump -i eth0  port http -l -A | egrep -i \\
 --color=auto --line-buffered -B20\
 ```\
 \
+
 ###### Extract HTTP User Agent from HTTP request header\
+
 \
 [Permalink: Extract HTTP User Agent from HTTP request header](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#extract-http-user-agent-from-http-request-header)\
 \
@@ -11545,7 +12168,9 @@ tcpdump -i eth0  port http -l -A | egrep -i \\
 tcpdump -ei eth0 -nn -A -s1500 -l | grep "User-Agent:"\
 ```\
 \
+
 ###### Capture only HTTP GET and POST packets\
+
 \
 [Permalink: Capture only HTTP GET and POST packets](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#capture-only-http-get-and-post-packets)\
 \
@@ -11560,7 +12185,9 @@ or simply:\
 tcpdump -ei eth0 -s 0 -v -n -l | egrep -i "POST /|GET /|Host:"\
 ```\
 \
+
 ###### Rotate capture files\
+
 \
 [Permalink: Rotate capture files](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#rotate-capture-files)\
 \
@@ -11568,10 +12195,13 @@ tcpdump -ei eth0 -s 0 -v -n -l | egrep -i "POST /|GET /|Host:"\
 tcpdump -ei eth0 -w /tmp/capture-%H.pcap -G 3600 -C 200\
 ```\
 \
+
 - `-G <num>` \- pcap will be created every `<num>` seconds\
 - `-C <size>` \- close the current pcap and open a new one if is larger than `<size>`\
 \
+
 ###### Top hosts by packets\
+
 \
 [Permalink: Top hosts by packets](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#top-hosts-by-packets)\
 \
@@ -11579,7 +12209,9 @@ tcpdump -ei eth0 -w /tmp/capture-%H.pcap -G 3600 -C 200\
 tcpdump -ei enp0s25 -nnn -t -c 200 | cut -f 1,2,3,4 -d '.' | sort | uniq -c | sort -nr | head -n 20\
 ```\
 \
+
 ###### Excludes any RFC 1918 private address\
+
 \
 [Permalink: Excludes any RFC 1918 private address](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#excludes-any-rfc-1918-private-address)\
 \
@@ -11587,13 +12219,18 @@ tcpdump -ei enp0s25 -nnn -t -c 200 | cut -f 1,2,3,4 -d '.' | sort | uniq -c | so
 tcpdump -nei eth0 'not (src net (10 or 172.16/12 or 192.168/16) and dst net (10 or 172.16/12 or 192.168/16))'\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [tcpick](http://tcpick.sourceforge.net/)\
+
 \
 [Permalink: Tool: tcpick](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-tcpick)\
 \
+
 ###### Analyse packets in real-time\
+
 \
 [Permalink: Analyse packets in real-time](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#analyse-packets-in-real-time)\
 \
@@ -11601,9 +12238,12 @@ tcpdump -nei eth0 'not (src net (10 or 172.16/12 or 192.168/16) and dst net (10 
 while true ; do tcpick -a -C -r dump.pcap ; sleep 2 ; clear ; done\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [ngrep](http://ngrep.sourceforge.net/usage.html)\
+
 \
 [Permalink: Tool: ngrep](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-ngrep)\
 \
@@ -11611,43 +12251,55 @@ while true ; do tcpick -a -C -r dump.pcap ; sleep 2 ; clear ; done\
 ngrep -d eth0 "www.domain.com" port 443\
 ```\
 \
+
 - `-d [iface|any]` \- set interface\
 - `[domain]` \- set hostname\
 - `port [1-65535]` \- set port number\
+
 \
 ```\
 ngrep -d eth0 "www.domain.com" src host 10.240.20.2 and port 443\
 ```\
 \
+
 - `(host [ip|hostname])` \- filter by ip or hostname\
 - `(port [1-65535])` \- filter by port number\
+
 \
 ```\
 ngrep -d eth0 -qt -O ngrep.pcap "www.domain.com" port 443\
 ```\
 \
+
 - `-q` \- quiet mode (only payloads)\
 - `-t` \- added timestamps\
 - `-O [filename]` \- save output to file, `-I [filename]` \- reading from file\
+
 \
 ```\
 ngrep -d eth0 -qt 'HTTP' 'tcp'\
 ```\
 \
+
 - `HTTP` \- show http headers\
 - `tcp|udp` \- set protocol\
 - `[src|dst] host [ip|hostname]` \- set direction for specific node\
+
 \
 ```\
 ngrep -l -q -d eth0 -i "User-Agent: curl*"\
 ```\
 \
+
 - `-l` \- stdout line buffered\
 - `-i` \- case-insensitive search\
 \
-* * *\
+- * *\
+
 \
+
 ##### Tool: [hping3](http://www.hping.org/)\
+
 \
 [Permalink: Tool: hping3](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-hping3)\
 \
@@ -11655,43 +12307,54 @@ ngrep -l -q -d eth0 -i "User-Agent: curl*"\
 hping3 -V -p 80 -s 5050 <scan_type> www.google.com\
 ```\
 \
+
 - `-V|--verbose` \- verbose mode\
 - `-p|--destport` \- set destination port\
 - `-s|--baseport` \- set source port\
 - `<scan_type>` \- set scan type\
 \
-  - `-F|--fin` \- set FIN flag, port open if no reply\
-  - `-S|--syn` \- set SYN flag\
-  - `-P|--push` \- set PUSH flag\
-  - `-A|--ack` \- set ACK flag (use when ping is blocked, RST response back if the port is open)\
-  - `-U|--urg` \- set URG flag\
-  - `-Y|--ymas` \- set Y unused flag (0x80 - nullscan), port open if no reply\
-  - `-M 0 -UPF` \- set TCP sequence number and scan type (URG+PUSH+FIN), port open if no reply\
+
+- `-F|--fin` \- set FIN flag, port open if no reply\
+- `-S|--syn` \- set SYN flag\
+- `-P|--push` \- set PUSH flag\
+- `-A|--ack` \- set ACK flag (use when ping is blocked, RST response back if the port is open)\
+- `-U|--urg` \- set URG flag\
+- `-Y|--ymas` \- set Y unused flag (0x80 - nullscan), port open if no reply\
+- `-M 0 -UPF` \- set TCP sequence number and scan type (URG+PUSH+FIN), port open if no reply\
+
 \
 ```\
 hping3 -V -c 1 -1 -C 8 www.google.com\
 ```\
 \
+
 - `-c [num]` \- packet count\
 - `-1` \- set ICMP mode\
 - `-C|--icmptype [icmp-num]` \- set icmp type (default icmp-echo = 8)\
+
 \
 ```\
 hping3 -V -c 1000000 -d 120 -S -w 64 -p 80 --flood --rand-source <remote_host>\
 ```\
 \
+
 - `--flood` \- sent packets as fast as possible (don't show replies)\
 - `--rand-source` \- random source address mode\
 - `-d --data` \- data size\
 - `-w|--win` \- winsize (default 64)\
 \
-* * *\
+- * *\
+
 \
+
 ##### Tool: [nmap](https://nmap.org/)\
+
 \
 [Permalink: Tool: nmap](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-nmap)\
 \
+
 ###### Ping scans the network\
+
 \
 [Permalink: Ping scans the network](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#ping-scans-the-network)\
 \
@@ -11699,7 +12362,9 @@ hping3 -V -c 1000000 -d 120 -S -w 64 -p 80 --flood --rand-source <remote_host>\
 nmap -sP 192.168.0.0/24\
 ```\
 \
+
 ###### Show only open ports\
+
 \
 [Permalink: Show only open ports](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-only-open-ports)\
 \
@@ -11707,7 +12372,9 @@ nmap -sP 192.168.0.0/24\
 nmap -F --open 192.168.0.0/24\
 ```\
 \
+
 ###### Full TCP port scan using with service version detection\
+
 \
 [Permalink: Full TCP port scan using with service version detection](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#full-tcp-port-scan-using-with-service-version-detection)\
 \
@@ -11715,7 +12382,9 @@ nmap -F --open 192.168.0.0/24\
 nmap -p 1-65535 -sV -sS -T4 192.168.0.0/24\
 ```\
 \
+
 ###### Nmap scan and pass output to Nikto\
+
 \
 [Permalink: Nmap scan and pass output to Nikto](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#nmap-scan-and-pass-output-to-nikto)\
 \
@@ -11723,7 +12392,9 @@ nmap -p 1-65535 -sV -sS -T4 192.168.0.0/24\
 nmap -p80,443 192.168.0.0/24 -oG - | nikto.pl -h -\
 ```\
 \
+
 ###### Recon specific ip:service with Nmap NSE scripts stack\
+
 \
 [Permalink: Recon specific ip:service with Nmap NSE scripts stack](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#recon-specific-ipservice-with-nmap-nse-scripts-stack)\
 \
@@ -11777,9 +12448,12 @@ _nmap_nse_scripts_args+="http-waf-fingerprint.intensive=1"\
 nmap --script="$_nmap_nse_scripts" --script-args="$_nmap_nse_scripts_args" -p "$_ports" "$_hosts"\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [netcat](http://netcat.sourceforge.net/)\
+
 \
 [Permalink: Tool: netcat](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-netcat)\
 \
@@ -11787,30 +12461,40 @@ nmap --script="$_nmap_nse_scripts" --script-args="$_nmap_nse_scripts_args" -p "$
 nc -kl 5000\
 ```\
 \
+
 - `-l` \- listen for an incoming connection\
 - `-k` \- listening after client has disconnected\
 - `>filename.out` \- save receive data to file (optional)\
+
 \
 ```\
 nc 192.168.0.1 5051 < filename.in\
 ```\
 \
+
 - `< filename.in` \- send data to remote host\
+
 \
 ```\
 nc -vz 10.240.30.3 5000\
 ```\
 \
+
 - `-v` \- verbose output\
 - `-z` \- scan for listening daemons\
+
 \
 ```\
 nc -vzu 10.240.30.3 1-65535\
 ```\
 \
+
 - `-u` \- scan only udp ports\
+
 \
+
 ###### Transfer data file (archive)\
+
 \
 [Permalink: Transfer data file (archive)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#transfer-data-file-archive)\
 \
@@ -11819,7 +12503,9 @@ server> nc -l 5000 | tar xzvfp -\
 client> tar czvfp - /path/to/dir | nc 10.240.30.3 5000\
 ```\
 \
+
 ###### Launch remote shell\
+
 \
 [Permalink: Launch remote shell](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#launch-remote-shell)\
 \
@@ -11834,7 +12520,9 @@ server> cat /tmp/f | /bin/bash -i 2>&1 | nc -l 127.0.0.1 5000 > /tmp/f\
 client> nc 10.240.30.3 5000\
 ```\
 \
+
 ###### Simple file server\
+
 \
 [Permalink: Simple file server](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#simple-file-server)\
 \
@@ -11842,7 +12530,9 @@ client> nc 10.240.30.3 5000\
 while true ; do nc -l 5000 | tar -xvf - ; done\
 ```\
 \
+
 ###### Simple minimal HTTP Server\
+
 \
 [Permalink: Simple minimal HTTP Server](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#simple-minimal-http-server)\
 \
@@ -11850,7 +12540,9 @@ while true ; do nc -l 5000 | tar -xvf - ; done\
 while true ; do nc -l -p 1500 -c 'echo -e "HTTP/1.1 200 OK\n\n $(date)"' ; done\
 ```\
 \
+
 ###### Simple HTTP Server\
+
 \
 [Permalink: Simple HTTP Server](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#simple-http-server)\
 \
@@ -11886,9 +12578,12 @@ nc -l -p 5000 \\
 ; done\
 ```\
 \
+
 - `-p` \- port number\
 \
+
 ###### Simple HTTP Proxy (single connection)\
+
 \
 [Permalink: Simple HTTP Proxy (single connection)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#simple-http-proxy-single-connection)\
 \
@@ -11941,7 +12636,9 @@ Date: Sun, 01 Jul 2018 20:12:08 GMT\
 Last-Modified: Sun, 01 Apr 2018 21:53:37 GMT\
 ```\
 \
+
 ###### Create a single-use TCP or UDP proxy\
+
 \
 [Permalink: Create a single-use TCP or UDP proxy](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#create-a-single-use-tcp-or-udp-proxy)\
 \
@@ -11959,13 +12656,18 @@ nc -l -u -p 2000 -c "nc -u [ip|hostname] 3000"\
 nc -l -u -p 2000 -c "nc [ip|hostname] 3000"\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [gnutls-cli](https://gnutls.org/manual/html_node/gnutls_002dcli-Invocation.html)\
+
 \
 [Permalink: Tool: gnutls-cli](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-gnutls-cli)\
 \
+
 ###### Testing connection to remote host (with SNI support)\
+
 \
 [Permalink: Testing connection to remote host (with SNI support)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-connection-to-remote-host-with-sni-support)\
 \
@@ -11973,7 +12675,9 @@ nc -l -u -p 2000 -c "nc [ip|hostname] 3000"\
 gnutls-cli -p 443 google.com\
 ```\
 \
+
 ###### Testing connection to remote host (without SNI support)\
+
 \
 [Permalink: Testing connection to remote host (without SNI support)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-connection-to-remote-host-without-sni-support)\
 \
@@ -11981,13 +12685,18 @@ gnutls-cli -p 443 google.com\
 gnutls-cli --disable-sni -p 443 google.com\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [socat](http://www.dest-unreach.org/socat/doc/socat.html)\
+
 \
 [Permalink: Tool: socat](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-socat)\
 \
+
 ###### Testing remote connection to port\
+
 \
 [Permalink: Testing remote connection to port](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#testing-remote-connection-to-port-1)\
 \
@@ -11995,13 +12704,17 @@ gnutls-cli --disable-sni -p 443 google.com\
 socat - TCP4:10.240.30.3:22\
 ```\
 \
+
 - `-` \- standard input (STDIO)\
 - `TCP4:<params>` \- set tcp4 connection with specific params\
 \
-  - `[hostname|ip]` \- set hostname/ip\
-  - `[1-65535]` \- set port number\
+
+- `[hostname|ip]` \- set hostname/ip\
+- `[1-65535]` \- set port number\
 \
+
 ###### Redirecting TCP-traffic to a UNIX domain socket under Linux\
+
 \
 [Permalink: Redirecting TCP-traffic to a UNIX domain socket under Linux](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#redirecting-tcp-traffic-to-a-unix-domain-socket-under-linux)\
 \
@@ -12009,25 +12722,32 @@ socat - TCP4:10.240.30.3:22\
 socat TCP-LISTEN:1234,bind=127.0.0.1,reuseaddr,fork,su=nobody,range=127.0.0.0/8 UNIX-CLIENT:/tmp/foo\
 ```\
 \
+
 - `TCP-LISTEN:<params>` \- set tcp listen with specific params\
 \
-  - `[1-65535]` \- set port number\
-  - `bind=[hostname|ip]` \- set bind hostname/ip\
-  - `reuseaddr` \- allows other sockets to bind to an address\
-  - `fork` \- keeps the parent process attempting to produce more connections\
-  - `su=nobody` \- set user\
-  - `range=[ip-range]` \- ip range\
+
+- `[1-65535]` \- set port number\
+- `bind=[hostname|ip]` \- set bind hostname/ip\
+- `reuseaddr` \- allows other sockets to bind to an address\
+- `fork` \- keeps the parent process attempting to produce more connections\
+- `su=nobody` \- set user\
+- `range=[ip-range]` \- ip range\
 - `UNIX-CLIENT:<params>` \- communicates with the specified peer socket\
 \
-  - `filename` \- define socket\
+
+- `filename` \- define socket\
 \
-* * *\
+- * *\
 \
+
 ##### Tool: [p0f](http://lcamtuf.coredump.cx/p0f3/)\
+
 \
 [Permalink: Tool: p0f](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-p0f)\
 \
+
 ###### Set iface in promiscuous mode and dump traffic to the log file\
+
 \
 [Permalink: Set iface in promiscuous mode and dump traffic to the log file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#set-iface-in-promiscuous-mode-and-dump-traffic-to-the-log-file)\
 \
@@ -12035,18 +12755,23 @@ socat TCP-LISTEN:1234,bind=127.0.0.1,reuseaddr,fork,su=nobody,range=127.0.0.0/8 
 p0f -i enp0s25 -p -d -o /dump/enp0s25.log\
 ```\
 \
+
 - `-i` \- listen on the specified interface\
 - `-p` \- set interface in promiscuous mode\
 - `-d` \- fork into background\
 - `-o` \- output file\
 \
-* * *\
+- * *\
 \
+
 ##### Tool: [netstat](https://en.wikipedia.org/wiki/Netstat)\
+
 \
 [Permalink: Tool: netstat](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-netstat)\
 \
+
 ###### Graph \# of connections for each hosts\
+
 \
 [Permalink: Graph # of connections for each hosts](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#graph--of-connections-for-each-hosts)\
 \
@@ -12055,7 +12780,9 @@ netstat -an | awk '/ESTABLISHED/ { split($5,ip,":"); if (ip[1] !~ /^$/) print ip
 sort | uniq -c | awk '{ printf("%s\t%s\t",$2,$1) ; for (i = 0; i < $1; i++) {printf("*")}; print "" }'\
 ```\
 \
+
 ###### Monitor open connections for specific port including listen, count and sort it per IP\
+
 \
 [Permalink: Monitor open connections for specific port including listen, count and sort it per IP](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#monitor-open-connections-for-specific-port-including-listen-count-and-sort-it-per-ip)\
 \
@@ -12063,7 +12790,9 @@ sort | uniq -c | awk '{ printf("%s\t%s\t",$2,$1) ; for (i = 0; i < $1; i++) {pri
 watch "netstat -plan | grep :443 | awk {'print \$5'} | cut -d: -f 1 | sort | uniq -c | sort -nk 1"\
 ```\
 \
+
 ###### Grab banners from local IPv4 listening ports\
+
 \
 [Permalink: Grab banners from local IPv4 listening ports](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#grab-banners-from-local-ipv4-listening-ports)\
 \
@@ -12071,13 +12800,18 @@ watch "netstat -plan | grep :443 | awk {'print \$5'} | cut -d: -f 1 | sort | uni
 netstat -nlt | grep 'tcp ' | grep -Eo "[1-9][0-9]*" | xargs -I {} sh -c "echo "" | nc -v -n -w1 127.0.0.1 {}"\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [rsync](https://en.wikipedia.org/wiki/Rsync)\
+
 \
 [Permalink: Tool: rsync](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-rsync)\
 \
+
 ###### Rsync remote data as root using sudo\
+
 \
 [Permalink: Rsync remote data as root using sudo](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#rsync-remote-data-as-root-using-sudo)\
 \
@@ -12085,13 +12819,18 @@ netstat -nlt | grep 'tcp ' | grep -Eo "[1-9][0-9]*" | xargs -I {} sh -c "echo ""
 rsync --rsync-path 'sudo rsync' username@hostname:/path/to/dir/ /local/\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [host](https://en.wikipedia.org/wiki/Host_(Unix))\
+
 \
 [Permalink: Tool: host](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-host)\
 \
+
 ###### Resolves the domain name (using external dns server)\
+
 \
 [Permalink: Resolves the domain name (using external dns server)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#resolves-the-domain-name-using-external-dns-server)\
 \
@@ -12099,7 +12838,9 @@ rsync --rsync-path 'sudo rsync' username@hostname:/path/to/dir/ /local/\
 host google.com 9.9.9.9\
 ```\
 \
+
 ###### Checks the domain administrator (SOA record)\
+
 \
 [Permalink: Checks the domain administrator (SOA record)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#checks-the-domain-administrator-soa-record)\
 \
@@ -12107,13 +12848,18 @@ host google.com 9.9.9.9\
 host -t soa google.com 9.9.9.9\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [dig](https://en.wikipedia.org/wiki/Dig_(command))\
+
 \
 [Permalink: Tool: dig](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-dig)\
 \
+
 ###### Resolves the domain name (short output)\
+
 \
 [Permalink: Resolves the domain name (short output)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#resolves-the-domain-name-short-output)\
 \
@@ -12121,7 +12867,9 @@ host -t soa google.com 9.9.9.9\
 dig google.com +short\
 ```\
 \
+
 ###### Lookup NS record for specific domain\
+
 \
 [Permalink: Lookup NS record for specific domain](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#lookup-ns-record-for-specific-domain)\
 \
@@ -12129,7 +12877,9 @@ dig google.com +short\
 dig @9.9.9.9 google.com NS\
 ```\
 \
+
 ###### Query only answer section\
+
 \
 [Permalink: Query only answer section](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#query-only-answer-section)\
 \
@@ -12137,7 +12887,9 @@ dig @9.9.9.9 google.com NS\
 dig google.com +nocomments +noquestion +noauthority +noadditional +nostats\
 ```\
 \
+
 ###### Query ALL DNS Records\
+
 \
 [Permalink: Query ALL DNS Records](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#query-all-dns-records)\
 \
@@ -12145,7 +12897,9 @@ dig google.com +nocomments +noquestion +noauthority +noadditional +nostats\
 dig google.com ANY +noall +answer\
 ```\
 \
+
 ###### DNS Reverse Look-up\
+
 \
 [Permalink: DNS Reverse Look-up](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#dns-reverse-look-up)\
 \
@@ -12153,13 +12907,18 @@ dig google.com ANY +noall +answer\
 dig -x 172.217.16.14 +short\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [certbot](https://certbot.eff.org/)\
+
 \
 [Permalink: Tool: certbot](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-certbot)\
 \
+
 ###### Generate multidomain certificate\
+
 \
 [Permalink: Generate multidomain certificate](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-multidomain-certificate)\
 \
@@ -12167,7 +12926,9 @@ dig -x 172.217.16.14 +short\
 certbot certonly -d example.com -d www.example.com\
 ```\
 \
+
 ###### Generate wildcard certificate\
+
 \
 [Permalink: Generate wildcard certificate](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-wildcard-certificate)\
 \
@@ -12175,7 +12936,9 @@ certbot certonly -d example.com -d www.example.com\
 certbot certonly --manual --preferred-challenges=dns -d example.com -d *.example.com\
 ```\
 \
+
 ###### Generate certificate with 4096 bit private key\
+
 \
 [Permalink: Generate certificate with 4096 bit private key](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#generate-certificate-with-4096-bit-private-key)\
 \
@@ -12183,13 +12946,18 @@ certbot certonly --manual --preferred-challenges=dns -d example.com -d *.example
 certbot certonly -d example.com -d www.example.com --rsa-key-size 4096\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [network-other](https://github.com/trimstray/the-book-of-secret-knowledge\#tool-network-other)\
+
 \
 [Permalink: Tool: network-other](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-network-other)\
 \
+
 ###### Get all subnets for specific AS (Autonomous system)\
+
 \
 [Permalink: Get all subnets for specific AS (Autonomous system)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#get-all-subnets-for-specific-as-autonomous-system)\
 \
@@ -12206,7 +12974,9 @@ sed 's/$/;/' | \\
 sed 's/allow  */subnet -> /g'\
 ```\
 \
+
 ###### Resolves domain name from dns.google.com with curl and jq\
+
 \
 [Permalink: Resolves domain name from dns.google.com with curl and jq](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#resolves-domain-name-from-dnsgooglecom-with-curl-and-jq)\
 \
@@ -12214,11 +12984,15 @@ sed 's/allow  */subnet -> /g'\
 _dname="google.com" ; curl -s "https://dns.google.com/resolve?name=${_dname}&type=A" | jq .\
 ```\
 \
+
 ##### Tool: [git](https://git-scm.com/)\
+
 \
 [Permalink: Tool: git](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-git)\
 \
+
 ###### Log alias for a decent view of your repo\
+
 \
 [Permalink: Log alias for a decent view of your repo](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#log-alias-for-a-decent-view-of-your-repo)\
 \
@@ -12232,13 +13006,18 @@ git log --graph \\
 --abbrev-commit\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [python](https://www.python.org/)\
+
 \
 [Permalink: Tool: python](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-python)\
 \
+
 ###### Static HTTP web server\
+
 \
 [Permalink: Static HTTP web server](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#static-http-web-server-1)\
 \
@@ -12250,7 +13029,9 @@ python3 -m http.server 8000 --bind 127.0.0.1\
 python -m SimpleHTTPServer 8000\
 ```\
 \
+
 ###### Static HTTP web server with SSL support\
+
 \
 [Permalink: Static HTTP web server with SSL support](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#static-http-web-server-with-ssl-support)\
 \
@@ -12281,7 +13062,9 @@ httpd.socket = ssl.wrap_socket (httpd.socket,\
 httpd.serve_forever()\
 ```\
 \
+
 ###### Encode base64\
+
 \
 [Permalink: Encode base64](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#encode-base64)\
 \
@@ -12289,7 +13072,9 @@ httpd.serve_forever()\
 python -m base64 -e <<< "sample string"\
 ```\
 \
+
 ###### Decode base64\
+
 \
 [Permalink: Decode base64](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#decode-base64)\
 \
@@ -12297,11 +13082,15 @@ python -m base64 -e <<< "sample string"\
 python -m base64 -d <<< "dGhpcyBpcyBlbmNvZGVkCg=="\
 ```\
 \
+
 ##### Tool: [awk](http://www.grymoire.com/Unix/Awk.html)\
+
 \
 [Permalink: Tool: awk](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-awk)\
 \
+
 ###### Search for matching lines\
+
 \
 [Permalink: Search for matching lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#search-for-matching-lines)\
 \
@@ -12310,7 +13099,9 @@ python -m base64 -d <<< "dGhpcyBpcyBlbmNvZGVkCg=="\
 awk '/foo/' filename\
 ```\
 \
+
 ###### Search non matching lines\
+
 \
 [Permalink: Search non matching lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#search-non-matching-lines)\
 \
@@ -12319,7 +13110,9 @@ awk '/foo/' filename\
 awk '!/foo/' filename\
 ```\
 \
+
 ###### Print matching lines with numbers\
+
 \
 [Permalink: Print matching lines with numbers](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-matching-lines-with-numbers)\
 \
@@ -12328,7 +13121,9 @@ awk '!/foo/' filename\
 awk '/foo/{print FNR,$0}' filename\
 ```\
 \
+
 ###### Print the last column\
+
 \
 [Permalink: Print the last column](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-the-last-column)\
 \
@@ -12336,7 +13131,9 @@ awk '/foo/{print FNR,$0}' filename\
 awk '{print $NF}' filename\
 ```\
 \
+
 ###### Find all the lines longer than 80 characters\
+
 \
 [Permalink: Find all the lines longer than 80 characters](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#find-all-the-lines-longer-than-80-characters)\
 \
@@ -12344,7 +13141,9 @@ awk '{print $NF}' filename\
 awk 'length($0)>80{print FNR,$0}' filename\
 ```\
 \
+
 ###### Print only lines of less than 80 characters\
+
 \
 [Permalink: Print only lines of less than 80 characters](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-only-lines-of-less-than-80-characters)\
 \
@@ -12352,7 +13151,9 @@ awk 'length($0)>80{print FNR,$0}' filename\
 awk 'length < 80' filename\
 ```\
 \
+
 ###### Print double new lines a file\
+
 \
 [Permalink: Print double new lines a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-double-new-lines-a-file)\
 \
@@ -12360,7 +13161,9 @@ awk 'length < 80' filename\
 awk '1; { print "" }' filename\
 ```\
 \
+
 ###### Print line numbers\
+
 \
 [Permalink: Print line numbers](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-line-numbers)\
 \
@@ -12369,7 +13172,9 @@ awk '{ print FNR "\t" $0 }' filename\
 awk '{ printf("%5d : %s\n", NR, $0) }' filename   # in a fancy manner\
 ```\
 \
+
 ###### Print line numbers for only non-blank lines\
+
 \
 [Permalink: Print line numbers for only non-blank lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-line-numbers-for-only-non-blank-lines)\
 \
@@ -12377,7 +13182,9 @@ awk '{ printf("%5d : %s\n", NR, $0) }' filename   # in a fancy manner\
 awk 'NF { $0=++a " :" $0 }; { print }' filename\
 ```\
 \
+
 ###### Print the line and the next two (i=5) lines after the line matching regexp\
+
 \
 [Permalink: Print the line and the next two (i=5) lines after the line matching regexp](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-the-line-and-the-next-two-i5-lines-after-the-line-matching-regexp)\
 \
@@ -12385,7 +13192,9 @@ awk 'NF { $0=++a " :" $0 }; { print }' filename\
 awk '/foo/{i=5+1;}{if(i){i--; print;}}' filename\
 ```\
 \
+
 ###### Print the lines starting at the line matching 'server {' until the line matching '}'\
+
 \
 [Permalink: Print the lines starting at the line matching 'server {' until the line matching '}'](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-the-lines-starting-at-the-line-matching-server--until-the-line-matching-)\
 \
@@ -12393,7 +13202,9 @@ awk '/foo/{i=5+1;}{if(i){i--; print;}}' filename\
 awk '/server {/,/}/' filename\
 ```\
 \
+
 ###### Print multiple columns with separators\
+
 \
 [Permalink: Print multiple columns with separators](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-multiple-columns-with-separators)\
 \
@@ -12401,7 +13212,9 @@ awk '/server {/,/}/' filename\
 awk -F' ' '{print "ip:\t" $2 "\n port:\t" $3' filename\
 ```\
 \
+
 ###### Remove empty lines\
+
 \
 [Permalink: Remove empty lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-empty-lines)\
 \
@@ -12412,7 +13225,9 @@ awk 'NF > 0' filename\
 awk NF filename\
 ```\
 \
+
 ###### Delete trailing white space (spaces, tabs)\
+
 \
 [Permalink: Delete trailing white space (spaces, tabs)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#delete-trailing-white-space-spaces-tabs)\
 \
@@ -12420,7 +13235,9 @@ awk NF filename\
 awk '{sub(/[ \t]*$/, "");print}' filename\
 ```\
 \
+
 ###### Delete leading white space\
+
 \
 [Permalink: Delete leading white space](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#delete-leading-white-space)\
 \
@@ -12428,7 +13245,9 @@ awk '{sub(/[ \t]*$/, "");print}' filename\
 awk '{sub(/^[ \t]+/, ""); print}' filename\
 ```\
 \
+
 ###### Remove duplicate consecutive lines\
+
 \
 [Permalink: Remove duplicate consecutive lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-duplicate-consecutive-lines)\
 \
@@ -12437,7 +13256,9 @@ awk '{sub(/^[ \t]+/, ""); print}' filename\
 awk 'a !~ $0{print}; {a=$0}' filename\
 ```\
 \
+
 ###### Remove duplicate entries in a file without sorting\
+
 \
 [Permalink: Remove duplicate entries in a file without sorting](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-duplicate-entries-in-a-file-without-sorting)\
 \
@@ -12445,7 +13266,9 @@ awk 'a !~ $0{print}; {a=$0}' filename\
 awk '!x[$0]++' filename\
 ```\
 \
+
 ###### Exclude multiple columns\
+
 \
 [Permalink: Exclude multiple columns](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#exclude-multiple-columns)\
 \
@@ -12453,7 +13276,9 @@ awk '!x[$0]++' filename\
 awk '{$1=$3=""}1' filename\
 ```\
 \
+
 ###### Substitute foo for bar on lines matching regexp\
+
 \
 [Permalink: Substitute foo for bar on lines matching regexp](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#substitute-foo-for-bar-on-lines-matching-regexp)\
 \
@@ -12461,7 +13286,9 @@ awk '{$1=$3=""}1' filename\
 awk '/regexp/{gsub(/foo/, "bar")};{print}' filename\
 ```\
 \
+
 ###### Add some characters at the beginning of matching lines\
+
 \
 [Permalink: Add some characters at the beginning of matching lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#add-some-characters-at-the-beginning-of-matching-lines)\
 \
@@ -12469,7 +13296,9 @@ awk '/regexp/{gsub(/foo/, "bar")};{print}' filename\
 awk '/regexp/{sub(/^/, "++++"); print;next;}{print}' filename\
 ```\
 \
+
 ###### Get the last hour of Apache logs\
+
 \
 [Permalink: Get the last hour of Apache logs](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#get-the-last-hour-of-apache-logs)\
 \
@@ -12478,13 +13307,18 @@ awk '/'$(date -d "1 hours ago" "+%d\\/%b\\/%Y:%H:%M")'/,/'$(date "+%d\\/%b\\/%Y:
 /var/log/httpd/access_log\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [sed](http://www.grymoire.com/Unix/Sed.html)\
+
 \
 [Permalink: Tool: sed](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-sed)\
 \
+
 ###### Print a specific line from a file\
+
 \
 [Permalink: Print a specific line from a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#print-a-specific-line-from-a-file)\
 \
@@ -12492,7 +13326,9 @@ awk '/'$(date -d "1 hours ago" "+%d\\/%b\\/%Y:%H:%M")'/,/'$(date "+%d\\/%b\\/%Y:
 sed -n 10p /path/to/file\
 ```\
 \
+
 ###### Remove a specific line from a file\
+
 \
 [Permalink: Remove a specific line from a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-a-specific-line-from-a-file)\
 \
@@ -12501,7 +13337,9 @@ sed -i 10d /path/to/file\
 # alternative (BSD): sed -i'' 10d /path/to/file\
 ```\
 \
+
 ###### Remove a range of lines from a file\
+
 \
 [Permalink: Remove a range of lines from a file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-a-range-of-lines-from-a-file)\
 \
@@ -12509,7 +13347,9 @@ sed -i 10d /path/to/file\
 sed -i <file> -re '<start>,<end>d'\
 ```\
 \
+
 ###### Replace newline(s) with a space\
+
 \
 [Permalink: Replace newline(s) with a space](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#replace-newlines-with-a-space)\
 \
@@ -12520,6 +13360,7 @@ sed ':a;N;$!ba;s/\n/ /g' /path/to/file\
 sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g' /path/to/file\
 ```\
 \
+
 - `:a` create a label `a`\
 - `N` append the next line to the pattern space\
 - `$!` if not the last line, ba branch (go to) label `a`\
@@ -12535,7 +13376,9 @@ perl -p -e 's/\n/ /' /path/to/file\
 while read line ; do printf "%s" "$line " ; done < file\
 ```\
 \
+
 ###### Delete string +N next lines\
+
 \
 [Permalink: Delete string +N next lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#delete-string-n-next-lines)\
 \
@@ -12543,13 +13386,18 @@ while read line ; do printf "%s" "$line " ; done < file\
 sed '/start/,+4d' /path/to/file\
 ```\
 \
-* * *\
+
+- * *\
 \
+
 ##### Tool: [grep](http://www.grymoire.com/Unix/Grep.html)\
+
 \
 [Permalink: Tool: grep](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-grep)\
 \
+
 ###### Search for a "pattern" inside all files in the current directory\
+
 \
 [Permalink: Search for a "pattern" inside all files in the current directory](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#search-for-a-pattern-inside-all-files-in-the-current-directory)\
 \
@@ -12559,7 +13407,9 @@ grep -RnisI "pattern" *\
 fgrep "pattern" * -R\
 ```\
 \
+
 ###### Show only for multiple patterns\
+
 \
 [Permalink: Show only for multiple patterns](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-only-for-multiple-patterns)\
 \
@@ -12571,7 +13421,9 @@ grep -E '(INFO|WARN)' filename\
 egrep "INFO|WARN" filename\
 ```\
 \
+
 ###### Except multiple patterns\
+
 \
 [Permalink: Except multiple patterns](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#except-multiple-patterns)\
 \
@@ -12579,7 +13431,9 @@ egrep "INFO|WARN" filename\
 grep -vE '(error|critical|warning)' filename\
 ```\
 \
+
 ###### Show data from file without comments\
+
 \
 [Permalink: Show data from file without comments](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-data-from-file-without-comments)\
 \
@@ -12587,7 +13441,9 @@ grep -vE '(error|critical|warning)' filename\
 grep -v ^[[:space:]]*# filename\
 ```\
 \
+
 ###### Show data from file without comments and new lines\
+
 \
 [Permalink: Show data from file without comments and new lines](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-data-from-file-without-comments-and-new-lines)\
 \
@@ -12595,7 +13451,9 @@ grep -v ^[[:space:]]*# filename\
 egrep -v '#|^$' filename\
 ```\
 \
+
 ###### Show strings with a dash/hyphen\
+
 \
 [Permalink: Show strings with a dash/hyphen](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#show-strings-with-a-dashhyphen)\
 \
@@ -12605,7 +13463,9 @@ grep -- -- filename\
 grep "\-\-" filename\
 ```\
 \
+
 ###### Remove blank lines from a file and save output to new file\
+
 \
 [Permalink: Remove blank lines from a file and save output to new file](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#remove-blank-lines-from-a-file-and-save-output-to-new-file)\
 \
@@ -12613,11 +13473,15 @@ grep "\-\-" filename\
 grep . filename > newfilename\
 ```\
 \
+
 ##### Tool: [perl](https://www.perl.org/)\
+
 \
 [Permalink: Tool: perl](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#tool-perl)\
 \
+
 ###### Search and replace (in place)\
+
 \
 [Permalink: Search and replace (in place)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#search-and-replace-in-place)\
 \
@@ -12625,7 +13489,9 @@ grep . filename > newfilename\
 perl -i -pe's/SEARCH/REPLACE/' filename\
 ```\
 \
+
 ###### Edit of `*.conf` files changing all foo to bar (and backup original)\
+
 \
 [Permalink: Edit of *.conf files changing all foo to bar (and backup original)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#edit-of-conf-files-changing-all-foo-to-bar-and-backup-original)\
 \
@@ -12633,7 +13499,9 @@ perl -i -pe's/SEARCH/REPLACE/' filename\
 perl -p -i.orig -e 's/\bfoo\b/bar/g' *.conf\
 ```\
 \
+
 ###### Prints the first 20 lines from `*.conf` files\
+
 \
 [Permalink: Prints the first 20 lines from *.conf files](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#prints-the-first-20-lines-from-conf-files)\
 \
@@ -12641,7 +13509,9 @@ perl -p -i.orig -e 's/\bfoo\b/bar/g' *.conf\
 perl -pe 'exit if $. > 20' *.conf\
 ```\
 \
+
 ###### Search lines 10 to 20\
+
 \
 [Permalink: Search lines 10 to 20](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#search-lines-10-to-20)\
 \
@@ -12649,7 +13519,9 @@ perl -pe 'exit if $. > 20' *.conf\
 perl -ne 'print if 10 .. 20' filename\
 ```\
 \
+
 ###### Delete first 10 lines (and backup original)\
+
 \
 [Permalink: Delete first 10 lines (and backup original)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#delete-first-10-lines-and-backup-original)\
 \
@@ -12657,7 +13529,9 @@ perl -ne 'print if 10 .. 20' filename\
 perl -i.orig -ne 'print unless 1 .. 10' filename\
 ```\
 \
+
 ###### Delete all but lines between foo and bar (and backup original)\
+
 \
 [Permalink: Delete all but lines between foo and bar (and backup original)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#delete-all-but-lines-between-foo-and-bar-and-backup-original)\
 \
@@ -12665,7 +13539,9 @@ perl -i.orig -ne 'print unless 1 .. 10' filename\
 perl -i.orig -ne 'print unless /^foo$/ .. /^bar$/' filename\
 ```\
 \
+
 ###### Reduce multiple blank lines to a single line\
+
 \
 [Permalink: Reduce multiple blank lines to a single line](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#reduce-multiple-blank-lines-to-a-single-line)\
 \
@@ -12673,7 +13549,9 @@ perl -i.orig -ne 'print unless /^foo$/ .. /^bar$/' filename\
 perl -p -i -00pe0 filename\
 ```\
 \
+
 ###### Convert tabs to spaces (1t = 2sp)\
+
 \
 [Permalink: Convert tabs to spaces (1t = 2sp)](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#convert-tabs-to-spaces-1t--2sp)\
 \
@@ -12681,7 +13559,9 @@ perl -p -i -00pe0 filename\
 perl -p -i -e 's/\t/  /g' filename\
 ```\
 \
+
 ###### Read input from a file and report number of lines and characters\
+
 \
 [Permalink: Read input from a file and report number of lines and characters](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#read-input-from-a-file-and-report-number-of-lines-and-characters)\
 \
@@ -12689,18 +13569,25 @@ perl -p -i -e 's/\t/  /g' filename\
 perl -lne '$i++; $in += length($_); END { print "$i lines, $in characters"; }' filename\
 ```\
 \
+
 #### Shell functions  [\[TOC\]](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689\#anger-table-of-contents)\
+
 \
-[Permalink: Shell functions  ](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#shell-functions-toc)\
+[Permalink: Shell functions](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#shell-functions-toc)\
 \
+
 ##### Table of Contents\
+
 \
 [Permalink: Table of Contents](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#table-of-contents-1)\
 \
+
 - [Domain resolve](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#domain-resolve)\
 - [Get ASN](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#get-asn)\
 \
+
 ###### Domain resolve\
+
 \
 [Permalink: Domain resolve](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#domain-resolve)\
 \
@@ -12742,7 +13629,9 @@ shell> DomainResolve nmap.org\
 Unsuccessful domain name resolution.\
 ```\
 \
+
 ###### Get ASN\
+
 \
 [Permalink: Get ASN](https://gist.github.com/johnfelipe/36cab7baf2693fa65817f0cd697fd689#get-asn)\
 \
@@ -12792,7 +13681,7 @@ You can’t perform that action at this time.
 
 ---
 
-### 4. GitHub - mendoncart/Dashboard-Icons: ❤️ The best icons for your personal dashboard.
+### 4. GitHub - mendoncart/Dashboard-Icons: ❤️ The best icons for your personal dashboard
 
 **Source:** [https://github.com/mendoncart/Dashboard-Icons](https://github.com/mendoncart/Dashboard-Icons)
 **Domain:** `github.com`
@@ -12832,7 +13721,7 @@ forks](https://github.com/mendoncart/Dashboard-Icons/forks) [Branches](https://g
 
 [Notifications](https://github.com/login?return_to=%2Fmendoncart%2FDashboard-Icons) You must be signed in to change notification settings
 
-# mendoncart/Dashboard-Icons
+## mendoncart/Dashboard-Icons
 
 main
 
@@ -12850,7 +13739,7 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>## History<br>[289 Commits](https://github.com/mendoncart/Dashboard-Icons/commits/main/)<br>[View commit history for this file.](https://github.com/mendoncart/Dashboard-Icons/commits/main/) |
+| ## Latest commit<br>## History<br>[289 Commits](https://github.com/mendoncart/Dashboard-Icons/commits/main/)<br>[View commit history for this file.](https://github.com/mendoncart/Dashboard-Icons/commits/main/) |  |  |  |
 | [.github](https://github.com/mendoncart/Dashboard-Icons/tree/main/.github ".github") | [.github](https://github.com/mendoncart/Dashboard-Icons/tree/main/.github ".github") |  |  |
 | [png](https://github.com/mendoncart/Dashboard-Icons/tree/main/png "png") | [png](https://github.com/mendoncart/Dashboard-Icons/tree/main/png "png") |  |  |
 | [svg](https://github.com/mendoncart/Dashboard-Icons/tree/main/svg "svg") | [svg](https://github.com/mendoncart/Dashboard-Icons/tree/main/svg "svg") |  |  |
@@ -12861,22 +13750,22 @@ Open more actions menu
 | [\_banner.png](https://github.com/mendoncart/Dashboard-Icons/blob/main/_banner.png "_banner.png") | [\_banner.png](https://github.com/mendoncart/Dashboard-Icons/blob/main/_banner.png "_banner.png") |  |  |
 | [\_ci.py](https://github.com/mendoncart/Dashboard-Icons/blob/main/_ci.py "_ci.py") | [\_ci.py](https://github.com/mendoncart/Dashboard-Icons/blob/main/_ci.py "_ci.py") |  |  |
 | [network-weathermap.png](https://github.com/mendoncart/Dashboard-Icons/blob/main/network-weathermap.png "network-weathermap.png") | [network-weathermap.png](https://github.com/mendoncart/Dashboard-Icons/blob/main/network-weathermap.png "network-weathermap.png") |  |  |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
 ### 🟣 Dashboard Icons
 
-[Permalink:  🟣 Dashboard Icons ](https://github.com/mendoncart/Dashboard-Icons#--dashboard-icons-)
+[Permalink:  🟣 Dashboard Icons](https://github.com/mendoncart/Dashboard-Icons#--dashboard-icons-)
 
-[![](https://camo.githubusercontent.com/74bdfbbf514d56e647b298f8fec2ab2b6cb62a16ae6ca8f02c4b9303ed6eb859/68747470733a2f2f646174612e6a7364656c6976722e636f6d2f76312f7061636b6167652f67682f77616c6b78636f64652f64617368626f6172642d69636f6e732f62616467653f7374796c653d726f756e646564)](https://www.jsdelivr.com/package/gh/walkxcode/dashboard-icons)
+[![68747470733a2f2f646174612e6a7364656c6976722e636f6d2f76312f7061636b6167652f67682f77616c6b78636f64652f64617368626f6172642d69636f6e732f62616467653f7374796c653d726f756e646564 image](https://camo.githubusercontent.com/74bdfbbf514d56e647b298f8fec2ab2b6cb62a16ae6ca8f02c4b9303ed6eb859/68747470733a2f2f646174612e6a7364656c6976722e636f6d2f76312f7061636b6167652f67682f77616c6b78636f64652f64617368626f6172642d69636f6e732f62616467653f7374796c653d726f756e646564)](https://www.jsdelivr.com/package/gh/walkxcode/dashboard-icons)
 
 ❤️ The best icons for your personal dashboard.
 
 
 [**See the icons »**](https://github.com/mendoncart/Dashboard-Icons#icons)
 
-# Table of Contents
+## Table of Contents
 
 [Permalink: Table of Contents](https://github.com/mendoncart/Dashboard-Icons#table-of-contents)
 
@@ -12886,7 +13775,7 @@ Open more actions menu
 - [Icons](https://github.com/mendoncart/Dashboard-Icons#icons)
 - [Legal](https://github.com/mendoncart/Dashboard-Icons#legal)
 
-# Getting Started
+## Getting Started
 
 [Permalink: Getting Started](https://github.com/mendoncart/Dashboard-Icons#getting-started)
 
@@ -12907,29 +13796,33 @@ There's multiple Dashboards available. Here are some of the popular ones.
 
 [Permalink: Installation](https://github.com/mendoncart/Dashboard-Icons#installation)
 
-**TIP! You can access Dashboard Icons online, faster, by using `https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/example.png`**
+**TIP! You can access Dashboard Icons online, faster, by using `<https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/example.png>`**
 
 To download an icon, simple `Right click > Save image`.
 
 For non-desktop operating systems, or people that prefer to use terminal.
 
 ```
+
 $ curl https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/example.png > example.png
-```
+
+```text
 
 or
 
 ```
-$ wget https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/example.png - O example.png
-```
 
-# Icons
+$ wget https://raw.githubusercontent.com/walkxcode/dashboard-icons/master/png/example.png - O example.png
+
+```text
+
+## Icons
 
 [Permalink: Icons](https://github.com/mendoncart/Dashboard-Icons#icons)
 
 [![3cx](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/3cx.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/3cx.png)[![act](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/act.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/act.png)[![actual](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/actual.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/actual.png)[![adguard-home](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/adguard-home.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/adguard-home.png)[![adminer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/adminer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/adminer.png)[![adsbexchange](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/adsbexchange.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/adsbexchange.png)[![airsonic](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/airsonic.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/airsonic.png)[![airtel](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/airtel.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/airtel.png)[![alarmpi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/alarmpi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/alarmpi.png)[![albertheijn](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/albertheijn.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/albertheijn.png)[![alertmanager](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/alertmanager.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/alertmanager.png)[![algovpn](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/algovpn.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/algovpn.png)[![alltube](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/alltube.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/alltube.png)[![almalinux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/almalinux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/almalinux.png)[![alpine-linux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/alpine-linux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/alpine-linux.png)[![amazon](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/amazon.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/amazon.png)[![amcrest](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/amcrest.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/amcrest.png)[![amd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/amd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/amd.png)[![amp](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/amp.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/amp.png)[![ampache](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ampache.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ampache.png)[![amvd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/amvd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/amvd.png)[![anonaddy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/anonaddy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/anonaddy.png)[![ansible](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ansible.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ansible.png)[![apache-druid](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/apache-druid.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/apache-druid.png)[![apache](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/apache.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/apache.png)[![apc](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/apc.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/apc.png)[![apprise](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/apprise.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/apprise.png)[![archisteamfarm](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/archisteamfarm.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/archisteamfarm.png)[![archivebox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/archivebox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/archivebox.png)[![archiveteamwarrior](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/archiveteamwarrior.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/archiveteamwarrior.png)[![archlinux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/archlinux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/archlinux.png)[![argocd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/argocd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/argocd.png)[![ariang](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ariang.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ariang.png)[![arris](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/arris.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/arris.png)[![artifactory](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/artifactory.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/artifactory.png)[![asana](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/asana.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/asana.png)[![asrockrackipmi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/asrockrackipmi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/asrockrackipmi.png)[![assetgrid](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/assetgrid.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/assetgrid.png)[![asterisk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/asterisk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/asterisk.png)[![asus-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/asus-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/asus-light.png)[![asus-rog](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/asus-rog.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/asus-rog.png)[![asus-router](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/asus-router.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/asus-router.png)[![asus](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/asus.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/asus.png)[![audiobookshelf](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/audiobookshelf.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/audiobookshelf.png)[![authelia](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/authelia.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/authelia.png)[![authentik-orange](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/authentik-orange.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/authentik-orange.png)[![authentik](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/authentik.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/authentik.png)[![autobrr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/autobrr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/autobrr.png)[![avmfritzbox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/avmfritzbox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/avmfritzbox.png)[![aws-ecs](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/aws-ecs.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/aws-ecs.png)[![awx](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/awx.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/awx.png)[![axis](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/axis.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/axis.png)[![azuracast](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/azuracast.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/azuracast.png)[![azure-container-service](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/azure-container-service.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/azure-container-service.png)[![azure](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/azure.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/azure.png)[![azuredns](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/azuredns.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/azuredns.png)[![babybuddy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/babybuddy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/babybuddy.png)[![backblaze](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/backblaze.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/backblaze.png)[![bacula](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bacula.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bacula.png)[![badge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/badge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/badge.png)[![baikal](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/baikal.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/baikal.png)[![baserow](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/baserow.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/baserow.png)[![basilisk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/basilisk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/basilisk.png)[![bastillion](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bastillion.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bastillion.png)[![bazarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bazarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bazarr.png)[![beats](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/beats.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/beats.png)[![beets](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/beets.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/beets.png)[![betanin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/betanin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/betanin.png)[![bible-gateway](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bible-gateway.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bible-gateway.png)[![bibliogram](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bibliogram.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bibliogram.png)[![biedronka](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/biedronka.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/biedronka.png)[![bing](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bing.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bing.png)[![birdnet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/birdnet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/birdnet.png)[![bitcoin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bitcoin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bitcoin.png)[![bithumen](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bithumen.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bithumen.png)[![bitwarden](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bitwarden.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bitwarden.png)[![blocky](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/blocky.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/blocky.png)[![blue-iris](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/blue-iris.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/blue-iris.png)[![bluewallet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bluewallet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bluewallet.png)[![bobcat-miner](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bobcat-miner.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bobcat-miner.png)[![booksonic](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/booksonic.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/booksonic.png)[![bookstack](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/bookstack.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/bookstack.png)[![box](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/box.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/box.png)[![brave-dev](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/brave-dev.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/brave-dev.png)[![brave](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/brave.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/brave.png)[![brewpi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/brewpi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/brewpi.png)[![brillcam](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/brillcam.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/brillcam.png)[![brocade](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/brocade.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/brocade.png)[![brother](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/brother.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/brother.png)[![browserless](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/browserless.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/browserless.png)[![browsh](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/browsh.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/browsh.png)[![btcpay-server](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/btcpay-server.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/btcpay-server.png)[![buddy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/buddy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/buddy.png)[![budget-zero](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/budget-zero.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/budget-zero.png)[![buffalo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/buffalo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/buffalo.png)[![buxfer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/buxfer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/buxfer.png)[![c](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/c.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/c.png)[![cabot](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cabot.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cabot.png)[![cacti](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cacti.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cacti.png)[![cadvisor](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cadvisor.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cadvisor.png)[![calibre](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/calibre.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/calibre.png)[![calibreweb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/calibreweb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/calibreweb.png)[![cardigann-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cardigann-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cardigann-light.png)[![cardigann](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cardigann.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cardigann.png)[![carrefour](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/carrefour.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/carrefour.png)[![castopod](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/castopod.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/castopod.png)[![centos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/centos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/centos.png)[![ceph](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ceph.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ceph.png)[![changedetection-io-alt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/changedetection-io-alt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/changedetection-io-alt.png)[![changedetection-io](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/changedetection-io.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/changedetection-io.png)[![changedetectionio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/changedetectionio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/changedetectionio.png)[![checkmk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/checkmk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/checkmk.png)[![cherry](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cherry.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cherry.png)[![chevereto](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/chevereto.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/chevereto.png)[![chowdown](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/chowdown.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/chowdown.png)[![chrome-dev](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/chrome-dev.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/chrome-dev.png)[![chrome-devtools](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/chrome-devtools.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/chrome-devtools.png)[![chrome](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/chrome.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/chrome.png)[![chromium](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/chromium.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/chromium.png)[![chronograf](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/chronograf.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/chronograf.png)[![cinny](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cinny.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cinny.png)[![cisco](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cisco.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cisco.png)[![cloud66](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cloud66.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cloud66.png)[![cloud9](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cloud9.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cloud9.png)[![cloudbeaver](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cloudbeaver.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cloudbeaver.png)[![cloudcmd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cloudcmd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cloudcmd.png)[![cloudflare-zero-trust](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cloudflare-zero-trust.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cloudflare-zero-trust.png)[![cloudflare](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cloudflare.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cloudflare.png)[![cockpit](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cockpit.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cockpit.png)[![cockpitcms](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cockpitcms.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cockpitcms.png)[![code](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/code.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/code.png)[![codeserver-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/codeserver-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/codeserver-light.png)[![codeserver](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/codeserver.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/codeserver.png)[![codimd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/codimd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/codimd.png)[![commafeed](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/commafeed.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/commafeed.png)[![concourse-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/concourse-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/concourse-light.png)[![concourse](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/concourse.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/concourse.png)[![contabo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/contabo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/contabo.png)[![coredns](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/coredns.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/coredns.png)[![coreos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/coreos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/coreos.png)[![costco](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/costco.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/costco.png)[![couchpotato](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/couchpotato.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/couchpotato.png)[![cozy-cloud](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cozy-cloud.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cozy-cloud.png)[![cpanel](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cpanel.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cpanel.png)[![cpp](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cpp.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cpp.png)[![crater-invoice](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/crater-invoice.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/crater-invoice.png)[![crazydomains](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/crazydomains.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/crazydomains.png)[![cross-seed-square](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cross-seed-square.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cross-seed-square.png)[![cross-seed](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cross-seed.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cross-seed.png)[![crowdsec](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/crowdsec.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/crowdsec.png)[![cryptpad](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cryptpad.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cryptpad.png)[![csharp](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/csharp.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/csharp.png)[![css](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/css.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/css.png)[![cups-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cups-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cups-light.png)[![cups](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cups.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cups.png)[![cura](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cura.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cura.png)[![cyberchef](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/cyberchef.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/cyberchef.png)[![d-link-wifi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/d-link-wifi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/d-link-wifi.png)[![d-link](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/d-link.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/d-link.png)[![dahua](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dahua.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dahua.png)[![dart](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dart.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dart.png)[![dashdot](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dashdot.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dashdot.png)[![dashy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dashy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dashy.png)[![datadog](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/datadog.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/datadog.png)[![dc-os](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dc-os.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dc-os.png)[![dd-wrt-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dd-wrt-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dd-wrt-light.png)[![dd-wrt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dd-wrt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dd-wrt.png)[![ddns-updater](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ddns-updater.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ddns-updater.png)[![debian](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/debian.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/debian.png)[![deemix](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/deemix.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/deemix.png)[![deluge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/deluge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/deluge.png)[![deno](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/deno.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/deno.png)[![devtooly](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/devtooly.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/devtooly.png)[![dietpi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dietpi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dietpi.png)[![dillinger](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dillinger.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dillinger.png)[![directus](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/directus.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/directus.png)[![discord](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/discord.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/discord.png)[![discourse](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/discourse.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/discourse.png)[![diskover](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/diskover.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/diskover.png)[![dnla](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dnla.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dnla.png)[![docker-compose](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/docker-compose.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/docker-compose.png)[![docker-gc](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/docker-gc.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/docker-gc.png)[![docker-mailserver](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/docker-mailserver.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/docker-mailserver.png)[![docker](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/docker.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/docker.png)[![dockstarter](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dockstarter.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dockstarter.png)[![docspell](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/docspell.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/docspell.png)[![dogpile](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dogpile.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dogpile.png)[![dokuwiki](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dokuwiki.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dokuwiki.png)[![dolibarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dolibarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dolibarr.png)[![domainmod](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/domainmod.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/domainmod.png)[![domoticz](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/domoticz.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/domoticz.png)[![doubletake](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/doubletake.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/doubletake.png)[![dozzle](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/dozzle.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/dozzle.png)[![draw](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/draw.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/draw.png)[![draytek](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/draytek.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/draytek.png)[![drone-blue](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/drone-blue.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/drone-blue.png)[![drone](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/drone.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/drone.png)[![droneblue](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/droneblue.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/droneblue.png)[![droppy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/droppy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/droppy.png)[![duckdns](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/duckdns.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/duckdns.png)[![duckduckgo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/duckduckgo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/duckduckgo.png)[![duplicacy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/duplicacy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/duplicacy.png)[![duplicati](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/duplicati.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/duplicati.png)[![ebay](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ebay.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ebay.png)[![edge-dev](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/edge-dev.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/edge-dev.png)[![edge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/edge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/edge.png)[![edgeos-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/edgeos-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/edgeos-light.png)[![edgeos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/edgeos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/edgeos.png)[![elastic](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/elastic.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/elastic.png)[![elasticsearch](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/elasticsearch.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/elasticsearch.png)[![electron](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/electron.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/electron.png)[![element](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/element.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/element.png)[![emby](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/emby.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/emby.png)[![embystat](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/embystat.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/embystat.png)[![emq-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/emq-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/emq-light.png)[![emq](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/emq.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/emq.png)[![emqx](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/emqx.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/emqx.png)[![emulatorjs](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/emulatorjs.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/emulatorjs.png)[![epson-iprint](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/epson-iprint.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/epson-iprint.png)[![ersatztv](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ersatztv.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ersatztv.png)[![erste-george](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/erste-george.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/erste-george.png)[![erste](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/erste.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/erste.png)[![esphome](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/esphome.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/esphome.png)[![etherpad](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/etherpad.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/etherpad.png)[![evebox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/evebox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/evebox.png)[![facebook-messenger](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/facebook-messenger.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/facebook-messenger.png)[![facebook](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/facebook.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/facebook.png)[![falconplayer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/falconplayer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/falconplayer.png)[![fedora-alt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fedora-alt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fedora-alt.png)[![fedora](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fedora.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fedora.png)[![ferdi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ferdi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ferdi.png)[![ferdium](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ferdium.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ferdium.png)[![fermentrack](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fermentrack.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fermentrack.png)[![filebot](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/filebot.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/filebot.png)[![filebrowser](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/filebrowser.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/filebrowser.png)[![filepizza](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/filepizza.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/filepizza.png)[![filerun](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/filerun.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/filerun.png)[![files](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/files.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/files.png)[![filezilla](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/filezilla.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/filezilla.png)[![fios](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fios.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fios.png)[![firefly](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefly.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefly.png)[![firefox-beta](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefox-beta.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefox-beta.png)[![firefox-developer-edition](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefox-developer-edition.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefox-developer-edition.png)[![firefox-lite](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefox-lite.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefox-lite.png)[![firefox-nightly](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefox-nightly.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefox-nightly.png)[![firefox-reality](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefox-reality.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefox-reality.png)[![firefox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefox.png)[![firefoxsend](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firefoxsend.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firefoxsend.png)[![fireshare](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fireshare.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fireshare.png)[![firewalla](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/firewalla.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/firewalla.png)[![flame](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/flame.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/flame.png)[![fleet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fleet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fleet.png)[![flexget](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/flexget.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/flexget.png)[![flightradar24](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/flightradar24.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/flightradar24.png)[![flogo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/flogo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/flogo.png)[![flood](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/flood.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/flood.png)[![fluffychat](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fluffychat.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fluffychat.png)[![fluidd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fluidd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fluidd.png)[![focalboard](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/focalboard.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/focalboard.png)[![foldingathome](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/foldingathome.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/foldingathome.png)[![fontawesome](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fontawesome.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fontawesome.png)[![foscam](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/foscam.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/foscam.png)[![foundry-vtt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/foundry-vtt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/foundry-vtt.png)[![franz](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/franz.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/franz.png)[![freedombox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/freedombox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/freedombox.png)[![freeipa](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/freeipa.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/freeipa.png)[![freenas-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/freenas-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/freenas-light.png)[![freenas](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/freenas.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/freenas.png)[![freenom](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/freenom.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/freenom.png)[![freepbx](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/freepbx.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/freepbx.png)[![freshrss](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/freshrss.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/freshrss.png)[![frigate-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/frigate-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/frigate-light.png)[![frigate](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/frigate.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/frigate.png)[![fronius](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/fronius.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/fronius.png)[![funkwhale](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/funkwhale.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/funkwhale.png)[![gameyfin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gameyfin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gameyfin.png)[![gaps](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gaps.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gaps.png)[![gatus](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gatus.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gatus.png)[![geckoview](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/geckoview.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/geckoview.png)[![gentoo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gentoo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gentoo.png)[![ghost](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ghost.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ghost.png)[![ghostfolio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ghostfolio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ghostfolio.png)[![gitea](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gitea.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gitea.png)[![github-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/github-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/github-light.png)[![github](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/github.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/github.png)[![gitlab](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gitlab.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gitlab.png)[![gladys-assistant](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gladys-assistant.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gladys-assistant.png)[![glances](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/glances.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/glances.png)[![glpi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/glpi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/glpi.png)[![gmail](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gmail.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gmail.png)[![go](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/go.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/go.png)[![goaccess](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/goaccess.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/goaccess.png)[![gogs](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gogs.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gogs.png)[![golang](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/golang.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/golang.png)[![google-calendar](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-calendar.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-calendar.png)[![google-chat](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-chat.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-chat.png)[![google-cloud-platform](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-cloud-platform.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-cloud-platform.png)[![google-container-engine](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-container-engine.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-container-engine.png)[![google-drive](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-drive.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-drive.png)[![google-fonts](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-fonts.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-fonts.png)[![google-gmail](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-gmail.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-gmail.png)[![google-home](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-home.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-home.png)[![google-keep](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-keep.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-keep.png)[![google-mail](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-mail.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-mail.png)[![google-maps](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-maps.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-maps.png)[![google-meet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-meet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-meet.png)[![google-photos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-photos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-photos.png)[![google-remote-desktop](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-remote-desktop.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-remote-desktop.png)[![google-v2](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-v2.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-v2.png)[![google-wide](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google-wide.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google-wide.png)[![google](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/google.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/google.png)[![gotify](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/gotify.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/gotify.png)[![grafana](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/grafana.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/grafana.png)[![grav](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/grav.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/grav.png)[![graylog-red](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/graylog-red.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/graylog-red.png)[![graylog](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/graylog.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/graylog.png)[![grist](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/grist.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/grist.png)[![grocy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/grocy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/grocy.png)[![guacamole](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/guacamole.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/guacamole.png)[![handbrake](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/handbrake.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/handbrake.png)[![haproxy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/haproxy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/haproxy.png)[![harbor](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/harbor.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/harbor.png)[![hard-forum](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hard-forum.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hard-forum.png)[![harvester](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/harvester.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/harvester.png)[![hasura](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hasura.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hasura.png)[![hatsh](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hatsh.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hatsh.png)[![hdhomerun](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hdhomerun.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hdhomerun.png)[![headphones](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/headphones.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/headphones.png)[![healthchecks](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/healthchecks.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/healthchecks.png)[![heimdall-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/heimdall-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/heimdall-light.png)[![heimdall](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/heimdall.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/heimdall.png)[![helium-token](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/helium-token.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/helium-token.png)[![hexo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hexo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hexo.png)[![hikvision](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hikvision.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hikvision.png)[![homarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/homarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/homarr.png)[![home-assistant-circle](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/home-assistant-circle.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/home-assistant-circle.png)[![home-assistant](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/home-assistant.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/home-assistant.png)[![homebox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/homebox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/homebox.png)[![homebridge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/homebridge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/homebridge.png)[![homepage](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/homepage.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/homepage.png)[![homer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/homer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/homer.png)[![homeseer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/homeseer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/homeseer.png)[![honeygain](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/honeygain.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/honeygain.png)[![hoppscotch](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hoppscotch.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hoppscotch.png)[![hp](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hp.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hp.png)[![html](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/html.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/html.png)[![huawei](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/huawei.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/huawei.png)[![hubitat](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hubitat.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hubitat.png)[![huginn](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/huginn.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/huginn.png)[![hugo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hugo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hugo.png)[![humhub](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/humhub.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/humhub.png)[![hydra](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hydra.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hydra.png)[![hyperion](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/hyperion.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/hyperion.png)[![icecast](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/icecast.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/icecast.png)[![icinga](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/icinga.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/icinga.png)[![idrac](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/idrac.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/idrac.png)[![ihatemoney](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ihatemoney.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ihatemoney.png)[![ilo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ilo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ilo.png)[![immich](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/immich.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/immich.png)[![influxdb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/influxdb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/influxdb.png)[![infoblox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/infoblox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/infoblox.png)[![instagram](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/instagram.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/instagram.png)[![invidious](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/invidious.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/invidious.png)[![invoiceninja](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/invoiceninja.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/invoiceninja.png)[![iobroker](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/iobroker.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/iobroker.png)[![ipboard](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ipboard.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ipboard.png)[![ipcamtalk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ipcamtalk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ipcamtalk.png)[![irc](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/irc.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/irc.png)[![iredmail](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/iredmail.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/iredmail.png)[![ispconfig](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ispconfig.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ispconfig.png)[![ispy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ispy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ispy.png)[![jackett](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jackett.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jackett.png)[![jaeger](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jaeger.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jaeger.png)[![java](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/java.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/java.png)[![javascript](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/javascript.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/javascript.png)[![jdownloader](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jdownloader.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jdownloader.png)[![jeedom](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jeedom.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jeedom.png)[![jellyfin-vue](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jellyfin-vue.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jellyfin-vue.png)[![jellyfin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jellyfin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jellyfin.png)[![jellyseerr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jellyseerr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jellyseerr.png)[![jelu](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jelu.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jelu.png)[![jenkins](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jenkins.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jenkins.png)[![jio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jio.png)[![jira](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jira.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jira.png)[![jitsi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jitsi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jitsi.png)[![jitsimeet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jitsimeet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jitsimeet.png)[![joomla](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/joomla.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/joomla.png)[![joplin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/joplin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/joplin.png)[![julia](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/julia.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/julia.png)[![jupyter](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/jupyter.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/jupyter.png)[![kamatera](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kamatera.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kamatera.png)[![kanboard](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kanboard.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kanboard.png)[![kapacitor](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kapacitor.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kapacitor.png)[![kasm-workspaces](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kasm-workspaces.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kasm-workspaces.png)[![kasm](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kasm.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kasm.png)[![kaufland](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kaufland.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kaufland.png)[![kavita](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kavita.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kavita.png)[![keila](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/keila.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/keila.png)[![kerberos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kerberos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kerberos.png)[![keycloak](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/keycloak.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/keycloak.png)[![kibana](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kibana.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kibana.png)[![kimai](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kimai.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kimai.png)[![kinto](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kinto.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kinto.png)[![kitana](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kitana.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kitana.png)[![kitchenowl](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kitchenowl.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kitchenowl.png)[![kiwix-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kiwix-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kiwix-light.png)[![kiwix](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kiwix.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kiwix.png)[![ko-fi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ko-fi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ko-fi.png)[![kodi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kodi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kodi.png)[![koillection](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/koillection.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/koillection.png)[![komga](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/komga.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/komga.png)[![kopia](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kopia.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kopia.png)[![kotlin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kotlin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kotlin.png)[![krusader](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/krusader.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/krusader.png)[![kubernetes-dashboard](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kubernetes-dashboard.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kubernetes-dashboard.png)[![kutt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/kutt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/kutt.png)[![lazylibrarian](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lazylibrarian.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lazylibrarian.png)[![leanote](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/leanote.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/leanote.png)[![leantime](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/leantime.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/leantime.png)[![lemonldapng](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lemonldapng.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lemonldapng.png)[![letsencrypt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/letsencrypt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/letsencrypt.png)[![libreddit](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/libreddit.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/libreddit.png)[![librenms](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/librenms.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/librenms.png)[![librephotos-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/librephotos-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/librephotos-light.png)[![librephotos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/librephotos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/librephotos.png)[![librespeed](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/librespeed.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/librespeed.png)[![librex](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/librex.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/librex.png)[![lidarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lidarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lidarr.png)[![lidl](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lidl.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lidl.png)[![lightning-terminal](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lightning-terminal.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lightning-terminal.png)[![lighttpd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lighttpd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lighttpd.png)[![linkace](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/linkace.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/linkace.png)[![linkding](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/linkding.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/linkding.png)[![linksys](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/linksys.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/linksys.png)[![linode](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/linode.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/linode.png)[![linux-mint](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/linux-mint.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/linux-mint.png)[![listmonk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/listmonk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/listmonk.png)[![lnbits](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lnbits.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lnbits.png)[![logitech-gaming](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/logitech-gaming.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/logitech-gaming.png)[![logitech-legacy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/logitech-legacy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/logitech-legacy.png)[![logitech](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/logitech.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/logitech.png)[![logstash](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/logstash.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/logstash.png)[![loki](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/loki.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/loki.png)[![longhorn](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/longhorn.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/longhorn.png)[![lua](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lua.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lua.png)[![lychee](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/lychee.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/lychee.png)[![mailcow](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mailcow.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mailcow.png)[![mailcowsogo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mailcowsogo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mailcowsogo.png)[![mailhog](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mailhog.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mailhog.png)[![mailinabox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mailinabox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mailinabox.png)[![mailu](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mailu.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mailu.png)[![mainsail](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mainsail.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mainsail.png)[![mak](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mak.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mak.png)[![manjaro](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/manjaro.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/manjaro.png)[![mantisbt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mantisbt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mantisbt.png)[![marginalia](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/marginalia.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/marginalia.png)[![mariadb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mariadb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mariadb.png)[![mastodon](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mastodon.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mastodon.png)[![matomo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/matomo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/matomo.png)[![matrix-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/matrix-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/matrix-light.png)[![matrix-synapse-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/matrix-synapse-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/matrix-synapse-light.png)[![matrix-synapse](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/matrix-synapse.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/matrix-synapse.png)[![matrix](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/matrix.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/matrix.png)[![mattermost](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mattermost.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mattermost.png)[![mayanedms](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mayanedms.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mayanedms.png)[![mcmyadmin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mcmyadmin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mcmyadmin.png)[![mealie](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mealie.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mealie.png)[![mediathekview](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mediathekview.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mediathekview.png)[![mediawiki](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mediawiki.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mediawiki.png)[![medusa](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/medusa.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/medusa.png)[![mempool](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mempool.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mempool.png)[![meraki](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/meraki.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/meraki.png)[![mercusys](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mercusys.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mercusys.png)[![meshcentral](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/meshcentral.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/meshcentral.png)[![metabase](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/metabase.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/metabase.png)[![metube](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/metube.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/metube.png)[![microbin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/microbin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/microbin.png)[![microsoft-365](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/microsoft-365.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/microsoft-365.png)[![microsoft-todo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/microsoft-todo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/microsoft-todo.png)[![mikrotik](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mikrotik.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mikrotik.png)[![minecraft](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/minecraft.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/minecraft.png)[![mineos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mineos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mineos.png)[![miniflux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/miniflux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/miniflux.png)[![minio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/minio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/minio.png)[![mobaxterm](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mobaxterm.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mobaxterm.png)[![mobotix](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mobotix.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mobotix.png)[![mojeek](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mojeek.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mojeek.png)[![molecule](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/molecule.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/molecule.png)[![mongodb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mongodb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mongodb.png)[![monica](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/monica.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/monica.png)[![monit](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/monit.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/monit.png)[![moodle](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/moodle.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/moodle.png)[![motioneye](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/motioneye.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/motioneye.png)[![mpm](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mpm.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mpm.png)[![mqtt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mqtt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mqtt.png)[![mstream](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mstream.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mstream.png)[![musicbrainz](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/musicbrainz.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/musicbrainz.png)[![mylar](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mylar.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mylar.png)[![mysql](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/mysql.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/mysql.png)[![n8n](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/n8n.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/n8n.png)[![nagios](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nagios.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nagios.png)[![navidrome](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/navidrome.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/navidrome.png)[![ncore](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ncore.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ncore.png)[![neko](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/neko.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/neko.png)[![neocities](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/neocities.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/neocities.png)[![nessus](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nessus.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nessus.png)[![netapp](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netapp.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netapp.png)[![netatmo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netatmo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netatmo.png)[![netboot](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netboot.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netboot.png)[![netbootxyz](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netbootxyz.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netbootxyz.png)[![netbox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netbox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netbox.png)[![netcam-studio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netcam-studio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netcam-studio.png)[![netdata](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netdata.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netdata.png)[![netgear](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netgear.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netgear.png)[![netlify](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netlify.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netlify.png)[![netmaker-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netmaker-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netmaker-light.png)[![netmaker](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/netmaker.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/netmaker.png)[![newsblur](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/newsblur.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/newsblur.png)[![nextcloud-calendar](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-calendar.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-calendar.png)[![nextcloud-cookbook](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-cookbook.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-cookbook.png)[![nextcloud-deck](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-deck.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-deck.png)[![nextcloud-news](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-news.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-news.png)[![nextcloud-notes](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-notes.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-notes.png)[![nextcloud-photos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-photos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-photos.png)[![nextcloud-talk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-talk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-talk.png)[![nextcloud-timemanager](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud-timemanager.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud-timemanager.png)[![nextcloud](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextcloud.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextcloud.png)[![nextdns](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nextdns.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nextdns.png)[![nginx](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nginx.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nginx.png)[![nginxproxymanager](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nginxproxymanager.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nginxproxymanager.png)[![nitter](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nitter.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nitter.png)[![nocodb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nocodb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nocodb.png)[![node.js](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/node.js.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/node.js.png)[![nodejs-alt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nodejs-alt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nodejs-alt.png)[![nodered](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nodered.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nodered.png)[![notifiarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/notifiarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/notifiarr.png)[![nowshowing](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nowshowing.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nowshowing.png)[![ntfy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ntfy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ntfy.png)[![ntop](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ntop.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ntop.png)[![nxfilter](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nxfilter.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nxfilter.png)[![nxlog](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nxlog.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nxlog.png)[![nzbget](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nzbget.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nzbget.png)[![nzbhydra](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/nzbhydra.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/nzbhydra.png)[![obico](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/obico.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/obico.png)[![obitalk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/obitalk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/obitalk.png)[![observium](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/observium.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/observium.png)[![obsidian-dark](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/obsidian-dark.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/obsidian-dark.png)[![obsidian-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/obsidian-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/obsidian-light.png)[![obsidian](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/obsidian.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/obsidian.png)[![octoeverywhere](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/octoeverywhere.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/octoeverywhere.png)[![octoprint](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/octoprint.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/octoprint.png)[![olivetin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/olivetin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/olivetin.png)[![omada](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/omada.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/omada.png)[![ombi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ombi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ombi.png)[![omnidb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/omnidb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/omnidb.png)[![onedev](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/onedev.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/onedev.png)[![onlyoffice](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/onlyoffice.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/onlyoffice.png)[![openeats](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openeats.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openeats.png)[![openhab](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openhab.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openhab.png)[![openmaptiler](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openmaptiler.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openmaptiler.png)[![openmediavault](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openmediavault.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openmediavault.png)[![opensearch](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opensearch.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opensearch.png)[![openspeedtest](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openspeedtest.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openspeedtest.png)[![opensprinkler](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opensprinkler.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opensprinkler.png)[![openstreetmap](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openstreetmap.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openstreetmap.png)[![opensuse](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opensuse.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opensuse.png)[![openvpn](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openvpn.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openvpn.png)[![openwrt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/openwrt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/openwrt.png)[![opera-developer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opera-developer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opera-developer.png)[![opera-gx](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opera-gx.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opera-gx.png)[![opera-touch](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opera-touch.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opera-touch.png)[![opera](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opera.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opera.png)[![opnsense](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/opnsense.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/opnsense.png)[![oracle-cloud](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/oracle-cloud.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/oracle-cloud.png)[![organizr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/organizr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/organizr.png)[![oscarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/oscarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/oscarr.png)[![osticket](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/osticket.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/osticket.png)[![outline](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/outline.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/outline.png)[![overclockers](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/overclockers.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/overclockers.png)[![overseerr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/overseerr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/overseerr.png)[![ovh](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ovh.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ovh.png)[![ovirt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ovirt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ovirt.png)[![owncloud](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/owncloud.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/owncloud.png)[![ownphotos-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ownphotos-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ownphotos-light.png)[![ownphotos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ownphotos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ownphotos.png)[![pagerduty](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pagerduty.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pagerduty.png)[![pale-moon](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pale-moon.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pale-moon.png)[![paloaltonetworks](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/paloaltonetworks.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/paloaltonetworks.png)[![paperless-ng](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/paperless-ng.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/paperless-ng.png)[![paperless](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/paperless.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/paperless.png)[![papermerge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/papermerge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/papermerge.png)[![partkeepr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/partkeepr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/partkeepr.png)[![pastatool](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pastatool.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pastatool.png)[![pastey](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pastey.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pastey.png)[![peertube](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/peertube.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/peertube.png)[![petio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/petio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/petio.png)[![pfsense](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pfsense.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pfsense.png)[![pgadmin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pgadmin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pgadmin.png)[![phantombot](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/phantombot.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/phantombot.png)[![photonix](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/photonix.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/photonix.png)[![photoprism](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/photoprism.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/photoprism.png)[![photostructure](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/photostructure.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/photostructure.png)[![photoview](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/photoview.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/photoview.png)[![php](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/php.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/php.png)[![phpipam](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/phpipam.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/phpipam.png)[![phpldapadmin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/phpldapadmin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/phpldapadmin.png)[![phpmyadmin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/phpmyadmin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/phpmyadmin.png)[![pi-alert-dark](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pi-alert-dark.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pi-alert-dark.png)[![pi-alert](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pi-alert.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pi-alert.png)[![piaware](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/piaware.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/piaware.png)[![pihole](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pihole.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pihole.png)[![pikvm-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pikvm-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pikvm-light.png)[![pikvm](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pikvm.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pikvm.png)[![pingdom](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pingdom.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pingdom.png)[![pivpn](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pivpn.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pivpn.png)[![piwigo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/piwigo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/piwigo.png)[![pixelfed](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pixelfed.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pixelfed.png)[![planka](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/planka.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/planka.png)[![plausible](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plausible.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plausible.png)[![pleroma](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pleroma.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pleroma.png)[![plesk-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plesk-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plesk-light.png)[![plesk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plesk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plesk.png)[![plex-new-transparent](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plex-new-transparent.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plex-new-transparent.png)[![plex-new](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plex-new.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plex-new.png)[![plex-square](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plex-square.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plex-square.png)[![plex](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plex.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plex.png)[![plexdrive](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plexdrive.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plexdrive.png)[![plexrequests](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plexrequests.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plexrequests.png)[![plume](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/plume.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/plume.png)[![podify](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/podify.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/podify.png)[![poly](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/poly.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/poly.png)[![polycom-alt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/polycom-alt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/polycom-alt.png)[![polycom](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/polycom.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/polycom.png)[![polywork](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/polywork.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/polywork.png)[![portainer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/portainer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/portainer.png)[![portus](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/portus.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/portus.png)[![poste](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/poste.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/poste.png)[![postgres](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/postgres.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/postgres.png)[![powerdns](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/powerdns.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/powerdns.png)[![powerpanel](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/powerpanel.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/powerpanel.png)[![premium-mobile-v1](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/premium-mobile-v1.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/premium-mobile-v1.png)[![premium-mobile-v2](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/premium-mobile-v2.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/premium-mobile-v2.png)[![premium-mobile](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/premium-mobile.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/premium-mobile.png)[![printer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/printer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/printer.png)[![pritunl](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pritunl.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pritunl.png)[![privacyidea](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/privacyidea.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/privacyidea.png)[![private-internet-access](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/private-internet-access.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/private-internet-access.png)[![privatebin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/privatebin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/privatebin.png)[![projectsend](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/projectsend.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/projectsend.png)[![prometheus](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/prometheus.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/prometheus.png)[![prowlarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/prowlarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/prowlarr.png)[![proxmox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/proxmox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/proxmox.png)[![prtg](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/prtg.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/prtg.png)[![psitransfer](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/psitransfer.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/psitransfer.png)[![pterodactyl](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pterodactyl.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pterodactyl.png)[![pufferpanel](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pufferpanel.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pufferpanel.png)[![pushfish](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pushfish.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pushfish.png)[![pushover](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pushover.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pushover.png)[![putty](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/putty.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/putty.png)[![pwndrop](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pwndrop.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pwndrop.png)[![pwpush](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pwpush.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pwpush.png)[![pydio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pydio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pydio.png)[![pyload](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/pyload.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/pyload.png)[![python](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/python.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/python.png)[![qbittorrent](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/qbittorrent.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/qbittorrent.png)[![qinglong](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/qinglong.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/qinglong.png)[![qnap](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/qnap.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/qnap.png)[![quant-ux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/quant-ux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/quant-ux.png)[![r](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/r.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/r.png)[![rabbitmq](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rabbitmq.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rabbitmq.png)[![radarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/radarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/radarr.png)[![radicale](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/radicale.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/radicale.png)[![rainloop-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rainloop-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rainloop-light.png)[![rainloop](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rainloop.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rainloop.png)[![rancher](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rancher.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rancher.png)[![raneto](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/raneto.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/raneto.png)[![raritan](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/raritan.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/raritan.png)[![raspberrymatic](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/raspberrymatic.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/raspberrymatic.png)[![raspberrypi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/raspberrypi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/raspberrypi.png)[![rathole](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rathole.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rathole.png)[![rclone](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rclone.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rclone.png)[![rdt-client](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rdt-client.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rdt-client.png)[![readarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/readarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/readarr.png)[![readthedocs](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/readthedocs.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/readthedocs.png)[![recalbox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/recalbox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/recalbox.png)[![recipesage](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/recipesage.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/recipesage.png)[![reddit](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/reddit.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/reddit.png)[![redis](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/redis.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/redis.png)[![remotely](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/remotely.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/remotely.png)[![requestrr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/requestrr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/requestrr.png)[![resiliosync](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/resiliosync.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/resiliosync.png)[![rhasspy-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rhasspy-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rhasspy-light.png)[![rhasspy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rhasspy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rhasspy.png)[![rhodecode](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rhodecode.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rhodecode.png)[![riot](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/riot.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/riot.png)[![rocketchat](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rocketchat.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rocketchat.png)[![rocky-linux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rocky-linux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rocky-linux.png)[![rompya](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rompya.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rompya.png)[![rook](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rook.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rook.png)[![roundcube](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/roundcube.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/roundcube.png)[![router](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/router.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/router.png)[![rport](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rport.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rport.png)[![rspamd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rspamd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rspamd.png)[![rss-bridge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rss-bridge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rss-bridge.png)[![rsshub](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rsshub.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rsshub.png)[![rstudioserver](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rstudioserver.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rstudioserver.png)[![ruby](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ruby.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ruby.png)[![rundeck](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rundeck.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rundeck.png)[![runeaudio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/runeaudio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/runeaudio.png)[![runonflux-mark-blue](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/runonflux-mark-blue.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/runonflux-mark-blue.png)[![runonflux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/runonflux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/runonflux.png)[![rust](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rust.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rust.png)[![rutorrent](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/rutorrent.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/rutorrent.png)[![sabnzbd-text](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sabnzbd-text.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sabnzbd-text.png)[![sabnzbd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sabnzbd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sabnzbd.png)[![safari-ios](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/safari-ios.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/safari-ios.png)[![sagemcom](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sagemcom.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sagemcom.png)[![samsung-internet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/samsung-internet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/samsung-internet.png)[![sandstorm](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sandstorm.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sandstorm.png)[![scrutiny](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/scrutiny.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/scrutiny.png)[![scrypted](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/scrypted.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/scrypted.png)[![seafile](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/seafile.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/seafile.png)[![searxmetasearchengine](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/searxmetasearchengine.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/searxmetasearchengine.png)[![searxng](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/searxng.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/searxng.png)[![security-onion](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/security-onion.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/security-onion.png)[![selfhosted](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/selfhosted.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/selfhosted.png)[![sendinblue](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sendinblue.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sendinblue.png)[![sensu-green](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sensu-green.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sensu-green.png)[![sensu-logo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sensu-logo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sensu-logo.png)[![servarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/servarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/servarr.png)[![serviio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/serviio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/serviio.png)[![shaarli](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/shaarli.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/shaarli.png)[![shellngn](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/shellngn.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/shellngn.png)[![shelly](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/shelly.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/shelly.png)[![shinobi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/shinobi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/shinobi.png)[![shlink](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/shlink.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/shlink.png)[![shoko](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/shoko.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/shoko.png)[![sickbeard](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sickbeard.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sickbeard.png)[![sickchill](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sickchill.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sickchill.png)[![sickgear](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sickgear.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sickgear.png)[![simplelogin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/simplelogin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/simplelogin.png)[![sinusbot](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sinusbot.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sinusbot.png)[![siyuan](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/siyuan.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/siyuan.png)[![skylink-fibernet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/skylink-fibernet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/skylink-fibernet.png)[![skype](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/skype.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/skype.png)[![slack](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/slack.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/slack.png)[![smokeping](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/smokeping.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/smokeping.png)[![snapdrop](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/snapdrop.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/snapdrop.png)[![snibox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/snibox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/snibox.png)[![snipe-it-alt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/snipe-it-alt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/snipe-it-alt.png)[![snipe-it](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/snipe-it.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/snipe-it.png)[![snippetbox](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/snippetbox.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/snippetbox.png)[![sogo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sogo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sogo.png)[![solid-invoice](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/solid-invoice.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/solid-invoice.png)[![sonarqube](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sonarqube.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sonarqube.png)[![sonarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sonarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sonarr.png)[![soulseek](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/soulseek.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/soulseek.png)[![sourcegraph](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sourcegraph.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sourcegraph.png)[![spamassassin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/spamassassin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/spamassassin.png)[![sparkleshare](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sparkleshare.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sparkleshare.png)[![specter-desktop](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/specter-desktop.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/specter-desktop.png)[![speedtest-tracker](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/speedtest-tracker.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/speedtest-tracker.png)[![sphinx-doc](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sphinx-doc.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sphinx-doc.png)[![sphinx-relay](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sphinx-relay.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sphinx-relay.png)[![splunk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/splunk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/splunk.png)[![spotify](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/spotify.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/spotify.png)[![spotweb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/spotweb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/spotweb.png)[![sqlitebrowser](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sqlitebrowser.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sqlitebrowser.png)[![squidex](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/squidex.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/squidex.png)[![sshswifty](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sshswifty.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sshswifty.png)[![startpage](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/startpage.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/startpage.png)[![stash](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/stash.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/stash.png)[![statping](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/statping.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/statping.png)[![storj](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/storj.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/storj.png)[![strapi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/strapi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/strapi.png)[![streama](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/streama.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/streama.png)[![supermicro](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/supermicro.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/supermicro.png)[![swift](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/swift.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/swift.png)[![symmetricom](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/symmetricom.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/symmetricom.png)[![sympa](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/sympa.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/sympa.png)[![syncany](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/syncany.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/syncany.png)[![synclounge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synclounge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synclounge.png)[![syncthing](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/syncthing.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/syncthing.png)[![synology-audio-station](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-audio-station.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-audio-station.png)[![synology-calendar](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-calendar.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-calendar.png)[![synology-chat](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-chat.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-chat.png)[![synology-download-station](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-download-station.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-download-station.png)[![synology-dsm](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-dsm.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-dsm.png)[![synology-filestation](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-filestation.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-filestation.png)[![synology-note-station](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-note-station.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-note-station.png)[![synology-photo-station](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-photo-station.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-photo-station.png)[![synology-photos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-photos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-photos.png)[![synology-surveillance-station](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-surveillance-station.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-surveillance-station.png)[![synology-video-station](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology-video-station.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology-video-station.png)[![synology](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/synology.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/synology.png)[![taiga](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/taiga.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/taiga.png)[![tailscale](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tailscale.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tailscale.png)[![tandoorrecipes](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tandoorrecipes.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tandoorrecipes.png)[![tanoshi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tanoshi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tanoshi.png)[![tar1090](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tar1090.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tar1090.png)[![taskcafe](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/taskcafe.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/taskcafe.png)[![tasmoadmin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tasmoadmin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tasmoadmin.png)[![tasmota-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tasmota-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tasmota-light.png)[![tasmota](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tasmota.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tasmota.png)[![tautulli](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tautulli.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tautulli.png)[![tdarr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tdarr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tdarr.png)[![technitium](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/technitium.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/technitium.png)[![teedy](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/teedy.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/teedy.png)[![telegraf](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/telegraf.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/telegraf.png)[![teleport](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/teleport.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/teleport.png)[![tenda](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tenda.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tenda.png)[![terraform](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/terraform.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/terraform.png)[![teslamate](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/teslamate.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/teslamate.png)[![thanos](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/thanos.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/thanos.png)[![theia-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/theia-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/theia-light.png)[![theia](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/theia.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/theia.png)[![thelounge](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/thelounge.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/thelounge.png)[![thunderhub](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/thunderhub.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/thunderhub.png)[![timemachines-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/timemachines-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/timemachines-light.png)[![timemachines](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/timemachines.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/timemachines.png)[![timetagger](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/timetagger.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/timetagger.png)[![tinytinyrss](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tinytinyrss.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tinytinyrss.png)[![todoist](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/todoist.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/todoist.png)[![tooljet](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tooljet.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tooljet.png)[![tplink](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tplink.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tplink.png)[![traccar](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/traccar.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/traccar.png)[![traefik](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/traefik.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/traefik.png)[![trakt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/trakt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/trakt.png)[![transmission](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/transmission.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/transmission.png)[![trilium](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/trilium.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/trilium.png)[![truenas-enterprise](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/truenas-enterprise.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/truenas-enterprise.png)[![truenas-scale](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/truenas-scale.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/truenas-scale.png)[![truenas](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/truenas.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/truenas.png)[![truenascore](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/truenascore.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/truenascore.png)[![tube-archivist](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tube-archivist.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tube-archivist.png)[![tubesync](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tubesync.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tubesync.png)[![tux](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tux.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tux.png)[![tvheadend](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tvheadend.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tvheadend.png)[![tvp-vod](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/tvp-vod.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/tvp-vod.png)[![twitter](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/twitter.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/twitter.png)[![typescript](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/typescript.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/typescript.png)[![typo3](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/typo3.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/typo3.png)[![ubooquity](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ubooquity.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ubooquity.png)[![ubuntu-alt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ubuntu-alt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ubuntu-alt.png)[![ubuntu](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ubuntu.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ubuntu.png)[![uc](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/uc.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/uc.png)[![udemy-learning](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/udemy-learning.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/udemy-learning.png)[![ultimateguitar](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ultimateguitar.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ultimateguitar.png)[![umbrel](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/umbrel.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/umbrel.png)[![unami-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/unami-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/unami-light.png)[![unami](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/unami.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/unami.png)[![unifi-controller](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/unifi-controller.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/unifi-controller.png)[![unifi-protect](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/unifi-protect.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/unifi-protect.png)[![unifi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/unifi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/unifi.png)[![unificontroller](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/unificontroller.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/unificontroller.png)[![uninterruptible-power-supply](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/uninterruptible-power-supply.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/uninterruptible-power-supply.png)[![universal-media-server-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/universal-media-server-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/universal-media-server-light.png)[![universal-media-server](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/universal-media-server.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/universal-media-server.png)[![unraid](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/unraid.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/unraid.png)[![untangle](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/untangle.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/untangle.png)[![updog](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/updog.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/updog.png)[![upsnap](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/upsnap.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/upsnap.png)[![uptime-kuma](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/uptime-kuma.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/uptime-kuma.png)[![urbackup](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/urbackup.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/urbackup.png)[![valetudo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/valetudo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/valetudo.png)[![vault-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vault-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vault-light.png)[![vault](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vault.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vault.png)[![vaultwarden](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vaultwarden.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vaultwarden.png)[![veeam](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/veeam.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/veeam.png)[![verizon](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/verizon.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/verizon.png)[![vi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vi.png)[![vikunja](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vikunja.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vikunja.png)[![virtualmin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/virtualmin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/virtualmin.png)[![virtualradarserver](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/virtualradarserver.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/virtualradarserver.png)[![vmware](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vmware.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vmware.png)[![vmwareesxi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vmwareesxi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vmwareesxi.png)[![vmwarehorizon](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vmwarehorizon.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vmwarehorizon.png)[![vmwarevcenter](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vmwarevcenter.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vmwarevcenter.png)[![voip-info](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/voip-info.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/voip-info.png)[![voip-ms](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/voip-ms.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/voip-ms.png)[![volumio](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/volumio.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/volumio.png)[![vscode](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vscode.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vscode.png)[![vultr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vultr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vultr.png)[![vuplus](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/vuplus.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/vuplus.png)[![wakapi](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wakapi.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wakapi.png)[![wallabag](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wallabag.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wallabag.png)[![wanikani](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wanikani.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wanikani.png)[![ward](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ward.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ward.png)[![watcher](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/watcher.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/watcher.png)[![watchtower](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/watchtower.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/watchtower.png)[![watchyourlan](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/watchyourlan.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/watchyourlan.png)[![wazuh](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wazuh.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wazuh.png)[![wbo](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wbo.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wbo.png)[![webdav](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webdav.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webdav.png)[![webhook](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webhook.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webhook.png)[![webhookd](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webhookd.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webhookd.png)[![webkit](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webkit.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webkit.png)[![webmin](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webmin.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webmin.png)[![webtools](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webtools.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webtools.png)[![webtop](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webtop.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webtop.png)[![webtorrent](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/webtorrent.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/webtorrent.png)[![wekan](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wekan.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wekan.png)[![wetty](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wetty.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wetty.png)[![wger](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wger.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wger.png)[![wggenweb](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wggenweb.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wggenweb.png)[![whatsapp](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/whatsapp.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/whatsapp.png)[![whisparr](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/whisparr.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/whisparr.png)[![whooglesearch](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/whooglesearch.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/whooglesearch.png)[![wikijs](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wikijs.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wikijs.png)[![windows-11](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/windows-11.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/windows-11.png)[![windows-7](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/windows-7.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/windows-7.png)[![windows-95](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/windows-95.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/windows-95.png)[![windows-98](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/windows-98.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/windows-98.png)[![windows-vista](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/windows-vista.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/windows-vista.png)[![windows-xp](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/windows-xp.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/windows-xp.png)[![wireguard](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wireguard.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wireguard.png)[![wled](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wled.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wled.png)[![woodpecker-ci](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/woodpecker-ci.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/woodpecker-ci.png)[![wordpress](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/wordpress.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/wordpress.png)[![workadventure](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/workadventure.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/workadventure.png)[![xbackbone](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xbackbone.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xbackbone.png)[![xcp-ng](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xcp-ng.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xcp-ng.png)[![xen-orchestra](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xen-orchestra.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xen-orchestra.png)[![xenorchestra](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xenorchestra.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xenorchestra.png)[![xigmanas](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xigmanas.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xigmanas.png)[![xmrig](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xmrig.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xmrig.png)[![xteve](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xteve.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xteve.png)[![xwiki](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/xwiki.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/xwiki.png)[![yacht](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/yacht.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/yacht.png)[![yandex](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/yandex.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/yandex.png)[![ymarks](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ymarks.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ymarks.png)[![ynab](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/ynab.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/ynab.png)[![yourls](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/yourls.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/yourls.png)[![youtube-light](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/youtube-light.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/youtube-light.png)[![youtube-play](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/youtube-play.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/youtube-play.png)[![youtube](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/youtube.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/youtube.png)[![youtubedl](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/youtubedl.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/youtubedl.png)[![yunohost](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/yunohost.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/yunohost.png)[![zabbix-v2](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zabbix-v2.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zabbix-v2.png)[![zabbix](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zabbix.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zabbix.png)[![zabka](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zabka.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zabka.png)[![zammad](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zammad.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zammad.png)[![zendesk](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zendesk.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zendesk.png)[![zerotier](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zerotier.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zerotier.png)[![zigbee2mqtt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zigbee2mqtt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zigbee2mqtt.png)[![znc](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/znc.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/znc.png)[![zohomail](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zohomail.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zohomail.png)[![zoneminder](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zoneminder.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zoneminder.png)[![zulip](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zulip.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zulip.png)[![zwavejs2mqtt](https://github.com/mendoncart/Dashboard-Icons/raw/main/png/zwavejs2mqtt.png)](https://github.com/mendoncart/Dashboard-Icons/blob/main/png/zwavejs2mqtt.png)
 
-# Legal
+## Legal
 
 [Permalink: Legal](https://github.com/mendoncart/Dashboard-Icons#legal)
 
@@ -12950,7 +13843,7 @@ The use of these names, trademarks and brands appearing in these image files, do
 
 [View license](https://github.com/mendoncart/Dashboard-Icons#License-1-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/mendoncart/Dashboard-Icons).
 
@@ -13011,8 +13904,7 @@ You signed in with another tab or window. [Reload](https://github.com/netbox-com
 - [Star\\
 19.1k](https://github.com/login?return_to=%2Fnetbox-community%2Fnetbox)
 
-
-# How to integrate with DNS?  \#12722
+## How to integrate with DNS?  \#12722
 
 Unanswered
 
@@ -13031,16 +13923,15 @@ on May 25, 2023May 25, 2023·
 ·
 2 replies
 
-
 [Return to top](https://github.com/netbox-community/netbox/discussions/12722#top)
 
 Discussion options
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-## [![](https://avatars.githubusercontent.com/u/60277229?s=64&v=4)\ davehouser1](https://github.com/davehouser1) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussion-5233896)
+## [![60277229?s=64&v=4 image](https://avatars.githubusercontent.com/u/60277229?s=64&v=4)\ davehouser1](https://github.com/davehouser1) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussion-5233896)
 
 Original comment in English -
 Translate to English
@@ -13059,11 +13950,11 @@ All reactions
 
 Comment options
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-### [![](https://avatars.githubusercontent.com/u/740022?s=64&v=4)\ jcollie](https://github.com/jcollie) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6004944)
+## [![740022?s=64&v=4 image](https://avatars.githubusercontent.com/u/740022?s=64&v=4)\ jcollie](https://github.com/jcollie) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6004944)
 
 Original comment in English -
 Translate to English
@@ -13080,14 +13971,13 @@ All reactions
 
 0 replies
 
-
 Comment options
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-### [![](https://avatars.githubusercontent.com/u/2488883?s=64&v=4)\ mtinberg](https://github.com/mtinberg) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005137)
+## [![2488883?s=64&v=4 image](https://avatars.githubusercontent.com/u/2488883?s=64&v=4)\ mtinberg](https://github.com/mtinberg) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005137)
 
 Original comment in English -
 Translate to English
@@ -13104,16 +13994,15 @@ All reactions
 
 2 replies
 
-
 [![@jcollie](https://avatars.githubusercontent.com/u/740022?s=60&v=4)](https://github.com/jcollie)
 
 Comment options
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-#### [jcollie](https://github.com/jcollie) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005334)
+## [jcollie](https://github.com/jcollie) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005334)
 
 Original comment in English -
 Translate to English
@@ -13130,11 +14019,11 @@ All reactions
 
 Comment options
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-#### [peteeckel](https://github.com/peteeckel) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005736)
+## [peteeckel](https://github.com/peteeckel) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005736)
 
 Original comment in English -
 Translate to English
@@ -13149,15 +14038,15 @@ All reactions
 
 Comment options
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/netbox-community/netbox/discussions/12722).
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-### [![](https://avatars.githubusercontent.com/u/6815386?s=64&v=4)\ peteeckel](https://github.com/peteeckel) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005773)
+## [![6815386?s=64&v=4 image](https://avatars.githubusercontent.com/u/6815386?s=64&v=4)\ peteeckel](https://github.com/peteeckel) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6005773)
 
 Original comment in English -
 Translate to English
@@ -13178,18 +14067,17 @@ All reactions
 
 0 replies
 
-
 Comment options
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/netbox-community/netbox/discussions/12722).
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-### [![](https://avatars.githubusercontent.com/u/60277229?s=64&v=4)\ davehouser1](https://github.com/davehouser1) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6006320)   Author
+## [![60277229?s=64&v=4 image](https://avatars.githubusercontent.com/u/60277229?s=64&v=4)\ davehouser1](https://github.com/davehouser1) [on May 25, 2023May 25, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6006320)   Author
 
 Original comment in English -
 Translate to English
@@ -13206,18 +14094,17 @@ All reactions
 
 0 replies
 
-
 Comment options
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/netbox-community/netbox/discussions/12722).
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-### [![](https://avatars.githubusercontent.com/u/44789?s=64&v=4)\ candlerb](https://github.com/candlerb) [on May 26, 2023May 26, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6009170)
+## [![44789?s=64&v=4 image](https://avatars.githubusercontent.com/u/44789?s=64&v=4)\ candlerb](https://github.com/candlerb) [on May 26, 2023May 26, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6009170)
 
 Original comment in English -
 Translate to English
@@ -13234,18 +14121,17 @@ All reactions
 
 0 replies
 
-
 Comment options
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/netbox-community/netbox/discussions/12722).
 
-# {{title}}
+## {{title}}
 
 Quote reply
 
-### [![](https://avatars.githubusercontent.com/u/7140592?s=64&v=4)\ v0tti](https://github.com/v0tti) [on May 30, 2023May 30, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6035228)
+## [![7140592?s=64&v=4 image](https://avatars.githubusercontent.com/u/7140592?s=64&v=4)\ v0tti](https://github.com/v0tti) [on May 30, 2023May 30, 2023](https://github.com/netbox-community/netbox/discussions/12722\#discussioncomment-6035228)
 
 Original comment in English -
 Translate to English
@@ -13262,13 +14148,11 @@ All reactions
 
 0 replies
 
-
 [Sign up for free](https://github.com/join?source=comment-repo) **to join this conversation on GitHub**.
 Already have an account?
 [Sign in to comment](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fnetbox-community%2Fnetbox%2Fdiscussions%2F12722)
 
 Category
-
 
 [![grey_exclamation](https://github.githubassets.com/assets/2755-ffc02082b0a7.png)\\
 \\
@@ -13276,12 +14160,9 @@ Help Wanted!](https://github.com/netbox-community/netbox/discussions/categories/
 
 Labels
 
-
 None yet
 
-
 6 participants
-
 
 [![@davehouser1](https://avatars.githubusercontent.com/u/60277229?s=48&v=4)](https://github.com/davehouser1)[![@candlerb](https://avatars.githubusercontent.com/u/44789?s=48&v=4)](https://github.com/candlerb)[![@jcollie](https://avatars.githubusercontent.com/u/740022?s=48&v=4)](https://github.com/jcollie)[![@mtinberg](https://avatars.githubusercontent.com/u/2488883?s=48&v=4)](https://github.com/mtinberg)[![@peteeckel](https://avatars.githubusercontent.com/u/6815386?s=48&v=4)](https://github.com/peteeckel)[![@v0tti](https://avatars.githubusercontent.com/u/7140592?s=48&v=4)](https://github.com/v0tti)
 
@@ -13297,7 +14178,7 @@ Code
 
 Link
 
-* * *
+- * *
 
 Numbered list
 
@@ -13305,7 +14186,7 @@ Unordered list
 
 Task list
 
-* * *
+- * *
 
 Attach files
 
@@ -13313,7 +14194,7 @@ Mention
 
 Reference
 
-# Select a reply
+## Select a reply
 
 Loading
 
@@ -13325,7 +14206,7 @@ You can’t perform that action at this time.
 
 ---
 
-### 6. GitHub - awesome-foss/awesome-sysadmin: A curated list of amazingly awesome open-source sysadmin resources.
+## 6. GitHub - awesome-foss/awesome-sysadmin: A curated list of amazingly awesome open-source sysadmin resources
 
 **Source:** [https://github.com/awesome-foss/awesome-sysadmin](https://github.com/awesome-foss/awesome-sysadmin)
 **Domain:** `github.com`
@@ -13363,7 +14244,7 @@ forks](https://github.com/awesome-foss/awesome-sysadmin/forks) [Branches](https:
 
 [Notifications](https://github.com/login?return_to=%2Fawesome-foss%2Fawesome-sysadmin) You must be signed in to change notification settings
 
-# awesome-foss/awesome-sysadmin
+## awesome-foss/awesome-sysadmin
 
 master
 
@@ -13381,24 +14262,24 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![Raynzler](https://avatars.githubusercontent.com/u/91555862?v=4&size=40)](https://github.com/Raynzler)[Raynzler](https://github.com/awesome-foss/awesome-sysadmin/commits?author=Raynzler)<br>[Add Uptime Kuma to Monitoring section (](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885) [#645](https://github.com/awesome-foss/awesome-sysadmin/pull/645) [)](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885)<br>last monthOct 26, 2025<br>[af26ce7](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885) · last monthOct 26, 2025<br>## History<br>[1,510 Commits](https://github.com/awesome-foss/awesome-sysadmin/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/awesome-foss/awesome-sysadmin/commits/master/) |
+| ## Latest commit<br>[![Raynzler](https://avatars.githubusercontent.com/u/91555862?v=4&size=40)](https://github.com/Raynzler)[Raynzler](https://github.com/awesome-foss/awesome-sysadmin/commits?author=Raynzler)<br>[Add Uptime Kuma to Monitoring section (](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885) [#645](https://github.com/awesome-foss/awesome-sysadmin/pull/645) [)](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885)<br>last monthOct 26, 2025<br>[af26ce7](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885) · last monthOct 26, 2025<br>## History<br>[1,510 Commits](https://github.com/awesome-foss/awesome-sysadmin/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/awesome-foss/awesome-sysadmin/commits/master/) |  |  |  |
 | [.github](https://github.com/awesome-foss/awesome-sysadmin/tree/master/.github ".github") | [.github](https://github.com/awesome-foss/awesome-sysadmin/tree/master/.github ".github") | [Fix grammar in Pull Request template (](https://github.com/awesome-foss/awesome-sysadmin/commit/c1d746b8052dd63800c3d6bab6197c2bf77d1810 "Fix grammar in Pull Request template (#626)  This a fix for the Pull Request template.") [#626](https://github.com/awesome-foss/awesome-sysadmin/pull/626) [)](https://github.com/awesome-foss/awesome-sysadmin/commit/c1d746b8052dd63800c3d6bab6197c2bf77d1810 "Fix grammar in Pull Request template (#626)  This a fix for the Pull Request template.") | 5 months agoJul 1, 2025 |
 | [.gitignore](https://github.com/awesome-foss/awesome-sysadmin/blob/master/.gitignore ".gitignore") | [.gitignore](https://github.com/awesome-foss/awesome-sysadmin/blob/master/.gitignore ".gitignore") | [tools: move all CI workflows and automation to separate repository (](https://github.com/awesome-foss/awesome-sysadmin/commit/369d24bd6eaece88ae117747e138b4cab6fa0026 "tools: move all CI workflows and automation to separate repository (#542)  - https://github.com/nodiscc/awesome-sysadmin-data (will be transferred back awesome-foss when ready)") [#542](https://github.com/awesome-foss/awesome-sysadmin/pull/542) | 2 years agoNov 30, 2023 |
 | [LICENSE.txt](https://github.com/awesome-foss/awesome-sysadmin/blob/master/LICENSE.txt "LICENSE.txt") | [LICENSE.txt](https://github.com/awesome-foss/awesome-sysadmin/blob/master/LICENSE.txt "LICENSE.txt") | [Add CC BY-SA 4.0 International license](https://github.com/awesome-foss/awesome-sysadmin/commit/3abf5b4f63dcd7b6ea7ec572bf27239d80621496 "Add CC BY-SA 4.0 International license") | 10 years agoApr 9, 2015 |
 | [README.md](https://github.com/awesome-foss/awesome-sysadmin/blob/master/README.md "README.md") | [README.md](https://github.com/awesome-foss/awesome-sysadmin/blob/master/README.md "README.md") | [Add Uptime Kuma to Monitoring section (](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885 "Add Uptime Kuma to Monitoring section (#645)") [#645](https://github.com/awesome-foss/awesome-sysadmin/pull/645) [)](https://github.com/awesome-foss/awesome-sysadmin/commit/af26ce73ffa07be31837f7c2c5cc0a40a69a0885 "Add Uptime Kuma to Monitoring section (#645)") | last monthOct 26, 2025 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# Awesome Sysadmin
+## Awesome Sysadmin
 
 [Permalink: Awesome Sysadmin](https://github.com/awesome-foss/awesome-sysadmin#awesome-sysadmin)
 
-[![](https://camo.githubusercontent.com/2727609d8bfde9ba1a95be1449eb878bfafa4d76789ba05661857e2c8ac70fa1/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/sindresorhus/awesome)[![](https://github.com/awesome-foss/awesome-sysadmin/actions/workflows/ci.yml/badge.svg)](https://github.com/awesome-foss/awesome-sysadmin/issues/416)
+[![68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667 image](https://camo.githubusercontent.com/2727609d8bfde9ba1a95be1449eb878bfafa4d76789ba05661857e2c8ac70fa1/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/sindresorhus/awesome)[![Badge image](https://github.com/awesome-foss/awesome-sysadmin/actions/workflows/ci.yml/badge.svg)](https://github.com/awesome-foss/awesome-sysadmin/issues/416)
 
 **A curated list of amazingly awesome Free and Open-Source sysadmin resources.** Please read the [Pull Request template](https://github.com/awesome-foss/awesome-sysadmin/blob/master/.github/PULL_REQUEST_TEMPLATE.md) if you wish to add software and consider [donating](https://github.com/n1trux/awesome-donations) to the FLOSS projects you use regularly. Please consider contributing to fix one of the pinned [issues](https://github.com/awesome-foss/awesome-sysadmin/issues) if your time allows.
 
-* * *
+- * *
 
 ## Table of contents
 
@@ -13454,7 +14335,7 @@ Open more actions menu
 - [Websites](https://github.com/awesome-foss/awesome-sysadmin#websites)
 - [License](https://github.com/awesome-foss/awesome-sysadmin#license)
 
-* * *
+- * *
 
 ## Software
 
@@ -13484,7 +14365,7 @@ Build automation.
 
 [Backup](https://en.wikipedia.org/wiki/Backup) software.
 
-_See also: [Restic's list of Linux backup software](https://github.com/restic/others)_
+*See also: [Restic's list of Linux backup software](https://github.com/restic/others)*
 
 - [Backupninja](https://0xacab.org/liberate/backupninja) \- Lightweight, extensible meta-backup system, provides a centralized way to configure and coordinate many different backup utilities. `GPL-2.0``Shell`
 - [Backrest](https://garethgeorge.github.io/backrest/) \- Backrest is a web UI and orchestrator for restic backup. ( [Source Code](https://github.com/garethgeorge/backrest)) `GPL-3.0``Docker/Go`
@@ -13576,7 +14457,7 @@ Conversation-driven development and management.
 
 Configuration management database (CMDB) software.
 
-_Related: [IT Asset Management](https://github.com/awesome-foss/awesome-sysadmin#it-asset-management)_
+*Related: [IT Asset Management](https://github.com/awesome-foss/awesome-sysadmin#it-asset-management)*
 
 - [Collins](https://tumblr.github.io/collins/) \- At Tumblr, it's the infrastructure source of truth and knowledge. ( [Source Code](https://github.com/tumblr/collins)) `Apache-2.0``Docker/Scala`
 - [i-doit](https://www.i-doit.org/) \- IT Documentation and CMDB. `AGPL-3.0``PHP`
@@ -13634,7 +14515,7 @@ Database servers.
 
 **Please visit [dbdb.io - Database of Databases](https://dbdb.io/)**
 
-_See also: [awesome-selfhosted/Database Management](https://awesome-selfhosted.net/tags/database-management.html)_
+*See also: [awesome-selfhosted/Database Management](https://awesome-selfhosted.net/tags/database-management.html)*
 
 ### Deployment Automation
 
@@ -13673,7 +14554,7 @@ Tools used to create diagrams of networks, flows, etc.
 
 Network distributed filesystems.
 
-_See also: [awesome-selfhosted/File Transfer - Object Storage & File Servers](https://awesome-selfhosted.net/tags/file-transfer---object-storage--file-servers.html)_
+*See also: [awesome-selfhosted/File Transfer - Object Storage & File Servers](https://awesome-selfhosted.net/tags/file-transfer---object-storage--file-servers.html)*
 
 - [Ceph](https://ceph.com/en/) \- Distributed object, block, and file storage platform. ( [Source Code](https://github.com/ceph/ceph)) `LGPL-3.0``C++`
 - [DRBD](https://linbit.com/drbd/) \- Distributed replicated storage system, implemented as a Linux kernel driver. ( [Source Code](https://github.com/LINBIT/drbd)) `GPL-2.0``C`
@@ -13699,9 +14580,9 @@ _See also: [awesome-selfhosted/File Transfer - Object Storage & File Servers](ht
 
 DNS server control panels, web interfaces and domain management tools.
 
-_Related: [DNS - Servers](https://github.com/awesome-foss/awesome-sysadmin#dns---servers)_
+*Related: [DNS - Servers](https://github.com/awesome-foss/awesome-sysadmin#dns---servers)*
 
-_See also: [awesome-selfhosted/DNS](https://awesome-selfhosted.net/tags/dns.html)_
+*See also: [awesome-selfhosted/DNS](https://awesome-selfhosted.net/tags/dns.html)*
 
 - [Atomia DNS](https://github.com/atomia/atomiadns/) \- DNS management system. `ISC``Perl`
 - [Designate](https://wiki.openstack.org/wiki/Designate) \- DNSaaS services for OpenStack. ( [Source Code](https://opendev.org/openstack/designate)) `Apache-2.0``Python`
@@ -13720,9 +14601,9 @@ _See also: [awesome-selfhosted/DNS](https://awesome-selfhosted.net/tags/dns.html
 
 [DNS](https://en.wikipedia.org/wiki/Name_server) servers.
 
-_Related: [DNS - Control Panels & Domain Management](https://github.com/awesome-foss/awesome-sysadmin#dns---control-panels--domain-management)_
+*Related: [DNS - Control Panels & Domain Management](https://github.com/awesome-foss/awesome-sysadmin#dns---control-panels--domain-management)*
 
-_See also: [awesome-selfhosted/DNS](https://awesome-selfhosted.net/tags/dns.html)_
+*See also: [awesome-selfhosted/DNS](https://awesome-selfhosted.net/tags/dns.html)*
 
 - [Bind](https://www.isc.org/bind/) \- Versatile, classic, complete name server software. ( [Source Code](https://gitlab.isc.org/isc-projects/bind9)) `MPL-2.0``C`
 - [CoreDNS](https://coredns.io/) \- Flexible DNS server. ( [Source Code](https://github.com/coredns/coredns)) `Apache-2.0``Go`
@@ -13864,7 +14745,7 @@ An [email client](https://en.wikipedia.org/wiki/Email_client), email reader or, 
 
 Metric gathering and display software.
 
-_Related: [Databases](https://github.com/awesome-foss/awesome-sysadmin#databases), [Monitoring](https://github.com/awesome-foss/awesome-sysadmin#monitoring)_
+*Related: [Databases](https://github.com/awesome-foss/awesome-sysadmin#databases), [Monitoring](https://github.com/awesome-foss/awesome-sysadmin#monitoring)*
 
 - [Beats](https://www.elastic.co/beats/) \- Single-purpose data shippers that send data from hundreds or thousands of machines and systems to Logstash or Elasticsearch. ( [Source Code](https://github.com/elastic/beats)) `Apache-2.0``Go`
 - [Collectd](https://collectd.org/) \- System statistics collection daemon. ( [Source Code](https://github.com/collectd/collectd)) `MIT``C`
@@ -13898,7 +14779,7 @@ Software that does not fit in another section.
 
 Monitoring software.
 
-_Related: [Metrics & Metric Collection](https://github.com/awesome-foss/awesome-sysadmin#metrics--metric-collection)_
+*Related: [Metrics & Metric Collection](https://github.com/awesome-foss/awesome-sysadmin#metrics--metric-collection)*
 
 - [Adagios](http://adagios.org/) \- Web based Nagios interface for configuration and monitoring (replacement to the standard interface), and a REST interface. ( [Source Code](https://github.com/opinkerfi/adagios)) `AGPL-3.0``Docker/Python`
 - [Alerta](https://alerta.io/) \- Distributed, scalable and flexible monitoring system. ( [Source Code](https://github.com/alerta/alerta)) `Apache-2.0``Python`
@@ -14002,7 +14883,7 @@ Web-based project management and bug tracking systems.
 
 [Message queues](https://en.wikipedia.org/wiki/Message_queue) and [message broker](https://en.wikipedia.org/wiki/Message_broker) software, typically used for inter-process communication (IPC), or for inter-thread communication within the same process.
 
-_See also: [Cloud Native Landscape - Streaming & Messaging](https://landscape.cncf.io/?group=projects-and-products&view-mode=card#app-definition-and-development--streaming-messaging)_
+*See also: [Cloud Native Landscape - Streaming & Messaging](https://landscape.cncf.io/?group=projects-and-products&view-mode=card#app-definition-and-development--streaming-messaging)*
 
 - [ActiveMQ](https://activemq.apache.org/) \- Java message broker. ( [Source Code](https://github.com/apache/activemq)) `Apache-2.0``Java`
 - [BeanstalkD](https://beanstalkd.github.io/) \- A simple, fast work queue. ( [Source Code](https://github.com/beanstalkd/beanstalkd)) `MIT``C`
@@ -14018,7 +14899,7 @@ _See also: [Cloud Native Landscape - Streaming & Messaging](https://landscape.cn
 
 [Remote Desktop](https://en.wikipedia.org/wiki/Remote_desktop_software) client software.
 
-_See also: [awesome-selfhosted/Remote Access](https://awesome-selfhosted.net/tags/remote-access.html)_
+*See also: [awesome-selfhosted/Remote Access](https://awesome-selfhosted.net/tags/remote-access.html)*
 
 - [Remmina](https://www.remmina.org/) \- Feature-rich remote desktop application for linux and other unixes. ( [Source Code](https://gitlab.com/Remmina/Remmina)) `GPL-2.0``C`
 - [Tiger VNC](https://tigervnc.org/) \- High-performance, multi-platform VNC client and server. ( [Source Code](https://github.com/TigerVNC/tigervnc)) `GPL-2.0``C++`
@@ -14157,7 +15038,7 @@ VPN software.
 
 **Please visit [awesome-selfhosted/Web Servers](https://awesome-selfhosted.net/tags/web-servers.html)**
 
-* * *
+- * *
 
 ## List of Licenses
 
@@ -14190,7 +15071,7 @@ VPN software.
 - `Vim` \- [Vim License](https://spdx.org/licenses/Vim.html)
 - `Zlib` \- [zlib License](https://spdx.org/licenses/Zlib.html)
 
-* * *
+- * *
 
 ## External links
 
@@ -14215,7 +15096,7 @@ VPN software.
 
 [Permalink: Repositories](https://github.com/awesome-foss/awesome-sysadmin#repositories)
 
-_Software package repositories._
+*Software package repositories.*
 
 - [AlternativeTo](https://alternativeto.net/) \- Find alternatives to software you know and discover new software.
 - [deb.sury.org](https://deb.sury.org/) \- Repository with LAMP updated packages for Debian and Ubuntu.
@@ -14236,7 +15117,7 @@ _Software package repositories._
 - [Ops School](https://www.opsschool.org/) \- Comprehensive program that will help you learn to be an operations engineer.
 - [Digital Ocean Tutorials](https://www.digitalocean.com/community/tutorials) \- 6,000+ tutorials for getting the basics of certain applications/tools/systems administration topics.
 
-* * *
+- * *
 
 ## License
 
@@ -14263,7 +15144,7 @@ A curated list of amazingly awesome open-source sysadmin resources.
 
 [View license](https://github.com/awesome-foss/awesome-sysadmin#License-1-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/awesome-foss/awesome-sysadmin).
 
@@ -14288,7 +15169,7 @@ forks](https://github.com/awesome-foss/awesome-sysadmin/forks)
 
 [Report repository](https://github.com/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fawesome-foss%2Fawesome-sysadmin&report=awesome-foss+%28user%29)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/awesome-foss/awesome-sysadmin).
 
@@ -14315,7 +15196,7 @@ You can’t perform that action at this time.
 
 ---
 
-### 7. GitHub - Think-Cube/AwesomeSysOps: Explore a curated collection of powerful open source tools for streamlined system operations. From backups to virtualization, find essential resources to enhance your sysadmin journey.
+### 7. GitHub - Think-Cube/AwesomeSysOps: Explore a curated collection of powerful open source tools for streamlined system operations. From backups to virtualization, find essential resources to enhance your sysadmin journey
 
 **Source:** [https://github.com/Think-Cube/AwesomeSysOps](https://github.com/Think-Cube/AwesomeSysOps)
 **Domain:** `github.com`
@@ -14337,9 +15218,7 @@ You signed in with another tab or window. [Reload](https://github.com/Think-Cube
 - [Star\\
 6](https://github.com/login?return_to=%2FThink-Cube%2FAwesomeSysOps)
 
-
 Explore a curated collection of powerful open source tools for streamlined system operations. From backups to virtualization, find essential resources to enhance your sysadmin journey.
-
 
 ### License
 
@@ -14353,7 +15232,7 @@ forks](https://github.com/Think-Cube/AwesomeSysOps/forks) [Branches](https://git
 
 [Notifications](https://github.com/login?return_to=%2FThink-Cube%2FAwesomeSysOps) You must be signed in to change notification settings
 
-# Think-Cube/AwesomeSysOps
+## Think-Cube/AwesomeSysOps
 
 main
 
@@ -14371,14 +15250,14 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![spy86](https://avatars.githubusercontent.com/u/5445923?v=4&size=40)](https://github.com/spy86)[spy86](https://github.com/Think-Cube/AwesomeSysOps/commits?author=spy86)<br>[Merge pull request](https://github.com/Think-Cube/AwesomeSysOps/commit/e3a80474ececccf59d696e2ce5350849680e6c45) [#2](https://github.com/Think-Cube/AwesomeSysOps/pull/2) [from Think-Cube/spy86-patch-1](https://github.com/Think-Cube/AwesomeSysOps/commit/e3a80474ececccf59d696e2ce5350849680e6c45)<br>Open commit details<br>last yearFeb 22, 2024<br>[e3a8047](https://github.com/Think-Cube/AwesomeSysOps/commit/e3a80474ececccf59d696e2ce5350849680e6c45) · last yearFeb 22, 2024<br>## History<br>[15 Commits](https://github.com/Think-Cube/AwesomeSysOps/commits/main/) <br>Open commit details<br>[View commit history for this file.](https://github.com/Think-Cube/AwesomeSysOps/commits/main/) |
+| ## Latest commit<br>[![spy86](https://avatars.githubusercontent.com/u/5445923?v=4&size=40)](https://github.com/spy86)[spy86](https://github.com/Think-Cube/AwesomeSysOps/commits?author=spy86)<br>[Merge pull request](https://github.com/Think-Cube/AwesomeSysOps/commit/e3a80474ececccf59d696e2ce5350849680e6c45) [#2](https://github.com/Think-Cube/AwesomeSysOps/pull/2) [from Think-Cube/spy86-patch-1](https://github.com/Think-Cube/AwesomeSysOps/commit/e3a80474ececccf59d696e2ce5350849680e6c45)<br>Open commit details<br>last yearFeb 22, 2024<br>[e3a8047](https://github.com/Think-Cube/AwesomeSysOps/commit/e3a80474ececccf59d696e2ce5350849680e6c45) · last yearFeb 22, 2024<br>## History<br>[15 Commits](https://github.com/Think-Cube/AwesomeSysOps/commits/main/) <br>Open commit details<br>[View commit history for this file.](https://github.com/Think-Cube/AwesomeSysOps/commits/main/) |  |  |  |
 | [LICENSE](https://github.com/Think-Cube/AwesomeSysOps/blob/main/LICENSE "LICENSE") | [LICENSE](https://github.com/Think-Cube/AwesomeSysOps/blob/main/LICENSE "LICENSE") | [Create LICENSE](https://github.com/Think-Cube/AwesomeSysOps/commit/312e59ae8f15ccc97a8d400c93abf1cae91014fe "Create LICENSE") | last yearFeb 22, 2024 |
 | [README.md](https://github.com/Think-Cube/AwesomeSysOps/blob/main/README.md "README.md") | [README.md](https://github.com/Think-Cube/AwesomeSysOps/blob/main/README.md "README.md") | [Update README.md](https://github.com/Think-Cube/AwesomeSysOps/commit/777cfb2743c6b85b0481fd475e9c90ffab7090e6 "Update README.md") | last yearFeb 21, 2024 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# AwesomeSysOps
+## AwesomeSysOps
 
 [Permalink: AwesomeSysOps](https://github.com/Think-Cube/AwesomeSysOps#awesomesysops)
 
@@ -14445,7 +15324,7 @@ Explore a curated list of open source sysadmin resources in this comprehensive r
 
 [Permalink: Backups](https://github.com/Think-Cube/AwesomeSysOps#backups)
 
-_Backup software._
+*Backup software.*
 
 - [Amanda](http://www.amanda.org/) \- Client-server model backup tool.
 - [Attic](https://attic-backup.org/) \- A deduplicating backup program written in Python.
@@ -14468,7 +15347,7 @@ _Backup software._
 - [UrBackup](http://www.urbackup.org/) \- Another client-server backup system.
 - [ZBackup](http://zbackup.org/) \- A versatile deduplicating backup tool.
 
-_Backup libraries._
+*Backup libraries.*
 
 - [Backup](https://github.com/meskyanichi/backup) \- Provides an elegant DSL in Ruby for performing backups on UNIX-like systems.
 - [DREBS](https://github.com/dojo4/drebs) \- AWS EBS backup script that supports strategies.
@@ -14477,7 +15356,7 @@ _Backup libraries._
 
 [Permalink: Build Automation](https://github.com/Think-Cube/AwesomeSysOps#build-automation)
 
-_Build automation tools._
+*Build automation tools.*
 
 - [Apache Ant](https://ant.apache.org/) \- Automation build tool, similar to make, written in Java.
 - [Apache Maven](http://maven.apache.org/) \- Build automation tool mainly for Java.
@@ -14488,7 +15367,7 @@ _Build automation tools._
 
 [Permalink: ChatOps](https://github.com/Think-Cube/AwesomeSysOps#chatops)
 
-_Conversation-driven development & management._
+*Conversation-driven development & management.*
 
 - [CloudBot](https://github.com/CloudBotIRC/CloudBot) \- The simple, fast, expandable, open-source Python IRC bot.
 - [Eggdrop](http://www.eggheads.org/) \- The world's most popular Open Source IRC bot, designed for flexibility and ease of use.
@@ -14502,7 +15381,7 @@ _Conversation-driven development & management._
 
 [Permalink: Cloning](https://github.com/Think-Cube/AwesomeSysOps#cloning)
 
-_Cloning software._
+*Cloning software.*
 
 - [Clonezilla](http://clonezilla.org/) \- Partition and disk imaging/cloning program.
 - [Fog](http://www.fogproject.org/) \- Another computer cloning solution.
@@ -14560,7 +15439,7 @@ _Cloning software._
 
 [Permalink: Code Review](https://github.com/Think-Cube/AwesomeSysOps#code-review)
 
-_Web Based collaborative code review system._
+*Web Based collaborative code review system.*
 
 - [Gerrit](https://code.google.com/p/gerrit/) \- Based on the Git version control, it facilitates software developers to review modifications to the source code and approve or reject those changes.
 - [Phabricator](http://phabricator.org/) \- Code review tool build by facebook and used by WikiMedia, FB, dropbox etc. Comes with an integrated wiki, bug tracker, VC integration and a CLI tool called arcanist.
@@ -14570,7 +15449,7 @@ _Web Based collaborative code review system._
 
 [Permalink: Collaborative Software](https://github.com/Think-Cube/AwesomeSysOps#collaborative-software)
 
-_Collaborative software or groupware suites._
+*Collaborative software or groupware suites.*
 
 - [Citadel/UX](http://www.citadel.org/) \- Collaboration suite (messaging and groupware) that is descended from the Citadel family of programs.
 - [EGroupware](http://www.egroupware.org/) \- Groupware software written in PHP.
@@ -14583,7 +15462,7 @@ _Collaborative software or groupware suites._
 
 [Permalink: Configuration Management Database](https://github.com/Think-Cube/AwesomeSysOps#configuration-management-database)
 
-_Configuration management database (CMDB) software._
+*Configuration management database (CMDB) software.*
 
 - [Clusto](https://github.com/clusto/clusto) \- Helps you keep track of your inventory, where it is, how it's connected, and provides an abstracted interface for interacting with the elements of the infrastructure.
 - [Collins](http://tumblr.github.io/collins) \- At Tumblr, it's the infrastructure source of truth and knowledge.
@@ -14596,7 +15475,7 @@ _Configuration management database (CMDB) software._
 
 [Permalink: Configuration Management](https://github.com/Think-Cube/AwesomeSysOps#configuration-management)
 
-_Configuration management tools._
+*Configuration management tools.*
 
 - [Ansible](http://www.ansible.com/) \- It's written in Python and manages the nodes over SSH.
 - [CFEngine](http://cfengine.com/) \- Lightweight agent system. Configuration state is specified via a declarative language.
@@ -14612,7 +15491,7 @@ _Configuration management tools._
 
 [Permalink: Continuous Integration & Continuous Deployment](https://github.com/Think-Cube/AwesomeSysOps#continuous-integration--continuous-deployment)
 
-_Continuous integration/deployment software._
+*Continuous integration/deployment software.*
 
 - [Buildbot](http://buildbot.net/) \- Python-based toolkit for continuous integration.
 - [Drone](https://github.com/drone/drone) \- Continuous integration server built on Docker and configured using YAML files.
@@ -14627,7 +15506,7 @@ _Continuous integration/deployment software._
 
 [Permalink: Control Panels](https://github.com/Think-Cube/AwesomeSysOps#control-panels)
 
-_Web hosting and server control panels._
+*Web hosting and server control panels.*
 
 - [Ajenti](http://ajenti.org/) \- Control panel for Linux and BSD.
 - [Cockpit](http://cockpit-project.org/) \- New multi-server web interface for Linux servers written in C.
@@ -14644,7 +15523,7 @@ _Web hosting and server control panels._
 
 [Permalink: Deployment Automation](https://github.com/Think-Cube/AwesomeSysOps#deployment-automation)
 
-_Tools and scripts to support deployments to your servers._
+*Tools and scripts to support deployments to your servers.*
 
 - [Capistrano](http://www.capistranorb.com/) \- Deploy your application to any number of machines simultaneously, in sequence or as a rolling set via SSH (rake based).
 - [Fabric](http://www.fabfile.org/) \- Python library and cli tool for streamlining the use of SSH for application deployment or systems administration tasks.
@@ -14656,7 +15535,7 @@ _Tools and scripts to support deployments to your servers._
 
 [Permalink: Diagramming](https://github.com/Think-Cube/AwesomeSysOps#diagramming)
 
-_Tools to diagram networks._
+*Tools to diagram networks.*
 
 - [drawthe.net](http://go.drawthe.net/) \- Draws network diagrams dynamically from a text file describing the placement, layout and icons.
 
@@ -14664,7 +15543,7 @@ _Tools to diagram networks._
 
 [Permalink: Distributed Filesystems](https://github.com/Think-Cube/AwesomeSysOps#distributed-filesystems)
 
-_Network distributed filesystems._
+*Network distributed filesystems.*
 
 - [Ceph](http://ceph.com/) \- Distributed object store and file system.
 - [DRBD](http://www.drbd.org/) \- Distributed Replicated Block Device.
@@ -14682,7 +15561,7 @@ _Network distributed filesystems._
 
 [Permalink: DNS](https://github.com/Think-Cube/AwesomeSysOps#dns)
 
-_DNS servers._
+*DNS servers.*
 
 - [Bind](https://www.isc.org/downloads/bind/) \- The most widely used name server software.
 - [djbdns](http://cr.yp.to/djbdns.html) \- A collection of DNS applications, including tinydns.
@@ -14698,7 +15577,7 @@ _DNS servers._
 
 [Permalink: Editors](https://github.com/Think-Cube/AwesomeSysOps#editors)
 
-_Open source code editors._
+*Open source code editors.*
 
 - [Atom](https://atom.io/) \- A hackable text editor from GitHub.
 - [Brackets](http://brackets.io/) \- Open source code editor for web designers and front-end developers.
@@ -14721,7 +15600,7 @@ _Open source code editors._
 
 [Permalink: IT Asset Management](https://github.com/Think-Cube/AwesomeSysOps#it-asset-management)
 
-_IT Assets Management software._
+*IT Assets Management software.*
 
 - [GLPI](http://www.glpi-project.org/spip.php?lang=en) \- Information Resource-Manager with an additional Administration Interface.
 - [OCS Inventory NG](http://www.ocsinventory-ng.org/en/) \- Enables users to inventory their IT assets.
@@ -14735,7 +15614,7 @@ _IT Assets Management software._
 
 [Permalink: LDAP](https://github.com/Think-Cube/AwesomeSysOps#ldap)
 
-_LDAP servers._
+*LDAP servers.*
 
 - [389 Directory Server](http://port389.org/) \- Developed by Red Hat.
 - [Apache Directory Server](http://directory.apache.org/) \- Apache Software Foundation project written in Java.
@@ -14744,7 +15623,7 @@ _LDAP servers._
 - [OpenDS](https://opends.java.net/) \- Another directory server written in Java.
 - [OpenLDAP](http://openldap.org/) \- Developed by the OpenLDAP Project.
 
-_LDAP management_
+*LDAP management*
 
 - [Apache Directory Studio](https://directory.apache.org/studio/) \- The Eclipse-based LDAP browser and directory client
 
@@ -14752,7 +15631,7 @@ _LDAP management_
 
 [Permalink: Log Management](https://github.com/Think-Cube/AwesomeSysOps#log-management)
 
-_Log management tools: collect, parse, visualize ..._
+*Log management tools: collect, parse, visualize ...*
 
 - [Echofish](http://www.echothrust.com/projects/echofish) \- A web based real-time event log aggregation, analysis, monitoring and management system.
 - [Elasticsearch](http://www.elasticsearch.org/) \- A Lucene Based Document store mainly used for log indexing, storage and analysis.
@@ -14768,14 +15647,14 @@ _Log management tools: collect, parse, visualize ..._
 
 [Permalink: Mail Servers](https://github.com/Think-Cube/AwesomeSysOps#mail-servers)
 
-_Mail Delivery Agents (IMAP/POP3 software)._
+*Mail Delivery Agents (IMAP/POP3 software).*
 
 - [Courier IMAP/POP3](http://www.courier-mta.org/imap/) \- Fast, scalable, enterprise IMAP and POP3 server.
 - [Cyrus IMAP/POP3](http://cyrusimap.org/) \- Intended to be run on sealed servers, where normal users are not permitted to log in.
 - [Dovecot](http://www.dovecot.org/) \- IMAP and POP3 server written primarily with security in mind.
 - [Qpopper](http://www.eudora.com/products/unsupported/qpopper/) \- One of the oldest and most popular server implementations of POP3.
 
-_Mail Transfer Agents (SMTP servers)._
+*Mail Transfer Agents (SMTP servers).*
 
 - [Exim](http://www.exim.org/) \- Message transfer agent (MTA) developed at the University of Cambridge.
 - [Haraka](http://haraka.github.io/) \- A high-performance, pluginable SMTP server written in JavaScript.
@@ -14786,7 +15665,7 @@ _Mail Transfer Agents (SMTP servers)._
 - [Qmail](http://cr.yp.to/qmail.html) \- Secure Sendmail replacement.
 - [Sendmail](http://www.sendmail.com/sm/open_source/) \- Message transfer agent (MTA).
 
-_Complete solutions._
+*Complete solutions.*
 
 - [Mail-in-a-Box](https://mailinabox.email/) \- Take back control of your email with this easy-to-deploy mail server in a box.
 - [iRedMail](http://www.iredmail.org/) \- Full-featured mail server solution based on Postfix and Dovecot.
@@ -14795,7 +15674,7 @@ _Complete solutions._
 
 [Permalink: Messaging](https://github.com/Think-Cube/AwesomeSysOps#messaging)
 
-_XMPP servers._
+*XMPP servers.*
 
 - [ejabberd](http://www.ejabberd.im/) \- XMPP instant messaging server written in Erlang/OTP.
 - [Metronome IM](http://www.lightwitch.org/metronome) \- Fork of Prosody IM.
@@ -14804,12 +15683,12 @@ _XMPP servers._
 - [Prosody IM](http://prosody.im/) \- XMPP server written in Lua.
 - [Tigase](https://projects.tigase.org/projects/tigase-server) \- XMPP server implementation in Java.
 
-_XMPP web clients._
+*XMPP web clients.*
 
 - [Candy](http://candy-chat.github.io/candy/) \- Multi user XMPP client written in Javascript.
 - [Kaiwa](http://getkaiwa.com/) \- Web based chat client in the style of common paid alternatives.
 
-_Webchats._
+*Webchats.*
 
 - [Lets-Chat](http://sdelements.github.io/lets-chat/) \- A self hosted chat suite written in Node.
 
@@ -14817,7 +15696,7 @@ _Webchats._
 
 [Permalink: Monitoring](https://github.com/Think-Cube/AwesomeSysOps#monitoring)
 
-_Monitoring software._
+*Monitoring software.*
 
 - [Alerta](https://github.com/guardian/alerta) \- Distributed, scaleable and flexible monitoring system.
 - [Canopsis](http://www.canopsis.org/) \- Opensource Hypervision and Data Aggregation Software
@@ -14845,14 +15724,14 @@ _Monitoring software._
 - [Zabbix](http://www.zabbix.com/) \- Enterprise-class software for monitoring of networks and applications.
 - [Zenoss](http://community.zenoss.org/) \- Application, server, and network management platform based on Zope.
 
-_Monitoring dashboards._
+*Monitoring dashboards.*
 
 - [Adagios](http://adagios.org/) \- Web based Nagios configuration interface.
 - [Dash](https://github.com/afaqurk/linux-dash) \- A low-overhead monitoring web dashboard for a GNU/Linux machine.
 - [Thruk](http://www.thruk.org/) \- Multibackend monitoring web interface with support for Naemon, Nagios, Icinga and Shinken.
 - [Uchiwa](https://uchiwa.io/) \- Simple dashboard for the Sensu monitoring framework.
 
-_Monitoring distributions._
+*Monitoring distributions.*
 
 - [OMD](http://omdistro.org/) \- The Open Monitoring Distribution.
 
@@ -14860,7 +15739,7 @@ _Monitoring distributions._
 
 [Permalink: Metric & Metric Collection](https://github.com/Think-Cube/AwesomeSysOps#metric--metric-collection)
 
-_Metric gathering and display software._
+*Metric gathering and display software.*
 
 - [Collectd](http://collectd.org/) \- System statistic collection daemon.
 - [Collectl](http://collectl.sourceforge.net/) \- High precision system performance metrics collecting tool.
@@ -14885,7 +15764,7 @@ _Metric gathering and display software._
 
 [Permalink: Network Configuration Management](https://github.com/Think-Cube/AwesomeSysOps#network-configuration-management)
 
-_Network configuration management tools._
+*Network configuration management tools.*
 
 - [GestióIP](http://www.gestioip.net/) \- An automated web based IPv4/IPv6 IP Address Management tool.
 - [NOC Project](http://nocproject.org/) \- Scalable, high-performance and open-source [OSS](http://en.wikipedia.org/wiki/Operations_support_system) system for ISP, service and content providers.
@@ -14900,7 +15779,7 @@ _Network configuration management tools._
 
 [Permalink: Newsletters](https://github.com/Think-Cube/AwesomeSysOps#newsletters)
 
-_Newsletter software._
+*Newsletter software.*
 
 - [DadaMail](http://dadamailproject.com/) \- Mailing List Manager, written in Perl.
 - [phpList](http://www.phplist.com/) \- Newsletter manager written in PHP.
@@ -14909,13 +15788,13 @@ _Newsletter software._
 
 [Permalink: NoSQL](https://github.com/Think-Cube/AwesomeSysOps#nosql)
 
-_Column-Family._
+*Column-Family.*
 
 - [Apache HBase](http://hbase.apache.org/) \- Hadoop database, a distributed, big data store.
 - [Cassandra](http://cassandra.apache.org/) \- Distributed DBMS designed to handle large amounts of data across many servers.
 - [Hypertable](http://hypertable.org/) \- C++ based BigTable-like DBMS, communicates through Thrift and runs either as stand-alone or on distributed FS such as Hadoop.
 
-_Document Store._
+*Document Store.*
 
 - [CouchDB](http://couchdb.apache.org/) \- Ease of use, with multi-master replication document-oriented database system.
 - [ElasticSearch](http://www.elasticsearch.org/) \- Java based database, popular with log aggregation, and email archiving projects.
@@ -14923,12 +15802,12 @@ _Document Store._
 - [RavenDB](http://ravendb.net/) \- Document based database with ACID/Transactional features.
 - [RethinkDB](http://www.rethinkdb.com/) \- Open source distributed document store database, focuses on JSON.
 
-_Graph._
+*Graph.*
 
 - [FlockDB](https://github.com/twitter/flockdb) \- Twitter's distributed, fault-tolerant graph database.
 - [Neo4j](http://www.neo4j.org/) \- Open source graph database.
 
-_Key-Value._
+*Key-Value.*
 
 - [Couchbase](http://www.couchbase.com/) \- In-memory, replicated, peristent key/value datastore.
 - [LevelDB](https://github.com/google/leveldb) \- Google's high performance key/value database.
@@ -14948,7 +15827,7 @@ _Key-Value._
 
 [Permalink: Queuing](https://github.com/Think-Cube/AwesomeSysOps#queuing)
 
-_Queuing software._
+*Queuing software.*
 
 - [ActiveMQ](http://activemq.apache.org/) \- An open source message broker written in Java together with a full JMS client.
 - [BeanstalkD](http://kr.github.io/beanstalkd/) \- A simple, fast work queue.
@@ -14957,7 +15836,7 @@ _Queuing software._
 - [NSQ](http://nsq.io/) \- A realtime distributed messaging platform.
 - [RabbitMQ](http://www.rabbitmq.com/) \- Robust, fully featured, cross distro queuing system.
 
-_Queuing libraries._
+*Queuing libraries.*
 
 - [ZeroMQ](http://zeromq.org/) \- High-performance asynchronous messaging library.
 
@@ -14965,7 +15844,7 @@ _Queuing libraries._
 
 [Permalink: RDBMS](https://github.com/Think-Cube/AwesomeSysOps#rdbms)
 
-_Relational DBMS._
+*Relational DBMS.*
 
 - [Firebird](http://www.firebirdsql.org/) \- True universal open source database.
 - [Galera](http://galeracluster.com/) \- Galera Cluster for MySQL is an easy-to-use high-availability solution with high system up-time, no data loss, and scalability for future growth.
@@ -14980,7 +15859,7 @@ _Relational DBMS._
 
 [Permalink: Security](https://github.com/Think-Cube/AwesomeSysOps#security)
 
-_Security tools._
+*Security tools.*
 
 - [Blackbox](https://github.com/StackExchange/blackbox) \- Safely store secrets in Git/Mercurial. Provides tooling to automatically encrypt secrets like passwords.
 - [Denyhosts](http://denyhosts.sourceforge.net/) \- Thwart SSH dictionary based attacks and brute force attacks.
@@ -15007,7 +15886,7 @@ _Security tools._
 
 [Permalink: Software Containers](https://github.com/Think-Cube/AwesomeSysOps#software-containers)
 
-_Operating system–level virtualization._
+*Operating system–level virtualization.*
 
 - [Bitnami](https://bitnami.com/) \- Produces open source installers or software packages for web applications and development stacks as well as virtual appliances.
 - [Docker](http://www.docker.com/) \- Open platform for developers and sysadmins to build, ship, and run distributed applications.
@@ -15021,7 +15900,7 @@ _Operating system–level virtualization._
 
 [Permalink: SSH](https://github.com/Think-Cube/AwesomeSysOps#ssh)
 
-_SSH tools._
+*SSH tools.*
 
 - [Advanced SSH config](https://pypi.python.org/pypi/advanced-ssh-config/) \- Enhances ssh\_config file capabilities, completely transparent.
 - [autossh](http://www.harding.motd.ca/autossh/) \- Automatically respawn ssh session after network interruption.
@@ -15038,7 +15917,7 @@ _SSH tools._
 
 [Permalink: Statistics](https://github.com/Think-Cube/AwesomeSysOps#statistics)
 
-_Analytics software._
+*Analytics software.*
 
 - [Analog](http://www.web42.com/analog/) \- Logfile Analyser.
 - [AWStats](http://www.awstats.org/) \- Generates web, streaming, ftp or mail server statistics graphically.
@@ -15057,7 +15936,7 @@ _Analytics software._
 
 [Permalink: Ticketing systems](https://github.com/Think-Cube/AwesomeSysOps#ticketing-systems)
 
-_Web-based ticketing system._
+*Web-based ticketing system.*
 
 - [Bugzilla](http://www.bugzilla.org/) \- General-purpose bugtracker and testing tool originally developed and used by the Mozilla project.
 - [Cerb](http://www.cerberusweb.com/) \- Group-based e-mail management project.
@@ -15073,13 +15952,13 @@ _Web-based ticketing system._
 
 [Permalink: Troubleshooting](https://github.com/Think-Cube/AwesomeSysOps#troubleshooting)
 
-_Troubleshooting tools._
+*Troubleshooting tools.*
 
 - [mitmproxy](http://mitmproxy.org/) \- A Python tool used for intercepting, viewing and modifying network traffic. Invaluable in troubleshooting certain problems.
 - [Sysdig](http://www.sysdig.org/) \- Capture system state and activity from a running Linux instance, then save, filter and analyze.
 - [Wireshark](http://www.wireshark.org/) \- The world's foremost network protocol analyzer.
 
-_Troubleshooting distributions._
+*Troubleshooting distributions.*
 
 - [Trinity Rescue Kit](http://trinityhome.org/) \- Linux Live CD for general computer troubleshooting.
 
@@ -15087,7 +15966,7 @@ _Troubleshooting distributions._
 
 [Permalink: Project Management](https://github.com/Think-Cube/AwesomeSysOps#project-management)
 
-_Web-based project management and bug tracking systems._
+*Web-based project management and bug tracking systems.*
 
 - [ChiliProject](https://www.chiliproject.org/) \- Fork of Redmine.
 - [GitBucket](https://github.com/takezoe/gitbucket) Clone of GitHub written in Scala; single jar install.
@@ -15104,7 +15983,7 @@ _Web-based project management and bug tracking systems._
 
 [Permalink: Version control](https://github.com/Think-Cube/AwesomeSysOps#version-control)
 
-_Software versioning and revision control._
+*Software versioning and revision control.*
 
 - [Fossil](http://www.fossil-scm.org/) \- Distributed version control with built-in wiki and bug tracking.
 - [Git](http://git-scm.com/) \- Distributed revision control and source code management (SCM) with an emphasis on speed.
@@ -15116,7 +15995,7 @@ _Software versioning and revision control._
 
 [Permalink: Virtualization](https://github.com/Think-Cube/AwesomeSysOps#virtualization)
 
-_Virtualization software._
+*Virtualization software.*
 
 - [Archipel](http://archipelproject.org/) \- XMPP based virtualization management platform.
 - [Ganeti](https://code.google.com/p/ganeti/) \- Cluster virtual server management software tool built on top of KVM and Xen.
@@ -15134,7 +16013,7 @@ _Virtualization software._
 
 [Permalink: VPN](https://github.com/Think-Cube/AwesomeSysOps#vpn)
 
-_VPN software._
+*VPN software.*
 
 - [OpenVPN](https://community.openvpn.net/) \- Uses a custom security protocol that utilizes SSL/TLS for key exchange.
 - [Pritunl](http://pritunl.com/) \- OpenVPN based solution. Easy to set up.
@@ -15148,7 +16027,7 @@ _VPN software._
 
 [Permalink: Web](https://github.com/Think-Cube/AwesomeSysOps#web)
 
-_Web servers._
+*Web servers.*
 
 - [Apache](http://httpd.apache.org/) \- Most popular web server.
 - [Caddy](https://caddyserver.com/) \- The HTTP/2 Web Server with Fully Managed TLS.
@@ -15157,7 +16036,7 @@ _Web servers._
 - [Nginx](http://nginx.org/) \- Reverse proxy, load balancer, HTTP cache, and web server.
 - [uWSGI](https://github.com/unbit/uwsgi/) \- The uWSGI project aims at developing a full stack for building hosting services.
 
-_Web Performance._
+*Web Performance.*
 
 - [HAProxy](http://www.haproxy.org/) \- Software based load Balancing, SSL offloading and performance optimization, compression, and general web routing.
 - [Squid](http://www.squid-cache.org/) \- Caching proxy for the web supporting HTTP, HTTPS, FTP, and more.
@@ -15168,7 +16047,7 @@ _Web Performance._
 
 [Permalink: Webmails](https://github.com/Think-Cube/AwesomeSysOps#webmails)
 
-_Webmail applications._
+*Webmail applications.*
 
 - [Mailpile](https://www.mailpile.is/) \- A modern, fast web-mail client with user-friendly encryption and privacy features.
 - [Roundcube](http://roundcube.net/) \- Browser-based IMAP client with an application-like user interface.
@@ -15178,7 +16057,7 @@ _Webmail applications._
 
 [Permalink: Wikis](https://github.com/Think-Cube/AwesomeSysOps#wikis)
 
-_Wiki software._
+*Wiki software.*
 
 - [BookStack](https://www.bookstackapp.com/) \- A simple, user-friendly wiki built with PHP that uses MySQL for storage.
 - [DokuWiki](https://www.dokuwiki.org/dokuwiki) \- Simple to use and highly versatile wiki that doesn't require a database.
@@ -15190,7 +16069,7 @@ _Wiki software._
 - [Ōlelo Wiki](https://github.com/minad/olelo) \- A a wiki that stores pages in a Git repository.
 - [TiddlyWiki](http://tiddlywiki.com/) \- Complete interactive wiki in JavaScript.
 
-# Resources
+## Resources
 
 [Permalink: Resources](https://github.com/Think-Cube/AwesomeSysOps#resources)
 
@@ -15208,7 +16087,7 @@ Various resources, such as books, websites and articles, for improving your skil
 
 [Permalink: Books](https://github.com/Think-Cube/AwesomeSysOps#books)
 
-_Sysadmin related books._
+*Sysadmin related books.*
 
 - \[Learn Cisco Network Administration in a Month of Lunches\] ( [https://www.manning.com/books/learn-cisco-network-administration-in-a-month-of-lunches](https://www.manning.com/books/learn-cisco-network-administration-in-a-month-of-lunches)) \- A tutorial designed for sysadmins who need to learn how to administer Cisco switches and routers.
 - [The Linux Command Line](http://linuxcommand.org/tlcl.php) \- A book about the Linux command line by William Shotts.
@@ -15229,11 +16108,11 @@ _Sysadmin related books._
 
 [Permalink: Repositories](https://github.com/Think-Cube/AwesomeSysOps#repositories)
 
-_Debian-based distributions._
+*Debian-based distributions.*
 
 - [Dotdeb](http://www.dotdeb.org/) \- Repository with LAMP updated packages for Debian.
 
-_RPM-based distributions._
+*RPM-based distributions.*
 
 - [ElRepo](http://elrepo.org/tiki/tiki-index.php) \- Community Repo for Enterprise Linux (RHEL, CentOS, etc).
 - [EPEL](https://fedoraproject.org/wiki/EPEL) \- Repository for RHEL and compatibles (CentOS, Scientific Linux).
@@ -15244,7 +16123,7 @@ _RPM-based distributions._
 
 [Permalink: Websites](https://github.com/Think-Cube/AwesomeSysOps#websites)
 
-_Useful sysadmin related websites._
+*Useful sysadmin related websites.*
 
 - [Ops School](http://www.opsschool.org/) \- Comprehensive program that will help you learn to be an operations engineer.
 - [Digital Ocean Tutorials](https://www.digitalocean.com/community/tutorials) \- A surprisingly vast resource for getting the basics of certain applications, tools, or even systems administration topics.
@@ -15265,7 +16144,6 @@ Feel free to contribute by opening issues or pull requests. Your feedback and im
 
 Explore a curated collection of powerful open source tools for streamlined system operations. From backups to virtualization, find essential resources to enhance your sysadmin journey.
 
-
 ### Topics
 
 [security](https://github.com/topics/security "Topic: security") [devops](https://github.com/topics/devops "Topic: devops") [automation](https://github.com/topics/automation "Topic: automation") [backup](https://github.com/topics/backup "Topic: backup") [tools](https://github.com/topics/tools "Topic: tools") [networking](https://github.com/topics/networking "Topic: networking") [monitoring](https://github.com/topics/monitoring "Topic: monitoring") [virtualization](https://github.com/topics/virtualization "Topic: virtualization") [sysops](https://github.com/topics/sysops "Topic: sysops") [sysadmins](https://github.com/topics/sysadmins "Topic: sysadmins") [configurationmanagement](https://github.com/topics/configurationmanagement "Topic: configurationmanagement") [systemadministration](https://github.com/topics/systemadministration "Topic: systemadministration") [collaborativesoftware](https://github.com/topics/collaborativesoftware "Topic: collaborativesoftware")
@@ -15278,7 +16156,7 @@ Explore a curated collection of powerful open source tools for streamlined syste
 
 [MIT license](https://github.com/Think-Cube/AwesomeSysOps#MIT-1-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/Think-Cube/AwesomeSysOps).
 
@@ -15338,7 +16216,7 @@ forks](https://github.com/angry-tony/A-collection-of-OSS-tools/forks) [Branches]
 
 [Notifications](https://github.com/login?return_to=%2Fangry-tony%2FA-collection-of-OSS-tools) You must be signed in to change notification settings
 
-# angry-tony/A-collection-of-OSS-tools
+## angry-tony/A-collection-of-OSS-tools
 
 master
 
@@ -15356,9 +16234,9 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>![author](https://github.githubassets.com/images/gravatars/gravatar-user-420.png?size=40)<br>Josh Turgasen<br>[Jan 2018 Update](https://github.com/angry-tony/A-collection-of-OSS-tools/commit/55e453b64a899cada8b8fc1394c272556f3883ba)<br>8 years agoDec 25, 2017<br>[55e453b](https://github.com/angry-tony/A-collection-of-OSS-tools/commit/55e453b64a899cada8b8fc1394c272556f3883ba) · 8 years agoDec 25, 2017<br>## History<br>[158 Commits](https://github.com/angry-tony/A-collection-of-OSS-tools/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/angry-tony/A-collection-of-OSS-tools/commits/master/) |
+| ## Latest commit<br>![author](https://github.githubassets.com/images/gravatars/gravatar-user-420.png?size=40)<br>Josh Turgasen<br>[Jan 2018 Update](https://github.com/angry-tony/A-collection-of-OSS-tools/commit/55e453b64a899cada8b8fc1394c272556f3883ba)<br>8 years agoDec 25, 2017<br>[55e453b](https://github.com/angry-tony/A-collection-of-OSS-tools/commit/55e453b64a899cada8b8fc1394c272556f3883ba) · 8 years agoDec 25, 2017<br>## History<br>[158 Commits](https://github.com/angry-tony/A-collection-of-OSS-tools/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/angry-tony/A-collection-of-OSS-tools/commits/master/) |  |  |  |
 | [README.md](https://github.com/angry-tony/A-collection-of-OSS-tools/blob/master/README.md "README.md") | [README.md](https://github.com/angry-tony/A-collection-of-OSS-tools/blob/master/README.md "README.md") | [Jan 2018 Update](https://github.com/angry-tony/A-collection-of-OSS-tools/commit/55e453b64a899cada8b8fc1394c272556f3883ba "Jan 2018 Update") | 8 years agoDec 25, 2017 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
@@ -15369,9 +16247,9 @@ Open more actions menu
 - Josh on [LinkedIn](https://www.linkedin.com/in/jturgasen)
 - Josh's [Technical Blog](https://jturgasen.github.io/)
 
-* * *
+- * *
 
-# Table of Contents
+## Table of Contents
 
 [Permalink: Table of Contents](https://github.com/angry-tony/A-collection-of-OSS-tools#table-of-contents)
 
@@ -15380,9 +16258,9 @@ Open more actions menu
 - [Linux News and Articles](https://github.com/angry-tony/A-collection-of-OSS-tools#linux-news-and-articles)
 - [Linux Message Boards and Forums](https://github.com/angry-tony/A-collection-of-OSS-tools#linux-message-boards-and-forums)
 
-* * *
+- * *
 
-# Tools by Category
+## Tools by Category
 
 [Permalink: Tools by Category](https://github.com/angry-tony/A-collection-of-OSS-tools#tools-by-category)
 
@@ -15436,9 +16314,9 @@ Open more actions menu
 - [X](https://github.com/angry-tony/A-collection-of-OSS-tools#web-and-http-performance-analysis-tools) Web and HTTP Performance Analysis Tools
 - [X](https://github.com/angry-tony/A-collection-of-OSS-tools#misc-tools-and-utilities) Misc Tools and Utilities
 
-* * *
+- * *
 
-# IT News
+## IT News
 
 [Permalink: IT News](https://github.com/angry-tony/A-collection-of-OSS-tools#it-news)
 
@@ -15467,9 +16345,9 @@ Open more actions menu
 - [The Next Platform](http://www.nextplatform.com/)
 - [The Register](http://www.theregister.co.uk/)
 
-* * *
+- * *
 
-# Linux News and Articles
+## Linux News and Articles
 
 [Permalink: Linux News and Articles](https://github.com/angry-tony/A-collection-of-OSS-tools#linux-news-and-articles)
 
@@ -15496,9 +16374,9 @@ Open more actions menu
 - [Tux Machines](http://www.tuxmachines.org/)
 - [Ubuntu Weekly Newsletter](https://wiki.ubuntu.com/UbuntuWeeklyNewsletter)
 
-* * *
+- * *
 
-# Linux Message Boards and Forums
+## Linux Message Boards and Forums
 
 [Permalink: Linux Message Boards and Forums](https://github.com/angry-tony/A-collection-of-OSS-tools#linux-message-boards-and-forums)
 
@@ -15524,7 +16402,7 @@ Open more actions menu
 - [UbuntuForums.org](http://ubuntuforums.org/) \- Official
 - [Unix.com Forums](http://www.unix.com/)
 
-* * *
+- * *
 
 ## Asset Management
 
@@ -15554,7 +16432,7 @@ Open more actions menu
 - [Ralph](http://allegro.tech/ralph/) \- DCIM and CMDB, supports auto-discovery -- `Python pip`
 - [Snipe-IT](http://snipeitapp.com/) \- Uses Bootstrap, web based, supports mobile -- `PHP`
 
-* * *
+- * *
 
 ## AWS Tools
 
@@ -15592,7 +16470,7 @@ Open more actions menu
 - [troposphere](https://github.com/cloudtools/troposphere) \- Python library to create CloudFormation descriptions -- `Python pip`
 - [Zappa](https://github.com/Miserlou/Zappa) \- Build and deploy serverless, event-driven Python applications -- `Python`
 
-* * *
+- * *
 
 ## Backups
 
@@ -15633,7 +16511,7 @@ Open more actions menu
 - [ZBackup](http://zbackup.org/) \- Globally deduplicating backup tool -- `C`
 - [zpaq](http://mattmahoney.net/dc/zpaq.html) \- Free incremental and journaling command-line archiver -- `Windows``OS X``C++`
 
-* * *
+- * *
 
 ## Chef
 
@@ -15672,7 +16550,7 @@ Open more actions menu
 - [spiceweasel](https://github.com/mattray/spiceweasel) \- Quickly automates the creation of whole Chef environments (batch loading) -- `Ruby`
 - [Test Kitchen](http://kitchen.ci/) \- Automated testing for configuration management tools (mostly Chef) -- `Ruby gem`
 
-* * *
+- * *
 
 ## Cloud File Sync and Sharing
 
@@ -15693,7 +16571,7 @@ Open more actions menu
 - [Syncthing](https://syncthing.net/) \- Uses an ID rather than an IP address, share your ID with friends and go -- `Golang`
 - [Tahoe-LAFS](https://www.tahoe-lafs.org/trac/tahoe-lafs) \- Free and open decentralized cloud storage system -- `Python`
 
-* * *
+- * *
 
 ## Collaboration Tools
 
@@ -15742,7 +16620,7 @@ Open more actions menu
 - [Your Own URL Shortener (YOURLS)](http://yourls.org/) \- Lets you run your own URL shortener a'la TinyURL or bit.ly -- `PHP`
 - [Zulip](https://www.zulip.org/) \- Group chat, by Dropbox -- `various lang``mobile``Windows``OS X`
 
-* * *
+- * *
 
 ## Configuration Management
 
@@ -15773,7 +16651,7 @@ Open more actions menu
 - [Rudder](http://www.rudder-project.org/site/) \- Automation and compliance, uses CFengine -- `Scala`
 - [Salt / Saltstack](http://www.saltstack.com/) \- Orchestration, server provisioning, and configuration management -- `Python`
 
-* * *
+- * *
 
 ## Containers
 
@@ -15836,7 +16714,7 @@ Open more actions menu
 - [Watchtower](https://github.com/v2tec/watchtower) \- Monitors your running Docker containers and restart them when a new image is available -- `Golang`
 - [Weave](https://github.com/zettio/weave/) \- Virtual network that connects Docker containers deployed across multiple hosts -- `Golang`
 
-* * *
+- * *
 
 ## Dashboards and Data Visualization
 
@@ -15883,7 +16761,7 @@ Open more actions menu
 - [Uchiwa](https://github.com/sensu/uchiwa) \- Dashboard for Sensu -- `Golang`
 - [vnstati](http://linux.die.net/man/1/vnstati) \- Creates PNG images using vnStat data -- `built-in`
 
-* * *
+- * *
 
 ## Distributed Systems Tools
 
@@ -15952,7 +16830,7 @@ Open more actions menu
 - [xCAT (Extreme Cloud Administration Toolkit)](http://xcat.org/) \- Complete management solution for distributed systems (HPC, clouds, web farms, etc), supports almost every platform, by IBM -- `various lang`
 - [Zookeeper](https://zookeeper.apache.org/) \- Distributed configuration service, synchronization service, and naming registry -- `Java`
 
-* * *
+- * *
 
 ## Editors
 
@@ -15986,7 +16864,7 @@ Open more actions menu
 - [wasavi](https://github.com/akahuku/wasavi) \- vim/vi controls in browser text areas -- `JavaScript``Firefox``Chrome`
 - [YouCompleteMe](http://valloric.github.io/YouCompleteMe/) \- Fuzzy-search code completion engine for vim -- `Python`
 
-* * *
+- * *
 
 ## Git Tools
 
@@ -16013,7 +16891,7 @@ Open more actions menu
 - [myrepos](http://myrepos.branchable.com/) \- Flexible tool for managing many repos -- `perl`
 - [Signing](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work) \- Sign commits and/or tags using GPG keys to verify the identity of the commiter -- `built-in`
 
-* * *
+- * *
 
 ## Graphics Stuff
 
@@ -16047,7 +16925,7 @@ Open more actions menu
 - [VLC Media Player](https://www.videolan.org/vlc/) \- Media (music, video, etc) player and streaming server -- `C``Windows``OS X`
 - [yEd Graph Editor](http://www.yworks.com/en/products/yfiles/yed/) \- Flowcharts and UML diagrams -- `closed source`
 
-* * *
+- * *
 
 ## High Availability Clustering Tools
 
@@ -16074,7 +16952,7 @@ Open more actions menu
 - [Seesaw](https://github.com/google/seesaw) \- Load balancer based on Linux Virtual Server (LVS), by Google -- `Golang`
 - [UCARP](http://www.pureftpd.org/project/ucarp) \- VIP management using the CARP protocol -- `C`
 
-* * *
+- * *
 
 ## HPC Tools
 
@@ -16100,7 +16978,7 @@ Open more actions menu
 - [StarCluster](http://star.mit.edu/cluster/) \- Toolkit for using AWS for HPC, by MIT -- `Python`
 - [TORQUE (Terascale Open-source Resource and QUEue Manager)](http://www.adaptivecomputing.com/products/open-source/torque/) \- An updated and extended version of Portable Batch System (PBS)
 
-* * *
+- * *
 
 ## Live CD Tools
 
@@ -16127,7 +17005,7 @@ Open more actions menu
 - [UNetbootin](http://unetbootin.sourceforge.net/) \- Create custom, bootable USB Linux CDs -- `Windows``OS X`
 - [YUMI](http://www.pendrivelinux.com/yumi-multiboot-usb-creator/) \- Multiboot USB creator, Linux and -- `Windows`
 
-* * *
+- * *
 
 ## Logging
 
@@ -16169,7 +17047,7 @@ Open more actions menu
 - [swatch](http://linux.die.net/man/1/swatch) \- Simple log watcher -- `built-in`
 - [Webalizer](http://www.webalizer.org/) \- Web and FTP log analyzer -- `C`
 
-* * *
+- * *
 
 ## Metrics
 
@@ -16199,7 +17077,7 @@ Open more actions menu
 - [SNMP MIB Archive](https://github.com/hs-cx/snmp_mib_archive) \- Massive archive of SMMP MIBs, please fork and contribute -- `collection`
 - [sysinfo\_influxdb](https://github.com/novaquark/sysinfo_influxdb) \- Collect system metrics and store them in an InfluxDB server -- `Golang`
 
-* * *
+- * *
 
 ## Monitoring and Alerting
 
@@ -16246,7 +17124,7 @@ Open more actions menu
 - [Zabbix](http://www.zabbix.com/) \- Stores monitoring data in a DB, has agents for almost every OS, can be a virtual appliance -- `various lang`
 - [Zenoss Core](http://www.zenoss.org/) \- Supports Nagios plug-in format -- `Python`
 
-* * *
+- * *
 
 ## Networking Tools
 
@@ -16330,7 +17208,7 @@ Open more actions menu
 - [Zenmap](http://nmap.org/zenmap/) \- Official GUI for Nmap -- `C``Windows``OS X`
 - [ZeroTier](https://www.zerotier.com/) \- Cloud / provider-agnostic private network backplanes, network virtualization -- `C++``all platforms`
 
-* * *
+- * *
 
 ## Network Performance Analysis Tools
 
@@ -16386,7 +17264,7 @@ Open more actions menu
 - [WANem](http://wanem.sourceforge.net/) \- WAN emulator for testing response over low bandwidth and/or high latency connections, also comes as virtual appliance -- `various lang`
 - [Yconalyzer](http://yconalyzer.sourceforge.net/) \- Monitor and analyze TCP connections -- `C++`
 
-* * *
+- * *
 
 ## Orchestration
 
@@ -16424,7 +17302,7 @@ Open more actions menu
 - [Teleport](http://gravitational.com/teleport/) \- Front-end for teams, includes session capture and replay, auditing, 2FA, session sharing, and more -- `Golang`
 - [tmux-cssh](https://github.com/dennishafemann/tmux-cssh) \- Cluster SSH via tmux -- `shell`
 
-* * *
+- * *
 
 ## Package Patch and Repository Tools
 
@@ -16466,7 +17344,7 @@ Open more actions menu
 - [yum-presto](https://fedoraproject.org/wiki/Features/Presto) \- yum plugin that provides support for downloading package deltas -- `article`
 - [yum-security](http://linux.die.net/man/8/yum-security) \- Plugin to only install security updates -- `built-in`
 
-* * *
+- * *
 
 ## Performance Analysis Tools
 
@@ -16507,7 +17385,7 @@ Open more actions menu
 - [SystemTap (stap)](https://sourceware.org/systemtap/wiki/HomePage) \- Linux kernel tracing and performance analysis tool -- `C``C++`
 - [USE Method](http://www.brendangregg.com/USEmethod/use-rosetta.html) \- Brendan Gregg's rosetta stone for performance analysis and tuning -- `article`
 
-* * *
+- * *
 
 ## Provisioning Tools
 
@@ -16547,7 +17425,7 @@ Open more actions menu
 - [veewee-to-packer](https://github.com/mitchellh/veewee-to-packer) \- translate veewee templates to Packer templates -- `Ruby gem`
 - [Salt / Saltstack](http://www.saltstack.com/) \- Orchestration, server provisioning, and configuration management -- `Python`
 
-* * *
+- * *
 
 ## Python Tools and Resources
 
@@ -16576,7 +17454,7 @@ Open more actions menu
 - [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper) \- Extensions to virtualenv -- `Python pip`
 - [xlwings](http://xlwings.org/) \- Replace your Excel VBA code with Python -- `Python pip`
 
-* * *
+- * *
 
 ## Python Programming Tutorials
 
@@ -16616,7 +17494,7 @@ Open more actions menu
 - [Think Python: How to Think Like a Computer Scientist](http://www.greenteapress.com/thinkpython/html/index.html) \- Awesome free ebook
 - [Tutorials Point's Python Tutorial](http://www.tutorialspoint.com/python/index.htm) \- Another one!
 
-* * *
+- * *
 
 ## RDBMS and SQL Tools
 
@@ -16662,7 +17540,7 @@ Open more actions menu
 - [WebScaleSQL](http://webscalesql.org/) \- Huge scale MySQL with contributions from Facebook, Google, LinkedIn, and Twitter -- `C``C++`
 - [WWW SQL Designer](https://github.com/ondras/wwwsqldesigner/) \- Designing RDBMS schemas features saving, exporting to XML, and SQL script creation, free SaaS version [here](http://ondras.zarovi.cz/sql/demo/) \-\- `JavaScript`
 
-* * *
+- * *
 
 ## RDBMS Performance Analysis Tools
 
@@ -16693,7 +17571,7 @@ Open more actions menu
 - [Tsung](http://tsung.erlang-projects.org/) \- Distributed stress tester, also supports stress testing DBs -- `Erlang`
 - [Use the Index, Luke](http://use-the-index-luke.com/) \- SQL indexing and tuning for developers -- `article`
 
-* * *
+- * *
 
 ## Regular Expressions
 
@@ -16716,7 +17594,7 @@ Open more actions menu
 - [txt2re](http://txt2re.com/) \- Regex generator, recommended -- `in-browser`
 - [txt2regex](http://aurelio.net/projects/txt2regex/) \- Converts human sentences to regex, written in bash -- `shell`
 
-* * *
+- * *
 
 ## Ruby Tools and Resources
 
@@ -16739,7 +17617,7 @@ Open more actions menu
 - [Ruby Toolbox](https://www.ruby-toolbox.com/) \- Trillions of Ruby projects, categorized -- `collection`
 - [RVM (Ruby Version Manager)](https://rvm.io/) \- Install, manage, and work with multiple Ruby environments -- `Ruby`
 
-* * *
+- * *
 
 ## Ruby Programming Tutorials
 
@@ -16767,7 +17645,7 @@ Open more actions menu
 - [Try Ruby](http://tryruby.org/) \- Interactive tutorial in your web browser
 - [Tutorials Point](http://www.tutorialspoint.com/ruby/) \- Interactive online course
 
-* * *
+- * *
 
 ## Secret Management
 
@@ -16807,7 +17685,7 @@ Open more actions menu
 - [xca](http://sourceforge.net/projects/xca/) \- OSS all in one PKI -- `C++`
 - [zxcvbn](https://github.com/dropbox/zxcvbn) \- Password strength estimator, written by Dropbox, operates in a browser window -- `CoffeeScript``in-browser`
 
-* * *
+- * *
 
 ## Security Tools
 
@@ -16881,7 +17759,7 @@ Open more actions menu
 - [ZMap](https://zmap.io/) \- Scanner designed for large address spaces -- `in-browser`
 - [zzuf](https://github.com/samhocevar/zzuf) \- Transparent application input fuzzer that works by intercepting file and network operations and changing random bits in the program's input -- `C`
 
-* * *
+- * *
 
 ## Shell Scripting and Tools
 
@@ -16924,7 +17802,7 @@ Open more actions menu
 - [The Art of Command Line](https://github.com/jlevy/the-art-of-command-line) \- Master the command line, in one page -- `collection`
 - [Unix Toolbox](http://cb.vu/unixtoolbox.xhtml) \- A collection of Unix/Linux/BSD commands and tasks for advanced users -- `collection`
 
-* * *
+- * *
 
 ## Software Development Tools
 
@@ -16984,7 +17862,7 @@ Open more actions menu
 - [WireMock](http://wiremock.org/) \- Flexible stubbing and mocking services -- `Java`
 - [wxHexEditor](http://www.wxhexeditor.org/) \- Free hex editor, disk editor, and big file editor for Linux, Windows and Mac OS X -- `C`
 
-* * *
+- * *
 
 ## SSH Tools
 
@@ -17010,7 +17888,7 @@ Open more actions menu
 - [SSH Power Tool (sshpt)](https://pypi.python.org/pypi/sshpt/) \- Execute commands and upload files to many servers simultaneously via SSH without using pre-shared keys -- `Python pip`
 - [storm](https://github.com/emre/storm) \- CLI and GUI tool to manage your SSH connections (add, delete, list, search) -- `OS X`
 
-* * *
+- * *
 
 ## SSL Tools
 
@@ -17043,7 +17921,7 @@ Open more actions menu
 - [SSL Decoder](https://ssldecoder.org/) \- Same as above but web based -- `in-browser`
 - [stunnel](https://www.stunnel.org/index.html) \- Create TLS tunnels for existing services (eg: telnet, nc, etc) -- `C`
 
-* * *
+- * *
 
 ## Storage Tools
 
@@ -17073,7 +17951,7 @@ Open more actions menu
 - [Tomb](https://github.com/dyne/tomb) \- zsh wrapper script for cryptsetup + gpg + LUKS volumes -- `shell`
 - [VeraCrypt](https://veracrypt.codeplex.com/) \- OSS successor to and fork of TrueCrypt, supports Linux, Windows, and Mac -- `C``C++`
 
-* * *
+- * *
 
 ## Storage Performance Analysis Tools
 
@@ -17094,7 +17972,7 @@ Open more actions menu
 - [IOzone](http://www.iozone.org/) \- Supports NFS, still being updated! -- `C`
 - [Threaded I/O Tester (tiobench)](http://sourceforge.net/projects/tiobench/) \- Threaded I/O tester -- `C`
 
-* * *
+- * *
 
 ## Terminal Tools and SSH Clients
 
@@ -17124,7 +18002,7 @@ Open more actions menu
 - [x2go](http://wiki.x2go.org/doku.php) \- One of the best remote-desktop-over-SSH clients -- `Windows``OS X`
 - [Xshell](https://www.netsarang.com/products/xsh_overview.html) \- SSH client for Windows, free for personal use -- `closed source``Windows`
 
-* * *
+- * *
 
 ## Tracing and Debugging
 
@@ -17162,7 +18040,7 @@ Open more actions menu
 - [pam-u2f](https://developers.yubico.com/pam-u2f/) \- PAM module for auth via U2F compatible devices, by YubiKey -- `C`
 - [yubico-pam](https://developers.yubico.com/yubico-pam/) \- PAM module for use with YubiKey devices -- `C`
 
-* * *
+- * *
 
 ## Virtualization
 
@@ -17186,7 +18064,7 @@ Open more actions menu
 - [XenServer](http://xenserver.org/) \- Successor to Xen Cloud Platform (XCP) -- `C`
 - [xhyve](http://www.xhyve.org/) \- Lightweight OS X virtualization based on bhyve -- `C``OS X`
 
-* * *
+- * *
 
 ## VMware Tools
 
@@ -17212,7 +18090,7 @@ Open more actions menu
 - [vSphere Health Check Report](https://communities.vmware.com/docs/DOC-9842) \- Reports a massive amount of information, by VMware -- `closed source``perl`
 - [vSphere Mobile Watchlist](https://communities.vmware.com/community/vmtn/vsphere/vsphere-mobile) \- Monitor VMs on your phone -- `closed source``mobile`
 
-* * *
+- * *
 
 ## VPN Tools
 
@@ -17230,7 +18108,7 @@ Open more actions menu
 - [tinc](http://www.tinc-vpn.org/) \- Simple, multi-platform VPN -- `C`
 - [WireGuard](https://www.wireguard.io/) \- In-kernel VPN server that's simple, performant, and provides next generation cryptography -- `C`
 
-* * *
+- * *
 
 ## Web and HTTP Tools
 
@@ -17288,7 +18166,7 @@ Open more actions menu
 - [w3af](https://github.com/andresriancho/w3af) \- Web application attack and audit framework, OSS vun scanner -- `Python`
 - [webhook](https://github.com/adnanh/webhook/) \- Super simple webhook server -- `Golang`
 
-* * *
+- * *
 
 ## Web and HTTP Performance Analysis Tools
 
@@ -17335,7 +18213,7 @@ Open more actions menu
 - [UpTrends Uptime Checker](https://www.uptrends.com/tools/uptime) \- Check a URL's response time from ~30 different sites around the globe -- `in-browser`
 - [Varnish Dashboard](https://github.com/brandonwamboldt/varnish-dashboard) \- Realtime dashboard for Varnish cache servers -- `JavaScript`
 
-* * *
+- * *
 
 ## Misc Tools and Utilities
 
@@ -17381,7 +18259,7 @@ No description, website, or topics provided.
 
 [Readme](https://github.com/angry-tony/A-collection-of-OSS-tools#readme-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/angry-tony/A-collection-of-OSS-tools).
 
@@ -17416,7 +18294,7 @@ You can’t perform that action at this time.
 
 ---
 
-### 9. GitHub - awesome-stuff/sysadmin: A list of awesome sysadmin resources.
+### 9. GitHub - awesome-stuff/sysadmin: A list of awesome sysadmin resources
 
 **Source:** [https://github.com/awesome-stuff/sysadmin](https://github.com/awesome-stuff/sysadmin)
 **Domain:** `github.com`
@@ -17438,9 +18316,7 @@ You signed in with another tab or window. [Reload](https://github.com/awesome-st
 - [Star\\
 50](https://github.com/login?return_to=%2Fawesome-stuff%2Fsysadmin)
 
-
 A list of awesome sysadmin resources.
-
 
 ### License
 
@@ -17454,7 +18330,7 @@ fork](https://github.com/awesome-stuff/sysadmin/forks) [Branches](https://github
 
 [Notifications](https://github.com/login?return_to=%2Fawesome-stuff%2Fsysadmin) You must be signed in to change notification settings
 
-# awesome-stuff/sysadmin
+## awesome-stuff/sysadmin
 
 master
 
@@ -17472,17 +18348,17 @@ Open more actions menu
 
 | Name | Name | Last commit message | Last commit date |
 | --- | --- | --- | --- |
-| ## Latest commit<br>[![lsinclair](https://avatars.githubusercontent.com/u/7371878?v=4&size=40)](https://github.com/lsinclair)[lsinclair](https://github.com/awesome-stuff/sysadmin/commits?author=lsinclair)<br>[Update and rename awesome\_bot.yml to awesome\_lint.yml](https://github.com/awesome-stuff/sysadmin/commit/fde2190fbaea287a6095b63e39f7815ed026bc57)<br>4 years agoJun 25, 2021<br>[fde2190](https://github.com/awesome-stuff/sysadmin/commit/fde2190fbaea287a6095b63e39f7815ed026bc57) · 4 years agoJun 25, 2021<br>## History<br>[967 Commits](https://github.com/awesome-stuff/sysadmin/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/awesome-stuff/sysadmin/commits/master/) |
+| ## Latest commit<br>[![lsinclair](https://avatars.githubusercontent.com/u/7371878?v=4&size=40)](https://github.com/lsinclair)[lsinclair](https://github.com/awesome-stuff/sysadmin/commits?author=lsinclair)<br>[Update and rename awesome\_bot.yml to awesome\_lint.yml](https://github.com/awesome-stuff/sysadmin/commit/fde2190fbaea287a6095b63e39f7815ed026bc57)<br>4 years agoJun 25, 2021<br>[fde2190](https://github.com/awesome-stuff/sysadmin/commit/fde2190fbaea287a6095b63e39f7815ed026bc57) · 4 years agoJun 25, 2021<br>## History<br>[967 Commits](https://github.com/awesome-stuff/sysadmin/commits/master/) <br>Open commit details<br>[View commit history for this file.](https://github.com/awesome-stuff/sysadmin/commits/master/) |  |  |  |
 | [.github](https://github.com/awesome-stuff/sysadmin/tree/master/.github ".github") | [.github](https://github.com/awesome-stuff/sysadmin/tree/master/.github ".github") | [Update and rename awesome\_bot.yml to awesome\_lint.yml](https://github.com/awesome-stuff/sysadmin/commit/fde2190fbaea287a6095b63e39f7815ed026bc57 "Update and rename awesome_bot.yml to awesome_lint.yml") | 4 years agoJun 25, 2021 |
 | [LICENSE.txt](https://github.com/awesome-stuff/sysadmin/blob/master/LICENSE.txt "LICENSE.txt") | [LICENSE.txt](https://github.com/awesome-stuff/sysadmin/blob/master/LICENSE.txt "LICENSE.txt") | [Add CC BY-SA 4.0 International license](https://github.com/awesome-stuff/sysadmin/commit/3abf5b4f63dcd7b6ea7ec572bf27239d80621496 "Add CC BY-SA 4.0 International license") | 10 years agoApr 9, 2015 |
 | [README.md](https://github.com/awesome-stuff/sysadmin/blob/master/README.md "README.md") | [README.md](https://github.com/awesome-stuff/sysadmin/blob/master/README.md "README.md") | [Fixing update](https://github.com/awesome-stuff/sysadmin/commit/56f15eed944d38a0a48628b33a0eb9b315c21df5 "Fixing update") | 4 years agoJun 25, 2021 |
-| View all files |
+| View all files |  |  |  |
 
 ## Repository files navigation
 
-# Awesome Sysadmin [![certified awesome!](https://camo.githubusercontent.com/2727609d8bfde9ba1a95be1449eb878bfafa4d76789ba05661857e2c8ac70fa1/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/sindresorhus/awesome)
+## Awesome Sysadmin [![certified awesome!](https://camo.githubusercontent.com/2727609d8bfde9ba1a95be1449eb878bfafa4d76789ba05661857e2c8ac70fa1/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667)](https://github.com/sindresorhus/awesome)
 
-[Permalink: Awesome Sysadmin ](https://github.com/awesome-stuff/sysadmin#awesome-sysadmin-)
+[Permalink: Awesome Sysadmin](https://github.com/awesome-stuff/sysadmin#awesome-sysadmin-)
 
 [![Awesome Bot](https://github.com/awesome-stuff/sysadmin/actions/workflows/awesome_bot.yml/badge.svg)](https://github.com/awesome-stuff/sysadmin/actions/workflows/awesome_bot.yml)
 
@@ -17552,7 +18428,7 @@ Open more actions menu
 
 [Permalink: Automation](https://github.com/awesome-stuff/sysadmin#automation)
 
-_Automation build._
+*Automation build.*
 
 - [Apache Ant](https://ant.apache.org/) \- Automation build tool, similar to make, written in Java.
 - [Apache Maven](http://maven.apache.org/) \- Build automation tool mainly for Java.
@@ -17566,7 +18442,7 @@ _Automation build._
 
 [Permalink: Backups](https://github.com/awesome-stuff/sysadmin#backups)
 
-_Backup software._ Also see [Restic's list of Linux backup software](https://github.com/restic/others).
+*Backup software.* Also see [Restic's list of Linux backup software](https://github.com/restic/others).
 
 - [Amanda](http://www.amanda.org/) \- Client-server model backup tool.
 - [Bareos](http://www.bareos.org/en/) \- A fork of Bacula backup tool.
@@ -17592,18 +18468,18 @@ _Backup software._ Also see [Restic's list of Linux backup software](https://git
 
 [Permalink: Build and software organization tools](https://github.com/awesome-stuff/sysadmin#build-and-software-organization-tools)
 
-_Build and software organization tools._
+*Build and software organization tools.*
 
 - [EasyBuild](https://easybuild.readthedocs.org/en/latest/) \- EasyBuild builds software and modulefiles for High Performance Computing (HPC) systems in an efficient way.
 - [environment-modules Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) \- Lmod is a Lua based module system that easily handles the MODULEPATH Hierarchical problem.
-- [HPCBIOS](http://hpcbios.readthedocs.org/en/latest/) \- HPCBIOS is an effort to setup a common, well-documented and reproducible, environment spanning across multiple HPC systems & sites, _inclusive_ of documentation.
+- [HPCBIOS](http://hpcbios.readthedocs.org/en/latest/) \- HPCBIOS is an effort to setup a common, well-documented and reproducible, environment spanning across multiple HPC systems & sites, *inclusive* of documentation.
 - [Spack](https://spack.io/) \- A flexible package manager that supports multiple versions, configurations, platforms, and compilers.
 
 ## ChatOps
 
 [Permalink: ChatOps](https://github.com/awesome-stuff/sysadmin#chatops)
 
-_Conversation-driven development and management. See [https://www.reddit.com/r/chatops](https://www.reddit.com/r/chatops) for more information._
+*Conversation-driven development and management. See [https://www.reddit.com/r/chatops](https://www.reddit.com/r/chatops) for more information.*
 
 - [CloudBot](https://github.com/CloudBotIRC/CloudBot) \- The simple, fast, expandable Python IRC bot.
 - [Eggdrop](http://www.eggheads.org/) \- the world's most popular IRC bot, designed for flexibility and ease of use, and is freely distributable under the GNU GPL.
@@ -17617,7 +18493,7 @@ _Conversation-driven development and management. See [https://www.reddit.com/r/c
 
 [Permalink: Client management](https://github.com/awesome-stuff/sysadmin#client-management)
 
-_Managing software on desktop computers._
+*Managing software on desktop computers.*
 
 - [Chocolatey](https://chocolatey.org/) – Windows CLI package manager written in .NET/PS, based on [NuGet](https://www.nuget.org/).
 - [just-install](https://just-install.github.io/) – Python script for downloading and silently installing MSI files.
@@ -17630,7 +18506,7 @@ _Managing software on desktop computers._
 
 [Permalink: Cloning](https://github.com/awesome-stuff/sysadmin#cloning)
 
-_Cloning software._
+*Cloning software.*
 
 - [Clonezilla](http://clonezilla.org/) \- Partition and disk imaging/cloning program.
 - [Fog](https://www.fogproject.org/) \- Another computer cloning solution.
@@ -17675,7 +18551,7 @@ _Cloning software._
 
 [Permalink: Code Review](https://github.com/awesome-stuff/sysadmin#code-review)
 
-_Web Based collaborative code review system._
+*Web Based collaborative code review system.*
 
 - [Gerrit](https://www.gerritcodereview.com/) \- Based on the Git version control, it facilitates software developers to review modifications to the source code and approve or reject those changes.
 - [Phabricator](http://phabricator.org/) \- Code review tool build by facebook and used by WikiMedia, FB, dropbox etc. Comes with an integrated wiki, bug tracker, VC integration and a CLI tool called arcanist.
@@ -17685,7 +18561,7 @@ _Web Based collaborative code review system._
 
 [Permalink: Configuration Management Database](https://github.com/awesome-stuff/sysadmin#configuration-management-database)
 
-_Configuration management database (CMDB) software._
+*Configuration management database (CMDB) software.*
 
 - [i-doit](http://www.i-doit.org/) \- IT Documentation and CMDB.
 - [iTop](http://www.combodo.com/itop-193) \- Complete ITIL web based service management tool.
@@ -17698,7 +18574,7 @@ _Configuration management database (CMDB) software._
 
 [Permalink: Configuration Management](https://github.com/awesome-stuff/sysadmin#configuration-management)
 
-_Configuration management tools._
+*Configuration management tools.*
 
 - [Ansible](http://www.ansible.com/) \- It's written in Python and manages the nodes over SSH.
 - [CFEngine](https://cfengine.com/) \- Lightweight agent system. Configuration state is specified via a declarative language.
@@ -17710,7 +18586,7 @@ _Configuration management tools._
 
 [Permalink: Continuous Integration & Continuous Deployment](https://github.com/awesome-stuff/sysadmin#continuous-integration--continuous-deployment)
 
-_Continuous integration/deployment software._
+*Continuous integration/deployment software.*
 
 - [Buildbot](http://buildbot.net/) \- Python-based toolkit for continuous integration. ( [Source Code](https://github.com/buildbot/buildbot)) `GPL-2.0``Python`
 - [CapsuleCD](https://analogj.github.io/capsulecd-slides/) \- CD script for automating package/library releases (npm, cookbooks, gems, pip, jars, etc). ( [Source Code](https://github.com/AnalogJ/capsulecd)) `MIT``Go`
@@ -17731,7 +18607,7 @@ _Continuous integration/deployment software._
 
 [Permalink: Control Panels](https://github.com/awesome-stuff/sysadmin#control-panels)
 
-_Web hosting and server or service control panels._
+*Web hosting and server or service control panels.*
 
 - Web hosting
   - [Froxlor](https://froxlor.org/) \- Easy to use panel for Linux with Nginx and PHP-FPM support.
@@ -17759,7 +18635,7 @@ _Web hosting and server or service control panels._
 
 [Permalink: Deployment Automation](https://github.com/awesome-stuff/sysadmin#deployment-automation)
 
-_Tools and scripts to support deployments to your servers._
+*Tools and scripts to support deployments to your servers.*
 
 - [Capistrano](http://capistranorb.com/) \- Deploy your application to any number of machines simultaneously, in sequence or as a rolling set via SSH (rake based).
 - [Fabric](http://www.fabfile.org/) \- Python library and cli tool for streamlining the use of SSH for application deployment or systems administration tasks.
@@ -17773,7 +18649,7 @@ _Tools and scripts to support deployments to your servers._
 
 [Permalink: Diagramming](https://github.com/awesome-stuff/sysadmin#diagramming)
 
-_Tools used to create diagrams of networks, flows, etc._
+*Tools used to create diagrams of networks, flows, etc.*
 
 - [DrawThe.Net](http://go.drawthe.net/) \- Javascript tool that uses a YAML-formatted input to programmatically create large, complex, and visually solid diagrams.
 - [Mermaid](https://mermaid-js.github.io/mermaid-live-editor/) \- Javascript module with a unique, easy, shorthand syntax. Integrates into several other tools like Grafana.
@@ -17783,7 +18659,7 @@ _Tools used to create diagrams of networks, flows, etc._
 
 [Permalink: Distributed Filesystems](https://github.com/awesome-stuff/sysadmin#distributed-filesystems)
 
-_Network distributed filesystems._
+*Network distributed filesystems.*
 
 - [Ceph](http://ceph.com/) \- Distributed object store and file system.
 - [DRBD](http://drbd.linbit.com/) \- Distributed Replicated Block Device.
@@ -17807,7 +18683,7 @@ _Network distributed filesystems._
 
 [Permalink: DNS](https://github.com/awesome-stuff/sysadmin#dns)
 
-_DNS servers._
+*DNS servers.*
 
 - [Bind](https://www.isc.org/downloads/bind/) \- The most widely used name server software.
 - [CoreDNS](https://coredns.io/) \- Flexible DNS server written on Go.
@@ -17824,7 +18700,7 @@ _DNS servers._
 
 [Permalink: Domains](https://github.com/awesome-stuff/sysadmin#domains)
 
-_Domain management._
+*Domain management.*
 
 - [DnsControl](https://stackexchange.github.io/dnscontrol/) \- Opinionated platform for seamlessly managing your DNS configuration across any number of DNS hosts, both in the cloud or in your own infrastructure.
 - [DomainMOD](https://domainmod.org/) \- Manage your domains and other internet assets in a central location.
@@ -17834,7 +18710,7 @@ _Domain management._
 
 [Permalink: Editors](https://github.com/awesome-stuff/sysadmin#editors)
 
-_Open source code editors._
+*Open source code editors.*
 
 - [Atom](https://atom.io/) \- A hackable text editor from Github.
 - [Brackets](http://brackets.io/) \- Code editor for web designers and front-end developers.
@@ -17858,7 +18734,7 @@ _Open source code editors._
 
 [Permalink: Identity Management](https://github.com/awesome-stuff/sysadmin#identity-management)
 
-_LDAP servers and other tools to manage accounts and identities._
+*LDAP servers and other tools to manage accounts and identities.*
 
 ### LDAP
 
@@ -17892,7 +18768,7 @@ _LDAP servers and other tools to manage accounts and identities._
 
 [Permalink: IT Asset Management](https://github.com/awesome-stuff/sysadmin#it-asset-management)
 
-_IT Assets Management software._
+*IT Assets Management software.*
 
 - [GLPI](https://www.glpi-project.org/) \- Information Resource-Manager with an additional Administration Interface.
 - [OCS Inventory NG](https://ocsinventory-ng.org/?lang=en) \- Enables users to inventory their IT assets.
@@ -17905,7 +18781,7 @@ _IT Assets Management software._
 
 [Permalink: Log Management](https://github.com/awesome-stuff/sysadmin#log-management)
 
-_Log management tools: collect, parse, visualize ..._
+*Log management tools: collect, parse, visualize ...*
 
 - [Elasticsearch](https://www.elastic.co/) \- A Lucene Based Document store mainly used for log indexing, storage and analysis.
 - [Fluentd](http://www.fluentd.org/) \- Log Collector and Shipper.
@@ -17932,7 +18808,7 @@ _Log management tools: collect, parse, visualize ..._
 
 [Permalink: Monitoring](https://github.com/awesome-stuff/sysadmin#monitoring)
 
-_Monitoring software._
+*Monitoring software.*
 
 - [Adagios](http://adagios.org/) \- Web based Nagios interface for configuration and monitoring (replacement to the standard interface), and a REST interface, [SourceCode](https://github.com/opinkerfi/adagios), [Documentation](https://github.com/opinkerfi/adagios/wiki))
 - [Alerta](https://github.com/guardian/alerta) \- Distributed, scaleable and flexible monitoring system.
@@ -17993,7 +18869,7 @@ _Monitoring software._
 
 [Permalink: Metric & Metric Collection](https://github.com/awesome-stuff/sysadmin#metric--metric-collection)
 
-_Metric gathering and display software._
+*Metric gathering and display software.*
 
 - Collectors only
   - [Diamond](https://github.com/python-diamond/Diamond) \- Python based statistic collection daemon.
@@ -18023,7 +18899,7 @@ _Metric gathering and display software._
 
 [Permalink: Network Configuration Management](https://github.com/awesome-stuff/sysadmin#network-configuration-management)
 
-_Network configuration management tools._
+*Network configuration management tools.*
 
 - [GNS3](https://www.gns3.com/) \- Graphical network simulator that provides a variety of virtual appliances - ( [Source Code](https://github.com/GNS3/gns3-gui/), [Documentation](https://docs.gns3.com/)) \- `GPLv3`
 - [Oxidized](https://github.com/ytti/oxidized) \- A modern take on network device configuration monitoring with web interface and GIT storage.
@@ -18036,7 +18912,7 @@ _Network configuration management tools._
 
 [Permalink: Newsletters](https://github.com/awesome-stuff/sysadmin#newsletters)
 
-_Newsletter software._
+*Newsletter software.*
 
 - [DadaMail](http://dadamailproject.com/) \- Mailing List Manager, written in Perl.
 - [phpList](https://www.phplist.com/) \- Newsletter manager written in PHP.
@@ -18047,7 +18923,7 @@ _Newsletter software._
 
 [Permalink: NoSQL](https://github.com/awesome-stuff/sysadmin#nosql)
 
-_NoSQL databases._
+*NoSQL databases.*
 
 - Column-Family
   - [Apache HBase](http://hbase.apache.org/) \- Hadoop database, a distributed, big data store.
@@ -18083,7 +18959,7 @@ Comparison of NoSQL servers: [http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-
 
 [Permalink: Project Management](https://github.com/awesome-stuff/sysadmin#project-management)
 
-_Web-based project management and bug tracking systems_: see [https://github.com/Kickball/awesome-selfhosted#project-management](https://github.com/Kickball/awesome-selfhosted#project-management)
+*Web-based project management and bug tracking systems*: see [https://github.com/Kickball/awesome-selfhosted#project-management](https://github.com/Kickball/awesome-selfhosted#project-management)
 
 ## Queuing
 
@@ -18101,7 +18977,7 @@ _Web-based project management and bug tracking systems_: see [https://github.com
 
 [Permalink: RDBMS](https://github.com/awesome-stuff/sysadmin#rdbms)
 
-_Relational DBMS._
+*Relational DBMS.*
 
 - [Firebird](http://www.firebirdsql.org/) \- True universal database.
 - [Galera](http://galeracluster.com/) \- Galera Cluster for MySQL is an easy-to-use high-availability solution with high system up-time, no data loss, and scalability for future growth.
@@ -18135,7 +19011,7 @@ _Relational DBMS._
 
 [Permalink: Software Containers](https://github.com/awesome-stuff/sysadmin#software-containers)
 
-_Operating system–level virtualization._
+*Operating system–level virtualization.*
 
 - [Docker](http://www.docker.com/) \- Platform for developers and sysadmins to build, ship, and run distributed applications.
 
@@ -18151,7 +19027,7 @@ _Operating system–level virtualization._
 
 [Permalink: Troubleshooting](https://github.com/awesome-stuff/sysadmin#troubleshooting)
 
-_Troubleshooting Tools._
+*Troubleshooting Tools.*
 
 - [grml](https://grml.org/) – bootable Debian Live CD with powerful CLI tools.
 - [mitmproxy](http://mitmproxy.org/) \- A Python tool used for intercepting, viewing and modifying network traffic. Invaluable in troubleshooting certain problems.
@@ -18164,7 +19040,7 @@ _Troubleshooting Tools._
 
 [Permalink: Version control](https://github.com/awesome-stuff/sysadmin#version-control)
 
-_Software versioning and revision control._
+*Software versioning and revision control.*
 
 - [Fossil](http://www.fossil-scm.org/) \- Distributed version control with built-in wiki and bug tracking.
 - [Git](http://git-scm.com/) \- Distributed revision control and source code management (SCM) with an emphasis on speed.
@@ -18176,7 +19052,7 @@ _Software versioning and revision control._
 
 [Permalink: Virtualization](https://github.com/awesome-stuff/sysadmin#virtualization)
 
-_Virtualization software._
+*Virtualization software.*
 
 - [Archipel](http://archipelproject.org/) \- XMPP based virtualization management platform.
 - [ConVirt](http://www.convirture.com/products_opensource.php) \- Provides the core functionality for centrally managing your KVM or Xen virtualized environment.
@@ -18198,7 +19074,7 @@ _Virtualization software._
 
 [Permalink: VPN](https://github.com/awesome-stuff/sysadmin#vpn)
 
-_VPN software._
+*VPN software.*
 
 - [ocserv](http://www.infradead.org/ocserv/) \- Cisco AnyConnect-compatible VPN server
 - [OpenVPN](https://community.openvpn.net/) \- Uses a custom security protocol that utilizes SSL/TLS for key exchange.
@@ -18214,7 +19090,7 @@ _VPN software._
 
 [Permalink: Web](https://github.com/awesome-stuff/sysadmin#web)
 
-_Web servers._
+*Web servers.*
 
 - [Algernon](http://algernon.roboticoverlords.org/) \- Web/application server that supports Lua, live-reload, templates, Sass and HTTP/2.
 - [Apache](http://httpd.apache.org/) \- A robust, commercial-grade, featureful implementation of an HTTP (Web) server.
@@ -18225,12 +19101,12 @@ _Web servers._
 - [Nginx](http://nginx.org/) \- Reverse proxy, load balancer, HTTP cache, and web server.
 - [uWSGI](https://github.com/unbit/uwsgi/) \- The uWSGI project aims at developing a full stack for building hosting services.
 
-_Web Performance._
+*Web Performance.*
 
 - [HAProxy](http://www.haproxy.org/) \- Software based load Balancing, SSL offloading and performance optimization, compression, and general web routing.
 - [Varnish](https://www.varnish-cache.org/) \- HTTP based web application accelerator focusing on optimizing caching and compression.
 
-# Resources
+## Resources
 
 [Permalink: Resources](https://github.com/awesome-stuff/sysadmin#resources)
 
@@ -18249,7 +19125,7 @@ Various resources, such as books, websites and articles, for improving your skil
 
 [Permalink: Books](https://github.com/awesome-stuff/sysadmin#books)
 
-_Sysadmin related books._
+*Sysadmin related books.*
 
 - [Codex](http://www.starkandwayne.com/codex/) \- How to deploy Cloud Foundry PaaS on infrastructures like AWS, OpenStack, Azure by Stark & Wayne, LLC.
 - [The Linux Command Line](http://linuxcommand.org/tlcl.php) \- A book about the Linux command line by William Shotts.
@@ -18262,7 +19138,7 @@ _Sysadmin related books._
 
 [Permalink: Communities / Forums](https://github.com/awesome-stuff/sysadmin#communities--forums)
 
-_For the social people._
+*For the social people.*
 
 - [ArsTechnica OpenForum](http://arstechnica.com/civis/) – IT Forum which is attached to a large news site.
 - [Reddit](https://www.reddit.com/) \- Really, really large bulletin board system.
@@ -18286,7 +19162,7 @@ _For the social people._
 
 [Permalink: Repositories](https://github.com/awesome-stuff/sysadmin#repositories)
 
-_Software package repositories._
+*Software package repositories.*
 
 - [AlternativeTo](http://alternativeto.net/) \- Find alternatives to software you know and discover new software.
 
@@ -18310,7 +19186,7 @@ _Software package repositories._
 
 [Permalink: Websites](https://github.com/awesome-stuff/sysadmin#websites)
 
-_Useful sysadmin related websites._
+*Useful sysadmin related websites.*
 
 - [Awesome SysAdmin @ LibHunt](https://sysadmin.libhunt.com/) \- Your go-to SysAdmin Toolbox. Based on the list here.
 - [Ops School](http://www.opsschool.org/) \- Comprehensive program that will help you learn to be an operations engineer.
@@ -18320,7 +19196,7 @@ _Useful sysadmin related websites._
 
 [Permalink: Wikis](https://github.com/awesome-stuff/sysadmin#wikis)
 
-_Useful Wikis for Sysadmins – not to be confused with Wiki software._
+*Useful Wikis for Sysadmins – not to be confused with Wiki software.*
 
 - [ArchWiki](https://wiki.archlinux.org/) – Arch Linux Wiki which has really nice written articles valid for other distros.
 - [Gentoo Wiki](https://wiki.gentoo.org/) \- Gentoo Linux Wiki with a lot in-detail description of Linux components.
@@ -18336,7 +19212,6 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 Inter
 ## About
 
 A list of awesome sysadmin resources.
-
 
 ### Topics
 
@@ -18354,7 +19229,7 @@ A list of awesome sysadmin resources.
 
 [Contributing](https://github.com/awesome-stuff/sysadmin#contributing-ov-file)
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/awesome-stuff/sysadmin).
 
@@ -18387,7 +19262,7 @@ No releases published
 
 No packages published
 
-### Uh oh!
+### Uh oh
 
 There was an error while loading. [Please reload this page](https://github.com/awesome-stuff/sysadmin).
 

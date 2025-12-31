@@ -20,7 +20,7 @@ multiple Proxmox clusters.
 > **Battle-Tested:** This architecture proved itself during v1.0.0 development. Comprehensive testing discovered
 > and fixed 15 bugs, achieving perfect idempotency across the 3-node Matrix cluster. The 6-phase migration approach
 > completed successfully with zero regressions.
-
+>
 > For detailed implementation patterns, anti-patterns, and review checklists, see [Ansible Design Patterns](./ansible-design-patterns.md).
 
 ---
