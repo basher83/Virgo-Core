@@ -37,6 +37,20 @@ Required secrets:
 - `config.yaml`: Proxmox API token (`terraform@pam!automation`)
 - `.env`: `OMNI_INFRA_PROVIDER_KEY` from Omni dashboard
 
+## Config Format
+
+The `config.yaml` must use this exact format:
+
+```yaml
+proxmox:
+  url: "https://192.168.3.5:8006/api2/json"
+  tokenID: "terraform@pam!automation"    # Note: capital D in tokenID
+  tokenSecret: "your-token-secret-here"
+  insecureSkipVerify: true
+```
+
+**Important**: The field is `tokenID` (capital D), not `tokenId`. Using lowercase will cause `401 Unauthorized` errors.
+
 ## TODO
 
 - [ ] Template `config.yaml` to pull Proxmox token from Infisical `/matrix/PROXMOX_API_TOKEN`
