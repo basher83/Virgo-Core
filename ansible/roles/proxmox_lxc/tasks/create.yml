@@ -1,0 +1,57 @@
+# tasks/create.yml - Create LXC container
+
+- name: "create | Provision LXC container"
+  community.proxmox.proxmox:
+    api_host: "{{ proxmox_lxc_api_host }}"
+    api_user: "{{ proxmox_lxc_api_user }}"
+    api_token_id: "{{ proxmox_lxc_token_id }}"
+    api_token_secret: "{{ proxmox_lxc_token_secret }}"
+    validate_certs: "{{ proxmox_lxc_validate_certs }}"
+    vmid: "{{ proxmox_lxc_vmid }}"
+    node: "{{ proxmox_lxc_node }}"
+    hostname: "{{ proxmox_lxc_hostname }}"
+    ostemplate: "{{ proxmox_lxc_template_storage }}:vztmpl/{{ proxmox_lxc_template }}"
+    cores: "{{ proxmox_lxc_cores }}"
+    memory: "{{ proxmox_lxc_memory }}"
+    swap: "{{ proxmox_lxc_swap }}"
+    disk: "{{ proxmox_lxc_rootfs_storage }}:{{ proxmox_lxc_disk_size }}"
+    netif: "{{ proxmox_lxc_netif }}"
+    nameserver: "{{ proxmox_lxc_nameserver }}"
+    unprivileged: "{{ proxmox_lxc_unprivileged }}"
+    onboot: "{{ proxmox_lxc_onboot }}"
+    pubkey: "{{ proxmox_lxc_pubkey if proxmox_lxc_pubkey | length > 0 else omit }}"
+    password: "{{ proxmox_lxc_password if proxmox_lxc_password | length > 0 else omit }}"
+    description: "{{ proxmox_lxc_description | default(omit) }}"
+    features: "{{ proxmox_lxc_features | default(omit) }}"
+    state: present
+    timeout: "{{ proxmox_lxc_timeout }}"
+  delegate_to: localhost
+  vars:
+    ansible_become: false
+  no_log: "{{ proxmox_lxc_no_log }}"
+  register: proxmox_lxc_create_result
+  tags: [create]
+
+- name: "create | Start container"
+  community.proxmox.proxmox:
+    api_host: "{{ proxmox_lxc_api_host }}"
+    api_user: "{{ proxmox_lxc_api_user }}"
+    api_token_id: "{{ proxmox_lxc_token_id }}"
+    api_token_secret: "{{ proxmox_lxc_token_secret }}"
+    validate_certs: "{{ proxmox_lxc_validate_certs }}"
+    node: "{{ proxmox_lxc_node }}"
+    vmid: "{{ proxmox_lxc_vmid }}"
+    state: started
+    timeout: "{{ proxmox_lxc_timeout }}"
+  delegate_to: localhost
+  vars:
+    ansible_become: false
+  no_log: "{{ proxmox_lxc_no_log }}"
+  when: proxmox_lxc_start | bool
+  tags: [create]
+
+- name: "create | Display creation result"
+  ansible.builtin.debug:
+    msg: "Container {{ proxmox_lxc_hostname }} (VMID: {{ proxmox_lxc_vmid }}) created successfully on {{ proxmox_lxc_node }}"
+  when: proxmox_lxc_create_result is changed
+  tags: [create]

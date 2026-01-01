@@ -79,6 +79,8 @@ mock_modules:
   - community.general.proxmox_user
   - community.general.proxmox_group
   - community.general.proxmox_access_acl
+  - community.proxmox.proxmox
+  - community.proxmox.proxmox_template
   - community.proxmox.proxmox_group
   - community.proxmox.proxmox_user
   - community.proxmox.proxmox_access_acl

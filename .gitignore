@@ -39,6 +39,10 @@ ansible/.ansible-retry
 *.log
 .vault_pass.txt
 
+# Omni Provider secrets (TODO: template from Infisical)
+ansible/files/omni-provider/.env
+ansible/files/omni-provider/config.yaml
+
 
 # IDE/editor noise
 .vscode/

@@ -1,0 +1,68 @@
+# tasks/configure_tun.yml - Configure TUN device for Tailscale support
+# This runs on the Proxmox HOST to modify the container config
+
+- name: "tun | Check if TUN already configured"
+  ansible.builtin.command:
+    cmd: "grep -q 'lxc.cgroup2.devices.allow: c 10:200' /etc/pve/lxc/{{ proxmox_lxc_vmid }}.conf"
+  register: proxmox_lxc_tun_check
+  changed_when: false
+  failed_when: false
+  tags: [tun]
+
+- name: "tun | Stop container for config changes"
+  community.proxmox.proxmox:
+    api_host: "{{ proxmox_lxc_api_host }}"
+    api_user: "{{ proxmox_lxc_api_user }}"
+    api_token_id: "{{ proxmox_lxc_token_id }}"
+    api_token_secret: "{{ proxmox_lxc_token_secret }}"
+    validate_certs: "{{ proxmox_lxc_validate_certs }}"
+    vmid: "{{ proxmox_lxc_vmid }}"
+    state: stopped
+    timeout: "{{ proxmox_lxc_timeout }}"
+  delegate_to: localhost
+  vars:
+    ansible_become: false
+  no_log: "{{ proxmox_lxc_no_log }}"
+  when: proxmox_lxc_tun_check.rc != 0
+  tags: [tun]
+
+- name: "tun | Add TUN device cgroup permission"
+  ansible.builtin.lineinfile:
+    path: "/etc/pve/lxc/{{ proxmox_lxc_vmid }}.conf"
+    line: "lxc.cgroup2.devices.allow: c 10:200 rwm"
+    state: present
+  when: proxmox_lxc_tun_check.rc != 0
+  tags: [tun]
+
+- name: "tun | Add TUN device mount entry"
+  ansible.builtin.lineinfile:
+    path: "/etc/pve/lxc/{{ proxmox_lxc_vmid }}.conf"
+    line: "lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file"
+    state: present
+  when: proxmox_lxc_tun_check.rc != 0
+  tags: [tun]
+
+- name: "tun | Start container after config changes"
+  community.proxmox.proxmox:
+    api_host: "{{ proxmox_lxc_api_host }}"
+    api_user: "{{ proxmox_lxc_api_user }}"
+    api_token_id: "{{ proxmox_lxc_token_id }}"
+    api_token_secret: "{{ proxmox_lxc_token_secret }}"
+    validate_certs: "{{ proxmox_lxc_validate_certs }}"
+    vmid: "{{ proxmox_lxc_vmid }}"
+    state: started
+    timeout: "{{ proxmox_lxc_timeout }}"
+  delegate_to: localhost
+  vars:
+    ansible_become: false
+  no_log: "{{ proxmox_lxc_no_log }}"
+  when:
+    - proxmox_lxc_tun_check.rc != 0
+    - proxmox_lxc_start | bool
+  tags: [tun]
+
+- name: "tun | Display TUN configuration status"
+  ansible.builtin.debug:
+    msg: "TUN device configured for container {{ proxmox_lxc_vmid }} - Tailscale ready"
+  when: proxmox_lxc_tun_check.rc != 0
+  tags: [tun]

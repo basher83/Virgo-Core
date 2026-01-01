@@ -1,0 +1,232 @@
+---
+# deploy-omni-provider.yml - Deploy Omni Provider LXC container
+#
+# Usage:
+#   uv run ansible-playbook ansible/playbooks/deploy-omni-provider.yml
+#
+# Requirements:
+#   - Infisical environment variables set (INFISICAL_UNIVERSAL_AUTH_CLIENT_ID/SECRET)
+#   - Proxmox API token in Infisical at /matrix/PROXMOX_API_TOKEN
+#   - SSH access to Proxmox host (foxtrot)
+
+- name: Deploy Omni Provider LXC
+  hosts: foxtrot
+  gather_facts: false
+  vars:
+    # Infisical configuration
+    infisical_project_id: '7b832220-24c0-45bc-a5f1-ce9794a31259'
+    infisical_env: 'prod'
+    infisical_path: '/matrix'
+    # Container settings
+    omni_vmid: 200
+    omni_hostname: "omni-provider"
+    omni_ip: "192.168.3.10"
+
+  tasks:
+    - name: Deploy omni-provider container
+      ansible.builtin.include_role:
+        name: proxmox_lxc
+      vars:
+        # API Connection
+        proxmox_lxc_api_host: "192.168.3.5"
+        proxmox_lxc_node: "foxtrot"
+        proxmox_lxc_api_user: "terraform@pam"
+        proxmox_lxc_token_id: "automation"
+        proxmox_lxc_token_secret: "{{ lookup('env', 'PROXMOX_TOKEN_SECRET') }}"
+
+        # Container Identity
+        proxmox_lxc_vmid: "{{ omni_vmid }}"
+        proxmox_lxc_hostname: "{{ omni_hostname }}"
+        proxmox_lxc_state: present
+
+        # Template - Ubuntu 24.04
+        proxmox_lxc_template: "ubuntu-24.04-standard_24.04-2_amd64.tar.zst"
+
+        # Hardware (per request: 1 core, 1GB RAM, 4GB disk)
+        proxmox_lxc_cores: 1
+        proxmox_lxc_memory: 1024
+        proxmox_lxc_swap: 512
+        proxmox_lxc_disk_size: 4
+
+        # Network
+        proxmox_lxc_netif:
+          net0: "name=eth0,bridge=vmbr0,ip={{ omni_ip }}/24,gw=192.168.3.1"
+
+        # Container Settings - Enable nesting and TUN for Tailscale
+        proxmox_lxc_unprivileged: true
+        proxmox_lxc_start: true
+        proxmox_lxc_onboot: true
+        proxmox_lxc_enable_tun: true
+        proxmox_lxc_features:
+          - nesting=1
+        proxmox_lxc_description: "Omni Provider - Sidero Omni machine provider"
+      tags: [deploy]
+
+- name: Configure Tailscale in container
+  hosts: foxtrot
+  gather_facts: false
+  vars:
+    # Connection via pct exec on Proxmox host
+    ansible_connection: community.proxmox.proxmox_pct_remote
+    proxmox_vmid: 200
+    # Tailscale auth key - retrieve from Infisical in production
+    tailscale_auth_key: "{{ lookup('env', 'TAILSCALE_AUTH_KEY') }}"
+
+  tasks:
+    - name: Wait for container to be ready
+      ansible.builtin.raw: echo ready
+      register: container_ready
+      changed_when: false
+      retries: 10
+      delay: 3
+      until: container_ready is success
+      tags: [tailscale]
+
+    - name: Install curl
+      ansible.builtin.raw: apt-get update && apt-get install -y curl
+      changed_when: true
+      tags: [tailscale]
+
+    - name: Install Tailscale and connect
+      ansible.builtin.raw: |
+        curl -fsSL https://tailscale.com/install.sh | sh
+        tailscale up --auth-key={{ tailscale_auth_key }}
+      changed_when: true
+      tags: [tailscale]
+
+    - name: Get Tailscale status
+      ansible.builtin.raw: tailscale status --json | head -20
+      register: tailscale_status
+      changed_when: false
+      tags: [tailscale]
+
+    - name: Display completion message
+      ansible.builtin.debug:
+        msg:
+          - "=== Omni Provider Ready ==="
+          - "Hostname:   omni-provider"
+          - "VMID:       200"
+          - "IP:         192.168.3.10"
+          - "Tailscale:  Connected"
+          - "==========================="
+      tags: [tailscale]
+
+- name: Install Docker and deploy Omni Provider stack
+  hosts: foxtrot
+  gather_facts: false
+  vars:
+    omni_vmid: 200
+    omni_app_dir: /opt/omni-provider
+    local_files_dir: "{{ playbook_dir }}/../files/omni-provider"
+
+  tasks:
+    # -------------------------------------------------------------------------
+    # Install Docker via raw commands (proxmox_pct_remote doesn't support apt)
+    # -------------------------------------------------------------------------
+    - name: Install Docker prerequisites
+      ansible.builtin.raw: |
+        pct exec {{ omni_vmid }} -- bash -c '
+          apt-get update
+          apt-get install -y ca-certificates curl gnupg
+        '
+      changed_when: true
+      tags: [docker]
+
+    - name: Add Docker GPG key and repository
+      ansible.builtin.raw: |
+        pct exec {{ omni_vmid }} -- bash -c '
+          install -m 0755 -d /etc/apt/keyrings
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+          chmod a+r /etc/apt/keyrings/docker.asc
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) stable" > /etc/apt/sources.list.d/docker.list
+        '
+      changed_when: true
+      tags: [docker]
+
+    - name: Install Docker packages
+      ansible.builtin.raw: |
+        pct exec {{ omni_vmid }} -- bash -c '
+          apt-get update
+          apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+        '
+      changed_when: true
+      tags: [docker]
+
+    - name: Verify Docker installation
+      ansible.builtin.raw: pct exec {{ omni_vmid }} -- docker --version
+      register: docker_version
+      changed_when: false
+      tags: [docker]
+
+    - name: Display Docker version
+      ansible.builtin.debug:
+        msg: "{{ docker_version.stdout_lines }}"
+      tags: [docker]
+
+    # -------------------------------------------------------------------------
+    # Deploy Omni Provider compose stack
+    # -------------------------------------------------------------------------
+    - name: Create application directory in container
+      ansible.builtin.raw: pct exec {{ omni_vmid }} -- mkdir -p {{ omni_app_dir }}
+      changed_when: true
+      tags: [compose]
+
+    - name: Copy compose files to Proxmox host
+      ansible.builtin.copy:
+        src: "{{ local_files_dir }}/"
+        dest: /tmp/omni-provider/
+        mode: "0600"
+      tags: [compose]
+
+    - name: Push compose.yml into container
+      ansible.builtin.raw: pct push {{ omni_vmid }} /tmp/omni-provider/compose.yml {{ omni_app_dir }}/compose.yml
+      changed_when: true
+      tags: [compose]
+
+    - name: Push config.yaml into container
+      ansible.builtin.raw: pct push {{ omni_vmid }} /tmp/omni-provider/config.yaml {{ omni_app_dir }}/config.yaml
+      changed_when: true
+      tags: [compose]
+
+    - name: Push .env into container
+      ansible.builtin.raw: pct push {{ omni_vmid }} /tmp/omni-provider/.env {{ omni_app_dir }}/.env
+      changed_when: true
+      tags: [compose]
+
+    - name: Clean up temp files on Proxmox host
+      ansible.builtin.file:
+        path: /tmp/omni-provider
+        state: absent
+      tags: [compose]
+
+    - name: Start Omni Provider stack
+      ansible.builtin.raw: |
+        pct exec {{ omni_vmid }} -- bash -c 'cd {{ omni_app_dir }} && docker compose up -d'
+      changed_when: true
+      tags: [compose]
+
+    - name: Wait for container to start
+      ansible.builtin.pause:
+        seconds: 5
+      tags: [compose]
+
+    - name: Check container status
+      ansible.builtin.raw: pct exec {{ omni_vmid }} -- docker ps --format "table {{"{{"}}.Names{{"}}"}}\t{{"{{"}}.Status{{"}}"}}\t{{"{{"}}.Ports{{"}}"}}"
+      register: docker_ps
+      changed_when: false
+      tags: [compose]
+
+    - name: Display stack status
+      ansible.builtin.debug:
+        msg: "{{ docker_ps.stdout_lines }}"
+      tags: [compose]
+
+    - name: Display deployment complete
+      ansible.builtin.debug:
+        msg:
+          - "=== Omni Provider Stack Deployed ==="
+          - "Location:   {{ omni_app_dir }}"
+          - "Container:  omni-provider (VMID {{ omni_vmid }})"
+          - "Service:    proxmox-provider"
+          - "======================================"
+      tags: [compose]

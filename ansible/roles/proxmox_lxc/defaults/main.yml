@@ -1,0 +1,133 @@
+# defaults/main.yml - Default variables for proxmox_lxc role
+# Purpose: Manage Proxmox LXC containers with state-based lifecycle
+
+# =============================================================================
+# API Connection
+# =============================================================================
+
+# Proxmox API host (IP or FQDN)
+proxmox_lxc_api_host: "{{ ansible_host }}"
+# Proxmox node name where container will be created
+proxmox_lxc_node: "{{ inventory_hostname }}"
+# API user for authentication
+proxmox_lxc_api_user: "root@pam"  # noqa: var-naming[no-role-prefix]
+# API token ID (e.g., "ansible" for user@pam!ansible)
+proxmox_lxc_token_id: ""
+# API token secret (retrieved from Infisical if enabled)
+proxmox_lxc_token_secret: ""
+# Validate SSL certificates
+proxmox_lxc_validate_certs: false
+
+# =============================================================================
+# Container Identity
+# =============================================================================
+
+# Unique VM ID for the container (100-999999999)
+proxmox_lxc_vmid: ""
+# Container hostname
+proxmox_lxc_hostname: ""
+# Container state: 'present' to create, 'absent' to remove
+proxmox_lxc_state: "present"
+
+# =============================================================================
+# Template Configuration
+# =============================================================================
+
+# LXC template filename (e.g., "debian-12-standard_12.12-1_amd64.tar.zst")
+proxmox_lxc_template: "debian-12-standard_12.12-1_amd64.tar.zst"
+# Storage location for templates
+proxmox_lxc_template_storage: "local"
+
+# =============================================================================
+# Hardware Configuration
+# =============================================================================
+
+# Number of CPU cores
+proxmox_lxc_cores: 1
+# Memory in MB
+proxmox_lxc_memory: 1024
+# Swap in MB (0 to disable)
+proxmox_lxc_swap: 512
+
+# =============================================================================
+# Storage Configuration
+# =============================================================================
+
+# Storage backend for rootfs
+proxmox_lxc_rootfs_storage: "local-lvm"
+# Disk size in GB
+proxmox_lxc_disk_size: 4
+
+# =============================================================================
+# Network Configuration
+# =============================================================================
+
+# Network interface configuration (dict format)
+# Example:
+#   proxmox_lxc_netif:
+#     net0: "name=eth0,bridge=vmbr0,ip=dhcp"
+#     net1: "name=eth1,bridge=vmbr1,ip=192.168.10.5/24,gw=192.168.10.1"
+proxmox_lxc_netif: {}
+
+# DNS nameserver for container (overrides host inheritance)
+# Important: Proxmox hosts with Tailscale MagicDNS will pass 100.100.100.100
+# to containers, breaking DNS if Tailscale isn't installed in the container.
+# Set explicitly to avoid this issue.
+proxmox_lxc_nameserver: "1.1.1.1"
+
+# =============================================================================
+# Container Settings
+# =============================================================================
+
+# Run as unprivileged container (recommended for security)
+proxmox_lxc_unprivileged: true
+# Start container after creation
+proxmox_lxc_start: true
+# Start on boot
+proxmox_lxc_onboot: false
+# Container description
+proxmox_lxc_description: ""
+# Container features (nesting required for Docker/Tailscale)
+# Format: list of "feature=value" strings
+proxmox_lxc_features:
+  - nesting=1
+
+# =============================================================================
+# Tailscale / TUN Device Support
+# =============================================================================
+
+# Enable TUN device for Tailscale (modifies container config on host)
+proxmox_lxc_enable_tun: false
+
+# =============================================================================
+# Access Configuration
+# =============================================================================
+
+# SSH public key for root access (injected via cloud-init)
+proxmox_lxc_pubkey: ""
+# Root password (optional, leave empty to disable password auth)
+proxmox_lxc_password: ""
+
+# =============================================================================
+# Infisical Secret Management (Optional)
+# =============================================================================
+
+# Whether to use Infisical for API token retrieval
+proxmox_lxc_use_infisical: false
+# Infisical path for secrets
+proxmox_lxc_infisical_path: "/matrix"
+# Secret name containing API token
+proxmox_lxc_infisical_secret_name: "PROXMOX_API_TOKEN"
+# Infisical environment
+proxmox_lxc_infisical_env: "prod"
+
+# =============================================================================
+# Operational Flags
+# =============================================================================
+
+# Skip verification step after container creation
+proxmox_lxc_skip_verify: false
+# Suppress sensitive output in logs
+proxmox_lxc_no_log: true
+# Timeout for API operations (seconds)
+proxmox_lxc_timeout: 300

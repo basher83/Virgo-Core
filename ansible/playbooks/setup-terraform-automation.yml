@@ -113,10 +113,6 @@
     # -------------------------------------------------------------------------
     - role: proxmox_access
       vars:
-        # Infisical configuration (for retrieving admin credentials)
-        infisical_project_id: "{{ infisical_project_id }}"
-        infisical_env: "{{ infisical_env }}"
-        infisical_path: "{{ infisical_path }}"
         # Custom role for Terraform
         proxmox_roles:
           - name: TerraformUser

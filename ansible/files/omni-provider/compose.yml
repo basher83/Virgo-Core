@@ -1,0 +1,11 @@
+services:
+  proxmox-provider:
+    image: ghcr.io/siderolabs/omni-infra-provider-proxmox:latest
+    volumes:
+      - ./config.yaml:/config.yaml:ro
+    command:
+      - --config-file=/config.yaml
+      - --omni-api-endpoint=https://omni.spaceships.work/
+      - --omni-service-account-key=${OMNI_INFRA_PROVIDER_KEY}
+      - --id=Proxmox
+    restart: unless-stopped

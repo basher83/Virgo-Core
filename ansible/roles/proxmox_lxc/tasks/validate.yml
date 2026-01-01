@@ -1,0 +1,81 @@
+# tasks/validate.yml - Input validation for proxmox_lxc role
+
+- name: "validate | Assert required variables are defined"
+  ansible.builtin.assert:
+    that:
+      - proxmox_lxc_api_host is defined
+      - proxmox_lxc_api_host | length > 0
+      - proxmox_lxc_node is defined
+      - proxmox_lxc_node | length > 0
+      - proxmox_lxc_vmid is defined
+      - proxmox_lxc_vmid | string | length > 0
+      - proxmox_lxc_vmid | int >= 100
+      - proxmox_lxc_vmid | int <= 999999999
+      - proxmox_lxc_hostname is defined
+      - proxmox_lxc_hostname | length > 0
+      - proxmox_lxc_state in ['present', 'absent']
+    fail_msg: |
+      Invalid or missing required variables:
+        - proxmox_lxc_api_host: {{ proxmox_lxc_api_host | default('NOT SET') }}
+        - proxmox_lxc_node: {{ proxmox_lxc_node | default('NOT SET') }}
+        - proxmox_lxc_vmid: {{ proxmox_lxc_vmid | default('NOT SET') }} (must be 100-999999999)
+        - proxmox_lxc_hostname: {{ proxmox_lxc_hostname | default('NOT SET') }}
+        - proxmox_lxc_state: {{ proxmox_lxc_state | default('NOT SET') }} (must be present or absent)
+    success_msg: "Required variables validated"
+    quiet: true
+  tags: [validate]
+
+- name: "validate | Assert API authentication is configured"
+  ansible.builtin.assert:
+    that:
+      - proxmox_lxc_use_infisical | bool or (proxmox_lxc_token_id | length > 0 and proxmox_lxc_token_secret | length > 0)
+    fail_msg: |
+      API authentication must be configured either via:
+        - proxmox_lxc_token_id and proxmox_lxc_token_secret (direct)
+        - proxmox_lxc_use_infisical: true (retrieve from Infisical)
+
+      Current state:
+        - proxmox_lxc_use_infisical: {{ proxmox_lxc_use_infisical }}
+        - proxmox_lxc_token_id: {{ 'SET' if proxmox_lxc_token_id | length > 0 else 'NOT SET' }}
+        - proxmox_lxc_token_secret: {{ 'SET' if proxmox_lxc_token_secret | length > 0 else 'NOT SET' }}
+    success_msg: "API authentication configured"
+    quiet: true
+  tags: [validate]
+
+- name: "validate | Assert network configuration for present state"
+  ansible.builtin.assert:
+    that:
+      - proxmox_lxc_netif is defined
+      - proxmox_lxc_netif | length > 0
+    fail_msg: |
+      Network configuration required for container creation:
+        proxmox_lxc_netif:
+          net0: "name=eth0,bridge=vmbr0,ip=dhcp"
+
+      Current value: {{ proxmox_lxc_netif | default('NOT SET') }}
+    success_msg: "Network configuration validated"
+    quiet: true
+  when: proxmox_lxc_state == 'present'
+  tags: [validate]
+
+- name: "validate | Display container configuration summary"
+  ansible.builtin.debug:
+    msg:
+      - "=== Proxmox LXC Configuration ==="
+      - "API Host:        {{ proxmox_lxc_api_host }}"
+      - "Node:            {{ proxmox_lxc_node }}"
+      - "VMID:            {{ proxmox_lxc_vmid }}"
+      - "Hostname:        {{ proxmox_lxc_hostname }}"
+      - "State:           {{ proxmox_lxc_state }}"
+      - "Template:        {{ proxmox_lxc_template }}"
+      - "Cores:           {{ proxmox_lxc_cores }}"
+      - "Memory:          {{ proxmox_lxc_memory }} MB"
+      - "Disk:            {{ proxmox_lxc_disk_size }} GB on {{ proxmox_lxc_rootfs_storage }}"
+      - "Unprivileged:    {{ proxmox_lxc_unprivileged }}"
+      - "Network:         {{ proxmox_lxc_netif | to_nice_yaml | trim }}"
+      - "Auto-start:      {{ proxmox_lxc_start }}"
+      - "Start on boot:   {{ proxmox_lxc_onboot }}"
+      - "SSH Key:         {{ 'Configured' if proxmox_lxc_pubkey | length > 0 else 'Not configured' }}"
+      - "Infisical:       {{ proxmox_lxc_use_infisical }}"
+      - "================================="
+  tags: [validate]

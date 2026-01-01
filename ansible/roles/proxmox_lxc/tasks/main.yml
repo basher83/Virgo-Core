@@ -1,0 +1,40 @@
+# tasks/main.yml - Main task orchestration for proxmox_lxc role
+# Purpose: Manage Proxmox LXC containers with state-based lifecycle
+
+- name: "proxmox_lxc | Validate input variables"
+  ansible.builtin.include_tasks: validate.yml
+  tags: [proxmox_lxc, validate]
+
+- name: "proxmox_lxc | Retrieve API token from Infisical"
+  ansible.builtin.include_tasks: secrets.yml
+  when: proxmox_lxc_use_infisical | bool
+  tags: [proxmox_lxc, secrets]
+
+- name: "proxmox_lxc | Ensure LXC template is available"
+  ansible.builtin.include_tasks: template.yml
+  when: proxmox_lxc_state == 'present'
+  tags: [proxmox_lxc, template]
+
+- name: "proxmox_lxc | Create container"
+  ansible.builtin.include_tasks: create.yml
+  when: proxmox_lxc_state == 'present'
+  tags: [proxmox_lxc, create]
+
+- name: "proxmox_lxc | Configure TUN device for Tailscale"
+  ansible.builtin.include_tasks: configure_tun.yml
+  when:
+    - proxmox_lxc_state == 'present'
+    - proxmox_lxc_enable_tun | bool
+  tags: [proxmox_lxc, tun]
+
+- name: "proxmox_lxc | Remove container"
+  ansible.builtin.include_tasks: destroy.yml
+  when: proxmox_lxc_state == 'absent'
+  tags: [proxmox_lxc, destroy]
+
+- name: "proxmox_lxc | Verify container state"
+  ansible.builtin.include_tasks: verify.yml
+  when:
+    - proxmox_lxc_state == 'present'
+    - not (proxmox_lxc_skip_verify | bool)
+  tags: [proxmox_lxc, verify]

@@ -1,0 +1,45 @@
+# tasks/verify.yml - Verify container state after creation
+
+- name: "verify | Check container exists in Proxmox"
+  ansible.builtin.command:
+    cmd: pct list
+  register: proxmox_lxc_pct_list
+  changed_when: false
+  failed_when: false
+  tags: [verify]
+
+- name: "verify | Assert container is listed"
+  ansible.builtin.assert:
+    that:
+      - proxmox_lxc_vmid | string in proxmox_lxc_pct_list.stdout
+    fail_msg: "Container {{ proxmox_lxc_vmid }} not found in pct list output"
+    success_msg: "Container {{ proxmox_lxc_vmid }} exists"
+    quiet: true
+  tags: [verify]
+
+- name: "verify | Check container status"
+  ansible.builtin.command:
+    cmd: "pct status {{ proxmox_lxc_vmid }}"
+  register: proxmox_lxc_status
+  changed_when: false
+  tags: [verify]
+
+- name: "verify | Assert container is running (if start enabled)"
+  ansible.builtin.assert:
+    that:
+      - "'running' in proxmox_lxc_status.stdout"
+    fail_msg: "Container {{ proxmox_lxc_vmid }} is not running. Status: {{ proxmox_lxc_status.stdout }}"
+    success_msg: "Container {{ proxmox_lxc_vmid }} is running"
+    quiet: true
+  when: proxmox_lxc_start | bool
+  tags: [verify]
+
+- name: "verify | Display container verification summary"
+  ansible.builtin.debug:
+    msg:
+      - "=== Container Verification ==="
+      - "VMID:     {{ proxmox_lxc_vmid }}"
+      - "Hostname: {{ proxmox_lxc_hostname }}"
+      - "Status:   {{ proxmox_lxc_status.stdout | trim }}"
+      - "============================="
+  tags: [verify]

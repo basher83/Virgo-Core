@@ -1,0 +1,20 @@
+# tasks/template.yml - Ensure LXC template is available
+
+- name: "template | Ensure LXC template is downloaded"
+  community.proxmox.proxmox_template:
+    api_host: "{{ proxmox_lxc_api_host }}"
+    api_user: "{{ proxmox_lxc_api_user }}"
+    api_token_id: "{{ proxmox_lxc_token_id }}"
+    api_token_secret: "{{ proxmox_lxc_token_secret }}"
+    validate_certs: "{{ proxmox_lxc_validate_certs }}"
+    node: "{{ proxmox_lxc_node }}"
+    storage: "{{ proxmox_lxc_template_storage }}"
+    template: "{{ proxmox_lxc_template }}"
+    content_type: "vztmpl"
+    state: present
+    timeout: "{{ proxmox_lxc_timeout }}"
+  delegate_to: localhost
+  vars:
+    ansible_become: false
+  no_log: "{{ proxmox_lxc_no_log }}"
+  tags: [template]

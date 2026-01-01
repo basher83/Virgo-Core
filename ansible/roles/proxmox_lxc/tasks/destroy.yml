@@ -1,0 +1,43 @@
+# tasks/destroy.yml - Remove LXC container
+
+- name: "destroy | Stop container before removal"
+  community.proxmox.proxmox:
+    api_host: "{{ proxmox_lxc_api_host }}"
+    api_user: "{{ proxmox_lxc_api_user }}"
+    api_token_id: "{{ proxmox_lxc_token_id }}"
+    api_token_secret: "{{ proxmox_lxc_token_secret }}"
+    validate_certs: "{{ proxmox_lxc_validate_certs }}"
+    vmid: "{{ proxmox_lxc_vmid }}"
+    state: stopped
+    timeout: "{{ proxmox_lxc_timeout }}"
+    force: true
+  delegate_to: localhost
+  become: false
+  no_log: "{{ proxmox_lxc_no_log }}"
+  register: proxmox_lxc_stop_result
+  failed_when:
+    - proxmox_lxc_stop_result.failed | default(false)
+    - "'does not exist' not in (proxmox_lxc_stop_result.msg | default(''))"
+  tags: [destroy]
+
+- name: "destroy | Remove LXC container"
+  community.proxmox.proxmox:
+    api_host: "{{ proxmox_lxc_api_host }}"
+    api_user: "{{ proxmox_lxc_api_user }}"
+    api_token_id: "{{ proxmox_lxc_token_id }}"
+    api_token_secret: "{{ proxmox_lxc_token_secret }}"
+    validate_certs: "{{ proxmox_lxc_validate_certs }}"
+    vmid: "{{ proxmox_lxc_vmid }}"
+    state: absent
+    timeout: "{{ proxmox_lxc_timeout }}"
+  delegate_to: localhost
+  become: false
+  no_log: "{{ proxmox_lxc_no_log }}"
+  register: proxmox_lxc_destroy_result
+  tags: [destroy]
+
+- name: "destroy | Display removal result"
+  ansible.builtin.debug:
+    msg: "Container {{ proxmox_lxc_hostname }} (VMID: {{ proxmox_lxc_vmid }}) removed from {{ proxmox_lxc_node }}"
+  when: proxmox_lxc_destroy_result is changed
+  tags: [destroy]
