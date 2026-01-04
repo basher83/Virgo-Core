@@ -1,8 +1,37 @@
 # Playbook: Create Ansible automation user
-# Usage: uv run ansible-playbook -i inventory/hosts.yml playbooks/create-ansible-user.yml -e ansible_user=root
+# Usage:
+#   # Bootstrap new host (connect as root to create ansible user):
+#   uv run ansible-playbook -i inventory/hosts.yml playbooks/create-ansible-user.yml \
+#     -e ansible_user=root -l omni-provider
+#
+#   # Run against matrix_cluster (default):
+#   uv run ansible-playbook -i inventory/hosts.yml playbooks/create-ansible-user.yml
 - name: Create Ansible automation user
-  hosts: matrix_cluster
+  hosts: "{{ target_hosts | default('matrix_cluster') }}"
   become: true
+  vars:
+    infisical_project_id: "01010a18-1b24-4c04-b8df-e59c2b4d40e8"
+    infisical_env: "prod"
+    infisical_path: "/ssh"
+  pre_tasks:
+    - name: Retrieve SSH keys from Infisical
+      ansible.builtin.include_tasks: "{{ playbook_dir }}/../tasks/infisical-secret-lookup.yml"
+      vars:
+        secret_name: "PROD_PUB_KEY"
+        secret_var_name: "_ansible_ssh_keys_raw"
+
+    - name: Parse SSH keys from Infisical secret
+      ansible.builtin.set_fact:
+        ansible_ssh_keys: >-
+          {{ _ansible_ssh_keys_raw | split('\n') | map('trim') | select('match', '^ssh-') | list }}
+
+    - name: Validate SSH keys were retrieved
+      ansible.builtin.assert:
+        that:
+          - ansible_ssh_keys | length > 0
+        fail_msg: "No valid SSH keys found in Infisical"
+        success_msg: "Retrieved {{ ansible_ssh_keys | length }} SSH key(s) from Infisical"
+        quiet: true
   roles:
     - role: system_user
       vars:
@@ -10,6 +39,5 @@
           - name: ansible
             comment: "Ansible automation user"
             shell: /bin/bash
-            ssh_keys:
-              - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKls14HDdv2r2QIhGQfEluBmzrGI2cxjwtdkAWrc4ZRr staging@homelab"
+            ssh_keys: "{{ ansible_ssh_keys }}"
             sudo_nopasswd: true

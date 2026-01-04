@@ -54,6 +54,39 @@ Both use the external module from `github.com/basher83/Triangulum-Prime//terrafo
 - **Secrets management**: Infisical integration (never commit secrets)
 - **VLAN-aware bridges**: Network bridges support VLANs
 
+## SSH and Ansible Configuration
+
+SSH configuration is managed locally on the macOS controller via modular config files in `~/.ssh/config.d/`:
+
+```text
+00-defaults     # Global SSH defaults
+10-production   # Production hosts
+15-github       # GitHub configuration
+20-homelab      # Homelab infrastructure
+30-proxmox      # Proxmox cluster nodes
+40-talos        # Talos/Kubernetes hosts
+60-ansible      # Ansible-specific overrides
+```
+
+SSH keys are managed via 1Password, eliminating the need for key paths in configs.
+
+**Inventory Pattern**: Use hostnames (matching SSH config `Host` entries) instead of IPs in Ansible inventory. This delegates connection details to SSH config, keeping inventory clean:
+
+```yaml
+# Good - uses SSH config for IP, user, and key selection
+hosts:
+  omni-provider:
+    ansible_host: omni-provider
+
+# Avoid - duplicates SSH config and bypasses key management
+hosts:
+  omni-provider:
+    ansible_host: 192.168.3.10
+    ansible_ssh_private_key_file: ~/.ssh/id_ed25519
+```
+
+When adding new hosts: create SSH config entry first, then add to inventory using the hostname.
+
 ## Multi-Agent Orchestration Patterns
 
 This repository has proven multi-agent patterns for high-quality, efficient work:
