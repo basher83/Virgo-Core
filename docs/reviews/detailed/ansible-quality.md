@@ -14,7 +14,7 @@ All 9 roles follow a consistent pattern: `defaults/main.yml` for public API, `ta
 ## 1. system_user Role
 
 ### SU-1: Missing tags on all tasks (Medium)
-The only role (besides most others) without tags. Makes selective execution impossible.
+Missing tags on all tasks. Makes selective execution impossible.
 
 ### SU-2: sudoers.j2 template variable mismatch (Medium)
 The template references `user_item.name` and `user_item.sudo_nopasswd` which are set by the loop variable in `sudo_config.yml`. However, the template's conditional for `NOPASSWD:ALL` vs limited rules needs verification that it properly handles both cases. The template does handle both paths (lines 7-21).
@@ -52,7 +52,8 @@ Proper handlers, prerequisites, verification, dry-run, and backup. Model for oth
 
 **Recommendation:** Use list filter: `when: registered_results | select('changed') | list | length > 0`
 
-### PN-3: Missing tags (Medium)
+### PN-3: Proper tagging (Positive)
+Tags on every include_tasks in main.yml (`[proxmox_network, prerequisites]`, `[proxmox_network, bridges]`, etc.).
 
 ---
 
@@ -110,7 +111,8 @@ Proper validation, Infisical integration, dry-run, verification, comprehensive d
 
 **Recommendation:** Build as list of arguments, then join.
 
-### PT-3: Missing tags (Medium)
+### PT-3: Proper tagging (Positive)
+Tags on every include_tasks in main.yml (`[proxmox_template, validate]`, `[proxmox_template, secrets]`, etc.).
 
 ---
 
@@ -130,7 +132,7 @@ Good practice other roles should adopt.
 ## 9. proxmox_lxc Role
 
 ### LX-1: Best-in-class tagging (Positive)
-Only role with proper tags on every include_tasks. Other roles should follow.
+One of three roles (with `proxmox_network` and `proxmox_template`) with proper tags on every include_tasks. Sets the standard for tag naming convention.
 
 ### LX-2: Comprehensive validation (Positive)
 `validate.yml` checks all required variables with clear messages.
@@ -214,17 +216,17 @@ Storage backend management not automated.
 
 ## Cross-Cutting: Missing Tags
 
-**8 of 9 roles have no tags in main.yml.** Only `proxmox_lxc` has proper tags. This is the single most impactful consistency improvement.
+**6 of 9 roles have no tags in main.yml.** Three roles (`proxmox_lxc`, `proxmox_network`, `proxmox_template`) have proper tags. This is the single most impactful consistency improvement.
 
 | Role | Tags? |
 |------|-------|
 | system_user | No |
 | proxmox_access | No |
-| proxmox_network | No |
+| proxmox_network | **Yes** |
 | proxmox_repository | No |
 | proxmox_cluster | No |
 | proxmox_ceph | No |
-| proxmox_template | No |
+| proxmox_template | **Yes** |
 | proxmox_tuning | No |
 | proxmox_lxc | **Yes** |
 
@@ -235,6 +237,6 @@ Storage backend management not automated.
 | Priority | Count | Top Items |
 |----------|-------|-----------|
 | High | 3 | Conflicting inventory, Tailscale auth key exposure, no Molecule tests |
-| Medium | 20 | Missing tags (x8), variable collisions, idempotency gaps, command construction |
+| Medium | 18 | Missing tags (x6), variable collisions, idempotency gaps, command construction |
 | Low | 12 | Stale files, naming, missing documentation |
-| Positive | 8 | proxmox_lxc design, proxmox_network structure, tuning profiles, cluster join error handling |
+| Positive | 10 | proxmox_lxc design, proxmox_network structure and tagging, proxmox_template tagging, tuning profiles, cluster join error handling |

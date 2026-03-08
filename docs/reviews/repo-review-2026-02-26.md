@@ -10,7 +10,7 @@
 
 Virgo-Core is a well-structured Infrastructure as Code repository that has achieved its v1.0.0 milestone with 9 production-ready Ansible roles, working Terraform/OpenTofu modules, and a solid CI/CD pipeline. The codebase demonstrates strong engineering practices: consistent naming, proper secrets management via Infisical, comprehensive documentation, and good use of `no_log` for sensitive operations.
 
-This review identified **87 findings** across 5 domains. The most impactful areas for improvement are: (1) tightening Terraform state management and provider version constraints, (2) expanding CI/CD parallelism and caching, (3) resolving a Python version mismatch across tool configs, (4) fixing conflicting inventory files, and (5) adding missing Ansible role tests and tags. No critical security vulnerabilities were found — secrets handling through Infisical is well-implemented.
+This review identified **87 findings** across 5 domains. The most impactful areas for improvement are: (1) tightening Terraform state management and provider version constraints, (2) expanding CI/CD parallelism and caching, (3) resolving a Python version mismatch across tool configs, (4) fixing conflicting inventory files, and (5) adding missing Ansible role tests and tags (6 of 9 roles lack tags). No critical security vulnerabilities were found — secrets handling through Infisical is well-implemented.
 
 ### Finding Summary
 
@@ -18,7 +18,7 @@ This review identified **87 findings** across 5 domains. The most impactful area
 |----------|-------|-------------|
 | Critical | 2 | Terraform state backend, Python version mismatch |
 | High | 7 | Command injection surface, CI permissions, provider pinning, CI caching, `.cursor` corruption, conflicting inventory, Tailscale auth key exposure |
-| Medium | 25 | Variable validation, tfvars drift, markdown lint coverage, pre-commit gaps, token handling, missing tags (x8), variable collisions, idempotency gaps |
+| Medium | 23 | Variable validation, tfvars drift, markdown lint coverage, pre-commit gaps, token handling, missing tags (x6), variable collisions, idempotency gaps |
 | Low | 28 | Documentation drift, default values, naming conventions, missing convenience tasks, stale files |
 | Info | 25 | Positive findings — things done well |
 
@@ -172,7 +172,7 @@ All 9 roles follow a consistent pattern: `defaults/main.yml` for public API, `ta
 | ID | Severity | File | Finding |
 |----|----------|------|---------|
 | A-15 | Medium | `ansible/playbooks/.deprecated/` | 4 deprecated playbooks exist but aren't clearly marked as superseded. **Recommendation:** Add a README in `.deprecated/` explaining which roles replace each playbook. |
-| A-16 | Low | Various playbooks | No consistent tagging strategy across playbooks. Some roles use tags (e.g., `[create]`, `[build]`) but there is no documented tag taxonomy. |
+| A-16 | Low | Various playbooks | No consistent tagging strategy across playbooks. Three roles (`proxmox_lxc`, `proxmox_network`, `proxmox_template`) have proper tags, but there is no documented tag taxonomy. |
 
 ### 2.4 Inventory Issues
 
@@ -197,7 +197,7 @@ All 9 roles follow a consistent pattern: `defaults/main.yml` for public API, `ta
 
 ### 2.7 Cross-Cutting: Missing Tags
 
-**8 of 9 roles have no tags in main.yml.** Only `proxmox_lxc` has proper tags. This is the single most impactful consistency improvement.
+**6 of 9 roles have no tags in main.yml.** Three roles (`proxmox_lxc`, `proxmox_network`, `proxmox_template`) have proper tags. This is the single most impactful consistency improvement.
 
 ### 2.8 Missing Functionality
 
@@ -322,7 +322,7 @@ All 9 roles follow a consistent pattern: `defaults/main.yml` for public API, `ta
 
 | ID | Severity | File | Finding |
 |----|----------|------|---------|
-| DOC-1 | Medium | `documentation/README.md` | References files that don't exist in the `documentation/` directory: `design/ansible-philosophy.md`, `design/ansible-role-design.md`, `design/ansible-playbook-design.md`, `brainstorming/next-features-2025-11.md`, `brainstorming/documentation-audit-2025-11.md`. These appear to be planned but not yet created. **Recommendation:** Create placeholder files or remove references. |
+| DOC-1 | Medium | `documentation/README.md` | References files that don't exist at their referenced paths: `brainstorming/next-features-2025-11.md`, `brainstorming/documentation-audit-2025-11.md`. These exist under `docs/brainstorming/` not `documentation/brainstorming/` — a path mismatch in the README. **Recommendation:** Fix the paths in the README to reference the correct location. |
 | DOC-2 | Medium | `documentation/README.md:101-112` | Mintlify section says "Status: Infrastructure configured, ready for content population" and describes a `mintlify/` subdirectory structure that doesn't exist within `documentation/`. **Recommendation:** Create the directory structure or update the status. |
 | DOC-3 | Low | Role documentation | `documentation/roles/` contains docs for 6 roles but the repo has 9 roles. Missing: `proxmox_template`, `proxmox_tuning`, `proxmox_lxc`. **Recommendation:** Add documentation for the missing roles. |
 | DOC-4 | Low | Getting Started guides | `documentation/getting-started/` has `prerequisites.md`, `installation.md`, `first-deployment.md` but these may need updating for the current state of the project (post v1.0.0). |
@@ -341,7 +341,7 @@ All 9 roles follow a consistent pattern: `defaults/main.yml` for public API, `ta
 | ID | Severity | File | Finding |
 |----|----------|------|---------|
 | DOC-5 | Low | Overall architecture | No architecture diagram exists. The relationship between clusters, roles, playbooks, and Terraform modules would benefit from a visual representation. |
-| DOC-6 | Low | `ansible/inventory/group_vars/all.yml:2` | Comment references `nexus_cluster` and `quantum_cluster` but these don't exist in `hosts.yml`. `doggos_cluster` exists but isn't mentioned. **Recommendation:** Update comment to reflect actual clusters. |
+| DOC-6 | Low | `ansible/inventory/group_vars/all.yml:2` | Comment references `nexus_cluster` and `quantum_cluster` — these groups exist in `proxmox.yml` (not `hosts.yml`), so the comment is technically correct since `ansible.cfg` loads the entire `inventory/` directory. However, this is confusing given the split inventory situation (see A-19). **Recommendation:** Resolve as part of inventory consolidation (A-19). |
 
 ### 5.4 Functionality Opportunities
 
@@ -386,7 +386,7 @@ Based on `goals.md`, `infrastructure.md`, and `netbox-powerdns.md`, the followin
 
 ### Should-Do (Medium)
 
-9. **Add tags to all 8 roles** missing them — follow `proxmox_lxc` as the model (A-27)
+9. **Add tags to all 6 roles** missing them — follow `proxmox_lxc` as the model (A-27)
 10. Fix `terraform.tfvars.example` drift — remove references to deleted variables (T-6)
 11. Fix `ssh_public_keys` default/validation conflict (T-7)
 12. Add Molecule test infrastructure for at least 2 roles (A-17)
