@@ -237,6 +237,6 @@ Storage backend management not automated.
 | Priority | Count | Top Items |
 |----------|-------|-----------|
 | High | 3 | Conflicting inventory, Tailscale auth key exposure, no Molecule tests |
-| Medium | 18 | Missing tags (x6), variable collisions, idempotency gaps, command construction |
-| Low | 12 | Stale files, naming, missing documentation |
-| Positive | 10 | proxmox_lxc design, proxmox_network structure and tagging, proxmox_template tagging, tuning profiles, cluster join error handling |
+| Medium | 23 | Missing tags (x6), variable collisions, idempotency gaps, command construction |
+| Low | 8 | Stale files, naming, missing documentation |
+| Positive | 11 | proxmox_lxc design, proxmox_network structure and tagging, proxmox_template tagging, tuning profiles, cluster join error handling |

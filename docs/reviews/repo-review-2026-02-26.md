@@ -10,7 +10,7 @@
 
 Virgo-Core is a well-structured Infrastructure as Code repository that has achieved its v1.0.0 milestone with 9 production-ready Ansible roles, working Terraform/OpenTofu modules, and a solid CI/CD pipeline. The codebase demonstrates strong engineering practices: consistent naming, proper secrets management via Infisical, comprehensive documentation, and good use of `no_log` for sensitive operations.
 
-This review identified **87 findings** across 5 domains. The most impactful areas for improvement are: (1) tightening Terraform state management and provider version constraints, (2) expanding CI/CD parallelism and caching, (3) resolving a Python version mismatch across tool configs, (4) fixing conflicting inventory files, and (5) adding missing Ansible role tests and tags (6 of 9 roles lack tags). No critical security vulnerabilities were found — secrets handling through Infisical is well-implemented.
+This review identified **85 findings** across 5 domains. The most impactful areas for improvement are: (1) tightening Terraform state management and provider version constraints, (2) expanding CI/CD parallelism and caching, (3) resolving a Python version mismatch across tool configs, (4) fixing conflicting inventory files, and (5) adding missing Ansible role tests and tags (6 of 9 roles lack tags). No critical security vulnerabilities were found — secrets handling through Infisical is well-implemented.
 
 ### Finding Summary
 
@@ -46,7 +46,7 @@ For full findings with line-by-line analysis, see:
 | ID | Severity | File | Finding |
 |----|----------|------|---------|
 | S-1 | Medium | `ansible/roles/proxmox_access/tasks/secrets.yml:17` | Debug message exposes username: `"Proxmox API credentials retrieved for {{ proxmox_api_user }}"`. While not a password leak, exposing the API username in logs aids reconnaissance. **Recommendation:** Remove the debug task or gate it behind a verbose flag. |
-| S-2 | Low | `ansible/roles/proxmox_access/templates/terraform_env.sh.j2:6` | `PROXMOX_VE_INSECURE=true` is hardcoded in the template. This disables TLS verification for all exported environments. **Recommendation:** Make it a variable: `export PROXMOX_VE_INSECURE={{ proxmox_validate_certs | ternary('false', 'true') }}` |
+| S-2 | Low | `ansible/roles/proxmox_access/templates/terraform_env.sh.j2:6` | `PROXMOX_VE_INSECURE=true` is hardcoded in the template. This disables TLS verification for all exported environments. **Recommendation:** Make it a variable: `export PROXMOX_VE_INSECURE={{ proxmox_validate_certs \| ternary('false', 'true') }}` |
 | S-3 | Low | `.infisical.json` | Infisical workspace ID (`7b832220-...`) is committed. While not a secret, it reduces the attack surface to avoid exposing project IDs. **Recommendation:** Consider adding to `.gitignore` if the ID is sensitive in your threat model. |
 
 ### 1.2 Access Control & Permissions — GOOD
@@ -61,7 +61,7 @@ For full findings with line-by-line analysis, see:
 | ID | Severity | File | Finding |
 |----|----------|------|---------|
 | S-4 | Medium | `ansible/roles/system_user/templates/sudoers.j2:9` | `NOPASSWD:ALL` grants unrestricted root access. While documented as intentional, there is no validation that `sudo_rules` entries use absolute paths (only a comment warns about it). **Recommendation:** Add a validation task in `sudo_config.yml` that asserts all `sudo_rules` entries start with `/`. |
-| S-5 | Medium | `ansible/roles/proxmox_access/tasks/tokens.yml:17` | Token creation command constructs arguments via Jinja2 string interpolation. While `item.comment` is user-controlled, the `pveum` command is not run through a shell, mitigating injection risk. However, a comment with special characters could cause unexpected behavior. **Recommendation:** Quote the comment: `"{{ item.item.comment | quote }}"` |
+| S-5 | Medium | `ansible/roles/proxmox_access/tasks/tokens.yml:17` | Token creation command constructs arguments via Jinja2 string interpolation. While `item.comment` is user-controlled, the `pveum` command is not run through a shell, mitigating injection risk. However, a comment with special characters could cause unexpected behavior. **Recommendation:** Quote the comment: `"{{ item.item.comment \| quote }}"` |
 | S-6 | Low | `ansible/ansible.cfg:15` | `host_key_checking = False` disables SSH host key verification globally. Acceptable for a homelab but should be documented as a conscious decision. |
 
 ### 1.3 Input Validation — ADEQUATE
@@ -132,7 +132,7 @@ All 9 roles follow a consistent pattern: `defaults/main.yml` for public API, `ta
 
 | ID | Severity | File | Finding |
 |----|----------|------|---------|
-| A-6 | Medium | `tasks/bridges.yml:87-91` | The changed-flag detection uses a massive `when` condition spanning one line. **Recommendation:** Simplify using a list of registered results: `when: [proxmox_network_bridge_ports_result, ...] | select('changed') | list | length > 0` |
+| A-6 | Medium | `tasks/bridges.yml:87-91` | The changed-flag detection uses a massive `when` condition spanning one line. **Recommendation:** Simplify using a list of registered results: `when: [proxmox_network_bridge_ports_result, ...] \| select('changed') \| list \| length > 0` |
 | A-7 | Low | `tasks/bridges.yml` | Six sequential `community.general.interfaces_file` tasks configure different bridge properties. These cannot be easily consolidated due to module limitations, but could benefit from a loop with a dict of property→value mappings. |
 
 #### proxmox_template
@@ -159,7 +159,7 @@ All 9 roles follow a consistent pattern: `defaults/main.yml` for public API, `ta
 
 | ID | Severity | File | Finding |
 |----|----------|------|---------|
-| A-13 | Info | Role design with profile-based configuration (`vars/profiles/minimal.yml`, `balanced.yml`, `aggressive.yml`) is excellent. Allows users to select a tuning profile without understanding individual parameters. |
+| A-13 | Info | `vars/profiles/minimal.yml`, `vars/profiles/balanced.yml`, `vars/profiles/aggressive.yml` | Role design with profile-based configuration is excellent. Allows users to select a tuning profile without understanding individual parameters. |
 
 #### system_user
 
@@ -386,7 +386,7 @@ Based on `goals.md`, `infrastructure.md`, and `netbox-powerdns.md`, the followin
 
 ### Should-Do (Medium)
 
-9. **Add tags to all 6 roles** missing them — follow `proxmox_lxc` as the model (A-27)
+9. **Add tags to all 6 roles** missing them — follow `proxmox_lxc` as the model (see section 2.7)
 10. Fix `terraform.tfvars.example` drift — remove references to deleted variables (T-6)
 11. Fix `ssh_public_keys` default/validation conflict (T-7)
 12. Add Molecule test infrastructure for at least 2 roles (A-17)
