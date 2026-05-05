@@ -44,6 +44,9 @@ ansible/files/omni-provider/.env
 ansible/files/omni-provider/config.yaml
 
 
+# Agent-local settings
+.claude/settings.local.json
+
 # IDE/editor noise
 .vscode/
 .idea/
