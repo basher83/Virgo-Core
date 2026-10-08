@@ -1,0 +1,91 @@
+{
+  "revision": "166734f0c4ad5169d7140b5177e315118edfa578",
+  "repository": "https://github.com/basher83/Virgo-Core",
+  "captured": "2026-09-11",
+  "sources": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "71004e847f5ead8b5d47419a098224e55b83c317d5ac6b8c1375af68bf16fc56"
+    },
+    {
+      "path": ".mise.toml",
+      "sha256": "be209992cdc8f765c5e05f463e389819cbd554f8beeb44b111b0132af54f5d01"
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "9db5887e1e722240a3a0d68dd400e745c50892a269408f359dba30df6cef9705"
+    },
+    {
+      "path": "README.md",
+      "sha256": "8276462135c5920274a888af534a24246dc9c7e3bc96c5a97f821caba9ff42bf"
+    },
+    {
+      "path": "ansible/ansible.cfg",
+      "sha256": "6daf5c50c2fd9f197a0cc9c81768f0a45e0e51497e9248183d6ee99361fd8766"
+    },
+    {
+      "path": "ansible/playbooks/create-ansible-user.yml",
+      "sha256": "056ab50249bbe26877c5712cf88cc10d6dc1a8e8cf85b26b20879d3ca0e6f8a3"
+    },
+    {
+      "path": "ansible/playbooks/install-docker.yml",
+      "sha256": "2a209517f0be8ff070126069bb378640db9dcc6dc2d45e3c1ea52e989db4d676"
+    },
+    {
+      "path": "ansible/playbooks/system-upgrade.yml",
+      "sha256": "2c38f99a2f99a51ffd81a941725cae47ce9f0deacb3ad365a018ae0722eeac9f"
+    },
+    {
+      "path": "ansible/playbooks/test-roles.yml",
+      "sha256": "235be63db8c56ec96a33596a2899d5411f2c2a3b0341da2d146b2729058f4dd5"
+    },
+    {
+      "path": "ansible/roles/proxmox_ceph/tasks/main.yml",
+      "sha256": "1da85a0d34c8272ac1e3928ffe36d34b7d1537775255af78ec8134c2d885d3a6"
+    },
+    {
+      "path": "ansible/roles/proxmox_cluster/tasks/main.yml",
+      "sha256": "9790bf594e65a7cf3900f639fdc5692e9fa1281248e05378b4f1de6b98cc9e48"
+    },
+    {
+      "path": "ansible/roles/proxmox_lxc/README.md",
+      "sha256": "a66255eedbd85a217c9e8b67c76792933911f1ef55576b8f488953f5ec6f2a7f"
+    },
+    {
+      "path": "ansible/roles/proxmox_template/README.md",
+      "sha256": "08a133c39d5cabb5f93e18804c83c4c025d0b6426d3e8ef157842dac60e5c096"
+    },
+    {
+      "path": "ansible/roles/proxmox_tuning/README.md",
+      "sha256": "e89af1c0f6b9767cc1ed7fd9d75a3c0be738b95478b64e4f6f85ae64c86bf80c"
+    },
+    {
+      "path": "ansible/roles/system_user/tasks/ssh_keys.yml",
+      "sha256": "c53600ed80ab6852f8f24244a17368510d3c5748d305f0cc43018d5b5d806be2"
+    },
+    {
+      "path": "ansible/roles/system_user/templates/sudoers.j2",
+      "sha256": "5793ef25e441228cbe50843a9db33f9aa9d3eda3e5b48ddf60a62f46227b5ceb"
+    },
+    {
+      "path": "ansible/tasks/infisical-secret-lookup.yml",
+      "sha256": "84de6ff5f2ad46003dd83769bc81f406351f27a479c246a4f11718793768a977"
+    },
+    {
+      "path": "documentation/README.md",
+      "sha256": "a79ac51e8f78c86e8afec95deb11409c40915e204f6757475cafa4cc4ea8875f"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "3e83bb4d458cf36ddcc4218ac34cd37ff649571b0541c0f8cca5ba54b106ca82"
+    },
+    {
+      "path": "terraform/netbox-template/main.tf",
+      "sha256": "bd65f9bfeac5edfd4c7b1fc7db08dccd5feab573d5acf9b8eb4cfbd6d164c78d"
+    },
+    {
+      "path": "terraform/netbox-vm/main.tf",
+      "sha256": "2d10f643ac98f9955e80b5fb6aa0cde4033fe28d9d1d87f57e53cbb9964f5e63"
+    }
+  ]
+}
