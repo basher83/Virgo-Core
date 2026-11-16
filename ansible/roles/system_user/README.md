@@ -225,7 +225,8 @@ uv run ansible-playbook playbook.yml
 
 2. **Sudo Access**: Grant minimal privileges (prefer `sudo_rules` over `sudo_nopasswd`)
 
-3. **Absolute Paths Required**: Commands in `sudo_rules` require absolute paths (e.g., `/usr/bin/systemctl` not `systemctl`) to prevent PATH exploitation attacks
+3. **Absolute Paths Required**: Commands in `sudo_rules` require absolute paths (e.g., `/usr/bin/systemctl` not
+   `systemctl`) to prevent PATH exploitation attacks
 
 4. **Sudoers Validation**: The role validates all sudoers files with `visudo -cf` before installation
 
@@ -302,10 +303,10 @@ MIT
 
 ## Author Information
 
-Created as part of the Virgo-Core infrastructure automation project (Phase 1: Ansible Migration to Role-Based Architecture).
+Created as part of the Virgo-Core infrastructure automation project (Phase 1: Ansible Migration to Role-Based
+Architecture).
 
 ## Related Documentation
 
-- [Ansible Migration Plan](../../../docs/ansible-migration-plan.md)
-- [Ansible Best Practices Skill](.claude/skills/ansible-best-practices/)
+- [Ansible Migration Plan](../../../docs/archive/2025-11-v1.0/ansible-migration-plan.md)
 - [Repository CLAUDE.md](../../../CLAUDE.md)

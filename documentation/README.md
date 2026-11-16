@@ -42,9 +42,9 @@ Essential references you will consult regularly:
 
 Active planning and brainstorming:
 
-- **[brainstorming/next-features-2025-11.md](brainstorming/next-features-2025-11.md)** - Roadmap for v2.0.0
+- **[brainstorming/next-features-2025-11.md](../docs/brainstorming/next-features-2025-11.md)** - Roadmap for v2.0.0
   development: NetBox integration, VM provisioning pipeline, documentation enhancement
-- **[brainstorming/documentation-audit-2025-11.md](brainstorming/documentation-audit-2025-11.md)** - Documentation
+- **[brainstorming/documentation-audit-2025-11.md](../docs/brainstorming/documentation-audit-2025-11.md)** - Documentation
   reorganization analysis and implementation plan
 
 ## Quick Reference Guide
@@ -82,7 +82,7 @@ The `archive/` directory preserves historical documents that informed current de
 
 ### v1.0.0 Completion Archive (2025-11)
 
-- **[archive/2025-11-v1.0/](archive/2025-11-v1.0/)** - Ansible migration documents, comprehensive testing results,
+- **[archive/2025-11-v1.0/](../docs/archive/2025-11-v1.0/)** - Ansible migration documents, comprehensive testing results,
   ProxSpray analysis, skills planning, PR reviews
   - Migration plan and completion reports
   - Testing validation results
@@ -91,7 +91,7 @@ The `archive/` directory preserves historical documents that informed current de
 
 ### Early Research (2025-10)
 
-- **[archive/2025-10-23/](archive/2025-10-23/)** - Early research summaries, role validation studies, improvement plans
+- **[archive/2025-10-23/](../docs/archive/2025-10-23/)** - Early research summaries, role validation studies, improvement plans
 
 These documents provide historical context but are superseded by current documentation. Consult them when researching
 design evolution or implementation details from v1.0.0 development.
@@ -184,4 +184,4 @@ When work completes:
 - Check [core/references.md](core/references.md) for links to external documentation
 - Review [design/ansible-philosophy.md](design/ansible-philosophy.md) for design principles
 - Consult [core/infrastructure.md](core/infrastructure.md) for specifications
-- Browse [archive/](archive/) for historical context on completed work
+- Browse [archive/](../docs/archive/) for historical context on completed work

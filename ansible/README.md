@@ -18,7 +18,7 @@ uses component-based design with reusable roles that work across multiple cluste
 - Complete documentation for all roles
 
 **Migration Status**: This codebase completed migration from monolithic playbooks to role-based architecture on
-2025-11-17. See [docs/ansible-migration-completion.md](../docs/ansible-migration-completion.md) for details.
+2025-11-17. See [docs/ansible-migration-completion.md](../docs/archive/2025-11-v1.0/ansible-migration-completion.md) for details.
 
 ## Directory Structure
 
@@ -279,7 +279,7 @@ Key principles:
 - Native modules beat shell commands
 - All operations are idempotent
 
-See [docs/ansible-philosophy.md](../docs/ansible-philosophy.md) for complete design philosophy.
+See [docs/ansible-philosophy.md](../documentation/design/ansible-philosophy.md) for complete design philosophy.
 
 ## Troubleshooting
 
@@ -341,14 +341,10 @@ infisical secrets list
 
 **Documentation**:
 
-- [Ansible Migration Completion](../docs/ansible-migration-completion.md) - Migration summary and results
-- [Ansible Philosophy](../docs/ansible-philosophy.md) - Design principles and patterns
-- [Testing Validation Results](../docs/testing-validation-results.md) - Comprehensive test documentation
-- [Infrastructure Specifications](../docs/infrastructure.md) - Hardware and network details
-
-**Claude Code Skill**:
-
-- [ansible-best-practices](../.claude/skills/ansible-best-practices/) - Ansible patterns and best practices
+- [Ansible Migration Completion](../docs/archive/2025-11-v1.0/ansible-migration-completion.md) - Migration summary and results
+- [Ansible Philosophy](../documentation/design/ansible-philosophy.md) - Design principles and patterns
+- [Testing Validation Results](../docs/archive/2025-11-v1.0/testing-validation-results.md) - Comprehensive test documentation
+- [Infrastructure Specifications](../documentation/core/infrastructure.md) - Hardware and network details
 
 **External References**:
 

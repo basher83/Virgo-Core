@@ -76,7 +76,8 @@ Run scripts explicitly with uv:
 uv run scripts/firecrawl_sdk_research.py "search query"
 ```
 
-Both methods work identically. The shebang `#!/usr/bin/env -S uv run --script` handles dependency installation automatically.
+Both methods work identically. The shebang `#!/usr/bin/env -S uv run --script` handles dependency installation
+automatically.
 
 ## Integration with Project Workflows
 
@@ -101,7 +102,8 @@ Generated markdown files in `ai_docs/` provide context for development decisions
 
 ### Task Runner Integration
 
-The project uses mise for task management. While scripts run independently, you can create custom mise tasks for frequent operations.
+The project uses mise for task management. While scripts run independently, you can create custom mise tasks for
+frequent operations.
 
 Example task in `.mise.local.toml`:
 
@@ -264,7 +266,7 @@ Example Python script header:
 ## Related Documentation
 
 - [Root README.md](../README.md) - Project overview and setup
-- [docs/infrastructure.md](../docs/infrastructure.md) - Infrastructure specifications
+- [documentation/core/infrastructure.md](../documentation/core/infrastructure.md) - Infrastructure specifications
 - [.mise.toml](../.mise.toml) - Task runner configuration
 - [Firecrawl Documentation](https://docs.firecrawl.dev/) - API reference for research tool
 

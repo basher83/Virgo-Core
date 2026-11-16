@@ -249,17 +249,21 @@ The role organizes tasks into modular files:
 
 ### Backup
 
-The role creates a backup of `/etc/network/interfaces` before the first change when `proxmox_network_backup: true` (default). The role stores backups as `/etc/network/interfaces.<timestamp>`. Subsequent changes in the same run skip backup creation.
+The role creates a backup of `/etc/network/interfaces` before the first change when `proxmox_network_backup: true`
+(default). The role stores backups as `/etc/network/interfaces.<timestamp>`. Subsequent changes in the same run skip
+backup creation.
 
 ### Reload
 
-Network configuration changes trigger the `Reload network interfaces` handler, which executes `ifreload -a` to apply changes without restarting the entire networking stack.
+Network configuration changes trigger the `Reload network interfaces` handler, which executes `ifreload -a` to apply
+changes without restarting the entire networking stack.
 
 **Warning**: Network reload may briefly interrupt connectivity. Exercise caution on remote hosts.
 
 ### Idempotency
 
-The role uses the `community.general.interfaces_file` module, which operates idempotently. Running the role multiple times with identical configuration produces no changes.
+The role uses the `community.general.interfaces_file` module, which operates idempotently. Running the role multiple
+times with identical configuration produces no changes.
 
 ## Verification
 

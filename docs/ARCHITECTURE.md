@@ -15,7 +15,7 @@ Virgo-Core manages three Proxmox VE clusters with distinct topologies, hardware 
 |---------|-------|---------|---------|--------|
 | **Matrix** | 3 (Foxtrot, Golf, Hotel) | Production cluster | CEPH distributed storage | Production-ready ✅ |
 | **Nexus** | 2 (Alpha, Bravo) | Original cluster, mixed workloads | Local LVM-thin + NFS | Active |
-| **Quantum** | 3 (Holly, Lloyd, Mable) | Currently idle | Local LVM-thin + NFS | Idle (future TBD) |
+| **Quantum** | 3 (Holly, Lloyd, Mable) | Management plane (Sidero Omni) | Local LVM-thin + NFS | Active |
 
 ### Quick Reference
 
@@ -336,11 +336,11 @@ Nexus is the original Proxmox cluster hosting mixed LXC and VM workloads. Nodes 
 
 ## Quantum Cluster
 
-**Status**: Idle, future purpose TBD
+**Status**: Active, management plane for Sidero Omni / Talos
 
 ### Overview
 
-Quantum (formerly "Doggos") is a 3-node cluster of identical Minisforum MS-01 mini PCs. Previously hosted HashiCorp Vault, Nomad/Consul, and MicroK8s workloads. All workloads have been removed, and the cluster is currently idle awaiting future purpose.
+Quantum (formerly "Doggos") is a 3-node cluster of identical Minisforum MS-01 mini PCs. Previously hosted HashiCorp Vault, Nomad/Consul, and MicroK8s workloads. Those workloads have been removed. Quantum now serves as the management plane for the Omni-managed Talos Kubernetes cluster: the Omni Hub runs on the `omni-host` VM (192.168.10.20). Omni Hub deployment and operations are owned by [Omni-Scale](https://github.com/basher83/Omni-Scale); this repository does not manage it.
 
 ### Nodes
 
@@ -434,7 +434,7 @@ Previously hosted:
 - 3-node HashiCorp Nomad/Consul cluster
 - 3-node MicroK8s cluster
 
-All workloads have been removed. Cluster is now idle awaiting future purpose.
+All of these workloads have been removed. See Overview for the current role.
 
 ## Network Architecture
 
@@ -470,7 +470,7 @@ All workloads have been removed. Cluster is now idle awaiting future purpose.
 - `foxtrot.matrix.spaceships.work`
 - `alpha.nexus.spaceships.work`
 
-DNS records are automatically managed via NetBox + PowerDNS integration.
+Automated DNS management via NetBox + PowerDNS is **planned, not deployed**. Neither NetBox nor PowerDNS is live.
 
 ## Storage Architecture
 
@@ -582,7 +582,9 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 
 ## Integration Points
 
-### NetBox + PowerDNS
+### NetBox + PowerDNS (planned)
+
+**Status**: Planned, not deployed. NetBox and PowerDNS are not running; the components below describe the intended design.
 
 **Purpose**: Single source of truth for IPAM and automated DNS management
 
@@ -593,7 +595,7 @@ DNS records are automatically managed via NetBox + PowerDNS integration.
 - **NetBox PowerDNS Sync Plugin**: Automatic DNS record generation
 - **Diode + Orb Agent**: Automated network discovery
 
-**DNS Naming**: Records automatically generated from NetBox device inventory (e.g., `docker-01-nexus.spaceships.work`)
+**DNS Naming (planned)**: Records would be generated from NetBox device inventory (e.g., `docker-01-nexus.spaceships.work`)
 
 **Reference**: See [NetBox + PowerDNS Integration](../documentation/core/netbox-powerdns.md)
 
