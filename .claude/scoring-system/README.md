@@ -2,7 +2,8 @@
 
 ## Overview
 
-This directory contains the configuration for a **bias-free, category-aware scoring system** for evaluating Ansible collections. The system eliminates the bias towards large, popular projects while maintaining high quality standards.
+This directory contains the configuration for a **bias-free, category-aware scoring system** for evaluating Ansible
+collections. The system eliminates the bias towards large, popular projects while maintaining high quality standards.
 
 ## Purpose
 
@@ -172,11 +173,13 @@ Use `evaluation-examples.yaml` as test cases when modifying the system.
 
 ## Design Decision: Intentional Specialization
 
-This scoring system is **intentionally specialized for Ansible collections**. While this repository uses both Ansible and Terraform, we've made a deliberate decision to keep the scorers separate rather than creating an abstract framework.
+This scoring system is **intentionally specialized for Ansible collections**. While this repository uses both Ansible
+and Terraform, we've made a deliberate decision to keep the scorers separate rather than creating an abstract framework.
 
 ### Why Specialized?
 
-1. **Tool-specific patterns matter**: Ansible's idempotency patterns are fundamentally different from Terraform's state management
+1. **Tool-specific patterns matter**: Ansible's idempotency patterns are fundamentally different from Terraform's state
+   management
 2. **Accuracy over abstraction**: Specialized scorer achieves 95% accuracy vs 70% for generic
 3. **Simplicity wins**: One folder contains everything you need to understand
 4. **Easier maintenance**: Changes don't ripple across unrelated tools
