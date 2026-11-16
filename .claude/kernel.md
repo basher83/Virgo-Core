@@ -87,15 +87,15 @@
 
 ## Operational Constraints
 
-### Single Admin Reality
+### Recovery
 
-- Recovery procedures must be executable solo
-- Documentation matters—future-you is the on-call engineer
+- Recovery procedures must be executable by one person, end to end
+- Write recovery documentation so it can be followed without prior context
 - Avoid architectures requiring simultaneous action on multiple systems
 
 ### Acceptable Risk Profile
 
-- Hours of downtime tolerable (not enterprise SLA)
+- Hours of downtime tolerable
 - Optimize for recoverability over high availability
 - HA is a learning goal, not a hard requirement
 
