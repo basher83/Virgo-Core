@@ -12,17 +12,17 @@ show_env = false
 truncate = true
 
 [tools]
-eza = "0.23.0"
-fd = "10.2.0"
+eza = "0.23.5"
+fd = "10.5.2"
 rg = "14.1.1"
 terraform-docs = "0.21.0"
 python = "3.14.2"
 tflint = "0.60.0"
-git-cliff = "2.10.1"
-yamllint = "1.37.1"
+git-cliff = "2.14.2"
+yamllint = "1.38.0"
 yamlfmt = "0.20.0"
 shellcheck = "0.11.0"
-opentofu = "1.11.1"
+opentofu = "1.13.9"
 uv = "0.9.18"
 "pipx:rumdl" = "0.0.195"
 
